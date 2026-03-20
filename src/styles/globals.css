@@ -1,0 +1,342 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* HealEase Design System */
+  --background: #f5f7fa;
+  --foreground: #1a2b3c;
+  --card: #ffffff;
+  --card-foreground: #1a2b3c;
+  --popover: #ffffff;
+  --popover-foreground: #1a2b3c;
+  
+  /* Primary - Deep Blue */
+  --primary: #4a90e2;
+  --primary-foreground: #ffffff;
+  --primary-light: #e8f4fd;
+  --primary-gradient-start: #005da7;
+  --primary-gradient-end: #2976c7;
+  
+  /* Secondary - Teal for positive states */
+  --secondary: #006b5b;
+  --secondary-foreground: #ffffff;
+  --secondary-light: #e6f5f2;
+  
+  /* Accent - Soft Purple for insights */
+  --accent: #7c4dff;
+  --accent-foreground: #ffffff;
+  --accent-light: #f3eeff;
+  
+  /* Muted/Neutral tones */
+  --muted: #eef1f5;
+  --muted-foreground: #64748b;
+  
+  /* Surface layers */
+  --surface-page: #f5f7fa;
+  --surface-section: #eef1f5;
+  --surface-card: #ffffff;
+  
+  /* States */
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --warning: #f59e0b;
+  --warning-foreground: #ffffff;
+  --success: #10b981;
+  --success-foreground: #ffffff;
+  
+  /* Borders & Inputs */
+  --border: #e2e8f0;
+  --input: #e2e8f0;
+  --ring: #005da7;
+  
+  /* Charts */
+  --chart-1: #005da7;
+  --chart-2: #006b5b;
+  --chart-3: #7c4dff;
+  --chart-4: #f59e0b;
+  --chart-5: #ef4444;
+  
+  --radius: 0.75rem;
+  
+  /* Sidebar */
+  --sidebar: #ffffff;
+  --sidebar-foreground: #1a2b3c;
+  --sidebar-primary: #005da7;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #e8f4fd;
+  --sidebar-accent-foreground: #005da7;
+  --sidebar-border: #e2e8f0;
+  --sidebar-ring: #005da7;
+
+  /* Additional containers & surfaces */
+  --primary-container: #e8f4fd;
+  --secondary-container: #e6f5f2;
+  --surface: #f5f7fa;
+  --surface-container-low: #eef1f5;
+  --surface-container-lowest: #ffffff;
+
+  /* Insight - for AI features */
+  --insight: #7c4dff;
+  --insight-foreground: #ffffff;
+
+  --logo: #183e9f;
+}
+
+.dark {
+  --background: #0f172a;
+  --foreground: #f1f5f9;
+  --card: #1e293b;
+  --card-foreground: #f1f5f9;
+  --popover: #1e293b;
+  --popover-foreground: #f1f5f9;
+  --primary: #3b82f6;
+  --primary-foreground: #ffffff;
+  --primary-light: #1e3a5f;
+  --secondary: #14b8a6;
+  --secondary-foreground: #ffffff;
+  --secondary-light: #134e4a;
+  --accent: #a78bfa;
+  --accent-foreground: #ffffff;
+  --accent-light: #2e1065;
+  --muted: #334155;
+  --muted-foreground: #94a3b8;
+  --surface-page: #0f172a;
+  --surface-section: #1e293b;
+  --surface-card: #334155;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --warning: #f59e0b;
+  --success: #10b981;
+  --border: #334155;
+  --input: #334155;
+  --ring: #3b82f6;
+  --chart-1: #3b82f6;
+  --chart-2: #14b8a6;
+  --chart-3: #a78bfa;
+  --chart-4: #f59e0b;
+  --chart-5: #ef4444;
+  --sidebar: #1e293b;
+  --sidebar-foreground: #f1f5f9;
+  --sidebar-primary: #3b82f6;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #334155;
+  --sidebar-accent-foreground: #f1f5f9;
+  --sidebar-border: #334155;
+  --sidebar-ring: #3b82f6;
+
+  /* Dark mode containers & surfaces */
+  --primary-container: #1e3a5f;
+  --secondary-container: #134e4a;
+  --surface: #0f172a;
+  --surface-container-low: #1a2332;
+  --surface-container-lowest: #1e293b;
+
+  /* Dark mode insight */
+  --insight: #a78bfa;
+  --insight-foreground: #0f172a;
+}
+
+@theme inline {
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-mono: 'Geist Mono', monospace;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-light: var(--primary-light);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary-light: var(--secondary-light);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent-light: var(--accent-light);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-warning: var(--warning);
+  --color-success: var(--success);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-surface-page: var(--surface-page);
+  --color-surface-section: var(--surface-section);
+  --color-surface-card: var(--surface-card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-logo: var(--logo);
+}
+
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  body,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  figure,
+  blockquote,
+  dl,
+  dd {
+    margin: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@utility container {
+  margin-inline: auto;
+  padding-inline: 2rem;
+
+  @media (min-width: 640px) {
+    max-width: none;
+  }
+
+  @media (min-width: 1400px) {
+    max-width: 1400px;
+  }
+}
+
+.hide-arrows::-webkit-inner-spin-button,
+.hide-arrows::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+  -moz-appearance: textfield;
+}
+
+/*region utilities*/
+@utility max-container {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+@utility no-focus {
+  @apply focus:ring-0! focus-visible:ring-0! focus-visible:ring-transparent! focus-visible:ring-offset-0! focus:ring-offset-0! focus:outline-hidden!;
+}
+
+@utility metrics {
+  @apply flex--row items-center gap-2.5;
+}
+
+@utility flex--row {
+  @apply flex flex-row;
+}
+
+@utility flex--col {
+  @apply flex flex-col;
+}
+
+@utility flex-center {
+  @apply flex items-center justify-center;
+}
+
+@utility flex-row-center {
+  @apply flex flex-row items-center justify-center;
+}
+
+@utility flex-col-center {
+  @apply flex flex-col items-center justify-center;
+}
+
+@utility flex-center-between {
+  @apply flex items-center justify-between;
+}
+
+@utility flex-col-center-between {
+  @apply flex flex-col items-center justify-between;
+}
+
+@utility flex-start-center {
+  @apply flex justify-start items-center;
+}
+
+@utility flex-start-between {
+  @apply flex justify-between items-start;
+}
+
+@utility flex-start-around {
+  @apply flex justify-around items-start;
+}
+
+@utility flex-row-between {
+  @apply flex flex-row justify-between;
+}
+
+@utility flex-col-start {
+  @apply flex flex-col items-start justify-start;
+}
+
+@utility flex-row-start {
+  @apply flex flex-row items-start justify-start;
+}
+
+@utility flex-responsive {
+  @apply flex flex-row max-sm:flex-col;
+}
+
+@utility flex-center-responsive {
+  @apply flex items-center justify-center max-sm:flex-col;
+}
+
+@utility flex-center-between-responsive {
+  @apply flex items-center justify-between max-sm:flex-col;
+}
+
+@utility flex-sm-col {
+  @apply max-sm:flex-col;
+}
+
+@utility inline-flex-center {
+  @apply inline-flex items-center justify-center;
+}
+
+@utility inline-flex-start {
+  @apply inline-flex items-start justify-start;
+}
+/*endregion*/
