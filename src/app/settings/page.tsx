@@ -1,15 +1,17 @@
-import { AppShell } from '@/components/layout/AppShell'
-import { Header } from '@/components/layout/Header'
-import { SettingsContent } from '@/components/settings/SettingsContent'
+import {AppShell} from '@/components/layout/AppShell'
+import {Header} from '@/components/layout/Header'
+import {SettingsContent} from '@/components/settings/SettingsContent'
 
-export default function SettingsPage() {
-  return (
+import * as SettingsTexts from '@/constants/settingsTexts'
+
+const SettingsPage = () => (
     <AppShell>
-      <Header 
-        title="Settings" 
-        subtitle="Customize your HealEase experience"
-      />
-      <SettingsContent />
+        <Header
+            title={SettingsTexts.SETTINGS_TITLE}
+            subtitle={SettingsTexts.SETTINGS_SUBTITLE}
+        />
+        <SettingsContent />
     </AppShell>
-  )
-}
+)
+
+export default SettingsPage

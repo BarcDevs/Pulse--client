@@ -1,14 +1,14 @@
-import { CheckInContent } from '@/components/checkin/CheckinContent'
-import { AppShell } from '@/components/layout/AppShell'
-import { Header } from '@/components/layout/Header'
+import {CheckInContent} from '@/components/checkIn/CheckInContent'
+import {AppShell} from '@/components/layout/AppShell'
+import {Header} from '@/components/layout/Header'
 
-export default function DailyCheckInPage() {
-  return (
+import {HEADER_HEALTH_OVERVIEW} from '@/constants/layoutTexts'
+
+const DailyCheckInPage = () => (
     <AppShell>
-      <Header 
-        title="Health Overview" 
-      />
-      <CheckInContent />
+        <Header title={HEADER_HEALTH_OVERVIEW} />
+        <CheckInContent />
     </AppShell>
-  )
-}
+)
+
+export default DailyCheckInPage

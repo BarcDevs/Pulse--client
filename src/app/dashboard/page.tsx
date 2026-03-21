@@ -1,15 +1,17 @@
-import { DashboardContent } from '@/components/dashboard/DashboardContent'
-import { AppShell } from '@/components/layout/AppShell'
-import { Header } from '@/components/layout/Header'
+import {DashboardContent} from '@/components/dashboard/DashboardContent'
+import {AppShell} from '@/components/layout/AppShell'
+import {Header} from '@/components/layout/Header'
 
-export default function DashboardPage() {
-  return (
+import * as DashboardTexts from '@/constants/dashboardTexts'
+
+const DashboardPage = () => (
     <AppShell>
-      <Header 
-        title="Dashboard" 
-        subtitle="Welcome back, Alex"
-      />
-      <DashboardContent />
+        <Header
+            title={DashboardTexts.DASHBOARD_TITLE}
+            subtitle={DashboardTexts.DASHBOARD_SUBTITLE}
+        />
+        <DashboardContent />
     </AppShell>
-  )
-}
+)
+
+export default DashboardPage

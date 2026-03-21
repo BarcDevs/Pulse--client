@@ -1,86 +1,115 @@
 'use client'
 
-import { useState } from 'react'
+import {useState} from 'react'
 
-import { Check } from 'lucide-react'
+import {Check} from 'lucide-react'
 
-import { AppHeader } from '@/components/AppHeader'
-import { CheckInActivities } from '@/components/check-in/Activities'
-import { CheckInJournal } from '@/components/check-in/Journal'
-import { CheckInQuote } from '@/components/check-in/Quote'
-import { CheckInSliders } from '@/components/check-in/Sliders'
-import { Button } from '@/components/ui/Button'
+import {AppHeader} from '@/components/AppHeader'
+import {CheckInActivities} from '@/components/checkIn/Activities'
+import {CheckInJournal} from '@/components/checkIn/Journal'
+import {CheckInQuote} from '@/components/checkIn/Quote'
+import {CheckInSliders} from '@/components/checkIn/Sliders'
+import {Button} from '@/components/ui/button'
 
-export default function CheckInPage() {
-  const [mood, setMood] = useState(50)
-  const [comfort, setComfort] = useState(50)
-  const [selectedActivities, setSelectedActivities] = useState<string[]>([
-    'Meditating',
-    'Hydrated',
-  ])
-  const [journalEntry, setJournalEntry] = useState('')
+import * as CheckInTexts from '@/constants/checkInTexts'
 
-  const handleSubmit = () => {
-    // Handle form submission
-    console.log({ mood, comfort, selectedActivities, journalEntry })
-  }
+const CheckInPage = () => {
+    const [mood, setMood] = useState(50)
+    const [comfort, setComfort] = useState(50)
+    const [selectedActivities, setSelectedActivities] = useState<string[]>([
+        'Meditating',
+        'Hydrated',
+    ])
+    const [journalEntry, setJournalEntry] = useState('')
 
-  return (
-    <div className="flex min-h-screen flex-col">
-      <AppHeader title="Health Overview" />
+    const handleSubmit = () => {
+        // TODO: Implement check-in submission logic
+    }
 
-      <main className="flex-1 p-4 md:p-6">
-        <div className="mx-auto max-w-2xl">
-          {/* Header */}
-          <div className="mb-8 text-center">
-            <h1 className="text-3xl font-semibold text-[var(--foreground)]">
-              Daily Check-In
-            </h1>
-            <p className="mt-2 text-[var(--muted-foreground)]">
-              Take a moment to center yourself and log your progress.
-            </p>
-          </div>
+    return (
+        <div className={'flex min-h-screen flex-col'}>
+            <AppHeader
+                title={CheckInTexts.CHECK_IN_HEADER_TITLE}
+            />
 
-          {/* Sliders */}
-          <CheckInSliders
-            mood={mood}
-            setMood={setMood}
-            comfort={comfort}
-            setComfort={setComfort}
-          />
+            <main className={'flex-1 p-4 md:p-6'}>
+                <div className={'mx-auto max-w-2xl'}>
+                    <div className={'mb-8 text-center'}>
+                        <h1
+                            className={
+                                'text-3xl font-semibold ' +
+                                'text-foreground'
+                            }
+                        >
+                            {CheckInTexts.CHECK_IN_PAGE_TITLE}
+                        </h1>
+                        <p
+                            className={
+                                'mt-2 text-muted-foreground'
+                            }
+                        >
+                            {CheckInTexts.CHECK_IN_PAGE_SUBTITLE}
+                        </p>
+                    </div>
 
-          {/* Activities */}
-          <CheckInActivities
-            selectedActivities={selectedActivities}
-            setSelectedActivities={setSelectedActivities}
-          />
+                    <CheckInSliders
+                        mood={mood}
+                        setMood={setMood}
+                        comfort={comfort}
+                        setComfort={setComfort}
+                    />
 
-          {/* Journal */}
-          <CheckInJournal
-            value={journalEntry}
-            onChange={setJournalEntry}
-          />
+                    <CheckInActivities
+                        selectedActivities={
+                            selectedActivities
+                        }
+                        setSelectedActivities={
+                            setSelectedActivities
+                        }
+                    />
 
-          {/* Submit Button */}
-          <div className="mt-8 flex justify-center">
-            <Button
-              onClick={handleSubmit}
-              size="lg"
-              className="min-w-[200px] bg-[var(--primary)] text-white hover:bg-[var(--primary)]/90"
-            >
-              <Check className="mr-2 size-5" />
-              Submit Check-In
-            </Button>
-          </div>
+                    <CheckInJournal
+                        value={journalEntry}
+                        onChange={setJournalEntry}
+                    />
 
-          <p className="mt-4 text-center text-xs text-[var(--muted-foreground)]">
-            AUTOSAVED AT 09:42 AM
-          </p>
+                    <div
+                        className={
+                            'mt-8 flex justify-center'
+                        }
+                    >
+                        <Button
+                            onClick={handleSubmit}
+                            size={'lg'}
+                            className={
+                                'min-w-[200px] ' +
+                                'bg-primary text-white ' +
+                                'hover:bg-primary/90'
+                            }
+                        >
+                            <Check
+                                className={
+                                    'mr-2 size-5'
+                                }
+                            />
+                            {CheckInTexts.CHECK_IN_SUBMIT_BUTTON}
+                        </Button>
+                    </div>
 
-          {/* Quote */}
-          <CheckInQuote />
+                    <p
+                        className={
+                            'mt-4 text-center text-xs ' +
+                            'text-muted-foreground'
+                        }
+                    >
+                        {CheckInTexts.CHECK_IN_AUTOSAVE_STATUS}
+                    </p>
+
+                    <CheckInQuote />
+                </div>
+            </main>
         </div>
-      </main>
-    </div>
-  )
+    )
 }
+
+export default CheckInPage

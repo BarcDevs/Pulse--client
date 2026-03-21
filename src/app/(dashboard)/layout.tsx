@@ -1,17 +1,18 @@
-import { AppSidebar } from '@/components/AppSidebar'
-import { SidebarInset,SidebarProvider } from '@/components/ui/Sidebar'
+import {LayoutProps} from '@/types'
 
-export default function DashboardLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
-  return (
+import {Sidebar} from '@/components/sidebar/Sidebar'
+import {
+    SidebarInset,
+    SidebarProvider,
+} from '@/components/ui/sidebar'
+
+const DashboardLayout = ({children}: LayoutProps) => (
     <SidebarProvider>
-      <AppSidebar />
-      <SidebarInset className="bg-[var(--surface-page)]">
-        {children}
-      </SidebarInset>
+        <Sidebar />
+        <SidebarInset className={'bg-surface-page'}>
+            {children}
+        </SidebarInset>
     </SidebarProvider>
-  )
-}
+)
+
+export default DashboardLayout

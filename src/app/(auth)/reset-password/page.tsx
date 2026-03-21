@@ -1,189 +1,175 @@
 'use client'
 
-import { useState } from 'react'
+import {
+    SyntheticEvent,
+    useState,
+} from 'react'
 
-import { ArrowLeft, ArrowRight, Check, Eye, EyeOff } from 'lucide-react'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
+import {useRouter} from 'next/navigation'
 
-import { Button } from '@/components/ui/Button'
-import { Card, CardContent, CardDescription,CardHeader, CardTitle } from '@/components/ui/Card'
-import { Input } from '@/components/ui/Input'
+import {ArrowLeft, ArrowRight, Check} from 'lucide-react'
 
-export default function ResetPasswordPage() {
-  const router = useRouter()
-  const [password, setPassword] = useState('')
-  const [confirmPassword, setConfirmPassword] = useState('')
-  const [showPassword, setShowPassword] = useState(false)
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false)
-  const [isLoading, setIsLoading] = useState(false)
+import {FormInput} from '@/components/shared/FormInput'
+import {Logo} from '@/components/shared/Logo'
+import {Button} from '@/components/ui/button'
+import {
+    Card,
+    CardContent,
+    CardDescription,
+    CardHeader,
+    CardTitle,
+} from '@/components/ui/card'
 
-  const hasMinLength = password.length >= 8
-  const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password)
-  const passwordsMatch = password === confirmPassword && password.length > 0
+import {RESET_PASSWORD} from '@/constants/authTexts'
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    if (!hasMinLength || !hasSpecialChar || !passwordsMatch) return
+import authFormConfig from '@/config/schema/authForm'
+import {TIMINGS} from '@/config/timings'
 
-    setIsLoading(true)
-    
-    // Simulate API call
-    setTimeout(() => {
-      setIsLoading(false)
-      router.push('/login')
-    }, 1000)
-  }
+const ResetPasswordPage = () => {
+    const router = useRouter()
+    const [password, setPassword] = useState('')
+    const [confirmPassword, setConfirmPassword] = useState('')
+    const [isLoading, setIsLoading] = useState(false)
 
-  return (
-    <div className="w-full max-w-md">
-      {/* Branding */}
-      <div className="mb-8 text-center">
-        <h1 className="text-2xl font-semibold text-[var(--primary)]">HealEase</h1>
-        <p className="text-sm text-[var(--muted-foreground)]">Recovery & Wellness Sanctuary</p>
-      </div>
+    const hasMinLength =
+        password.length >=
+        authFormConfig.password.minLength
+    const hasSpecialChar = authFormConfig
+        .password.specialCharPattern.test(password)
+    const passwordsMatch =
+        password === confirmPassword &&
+        password.length > 0
 
-      <Card className="border-0 shadow-lg">
-        <CardHeader>
-          <CardTitle className="text-2xl font-semibold">Create New Password</CardTitle>
-          <CardDescription>
-            Choose a secure password to regain access to your recovery dashboard.
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div className="space-y-2">
-              <label
-                htmlFor="password"
-                className="text-xs font-medium uppercase tracking-wider text-[var(--muted-foreground)]"
-              >
-                NEW PASSWORD
-              </label>
-              <div className="relative">
-                <Input
-                  id="password"
-                  type={showPassword ? 'text' : 'password'}
-                  placeholder="********"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  className="h-11 border-[var(--border)] bg-[var(--muted)] pr-10"
-                  required
-                />
-                <button
-                  type="button"
-                  onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-[var(--muted-foreground)]"
-                >
-                  {showPassword ? (
-                    <EyeOff className="size-5" />
-                  ) : (
-                    <Eye className="size-5" />
-                  )}
-                </button>
-              </div>
-            </div>
+    const handleSubmit = async (
+        e: SyntheticEvent<HTMLFormElement>
+    ) => {
+        e.preventDefault()
+        if (
+            !hasMinLength ||
+            !hasSpecialChar ||
+            !passwordsMatch
+        ) return
 
-            <div className="space-y-2">
-              <label
-                htmlFor="confirmPassword"
-                className="text-xs font-medium uppercase tracking-wider text-[var(--muted-foreground)]"
-              >
-                CONFIRM NEW PASSWORD
-              </label>
-              <div className="relative">
-                <Input
-                  id="confirmPassword"
-                  type={showConfirmPassword ? 'text' : 'password'}
-                  placeholder="********"
-                  value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)}
-                  className="h-11 border-[var(--border)] bg-[var(--muted)] pr-10"
-                  required
-                />
-                <button
-                  type="button"
-                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-[var(--muted-foreground)]"
-                >
-                  {showConfirmPassword ? (
-                    <EyeOff className="size-5" />
-                  ) : (
-                    <Eye className="size-5" />
-                  )}
-                </button>
-              </div>
-            </div>
+        setIsLoading(true)
 
-            {/* Password Requirements */}
-            <div className="flex items-center gap-6 text-sm">
-              <div className="flex items-center gap-2">
-                <div
-                  className={`flex size-5 items-center justify-center rounded-full ${
-                    hasMinLength
-                      ? 'bg-[var(--secondary)] text-white'
-                      : 'bg-[var(--muted)]'
-                  }`}
-                >
-                  {hasMinLength && <Check className="size-3" />}
-                </div>
-                <span
-                  className={
-                    hasMinLength
-                      ? 'text-[var(--secondary)]'
-                      : 'text-[var(--muted-foreground)]'
-                  }
-                >
-                  Min 8 characters
-                </span>
-              </div>
-              <div className="flex items-center gap-2">
-                <div
-                  className={`flex size-5 items-center justify-center rounded-full ${
-                    hasSpecialChar
-                      ? 'bg-[var(--secondary)] text-white'
-                      : 'bg-[var(--muted)]'
-                  }`}
-                >
-                  {hasSpecialChar && <Check className="size-3" />}
-                </div>
-                <span
-                  className={
-                    hasSpecialChar
-                      ? 'text-[var(--secondary)]'
-                      : 'text-[var(--muted-foreground)]'
-                  }
-                >
-                  One special symbol
-                </span>
-              </div>
-            </div>
+        // Simulate API call. todo: add real api call
+        setTimeout(() => {
+            setIsLoading(false)
+            router.push('/login')
+        }, TIMINGS.AUTH_API_DELAY)
+    }
 
-            <Button
-              type="submit"
-              className="h-11 w-full bg-[var(--primary)] text-white hover:bg-[var(--primary)]/90"
-              disabled={isLoading || !hasMinLength || !hasSpecialChar || !passwordsMatch}
-            >
-              {isLoading ? 'Resetting...' : 'Reset Password'}
-              {!isLoading && <ArrowRight className="ml-2 size-4" />}
-            </Button>
+    return (
+        <div className={'w-full max-w-md'}>
+            <Logo/>
 
-            <Link
-              href="/login"
-              className="flex items-center justify-center gap-2 text-sm font-medium text-[var(--foreground)] hover:underline"
-            >
-              <ArrowLeft className="size-4" />
-              Back to login
-            </Link>
-          </form>
+            <Card className={'border-0 shadow-lg'}>
+                <CardHeader>
+                    <CardTitle className={'text-2xl font-semibold'}>
+                        {RESET_PASSWORD.title}
+                    </CardTitle>
+                    <CardDescription>
+                        {RESET_PASSWORD.description}
+                    </CardDescription>
+                </CardHeader>
+                <CardContent>
+                    <form
+                        onSubmit={handleSubmit}
+                        className={'space-y-4'}
+                    >
+                        <FormInput
+                            id={'password'}
+                            label={RESET_PASSWORD.passwordLabel}
+                            type={'password'}
+                            placeholder={RESET_PASSWORD.passwordPlaceholder}
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
 
-          <p className="mt-6 text-center text-xs text-[var(--muted-foreground)]">
-            Having trouble?{' '}
-            <Link href="/support" className="text-[var(--primary)] hover:underline">
-              Contact Health Support
-            </Link>
-          </p>
-        </CardContent>
-      </Card>
-    </div>
-  )
+                        <FormInput
+                            id={'confirmPassword'}
+                            label={RESET_PASSWORD.confirmPasswordLabel}
+                            type={'password'}
+                            placeholder={RESET_PASSWORD.passwordPlaceholder}
+                            value={confirmPassword}
+                            onChange={(e) => setConfirmPassword(e.target.value)}
+                        />
+
+                        {/* Password Requirements */}
+                        <div className={'flex items-center gap-6 text-sm'}>
+                            <div className={'flex items-center gap-2'}>
+                                <div
+                                    className={`flex size-5 items-center justify-center rounded-full ${
+                                        hasMinLength
+                                            ? 'bg-secondary text-white'
+                                            : 'bg-muted'
+                                    }`}
+                                >
+                                    {hasMinLength && <Check className={'size-3'}/>}
+                                </div>
+                                <span
+                                    className={
+                                        hasMinLength
+                                            ? 'text-secondary'
+                                            : 'text-muted-foreground'
+                                    }
+                                >
+                                    {RESET_PASSWORD.minLengthText}
+                                </span>
+                            </div>
+                            <div className={'flex items-center gap-2'}>
+                                <div
+                                    className={`flex size-5 items-center justify-center rounded-full ${
+                                        hasSpecialChar
+                                            ? 'bg-secondary text-white'
+                                            : 'bg-muted'
+                                    }`}
+                                >
+                                    {hasSpecialChar && <Check className={'size-3'}/>}
+                                </div>
+                                <span
+                                    className={
+                                        hasSpecialChar
+                                            ? 'text-secondary'
+                                            : 'text-muted-foreground'
+                                    }
+                                >
+                                    {RESET_PASSWORD.specialCharText}
+                                </span>
+                            </div>
+                        </div>
+
+                        <Button
+                            type={'submit'}
+                            className={'h-11 w-full bg-primary text-white hover:bg-primary/90'}
+                            disabled={isLoading || !hasMinLength || !hasSpecialChar || !passwordsMatch}
+                        >
+                            {isLoading
+                                ? RESET_PASSWORD.resettingButton
+                                : RESET_PASSWORD.submitButton}
+                            {!isLoading && <ArrowRight className={'ml-2 size-4'}/>}
+                        </Button>
+
+                        <Link
+                            href={'/login'}
+                            className={'flex items-center justify-center gap-2 text-sm font-medium text-foreground hover:underline'}
+                        >
+                            <ArrowLeft className={'size-4'}/>
+                            {RESET_PASSWORD.backButton}
+                        </Link>
+                    </form>
+
+                    <p className={'mt-6 text-center text-xs text-muted-foreground'}>
+                        {RESET_PASSWORD.troubleText}{' '}
+                        <Link href={'/support'} className={'text-primary hover:underline'}>
+                            {RESET_PASSWORD.supportLink}
+                        </Link>
+                    </p>
+                </CardContent>
+            </Card>
+        </div>
+    )
 }
+
+export default ResetPasswordPage
