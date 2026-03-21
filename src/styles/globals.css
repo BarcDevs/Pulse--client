@@ -11,33 +11,33 @@
   --card-foreground: #1a2b3c;
   --popover: #ffffff;
   --popover-foreground: #1a2b3c;
-  
+
   /* Primary - Deep Blue */
   --primary: #4a90e2;
   --primary-foreground: #ffffff;
   --primary-light: #e8f4fd;
   --primary-gradient-start: #005da7;
   --primary-gradient-end: #2976c7;
-  
+
   /* Secondary - Teal for positive states */
   --secondary: #006b5b;
   --secondary-foreground: #ffffff;
   --secondary-light: #e6f5f2;
-  
+
   /* Accent - Soft Purple for insights */
   --accent: #7c4dff;
   --accent-foreground: #ffffff;
   --accent-light: #f3eeff;
-  
+
   /* Muted/Neutral tones */
   --muted: #eef1f5;
   --muted-foreground: #64748b;
-  
+
   /* Surface layers */
   --surface-page: #f5f7fa;
   --surface-section: #eef1f5;
   --surface-card: #ffffff;
-  
+
   /* States */
   --destructive: #ef4444;
   --destructive-foreground: #ffffff;
@@ -45,21 +45,21 @@
   --warning-foreground: #ffffff;
   --success: #10b981;
   --success-foreground: #ffffff;
-  
+
   /* Borders & Inputs */
   --border: #e2e8f0;
   --input: #e2e8f0;
   --ring: #005da7;
-  
+
   /* Charts */
   --chart-1: #005da7;
   --chart-2: #006b5b;
   --chart-3: #7c4dff;
   --chart-4: #f59e0b;
   --chart-5: #ef4444;
-  
+
   --radius: 0.75rem;
-  
+
   /* Sidebar */
   --sidebar: #ffffff;
   --sidebar-foreground: #1a2b3c;
@@ -338,5 +338,55 @@
 
 @utility inline-flex-start {
   @apply inline-flex items-start justify-start;
+}
+/*endregion*/
+
+/*region recharts styling*/
+[data-chart] .recharts-cartesian-axis-tick text {
+  @apply fill-muted-foreground;
+}
+
+[data-chart] .recharts-cartesian-grid line[stroke="#ccc"] {
+  @apply stroke-border opacity-50;
+}
+
+[data-chart] .recharts-curve.recharts-tooltip-cursor {
+  @apply stroke-border;
+}
+
+[data-chart] .recharts-polar-grid [stroke="#ccc"] {
+  @apply stroke-border;
+}
+
+[data-chart] .recharts-radial-bar-background-sector {
+  @apply fill-muted;
+}
+
+[data-chart] .recharts-rectangle.recharts-tooltip-cursor {
+  @apply fill-muted;
+}
+
+[data-chart] .recharts-reference-line [stroke="#ccc"] {
+  @apply stroke-border;
+}
+
+[data-chart] .recharts-dot[stroke="#fff"] {
+  @apply stroke-transparent;
+}
+
+[data-chart] .recharts-layer {
+  @apply outline-hidden;
+}
+
+[data-chart] .recharts-sector {
+  @apply outline-hidden;
+}
+
+[data-chart] .recharts-sector[stroke="#fff"] {
+  @apply stroke-transparent;
+}
+
+[data-chart] .recharts-surface {
+  @apply outline-hidden;
 }
 /*endregion*/
