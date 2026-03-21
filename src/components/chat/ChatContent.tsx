@@ -8,7 +8,7 @@ import {ChatInput} from './Input'
 import {ChatMessages} from './Messages'
 import {ChatSidebar} from './Sidebar'
 
-const ChatContent = () => {
+export const ChatContent = () => {
     const [messages] = useState(CHAT_MESSAGES_DEFAULT)
     const [inputValue, setInputValue] = useState('')
 
@@ -41,5 +41,3 @@ const ChatContent = () => {
         </div>
     )
 }
-
-export {ChatContent}
