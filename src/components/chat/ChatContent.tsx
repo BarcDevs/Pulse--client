@@ -4,9 +4,9 @@ import {useState} from 'react'
 
 import {CHAT_MESSAGES_DEFAULT} from '@/constants/chatTexts'
 
+import {ChatPanel} from './ChatPanel'
 import {ChatInput} from './Input'
 import {ChatMessages} from './Messages'
-import {ChatSidebar} from './Sidebar'
 
 export const ChatContent = () => {
     const [messages] = useState(CHAT_MESSAGES_DEFAULT)
@@ -29,15 +29,7 @@ export const ChatContent = () => {
                 />
             </div>
 
-            <div
-                className={
-                    'w-80 border-l border-border ' +
-                    'bg-surface-card p-4 ' +
-                    'overflow-y-auto hidden lg:block'
-                }
-            >
-                <ChatSidebar />
-            </div>
+            <ChatPanel />
         </div>
     )
 }

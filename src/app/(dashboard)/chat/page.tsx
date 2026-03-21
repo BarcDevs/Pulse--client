@@ -4,9 +4,9 @@ import {useState} from 'react'
 
 import {Shield} from 'lucide-react'
 
+import {ChatPanel} from '@/components/chat/ChatPanel'
 import {ChatInput} from '@/components/chat/Input'
 import {ChatMessages} from '@/components/chat/Messages'
-import {ChatSidebar} from '@/components/chat/Sidebar'
 import {Badge} from '@/components/ui/badge'
 
 import * as ChatTexts from '@/constants/chatTexts'
@@ -89,8 +89,8 @@ const ChatPage = () => {
                     />
                 </div>
 
-                {/* Right Sidebar */}
-                <ChatSidebar/>
+                {/* Right Panel */}
+                <ChatPanel/>
             </div>
         </div>
     )

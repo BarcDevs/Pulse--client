@@ -1,8 +1,8 @@
 'use client'
 
-import { Categories } from './Categories'
-import { CommunitySidebar } from './CommunitySidebar'
-import { PostList } from './PostList'
+import {Categories} from './Categories'
+import {CommunityPanel} from './CommunityPanel'
+import {PostList} from './PostList'
 
 const CommunityContent = () => (
   <div className={'p-6'}>
@@ -15,7 +15,7 @@ const CommunityContent = () => (
         <PostList />
       </div>
       <div>
-        <CommunitySidebar />
+        <CommunityPanel />
       </div>
     </div>
   </div>

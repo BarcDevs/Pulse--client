@@ -1,13 +1,13 @@
 import {
     BarChart3,
+    CalendarCheck,
     Home,
+    Lightbulb,
     LogOut,
     MessageCircle,
     Settings,
     Users,
 } from 'lucide-react'
-
-export type SidebarSectionType = 'nav' | 'chat' | 'community'
 
 export type NavItem = {
     icon: typeof Home
@@ -24,11 +24,22 @@ export const MAIN_NAV_ITEMS: NavItem[] = [
         isActive: (pathname) => pathname === '/dashboard',
     },
     {
-        icon: MessageCircle,
-        label: 'Chat',
-        href: '/chat',
-        isActive: (pathname) => pathname
-            .startsWith('/chat'),
+        icon: CalendarCheck,
+        label: 'Daily Check-In',
+        href: '/daily-checkin',
+        isActive: (pathname) => pathname === '/daily-checkin',
+    },
+    {
+        icon: BarChart3,
+        label: 'Progress',
+        href: '/progress',
+        isActive: (pathname) => pathname === '/progress',
+    },
+    {
+        icon: Lightbulb,
+        label: 'Insights',
+        href: '/insights',
+        isActive: (pathname) => pathname === '/insights',
     },
     {
         icon: Users,
@@ -38,10 +49,11 @@ export const MAIN_NAV_ITEMS: NavItem[] = [
             .startsWith('/community'),
     },
     {
-        icon: BarChart3,
-        label: 'Progress',
-        href: '/progress',
-        isActive: (pathname) => pathname === '/progress',
+        icon: MessageCircle,
+        label: 'Chat',
+        href: '/chat',
+        isActive: (pathname) => pathname
+            .startsWith('/chat'),
     },
 ]
 
@@ -60,25 +72,3 @@ export const BOTTOM_NAV_ITEMS: NavItem[] = [
         isActive: () => false,
     },
 ]
-
-const routeSections: Record<string, SidebarSectionType[]> = {
-    '/dashboard': ['nav'],
-    '/chat': ['nav', 'chat'],
-    '/community': ['nav', 'community'],
-    '/progress': ['nav'],
-    '/profile': ['nav'],
-    '/daily-checkin': ['nav'],
-}
-
-export const useSidebarSections = (
-    pathname: string,
-): SidebarSectionType[] => {
-    for (const [route, sections] of Object.entries(
-        routeSections,
-    )) {
-        if (pathname.startsWith(route)) {
-            return sections
-        }
-    }
-    return ['nav']
-}
