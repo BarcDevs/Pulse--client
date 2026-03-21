@@ -1,6 +1,8 @@
 'use client'
 
-import {Logo} from '@/components/shared/Logo'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+
 import {
   CalendarCheck,
   LayoutDashboard,
@@ -11,8 +13,8 @@ import {
   User,
   Users,
 } from 'lucide-react'
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+
+import {Logo} from '@/components/shared/Logo'
 
 import { cn } from '@/lib/utils'
 

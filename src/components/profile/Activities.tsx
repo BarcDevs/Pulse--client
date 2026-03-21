@@ -1,64 +1,53 @@
-import { Moon,Plus, Sun } from 'lucide-react'
+import { Moon, Plus, Sun } from 'lucide-react'
 
-import { Badge } from '@/components/ui/Badge'
-import { Button } from '@/components/ui/Button'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card'
+import { ActivityItem } from '@/components/shared/ActivityItem'
+import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 
-const activities = [
-  {
-    icon: Sun,
-    title: 'Morning Routine',
-    time: 'Scheduled for 07:30 AM',
-    tags: ['MEDITATION', 'STRETCH'],
-  },
-  {
-    icon: Moon,
-    title: 'Evening Reflection',
-    time: 'Scheduled for 09:00 PM',
-    tags: ['JOURNALING', 'GRATITUDE'],
-  },
-]
+import {
+    PROFILE_ACTIVITIES_LIST,
+    PROFILE_ACTIVITIES_TITLE,
+} from '@/constants/profileTexts'
 
-export function ProfileActivities() {
-  return (
-    <Card className="border-0 shadow-sm">
-      <CardHeader className="flex flex-row items-center justify-between">
-        <CardTitle className="text-lg font-semibold">Daily Activity Preferences</CardTitle>
-        <Button variant="ghost" size="icon" className="text-[var(--muted-foreground)]">
-          <Plus className="size-5" />
-        </Button>
-      </CardHeader>
-      <CardContent className="space-y-4">
-        {activities.map((activity) => (
-          <div
-            key={activity.title}
-            className="flex items-start gap-4 rounded-xl bg-[var(--surface-section)] p-4"
-          >
-            <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-[var(--primary-light)]">
-              <activity.icon className="size-5 text-[var(--primary)]" />
-            </div>
-            <div className="flex-1">
-              <h4 className="font-medium text-[var(--foreground)]">
-                {activity.title}
-              </h4>
-              <p className="text-sm text-[var(--muted-foreground)]">
-                {activity.time}
-              </p>
-            </div>
-            <div className="flex flex-wrap gap-1">
-              {activity.tags.map((tag) => (
-                <Badge
-                  key={tag}
-                  variant="outline"
-                  className="border-[var(--border)] text-xs"
+const iconMap = {
+    'Morning Routine': Sun,
+    'Evening Reflection': Moon,
+}
+
+const activities = PROFILE_ACTIVITIES_LIST.map((activity) => ({
+    ...activity,
+    icon: iconMap[activity.title as keyof typeof iconMap],
+}))
+
+export const ProfileActivities = () => {
+    return (
+        <Card className={'border-0 shadow-sm'}>
+            <CardHeader className={'flex flex-row items-center justify-between'}>
+                <CardTitle className={'text-lg font-semibold'}>
+                    {PROFILE_ACTIVITIES_TITLE}
+                </CardTitle>
+                <Button
+                    variant={'ghost'}
+                    size={'icon'}
+                    className={'text-muted-foreground'}
                 >
-                  {tag}
-                </Badge>
-              ))}
-            </div>
-          </div>
-        ))}
-      </CardContent>
-    </Card>
-  )
+                    <Plus className={'size-5'} />
+                </Button>
+            </CardHeader>
+            <CardContent className={'space-y-4'}>
+                {activities.map((activity) => (
+                    <ActivityItem
+                        key={activity.title}
+                        icon={
+                            <activity.icon className={'size-5 text-primary'} />
+                        }
+                        title={activity.title}
+                        subtitle={activity.time}
+                        tags={activity.tags}
+                        variant={'card'}
+                    />
+                ))}
+            </CardContent>
+        </Card>
+    )
 }

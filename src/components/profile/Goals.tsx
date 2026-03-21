@@ -1,42 +1,42 @@
-import { Button } from '@/components/ui/Button'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card'
-import { Progress } from '@/components/ui/Progress'
+import { GoalProgressBar } from '@/components/shared/GoalProgressBar'
+import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 
-const goals = [
-  { label: 'PHYSIO THERAPY', progress: 80 },
-  { label: 'DAILY MEDITATION', progress: 65 },
-  { label: 'SLEEP HYGIENE', progress: 40 },
-]
+import {
+    PROFILE_GOALS_LIST,
+    PROFILE_GOALS_TITLE,
+    PROFILE_GOALS_VIEW_ROADMAP,
+} from '@/constants/profileTexts'
 
-export function ProfileGoals() {
-  return (
-    <Card className="border-0 bg-[var(--primary)] text-white shadow-sm">
-      <CardHeader>
-        <CardTitle className="text-lg font-semibold text-white">Active Goals</CardTitle>
-      </CardHeader>
-      <CardContent className="space-y-4">
-        {goals.map((goal) => (
-          <div key={goal.label}>
-            <div className="flex items-center justify-between text-sm">
-              <span className="text-xs font-medium uppercase tracking-wider text-white/80">
-                {goal.label}
-              </span>
-              <span className="font-medium">{goal.progress}%</span>
-            </div>
-            <Progress
-              value={goal.progress}
-              className="mt-2 h-2 bg-white/20 [&>[data-slot=progress-indicator]]:bg-white"
-            />
-          </div>
-        ))}
+const goals = PROFILE_GOALS_LIST
 
-        <Button
-          variant="outline"
-          className="mt-4 w-full border-white/30 bg-transparent text-white hover:bg-white/10 hover:text-white"
-        >
-          View Roadmap
-        </Button>
-      </CardContent>
-    </Card>
-  )
+export const ProfileGoals = () => {
+    return (
+        <Card className={'border-0 bg-primary text-white shadow-sm'}>
+            <CardHeader>
+                <CardTitle className={'text-lg font-semibold text-white'}>
+                    {PROFILE_GOALS_TITLE}
+                </CardTitle>
+            </CardHeader>
+            <CardContent className={'space-y-4'}>
+                {goals.map((goal) => (
+                    <GoalProgressBar
+                        key={goal.label}
+                        label={goal.label}
+                        progress={goal.progress}
+                        variant={'white'}
+                    />
+                ))}
+
+                <Button
+                    variant={'outline'}
+                    className={
+                        'mt-4 w-full border-white/30 bg-transparent text-white hover:bg-white/10 hover:text-white'
+                    }
+                >
+                    {PROFILE_GOALS_VIEW_ROADMAP}
+                </Button>
+            </CardContent>
+        </Card>
+    )
 }

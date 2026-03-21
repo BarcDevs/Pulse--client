@@ -1,11 +1,20 @@
 'use client'
 
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/Avatar'
-import { Button } from '@/components/ui/Button'
+import {
+    Avatar,
+    AvatarFallback,
+    AvatarImage
+} from '@/components/ui/avatar'
+import { Button } from '@/components/ui/button'
 
 import { cn } from '@/lib/utils'
 
-interface Message {
+import {
+    CHAT_MESSAGES_ASSISTANT_LABEL,
+    CHAT_MESSAGES_YOU_LABEL,
+} from '@/constants/chatTexts'
+
+type Message = {
   id: string
   role: 'user' | 'assistant'
   content: string
@@ -13,14 +22,14 @@ interface Message {
   suggestions?: string[]
 }
 
-interface ChatMessagesProps {
+type ChatMessagesProps = {
   messages: Message[]
 }
 
-export function ChatMessages({ messages }: ChatMessagesProps) {
+const ChatMessages = ({ messages }: ChatMessagesProps) => {
   return (
-    <div className="flex-1 overflow-y-auto p-4 md:p-6">
-      <div className="mx-auto max-w-3xl space-y-6">
+    <div className={'flex-1 overflow-y-auto p-4 md:p-6'}>
+      <div className={'mx-auto max-w-3xl space-y-6'}>
         {messages.map((message) => (
           <div
             key={message.id}
@@ -30,18 +39,18 @@ export function ChatMessages({ messages }: ChatMessagesProps) {
             )}
           >
             {/* Avatar */}
-            <Avatar className="size-9 shrink-0">
+            <Avatar className={'size-9 shrink-0'}>
               {message.role === 'assistant' ? (
                 <>
-                  <AvatarImage src="/ai-avatar.png" />
-                  <AvatarFallback className="bg-[var(--primary)] text-white">
+                  <AvatarImage src={'/ai-avatar.png'} />
+                  <AvatarFallback className={'bg-primary text-white'}>
                     AI
                   </AvatarFallback>
                 </>
               ) : (
                 <>
-                  <AvatarImage src="/avatars/alex.jpg" />
-                  <AvatarFallback className="bg-[var(--primary-light)] text-[var(--primary)]">
+                  <AvatarImage src={'/avatars/alex.jpg'} />
+                  <AvatarFallback className={'bg-primary-light text-primary'}>
                     AR
                   </AvatarFallback>
                 </>
@@ -53,23 +62,23 @@ export function ChatMessages({ messages }: ChatMessagesProps) {
               className={cn(
                 'max-w-[80%] rounded-2xl px-4 py-3',
                 message.role === 'user'
-                  ? 'bg-[var(--primary)] text-white'
-                  : 'bg-[var(--surface-card)] text-[var(--foreground)] shadow-sm'
+                  ? 'bg-primary text-white'
+                  : 'bg-surface-card text-foreground shadow-sm'
               )}
             >
-              <p className="whitespace-pre-wrap text-sm leading-relaxed">
+              <p className={'whitespace-pre-wrap text-sm leading-relaxed'}>
                 {message.content}
               </p>
 
               {/* Suggestions */}
               {message.suggestions && (
-                <div className="mt-3 flex flex-wrap gap-2">
+                <div className={'mt-3 flex flex-wrap gap-2'}>
                   {message.suggestions.map((suggestion) => (
                     <Button
                       key={suggestion}
-                      variant="outline"
-                      size="sm"
-                      className="h-auto rounded-full border-[var(--primary)] bg-transparent px-3 py-1.5 text-xs text-[var(--primary)] hover:bg-[var(--primary-light)]"
+                      variant={'outline'}
+                      size={'sm'}
+                      className={'h-auto rounded-full border-primary bg-transparent px-3 py-1.5 text-xs text-primary hover:bg-primary-light'}
                     >
                       {suggestion}
                     </Button>
@@ -82,10 +91,14 @@ export function ChatMessages({ messages }: ChatMessagesProps) {
                   'mt-2 text-xs',
                   message.role === 'user'
                     ? 'text-white/70'
-                    : 'text-[var(--muted-foreground)]'
+                    : 'text-muted-foreground'
                 )}
               >
-                {message.role === 'assistant' ? 'ASSISTANT' : 'YOU'} - {message.timestamp}
+                {message.role === 'assistant'
+                  ? CHAT_MESSAGES_ASSISTANT_LABEL
+                  : CHAT_MESSAGES_YOU_LABEL}
+                {' - '}
+                {message.timestamp}
               </p>
             </div>
           </div>
@@ -94,3 +107,5 @@ export function ChatMessages({ messages }: ChatMessagesProps) {
     </div>
   )
 }
+
+export { ChatMessages }

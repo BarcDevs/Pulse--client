@@ -1,18 +1,20 @@
 'use client'
 
-import { Sidebar } from './Sidebar'
+import {LayoutProps} from '@/types'
 
-interface AppShellProps {
-  children: React.ReactNode
-}
+import {Sidebar} from '@/components/sidebar/Sidebar'
+import {
+    SidebarInset,
+    SidebarProvider,
+} from '@/components/ui/sidebar'
 
-export function AppShell({ children }: AppShellProps) {
-  return (
-    <div className="min-h-screen bg-[var(--surface-page)]">
-      <Sidebar />
-      <main className="pl-64">
-        {children}
-      </main>
-    </div>
-  )
-}
+type AppShellProps = LayoutProps
+
+export const AppShell = ({ children }: AppShellProps) => (
+    <SidebarProvider>
+        <Sidebar/>
+        <SidebarInset className={'bg-surface-page'}>
+            {children}
+        </SidebarInset>
+    </SidebarProvider>
+)
