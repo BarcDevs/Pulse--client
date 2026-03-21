@@ -84,22 +84,26 @@ const config = [
             // Semicolon and quotes (per CLAUDE.md)
             'semi': ['warn', 'never'],
             'quotes': ['warn', 'single', {
-                avoidEscape: true
+                avoidEscape: true,
+                allowTemplateLiterals: true
             }],
 
             // Import sorting
             'simple-import-sort/imports': ['warn', {
                 groups: [
-                    // 1. React and react-dom (always first)
+                    // 1. React (always first)
                     ['^react$', '^react-dom$'],
 
-                    // 2. Third-party packages
+                    // 2. Next.js
+                    ['^next'],
+
+                    // 3. Third-party packages
                     ['^[^@.]'],
 
-                    // 3. @-scoped third-party packages
+                    // 4. @-scoped third-party packages
                     ['^@(?!/)'],
 
-                    // 4. Custom @/ imports (grouped by subdirectory)
+                    // 5. Custom @/ imports (grouped by subdirectory)
                     ['^@/types'],
                     ['^@/components'],
                     ['^@/hooks'],
@@ -113,16 +117,16 @@ const config = [
                     ['^@/pages'],
                     ['^@/'],
 
-                    // 5. Relative imports (parent directories)
+                    // 6. Relative imports (parent directories)
                     ['^\\.\\.(?!/?$)', '^\\.\\./'],
 
-                    // 6. Relative imports (same directory)
+                    // 7. Relative imports (same directory)
                     ['^\\./(?=.*/)(?!/?$)', '^\\.(?!/?$)', '^\\./?$'],
 
-                    // 7. Side effect imports
+                    // 8. Side effect imports
                     ['^\\u0000'],
 
-                    // 8. Style imports (always last)
+                    // 9. Style imports (always last)
                     ['^.+\\.css$']
                 ]
             }],

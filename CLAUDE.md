@@ -1,6 +1,6 @@
 # Claude Code Preferences — HealEase
 
-HealEase — Recovery support platform for patients transitioning from hospital/clinical care. Daily check-ins + AI insights + community forum, built with React 19, TypeScript, TanStack Router/Query.
+HealEase — Recovery support platform for patients transitioning from hospital/clinical care. Daily check-ins + AI insights + community forum, built with Next.js 16, React 19, TypeScript, TanStack Query.
 
 ## Core Rules (Apply Everywhere)
 
@@ -15,6 +15,7 @@ HealEase — Recovery support platform for patients transitioning from hospital/
 - Braces around values inside: Object literal braces, component props and import/export braces
 - Text blocks: Don't break unless really long (120–150 chars OK)
 - Text: never use `—` character. only the simple hyphen `-` for all text, including classnames and config keys. This avoids encoding issues and ensures consistency across all contexts (JSX, CSS, config, etc.)
+- Use unified imports for module that has many imports
 
 ### Language & Format
 - Quotes: Single quotes (') for all strings, imports, JSX props
@@ -54,11 +55,13 @@ HealEase — Recovery support platform for patients transitioning from hospital/
 
 ### Imports (eslint-plugin-simple-import-sort)
 Groups (auto-fixed by `npm run lint:fix`):
-1. React / third-party
-2. @tanstack scoped
-3. @/ custom (types, components, hooks, lib, utils, services, constants, config, context, handlers, pages)
-4. Relative imports
-5. Styles (last)
+1. React
+2. Next.js
+3. Third-party packages
+4. @-scoped packages (e.g., @tanstack, @radix-ui)
+5. @/ custom (types, components, hooks, lib, utils, services, constants, config, context, handlers, pages)
+6. Relative imports
+7. Styles (last)
 
 ## Tech Stack
 Core: Next 16 + App Router, React 19, TypeScript 5, TailwindCSS 4
