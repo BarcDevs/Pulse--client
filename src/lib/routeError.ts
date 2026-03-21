@@ -1,6 +1,6 @@
 import * as Sentry from '@sentry/react'
 
-import {ErrorPage} from '@/pages/error/ErrorPage.tsx'
+import ErrorPage from '@/pages/error/ErrorPage'
 
 export const routeError = {
     errorComponent: ErrorPage,
