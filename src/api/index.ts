@@ -1,17 +1,17 @@
 import axios from 'axios'
 
-import {queryClient} from '@/lib/queryClient'
-
+// TODO: TanStack Query setup pending
+// import {queryClient} from '@/lib/queryClient'
+// TODO: Redux setup pending
+// import {store} from '@/store'
+// import {logoutAction} from '@/store/authSlice'
+// import {removeTokenAction} from '@/store/tokenSlice'
 import config from '@/config'
 
 import {
     getCsrfTokenFromStore,
     refreshAuthData
 } from '@/handlers/auth'
-
-import {store} from '@/store'
-import {logoutAction} from '@/store/authSlice'
-import {removeTokenAction} from '@/store/tokenSlice'
 
 let isRefreshing = false
 let refreshPromise: Promise<boolean> | null = null
@@ -71,11 +71,12 @@ api.interceptors.response.use(undefined, async error => {
             return api(originalRequest)
     }
 
-    if (isAuthError && isAuthEndpoint) {
-        store.dispatch(removeTokenAction())
-        store.dispatch(logoutAction())
-        await queryClient.invalidateQueries()
-    }
+    // TODO: Redux and TanStack Query setup pending
+    // if (isAuthError && isAuthEndpoint) {
+    //     store.dispatch(removeTokenAction())
+    //     store.dispatch(logoutAction())
+    //     await queryClient.invalidateQueries()
+    // }
 
     return Promise.reject(error)
 })

@@ -1,4 +1,4 @@
-import {createContext, ReactNode, useContext, useState} from 'react'
+import {createContext, ReactNode, useContext, useEffect, useState} from 'react'
 
 import {Language} from '@/types'
 
@@ -35,11 +35,13 @@ const LangContext = createContext<ContextValue>({
 const useLanguage = () => useContext(LangContext)
 
 const LangProvider = ({children}: ContextProps) => {
-    const htmlElement = document.documentElement
     const [lang, setLang] = useState<Language>(getLangFromStorage())
 
-    htmlElement.lang = lang.code
-    htmlElement.dir = lang.dir
+    useEffect(() => {
+        const htmlElement = document.documentElement
+        htmlElement.lang = lang.code
+        htmlElement.dir = lang.dir
+    }, [lang])
 
     const changeLang = (lang: Language) => {
         setLang(lang)

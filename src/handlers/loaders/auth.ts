@@ -1,23 +1,16 @@
-import {
-    ParsedLocation,
-    redirect
-} from '@tanstack/react-router'
+// TODO: Redux setup pending
+// import {redirect} from 'next/navigation'
+// import {ROUTES} from '@/constants/routes'
+// import {store} from '@/store'
 
-import {ROUTES} from '@/constants/routes'
+// TODO: Redux setup pending - function body commented out
+// export const validateUser = (pathname: string) => {
+//     const state = store.getState()
 
-import {store} from '@/store'
+//     if (!state.auth.isAuthenticated) {
+//         redirect(ROUTES.LOGIN)
+//     }
+// }
 
-export const validateUser = ({ location }: {
-    location: ParsedLocation
-}) => {
-    const state = store.getState()
-
-    if (!state.auth.isAuthenticated) {
-        throw redirect({
-            to: ROUTES.LOGIN,
-            search: {
-                redirect: location.pathname
-            }
-        })
-    }
-}
+// Temporary stub
+export const validateUser = () => {}
