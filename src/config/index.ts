@@ -11,16 +11,6 @@ type Config = {
     sentryDsn: string
 }
 
-const getEnv = (key: string): string => {
-    const value = process.env[key]
-
-    if (!value) {
-        throw new Error(`Missing required environment variable: ${key}`)
-    }
-
-    return value
-}
-
 const config: Config = {
     serverUrl: process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:4000',
     hostname: process.env.NEXT_PUBLIC_HOSTNAME || 'http://localhost:3000',

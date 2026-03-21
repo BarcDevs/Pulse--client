@@ -1,7 +1,3 @@
-import type {FileRouteTypes} from '@/routeTree.gen'
-
-type ValidRoute = FileRouteTypes['to']
-
 export const ROUTES = {
     HOME: '/',
     LOGIN: '/login',
@@ -13,7 +9,7 @@ export const ROUTES = {
     FORUM: '/forum',
     FORUM_CREATE: '/forum/posts/create',
     PROFILE_SETTINGS: '/profile/settings'
-} as const satisfies Record<string, ValidRoute>
+} as const
 
 export const ROUTE_IDS = {
     LOGIN: '/(auth)/login',
