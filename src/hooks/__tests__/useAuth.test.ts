@@ -10,13 +10,11 @@ import {renderHook} from '@testing-library/react'
 
 const {
     mockUseSelector,
-    mockUseRouterState,
     mockHandleLogin,
     mockHandleLogout,
     mockHandleSignup
 } = vi.hoisted(() => ({
     mockUseSelector: vi.fn(),
-    mockUseRouterState: vi.fn(),
     mockHandleLogin: vi.fn(),
     mockHandleLogout: vi.fn(),
     mockHandleSignup: vi.fn()
@@ -24,10 +22,6 @@ const {
 
 vi.mock('react-redux', () => ({
     useSelector: mockUseSelector
-}))
-
-vi.mock('@tanstack/react-router', () => ({
-    useRouterState: mockUseRouterState
 }))
 
 vi.mock('@/handlers/auth', () => ({
@@ -59,8 +53,6 @@ describe('useAuth',
                 'location',
                 {reload: vi.fn()}
             )
-
-            mockUseRouterState.mockReturnValue('/home')
 
             mockUseSelector.mockImplementation(
                 (selector: any) => {

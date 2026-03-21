@@ -1,6 +1,6 @@
-import {useSelector} from 'react-redux'
-
-import {User} from '@/types'
+// TODO: Redux setup pending
+// import {useSelector} from 'react-redux'
+// import {User} from '@/types'
 
 import {
     handleLogin,
@@ -8,7 +8,7 @@ import {
     handleSignup
 } from '@/handlers/auth'
 
-import {IRootState} from '@/store'
+// import {IRootState} from '@/store'
 import {
     LoginSchema
 } from '@/validations/forms/loginSchema'
@@ -17,26 +17,30 @@ import {
 } from '@/validations/forms/signupSchema'
 
 export const useAuth = () => {
-    const isLoggedIn =
-        useSelector<IRootState>(state =>
-            state.auth.isAuthenticated) as boolean
+    // TODO: Redux implementation pending
+    // const isLoggedIn =
+    //     useSelector<IRootState>(state =>
+    //         state.auth.isAuthenticated) as boolean
 
-    const user =
-        useSelector<IRootState>(state =>
-            state.auth.user) as User | null
+    // const user =
+    //     useSelector<IRootState>(state =>
+    //         state.auth.user) as User | null
 
-    const expiresAt =
-        useSelector<IRootState>(state =>
-            state.auth.expiresAt) as number | null
+    // const expiresAt =
+    //     useSelector<IRootState>(state =>
+    //         state.auth.expiresAt) as number | null
 
-    /**
-     * checks if the JWT token has expired
-     */
-    const checkAuth = async () => {
-        if (expiresAt && Date.now() > expiresAt) {
-            await logout()
-        }
-    }
+    // TODO: Redux setup pending - commented out function body
+    // /**
+    //  * checks if the JWT token has expired
+    //  */
+    // const checkAuth = async () => {
+    //     if (expiresAt && Date.now() > expiresAt) {
+    //         await logout()
+    //     }
+    // }
+
+    const checkAuth = async () => {}
 
     const login = async (
         credentials: LoginSchema
@@ -52,8 +56,8 @@ export const useAuth = () => {
     }
 
     return {
-        user,
-        isLoggedIn,
+        user: null,
+        isLoggedIn: false,
         checkAuth,
         login,
         logout,

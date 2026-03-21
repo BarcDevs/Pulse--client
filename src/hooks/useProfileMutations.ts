@@ -1,76 +1,82 @@
-import {
-    useMutation,
-    useQueryClient
-} from '@tanstack/react-query'
+// TODO: TanStack Query setup pending
+// import {
+//     useMutation,
+//     useQueryClient
+// } from '@tanstack/react-query'
+// import {Profile} from '@/types/profile'
+// import {
+//     addActivities,
+//     addInterests,
+//     removeActivity,
+//     removeInterest,
+//     updateProfile} from '@/api/profile'
+// import {profileQueryKey} from './useProfileQuery'
 
-import {Profile} from '@/types/profile'
+// TODO: TanStack Query implementation pending
+// export const useUpdateProfileMutation = () => {
+//     const queryClient = useQueryClient()
+//     return useMutation({
+//         mutationFn: updateProfile,
+//         onSuccess: (updatedProfile: Profile) => {
+//             queryClient.setQueryData(
+//                 profileQueryKey,
+//                 updatedProfile
+//             )
+//         }
+//     })
+// }
 
-import {
-    addActivities,
-    addInterests,
-    removeActivity,
-    removeInterest,
-    updateProfile} from '@/api/profile'
+// export const useAddInterestsMutation = () => {
+//     const queryClient = useQueryClient()
+//     return useMutation({
+//         mutationFn: addInterests,
+//         onSuccess: () => {
+//             queryClient.invalidateQueries({
+//                 queryKey: profileQueryKey
+//             })
+//         }
+//     })
+// }
 
-import {profileQueryKey} from './useProfileQuery'
+// export const useRemoveInterestMutation = () => {
+//     const queryClient = useQueryClient()
+//     return useMutation({
+//         mutationFn: removeInterest,
+//         onSuccess: () => {
+//             queryClient.invalidateQueries({
+//                 queryKey: profileQueryKey
+//             })
+//         }
+//     })
+// }
 
-export const useUpdateProfileMutation = () => {
-    const queryClient = useQueryClient()
-    return useMutation({
-        mutationFn: updateProfile,
-        onSuccess: (updatedProfile: Profile) => {
-            queryClient.setQueryData(
-                profileQueryKey,
-                updatedProfile
-            )
-        }
-    })
-}
+// export const useAddActivitiesMutation = () => {
+//     const queryClient = useQueryClient()
+//     return useMutation({
+//         mutationFn: addActivities,
+//         onSuccess: () => {
+//             queryClient.invalidateQueries({
+//                 queryKey: profileQueryKey
+//             })
+//         }
+//     })
+// }
 
-export const useAddInterestsMutation = () => {
-    const queryClient = useQueryClient()
-    return useMutation({
-        mutationFn: addInterests,
-        onSuccess: () => {
-            queryClient.invalidateQueries({
-                queryKey: profileQueryKey
-            })
-        }
-    })
-}
+// export const useRemoveActivityMutation = () => {
+//     const queryClient = useQueryClient()
+//     return useMutation({
+//         mutationFn: removeActivity,
+//         onSuccess: () => {
+//             queryClient.invalidateQueries({
+//                 queryKey: profileQueryKey
+//             })
+//         }
+//     })
+// }
 
-export const useRemoveInterestMutation = () => {
-    const queryClient = useQueryClient()
-    return useMutation({
-        mutationFn: removeInterest,
-        onSuccess: () => {
-            queryClient.invalidateQueries({
-                queryKey: profileQueryKey
-            })
-        }
-    })
-}
-
-export const useAddActivitiesMutation = () => {
-    const queryClient = useQueryClient()
-    return useMutation({
-        mutationFn: addActivities,
-        onSuccess: () => {
-            queryClient.invalidateQueries({
-                queryKey: profileQueryKey
-            })
-        }
-    })
-}
-
-export const useRemoveActivityMutation = () => {
-    const queryClient = useQueryClient()
-    return useMutation({
-        mutationFn: removeActivity,
-        onSuccess: () => {
-            queryClient.invalidateQueries({
-                queryKey: profileQueryKey
-            })
-        }
-    })
-}
+// Temporary stubs
+export const useUpdateProfileMutation = () => ({})
+export const useAddInterestsMutation = () => ({})
+export const useRemoveInterestMutation = () => ({})
+export const useAddActivitiesMutation = () => ({})
+export const useRemoveActivityMutation = () => ({})
