@@ -220,7 +220,7 @@ Profiles include:
 
 ### High-Level Data Flow
 ```
-React Frontend (TanStack Router + TanStack Query)
+React Frontend (Next.js App Router + TanStack Query)
     ↓
 Redux (Auth state + CSRF tokens)
     ↓
