@@ -114,7 +114,6 @@ const config = [
                     ['^@/config'],
                     ['^@/context'],
                     ['^@/handlers'],
-                    ['^@/pages'],
                     ['^@/'],
 
                     // 6. Relative imports (parent directories)
