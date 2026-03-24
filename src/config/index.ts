@@ -5,6 +5,7 @@ type Config = {
     hostname: string
     serverApiVersion: string
     loginDuration: number
+    isDev: boolean
 
     replaysSessionSampleRate: number
 
@@ -15,6 +16,7 @@ const config: Config = {
     serverUrl: process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:4000',
     hostname: process.env.NEXT_PUBLIC_HOSTNAME || 'http://localhost:3000',
     serverApiVersion: process.env.NEXT_PUBLIC_SERVER_API_VERSION || 'v1',
+    isDev: process.env.NODE_ENV === 'development',
     loginDuration: 7 * dayInMs,
 
     replaysSessionSampleRate: (() => {
@@ -30,5 +32,7 @@ const config: Config = {
 
     sentryDsn: process.env.NEXT_PUBLIC_SENTRY_DSN || ''
 }
+
+export const isDev = config.isDev
 
 export default config
