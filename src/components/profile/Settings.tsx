@@ -1,10 +1,3 @@
-import {
-    Bell,
-    History,
-    Share2,
-    Shield
-} from 'lucide-react'
-
 import {Button} from '@/components/ui/button'
 import {
     Card,
@@ -13,23 +6,8 @@ import {
     CardTitle
 } from '@/components/ui/card'
 
-import {
-    PROFILE_SETTINGS_LIST,
-    PROFILE_SETTINGS_TITLE
-} from '@/constants/profileTexts'
-
-const iconMap = {
-    'Security': Shield,
-    'Notifications': Bell,
-    'Data Sharing': Share2,
-    'Login History': History
-}
-
-const settings = PROFILE_SETTINGS_LIST
-    .map((setting) => ({
-        ...setting,
-        icon: iconMap[setting.title as keyof typeof iconMap]
-    }))
+import {PROFILE_SETTINGS_WITH_ICONS} from '@/constants/profileMaps'
+import {PROFILE_SETTINGS_TITLE} from '@/constants/profileTexts'
 
 export const ProfileSettings = () => (
     <Card className={'border-0 shadow-sm'}>
@@ -40,7 +18,7 @@ export const ProfileSettings = () => (
         </CardHeader>
         <CardContent>
             <div className={'grid gap-4 sm:grid-cols-2 lg:grid-cols-4'}>
-                {settings.map((setting) => (
+                {PROFILE_SETTINGS_WITH_ICONS.map((setting) => (
                     <Button
                         key={setting.title}
                         variant={'ghost'}

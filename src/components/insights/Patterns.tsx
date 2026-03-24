@@ -9,18 +9,21 @@ import {
 } from 'recharts'
 
 import {Badge} from '@/components/ui/badge'
-import {Card, CardContent, CardHeader, CardTitle} from '@/components/ui/card'
-import {Tabs, TabsList, TabsTrigger} from '@/components/ui/tabs'
+import {
+    Card,
+    CardContent,
+    CardHeader,
+    CardTitle
+} from '@/components/ui/card'
+import {
+    Tabs,
+    TabsList,
+    TabsTrigger
+} from '@/components/ui/tabs'
 
 import * as InsightsDetailTexts from '@/constants/insightsDetailTexts'
 
-const socialData = [
-    { day: 'Mon', value: 4 },
-    { day: 'Tue', value: 6 },
-    { day: 'Wed', value: 3 },
-    { day: 'Thu', value: 7 },
-    { day: 'Fri', value: 5 }
-]
+import {PATTERNS_SOCIAL_DATA} from '@/mocks/chartData'
 
 export const InsightsPatterns = () => (
     <Card className={'mt-6 border-0 shadow-sm'}>
@@ -28,12 +31,21 @@ export const InsightsPatterns = () => (
             <CardTitle className={'text-lg font-semibold'}>
                 {InsightsDetailTexts.INSIGHTS_PATTERNS_TITLE}
             </CardTitle>
-            <Tabs defaultValue={'30'} className={'w-auto'}>
+            <Tabs
+                defaultValue={'30'}
+                className={'w-auto'}
+            >
                 <TabsList className={'h-8 bg-muted'}>
-                    <TabsTrigger value={'7'} className={'h-6 px-3 text-xs'}>
+                    <TabsTrigger
+                        value={'7'}
+                        className={'h-6 px-3 text-xs'}
+                    >
                         7 Days
                     </TabsTrigger>
-                    <TabsTrigger value={'30'} className={'h-6 px-3 text-xs'}>
+                    <TabsTrigger
+                        value={'30'}
+                        className={'h-6 px-3 text-xs'}
+                    >
                         30 Days
                     </TabsTrigger>
                 </TabsList>
@@ -53,8 +65,11 @@ export const InsightsPatterns = () => (
                         {InsightsDetailTexts.INSIGHTS_PATTERNS_CORRELATION_DESCRIPTION}
                     </p>
                     <div className={'mt-4 h-24'}>
-                        <ResponsiveContainer width={'100%'} height={'100%'}>
-                            <BarChart data={socialData}>
+                        <ResponsiveContainer
+                            width={'100%'}
+                            height={'100%'}
+                        >
+                            <BarChart data={PATTERNS_SOCIAL_DATA}>
                                 <XAxis dataKey={'day'} hide/>
                                 <YAxis hide/>
                                 <Bar

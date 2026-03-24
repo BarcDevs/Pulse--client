@@ -1,25 +1,24 @@
 import Link from 'next/link'
 
-import {Avatar, AvatarFallback, AvatarImage} from '@/components/ui/avatar'
-import {Card, CardContent, CardHeader, CardTitle} from '@/components/ui/card'
-
 import {
-    COMMUNITY_UPDATES
-} from '@/constants/communityMockTexts'
+    Avatar,
+    AvatarFallback,
+    AvatarImage
+} from '@/components/ui/avatar'
+import {
+    Card,
+    CardContent,
+    CardHeader,
+    CardTitle
+} from '@/components/ui/card'
+
 import {
     DASHBOARD_COMMUNITY_LABEL,
     DASHBOARD_COMMUNITY_VIEW_ALL
 } from '@/constants/dashboardTexts'
 
-const communityUpdates = COMMUNITY_UPDATES.map(
-    (update) => ({
-        name: update.name,
-        action: update.action,
-        time: update.timestamp,
-        avatar: update.name.charAt(0),
-        avatarBg: update.avatarBg
-    })
-)
+import {COMMUNITY_UPDATES_TRANSFORMED}
+    from '@/mocks/communityMockTexts'
 
 export const DashboardCommunity = () => (
     <Card className={'border-0 shadow-sm'}>
@@ -36,7 +35,7 @@ export const DashboardCommunity = () => (
         </CardHeader>
         <CardContent>
             <div className={'flex flex-col gap-4'}>
-                {communityUpdates.map((update, index) => (
+                {COMMUNITY_UPDATES_TRANSFORMED.map((update, index) => (
                     <div key={index} className={'flex items-center gap-3'}>
                         <Avatar className={'size-9'}>
                             <AvatarImage src={`/avatars/${update.name.toLowerCase()}.jpg`}/>

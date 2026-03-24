@@ -1,31 +1,9 @@
 'use client'
 
-import {
-    Bell,
-    History,
-    Share2,
-    Shield
-} from 'lucide-react'
-
 import {Button} from '@/components/ui/button'
 
-import {
-    PROFILE_SYSTEM_PRIVACY_SETTINGS,
-    PROFILE_SYSTEM_PRIVACY_TITLE
-} from '@/constants/profileDetailTexts'
-
-const iconMap = {
-    Security: Shield,
-    Notifications: Bell,
-    'Data Sharing': Share2,
-    'Login History': History
-}
-
-const settings = PROFILE_SYSTEM_PRIVACY_SETTINGS
-    .map((setting) => ({
-        ...setting,
-        icon: iconMap[setting.title as keyof typeof iconMap]
-    }))
+import {PROFILE_SYSTEM_PRIVACY_TITLE} from '@/constants/profileDetailTexts'
+import {PROFILE_SYSTEM_PRIVACY_SETTINGS_WITH_ICONS} from '@/constants/profileMaps'
 
 export const SystemPrivacy = () => (
     <div className={'rounded-2xl bg-surface-card p-6'}>
@@ -34,8 +12,7 @@ export const SystemPrivacy = () => (
         </h3>
 
         <div className={'grid grid-cols-2 lg:grid-cols-4 gap-4'}>
-            // todo: split button
-            {settings.map((setting) => (
+            {PROFILE_SYSTEM_PRIVACY_SETTINGS_WITH_ICONS.map((setting) => (
                 <Button
                     key={setting.title}
                     variant={'ghost'}

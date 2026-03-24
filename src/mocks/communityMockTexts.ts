@@ -1,4 +1,4 @@
-const COMMUNITY_UPDATES = [
+export const COMMUNITY_UPDATES = [
     {
         name: 'Sarah',
         action: 'shared a milestone',
@@ -19,9 +19,21 @@ const COMMUNITY_UPDATES = [
     },
 ]
 
-const CHART_DAYS = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN']
+export const CHART_DAYS = [
+    'MON',
+    'TUE',
+    'WED',
+    'THU',
+    'FRI',
+    'SAT',
+    'SUN'
+]
 
-export {
-    CHART_DAYS,
-    COMMUNITY_UPDATES,
-}
+export const COMMUNITY_UPDATES_TRANSFORMED =
+    COMMUNITY_UPDATES.map((update) => ({
+        name: update.name,
+        action: update.action,
+        time: update.timestamp,
+        avatar: update.name.charAt(0),
+        avatarBg: update.avatarBg
+    }))
