@@ -97,7 +97,6 @@
   --error: #ba1a1a;
   --inverse-on-surface: #eef1f3;
   --surface-variant: #e0e3e5;
-  --background: #f7fafc;
   --tertiary-fixed-dim: #ebb2ff;
   --secondary-fixed-dim: #5ddbc1;
   --outline: #717783;
@@ -269,6 +268,12 @@
   --color-on-secondary-container: var(--on-secondary-container);
   --color-surface-container-low: var(--surface-container-low);
   --color-outline-variant: var(--outline-variant);
+  --color-primary-gradient-start: var(--primary-gradient-start);
+  --color-primary-gradient-end: var(--primary-gradient-end);
+  --color-surface-bright: var(--surface-bright);
+  --color-on-surface: var(--on-surface);
+  --color-secondary-fixed: var(--secondary-fixed);
+  --color-on-secondary-fixed: var(--on-secondary-fixed);
 }
 
 @layer base {
