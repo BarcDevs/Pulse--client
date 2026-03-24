@@ -1,4 +1,4 @@
-import { Progress } from '@/components/ui/progress'
+import {Progress} from '@/components/ui/progress'
 
 type GoalProgressBarProps = {
     label: string
@@ -9,15 +9,14 @@ type GoalProgressBarProps = {
 export const GoalProgressBar = ({
     label,
     progress,
-    variant = 'default',
+    variant = 'default'
 }: GoalProgressBarProps) => {
+    // todo: merge into one conditional component
     if (variant === 'white') {
         return (
             <div>
                 <div className={'flex items-center justify-between text-sm'}>
-                    <span className={
-                        'text-xs font-medium uppercase tracking-wider text-white/80'
-                    }>
+                    <span className={'text-xs font-medium uppercase tracking-wider text-white/80'}>
                         {label}
                     </span>
                     <span className={'font-medium'}>
@@ -26,9 +25,7 @@ export const GoalProgressBar = ({
                 </div>
                 <Progress
                     value={progress}
-                    className={
-                        'mt-2 h-2 bg-white/20 [&>[data-slot=progress-indicator]]:bg-white'
-                    }
+                    className={'mt-2 h-2 bg-white/20 *:data-[slot=progress-indicator]:bg-white'}
                 />
             </div>
         )

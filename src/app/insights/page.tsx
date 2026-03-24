@@ -8,29 +8,15 @@ const InsightsPage = () => (
     <AppShell>
         <Header
             title={PageSubtitles.INSIGHTS_PAGE_TITLE}
-            subtitle={
-                PageSubtitles.INSIGHTS_PAGE_SUBTITLE
-            }
+            subtitle={PageSubtitles.INSIGHTS_PAGE_SUBTITLE}
             actions={
-                <div
-                    className={
-                        'flex items-center gap-2 ' +
-                        'px-3 py-1.5 rounded-full ' +
-                        'bg-secondary/10 text-secondary ' +
-                        'text-sm font-medium'
-                    }
-                >
-                    <span
-                        className={
-                            'h-2 w-2 rounded-full ' +
-                            'bg-secondary animate-pulse'
-                        }
-                    />
+                <div className={'flex items-center gap-2 px-3 py-1.5 rounded-full bg-secondary/10 text-secondary text-sm font-medium'}>
+                    <span className={'h-2 w-2 rounded-full bg-secondary animate-pulse'}/>
                     {PageSubtitles.INSIGHTS_PAGE_BADGE}
                 </div>
             }
         />
-        <InsightsContent />
+        <InsightsContent/>
     </AppShell>
 )
 

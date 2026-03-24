@@ -9,8 +9,7 @@ describe(
         const validPost = {
             category: 'fractures',
             title: 'A valid post title here',
-            body: 'This is valid body content that is ' +
-                'long enough for testing the schema.',
+            body: 'This is valid body content that is long enough for testing the schema.',
             tags: ['TAG']
         }
 
