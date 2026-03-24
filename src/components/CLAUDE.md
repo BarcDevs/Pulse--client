@@ -5,13 +5,16 @@ Keep components small (~40 lines), one per file. Use shadcn/ui components when a
 ## Files & Naming
 - PascalCase filenames and components
 - One component per file
-- Export at bottom, never inline
+- Export inline, never default except for app router pages
 
 ## JSX Style
 - Nested content or content wrapped with a jsx/html, ALWAYS on new line
 - Props (2+): Each on new line
 - Single quotes wrapped with curly braces for all props and string values: `prop={'value'}`
 - Fragment children don't work with Recharts — keep component logic separate
+- Never use redundant trailing space after component - ` />` ❌
+- Never break line in single-prop components
+- Never concatenate text with JSX fragments: `{text}{' '}` ❌ → use template strings instead: {`${text} `} ✓
 
 ## Imports
 - Don't use `React.*` types — import directly from react
