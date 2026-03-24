@@ -11,12 +11,13 @@ export const NotFoundImage = () => (
                     <Icon
                         name={'error/explore'}
                         size={128}
-                   />
+                    />
                 </div>
                 <Image
                     alt={'Calm natural scenery'}
                     className={'w-full h-full object-cover rounded-full shadow-inner opacity-90'}
-                    src={'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=400&fit=crop'}
+                    src={'/assets/notFoundAnimation.webp'}
+                    loading={'eager'}
                     width={320}
                     height={320}
                 />
