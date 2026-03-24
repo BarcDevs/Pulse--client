@@ -18,11 +18,7 @@ const CommunityPage = () => (
             showSearch
             actions={
                 <Button
-                    className={
-                        'bg-primary ' +
-                        'hover:bg-primary/90 ' +
-                        'text-primary-foreground'
-                    }
+                    className={'bg-primary hover:bg-primary/90 text-primary-foreground'}
                 >
                     <Plus
                         className={'mr-2 h-4 w-4'}

@@ -9,17 +9,27 @@ import {
 
 import {NavSection} from './sections/NavSection'
 import {SidebarBottom} from './SidebarBottom'
+import {SidebarBottomError} from './SidebarBottomError'
 
-export const Sidebar = () => (
+type SidebarProps = {
+    isErrorPage?: boolean
+}
+
+export const Sidebar = ({
+    isErrorPage = false
+}: SidebarProps) => (
     <SidebarBase>
         <SidebarHeader className={'p-4'}>
-            <Logo />
+            <Logo/>
         </SidebarHeader>
         <SidebarContent className={'flex flex-col'}>
             <div className={'flex-1 space-y-6 py-4'}>
-                <NavSection />
+                <NavSection/>
             </div>
         </SidebarContent>
-        <SidebarBottom />
+        {isErrorPage ?
+            <SidebarBottomError/> :
+            <SidebarBottom/>
+        }
     </SidebarBase>
 )

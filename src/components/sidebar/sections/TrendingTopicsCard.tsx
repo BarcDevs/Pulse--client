@@ -1,5 +1,7 @@
 'use client'
 
+import { Button } from '@/components/ui/button'
+
 import * as communityTexts from '@/constants/communityTexts'
 
 const trendingTopics = communityTexts.COMMUNITY_TRENDING_TOPICS
@@ -11,12 +13,14 @@ export const TrendingTopicsCard = () => (
         </h3>
         <div className={'flex flex-wrap gap-2'}>
             {trendingTopics.map((topic) => (
-                <button
+                <Button
                     key={topic}
-                    className={'rounded-full bg-surface-section px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-primary/10 hover:text-primary'}
+                    variant={'ghost'}
+                    size={'sm'}
+                    className={'rounded-full bg-surface-section text-sm text-muted-foreground hover:bg-primary/10 hover:text-primary'}
                 >
                     {topic}
-                </button>
+                </Button>
             ))}
         </div>
     </div>

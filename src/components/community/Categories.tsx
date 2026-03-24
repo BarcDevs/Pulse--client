@@ -2,6 +2,10 @@
 
 import { Activity, Apple, Star, Users } from 'lucide-react'
 
+import { Button } from '@/components/ui/button'
+
+import { cn } from '@/lib/utils'
+
 import {
     COMMUNITY_BROWSE_CATEGORIES,
     COMMUNITY_CATEGORIES,
@@ -32,7 +36,12 @@ const Categories = () => (
   <div>
     <div className={'flex items-center justify-between mb-4'}>
       <h2 className={'text-lg font-semibold text-foreground'}>{COMMUNITY_BROWSE_CATEGORIES}</h2>
-      <button className={'text-sm text-primary hover:underline'}>{COMMUNITY_VIEW_ALL}</button>
+      <Button
+        variant={'link'}
+        className={'h-auto p-0 text-sm text-primary hover:underline'}
+      >
+        {COMMUNITY_VIEW_ALL}
+      </Button>
     </div>
 
     <div className={'grid grid-cols-2 lg:grid-cols-4 gap-4'}>
@@ -41,7 +50,7 @@ const Categories = () => (
           key={category.id}
           className={'rounded-2xl bg-surface-card p-5 hover:shadow-md transition-shadow cursor-pointer'}
         >
-          <div className={`inline-flex h-12 w-12 items-center justify-center rounded-xl ${category.color}`}>
+          <div className={cn('inline-flex h-12 w-12 items-center justify-center rounded-xl', category.color)}>
             <category.icon className={'h-6 w-6'} />
           </div>
           <h3 className={'mt-3 font-medium text-foreground'}>{category.title}</h3>

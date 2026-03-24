@@ -27,8 +27,7 @@ export const NavButton = ({
             className={cn(
                 'w-full justify-start gap-3',
                 isActive && 'bg-primary text-primary-foreground',
-                !isActive && item.href === '/logout' &&
-                'text-destructive'
+                !isActive && item.href === '/logout' && 'text-destructive'
             )}
         >
             <Icon className={'size-5'}/>

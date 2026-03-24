@@ -4,6 +4,8 @@ import { useState } from 'react'
 
 import { Bookmark, MessageSquare, Play, Share2 } from 'lucide-react'
 
+import { Button } from '@/components/ui/button'
+
 import { cn } from '@/lib/utils'
 
 import {
@@ -29,18 +31,23 @@ export const PostList = () => {
       {/* Tabs */}
       <div className={'flex border-b border-border'}>
         {tabs.map((tab) => (
-          <button
+          <Button
             key={tab}
             onClick={() => setActiveTab(tab)}
-            className={cn(
-              'px-6 py-4 text-sm font-medium transition-colors',
+            variant={
               activeTab === tab
-                ? 'text-primary border-b-2 border-primary'
-                : 'text-muted-foreground hover:text-foreground'
+                ? 'default'
+                : 'ghost'
+            }
+            className={cn(
+              'px-6 py-4 text-sm font-medium rounded-none border-b-2',
+              activeTab === tab
+                ? 'text-primary border-primary'
+                : 'text-muted-foreground hover:text-foreground border-transparent'
             )}
           >
             {tab}
-          </button>
+          </Button>
         ))}
       </div>
 
@@ -51,17 +58,25 @@ export const PostList = () => {
             <div className={'flex gap-4'}>
               {/* Votes */}
               <div className={'flex flex-col items-center gap-1'}>
-                <button className={'p-1 text-muted-foreground hover:text-primary'}>
+                <Button
+                  variant={'ghost'}
+                  size={'sm'}
+                  className={'h-6 w-6 p-0 text-muted-foreground hover:text-primary'}
+                >
                   <svg className={'h-5 w-5'} fill={'none'} viewBox={'0 0 24 24'} stroke={'currentColor'}>
                     <path strokeLinecap={'round'} strokeLinejoin={'round'} strokeWidth={2} d={'M5 15l7-7 7 7'} />
                   </svg>
-                </button>
+                </Button>
                 <span className={'text-sm font-semibold text-foreground'}>{post.votes}</span>
-                <button className={'p-1 text-muted-foreground hover:text-primary'}>
+                <Button
+                  variant={'ghost'}
+                  size={'sm'}
+                  className={'h-6 w-6 p-0 text-muted-foreground hover:text-primary'}
+                >
                   <svg className={'h-5 w-5'} fill={'none'} viewBox={'0 0 24 24'} stroke={'currentColor'}>
                     <path strokeLinecap={'round'} strokeLinejoin={'round'} strokeWidth={2} d={'M19 9l-7 7-7-7'} />
                   </svg>
-                </button>
+                </Button>
               </div>
 
               {/* Content */}
@@ -95,18 +110,30 @@ export const PostList = () => {
                 )}
 
                 <div className={'flex items-center gap-4 mt-4'}>
-                  <button className={'flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground'}>
+                  <Button
+                    variant={'ghost'}
+                    size={'sm'}
+                    className={'h-auto gap-1.5 p-0 text-xs text-muted-foreground hover:text-foreground'}
+                  >
                     <MessageSquare className={'h-4 w-4'} />
                     {post.replies} {COMMUNITY_REPLIES_LABEL}
-                  </button>
-                  <button className={'flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground'}>
+                  </Button>
+                  <Button
+                    variant={'ghost'}
+                    size={'sm'}
+                    className={'h-auto gap-1.5 p-0 text-xs text-muted-foreground hover:text-foreground'}
+                  >
                     <Share2 className={'h-4 w-4'} />
                     {COMMUNITY_SHARE}
-                  </button>
-                  <button className={'flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground'}>
+                  </Button>
+                  <Button
+                    variant={'ghost'}
+                    size={'sm'}
+                    className={'h-auto gap-1.5 p-0 text-xs text-muted-foreground hover:text-foreground'}
+                  >
                     <Bookmark className={'h-4 w-4'} />
                     {COMMUNITY_SAVE}
-                  </button>
+                  </Button>
                 </div>
               </div>
             </div>

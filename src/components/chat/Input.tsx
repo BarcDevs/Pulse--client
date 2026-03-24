@@ -36,20 +36,12 @@ const ChatInput = ({value, onChange, onSend}: ChatInputProps) => {
 
     return (
         <div
-            className={
-                'border-t border-border ' +
-                'bg-surface-card p-4'
-            }
+            className={'border-t border-border bg-surface-card p-4'}
         >
             <div className={'mx-auto max-w-3xl'}>
                 <div className={'mb-3'}>
                     <p
-                        className={
-                            'mb-2 text-xs ' +
-                            'font-medium uppercase ' +
-                            'tracking-wider ' +
-                            'text-muted-foreground'
-                        }
+                        className={'mb-2 text-xs font-medium uppercase tracking-wider text-muted-foreground'}
                     >
                         {CHAT_SUGGESTED_FOR_YOU}
                     </p>
@@ -58,23 +50,17 @@ const ChatInput = ({value, onChange, onSend}: ChatInputProps) => {
                     >
                         {CHAT_SUGGESTIONS.map(
                             (suggestion) => (
-                                <button
+                                <Button
                                     key={suggestion}
                                     onClick={() =>
                                         onChange(suggestion)
                                     }
-                                    className={
-                                        'rounded-full ' +
-                                        'border border-border ' +
-                                        'bg-surface-card ' +
-                                        'px-3 py-1.5 text-sm ' +
-                                        'text-foreground ' +
-                                        'transition-colors ' +
-                                        'hover:bg-muted'
-                                    }
+                                    variant={'outline'}
+                                    size={'sm'}
+                                    className={'rounded-full border border-border bg-surface-card px-3 py-1.5 text-sm text-foreground hover:bg-muted'}
                                 >
                                     {suggestion}
-                                </button>
+                                </Button>
                             ),
                         )}
                     </div>
@@ -90,10 +76,7 @@ const ChatInput = ({value, onChange, onSend}: ChatInputProps) => {
                             src={'/avatars/alex.jpg'}
                         />
                         <AvatarFallback
-                            className={
-                                'bg-primary-light ' +
-                                'text-primary'
-                            }
+                            className={'bg-primary-light text-primary'}
                         >
                             AR
                         </AvatarFallback>
@@ -112,31 +95,13 @@ const ChatInput = ({value, onChange, onSend}: ChatInputProps) => {
                             placeholder={
                                 CHAT_INPUT_PLACEHOLDER
                             }
-                            className={
-                                'w-full rounded-full ' +
-                                'border border-border ' +
-                                'bg-muted px-4 py-3 ' +
-                                'pr-12 text-sm ' +
-                                'text-foreground ' +
-                                'placeholder:text-muted-foreground ' +
-                                'focus:border-primary ' +
-                                'focus:outline-none ' +
-                                'focus:ring-2 ' +
-                                'focus:ring-primary/20'
-                            }
+                            className={'w-full rounded-full border border-border bg-muted px-4 py-3 pr-12 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20'}
                             required={false}
                         />
                         <Button
                             onClick={onSend}
                             size={'icon'}
-                            className={
-                                'absolute right-1.5 ' +
-                                'top-1/2 size-8 ' +
-                                '-translate-y-1/2 ' +
-                                'rounded-full ' +
-                                'bg-primary ' +
-                                'hover:bg-primary/90'
-                            }
+                            className={'absolute right-1.5 top-1/2 size-8 -translate-y-1/2 rounded-full bg-primary hover:bg-primary/90'}
                         >
                             <Send
                                 className={

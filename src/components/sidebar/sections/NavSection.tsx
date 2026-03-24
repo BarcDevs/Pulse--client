@@ -9,6 +9,7 @@ export const NavSection = () => (
             <NavButton
                 item={item}
                 key={item.href}
-            />))}
+            />
+        ))}
     </div>
 )
