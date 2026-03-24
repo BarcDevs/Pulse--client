@@ -86,7 +86,10 @@ const ChatPanel = () => (
                     <Badge className={'mt-2 border-0 bg-white/20 text-white'}>
                         {CHAT_SIDEBAR_NEXT_MILESTONE_BADGE}
                     </Badge>
-                    <Progress value={87} className={'mt-4 h-2 bg-white/20'}/>
+                    <Progress
+                        value={87}
+                        className={'mt-4 h-2 bg-white/20'}
+                    />
                 </CardContent>
             </Card>
 
@@ -97,8 +100,7 @@ const ChatPanel = () => (
                     {`"${CHAT_SIDEBAR_QUOTE}"`}
                 </p>
                 <p className={'mt-2 text-xs text-muted-foreground'}>
-                    {'- '}
-                    {CHAT_SIDEBAR_QUOTE_AUTHOR}
+                    {`- ${CHAT_SIDEBAR_QUOTE_AUTHOR}`}
                 </p>
             </div>
         </div>

@@ -161,7 +161,7 @@ const ResetPasswordPage = () => {
                     </form>
 
                     <p className={'mt-6 text-center text-xs text-muted-foreground'}>
-                        {RESET_PASSWORD.troubleText}{' '}
+                        {`${RESET_PASSWORD.troubleText} `}
                         <Link href={'/support'} className={'text-primary hover:underline'}>
                             {RESET_PASSWORD.supportLink}
                         </Link>

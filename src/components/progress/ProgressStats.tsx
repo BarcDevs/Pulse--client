@@ -2,6 +2,7 @@
 
 import { Award, Calendar } from 'lucide-react'
 
+// todo: centralised import
 import {
     PROGRESS_STATS_MILESTONES_LABEL,
     PROGRESS_STATS_MILESTONES_NEXT_PREFIX,
@@ -23,13 +24,18 @@ export const ProgressStats = () => (
             {PROGRESS_STATS_STREAK_LABEL}
           </p>
           <div className={'mt-2 flex items-baseline gap-2'}>
-            <span className={'text-4xl font-bold text-foreground'}>12</span>
-            <span className={'text-lg text-muted-foreground'}>{PROGRESS_STATS_STREAK_UNIT}</span>
+            <span className={'text-4xl font-bold text-foreground'}>
+                12
+            </span>
+            <span className={'text-lg text-muted-foreground'}>
+                {PROGRESS_STATS_STREAK_UNIT}
+            </span>
           </div>
           <p className={'mt-1 text-sm text-muted-foreground'}>
-            {PROGRESS_STATS_STREAK_BEST_PREFIX}
-            {' '}
-            <span className={'text-secondary font-medium'}>{PROGRESS_STATS_STREAK_BEST_VALUE}</span>
+            {`${PROGRESS_STATS_STREAK_BEST_PREFIX} `}
+            <span className={'text-secondary font-medium'}>
+                {PROGRESS_STATS_STREAK_BEST_VALUE}
+            </span>
           </p>
         </div>
         <div className={'h-12 w-12 rounded-xl bg-orange-50 flex items-center justify-center'}>
@@ -50,8 +56,7 @@ export const ProgressStats = () => (
             <span className={'text-lg text-muted-foreground'}>{PROGRESS_STATS_MILESTONES_UNIT}</span>
           </div>
           <p className={'mt-1 text-sm text-muted-foreground'}>
-            {PROGRESS_STATS_MILESTONES_NEXT_PREFIX}
-            {' '}
+            {`${PROGRESS_STATS_MILESTONES_NEXT_PREFIX} `}
             <span className={'text-primary font-medium'}>{PROGRESS_STATS_MILESTONES_NEXT_VALUE}</span>
           </p>
         </div>

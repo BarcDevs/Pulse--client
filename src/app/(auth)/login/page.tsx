@@ -131,7 +131,7 @@ const LoginPage = () => {
                     </Button>
 
                     <p className={'text-center text-sm text-muted-foreground'}>
-                        {LOGIN.signupText}{' '}
+                        {`${LOGIN.signupText} `}
                         <Link
                             href={'/signup'}
                             className={'font-medium text-foreground hover:underline'}

@@ -53,7 +53,7 @@ const ForgotPasswordPage = () => {
                         {FORGOT_PASSWORD.checkEmailTitle}
                     </h2>
                     <p className={'mt-2 text-muted-foreground'}>
-                        {FORGOT_PASSWORD.checkEmailDesc}{' '}
+                        {`${FORGOT_PASSWORD.checkEmailDesc} `}
                         <span className={'font-medium text-foreground'}>
                             {email}
                         </span>
@@ -128,15 +128,14 @@ const ForgotPasswordPage = () => {
                     </form>
 
                     <p className={'mt-6 text-center text-xs text-muted-foreground'}>
-                        {FORGOT_PASSWORD.supportText}{' '}
+                        {`${FORGOT_PASSWORD.supportText} `}
                         <Link
                             href={'/support'}
                             className={'text-primary hover:underline'}
                         >
                             {FORGOT_PASSWORD.supportLink}
                         </Link>
-                        {' '}
-                        {FORGOT_PASSWORD.supportVerification}
+                        {` ${FORGOT_PASSWORD.supportVerification}`}
                     </p>
                 </CardContent>
             </Card>
