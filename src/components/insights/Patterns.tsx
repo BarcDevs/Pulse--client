@@ -36,8 +36,7 @@ const socialData = [
   { day: 'Fri', value: 5 },
 ]
 
-export const InsightsPatterns = () => {
-  return (
+export const InsightsPatterns = () => (
     <Card className={'mt-6 border-0 shadow-sm'}>
       <CardHeader className={'flex flex-row items-center justify-between'}>
         <CardTitle className={'text-lg font-semibold'}>

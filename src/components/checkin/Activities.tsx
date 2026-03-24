@@ -21,12 +21,13 @@ import {
     CHECKIN_ACTIVITIES_TITLE
 } from '@/constants/checkInTexts'
 
+// todo: fix ts warning
 type CheckInActivitiesProps = {
     selectedActivities: string[]
     setSelectedActivities: (activities: string[]) => void
 }
 
-const CheckInActivities = ({
+export const CheckInActivities = ({
     selectedActivities,
     setSelectedActivities
 }: CheckInActivitiesProps) => {
@@ -35,17 +36,25 @@ const CheckInActivities = ({
     const toggleActivity = (activity: string) => {
         if (selectedActivities.includes(activity)) {
             setSelectedActivities(
-                selectedActivities.filter((a) => a !== activity)
+                selectedActivities.filter((a) =>
+                    a !== activity
+                )
             )
         } else {
-            setSelectedActivities([...selectedActivities, activity])
+            setSelectedActivities([
+                ...selectedActivities,
+                activity
+            ])
         }
     }
 
     const addCustomActivity = () => {
         if (customActivity.trim() &&
             !selectedActivities.includes(customActivity.trim())) {
-            setSelectedActivities([...selectedActivities, customActivity.trim()])
+            setSelectedActivities([
+                ...selectedActivities,
+                customActivity.trim()
+            ])
             setCustomActivity('')
         }
     }
@@ -62,30 +71,31 @@ const CheckInActivities = ({
             </CardHeader>
             <CardContent>
                 <div className={'flex flex-wrap gap-2'}>
-                    // todo: separate to mapped checkin activity comp
-                    {CHECKIN_ACTIVITIES_DEFAULT.map((activity) => (
-                        <Button
-                            key={activity}
-                            onClick={() => toggleActivity(activity)}
-                            variant={
-                                selectedActivities.includes(activity)
-                                    ? 'default'
-                                    : 'secondary'
-                            }
-                            size={'sm'}
-                            className={cn(
-                                'rounded-full text-sm font-medium',
-                                selectedActivities.includes(activity)
-                                    ? 'bg-primary text-white'
-                                    : 'bg-muted text-foreground hover:bg-muted/80'
-                            )}
-                        >
-                            {selectedActivities.includes(activity) && (
-                                <span className={'mr-1'}>+</span>
-                            )}
-                            {activity}
-                        </Button>
-                    ))}
+                    {/*todo: separate to mapped checkin activity comp*/}
+                    {CHECKIN_ACTIVITIES_DEFAULT.map(
+                        (activity) => (
+                            <Button
+                                key={activity}
+                                onClick={() => toggleActivity(activity)}
+                                variant={
+                                    selectedActivities.includes(activity)
+                                        ? 'default'
+                                        : 'secondary'
+                                }
+                                size={'sm'}
+                                className={cn(
+                                    'rounded-full text-sm font-medium',
+                                    selectedActivities.includes(activity)
+                                        ? 'bg-primary text-white'
+                                        : 'bg-muted text-foreground hover:bg-muted/80'
+                                )}
+                            >
+                                {selectedActivities.includes(activity) && (
+                                    <span className={'mr-1'}>+</span>
+                                )}
+                                {activity}
+                            </Button>
+                        ))}
 
                     <div className={'flex items-center gap-2'}>
                         <FormInput
@@ -107,5 +117,3 @@ const CheckInActivities = ({
         </Card>
     )
 }
-
-export {CheckInActivities}

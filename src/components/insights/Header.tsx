@@ -10,8 +10,7 @@ import {
     INSIGHTS_HEADER_TITLE,
 } from '@/constants/insightsComponentTexts'
 
-export const InsightsHeader = () => {
-  return (
+export const InsightsHeader = () => (
     <Card className={'border-0 shadow-sm'}>
       <CardContent className={'pt-6'}>
         <Badge className={'mb-4 border-0 bg-red-100 text-red-600'}>
