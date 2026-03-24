@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-import Icon from '@/components/shared/ui/Icon'
+import {Icon} from '@/components/shared/ui/Icon'
 
 export const NotFoundImage = () => (
     <div className={'w-full md:w-1/2 flex justify-center md:justify-end order-1 md:order-2'}>

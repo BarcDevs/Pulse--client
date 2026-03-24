@@ -1,4 +1,4 @@
-import Icon from '@/components/shared/ui/Icon'
+import {Icon} from '@/components/shared/ui/Icon'
 
 export const ErrorIllustration = () => (
     <div className={'relative mb-8'}>

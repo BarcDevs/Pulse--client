@@ -8,25 +8,30 @@ import {FormInput} from '@/components/shared/FormInput'
 import {
     Avatar,
     AvatarFallback,
-    AvatarImage,
+    AvatarImage
 } from '@/components/ui/avatar'
 import {Button} from '@/components/ui/button'
 
 import {
     CHAT_INPUT_PLACEHOLDER,
     CHAT_SUGGESTED_FOR_YOU,
-    CHAT_SUGGESTIONS,
+    CHAT_SUGGESTIONS
 } from '@/constants/chatTexts'
 
+// todo - fix ts warning
 type ChatInputProps = {
     value: string
     onChange: (value: string) => void
     onSend: () => void
 }
 
-const ChatInput = ({value, onChange, onSend}: ChatInputProps) => {
+export const ChatInput = ({
+    value,
+    onChange,
+    onSend
+}: ChatInputProps) => {
     const handleKeyDown = (
-        e: KeyboardEvent<HTMLInputElement>,
+        e: KeyboardEvent<HTMLInputElement>
     ) => {
         if (e.key === 'Enter' && !e.shiftKey) {
             e.preventDefault()
@@ -61,7 +66,7 @@ const ChatInput = ({value, onChange, onSend}: ChatInputProps) => {
                                 >
                                     {suggestion}
                                 </Button>
-                            ),
+                            )
                         )}
                     </div>
                 </div>
@@ -115,5 +120,3 @@ const ChatInput = ({value, onChange, onSend}: ChatInputProps) => {
         </div>
     )
 }
-
-export {ChatInput}

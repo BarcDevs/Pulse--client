@@ -4,7 +4,7 @@ import {Categories} from './Categories'
 import {CommunityPanel} from './CommunityPanel'
 import {PostList} from './PostList'
 
-const CommunityContent = () => (
+export const CommunityContent = () => (
   <div className={'p-6'}>
     {/* Categories */}
     <Categories />
@@ -20,5 +20,3 @@ const CommunityContent = () => (
     </div>
   </div>
 )
-
-export { CommunityContent }

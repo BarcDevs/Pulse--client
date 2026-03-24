@@ -12,6 +12,7 @@ import {
     COMMUNITY_VIEW_ALL,
 } from '@/constants/communityTexts'
 
+//todo constant
 const iconMap = {
     'Support Groups': Users,
     'Success Stories': Star,
@@ -32,7 +33,7 @@ const categories = COMMUNITY_CATEGORIES.map((cat) => ({
     color: colorMap[cat.title as keyof typeof colorMap],
 }))
 
-const Categories = () => (
+export const Categories = () => (
   <div>
     <div className={'flex items-center justify-between mb-4'}>
       <h2 className={'text-lg font-semibold text-foreground'}>{COMMUNITY_BROWSE_CATEGORIES}</h2>
@@ -61,5 +62,3 @@ const Categories = () => (
     </div>
   </div>
 )
-
-export { Categories }

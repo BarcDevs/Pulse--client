@@ -3,7 +3,12 @@
 import {Moon, Quote, TrendingUp} from 'lucide-react'
 
 import {Badge} from '@/components/ui/badge'
-import {Card, CardContent, CardHeader, CardTitle} from '@/components/ui/card'
+import {
+    Card,
+    CardContent,
+    CardHeader,
+    CardTitle
+} from '@/components/ui/card'
 import {Progress} from '@/components/ui/progress'
 
 import {
@@ -22,7 +27,7 @@ import {
     CHAT_SIDEBAR_SLEEP_QUALITY_TITLE,
 } from '@/constants/chatTexts'
 
-const ChatPanel = () => (
+export const ChatPanel = () => (
     <aside className={'hidden w-80 shrink-0 border-l border-border bg-surface-card p-4 lg:block'}>
         <div className={'space-y-4'}>
             {/* Recent Insights */}
@@ -106,5 +111,3 @@ const ChatPanel = () => (
         </div>
     </aside>
 )
-
-export {ChatPanel}

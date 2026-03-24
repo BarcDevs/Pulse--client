@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 import {Home} from 'lucide-react'
 
-import Icon from '@/components/shared/ui/Icon'
+import {Icon} from '@/components/shared/ui/Icon'
 import {Button} from '@/components/ui/button'
 
 import {NOT_FOUND_PAGE} from '@/constants/errorMessages'

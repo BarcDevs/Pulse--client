@@ -4,7 +4,7 @@ import {useRouter} from 'next/navigation'
 
 import {RotateCcw} from 'lucide-react'
 
-import Icon from '@/components/shared/ui/Icon'
+import {Icon} from '@/components/shared/ui/Icon'
 import {Button} from '@/components/ui/button'
 
 import {ERROR_PAGE} from '@/constants/errorMessages'

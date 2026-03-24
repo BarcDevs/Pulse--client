@@ -1,4 +1,4 @@
-import Icon from '@/components/shared/ui/Icon'
+import {Icon} from '@/components/shared/ui/Icon'
 
 import {ERROR_PAGE} from '@/constants/errorMessages'
 
