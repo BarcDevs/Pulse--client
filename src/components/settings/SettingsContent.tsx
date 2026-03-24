@@ -14,13 +14,7 @@ import {Button} from '@/components/ui/button'
 
 import {cn} from '@/lib/utils'
 
-import {
-    SETTINGS_DISCARD_CHANGES,
-    SETTINGS_HELP_CENTER,
-    SETTINGS_SAVE_PREFERENCES,
-    SETTINGS_SUPPORT_LABEL,
-    SETTINGS_TABS
-} from '@/constants/settingsTexts'
+import * as SettingsTexts from '@/constants/settingsTexts'
 
 import {AppPreferences} from './AppPreferences'
 import {NotificationsSettings} from './NotificationsSettings'
@@ -42,7 +36,7 @@ export const SettingsContent = () => {
             <div className={'grid grid-cols-1 lg:grid-cols-4 gap-6'}>
                 {/* Sidebar Navigation */}
                 <div className={'space-y-2'}>
-                    {SETTINGS_TABS.map((tab) => {
+                    {SettingsTexts.SETTINGS_TABS.map((tab) => {
                         const IconComponent = iconMap[tab.icon as keyof typeof iconMap]
                         return (
                             <Button
@@ -69,14 +63,14 @@ export const SettingsContent = () => {
                     {/* Help Center Link */}
                     <div className={'pt-4 mt-4 border-t border-border'}>
             <span className={'text-xs font-medium text-muted-foreground uppercase tracking-wider px-4'}>
-              {SETTINGS_SUPPORT_LABEL}
+              {SettingsTexts.SETTINGS_SUPPORT_LABEL}
             </span>
                         <Button
                             variant={'ghost'}
                             className={'w-full justify-start gap-3 px-4 py-3 rounded-xl text-sm font-medium text-muted-foreground hover:bg-surface-section hover:text-foreground mt-2'}
                         >
                             <HelpCircle className={'h-5 w-5'}/>
-                            {SETTINGS_HELP_CENTER}
+                            {SettingsTexts.SETTINGS_HELP_CENTER}
                         </Button>
                     </div>
                 </div>
@@ -91,10 +85,10 @@ export const SettingsContent = () => {
                     {/* Save Button */}
                     <div className={'flex items-center justify-end gap-3 pt-4 border-t border-border'}>
                         <Button variant={'outline'}>
-                            {SETTINGS_DISCARD_CHANGES}
+                            {SettingsTexts.SETTINGS_DISCARD_CHANGES}
                         </Button>
                         <Button className={'bg-primary hover:bg-primary/90 text-primary-foreground'}>
-                            {SETTINGS_SAVE_PREFERENCES}
+                            {SettingsTexts.SETTINGS_SAVE_PREFERENCES}
                         </Button>
                     </div>
                 </div>

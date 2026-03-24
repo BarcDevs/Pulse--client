@@ -10,23 +10,14 @@ import {
 
 import {Button} from '@/components/ui/button'
 
-// todo: centralised import
-import {
-    SETTINGS_SECURITY_DEACTIVATE_DESCRIPTION,
-    SETTINGS_SECURITY_DEACTIVATE_LABEL,
-    SETTINGS_SECURITY_EMAIL_LABEL,
-    SETTINGS_SECURITY_EMAIL_VALUE,
-    SETTINGS_SECURITY_PASSWORD_LABEL,
-    SETTINGS_SECURITY_PASSWORD_VALUE,
-    SETTINGS_SECURITY_TITLE
-} from '@/constants/settingsTexts'
+import * as SettingsTexts from '@/constants/settingsTexts'
 
 export const SecuritySettings = () => (
     <div className={'rounded-2xl bg-surface-card p-6'}>
         <div className={'flex items-center gap-2 mb-6'}>
             <Shield className={'h-5 w-5 text-primary'}/>
             <h3 className={'text-lg font-semibold text-foreground'}>
-                {SETTINGS_SECURITY_TITLE}
+                {SettingsTexts.SETTINGS_SECURITY_TITLE}
             </h3>
         </div>
 
@@ -36,10 +27,10 @@ export const SecuritySettings = () => (
                     <Mail className={'h-5 w-5 text-muted-foreground'}/>
                     <div>
                         <h4 className={'font-medium text-foreground'}>
-                            {SETTINGS_SECURITY_EMAIL_LABEL}
+                            {SettingsTexts.SETTINGS_SECURITY_EMAIL_LABEL}
                         </h4>
                         <p className={'text-sm text-muted-foreground'}>
-                            {SETTINGS_SECURITY_EMAIL_VALUE}
+                            {SettingsTexts.SETTINGS_SECURITY_EMAIL_VALUE}
                         </p>
                     </div>
                 </div>
@@ -59,10 +50,10 @@ export const SecuritySettings = () => (
                     <Lock className={'h-5 w-5 text-muted-foreground'}/>
                     <div>
                         <h4 className={'font-medium text-foreground'}>
-                            {SETTINGS_SECURITY_PASSWORD_LABEL}
+                            {SettingsTexts.SETTINGS_SECURITY_PASSWORD_LABEL}
                         </h4>
                         <p className={'text-sm text-muted-foreground'}>
-                            {SETTINGS_SECURITY_PASSWORD_VALUE}
+                            {SettingsTexts.SETTINGS_SECURITY_PASSWORD_VALUE}
                         </p>
                     </div>
                 </div>
@@ -80,10 +71,10 @@ export const SecuritySettings = () => (
                     <AlertTriangle className={'h-5 w-5 text-destructive'}/>
                     <div>
                         <h4 className={'font-medium text-destructive'}>
-                            {SETTINGS_SECURITY_DEACTIVATE_LABEL}
+                            {SettingsTexts.SETTINGS_SECURITY_DEACTIVATE_LABEL}
                         </h4>
                         <p className={'text-sm text-muted-foreground'}>
-                            {SETTINGS_SECURITY_DEACTIVATE_DESCRIPTION}
+                            {SettingsTexts.SETTINGS_SECURITY_DEACTIVATE_DESCRIPTION}
                         </p>
                     </div>
                 </div>

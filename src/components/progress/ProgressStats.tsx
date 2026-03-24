@@ -2,17 +2,7 @@
 
 import { Award, Calendar } from 'lucide-react'
 
-// todo: centralised import
-import {
-    PROGRESS_STATS_MILESTONES_LABEL,
-    PROGRESS_STATS_MILESTONES_NEXT_PREFIX,
-    PROGRESS_STATS_MILESTONES_NEXT_VALUE,
-    PROGRESS_STATS_MILESTONES_UNIT,
-    PROGRESS_STATS_STREAK_BEST_PREFIX,
-    PROGRESS_STATS_STREAK_BEST_VALUE,
-    PROGRESS_STATS_STREAK_LABEL,
-    PROGRESS_STATS_STREAK_UNIT,
-} from '@/constants/progressTexts'
+import * as ProgressTexts from '@/constants/progressTexts'
 
 export const ProgressStats = () => (
   <div className={'lg:col-span-2 grid grid-cols-2 gap-4'}>
@@ -21,20 +11,20 @@ export const ProgressStats = () => (
       <div className={'flex items-start justify-between'}>
         <div>
           <p className={'text-xs font-medium text-muted-foreground uppercase tracking-wider'}>
-            {PROGRESS_STATS_STREAK_LABEL}
+            {ProgressTexts.PROGRESS_STATS_STREAK_LABEL}
           </p>
           <div className={'mt-2 flex items-baseline gap-2'}>
             <span className={'text-4xl font-bold text-foreground'}>
                 12
             </span>
             <span className={'text-lg text-muted-foreground'}>
-                {PROGRESS_STATS_STREAK_UNIT}
+                {ProgressTexts.PROGRESS_STATS_STREAK_UNIT}
             </span>
           </div>
           <p className={'mt-1 text-sm text-muted-foreground'}>
-            {`${PROGRESS_STATS_STREAK_BEST_PREFIX} `}
+            {`${ProgressTexts.PROGRESS_STATS_STREAK_BEST_PREFIX} `}
             <span className={'text-secondary font-medium'}>
-                {PROGRESS_STATS_STREAK_BEST_VALUE}
+                {ProgressTexts.PROGRESS_STATS_STREAK_BEST_VALUE}
             </span>
           </p>
         </div>
@@ -49,15 +39,15 @@ export const ProgressStats = () => (
       <div className={'flex items-start justify-between'}>
         <div>
           <p className={'text-xs font-medium text-muted-foreground uppercase tracking-wider'}>
-            {PROGRESS_STATS_MILESTONES_LABEL}
+            {ProgressTexts.PROGRESS_STATS_MILESTONES_LABEL}
           </p>
           <div className={'mt-2 flex items-baseline gap-2'}>
             <span className={'text-4xl font-bold text-foreground'}>5</span>
-            <span className={'text-lg text-muted-foreground'}>{PROGRESS_STATS_MILESTONES_UNIT}</span>
+            <span className={'text-lg text-muted-foreground'}>{ProgressTexts.PROGRESS_STATS_MILESTONES_UNIT}</span>
           </div>
           <p className={'mt-1 text-sm text-muted-foreground'}>
-            {`${PROGRESS_STATS_MILESTONES_NEXT_PREFIX} `}
-            <span className={'text-primary font-medium'}>{PROGRESS_STATS_MILESTONES_NEXT_VALUE}</span>
+            {`${ProgressTexts.PROGRESS_STATS_MILESTONES_NEXT_PREFIX} `}
+            <span className={'text-primary font-medium'}>{ProgressTexts.PROGRESS_STATS_MILESTONES_NEXT_VALUE}</span>
           </p>
         </div>
         <div className={'h-12 w-12 rounded-xl bg-purple-50 flex items-center justify-center'}>

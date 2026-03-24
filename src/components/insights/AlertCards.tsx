@@ -4,16 +4,7 @@ import { AlertTriangle, Lightbulb } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
 
-// todo: centralised var
-import {
-    INSIGHTS_ACTIONABLE_STEP_BUTTON,
-    INSIGHTS_ACTIONABLE_STEP_DESCRIPTION,
-    INSIGHTS_ACTIONABLE_STEP_TITLE,
-    INSIGHTS_PAIN_ALERT_ACTION,
-    INSIGHTS_PAIN_ALERT_DESCRIPTION,
-    INSIGHTS_PAIN_ALERT_STATUS,
-    INSIGHTS_PAIN_ALERT_TITLE,
-} from '@/constants/insightsComponentTexts'
+import * as InsightsComponentTexts from '@/constants/insightsComponentTexts'
 
 export const AlertCards = () => (
   <div className={'grid grid-cols-1 md:grid-cols-2 gap-6'}>
@@ -25,20 +16,20 @@ export const AlertCards = () => (
         </div>
         <div className={'flex-1'}>
           <h3 className={'font-semibold text-foreground'}>
-              {INSIGHTS_PAIN_ALERT_TITLE}
+              {InsightsComponentTexts.INSIGHTS_PAIN_ALERT_TITLE}
           </h3>
           <p className={'mt-1 text-sm text-muted-foreground leading-relaxed'}>
-            {INSIGHTS_PAIN_ALERT_DESCRIPTION}
+            {InsightsComponentTexts.INSIGHTS_PAIN_ALERT_DESCRIPTION}
           </p>
           <div className={'mt-4 flex items-center gap-2'}>
             <span className={'text-xs font-medium text-destructive'}>
-                {INSIGHTS_PAIN_ALERT_STATUS}
+                {InsightsComponentTexts.INSIGHTS_PAIN_ALERT_STATUS}
             </span>
             <Button
               variant={'link'}
               className={'h-auto p-0 text-xs text-primary hover:underline'}
             >
-              {INSIGHTS_PAIN_ALERT_ACTION}
+              {InsightsComponentTexts.INSIGHTS_PAIN_ALERT_ACTION}
             </Button>
           </div>
         </div>
@@ -52,13 +43,13 @@ export const AlertCards = () => (
           <Lightbulb className={'h-5 w-5 text-secondary'} />
         </div>
         <div className={'flex-1'}>
-          <h3 className={'font-semibold text-foreground'}>{INSIGHTS_ACTIONABLE_STEP_TITLE}</h3>
+          <h3 className={'font-semibold text-foreground'}>{InsightsComponentTexts.INSIGHTS_ACTIONABLE_STEP_TITLE}</h3>
           <p className={'mt-1 text-sm text-muted-foreground leading-relaxed'}>
-            {INSIGHTS_ACTIONABLE_STEP_DESCRIPTION}
+            {InsightsComponentTexts.INSIGHTS_ACTIONABLE_STEP_DESCRIPTION}
           </p>
           <div className={'mt-4'}>
             <Button size={'sm'} className={'bg-secondary hover:bg-secondary/90 text-secondary-foreground'}>
-              {INSIGHTS_ACTIONABLE_STEP_BUTTON}
+              {InsightsComponentTexts.INSIGHTS_ACTIONABLE_STEP_BUTTON}
             </Button>
           </div>
         </div>

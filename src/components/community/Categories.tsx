@@ -6,11 +6,7 @@ import { Button } from '@/components/ui/button'
 
 import { cn } from '@/lib/utils'
 
-import {
-    COMMUNITY_BROWSE_CATEGORIES,
-    COMMUNITY_CATEGORIES,
-    COMMUNITY_VIEW_ALL,
-} from '@/constants/communityTexts'
+import * as CommunityTexts from '@/constants/communityTexts'
 
 //todo constant
 const iconMap = {
@@ -27,7 +23,7 @@ const colorMap = {
     'Yoga & Movement': 'bg-emerald-50 text-secondary',
 }
 
-const categories = COMMUNITY_CATEGORIES.map((cat) => ({
+const categories = CommunityTexts.COMMUNITY_CATEGORIES.map((cat) => ({
     ...cat,
     icon: iconMap[cat.title as keyof typeof iconMap],
     color: colorMap[cat.title as keyof typeof colorMap],
@@ -36,12 +32,12 @@ const categories = COMMUNITY_CATEGORIES.map((cat) => ({
 export const Categories = () => (
   <div>
     <div className={'flex items-center justify-between mb-4'}>
-      <h2 className={'text-lg font-semibold text-foreground'}>{COMMUNITY_BROWSE_CATEGORIES}</h2>
+      <h2 className={'text-lg font-semibold text-foreground'}>{CommunityTexts.COMMUNITY_BROWSE_CATEGORIES}</h2>
       <Button
         variant={'link'}
         className={'h-auto p-0 text-sm text-primary hover:underline'}
       >
-        {COMMUNITY_VIEW_ALL}
+        {CommunityTexts.COMMUNITY_VIEW_ALL}
       </Button>
     </div>
 

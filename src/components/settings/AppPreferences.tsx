@@ -8,17 +8,7 @@ import {Button} from '@/components/ui/button'
 
 import {cn} from '@/lib/utils'
 
-// todo: centralised import
-import {
-    SETTINGS_PREFERENCES_LANGUAGE_DESCRIPTION,
-    SETTINGS_PREFERENCES_LANGUAGE_OPTIONS,
-    SETTINGS_PREFERENCES_LANGUAGE_TITLE,
-    SETTINGS_PREFERENCES_THEME_DARK,
-    SETTINGS_PREFERENCES_THEME_DESCRIPTION,
-    SETTINGS_PREFERENCES_THEME_LIGHT,
-    SETTINGS_PREFERENCES_THEME_TITLE,
-    SETTINGS_PREFERENCES_TITLE
-} from '@/constants/settingsTexts'
+import * as SettingsTexts from '@/constants/settingsTexts'
 
 export const AppPreferences = () => {
     const [theme, setTheme] = useState<'light' | 'dark'>('light')
@@ -29,17 +19,17 @@ export const AppPreferences = () => {
             <div className={'flex items-center gap-2 mb-6'}>
                 <Palette className={'h-5 w-5 text-primary'}/>
                 <h3 className={'text-lg font-semibold text-foreground'}>
-                    {SETTINGS_PREFERENCES_TITLE}
+                    {SettingsTexts.SETTINGS_PREFERENCES_TITLE}
                 </h3>
             </div>
 
             <div className={'space-y-6'}>
                 <div>
                     <h4 className={'font-medium text-foreground mb-1'}>
-                        {SETTINGS_PREFERENCES_THEME_TITLE}
+                        {SettingsTexts.SETTINGS_PREFERENCES_THEME_TITLE}
                     </h4>
                     <p className={'text-sm text-muted-foreground mb-3'}>
-                        {SETTINGS_PREFERENCES_THEME_DESCRIPTION}
+                        {SettingsTexts.SETTINGS_PREFERENCES_THEME_DESCRIPTION}
                     </p>
                     <div className={'flex gap-2'}>
                         <Button
@@ -56,7 +46,7 @@ export const AppPreferences = () => {
                             }`}
                         >
                             <Sun className={'h-4 w-4'}/>
-                            {SETTINGS_PREFERENCES_THEME_LIGHT}
+                            {SettingsTexts.SETTINGS_PREFERENCES_THEME_LIGHT}
                         </Button>
                         <Button
                             onClick={() => setTheme('dark')}
@@ -73,17 +63,17 @@ export const AppPreferences = () => {
                             )}
                         >
                             <Moon className={'h-4 w-4'}/>
-                            {SETTINGS_PREFERENCES_THEME_DARK}
+                            {SettingsTexts.SETTINGS_PREFERENCES_THEME_DARK}
                         </Button>
                     </div>
                 </div>
 
                 <div>
                     <h4 className={'font-medium text-foreground mb-1'}>
-                        {SETTINGS_PREFERENCES_LANGUAGE_TITLE}
+                        {SettingsTexts.SETTINGS_PREFERENCES_LANGUAGE_TITLE}
                     </h4>
                     <p className={'text-sm text-muted-foreground mb-3'}>
-                        {SETTINGS_PREFERENCES_LANGUAGE_DESCRIPTION}
+                        {SettingsTexts.SETTINGS_PREFERENCES_LANGUAGE_DESCRIPTION}
                     </p>
                     <select
                         value={language}
@@ -92,7 +82,7 @@ export const AppPreferences = () => {
                             'w-full max-w-xs px-3 py-2 rounded-lg bg-surface-section border border-border text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary/20'
                         }
                     >
-                        {SETTINGS_PREFERENCES_LANGUAGE_OPTIONS.map(
+                        {SettingsTexts.SETTINGS_PREFERENCES_LANGUAGE_OPTIONS.map(
                             (option) => (
                                 <option
                                     key={option.value}

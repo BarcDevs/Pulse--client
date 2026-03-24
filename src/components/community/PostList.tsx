@@ -8,23 +8,16 @@ import { Button } from '@/components/ui/button'
 
 import { cn } from '@/lib/utils'
 
-import {
-    COMMUNITY_POST_DEFAULT_TAB,
-    COMMUNITY_POST_VIDEO_DURATION,
-    COMMUNITY_POSTED_BY,
-    COMMUNITY_POSTS,
-    COMMUNITY_REPLIES_LABEL,
-    COMMUNITY_SAVE,
-    COMMUNITY_SHARE,
-    COMMUNITY_TABS,
-} from '@/constants/communityTexts'
+import * as CommunityTexts from '@/constants/communityTexts'
 
-const tabs = COMMUNITY_TABS
+const tabs = CommunityTexts.COMMUNITY_TABS
 
-const posts = COMMUNITY_POSTS
+const posts = CommunityTexts.COMMUNITY_POSTS
 
 export const PostList = () => {
-  const [activeTab, setActiveTab] = useState(COMMUNITY_POST_DEFAULT_TAB)
+  const [activeTab, setActiveTab] = useState(
+      CommunityTexts.COMMUNITY_POST_DEFAULT_TAB
+  )
 
   return (
     <div className={'rounded-2xl bg-surface-card overflow-hidden'}>
@@ -86,7 +79,7 @@ export const PostList = () => {
                     {post.category}
                   </span>
                   <span className={'text-xs text-muted-foreground'}>
-                    {COMMUNITY_POSTED_BY} {post.author} - {post.timeAgo}
+                    {CommunityTexts.COMMUNITY_POSTED_BY} {post.author} - {post.timeAgo}
                   </span>
                 </div>
 
@@ -104,7 +97,7 @@ export const PostList = () => {
                       </div>
                     </div>
                     <div className={'absolute bottom-3 left-3 bg-black/60 rounded px-2 py-1 text-xs text-white'}>
-                      {COMMUNITY_POST_VIDEO_DURATION}
+                      {CommunityTexts.COMMUNITY_POST_VIDEO_DURATION}
                     </div>
                   </div>
                 )}
@@ -116,7 +109,7 @@ export const PostList = () => {
                     className={'h-auto gap-1.5 p-0 text-xs text-muted-foreground hover:text-foreground'}
                   >
                     <MessageSquare className={'h-4 w-4'} />
-                    {post.replies} {COMMUNITY_REPLIES_LABEL}
+                    {post.replies} {CommunityTexts.COMMUNITY_REPLIES_LABEL}
                   </Button>
                   <Button
                     variant={'ghost'}
@@ -124,7 +117,7 @@ export const PostList = () => {
                     className={'h-auto gap-1.5 p-0 text-xs text-muted-foreground hover:text-foreground'}
                   >
                     <Share2 className={'h-4 w-4'} />
-                    {COMMUNITY_SHARE}
+                    {CommunityTexts.COMMUNITY_SHARE}
                   </Button>
                   <Button
                     variant={'ghost'}
@@ -132,7 +125,7 @@ export const PostList = () => {
                     className={'h-auto gap-1.5 p-0 text-xs text-muted-foreground hover:text-foreground'}
                   >
                     <Bookmark className={'h-4 w-4'} />
-                    {COMMUNITY_SAVE}
+                    {CommunityTexts.COMMUNITY_SAVE}
                   </Button>
                 </div>
               </div>
