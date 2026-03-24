@@ -4,6 +4,7 @@ import { AlertTriangle, Lightbulb } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
 
+// todo: centralised var
 import {
     INSIGHTS_ACTIONABLE_STEP_BUTTON,
     INSIGHTS_ACTIONABLE_STEP_DESCRIPTION,
@@ -23,15 +24,22 @@ export const AlertCards = () => (
           <AlertTriangle className={'h-5 w-5 text-destructive'} />
         </div>
         <div className={'flex-1'}>
-          <h3 className={'font-semibold text-foreground'}>{INSIGHTS_PAIN_ALERT_TITLE}</h3>
+          <h3 className={'font-semibold text-foreground'}>
+              {INSIGHTS_PAIN_ALERT_TITLE}
+          </h3>
           <p className={'mt-1 text-sm text-muted-foreground leading-relaxed'}>
             {INSIGHTS_PAIN_ALERT_DESCRIPTION}
           </p>
           <div className={'mt-4 flex items-center gap-2'}>
-            <span className={'text-xs font-medium text-destructive'}>{INSIGHTS_PAIN_ALERT_STATUS}</span>
-            <button className={'text-xs text-primary hover:underline'}>
+            <span className={'text-xs font-medium text-destructive'}>
+                {INSIGHTS_PAIN_ALERT_STATUS}
+            </span>
+            <Button
+              variant={'link'}
+              className={'h-auto p-0 text-xs text-primary hover:underline'}
+            >
               {INSIGHTS_PAIN_ALERT_ACTION}
-            </button>
+            </Button>
           </div>
         </div>
       </div>

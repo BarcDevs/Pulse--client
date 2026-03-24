@@ -1,11 +1,14 @@
 'use client'
 
-import { useState } from 'react'
+import {useState} from 'react'
 
-import { Moon, Palette, Sun } from 'lucide-react'
+import {Moon, Palette, Sun} from 'lucide-react'
 
-import { cn } from '@/lib/utils'
+import {Button} from '@/components/ui/button'
 
+import {cn} from '@/lib/utils'
+
+// todo: centralised import
 import {
     SETTINGS_PREFERENCES_LANGUAGE_DESCRIPTION,
     SETTINGS_PREFERENCES_LANGUAGE_OPTIONS,
@@ -14,7 +17,7 @@ import {
     SETTINGS_PREFERENCES_THEME_DESCRIPTION,
     SETTINGS_PREFERENCES_THEME_LIGHT,
     SETTINGS_PREFERENCES_THEME_TITLE,
-    SETTINGS_PREFERENCES_TITLE,
+    SETTINGS_PREFERENCES_TITLE
 } from '@/constants/settingsTexts'
 
 export const AppPreferences = () => {
@@ -24,7 +27,7 @@ export const AppPreferences = () => {
     return (
         <div className={'rounded-2xl bg-surface-card p-6'}>
             <div className={'flex items-center gap-2 mb-6'}>
-                <Palette className={'h-5 w-5 text-primary'} />
+                <Palette className={'h-5 w-5 text-primary'}/>
                 <h3 className={'text-lg font-semibold text-foreground'}>
                     {SETTINGS_PREFERENCES_TITLE}
                 </h3>
@@ -39,30 +42,39 @@ export const AppPreferences = () => {
                         {SETTINGS_PREFERENCES_THEME_DESCRIPTION}
                     </p>
                     <div className={'flex gap-2'}>
-                        <button
+                        <Button
                             onClick={() => setTheme('light')}
-                            className={cn(
-                                'flex items-center gap-2 px-4 py-2 rounded-lg border transition-colors',
+                            variant={
+                                theme === 'light'
+                                    ? 'default'
+                                    : 'outline'
+                            }
+                            className={`flex items-center gap-2 px-4 py-2 rounded-lg ${
                                 theme === 'light'
                                     ? 'border-primary bg-primary/5 text-primary'
                                     : 'border-border text-muted-foreground hover:text-foreground'
-                            )}
+                            }`}
                         >
-                            <Sun className={'h-4 w-4'} />
+                            <Sun className={'h-4 w-4'}/>
                             {SETTINGS_PREFERENCES_THEME_LIGHT}
-                        </button>
-                        <button
+                        </Button>
+                        <Button
                             onClick={() => setTheme('dark')}
+                            variant={
+                                theme === 'dark'
+                                    ? 'default'
+                                    : 'outline'
+                            }
                             className={cn(
-                                'flex items-center gap-2 px-4 py-2 rounded-lg border transition-colors',
+                                'flex items-center gap-2 px-4 py-2 rounded-lg',
                                 theme === 'dark'
                                     ? 'border-primary bg-primary/5 text-primary'
                                     : 'border-border text-muted-foreground hover:text-foreground'
                             )}
                         >
-                            <Moon className={'h-4 w-4'} />
+                            <Moon className={'h-4 w-4'}/>
                             {SETTINGS_PREFERENCES_THEME_DARK}
-                        </button>
+                        </Button>
                     </div>
                 </div>
 
