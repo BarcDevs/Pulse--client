@@ -1,5 +1,3 @@
-'use client'
-
 import { GoalProgressBar } from '@/components/shared/GoalProgressBar'
 import { Button } from '@/components/ui/button'
 

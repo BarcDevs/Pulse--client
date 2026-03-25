@@ -1,5 +1,3 @@
-'use client'
-
 import { Button } from '@/components/ui/button'
 
 import * as communityTexts from '@/constants/communityTexts'

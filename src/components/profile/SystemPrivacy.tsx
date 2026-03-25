@@ -1,5 +1,3 @@
-'use client'
-
 import {Button} from '@/components/ui/button'
 
 import {PROFILE_SYSTEM_PRIVACY_TITLE} from '@/constants/profileDetailTexts'

@@ -1,5 +1,3 @@
-'use client'
-
 import {MAIN_NAV_ITEMS} from '@/components/sidebar/config'
 import {NavButton} from '@/components/sidebar/sections/NavButton'
 

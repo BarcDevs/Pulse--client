@@ -1,5 +1,3 @@
-'use client'
-
 import { Award, Calendar } from 'lucide-react'
 
 import * as ProgressTexts from '@/constants/progressTexts'

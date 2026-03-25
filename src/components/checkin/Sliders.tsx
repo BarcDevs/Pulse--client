@@ -1,5 +1,3 @@
-'use client'
-
 import { Activity, Smile } from 'lucide-react'
 
 import { SliderCard } from '@/components/shared/SliderCard'

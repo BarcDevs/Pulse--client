@@ -1,5 +1,3 @@
-'use client'
-
 import { Lock, Shield, UserX } from 'lucide-react'
 
 import { GuidelineItem } from '@/components/shared/GuidelineItem'

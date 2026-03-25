@@ -1,5 +1,3 @@
-'use client'
-
 import * as communityTexts from '@/constants/communityTexts'
 
 import { MentorItem } from './MentorItem'

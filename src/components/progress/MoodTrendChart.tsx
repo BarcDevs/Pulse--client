@@ -1,5 +1,3 @@
-'use client'
-
 import {TrendAreaChart} from '@/components/shared/TrendAreaChart'
 
 import {PROGRESS_MOOD_TREND_CHART}

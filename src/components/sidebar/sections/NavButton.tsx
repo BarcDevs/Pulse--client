@@ -1,3 +1,5 @@
+'use client'
+
 import {usePathname, useRouter} from 'next/navigation'
 
 import {NavItem} from '@/components/sidebar/config'

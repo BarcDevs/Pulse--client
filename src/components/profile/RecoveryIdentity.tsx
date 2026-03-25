@@ -1,5 +1,3 @@
-'use client'
-
 import {cn} from '@/lib/utils'
 
 import {PROFILE_RECOVERY_IDENTITY_FOCUS_AREAS_WITH_ICONS}

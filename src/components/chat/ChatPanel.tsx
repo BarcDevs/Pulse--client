@@ -1,5 +1,3 @@
-'use client'
-
 import {Moon, Quote, TrendingUp} from 'lucide-react'
 
 import {Badge} from '@/components/ui/badge'
