@@ -7,7 +7,7 @@ import {
   useState,
 } from 'react'
 
-type ToastActionElement = React.ReactNode
+type ToastActionElement = ReactNode
 type ToastProps = {
   open?: boolean
   onOpenChange?: (open: boolean) => void
