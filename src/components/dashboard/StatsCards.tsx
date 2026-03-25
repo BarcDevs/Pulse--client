@@ -1,5 +1,7 @@
 import {Card, CardContent} from '@/components/ui/card'
 
+import {cn} from '@/lib/utils'
+
 import {DASHBOARD_STATS_WITH_ICONS} from '@/constants/dashboardMaps'
 
 export const DashboardStatsCards = () => (
@@ -8,8 +10,8 @@ export const DashboardStatsCards = () => (
             <Card key={stat.label} className={'border-0 shadow-sm'}>
                 <CardContent className={'pt-6'}>
                     <div className={'flex items-center gap-4'}>
-                        <div className={`flex size-12 shrink-0 items-center justify-center rounded-xl ${stat.iconBg}`}>
-                            <stat.icon className={`size-6 ${stat.iconColor}`}/>
+                        <div className={cn('flex size-12 shrink-0 items-center justify-center rounded-xl', stat.iconBg)}>
+                            <stat.icon className={cn('size-6', stat.iconColor)}/>
                         </div>
                         <div>
                             <p className={'text-xs font-medium uppercase tracking-wider text-muted-foreground'}>
@@ -21,7 +23,7 @@ export const DashboardStatsCards = () => (
                                   {stat.subValue}
                                 </span>
                             </p>
-                            <p className={`text-sm ${stat.descriptionColor || 'text-muted-foreground'}`}>
+                            <p className={cn('text-sm', stat.descriptionColor || 'text-muted-foreground')}>
                                 {stat.description}
                             </p>
                         </div>

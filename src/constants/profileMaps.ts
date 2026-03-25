@@ -11,13 +11,13 @@ import {
 } from 'lucide-react'
 
 import {
+    PROFILE_SYSTEM_PRIVACY_SETTINGS
+} from '@/constants/profileDetailTexts'
+import {
     PROFILE_ACTIVITIES_LIST,
     PROFILE_RECOVERY_IDENTITY_FOCUS_AREAS,
     PROFILE_SETTINGS_LIST
 } from '@/constants/profileTexts'
-import {
-    PROFILE_SYSTEM_PRIVACY_SETTINGS
-} from '@/constants/profileDetailTexts'
 
 export const PROFILE_ACTIVITIES_ICON_MAP = {
     'Morning Routine': Sun,

@@ -21,6 +21,8 @@ import {
     CardTitle,
 } from '@/components/ui/card'
 
+import {cn} from '@/lib/utils'
+
 import {RESET_PASSWORD} from '@/constants/authTexts'
 
 import authFormConfig from '@/config/schema/authForm'
@@ -100,11 +102,12 @@ const ResetPasswordPage = () => {
                         <div className={'flex items-center gap-6 text-sm'}>
                             <div className={'flex items-center gap-2'}>
                                 <div
-                                    className={`flex size-5 items-center justify-center rounded-full ${
+                                    className={cn(
+                                        'flex size-5 items-center justify-center rounded-full',
                                         hasMinLength
                                             ? 'bg-secondary text-white'
                                             : 'bg-muted'
-                                    }`}
+                                    )}
                                 >
                                     {hasMinLength && <Check className={'size-3'}/>}
                                 </div>
@@ -120,11 +123,12 @@ const ResetPasswordPage = () => {
                             </div>
                             <div className={'flex items-center gap-2'}>
                                 <div
-                                    className={`flex size-5 items-center justify-center rounded-full ${
+                                    className={cn(
+                                        'flex size-5 items-center justify-center rounded-full',
                                         hasSpecialChar
                                             ? 'bg-secondary text-white'
                                             : 'bg-muted'
-                                    }`}
+                                    )}
                                 >
                                     {hasSpecialChar && <Check className={'size-3'}/>}
                                 </div>

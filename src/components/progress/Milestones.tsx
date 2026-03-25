@@ -5,6 +5,8 @@ import {
     CardTitle
 } from '@/components/ui/card'
 
+import {cn} from '@/lib/utils'
+
 import {PROGRESS_MILESTONES_WITH_ICONS} from '@/constants/progressMaps'
 import {
     PROGRESS_MILESTONES_SEE_ALL,
@@ -26,16 +28,17 @@ export const ProgressMilestones = () => (
                 {PROGRESS_MILESTONES_WITH_ICONS.map((milestone) => (
                     <div
                         key={milestone.title}
-                        className={`flex flex-col items-center rounded-xl p-6 text-center ${
-                            milestone.achieved ? 
+                        className={cn(
+                            'flex flex-col items-center rounded-xl p-6 text-center',
+                            milestone.achieved ?
                                 'bg-surface-section' :
                                 'bg-muted opacity-60'
-                        }`}
+                        )}
                     >
                         <div
-                            className={`flex size-12 items-center justify-center rounded-xl ${milestone.iconBg}`}
+                            className={cn('flex size-12 items-center justify-center rounded-xl', milestone.iconBg)}
                         >
-                            <milestone.icon className={`size-6 ${milestone.iconColor}`}/>
+                            <milestone.icon className={cn('size-6', milestone.iconColor)}/>
                         </div>
                         <h4 className={'mt-3 font-semibold text-foreground'}>
                             {milestone.title}

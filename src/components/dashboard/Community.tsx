@@ -12,6 +12,8 @@ import {
     CardTitle
 } from '@/components/ui/card'
 
+import {cn} from '@/lib/utils'
+
 import {
     DASHBOARD_COMMUNITY_LABEL,
     DASHBOARD_COMMUNITY_VIEW_ALL
@@ -40,7 +42,7 @@ export const DashboardCommunity = () => (
                         <Avatar className={'size-9'}>
                             <AvatarImage src={`/avatars/${update.name.toLowerCase()}.jpg`}/>
                             <AvatarFallback
-                                className={`${update.avatarBg || 'bg-primary'} text-white`}
+                                className={cn(update.avatarBg || 'bg-primary', 'text-white')}
                             >
                                 {update.avatar}
                             </AvatarFallback>

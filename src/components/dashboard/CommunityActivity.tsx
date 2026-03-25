@@ -2,6 +2,8 @@
 
 import Link from 'next/link'
 
+import {cn} from '@/lib/utils'
+
 import {
     COMMUNITY_ACTIVITY_LIST,
     COMMUNITY_ACTIVITY_TITLE,
@@ -25,7 +27,7 @@ export const CommunityActivity = () => (
         <div className={'mt-4 space-y-4'}>
             {COMMUNITY_ACTIVITY_LIST.map((activity) => (
                 <div key={activity.id} className={'flex items-start gap-3'}>
-                    <div className={`h-8 w-8 rounded-full flex items-center justify-center text-xs font-medium ${activity.avatarBg}`}>
+                    <div className={cn('h-8 w-8 rounded-full flex items-center justify-center text-xs font-medium', activity.avatarBg)}>
                         {activity.avatar}
                     </div>
                     <div className={'flex-1 min-w-0'}>

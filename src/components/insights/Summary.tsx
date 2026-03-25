@@ -15,6 +15,8 @@ import {
     CardTitle
 } from '@/components/ui/card'
 
+import {cn} from '@/lib/utils'
+
 import * as InsightsComponentTexts from '@/constants/insightsComponentTexts'
 
 export const InsightsSummary = () => (
@@ -50,7 +52,7 @@ export const InsightsSummary = () => (
                                     <span className={'text-2xl font-bold text-foreground'}>
                                         {stat.value}
                                     </span>
-                                    <span className={`text-sm ${stat.trendColor}`}>
+                                    <span className={cn('text-sm', stat.trendColor)}>
                                         {stat.trend}
                                     </span>
                                 </div>

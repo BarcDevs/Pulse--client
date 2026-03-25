@@ -39,11 +39,12 @@ export const AppPreferences = () => {
                                     ? 'default'
                                     : 'outline'
                             }
-                            className={`flex items-center gap-2 px-4 py-2 rounded-lg ${
+                            className={cn(
+                                'flex items-center gap-2 px-4 py-2 rounded-lg',
                                 theme === 'light'
                                     ? 'border-primary bg-primary/5 text-primary'
                                     : 'border-border text-muted-foreground hover:text-foreground'
-                            }`}
+                            )}
                         >
                             <Sun className={'h-4 w-4'}/>
                             {SettingsTexts.SETTINGS_PREFERENCES_THEME_LIGHT}

@@ -46,11 +46,12 @@ export const BehavioralPatterns = () => {
                                 : 'ghost'
                         }
                         size={'sm'}
-                        className={`rounded-md text-xs font-medium ${
+                        className={cn(
+                            'rounded-md text-xs font-medium',
                             activeTab === '30days'
                                 ? 'bg-primary text-primary-foreground'
                                 : 'text-muted-foreground hover:text-foreground'
-                        }`}
+                        )}
                     >
                         {InsightsComponentTexts.INSIGHTS_BEHAVIORAL_PATTERNS_TAB_30DAYS}
                     </Button>
