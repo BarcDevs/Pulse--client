@@ -21,7 +21,7 @@ export const ChatContent = () => {
     return (
         <div className={'flex h-[calc(100vh-4rem)]'}>
             <div className={'flex-1 flex flex-col'}>
-                <ChatMessages messages={messages} />
+                <ChatMessages messages={messages}/>
                 <ChatInput
                     value={inputValue}
                     onChange={setInputValue}
@@ -29,7 +29,7 @@ export const ChatContent = () => {
                 />
             </div>
 
-            <ChatPanel />
+            <ChatPanel/>
         </div>
     )
 }
