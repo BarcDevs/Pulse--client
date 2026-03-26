@@ -1,6 +1,11 @@
-import {Activity, BarChart2, Lightbulb,MessageSquare} from 'lucide-react'
+import {
+    Activity,
+    BarChart2,
+    Lightbulb,
+    MessageSquare
+} from 'lucide-react'
 
-const FEATURES = [
+export const FEATURES = [
     {
         icon: Activity,
         title: 'Daily Check-ins',
@@ -23,7 +28,7 @@ const FEATURES = [
     }
 ]
 
-const BENEFITS = [
+export const BENEFITS = [
     {
         title: 'Track Daily Progress',
         description: 'Mood and pain scores with activity logs help you see the real arc of your recovery over time.',
@@ -41,7 +46,7 @@ const BENEFITS = [
     }
 ]
 
-const NAV_LINKS = [
+export const NAV_LINKS = [
     {
         title: 'Home',
         href: '/'
@@ -72,7 +77,7 @@ const NAV_LINKS = [
     }
 ]
 
-const FOOTER_LINKS = {
+export const FOOTER_LINKS = {
     quick: [
         {
             title: 'About',
@@ -103,7 +108,7 @@ const FOOTER_LINKS = {
     ]
 }
 
-const SOCIAL_LINKS = [
+export const SOCIAL_LINKS = [
     {
         title: 'Facebook',
         href: 'https://www.facebook.com/HealEase-109044114129580'
@@ -117,11 +122,3 @@ const SOCIAL_LINKS = [
         href: 'https://www.linkedin.com/company/healease/'
     }
 ]
-
-export {
-    BENEFITS,
-    FEATURES,
-    FOOTER_LINKS,
-    NAV_LINKS,
-    SOCIAL_LINKS
-}

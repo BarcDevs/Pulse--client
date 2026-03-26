@@ -1,8 +1,8 @@
-const COMMUNITY_BROWSE_CATEGORIES = 'Browse Categories'
+export const COMMUNITY_BROWSE_CATEGORIES = 'Browse Categories'
 
-const COMMUNITY_VIEW_ALL = 'View All'
+export const COMMUNITY_VIEW_ALL = 'View All'
 
-const COMMUNITY_CATEGORIES = [
+export const COMMUNITY_CATEGORIES = [
     {
         id: 1,
         title: 'Support Groups',
@@ -29,13 +29,13 @@ const COMMUNITY_CATEGORIES = [
     },
 ]
 
-const COMMUNITY_TABS = [
+export const COMMUNITY_TABS = [
     'Popular',
     'Recent',
     'Unanswered',
 ]
 
-const COMMUNITY_POSTS = [
+export const COMMUNITY_POSTS = [
     {
         id: 1,
         category: 'Success Stories',
@@ -43,7 +43,7 @@ const COMMUNITY_POSTS = [
         author: 'Marcus T.',
         timeAgo: '3 hours ago',
         title: 'My first 90 days: Finding peace in the routine of early mornings.',
-        content: 'I used to dread the sunrise because it meant another day of struggle. Now, my 5 AM tea and meditation are the anchor of my day. If you\'re in the first...',
+        content: `I used to dread the sunrise because it meant another day of struggle. Now, my 5 AM tea and meditation are the anchor of my day. If you're in the first...`,
         votes: 47,
         replies: 18,
         hasMedia: false,
@@ -55,7 +55,7 @@ const COMMUNITY_POSTS = [
         author: 'Sarah Jenkins',
         timeAgo: '5 hours ago',
         title: 'Managing social anxiety during family gatherings this weekend',
-        content: 'Does anyone have tips for navigating conversations about \'why I\'m not drinking\' with pushy relatives? Feeling a bit nervous about the upcoming...',
+        content: `Does anyone have tips for navigating conversations about 'why I'm not drinking' with pushy relatives? Feeling a bit nervous about the upcoming...`,
         votes: 123,
         replies: 42,
         hasMedia: false,
@@ -74,44 +74,44 @@ const COMMUNITY_POSTS = [
     },
 ]
 
-const COMMUNITY_POSTED_BY = 'Posted by'
+export const COMMUNITY_POSTED_BY = 'Posted by'
 
-const COMMUNITY_REPLIES_LABEL = 'replies'
+export const COMMUNITY_REPLIES_LABEL = 'replies'
 
-const COMMUNITY_SHARE = 'Share'
+export const COMMUNITY_SHARE = 'Share'
 
-const COMMUNITY_SAVE = 'Save'
+export const COMMUNITY_SAVE = 'Save'
 
-const COMMUNITY_POST_DEFAULT_TAB = 'Popular'
+export const COMMUNITY_POST_DEFAULT_TAB = 'Popular'
 
-const COMMUNITY_POST_VIDEO_DURATION = '10:24'
+export const COMMUNITY_POST_VIDEO_DURATION = '10:24'
 
-const COMMUNITY_NEW_POST_BUTTON = 'New Post'
+export const COMMUNITY_NEW_POST_BUTTON = 'New Post'
 
-const COMMUNITY_MENTORS_TITLE = 'Recovery Mentors'
+export const COMMUNITY_MENTORS_TITLE = 'Recovery Mentors'
 
-const COMMUNITY_MENTORS = [
+export const COMMUNITY_MENTORS = [
     { id: 1, name: 'David Chen', role: 'Certified Coach', avatar: 'D', online: true },
     { id: 2, name: 'Maria G.', role: 'Wellness Guide', avatar: 'M', online: false },
 ]
 
-const COMMUNITY_MENTORS_CHAT = 'Chat'
+export const COMMUNITY_MENTORS_CHAT = 'Chat'
 
-const COMMUNITY_SANCTUARY_TITLE = 'Community Sanctuary'
+export const COMMUNITY_SANCTUARY_TITLE = 'Community Sanctuary'
 
-const COMMUNITY_SANCTUARY_DESCRIPTION = 'HealEase is a safe, non-judgmental space. We prioritize empathy, privacy, and supportive dialogue.'
+export const COMMUNITY_SANCTUARY_DESCRIPTION = 'HealEase is a safe, non-judgmental space. We prioritize empathy, privacy, and supportive dialogue.'
 
-const COMMUNITY_SANCTUARY_RULE_1 = 'Be kind and be open'
+export const COMMUNITY_SANCTUARY_RULE_1 = 'Be kind and be open'
 
-const COMMUNITY_SANCTUARY_RULE_2 = 'No unsolicited medical advice'
+export const COMMUNITY_SANCTUARY_RULE_2 = 'No unsolicited medical advice'
 
-const COMMUNITY_SANCTUARY_RULE_3 = 'Protect user anonymity'
+export const COMMUNITY_SANCTUARY_RULE_3 = 'Protect user anonymity'
 
-const COMMUNITY_SANCTUARY_READ_GUIDELINES = 'Read Guidelines'
+export const COMMUNITY_SANCTUARY_READ_GUIDELINES = 'Read Guidelines'
 
-const COMMUNITY_TRENDING_TOPICS_TITLE = 'Trending Topics'
+export const COMMUNITY_TRENDING_TOPICS_TITLE = 'Trending Topics'
 
-const COMMUNITY_TRENDING_TOPICS = [
+export const COMMUNITY_TRENDING_TOPICS = [
     '#DailyGratitude',
     '#SobrietyTips',
     '#HealthyHabits',
@@ -119,11 +119,11 @@ const COMMUNITY_TRENDING_TOPICS = [
     '#SleepHygiene',
 ]
 
-const COMMUNITY_ACTIVITY_TITLE = 'Community'
+export const COMMUNITY_ACTIVITY_TITLE = 'Community'
 
-const COMMUNITY_ACTIVITY_VIEW_ALL = 'View All'
+export const COMMUNITY_ACTIVITY_VIEW_ALL = 'View All'
 
-const COMMUNITY_ACTIVITY_LIST = [
+export const COMMUNITY_ACTIVITY_LIST = [
     {
         id: 1,
         user: 'Sarah',
@@ -149,32 +149,3 @@ const COMMUNITY_ACTIVITY_LIST = [
         avatarBg: 'bg-emerald-100 text-emerald-600',
     },
 ]
-
-export {
-    COMMUNITY_ACTIVITY_LIST,
-    COMMUNITY_ACTIVITY_TITLE,
-    COMMUNITY_ACTIVITY_VIEW_ALL,
-    COMMUNITY_BROWSE_CATEGORIES,
-    COMMUNITY_CATEGORIES,
-    COMMUNITY_MENTORS,
-    COMMUNITY_MENTORS_CHAT,
-    COMMUNITY_MENTORS_TITLE,
-    COMMUNITY_NEW_POST_BUTTON,
-    COMMUNITY_POST_DEFAULT_TAB,
-    COMMUNITY_POST_VIDEO_DURATION,
-    COMMUNITY_POSTED_BY,
-    COMMUNITY_POSTS,
-    COMMUNITY_REPLIES_LABEL,
-    COMMUNITY_SANCTUARY_DESCRIPTION,
-    COMMUNITY_SANCTUARY_READ_GUIDELINES,
-    COMMUNITY_SANCTUARY_RULE_1,
-    COMMUNITY_SANCTUARY_RULE_2,
-    COMMUNITY_SANCTUARY_RULE_3,
-    COMMUNITY_SANCTUARY_TITLE,
-    COMMUNITY_SAVE,
-    COMMUNITY_SHARE,
-    COMMUNITY_TABS,
-    COMMUNITY_TRENDING_TOPICS,
-    COMMUNITY_TRENDING_TOPICS_TITLE,
-    COMMUNITY_VIEW_ALL,
-}

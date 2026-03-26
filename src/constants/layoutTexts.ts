@@ -1,26 +1,15 @@
-const HEADER_SEARCH_PLACEHOLDER = 'Search...'
+export const HEADER_SEARCH_PLACEHOLDER = 'Search...'
 
-const NOTIFICATIONS_ARIA = 'Notifications'
+export const NOTIFICATIONS_ARIA = 'Notifications'
 
-const HEADER_HEALTH_OVERVIEW = 'Health Overview'
+export const HEADER_HEALTH_OVERVIEW = 'Health Overview'
 
-const HEADER_AI_CHAT = 'AI Chat'
+export const HEADER_AI_CHAT = 'AI Chat'
 
-const HEADER_SAFE_SPACE = 'Safe Space'
+export const HEADER_SAFE_SPACE = 'Safe Space'
 
-const HEADER_AVATAR_INITIALS = 'AR'
+export const HEADER_AVATAR_INITIALS = 'AR'
 
-const HEADER_AVATAR_ALT = 'Alex Rivera'
+export const HEADER_AVATAR_ALT = 'Alex Rivera'
 
-const HEADER_NOTIFICATION_BADGE_COUNT = '3'
-
-export {
-    HEADER_AI_CHAT,
-    HEADER_AVATAR_ALT,
-    HEADER_AVATAR_INITIALS,
-    HEADER_HEALTH_OVERVIEW,
-    HEADER_NOTIFICATION_BADGE_COUNT,
-    HEADER_SAFE_SPACE,
-    HEADER_SEARCH_PLACEHOLDER,
-    NOTIFICATIONS_ARIA,
-}
+export const HEADER_NOTIFICATION_BADGE_COUNT = '3'

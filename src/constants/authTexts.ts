@@ -1,8 +1,8 @@
-const AUTH_BRAND_NAME = 'HealEase'
+export const AUTH_BRAND_NAME = 'HealEase'
 
-const AUTH_BRAND_TAGLINE = 'THE DIGITAL SANCTUARY'
+export const AUTH_BRAND_TAGLINE = 'THE DIGITAL SANCTUARY'
 
-const LOGIN = {
+export const LOGIN = {
     title: 'Welcome Back',
     description: 'Please enter your details to access your sanctuary.',
     emailLabel: 'EMAIL ADDRESS',
@@ -13,27 +13,27 @@ const LOGIN = {
     loggingInButton: 'Logging in...',
     orContinueWith: 'OR CONTINUE WITH',
     googleButton: 'Google',
-    signupText: 'Don\'t have an account?',
+    signupText: `Don't have an account?`,
     signupLink: 'Sign Up',
     hipaaText: 'SECURE HIPAA COMPLIANT CONNECTION',
 }
 
-const FORGOT_PASSWORD = {
+export const FORGOT_PASSWORD = {
     title: 'Forgot password?',
-    description: 'Don\'t worry, it happens to the best of us. Enter the email address associated with your account and we\'ll send you a link to reset your password.',
+    description: `Don't worry, it happens to the best of us. Enter the email address associated with your account and we'll send you a link to reset your password.`,
     emailLabel: 'EMAIL ADDRESS',
     emailPlaceholder: 'name@example.com',
     submitButton: 'Send Reset Link',
     sendingButton: 'Sending...',
     backButton: 'Back to Login',
     checkEmailTitle: 'Check your email',
-    checkEmailDesc: 'We\'ve sent a password reset link to',
+    checkEmailDesc: `We've sent a password reset link to`,
     supportLink: 'support team',
     supportText: 'If you no longer have access to your email, please contact our',
     supportVerification: 'for identity verification.',
 }
 
-const RESET_PASSWORD = {
+export const RESET_PASSWORD = {
     title: 'Create New Password',
     description: 'Choose a secure password to regain access to your recovery dashboard.',
     passwordLabel: 'NEW PASSWORD',
@@ -46,12 +46,4 @@ const RESET_PASSWORD = {
     backButton: 'Back to login',
     troubleText: 'Having trouble?',
     supportLink: 'Contact Health Support',
-}
-
-export {
-    AUTH_BRAND_NAME,
-    AUTH_BRAND_TAGLINE,
-    FORGOT_PASSWORD,
-    LOGIN,
-    RESET_PASSWORD,
 }

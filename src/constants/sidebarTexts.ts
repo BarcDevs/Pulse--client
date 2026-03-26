@@ -1,4 +1,4 @@
-const SIDEBAR_MAIN_NAV = [
+export const SIDEBAR_MAIN_NAV = [
     {
         id: 'dashboard',
         label: 'Dashboard',
@@ -31,7 +31,7 @@ const SIDEBAR_MAIN_NAV = [
     },
 ]
 
-const SIDEBAR_BOTTOM_NAV = [
+export const SIDEBAR_BOTTOM_NAV = [
     {
         id: 'profile',
         label: 'Profile',
@@ -44,16 +44,8 @@ const SIDEBAR_BOTTOM_NAV = [
     },
 ]
 
-const SIDEBAR_USER_NAME = 'Alex Rivera'
+export const SIDEBAR_USER_NAME = 'Alex Rivera'
 
-const SIDEBAR_USER_STATUS = 'Day 142 in Recovery'
+export const SIDEBAR_USER_STATUS = 'Day 142 in Recovery'
 
-const SIDEBAR_AVATAR_ALT = 'Alex Rivera'
-
-export {
-    SIDEBAR_AVATAR_ALT,
-    SIDEBAR_BOTTOM_NAV,
-    SIDEBAR_MAIN_NAV,
-    SIDEBAR_USER_NAME,
-    SIDEBAR_USER_STATUS,
-}
+export const SIDEBAR_AVATAR_ALT = 'Alex Rivera'

@@ -1,6 +1,6 @@
-const PROFILE_SYSTEM_PRIVACY_TITLE = 'System & Privacy'
+export const PROFILE_SYSTEM_PRIVACY_TITLE = 'System & Privacy'
 
-const PROFILE_SYSTEM_PRIVACY_SETTINGS = [
+export const PROFILE_SYSTEM_PRIVACY_SETTINGS = [
     {
         title: 'Security',
         subtitle: 'Last updated 14 days',
@@ -18,8 +18,3 @@ const PROFILE_SYSTEM_PRIVACY_SETTINGS = [
         subtitle: 'San Francisco, CA',
     },
 ]
-
-export {
-    PROFILE_SYSTEM_PRIVACY_SETTINGS,
-    PROFILE_SYSTEM_PRIVACY_TITLE,
-}

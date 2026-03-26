@@ -1,16 +1,16 @@
-const PROGRESS_TITLE = 'Progress'
+export const PROGRESS_TITLE = 'Progress'
 
-const PROGRESS_SUBTITLE = 'Visualizing your recovery journey. Small steps lead to big milestones.'
+export const PROGRESS_SUBTITLE = 'Visualizing your recovery journey. Small steps lead to big milestones.'
 
-const PROGRESS_EXPORT_PDF = 'Export PDF'
+export const PROGRESS_EXPORT_PDF = 'Export PDF'
 
-const PROGRESS_SHARE_JOURNEY = 'Share Journey'
+export const PROGRESS_SHARE_JOURNEY = 'Share Journey'
 
-const PROGRESS_MILESTONES_TITLE = 'Milestones & Achievements'
+export const PROGRESS_MILESTONES_TITLE = 'Milestones & Achievements'
 
-const PROGRESS_MILESTONES_SEE_ALL = 'See All 15'
+export const PROGRESS_MILESTONES_SEE_ALL = 'See All 15'
 
-const PROGRESS_MILESTONES = [
+export const PROGRESS_MILESTONES = [
     {
         title: 'First Step',
         description: 'Completed first check-in',
@@ -33,126 +33,78 @@ const PROGRESS_MILESTONES = [
     },
 ]
 
-const PROGRESS_WELLNESS_LABEL = 'Weekly Wellness Average'
+export const PROGRESS_WELLNESS_LABEL = 'Weekly Wellness Average'
 
-const PROGRESS_WELLNESS_TITLE = 'Stable & Improving'
+export const PROGRESS_WELLNESS_TITLE = 'Stable & Improving'
 
-const PROGRESS_WELLNESS_TIMEFRAME = 'Last week vs. this week'
+export const PROGRESS_WELLNESS_TIMEFRAME = 'Last week vs. this week'
 
-const PROGRESS_WELLNESS_MOOD = 'Mood'
+export const PROGRESS_WELLNESS_MOOD = 'Mood'
 
-const PROGRESS_WELLNESS_PAIN = 'Pain'
+export const PROGRESS_WELLNESS_PAIN = 'Pain'
 
-const PROGRESS_WELLNESS_TRENDING_FLAT = 'trending_flat'
+export const PROGRESS_WELLNESS_TRENDING_FLAT = 'trending_flat'
 
-const PROGRESS_WELLNESS_IMPROVED = 'improved'
+export const PROGRESS_WELLNESS_IMPROVED = 'improved'
 
-const PROGRESS_RECOVERY_INSIGHT_LABEL = 'Recovery Insight'
+export const PROGRESS_RECOVERY_INSIGHT_LABEL = 'Recovery Insight'
 
-const PROGRESS_RECOVERY_INSIGHT_TITLE = 'Your pain levels are dropping concurrently with improved sleep consistency.'
+export const PROGRESS_RECOVERY_INSIGHT_TITLE = 'Your pain levels are dropping concurrently with improved sleep consistency.'
 
-const PROGRESS_RECOVERY_INSIGHT_DESCRIPTION = 'Data suggests that the 30-minute meditation you started 4 days ago is having a 12% positive impact on your morning mood scores. Keep this routine!'
+export const PROGRESS_RECOVERY_INSIGHT_DESCRIPTION = 'Data suggests that the 30-minute meditation you started 4 days ago is having a 12% positive impact on your morning mood scores. Keep this routine!'
 
-const PROGRESS_RECOVERY_INSIGHT_KEEP = 'Keep One'
+export const PROGRESS_RECOVERY_INSIGHT_KEEP = 'Keep One'
 
-const PROGRESS_RECOVERY_INSIGHT_ACKNOWLEDGE = 'Acknowledge'
+export const PROGRESS_RECOVERY_INSIGHT_ACKNOWLEDGE = 'Acknowledge'
 
-const PROGRESS_STATS_STREAK_LABEL = 'Current Streak'
+export const PROGRESS_STATS_STREAK_LABEL = 'Current Streak'
 
-const PROGRESS_STATS_STREAK_UNIT = 'days'
+export const PROGRESS_STATS_STREAK_UNIT = 'days'
 
-const PROGRESS_STATS_STREAK_BEST_PREFIX = 'Personal best:'
+export const PROGRESS_STATS_STREAK_BEST_PREFIX = 'Personal best:'
 
-const PROGRESS_STATS_STREAK_BEST_VALUE = '24 days'
+export const PROGRESS_STATS_STREAK_BEST_VALUE = '24 days'
 
-const PROGRESS_STATS_MILESTONES_LABEL = 'Total Milestones'
+export const PROGRESS_STATS_MILESTONES_LABEL = 'Total Milestones'
 
-const PROGRESS_STATS_MILESTONES_UNIT = 'badges'
+export const PROGRESS_STATS_MILESTONES_UNIT = 'badges'
 
-const PROGRESS_STATS_MILESTONES_NEXT_PREFIX = 'Next:'
+export const PROGRESS_STATS_MILESTONES_NEXT_PREFIX = 'Next:'
 
-const PROGRESS_STATS_MILESTONES_NEXT_VALUE = 'Mind/Body Precision, 6 days'
+export const PROGRESS_STATS_MILESTONES_NEXT_VALUE = 'Mind/Body Precision, 6 days'
 
-const PROGRESS_INSIGHT_LABEL = 'AI RECOVERY INSIGHT'
+export const PROGRESS_INSIGHT_LABEL = 'AI RECOVERY INSIGHT'
 
-const PROGRESS_INSIGHT_TITLE = 'Your pain levels are dropping concurrently with improved sleep consistency.'
+export const PROGRESS_INSIGHT_TITLE = 'Your pain levels are dropping concurrently with improved sleep consistency.'
 
-const PROGRESS_INSIGHT_DESCRIPTION = 'Data suggests that the 15-minute meditation you started 4 days ago is having a 12% positive impact on your morning mood scores. Keep this routine!'
+export const PROGRESS_INSIGHT_DESCRIPTION = 'Data suggests that the 15-minute meditation you started 4 days ago is having a 12% positive impact on your morning mood scores. Keep this routine!'
 
-const PROGRESS_INSIGHT_BUTTON_PRIMARY = 'Keep Going'
+export const PROGRESS_INSIGHT_BUTTON_PRIMARY = 'Keep Going'
 
-const PROGRESS_INSIGHT_BUTTON_SECONDARY = 'Acknowledge'
+export const PROGRESS_INSIGHT_BUTTON_SECONDARY = 'Acknowledge'
 
-const PROGRESS_STATS_CURRENT_STREAK_LABEL = 'CURRENT STREAK'
+export const PROGRESS_STATS_CURRENT_STREAK_LABEL = 'CURRENT STREAK'
 
-const PROGRESS_STATS_CURRENT_STREAK_UNIT = 'days'
+export const PROGRESS_STATS_CURRENT_STREAK_UNIT = 'days'
 
-const PROGRESS_STATS_TOTAL_BADGES_LABEL = 'TOTAL BADGES'
+export const PROGRESS_STATS_TOTAL_BADGES_LABEL = 'TOTAL BADGES'
 
-const PROGRESS_STATS_TOTAL_BADGES_UNIT = 'badges'
+export const PROGRESS_STATS_TOTAL_BADGES_UNIT = 'badges'
 
-const PROGRESS_STATS_WEEKLY_SCORE_BADGE = 'WEEKLY MOOD AVERAGE'
+export const PROGRESS_STATS_WEEKLY_SCORE_BADGE = 'WEEKLY MOOD AVERAGE'
 
-const PROGRESS_STATS_WEEKLY_SCORE_TITLE = 'Stable & Improving'
+export const PROGRESS_STATS_WEEKLY_SCORE_TITLE = 'Stable & Improving'
 
-const PROGRESS_STATS_WEEKLY_SCORE_MOOD_LABEL = 'MOOD SCORE'
+export const PROGRESS_STATS_WEEKLY_SCORE_MOOD_LABEL = 'MOOD SCORE'
 
-const PROGRESS_STATS_WEEKLY_SCORE_MOOD_VALUE = '6.2 / 10'
+export const PROGRESS_STATS_WEEKLY_SCORE_MOOD_VALUE = '6.2 / 10'
 
-const PROGRESS_STATS_WEEKLY_SCORE_TREND = 'trending_flat'
+export const PROGRESS_STATS_WEEKLY_SCORE_TREND = 'trending_flat'
 
-const PROGRESS_STATS_WEEKLY_SCORE_TIMEFRAME = 'Last week vs. this week'
+export const PROGRESS_STATS_WEEKLY_SCORE_TIMEFRAME = 'Last week vs. this week'
 
-const PROGRESS_STATS_WEEKLY_SCORE_PREVIOUS_VALUE = '7.8 / 10'
+export const PROGRESS_STATS_WEEKLY_SCORE_PREVIOUS_VALUE = '7.8 / 10'
 
-const PROGRESS_STATS_AI_SUMMARY_LABEL = 'AI SUMMARY'
+export const PROGRESS_STATS_AI_SUMMARY_LABEL = 'AI SUMMARY'
 
-const PROGRESS_STATS_AI_SUMMARY_TEXT = 'Your recovery trajectory shows consistent improvement over the past 2 weeks.'
-
-export {
-    PROGRESS_EXPORT_PDF,
-    PROGRESS_INSIGHT_BUTTON_PRIMARY,
-    PROGRESS_INSIGHT_BUTTON_SECONDARY,
-    PROGRESS_INSIGHT_DESCRIPTION,
-    PROGRESS_INSIGHT_LABEL,
-    PROGRESS_INSIGHT_TITLE,
-    PROGRESS_MILESTONES,
-    PROGRESS_MILESTONES_SEE_ALL,
-    PROGRESS_MILESTONES_TITLE,
-    PROGRESS_RECOVERY_INSIGHT_ACKNOWLEDGE,
-    PROGRESS_RECOVERY_INSIGHT_DESCRIPTION,
-    PROGRESS_RECOVERY_INSIGHT_KEEP,
-    PROGRESS_RECOVERY_INSIGHT_LABEL,
-    PROGRESS_RECOVERY_INSIGHT_TITLE,
-    PROGRESS_SHARE_JOURNEY,
-    PROGRESS_STATS_AI_SUMMARY_LABEL,
-    PROGRESS_STATS_AI_SUMMARY_TEXT,
-    PROGRESS_STATS_CURRENT_STREAK_LABEL,
-    PROGRESS_STATS_CURRENT_STREAK_UNIT,
-    PROGRESS_STATS_MILESTONES_LABEL,
-    PROGRESS_STATS_MILESTONES_NEXT_PREFIX,
-    PROGRESS_STATS_MILESTONES_NEXT_VALUE,
-    PROGRESS_STATS_MILESTONES_UNIT,
-    PROGRESS_STATS_STREAK_BEST_PREFIX,
-    PROGRESS_STATS_STREAK_BEST_VALUE,
-    PROGRESS_STATS_STREAK_LABEL,
-    PROGRESS_STATS_STREAK_UNIT,
-    PROGRESS_STATS_TOTAL_BADGES_LABEL,
-    PROGRESS_STATS_TOTAL_BADGES_UNIT,
-    PROGRESS_STATS_WEEKLY_SCORE_BADGE,
-    PROGRESS_STATS_WEEKLY_SCORE_MOOD_LABEL,
-    PROGRESS_STATS_WEEKLY_SCORE_MOOD_VALUE,
-    PROGRESS_STATS_WEEKLY_SCORE_PREVIOUS_VALUE,
-    PROGRESS_STATS_WEEKLY_SCORE_TIMEFRAME,
-    PROGRESS_STATS_WEEKLY_SCORE_TITLE,
-    PROGRESS_STATS_WEEKLY_SCORE_TREND,
-    PROGRESS_SUBTITLE,
-    PROGRESS_TITLE,
-    PROGRESS_WELLNESS_IMPROVED,
-    PROGRESS_WELLNESS_LABEL,
-    PROGRESS_WELLNESS_MOOD,
-    PROGRESS_WELLNESS_PAIN,
-    PROGRESS_WELLNESS_TIMEFRAME,
-    PROGRESS_WELLNESS_TITLE,
-    PROGRESS_WELLNESS_TRENDING_FLAT,
-}
+export const PROGRESS_STATS_AI_SUMMARY_TEXT = 'Your recovery trajectory shows consistent improvement over the past 2 weeks.'
