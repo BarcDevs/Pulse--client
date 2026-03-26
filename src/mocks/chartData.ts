@@ -46,44 +46,6 @@ export const WEEKLY_CHART_DATA = [
     }
 ]
 
-export const MOOD_CHART_DATA = [
-    {
-        date: 'Dec 1',
-        actual: 5,
-        target: 7
-    },
-    {
-        date: 'Dec 2',
-        actual: 6,
-        target: 7
-    },
-    {
-        date: 'Dec 3',
-        actual: 7,
-        target: 7
-    },
-    {
-        date: 'Dec 4',
-        actual: 6,
-        target: 7
-    },
-    {
-        date: 'Dec 5',
-        actual: 8,
-        target: 7
-    },
-    {
-        date: 'Dec 6',
-        actual: 7,
-        target: 7
-    },
-    {
-        date: 'Dec 7',
-        actual: 8,
-        target: 7
-    }
-]
-
 export const PATTERNS_SOCIAL_DATA = [
     { day: 'Mon', value: 4 },
     { day: 'Tue', value: 6 },
@@ -93,36 +55,6 @@ export const PATTERNS_SOCIAL_DATA = [
 ]
 
 export const WEEKLY_CHART_VALUES = [6, 5, 7, 9, 6, 7, 8]
-
-export const MOOD_TREND_CHART_DATA = [
-    { date: 'Mon', actual: 5, target: 6 },
-    { date: 'Tue', actual: 6, target: 6 },
-    { date: 'Wed', actual: 5.5, target: 6 },
-    { date: 'Thu', actual: 7, target: 6 },
-    { date: 'Fri', actual: 6.5, target: 6 },
-    { date: 'Sat', actual: 8, target: 6 },
-    { date: 'Sun', actual: 7.5, target: 6 }
-]
-
-export const PAIN_CHART_DATA = [
-    { date: 'Mon', actual: 6 },
-    { date: 'Tue', actual: 5 },
-    { date: 'Wed', actual: 5.5 },
-    { date: 'Thu', actual: 4 },
-    { date: 'Fri', actual: 3.5 },
-    { date: 'Sat', actual: 3 },
-    { date: 'Sun', actual: 3 }
-]
-
-export const PAIN_INTENSITY_CHART_DATA = [
-    { date: 'Mon', actual: 2 },
-    { date: 'Tue', actual: 3 },
-    { date: 'Wed', actual: 2.5 },
-    { date: 'Thu', actual: 4 },
-    { date: 'Fri', actual: 3 },
-    { date: 'Sat', actual: 2 },
-    { date: 'Sun', actual: 2.5 }
-]
 
 export const WEEKLY_CHART_DATA_DERIVED =
     CHART_DAYS.map((day, index) => ({

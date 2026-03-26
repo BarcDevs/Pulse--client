@@ -17,6 +17,8 @@ export type Language = {
 
 export type Role = 'USER' | 'ADMIN'
 
+export type Theme = 'light' | 'dark'
+
 export type User = {
     id: string
     firstName: string

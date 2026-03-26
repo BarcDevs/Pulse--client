@@ -52,7 +52,7 @@ Lightweight, supportive insights generated from check-in patterns help detect tr
 | **Routing** | Next.js App Router (file-based)                       |
 | **Forms** | react-hook-form, Zod                                  |
 | **HTTP** | Axios with CSRF interceptors                          |
-| **State** | Redux Toolkit, TanStack Query, Next.js Context        |
+| **State** | TanStack Query, Next.js Context                       |
 | **Deployment** | Render (current), AWS (future production)             |
 
 **Note**: This is a frontend-only repository. The backend API runs separately.
@@ -144,7 +144,7 @@ Code follows [CLAUDE.md](./CLAUDE.md) conventions:
 - Single quotes, no semicolons, 4-space indentation
 - shadcn/ui for UI components
 - Centralized API client with CSRF protection
-- Redux for global state
+- TanStack Query for state management
 
 ---
 
