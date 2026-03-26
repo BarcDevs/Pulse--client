@@ -1,11 +1,11 @@
 'use client'
 
-import { useState } from 'react'
+import {useState} from 'react'
 
-import { CheckInActivities } from './Activities'
-import { CheckInJournal } from './Journal'
-import { CheckInQuote } from './Quote'
-import { CheckInSliders } from './Sliders'
+import {CheckInActivities} from './ActivitySelector'
+import {CheckInJournal} from './Journal'
+import {CheckInQuote} from './Quote'
+import {CheckInSliders} from './Sliders'
 
 export const CheckInContent = () => {
     const [mood, setMood] = useState(5)
@@ -15,7 +15,7 @@ export const CheckInContent = () => {
 
     return (
         <div className={'space-y-6 p-6'}>
-            <CheckInQuote />
+            <CheckInQuote/>
             <CheckInSliders
                 mood={mood}
                 setMood={setMood}
