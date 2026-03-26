@@ -2,13 +2,12 @@
 
 import {useState} from 'react'
 
-import {ArrowUpRight, TrendingUp} from 'lucide-react'
-
-import {Button} from '@/components/ui/button'
-
-import {cn} from '@/lib/utils'
-
 import * as InsightsComponentTexts from '@/constants/insightsComponentTexts'
+
+import {CorrelationCard} from './behavioral-patterns/CorrelationCard'
+import {ObservationCard} from './behavioral-patterns/ObservationCard'
+import {PredictionCard} from './behavioral-patterns/PredictionCard'
+import {BehavioralPatternsTabs} from './BehavioralPatternsTabs'
 
 export const BehavioralPatterns = () => {
     const [activeTab, setActiveTab] =
@@ -20,110 +19,16 @@ export const BehavioralPatterns = () => {
                 <h3 className={'text-lg font-semibold text-foreground'}>
                     {InsightsComponentTexts.INSIGHTS_BEHAVIORAL_PATTERNS_TITLE}
                 </h3>
-                <div className={'flex gap-1 rounded-lg bg-surface-section p-1'}>
-                    <Button
-                        onClick={() => setActiveTab('7days')}
-                        variant={
-                            activeTab === '7days'
-                                ? 'default'
-                                : 'ghost'
-                        }
-                        size={'sm'}
-                        className={cn(
-                            'rounded-md text-xs font-medium',
-                            activeTab === '7days'
-                                ? 'bg-surface-card text-foreground shadow-sm'
-                                : 'text-muted-foreground hover:text-foreground'
-                        )}
-                    >
-                        {InsightsComponentTexts.INSIGHTS_BEHAVIORAL_PATTERNS_TAB_7DAYS}
-                    </Button>
-                    <Button
-                        onClick={() => setActiveTab('30days')}
-                        variant={
-                            activeTab === '30days'
-                                ? 'default'
-                                : 'ghost'
-                        }
-                        size={'sm'}
-                        className={cn(
-                            'rounded-md text-xs font-medium',
-                            activeTab === '30days'
-                                ? 'bg-primary text-primary-foreground'
-                                : 'text-muted-foreground hover:text-foreground'
-                        )}
-                    >
-                        {InsightsComponentTexts.INSIGHTS_BEHAVIORAL_PATTERNS_TAB_30DAYS}
-                    </Button>
-                </div>
+                <BehavioralPatternsTabs
+                    activeTab={activeTab}
+                    onTabChange={setActiveTab}
+                />
             </div>
 
             <div className={'grid grid-cols-1 md:grid-cols-3 gap-6'}>
-                {/* Correlation Card */}
-                <div className={'space-y-3'}>
-                    <div className={'flex items-center gap-2'}>
-            <span className={'text-xs font-medium text-muted-foreground uppercase tracking-wider'}>
-              {InsightsComponentTexts.INSIGHTS_BEHAVIORAL_PATTERNS_CORRELATION_LABEL}
-            </span>
-                        <ArrowUpRight className={'h-3 w-3 text-muted-foreground'}/>
-                    </div>
-                    <h4 className={'text-base font-medium text-foreground'}>
-                        {InsightsComponentTexts.INSIGHTS_BEHAVIORAL_PATTERNS_CORRELATION_TITLE}
-                    </h4>
-                    <p className={'text-sm text-muted-foreground leading-relaxed'}>
-                        {InsightsComponentTexts.INSIGHTS_BEHAVIORAL_PATTERNS_CORRELATION_DESCRIPTION}
-                    </p>
-                    {/* Mini bar chart */}
-                    <div className={'flex items-end gap-1 h-12 mt-2'}>
-                        {[40, 65, 50, 80, 45, 70, 55].map((height, i) => (
-                            <div
-                                key={i}
-                                className={'flex-1 bg-primary/20 rounded-t'}
-                                style={{ height: `${height}%` }}
-                            />
-                        ))}
-                    </div>
-                </div>
-
-                {/* Observation Card */}
-                <div className={'space-y-3'}>
-                    <div className={'flex items-center gap-2'}>
-            <span className={'text-xs font-medium text-muted-foreground uppercase tracking-wider'}>
-              {InsightsComponentTexts.INSIGHTS_BEHAVIORAL_PATTERNS_OBSERVATION_LABEL}
-            </span>
-                    </div>
-                    <h4 className={'text-base font-medium text-foreground'}>
-                        {InsightsComponentTexts.INSIGHTS_BEHAVIORAL_PATTERNS_OBSERVATION_TITLE}
-                    </h4>
-                    <p className={'text-sm text-muted-foreground leading-relaxed'}>
-                        {InsightsComponentTexts.INSIGHTS_BEHAVIORAL_PATTERNS_OBSERVATION_DESCRIPTION}
-                    </p>
-                    <div className={'mt-4'}>
-                        <div className={'text-3xl font-bold text-foreground'}>
-                            {InsightsComponentTexts.INSIGHTS_BEHAVIORAL_PATTERNS_OBSERVATION_STAT}
-                        </div>
-                        <p className={'text-xs text-muted-foreground'}>
-                            {InsightsComponentTexts.INSIGHTS_BEHAVIORAL_PATTERNS_OBSERVATION_STAT_LABEL}
-                        </p>
-                    </div>
-                </div>
-
-                {/* AI Prediction Card */}
-                <div className={'rounded-xl bg-primary p-5 text-primary-foreground'}>
-          <span className={'text-xs font-medium uppercase tracking-wider opacity-80'}>
-            {InsightsComponentTexts.INSIGHTS_BEHAVIORAL_PATTERNS_PREDICTION_LABEL}
-          </span>
-                    <h4 className={'mt-2 text-base font-medium'}>
-                        {InsightsComponentTexts.INSIGHTS_BEHAVIORAL_PATTERNS_PREDICTION_TITLE}
-                    </h4>
-                    <p className={'mt-2 text-sm opacity-80 leading-relaxed'}>
-                        {InsightsComponentTexts.INSIGHTS_BEHAVIORAL_PATTERNS_PREDICTION_DESCRIPTION}
-                    </p>
-                    <div className={'mt-4 flex items-center gap-2 text-xs'}>
-                        <TrendingUp className={'h-4 w-4'}/>
-                        {InsightsComponentTexts.INSIGHTS_BEHAVIORAL_PATTERNS_PREDICTION_CONFIDENCE}
-                    </div>
-                </div>
+                <CorrelationCard/>
+                <ObservationCard/>
+                <PredictionCard/>
             </div>
         </div>
     )
