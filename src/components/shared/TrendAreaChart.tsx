@@ -8,162 +8,139 @@ import {
     YAxis,
 } from 'recharts'
 
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import {
+    Card,
+    CardContent,
+    CardHeader,
+    CardTitle
+} from '@/components/ui/card'
 
-import { CHART_TIME_PERIODS } from '@/constants/sharedComponentTexts'
+import {ChartLegend} from './ChartLegend'
+import {ChartTabs} from './ChartTabs'
 
-type TrendAreaChartProps = {
-    title: string
-    subtitle: string
+type ChartConfig = {
     data: Array<Record<string, unknown>>
     dataKey: string
     targetKey?: string
+}
+
+type StyleConfig = {
     color: string
     gradientId: string
-    legendLabel: string
+}
+
+type LegendConfig = {
+    label: string
     targetLabel?: string
 }
 
+type HeaderConfig = {
+    title: string
+    subtitle: string
+}
+
+type TrendAreaChartProps = {
+    header: HeaderConfig
+    chart: ChartConfig
+    style: StyleConfig
+    legend: LegendConfig
+}
+
 export const TrendAreaChart = ({
-    title,
-    subtitle,
-    data,
-    dataKey,
-    targetKey,
-    color,
-    gradientId,
-    legendLabel,
-    targetLabel = 'Weekly Target',
+    header,
+    chart,
+    style,
+    legend,
 }: TrendAreaChartProps) => (
-        <Card className={'border-0 shadow-sm'}>
-            <CardHeader className={'flex flex-row items-center justify-between pb-2'}>
-                <CardTitle className={'text-lg font-semibold'}>
-                    {title}
-                </CardTitle>
-                <Tabs defaultValue={'weekly'} className={'w-auto'}>
-                    <TabsList className={'h-8 bg-muted'}>
-                        <TabsTrigger
-                            value={'daily'}
-                            className={'h-6 px-3 text-xs'}
-                        >
-                            {CHART_TIME_PERIODS.daily}
-                        </TabsTrigger>
-                        <TabsTrigger
-                            value={'weekly'}
-                            className={'h-6 px-3 text-xs'}
-                        >
-                            {CHART_TIME_PERIODS.weekly}
-                        </TabsTrigger>
-                        <TabsTrigger
-                            value={'monthly'}
-                            className={'h-6 px-3 text-xs'}
-                        >
-                            {CHART_TIME_PERIODS.monthly}
-                        </TabsTrigger>
-                    </TabsList>
-                </Tabs>
-            </CardHeader>
-            <CardContent>
-                <p className={'mb-4 text-sm text-muted-foreground'}>
-                    {subtitle}
-                </p>
-                <div className={'h-[200px] w-full'}>
-                    <ResponsiveContainer width={'100%'} height={'100%'}>
-                        <AreaChart data={data}>
-                            <defs>
-                                <linearGradient
-                                    id={gradientId}
-                                    x1={'0'}
-                                    y1={'0'}
-                                    x2={'0'}
-                                    y2={'1'}
-                                >
-                                    <stop
-                                        offset={'5%'}
-                                        stopColor={color}
-                                        stopOpacity={0.3}
-                                    />
-                                    <stop
-                                        offset={'95%'}
-                                        stopColor={color}
-                                        stopOpacity={0}
-                                    />
-                                </linearGradient>
-                            </defs>
-                            <XAxis
-                                dataKey={'date'}
-                                axisLine={false}
-                                tickLine={false}
-                                tick={{
-                                    fill: 'var(--muted-foreground)',
-                                    fontSize: 12,
-                                }}
-                            />
-                            <YAxis
-                                domain={[0, 10]}
-                                axisLine={false}
-                                tickLine={false}
-                                tick={{
-                                    fill: 'var(--muted-foreground)',
-                                    fontSize: 12,
-                                }}
-                                width={30}
-                            />
-                            <Tooltip
-                                contentStyle={{
-                                    backgroundColor: 'var(--card)',
-                                    border: '1px solid var(--border)',
-                                    borderRadius: '8px',
-                                }}
-                            />
-                            <Area
-                                type={'monotone'}
-                                dataKey={dataKey}
-                                stroke={color}
-                                strokeWidth={2}
-                                fill={`url(#${gradientId})`}
-                            />
-                            {targetKey && (
-                                <Line
-                                    type={'monotone'}
-                                    dataKey={targetKey}
-                                    stroke={'var(--muted-foreground)'}
-                                    strokeDasharray={'5 5'}
-                                    strokeWidth={1}
-                                    dot={false}
-                                />
-                            )}
-                        </AreaChart>
-                    </ResponsiveContainer>
-                </div>
-                <div className={'mt-4 flex items-center gap-6'}>
-                    <div className={'flex items-center gap-2'}>
-                        <div
-                            className={'size-3 rounded-full'}
-                            style={{ backgroundColor: color }}
-                        />
-                        <span className={'text-sm text-muted-foreground'}>
-                            {legendLabel}
-                        </span>
-                    </div>
-                    {targetKey && (
-                        <div className={'flex items-center gap-2'}>
-                            <div
-                                className={
-                                    'h-0.5 w-4 border-t-2 border-dashed border-muted-foreground'
-                                }
-                            />
-                            <span
-                                className={
-                                    'text-sm text-muted-foreground'
-                                }
+    <Card className={'border-0 shadow-sm'}>
+        <CardHeader className={'flex flex-row items-center justify-between pb-2'}>
+            <CardTitle className={'text-lg font-semibold'}>
+                {header.title}
+            </CardTitle>
+            <ChartTabs defaultValue={'weekly'}/>
+        </CardHeader>
+        <CardContent>
+            <p className={'mb-4 text-sm text-muted-foreground'}>
+                {header.subtitle}
+            </p>
+            <div className={'h-50 w-full'}>
+                <ResponsiveContainer
+                    width={'100%'}
+                    height={'100%'}
+                >
+                    <AreaChart data={chart.data}>
+                        <defs>
+                            <linearGradient
+                                id={style.gradientId}
+                                x1={'0'}
+                                y1={'0'}
+                                x2={'0'}
+                                y2={'1'}
                             >
-                                {targetLabel}
-                            </span>
-                        </div>
-                    )}
-                </div>
-            </CardContent>
-        </Card>
-    )
+                                <stop
+                                    offset={'5%'}
+                                    stopColor={style.color}
+                                    stopOpacity={0.3}
+                                />
+                                <stop
+                                    offset={'95%'}
+                                    stopColor={style.color}
+                                    stopOpacity={0}
+                                />
+                            </linearGradient>
+                        </defs>
+                        <XAxis
+                            dataKey={'date'}
+                            axisLine={false}
+                            tickLine={false}
+                            tick={{
+                                fill: 'var(--muted-foreground)',
+                                fontSize: 12,
+                            }}
+                        />
+                        <YAxis
+                            domain={[0, 10]}
+                            axisLine={false}
+                            tickLine={false}
+                            tick={{
+                                fill: 'var(--muted-foreground)',
+                                fontSize: 12,
+                            }}
+                            width={30}
+                        />
+                        <Tooltip
+                            contentStyle={{
+                                backgroundColor: 'var(--card)',
+                                border: '1px solid var(--border)',
+                                borderRadius: '8px',
+                            }}
+                        />
+                        <Area
+                            type={'monotone'}
+                            dataKey={chart.dataKey}
+                            stroke={style.color}
+                            strokeWidth={2}
+                            fill={`url(#${style.gradientId})`}
+                        />
+                        {chart.targetKey && (
+                            <Line
+                                type={'monotone'}
+                                dataKey={chart.targetKey}
+                                stroke={'var(--muted-foreground)'}
+                                strokeDasharray={'5 5'}
+                                strokeWidth={1}
+                                dot={false}
+                            />
+                        )}
+                    </AreaChart>
+                </ResponsiveContainer>
+            </div>
+            <ChartLegend
+                color={style.color}
+                legendLabel={legend.label}
+                targetKey={chart.targetKey}
+                targetLabel={legend.targetLabel}
+            />
+        </CardContent>
+    </Card>
+)

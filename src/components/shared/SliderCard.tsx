@@ -29,11 +29,9 @@ export const SliderCard = ({
     <Card className={'border-0 shadow-sm'}>
         <CardContent className={'pt-6'}>
             <div className={'mb-4 flex items-center gap-3'}>
-                <div
-                    className={'flex size-10 items-center justify-center rounded-full'}
-                    style={{
-                        backgroundColor: `var(--${colorVar}-light)`
-                    }}
+                <div className={'flex size-10 items-center justify-center rounded-full'} style={{
+                    backgroundColor: `var(--${colorVar}-light)`
+                }}
                 >
                     <Icon
                         className={'size-5'}

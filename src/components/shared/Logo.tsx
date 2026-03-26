@@ -14,7 +14,7 @@ export const Logo = ({}) => (
                 alt={`${BRAND_NAME} Logo`}
                 width={40}
                 height={40}
-                className={'rounded-lg object-contain'}
+                className={'w-10 h-10 rounded-lg object-contain'}
             />
         </div>
 

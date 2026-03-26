@@ -1,9 +1,9 @@
-import { ReactNode } from 'react'
+import {LucideIcon} from 'lucide-react'
 
-import { Badge } from '@/components/ui/badge'
+import {ActivityTagsList} from './ActivityTagsList'
 
 type ActivityItemProps = {
-    icon: ReactNode
+    icon: LucideIcon
     title: string
     subtitle: string
     tags: string[]
@@ -11,54 +11,25 @@ type ActivityItemProps = {
 }
 
 export const ActivityItem = ({
-    icon,
+    icon: Icon,
     title,
     subtitle,
     tags,
-    variant = 'default',
+    variant = 'default'
 }: ActivityItemProps) => {
     const baseClasses = 'flex items-start gap-4 rounded-xl p-4'
-    const containerClasses = variant === 'card'
-        ? `${baseClasses} bg-surface-section`
-        : `${baseClasses} flex items-center gap-4`
+    const containerClasses = variant === 'card' ?
+        `${baseClasses} bg-surface-section` :
+        `${baseClasses} flex items-center gap-4`
 
-    const iconContainerClasses = variant === 'card'
-        ? 'flex size-10 shrink-0 items-center justify-center rounded-xl bg-primary-light'
-        : 'h-12 w-12 rounded-xl bg-surface-card flex items-center justify-center'
-
-    const tagContent = variant === 'card'
-        ? (
-            <div className={'flex flex-wrap gap-1'}>
-                {tags.map((tag) => (
-                    <Badge
-                        key={tag}
-                        variant={'outline'}
-                        className={'border-border text-xs'}
-                    >
-                        {tag}
-                    </Badge>
-                ))}
-            </div>
-        )
-        : (
-            <div className={'flex gap-2'}>
-                {tags.map((tag) => (
-                    <span
-                        key={tag}
-                        className={
-                            'px-3 py-1 rounded-full bg-surface-card text-xs font-medium text-muted-foreground'
-                        }
-                    >
-                        {tag}
-                    </span>
-                ))}
-            </div>
-        )
+    const iconContainerClasses = variant === 'card' ?
+        'flex size-10 shrink-0 items-center justify-center rounded-xl bg-primary-light' :
+        'h-12 w-12 rounded-xl bg-surface-card flex items-center justify-center'
 
     return (
         <div className={containerClasses}>
             <div className={iconContainerClasses}>
-                {icon}
+                <Icon className={'h-6 w-6 text-primary'}/>
             </div>
             <div className={'flex-1'}>
                 <h4 className={'font-medium text-foreground'}>
@@ -68,7 +39,10 @@ export const ActivityItem = ({
                     {subtitle}
                 </p>
             </div>
-            {tagContent}
+            <ActivityTagsList
+                tags={tags}
+                variant={variant}
+            />
         </div>
     )
 }
