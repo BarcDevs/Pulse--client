@@ -1,10 +1,10 @@
 import {Button} from '@/components/ui/button'
 
-import {cn} from '@/lib/utils'
-
 import {COMMUNITY_CATEGORIES_WITH_ICONS}
     from '@/constants/communityMaps'
 import * as CommunityTexts from '@/constants/communityTexts'
+
+import {CategoryCard} from './CategoryCard'
 
 export const Categories = () => (
     <div>
@@ -22,23 +22,15 @@ export const Categories = () => (
 
         <div className={'grid grid-cols-2 lg:grid-cols-4 gap-4'}>
             {COMMUNITY_CATEGORIES_WITH_ICONS.map((category) => (
-                <div
-                    key={category.id}
-                    className={'rounded-2xl bg-surface-card p-5 hover:shadow-md transition-shadow cursor-pointer'}
-                >
-                    <div className={cn('inline-flex h-12 w-12 items-center justify-center rounded-xl', category.color)}>
-                        <category.icon className={'h-6 w-6'}/>
-                    </div>
-                    <h3 className={'mt-3 font-medium text-foreground'}>
-                        {category.title}
-                    </h3>
-                    <p className={'mt-1 text-sm text-muted-foreground'}>
-                        {category.description}
-                    </p>
-                    <p className={'mt-2 text-xs text-primary font-medium'}>
-                        {category.count}
-                    </p>
-                </div>
+                <CategoryCard
+                    key={category.title}
+                    id={category.id+''}
+                    icon={<category.icon className={'h-6 w-6'}/>}
+                    color={category.color}
+                    title={category.title}
+                    description={category.description}
+                    count={category.count}
+                />
             ))}
         </div>
     </div>
