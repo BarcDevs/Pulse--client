@@ -10,7 +10,7 @@ const DashboardPage = () => (
             title={DashboardTexts.DASHBOARD_TITLE}
             subtitle={DashboardTexts.DASHBOARD_SUBTITLE}
         />
-        <DashboardContent />
+        <DashboardContent/>
     </AppShell>
 )
 

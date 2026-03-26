@@ -8,7 +8,7 @@ import {
 import Link from 'next/link'
 import {useRouter} from 'next/navigation'
 
-import {ArrowLeft, ArrowRight, Check} from 'lucide-react'
+import {ArrowLeft, ArrowRight} from 'lucide-react'
 
 import {FormInput} from '@/components/shared/FormInput'
 import {Logo} from '@/components/shared/Logo'
@@ -21,12 +21,12 @@ import {
     CardTitle,
 } from '@/components/ui/card'
 
-import {cn} from '@/lib/utils'
-
 import {RESET_PASSWORD} from '@/constants/authTexts'
 
 import authFormConfig from '@/config/schema/authForm'
 import {TIMINGS} from '@/config/timings'
+
+import {PasswordRequirementsList} from './PasswordRequirementsList'
 
 const ResetPasswordPage = () => {
     const router = useRouter()
@@ -98,51 +98,10 @@ const ResetPasswordPage = () => {
                             onChange={(e) => setConfirmPassword(e.target.value)}
                         />
 
-                        {/* Password Requirements */}
-                        <div className={'flex items-center gap-6 text-sm'}>
-                            <div className={'flex items-center gap-2'}>
-                                <div
-                                    className={cn(
-                                        'flex size-5 items-center justify-center rounded-full',
-                                        hasMinLength
-                                            ? 'bg-secondary text-white'
-                                            : 'bg-muted'
-                                    )}
-                                >
-                                    {hasMinLength && <Check className={'size-3'}/>}
-                                </div>
-                                <span
-                                    className={
-                                        hasMinLength
-                                            ? 'text-secondary'
-                                            : 'text-muted-foreground'
-                                    }
-                                >
-                                    {RESET_PASSWORD.minLengthText}
-                                </span>
-                            </div>
-                            <div className={'flex items-center gap-2'}>
-                                <div
-                                    className={cn(
-                                        'flex size-5 items-center justify-center rounded-full',
-                                        hasSpecialChar
-                                            ? 'bg-secondary text-white'
-                                            : 'bg-muted'
-                                    )}
-                                >
-                                    {hasSpecialChar && <Check className={'size-3'}/>}
-                                </div>
-                                <span
-                                    className={
-                                        hasSpecialChar
-                                            ? 'text-secondary'
-                                            : 'text-muted-foreground'
-                                    }
-                                >
-                                    {RESET_PASSWORD.specialCharText}
-                                </span>
-                            </div>
-                        </div>
+                        <PasswordRequirementsList
+                            hasMinLength={hasMinLength}
+                            hasSpecialChar={hasSpecialChar}
+                        />
 
                         <Button
                             type={'submit'}

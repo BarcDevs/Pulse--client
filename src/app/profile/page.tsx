@@ -12,7 +12,7 @@ const ProfilePage = () => (
                 PageSubtitles.PROFILE_PAGE_SUBTITLE
             }
         />
-        <ProfileContent />
+        <ProfileContent/>
     </AppShell>
 )
 

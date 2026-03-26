@@ -6,8 +6,8 @@ import {HEADER_HEALTH_OVERVIEW} from '@/constants/layoutTexts'
 
 const DailyCheckInPage = () => (
     <AppShell>
-        <Header title={HEADER_HEALTH_OVERVIEW} />
-        <CheckInContent />
+        <Header title={HEADER_HEALTH_OVERVIEW}/>
+        <CheckInContent/>
     </AppShell>
 )
 

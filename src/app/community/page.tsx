@@ -12,22 +12,16 @@ const CommunityPage = () => (
     <AppShell>
         <Header
             title={PageSubtitles.COMMUNITY_PAGE_TITLE}
-            subtitle={
-                PageSubtitles.COMMUNITY_PAGE_SUBTITLE
-            }
+            subtitle={PageSubtitles.COMMUNITY_PAGE_SUBTITLE}
             showSearch
             actions={
-                <Button
-                    className={'bg-primary hover:bg-primary/90 text-primary-foreground'}
-                >
-                    <Plus
-                        className={'mr-2 h-4 w-4'}
-                    />
+                <Button className={'bg-primary hover:bg-primary/90 text-primary-foreground'}>
+                    <Plus className={'mr-2 h-4 w-4'}/>
                     {CommunityTexts.COMMUNITY_NEW_POST_BUTTON}
                 </Button>
             }
         />
-        <CommunityContent />
+        <CommunityContent/>
     </AppShell>
 )
 

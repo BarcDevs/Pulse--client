@@ -10,7 +10,7 @@ const SettingsPage = () => (
             title={SettingsTexts.SETTINGS_TITLE}
             subtitle={SettingsTexts.SETTINGS_SUBTITLE}
         />
-        <SettingsContent />
+        <SettingsContent/>
     </AppShell>
 )
 

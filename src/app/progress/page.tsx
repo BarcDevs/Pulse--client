@@ -13,9 +13,7 @@ const ProgressPage = () => (
             title={ProgressTexts.PROGRESS_TITLE}
             subtitle={ProgressTexts.PROGRESS_SUBTITLE}
             actions={
-                <div
-                    className={'flex items-center gap-2'}
-                >
+                <div className={'flex items-center gap-2'}>
                     <Button
                         variant={'outline'}
                         size={'sm'}
@@ -43,7 +41,7 @@ const ProgressPage = () => (
                 </div>
             }
         />
-        <ProgressContent />
+        <ProgressContent/>
     </AppShell>
 )
 

@@ -5,7 +5,7 @@ import {useState} from 'react'
 import {Check} from 'lucide-react'
 
 import {AppHeader} from '@/components/AppHeader'
-import {CheckInActivities} from '@/components/checkIn/Activities'
+import {CheckInActivities} from '@/components/checkIn/ActivitySelector'
 import {CheckInJournal} from '@/components/checkIn/Journal'
 import {CheckInQuote} from '@/components/checkIn/Quote'
 import {CheckInSliders} from '@/components/checkIn/Sliders'
@@ -63,28 +63,19 @@ const CheckInPage = () => {
                         onChange={setJournalEntry}
                     />
 
-                    <div
-                        className={
-                            'mt-8 flex justify-center'
-                        }
-                    >
+                    <div className={'mt-8 flex justify-center'}>
                         <Button
                             onClick={handleSubmit}
                             size={'lg'}
-                            className={'min-w-[200px] bg-primary text-white hover:bg-primary/90'}
+                            className={'min-w-50 bg-primary text-white hover:bg-primary/90'}
                         >
                             <Check
-                                className={
-                                    'mr-2 size-5'
-                                }
-                            />
+                                className={'mr-2 size-5'}/>
                             {CheckInTexts.CHECK_IN_SUBMIT_BUTTON}
                         </Button>
                     </div>
 
-                    <p
-                        className={'mt-4 text-center text-xs text-muted-foreground'}
-                    >
+                    <p className={'mt-4 text-center text-xs text-muted-foreground'}>
                         {CheckInTexts.CHECK_IN_AUTOSAVE_STATUS}
                     </p>
 

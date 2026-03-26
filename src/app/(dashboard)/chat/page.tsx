@@ -63,14 +63,12 @@ const ChatPage = () => {
         <div className={'flex min-h-screen flex-col'}>
             <header className={'sticky top-0 z-10 flex h-16 items-center justify-between border-b border-border bg-surface-card px-4 md:px-6'}>
                 <div className={'flex items-center gap-4'}>
-                    <div>
-                        <h1 className={'text-lg font-semibold text-foreground'}>
-                            {ChatTexts.CHAT_PAGE_TITLE}
-                        </h1>
-                        <p className={'text-sm text-muted-foreground'}>
-                            {ChatTexts.CHAT_PAGE_SUBTITLE}
-                        </p>
-                    </div>
+                    <h1 className={'text-lg font-semibold text-foreground'}>
+                        {ChatTexts.CHAT_PAGE_TITLE}
+                    </h1>
+                    <p className={'text-sm text-muted-foreground'}>
+                        {ChatTexts.CHAT_PAGE_SUBTITLE}
+                    </p>
                 </div>
                 <Badge className={'gap-2 bg-secondary-light text-secondary'}>
                     <Shield className={'size-3'}/>
@@ -79,7 +77,6 @@ const ChatPage = () => {
             </header>
 
             <div className={'flex flex-1 overflow-hidden'}>
-                {/* Main Chat Area */}
                 <div className={'flex flex-1 flex-col'}>
                     <ChatMessages messages={messages}/>
                     <ChatInput
@@ -89,7 +86,6 @@ const ChatPage = () => {
                     />
                 </div>
 
-                {/* Right Panel */}
                 <ChatPanel/>
             </div>
         </div>
