@@ -1,5 +1,6 @@
-import {Sparkles, X} from 'lucide-react'
+import {Sparkles} from 'lucide-react'
 
+import {CloseButton} from '@/components/shared/ui/CloseButton'
 import {Button} from '@/components/ui/button'
 
 import * as ProgressTexts from '@/constants/progressTexts'
@@ -32,16 +33,8 @@ export const ProgressInsight = () => (
             </div>
         </div>
 
-        {/* Close button */}
-        <Button
-            variant={'ghost'}
-            size={'sm'}
-            className={'absolute right-4 top-4 h-6 w-6 p-0 text-white/60 hover:bg-white/10 hover:text-white'}
-        >
-            <X className={'size-5'}/>
-        </Button>
+        <CloseButton className={'absolute right-4 top-4 h-6 w-6 p-0 text-white/60 hover:bg-white/10 hover:text-white'}/>
 
-        {/* Decorative element */}
         <div className={'absolute -right-10 -bottom-10 opacity-10'}>
             <svg className={'size-64'} viewBox={'0 0 200 200'}>
                 <circle cx={'100'} cy={'100'} r={'80'} fill={'currentColor'}/>

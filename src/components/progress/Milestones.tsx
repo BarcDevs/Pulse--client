@@ -5,13 +5,14 @@ import {
     CardTitle
 } from '@/components/ui/card'
 
-import {cn} from '@/lib/utils'
-
-import {PROGRESS_MILESTONES_WITH_ICONS} from '@/constants/progressMaps'
+import {PROGRESS_MILESTONES_WITH_ICONS}
+    from '@/constants/progressMaps'
 import {
     PROGRESS_MILESTONES_SEE_ALL,
     PROGRESS_MILESTONES_TITLE
 } from '@/constants/progressTexts'
+
+import {MilestoneCard} from './MilestoneCard'
 
 export const ProgressMilestones = () => (
     <Card className={'mt-6 border-0 shadow-sm'}>
@@ -26,27 +27,15 @@ export const ProgressMilestones = () => (
         <CardContent>
             <div className={'grid gap-4 sm:grid-cols-2 lg:grid-cols-4'}>
                 {PROGRESS_MILESTONES_WITH_ICONS.map((milestone) => (
-                    <div
+                    <MilestoneCard
                         key={milestone.title}
-                        className={cn(
-                            'flex flex-col items-center rounded-xl p-6 text-center',
-                            milestone.achieved ?
-                                'bg-surface-section' :
-                                'bg-muted opacity-60'
-                        )}
-                    >
-                        <div
-                            className={cn('flex size-12 items-center justify-center rounded-xl', milestone.iconBg)}
-                        >
-                            <milestone.icon className={cn('size-6', milestone.iconColor)}/>
-                        </div>
-                        <h4 className={'mt-3 font-semibold text-foreground'}>
-                            {milestone.title}
-                        </h4>
-                        <p className={'mt-1 text-sm text-muted-foreground'}>
-                            {milestone.description}
-                        </p>
-                    </div>
+                        icon={milestone.icon}
+                        title={milestone.title}
+                        description={milestone.description}
+                        achieved={milestone.achieved}
+                        iconBg={milestone.iconBg}
+                        iconColor={milestone.iconColor}
+                    />
                 ))}
             </div>
         </CardContent>
