@@ -3,7 +3,6 @@
 import {
     Bar,
     BarChart,
-    Cell,
     ResponsiveContainer,
     XAxis,
     YAxis
@@ -28,6 +27,8 @@ import {
 } from '@/constants/dashboardTexts'
 
 import {WEEKLY_CHART_DATA_DERIVED} from '@/mocks/chartData'
+
+import {BarChartCells} from './BarChartCells'
 
 export const DashboardWeeklyChart = () => (
     <Card className={'border-0 shadow-sm'}>
@@ -88,17 +89,12 @@ export const DashboardWeeklyChart = () => (
                             dataKey={'value'}
                             radius={[6, 6, 0, 0]}
                         >
-                            {WEEKLY_CHART_DATA_DERIVED
-                                .map((entry, index) => (
-                                    <Cell
-                                        key={`cell-${index}`}
-                                        fill={
-                                            entry.day === 'THU'
-                                                ? 'var(--primary)'
-                                                : 'var(--primary-light)'
-                                        }
-                                    />
-                                ))}
+                            <BarChartCells
+                                data={WEEKLY_CHART_DATA_DERIVED}
+                                highlightDay={'THU'}
+                                highlightColor={'var(--primary)'}
+                                defaultColor={'var(--primary-light)'}
+                            />
                         </Bar>
                     </BarChart>
                 </ResponsiveContainer>

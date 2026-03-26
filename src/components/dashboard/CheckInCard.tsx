@@ -13,7 +13,7 @@ import {
 } from '@/constants/dashboardTexts'
 
 export const DashboardCheckInCard = () => (
-  <div className={'relative overflow-hidden rounded-2xl bg-gradient-to-r from-primary-gradient-start to-primary-gradient-end p-6 text-white'}>
+  <div className={'relative overflow-hidden rounded-2xl bg-linear-to-r from-primary-gradient-start to-primary-gradient-end p-6 text-white'}>
     <div className={'relative z-10'}>
       <Badge className={'mb-4 border-0 bg-white/20 text-white hover:bg-white/30'}>
         {DASHBOARD_CHECKIN_BADGE}
@@ -36,7 +36,6 @@ export const DashboardCheckInCard = () => (
       </Button>
     </div>
 
-    {/* Decorative Icon */}
     <div className={'absolute -right-4 -bottom-4 opacity-20'}>
       <ClipboardCheck className={'size-48'} />
     </div>
