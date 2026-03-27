@@ -1,22 +1,22 @@
 import type {FormConfig} from '@/types/forms'
 
-import config from '@/config/schema/checkInForm'
+import {checkInFormSchema} from '@/config/schema/checkInForm'
 
 const checkInFormConfig: FormConfig = {
     fields: {
         moodScore: {
             type: 'slider',
             label: 'Mood',
-            min: config.moodScore.min,
-            max: config.moodScore.max,
+            min: checkInFormSchema.moodScore.min,
+            max: checkInFormSchema.moodScore.max,
             step: 1,
             required: true
         },
         painLevel: {
             type: 'slider',
             label: 'Pain Level',
-            min: config.painLevel.min,
-            max: config.painLevel.max,
+            min: checkInFormSchema.painLevel.min,
+            max: checkInFormSchema.painLevel.max,
             step: 1,
             required: true
         },
@@ -24,7 +24,7 @@ const checkInFormConfig: FormConfig = {
             type: 'textarea',
             label: 'Notes',
             placeholder: 'How are you feeling today?',
-            maxLength: config.notes.maxLength,
+            maxLength: checkInFormSchema.notes.maxLength,
             rows: 4,
             required: false
         }

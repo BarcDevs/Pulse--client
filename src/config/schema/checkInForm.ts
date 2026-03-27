@@ -1,4 +1,4 @@
-export default {
+export const checkInFormSchema = {
     moodScore: {
         min: 1,
         max: 10

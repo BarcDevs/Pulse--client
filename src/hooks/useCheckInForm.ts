@@ -8,7 +8,7 @@ import {CheckIn, CheckInStats} from '@/types/checkIn'
 
 import {isTodayCheckIn} from '@/lib/checkIn/loaderHelpers'
 
-import checkInFormConfig from '@/config/schema/checkInForm'
+import {checkInFormSchema} from '@/config/schema/checkInForm'
 
 import {
     CheckInSchema,
@@ -18,7 +18,7 @@ import {
 const {
     moodScore: moodConfig,
     painLevel: painConfig
-} = checkInFormConfig
+} = checkInFormSchema
 
 type UseCheckInFormProps = {
     latestCheckIn: CheckIn | null

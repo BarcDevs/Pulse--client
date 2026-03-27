@@ -1,32 +1,32 @@
 import * as z from 'zod'
 
-import config from '@/config/schema/checkInForm'
+import {checkInFormSchema} from '@/config/schema/checkInForm'
 
 export const checkInSchema = z.object({
     moodScore: z.number()
-        .min(config.moodScore.min)
-        .max(config.moodScore.max),
+        .min(checkInFormSchema.moodScore.min)
+        .max(checkInFormSchema.moodScore.max),
     painLevel: z.number()
-        .min(config.painLevel.min)
-        .max(config.painLevel.max),
+        .min(checkInFormSchema.painLevel.min)
+        .max(checkInFormSchema.painLevel.max),
     activities: z.array(
         z.string()
             .min(
-                config.activities.minLength,
+                checkInFormSchema.activities.minLength,
                 'Activity cannot be empty'
             )
             .max(
-                config.activities.maxLength,
-                `Activity must be under ${config.activities.maxLength} characters`
+                checkInFormSchema.activities.maxLength,
+                `Activity must be under ${checkInFormSchema.activities.maxLength} characters`
             )
     ).min(
-        config.activities.minCount,
+        checkInFormSchema.activities.minCount,
         'At least one activity is required'
     ),
     notes: z.string()
         .max(
-            config.notes.maxLength,
-            `Notes must be under ${config.notes.maxLength} characters`
+            checkInFormSchema.notes.maxLength,
+            `Notes must be under ${checkInFormSchema.notes.maxLength} characters`
         )
         .optional()
 })
