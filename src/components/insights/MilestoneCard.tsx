@@ -1,7 +1,9 @@
 import {Trophy} from 'lucide-react'
 
-import {insightsPageTexts} from '@/constants/componentTexts/insightsComponent'
-import {insightsDetail} from '@/constants/componentTexts/insightsDetail'
+import {insightsPageTexts}
+    from '@/constants/componentTexts/insightsComponent'
+import {insightsDetail}
+    from '@/constants/componentTexts/insightsDetail'
 
 export const MilestoneCard = () => (
     <div className={'rounded-2xl bg-linear-to-br from-accent to-accent/80 p-6 text-accent-foreground h-full'}>

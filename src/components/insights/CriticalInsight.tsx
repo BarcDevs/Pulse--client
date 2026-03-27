@@ -8,10 +8,10 @@ import {insightsPageTexts}
 export const CriticalInsight = () => (
     <div className={'rounded-2xl bg-surface-card p-6'}>
         <div className={'flex items-center gap-2 mb-4'}>
-      <span className={'inline-flex items-center gap-1.5 rounded-full bg-destructive/10 px-3 py-1 text-xs font-medium text-destructive'}>
-        <AlertTriangle className={'h-3 w-3'}/>
-          {insightsPageTexts.criticalInsight.label}
-      </span>
+            <span className={'inline-flex items-center gap-1.5 rounded-full bg-destructive/10 px-3 py-1 text-xs font-medium text-destructive'}>
+                <AlertTriangle className={'h-3 w-3'}/>
+                {insightsPageTexts.criticalInsight.label}
+            </span>
         </div>
 
         <h2 className={'text-2xl font-bold text-foreground leading-tight'}>
