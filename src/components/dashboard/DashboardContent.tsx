@@ -1,7 +1,7 @@
 import {DashboardCheckInCard} from './CheckInCard'
+import {DashboardChartSidebar} from './DashboardChartSidebar'
 import {DashboardStatsCards} from './StatsCards'
 import {DashboardTodaysFocus} from './TodaysFocus'
-import {DashboardChartSidebar} from './DashboardChartSidebar'
 
 export const DashboardContent = () => (
     <div className={'p-6 space-y-6'}>
