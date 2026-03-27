@@ -5,6 +5,10 @@ import {Analytics} from '@vercel/analytics/next'
 
 import {LayoutProps} from '@/types'
 
+import {cn} from '@/lib/utils'
+
+import {meta} from '@/config/meta'
+
 import '@/styles/globals.css'
 
 const inter = Inter({
@@ -12,39 +16,18 @@ const inter = Inter({
     variable: '--font-inter'
 })
 
-export const metadata: Metadata = {
-    title: 'HealEase - Recovery & Wellness Sanctuary',
-    description: 'Your digital sanctuary for recovery and wellness. Track your journey, connect with community, and heal with AI-powered insights.',
-    generator: 'v0.app',
-    icons: {
-        icon: [
-            {
-                url: '/icon-light-32x32.png',
-                media: '(prefers-color-scheme: light)'
-            },
-            {
-                url: '/icon-dark-32x32.png',
-                media: '(prefers-color-scheme: dark)'
-            },
-            {
-                url: '/icon.svg',
-                type: 'image/svg+xml'
-            }
-        ],
-        apple: '/apple-icon.png'
-    }
-}
+export const metadata: Metadata = meta
 
-const RootLayout = ({children}: Readonly<LayoutProps>) => (
+const RootLayout = ({
+    children
+}: Readonly<LayoutProps>) => (
     <html lang={'en'}>
-        <body
-            className={
-                `${inter.variable} font-sans ` +
-                'antialiased bg-surface-page'
-            }
-        >
+        <body className={cn(
+            inter.variable,
+            'font-sans antialiased bg-surface-page'
+        )}>
             {children}
-            <Analytics />
+            <Analytics/>
         </body>
     </html>
 )
