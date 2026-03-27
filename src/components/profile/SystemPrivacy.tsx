@@ -1,16 +1,16 @@
 import {Button} from '@/components/ui/button'
 
-import {PROFILE_SYSTEM_PRIVACY_TITLE} from '@/constants/profileDetailTexts'
-import {PROFILE_SYSTEM_PRIVACY_SETTINGS_WITH_ICONS} from '@/constants/profileMaps'
+import {profilePageTexts} from '@/constants/componentTexts/profile'
+import {profileSystemPrivacySettingsWithIcons} from '@/constants/mappings/profile'
 
 export const SystemPrivacy = () => (
     <div className={'rounded-2xl bg-surface-card p-6'}>
         <h3 className={'text-lg font-semibold text-foreground mb-6'}>
-            {PROFILE_SYSTEM_PRIVACY_TITLE}
+            {profilePageTexts.settings.title}
         </h3>
 
         <div className={'grid grid-cols-2 lg:grid-cols-4 gap-4'}>
-            {PROFILE_SYSTEM_PRIVACY_SETTINGS_WITH_ICONS.map((setting) => (
+            {profileSystemPrivacySettingsWithIcons.map((setting) => (
                 <Button
                     key={setting.title}
                     variant={'ghost'}

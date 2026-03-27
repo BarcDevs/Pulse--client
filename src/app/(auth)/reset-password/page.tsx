@@ -15,9 +15,9 @@ import {
     CardTitle
 } from '@/components/ui/card'
 
-import {RESET_PASSWORD} from '@/constants/authTexts'
+import {authTexts} from '@/constants/componentTexts/auth'
 
-import {TIMINGS} from '@/config/timings'
+import {timings} from '@/config/timings'
 
 import {PasswordRequirementsList} from './PasswordRequirementsList'
 
@@ -32,7 +32,7 @@ const ResetPasswordPage = () => {
         setTimeout(() => {
             setIsLoading(false)
             router.push('/login')
-        }, TIMINGS.AUTH_API_DELAY)
+        }, timings.AUTH_API_DELAY)
     }
 
     return (
@@ -42,10 +42,10 @@ const ResetPasswordPage = () => {
             <Card className={'border-0 shadow-lg'}>
                 <CardHeader>
                     <CardTitle className={'text-2xl font-semibold'}>
-                        {RESET_PASSWORD.title}
+                        {authTexts.resetPassword.title}
                     </CardTitle>
                     <CardDescription>
-                        {RESET_PASSWORD.description}
+                        {authTexts.resetPassword.description}
                     </CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -59,12 +59,12 @@ const ResetPasswordPage = () => {
                     <PasswordRequirementsList password={password}/>
 
                     <p className={'mt-6 text-center text-xs text-muted-foreground'}>
-                        {`${RESET_PASSWORD.troubleText} `}
+                        {`${authTexts.resetPassword.troubleText} `}
                         <Link
                             href={'/support'}
                             className={'text-primary hover:underline'}
                         >
-                            {RESET_PASSWORD.supportLink}
+                            {authTexts.resetPassword.supportLink}
                         </Link>
                     </p>
                 </CardContent>

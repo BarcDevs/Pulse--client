@@ -14,9 +14,9 @@ import {
     CardTitle
 } from '@/components/ui/card'
 
-import {LOGIN} from '@/constants/authTexts'
+import {authTexts} from '@/constants/componentTexts/auth'
 
-import {TIMINGS} from '@/config/timings'
+import {timings} from '@/config/timings'
 
 import {LoginSecurityFooter} from './LoginSecurityFooter'
 
@@ -30,17 +30,17 @@ const LoginPage = () => {
         setTimeout(() => {
             setIsLoading(false)
             router.push('/dashboard')
-        }, TIMINGS.AUTH_API_DELAY)
+        }, timings.AUTH_API_DELAY)
     }
 
     return (
         <Card className={'w-full max-w-md border-0 shadow-lg'}>
             <CardHeader className={'text-center'}>
                 <CardTitle className={'text-2xl font-semibold'}>
-                    {LOGIN.title}
+                    {authTexts.login.title}
                 </CardTitle>
                 <CardDescription>
-                    {LOGIN.description}
+                    {authTexts.login.description}
                 </CardDescription>
             </CardHeader>
             <CardContent>

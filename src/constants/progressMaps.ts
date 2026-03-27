@@ -5,44 +5,44 @@ import {
     Rocket
 } from 'lucide-react'
 
-import { PROGRESS_MILESTONES } from '@/constants/progressTexts'
+import {progressPageTexts} from '@/constants/componentTexts/progress'
 
-export const PROGRESS_MILESTONES_ICON_MAP = {
+export const progressMilestonesIconMap = {
     'First Step': Rocket,
     '7-Day Streak': Heart,
     'Mind Master': Brain,
-    '1 Month Active': Lock,
+    '1 Month Active': Lock
 }
 
-export const PROGRESS_MILESTONES_STYLE_MAP = {
+export const progressMilestonesStyleMap = {
     'First Step': {
         iconBg: 'bg-primary-light',
-        iconColor: 'text-primary',
+        iconColor: 'text-primary'
     },
     '7-Day Streak': {
         iconBg: 'bg-red-50',
-        iconColor: 'text-red-500',
+        iconColor: 'text-red-500'
     },
     'Mind Master': {
         iconBg: 'bg-accent-light',
-        iconColor: 'text-accent',
+        iconColor: 'text-accent'
     },
     '1 Month Active': {
         iconBg: 'bg-gray-100',
-        iconColor: 'text-gray-400',
-    },
+        iconColor: 'text-gray-400'
+    }
 }
 
-export const PROGRESS_MILESTONES_WITH_ICONS =
-    PROGRESS_MILESTONES.map((milestone) => ({
+export const progressMilestones =
+    progressPageTexts.milestones.list.map((milestone) => ({
         ...milestone,
         icon:
-            PROGRESS_MILESTONES_ICON_MAP[
+            progressMilestonesIconMap[
                 milestone.title as
-                    keyof typeof PROGRESS_MILESTONES_ICON_MAP
-            ],
-        ...PROGRESS_MILESTONES_STYLE_MAP[
+                    keyof typeof progressMilestonesIconMap
+                ],
+        ...progressMilestonesStyleMap[
             milestone.title as
-                keyof typeof PROGRESS_MILESTONES_STYLE_MAP
-        ],
+                keyof typeof progressMilestonesStyleMap
+            ]
     }))

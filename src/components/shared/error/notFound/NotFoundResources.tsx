@@ -1,29 +1,29 @@
 import Link from 'next/link'
 
-import {NOT_FOUND_PAGE} from '@/constants/errorMessages'
+import {notFoundPageTexts} from '@/constants/componentTexts/ui/errors'
 
 export const NotFoundResources = () => (
     <div className={'mt-16 grid grid-cols-2 gap-6 opacity-60'}>
         <div className={'flex flex-col gap-1'}>
             <span className={'text-[10px] uppercase font-bold tracking-widest text-outline'}>
-                {NOT_FOUND_PAGE.resourceCenterLabel}
+                {notFoundPageTexts.resourceCenterLabel}
             </span>
             <Link
                 href={'/check-in'}
                 className={'text-sm font-semibold hover:text-primary transition-colors'}
             >
-                {NOT_FOUND_PAGE.dailyJournalLink}
+                {notFoundPageTexts.dailyJournalLink}
             </Link>
         </div>
         <div className={'flex flex-col gap-1'}>
             <span className={'text-[10px] uppercase font-bold tracking-widest text-outline'}>
-                {NOT_FOUND_PAGE.supportHubLabel}
+                {notFoundPageTexts.supportHubLabel}
             </span>
             <Link
                 href={'/community'}
                 className={'text-sm font-semibold hover:text-primary transition-colors'}
             >
-                {NOT_FOUND_PAGE.groupMeetingsLink}
+                {notFoundPageTexts.groupMeetingsLink}
             </Link>
         </div>
     </div>

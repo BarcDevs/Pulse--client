@@ -5,7 +5,8 @@ import {
     Shield
 } from 'lucide-react'
 
-import * as SettingsTexts from '@/constants/settingsTexts'
+import {settingsPageTexts}
+    from '@/constants/componentTexts/settings'
 
 import {SettingsSidebarFooter} from './SettingsSidebarFooter'
 import {SettingsTabButton} from './SettingsTabButton'
@@ -22,13 +23,16 @@ const iconMap = {
     Palette
 }
 
+type IconMapKey = keyof typeof iconMap
+
 export const SettingsSidebar = ({
     activeTab,
     onTabChange
 }: SettingsSidebarProps) => (
     <div className={'space-y-2'}>
-        {SettingsTexts.SETTINGS_TABS.map((tab) => {
-            const IconComponent = iconMap[tab.icon as keyof typeof iconMap]
+        {settingsPageTexts.tabs.map((tab) => {
+            const IconComponent = iconMap[tab.icon as IconMapKey]
+
             return (
                 <SettingsTabButton
                     key={tab.id}
@@ -39,7 +43,7 @@ export const SettingsSidebar = ({
                 />
             )
         })}
-        
+
         <SettingsSidebarFooter/>
     </div>
 )

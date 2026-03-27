@@ -5,12 +5,9 @@ import {
     CardTitle
 } from '@/components/ui/card'
 
-import {PROGRESS_MILESTONES_WITH_ICONS}
+import {progressPageTexts} from '@/constants/componentTexts/progress'
+import {progressMilestones}
     from '@/constants/progressMaps'
-import {
-    PROGRESS_MILESTONES_SEE_ALL,
-    PROGRESS_MILESTONES_TITLE
-} from '@/constants/progressTexts'
 
 import {MilestoneCard} from './MilestoneCard'
 
@@ -18,15 +15,15 @@ export const ProgressMilestones = () => (
     <Card className={'mt-6 border-0 shadow-sm'}>
         <CardHeader className={'flex flex-row items-center justify-between'}>
             <CardTitle className={'text-lg font-semibold'}>
-                {PROGRESS_MILESTONES_TITLE}
+                {progressPageTexts.milestones.title}
             </CardTitle>
             <span className={'text-sm text-muted-foreground'}>
-                {PROGRESS_MILESTONES_SEE_ALL}
+                {progressPageTexts.milestones.seeAll}
             </span>
         </CardHeader>
         <CardContent>
             <div className={'grid gap-4 sm:grid-cols-2 lg:grid-cols-4'}>
-                {PROGRESS_MILESTONES_WITH_ICONS.map((milestone) => (
+                {progressMilestones.map((milestone) => (
                     <MilestoneCard
                         key={milestone.title}
                         icon={milestone.icon}

@@ -5,16 +5,14 @@ import {Settings2} from 'lucide-react'
 import {ActivityItem} from '@/components/shared/ActivityItem'
 import {Button} from '@/components/ui/button'
 
-import {
-    DAILY_ACTIVITIES,
-    DAILY_ACTIVITY_PREFERENCES
-} from '@/constants/profileActivityTexts'
+import {profilePageTexts} from '@/constants/componentTexts/profile'
+import {dailyActivities} from '@/constants/componentTexts/profileActivity'
 
 export const DailyActivityPreferences = () => (
     <div className={'rounded-2xl bg-surface-card p-6'}>
         <div className={'flex items-center justify-between mb-6'}>
             <h3 className={'text-lg font-semibold text-foreground'}>
-                {DAILY_ACTIVITY_PREFERENCES.title}
+                {profilePageTexts.activities.title}
             </h3>
             <Button
                 variant={'ghost'}
@@ -26,7 +24,7 @@ export const DailyActivityPreferences = () => (
         </div>
 
         <div className={'space-y-4'}>
-            {DAILY_ACTIVITIES.map((activity) => (
+            {dailyActivities.map((activity) => (
                 <ActivityItem
                     key={activity.id}
                     icon={activity.icon}

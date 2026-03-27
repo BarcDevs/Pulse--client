@@ -3,7 +3,7 @@
 import {Icon} from '@/components/shared/ui/Icon'
 import {Button} from '@/components/ui/button'
 
-import {AUTH_COMMON} from '@/constants/authTexts'
+import {authTexts} from '@/constants/componentTexts/auth'
 
 import {redirectToGoogleAuth} from '@/handlers/auth'
 
@@ -20,7 +20,7 @@ export const GoogleLoginButton = () => {
                 </div>
                 <div className={'relative flex justify-center text-xs uppercase my-4'}>
                     <p className={'bg-background px-2 text-muted-foreground'}>
-                        {AUTH_COMMON.orContinueWith}
+                        {authTexts.common.orContinueWith}
                     </p>
                 </div>
             </div>
@@ -36,7 +36,7 @@ export const GoogleLoginButton = () => {
                     className={'size-5 mr-2'}
                     size={5}
                 />
-                {AUTH_COMMON.continueWithGoogle}
+                {authTexts.common.continueWithGoogle}
             </Button>
         </>
     )

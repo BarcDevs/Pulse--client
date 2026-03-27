@@ -7,7 +7,7 @@ import {RotateCcw} from 'lucide-react'
 import {Icon} from '@/components/shared/ui/Icon'
 import {Button} from '@/components/ui/button'
 
-import {ERROR_PAGE} from '@/constants/errorMessages'
+import {errorPageTexts} from '@/constants/componentTexts/ui/errors'
 
 type ErrorActionsProps = {
     resetAction: () => void
@@ -29,7 +29,7 @@ export const ErrorActions = ({
                 className={'gap-2'}
             >
                 <RotateCcw className={'w-4 h-4'}/>
-                {ERROR_PAGE.tryRefreshingBtn}
+                {errorPageTexts.tryRefreshingBtn}
             </Button>
             <Button
                 onClick={handleContactSupport}
@@ -39,7 +39,7 @@ export const ErrorActions = ({
                     name={'error/support-agent'}
                     size={20}
                 />
-                {ERROR_PAGE.contactSupportBtn}
+                {errorPageTexts.contactSupportBtn}
             </Button>
         </div>
     )

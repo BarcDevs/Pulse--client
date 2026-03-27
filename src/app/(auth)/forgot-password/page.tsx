@@ -9,12 +9,12 @@ import {
     CardContent,
     CardDescription,
     CardHeader,
-    CardTitle,
+    CardTitle
 } from '@/components/ui/card'
 
-import {FORGOT_PASSWORD} from '@/constants/authTexts'
+import {authTexts} from '@/constants/componentTexts/auth'
 
-import {TIMINGS} from '@/config/timings'
+import {timings} from '@/config/timings'
 
 import {EmailVerificationView} from './EmailVerificationView'
 
@@ -30,7 +30,7 @@ const ForgotPasswordPage = () => {
         setTimeout(() => {
             setIsLoading(false)
             setIsSubmitted(true)
-        }, TIMINGS.AUTH_API_DELAY)
+        }, timings.AUTH_API_DELAY)
     }
 
     if (isSubmitted)
@@ -43,10 +43,10 @@ const ForgotPasswordPage = () => {
             <Card className={'border-0 shadow-lg'}>
                 <CardHeader>
                     <CardTitle className={'text-2xl font-semibold'}>
-                        {FORGOT_PASSWORD.title}
+                        {authTexts.forgotPassword.title}
                     </CardTitle>
                     <CardDescription>
-                        {FORGOT_PASSWORD.description}
+                        {authTexts.forgotPassword.description}
                     </CardDescription>
                 </CardHeader>
                 <CardContent>

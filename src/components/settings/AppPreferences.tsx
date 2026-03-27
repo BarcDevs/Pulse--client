@@ -6,7 +6,7 @@ import type {Theme} from '@/types'
 
 import {useAppPreferencesForm} from '@/hooks/useAppPreferencesForm'
 
-import * as SettingsTexts from '@/constants/settingsTexts'
+import {settingsPageTexts} from '@/constants/componentTexts/settings'
 
 import {LanguageSelector} from './LanguageSelector'
 import {ThemeSelector} from './ThemeSelector'
@@ -20,7 +20,7 @@ export const AppPreferences = ({
     theme = 'light',
     language = 'en-US'
 }: AppPreferencesProps) => {
-    const {form} = useAppPreferencesForm({
+    const { form } = useAppPreferencesForm({
         theme,
         language
     })
@@ -33,7 +33,7 @@ export const AppPreferences = ({
             <div className={'flex items-center gap-2 mb-6'}>
                 <Palette className={'h-5 w-5 text-primary'}/>
                 <h3 className={'text-lg font-semibold text-foreground'}>
-                    {SettingsTexts.SETTINGS_PREFERENCES_TITLE}
+                    {settingsPageTexts.preferences.title}
                 </h3>
             </div>
 

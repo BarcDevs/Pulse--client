@@ -1,21 +1,22 @@
-import { GoalProgressBar } from '@/components/shared/GoalProgressBar'
-import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-
+import {GoalProgressBar} from '@/components/shared/GoalProgressBar'
+import {Button} from '@/components/ui/button'
 import {
-    PROFILE_GOALS_LIST,
-    PROFILE_GOALS_TITLE,
-    PROFILE_GOALS_VIEW_ROADMAP,
-} from '@/constants/profileTexts'
+    Card,
+    CardContent,
+    CardHeader,
+    CardTitle
+} from '@/components/ui/card'
 
-const goals = PROFILE_GOALS_LIST
+import {profilePageTexts} from '@/constants/componentTexts/profile'
+
+const goals = profilePageTexts.goals.list
 
 export const ProfileGoals = () => {
     return (
         <Card className={'border-0 bg-primary text-white shadow-sm'}>
             <CardHeader>
                 <CardTitle className={'text-lg font-semibold text-white'}>
-                    {PROFILE_GOALS_TITLE}
+                    {profilePageTexts.goals.title}
                 </CardTitle>
             </CardHeader>
             <CardContent className={'space-y-4'}>
@@ -34,7 +35,7 @@ export const ProfileGoals = () => {
                         'mt-4 w-full border-white/30 bg-transparent text-white hover:bg-white/10 hover:text-white'
                     }
                 >
-                    {PROFILE_GOALS_VIEW_ROADMAP}
+                    {profilePageTexts.goals.viewRoadmap}
                 </Button>
             </CardContent>
         </Card>

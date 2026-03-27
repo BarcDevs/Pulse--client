@@ -1,4 +1,4 @@
-export const ERROR_PAGE = {
+export const errorPageTexts = {
     badge: 'Error 500',
     mainHeading: 'Deep breaths.',
     subHeading: `We're adjusting things.`,
@@ -19,7 +19,7 @@ export const ERROR_PAGE = {
         'Our team has been notified and is fixing this as you read this.'
 }
 
-export const NOT_FOUND_PAGE = {
+export const notFoundPageTexts = {
     badgeLabel: 'COMPASS LOST',
     mainHeading: 'This path seems to have wandered off...',
     description:

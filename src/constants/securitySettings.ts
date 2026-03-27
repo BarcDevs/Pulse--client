@@ -4,7 +4,7 @@ import {
     Mail
 } from 'lucide-react'
 
-import * as SettingsTexts from './settingsTexts'
+import {settingsPageTexts} from './componentTexts/settings'
 
 type SecuritySettingItem = {
     id: string
@@ -14,24 +14,24 @@ type SecuritySettingItem = {
     variant?: 'destructive'
 }
 
-export const SECURITY_SETTINGS: SecuritySettingItem[] = [
+export const securitySettings: SecuritySettingItem[] = [
     {
         id: 'email',
         iconComponent: Mail,
-        label: SettingsTexts.SETTINGS_SECURITY_EMAIL_LABEL,
-        value: SettingsTexts.SETTINGS_SECURITY_EMAIL_VALUE,
+        label: settingsPageTexts.security.email.label,
+        value: settingsPageTexts.security.email.value
     },
     {
         id: 'password',
         iconComponent: Lock,
-        label: SettingsTexts.SETTINGS_SECURITY_PASSWORD_LABEL,
-        value: SettingsTexts.SETTINGS_SECURITY_PASSWORD_VALUE,
+        label: settingsPageTexts.security.password.label,
+        value: settingsPageTexts.security.password.value
     },
     {
         id: 'deactivate',
         iconComponent: AlertTriangle,
-        label: SettingsTexts.SETTINGS_SECURITY_DEACTIVATE_LABEL,
-        value: SettingsTexts.SETTINGS_SECURITY_DEACTIVATE_DESCRIPTION,
-        variant: 'destructive',
-    },
+        label: settingsPageTexts.security.deactivate.label,
+        value: settingsPageTexts.security.deactivate.description,
+        variant: 'destructive'
+    }
 ]

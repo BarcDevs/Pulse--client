@@ -1,6 +1,6 @@
 import {Button} from '@/components/ui/button'
 
-import {LOGIN} from '@/constants/authTexts'
+import {authTexts} from '@/constants/componentTexts/auth'
 // todo: import google login functionality
 export const LoginOAuthSection = () => (
     <>
@@ -10,7 +10,7 @@ export const LoginOAuthSection = () => (
             </div>
             <div className={'relative flex justify-center text-xs uppercase'}>
                 <span className={'bg-card px-2 text-muted-foreground'}>
-                    {LOGIN.orContinueWith}
+                    {authTexts.login.orContinueWith}
                 </span>
             </div>
         </div>
@@ -42,7 +42,7 @@ export const LoginOAuthSection = () => (
                     fill={'#EA4335'}
                 />
             </svg>
-            {LOGIN.googleButton}
+            {authTexts.login.googleButton}
         </Button>
     </>
 )

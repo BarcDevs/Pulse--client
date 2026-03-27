@@ -1,4 +1,4 @@
-import * as ProgressTexts from '@/constants/progressTexts'
+import {progressPageTexts} from '@/constants/componentTexts/progress'
 
 import {WellnessScoreCard} from './WellnessScoreCard'
 
@@ -7,27 +7,27 @@ export const WellnessScore = () => (
         <div className={'flex items-center justify-between mb-4'}>
             <div>
                 <p className={'text-xs font-medium text-muted-foreground uppercase tracking-wider'}>
-                    {ProgressTexts.PROGRESS_WELLNESS_LABEL}
+                    {progressPageTexts.wellness.label}
                 </p>
                 <h3 className={'mt-1 text-xl font-semibold text-foreground'}>
-                    {ProgressTexts.PROGRESS_WELLNESS_TITLE}
+                    {progressPageTexts.wellness.title}
                 </h3>
             </div>
             <span className={'text-xs text-muted-foreground'}>
-              {ProgressTexts.PROGRESS_WELLNESS_TIMEFRAME}
+              {progressPageTexts.wellness.timeframe}
           </span>
         </div>
 
         <div className={'grid grid-cols-2 gap-4'}>
             <WellnessScoreCard
-                label={ProgressTexts.PROGRESS_WELLNESS_MOOD}
+                label={progressPageTexts.wellness.mood}
                 score={6.2}
-                trend={ProgressTexts.PROGRESS_WELLNESS_TRENDING_FLAT}
+                trend={progressPageTexts.wellness.trendingFlat}
             />
             <WellnessScoreCard
-                label={ProgressTexts.PROGRESS_WELLNESS_PAIN}
+                label={progressPageTexts.wellness.pain}
                 score={7.8}
-                trend={ProgressTexts.PROGRESS_WELLNESS_IMPROVED}
+                trend={progressPageTexts.wellness.improved}
             />
         </div>
     </div>

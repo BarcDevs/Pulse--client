@@ -1,26 +1,26 @@
 import {Award} from 'lucide-react'
 
-import * as ProgressTexts from '@/constants/progressTexts'
+import {progressPageTexts} from '@/constants/componentTexts/progress'
 
 export const MilestonesCard = () => (
     <div className={'rounded-2xl bg-surface-card p-6'}>
         <div className={'flex items-start justify-between'}>
             <div>
                 <p className={'text-xs font-medium text-muted-foreground uppercase tracking-wider'}>
-                    {ProgressTexts.PROGRESS_STATS_MILESTONES_LABEL}
+                    {progressPageTexts.stats.milestones.label}
                 </p>
                 <div className={'mt-2 flex items-baseline gap-2'}>
                     <span className={'text-4xl font-bold text-foreground'}>
                         5
                     </span>
                     <span className={'text-lg text-muted-foreground'}>
-                        {ProgressTexts.PROGRESS_STATS_MILESTONES_UNIT}
+                        {progressPageTexts.stats.milestones.unit}
                     </span>
                 </div>
                 <p className={'mt-1 text-sm text-muted-foreground'}>
-                    {`${ProgressTexts.PROGRESS_STATS_MILESTONES_NEXT_PREFIX} `}
+                    {`${progressPageTexts.stats.milestones.nextPrefix} `}
                     <span className={'text-primary font-medium'}>
-                        {ProgressTexts.PROGRESS_STATS_MILESTONES_NEXT_VALUE}
+                        {progressPageTexts.stats.milestones.nextValue}
                     </span>
                 </p>
             </div>

@@ -1,20 +1,16 @@
 import {cn} from '@/lib/utils'
 
-import {PROFILE_RECOVERY_IDENTITY_FOCUS_AREAS_WITH_ICONS}
-    from '@/constants/profileMaps'
-import {
-    PROFILE_RECOVERY_IDENTITY_QUOTE,
-    PROFILE_RECOVERY_IDENTITY_SUBTITLE,
-    PROFILE_RECOVERY_IDENTITY_TITLE
-} from '@/constants/profileTexts'
+import {profilePageTexts} from '@/constants/componentTexts/profile'
+import {recoveryFocusAreasWithIcons}
+    from '@/constants/mappings/profile'
 
 export const RecoveryIdentity = () => (
     <div className={'rounded-2xl bg-surface-card p-6'}>
-        <h3 className={'text-lg font-semibold text-foreground mb-2'}>{PROFILE_RECOVERY_IDENTITY_TITLE}</h3>
-        <p className={'text-sm text-muted-foreground mb-6'}>{PROFILE_RECOVERY_IDENTITY_SUBTITLE}</p>
+        <h3 className={'text-lg font-semibold text-foreground mb-2'}>{profilePageTexts.recoveryIdentity.title}</h3>
+        <p className={'text-sm text-muted-foreground mb-6'}>{profilePageTexts.recoveryIdentity.subtitle}</p>
 
         <div className={'flex flex-wrap gap-3 mb-6'}>
-            {PROFILE_RECOVERY_IDENTITY_FOCUS_AREAS_WITH_ICONS
+            {recoveryFocusAreasWithIcons
                 .map((area) => (
                     <div
                         key={area.label}
@@ -33,7 +29,7 @@ export const RecoveryIdentity = () => (
 
         <div className={'bg-surface-section rounded-xl p-4'}>
             <p className={'text-sm text-muted-foreground italic leading-relaxed'}>
-                &quot;{PROFILE_RECOVERY_IDENTITY_QUOTE}&quot;
+                &quot;{profilePageTexts.recoveryIdentity.quote}&quot;
             </p>
         </div>
     </div>

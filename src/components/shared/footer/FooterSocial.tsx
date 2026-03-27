@@ -1,15 +1,16 @@
 import {Icon} from '@/components/shared/ui/Icon'
 
-import {FOOTER_SOCIAL_TITLE} from '@/constants/footerTexts'
-import {SOCIAL_LINKS} from '@/constants/socialConfig'
+import {footer} from '@/constants/componentTexts/ui/footer'
+import {socialMediaLinks}
+    from '@/constants/socialConfig'
 
 export const FooterSocial = () => (
     <div>
         <h3 className={'font-semibold mb-4'}>
-            {FOOTER_SOCIAL_TITLE}
+            {footer.socialTitle}
         </h3>
         <div className={'flex gap-4'}>
-            {SOCIAL_LINKS.map(link => (
+            {socialMediaLinks.map(link => (
                 <a
                     key={link.href}
                     href={link.href}

@@ -2,7 +2,7 @@
  * Timing constants for UI interactions, animations, and simulated API calls
  */
 
-export const TIMINGS = {
+export const timings = {
     // Authentication page simulated API call delays
     AUTH_API_DELAY: 1000,
 

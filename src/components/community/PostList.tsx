@@ -6,17 +6,17 @@ import {Button} from '@/components/ui/button'
 
 import {cn} from '@/lib/utils'
 
-import * as CommunityTexts from '@/constants/communityTexts'
+import {communityPageTexts} from '@/constants/componentTexts/community'
 
 import {PostItem} from './post-list/PostItem'
 
-const tabs = CommunityTexts.COMMUNITY_TABS
+const tabs = communityPageTexts.posts.tabs
 
-const posts = CommunityTexts.COMMUNITY_POSTS
+const posts = communityPageTexts.posts
 
 export const PostList = () => {
     const [activeTab, setActiveTab] = useState(
-        CommunityTexts.COMMUNITY_POST_DEFAULT_TAB
+        communityPageTexts.posts.defaultTab
     )
 
     return (
@@ -44,7 +44,7 @@ export const PostList = () => {
             </div>
 
             <div className={'divide-y divide-border'}>
-                {posts.map((post) => (
+                {posts.list.map((post) => (
                     <PostItem
                         key={post.id}
                         post={post}

@@ -1,4 +1,4 @@
-import {PROFILE_MEMBER_SINCE} from '@/constants/profileTexts'
+import {profilePageTexts} from '@/constants/componentTexts/profile'
 
 type ProfileInfoProps = {
     firstName: string
@@ -14,7 +14,7 @@ export const ProfileInfo = ({
             {`${firstName} ${lastName}`}
         </h2>
         <p className={'text-sm text-muted-foreground'}>
-            {PROFILE_MEMBER_SINCE}
+            {profilePageTexts.memberSince}
         </p>
     </div>
 )

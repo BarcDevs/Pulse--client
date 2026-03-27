@@ -8,10 +8,7 @@ import {
 } from '@/components/ui/card'
 import {Textarea} from '@/components/ui/textarea'
 
-import {
-    CHECKIN_JOURNAL_PLACEHOLDER,
-    CHECKIN_JOURNAL_TITLE
-} from '@/constants/checkInTexts'
+import {checkInTexts} from '@/constants/componentTexts/checkIn'
 
 // todo: fix ts warnings
 type CheckInJournalProps = {
@@ -28,13 +25,13 @@ export const CheckInJournal = ({
             <div className={'flex items-center gap-2'}>
                 <PenLine className={'size-5 text-primary'}/>
                 <CardTitle className={'text-lg font-semibold'}>
-                    {CHECKIN_JOURNAL_TITLE}
+                    {checkInTexts.journal.title}
                 </CardTitle>
             </div>
         </CardHeader>
         <CardContent>
             <Textarea
-                placeholder={CHECKIN_JOURNAL_PLACEHOLDER}
+                placeholder={checkInTexts.journal.placeholder}
                 value={value}
                 onChange={(e) => onChange(e.target.value)}
                 className={'min-h-30 resize-none border-border bg-surface-card placeholder:text-muted-foreground'}

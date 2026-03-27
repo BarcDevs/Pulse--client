@@ -1,6 +1,6 @@
 import {Icon} from '@/components/shared/ui/Icon'
 
-import {ERROR_PAGE} from '@/constants/errorMessages'
+import {errorPageTexts} from '@/constants/componentTexts/ui/errors'
 
 export const AutoRecoveryCard = () => (
     <div className={'p-6 bg-surface-container-low rounded-xl border border-outline-variant/5'}>
@@ -11,10 +11,10 @@ export const AutoRecoveryCard = () => (
             />
         </div>
         <h4 className={'font-bold text-primary mb-1'}>
-            {ERROR_PAGE.autoRecoveryTitle}
+            {errorPageTexts.autoRecoveryTitle}
         </h4>
         <p className={'text-xs text-on-surface-variant'}>
-            {ERROR_PAGE.autoRecoveryDesc}
+            {errorPageTexts.autoRecoveryDesc}
         </p>
     </div>
 )

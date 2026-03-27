@@ -10,7 +10,7 @@ import {
     TabsTrigger
 } from '@/components/ui/tabs'
 
-import * as InsightsDetailTexts from '@/constants/insightsDetailTexts'
+import {insightsDetail} from '@/constants/componentTexts/insightsDetail'
 
 import {CorrelationCard} from './CorrelationCard'
 import {ObservationCard} from './ObservationCard'
@@ -20,7 +20,7 @@ export const InsightsPatterns = () => (
     <Card className={'mt-6 border-0 shadow-sm'}>
         <CardHeader className={'flex flex-row items-center justify-between'}>
             <CardTitle className={'text-lg font-semibold'}>
-                {InsightsDetailTexts.INSIGHTS_PATTERNS_TITLE}
+                {insightsDetail.patterns.title}
             </CardTitle>
             <Tabs
                 defaultValue={'30'}

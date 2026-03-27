@@ -1,4 +1,4 @@
-import * as SettingsTexts from '@/constants/settingsTexts'
+import {settingsPageTexts} from '@/constants/componentTexts/settings'
 
 type LanguageSelectorProps = {
     language: string
@@ -11,17 +11,17 @@ export const LanguageSelector = ({
 }: LanguageSelectorProps) => (
     <div>
         <h4 className={'font-medium text-foreground mb-1'}>
-            {SettingsTexts.SETTINGS_PREFERENCES_LANGUAGE_TITLE}
+            {settingsPageTexts.preferences.language.title}
         </h4>
         <p className={'text-sm text-muted-foreground mb-3'}>
-            {SettingsTexts.SETTINGS_PREFERENCES_LANGUAGE_DESCRIPTION}
+            {settingsPageTexts.preferences.language.description}
         </p>
         <select
             value={language}
             onChange={(e) => onLanguageChange(e.target.value)}
             className={'w-full max-w-xs px-3 py-2 rounded-lg bg-surface-section border border-border text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary/20'}
         >
-            {SettingsTexts.SETTINGS_PREFERENCES_LANGUAGE_OPTIONS.map(
+            {settingsPageTexts.preferences.language.options.map(
                 (option) => (
                     <option
                         key={option.value}

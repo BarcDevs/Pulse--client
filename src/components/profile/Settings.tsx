@@ -6,19 +6,19 @@ import {
     CardTitle
 } from '@/components/ui/card'
 
-import {PROFILE_SETTINGS_WITH_ICONS} from '@/constants/profileMaps'
-import {PROFILE_SETTINGS_TITLE} from '@/constants/profileTexts'
+import {profilePageTexts} from '@/constants/componentTexts/profile'
+import {profileSettingsWithIcons} from '@/constants/mappings/profile'
 
 export const ProfileSettings = () => (
     <Card className={'border-0 shadow-sm'}>
         <CardHeader>
             <CardTitle className={'text-lg font-semibold'}>
-                {PROFILE_SETTINGS_TITLE}
+                {profilePageTexts.settings.title}
             </CardTitle>
         </CardHeader>
         <CardContent>
             <div className={'grid gap-4 sm:grid-cols-2 lg:grid-cols-4'}>
-                {PROFILE_SETTINGS_WITH_ICONS.map((setting) => (
+                {profileSettingsWithIcons.map((setting) => (
                     <Button
                         key={setting.title}
                         variant={'ghost'}

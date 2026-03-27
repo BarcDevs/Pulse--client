@@ -1,6 +1,6 @@
 import {Play} from 'lucide-react'
 
-import * as CommunityTexts from '@/constants/communityTexts'
+import {communityPageTexts} from '@/constants/componentTexts/community'
 
 export const PostMedia = () => (
     <div className={'mt-3 relative rounded-xl overflow-hidden bg-surface-section aspect-video'}>
@@ -13,7 +13,7 @@ export const PostMedia = () => (
             </div>
         </div>
         <div className={'absolute bottom-3 left-3 bg-black/60 rounded px-2 py-1 text-xs text-white'}>
-            {CommunityTexts.COMMUNITY_POST_VIDEO_DURATION}
+            {communityPageTexts.posts.videoDuration}
         </div>
     </div>
 )

@@ -1,9 +1,6 @@
 import {cn} from '@/lib/utils'
 
-import {
-    CHAT_MESSAGES_ASSISTANT_LABEL,
-    CHAT_MESSAGES_YOU_LABEL
-} from '@/constants/chatTexts'
+import {chatTexts} from '@/constants/componentTexts/chat'
 
 import {MessageSuggestions} from './MessageSuggestions'
 
@@ -18,7 +15,7 @@ export const MessageBubble = ({
     role,
     content,
     timestamp,
-    suggestions,
+    suggestions
 }: MessageBubbleProps) => (
     <div
         className={cn(
@@ -45,8 +42,8 @@ export const MessageBubble = ({
             )}
         >
             {role === 'assistant'
-                ? CHAT_MESSAGES_ASSISTANT_LABEL
-                : CHAT_MESSAGES_YOU_LABEL}
+                ? chatTexts.messages.assistantLabel
+                : chatTexts.messages.youLabel}
             {' - '}
             {timestamp}
         </p>

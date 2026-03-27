@@ -1,4 +1,4 @@
-export const DEFAULTS = {
+export const defaults = {
     scoreSlider: {
         min: 1,
         max: 10,

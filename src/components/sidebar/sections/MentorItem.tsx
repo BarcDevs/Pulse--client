@@ -1,6 +1,6 @@
-import { Button } from '@/components/ui/button'
+import {Button} from '@/components/ui/button'
 
-import * as communityTexts from '@/constants/communityTexts'
+import {communityPageTexts} from '@/constants/componentTexts/community'
 
 type MentorItemProps = {
     id: string
@@ -14,7 +14,7 @@ export const MentorItem = ({
     avatar,
     name,
     role,
-    online,
+    online
 }: MentorItemProps) => (
     <div className={'flex items-center justify-between'}>
         <div className={'flex items-center gap-3'}>
@@ -23,7 +23,7 @@ export const MentorItem = ({
                     {avatar}
                 </div>
                 {online && (
-                    <span className={'absolute -bottom-0.5 -right-0.5 h-3 w-3 rounded-full border-2 border-surface-card bg-success'} />
+                    <span className={'absolute -bottom-0.5 -right-0.5 h-3 w-3 rounded-full border-2 border-surface-card bg-success'}/>
                 )}
             </div>
             <div>
@@ -40,7 +40,7 @@ export const MentorItem = ({
             variant={'outline'}
             className={'text-xs'}
         >
-            {communityTexts.COMMUNITY_MENTORS_CHAT}
+            {communityPageTexts.mentors.chatButton}
         </Button>
     </div>
 )

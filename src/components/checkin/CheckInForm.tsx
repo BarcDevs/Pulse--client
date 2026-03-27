@@ -9,7 +9,7 @@ import {Button} from '@/components/ui/button'
 
 import {useCheckInForm} from '@/hooks/useCheckInForm'
 
-import * as CheckInTexts from '@/constants/checkInTexts'
+import {checkInTexts} from '@/constants/componentTexts/checkIn'
 
 import {handleCheckInSubmit} from '@/handlers/actions/checkIn'
 
@@ -91,7 +91,7 @@ export const CheckInForm = ({
                     size={'lg'}
                     disabled={form.formState.isSubmitting}
                 >
-                    {CheckInTexts.CHECK_IN_SUBMIT_BUTTON}
+                    {checkInTexts.submitButton}
                 </Button>
             </div>
         </form>

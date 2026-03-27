@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-import {BRAND_NAME} from '@/constants/plainTexts'
+import {landing} from '@/constants/componentTexts/landing'
 
 export const Logo = ({}) => (
     <Link
@@ -11,7 +11,7 @@ export const Logo = ({}) => (
         <div className={'flex size-10 items-center justify-center rounded-xl'}>
             <Image
                 src={'/logos/HealEaseLogoNoCaption.webp'}
-                alt={`${BRAND_NAME} Logo`}
+                alt={`${landing.brandName} Logo`}
                 width={40}
                 height={40}
                 className={'w-10 h-10 rounded-lg object-contain'}
@@ -19,7 +19,7 @@ export const Logo = ({}) => (
         </div>
 
         <span className={'font-(family-name:--font-heading) text-xl font-semibold text-logo'}>
-            {BRAND_NAME}
+            {landing.brandName}
         </span>
     </Link>
 )

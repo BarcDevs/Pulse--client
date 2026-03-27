@@ -1,12 +1,12 @@
-import {FOOTER_BRAND_TAGLINE} from '@/constants/footerTexts'
+import {footer} from '@/constants/componentTexts/ui/footer'
 
 import {Logo} from '../Logo'
 
 export const FooterBrand = () => (
     <div>
-        <Logo />
+        <Logo/>
         <p className={'text-sm text-muted-foreground mt-4'}>
-            {FOOTER_BRAND_TAGLINE}
+            {footer.brandTagline}
         </p>
     </div>
 )

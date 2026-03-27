@@ -1,30 +1,30 @@
-import { Lock, Shield, UserX } from 'lucide-react'
+import {Lock, Shield, UserX} from 'lucide-react'
 
-import { GuidelineItem } from '@/components/shared/GuidelineItem'
-import { Button } from '@/components/ui/button'
+import {GuidelineItem} from '@/components/shared/GuidelineItem'
+import {Button} from '@/components/ui/button'
 
-import * as communityTexts from '@/constants/communityTexts'
+import {communityPageTexts} from '@/constants/componentTexts/community'
 
 export const SanctuaryCard = () => (
     <div className={'rounded-2xl border border-primary/20 bg-primary/5 p-5'}>
         <h3 className={'mb-2 font-semibold text-foreground'}>
-            {communityTexts.COMMUNITY_SANCTUARY_TITLE}
+            {communityPageTexts.sanctuary.title}
         </h3>
         <p className={'mb-4 text-sm text-muted-foreground'}>
-            {communityTexts.COMMUNITY_SANCTUARY_DESCRIPTION}
+            {communityPageTexts.sanctuary.description}
         </p>
         <div className={'space-y-2'}>
             <GuidelineItem
                 icon={Shield}
-                label={communityTexts.COMMUNITY_SANCTUARY_RULE_1}
+                label={communityPageTexts.sanctuary.rules[0]}
             />
             <GuidelineItem
                 icon={Lock}
-                label={communityTexts.COMMUNITY_SANCTUARY_RULE_2}
+                label={communityPageTexts.sanctuary.rules[1]}
             />
             <GuidelineItem
                 icon={UserX}
-                label={communityTexts.COMMUNITY_SANCTUARY_RULE_3}
+                label={communityPageTexts.sanctuary.rules[2]}
             />
         </div>
         <Button
@@ -32,7 +32,7 @@ export const SanctuaryCard = () => (
             size={'sm'}
             className={'mt-4 w-full'}
         >
-            {communityTexts.COMMUNITY_SANCTUARY_READ_GUIDELINES}
+            {communityPageTexts.sanctuary.readGuidelines}
         </Button>
     </div>
 )

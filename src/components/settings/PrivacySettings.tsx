@@ -6,10 +6,10 @@ import {SettingToggle} from '@/components/shared/SettingToggle'
 
 import {usePrivacySettingsForm} from '@/hooks/usePrivacySettingsForm'
 
-import * as SettingsTexts from '@/constants/settingsTexts'
+import {settingsPageTexts} from '@/constants/componentTexts/settings'
 
 export const PrivacySettings = () => {
-    const {form} = usePrivacySettingsForm()
+    const { form } = usePrivacySettingsForm()
 
     const profileVisibility = form.watch('profileVisibility')
     const anonymousParticipation = form.watch(
@@ -21,19 +21,19 @@ export const PrivacySettings = () => {
             <div className={'flex items-center gap-2 mb-6'}>
                 <Lock className={'h-5 w-5 text-primary'}/>
                 <h3 className={'text-lg font-semibold text-foreground'}>
-                    {SettingsTexts.SETTINGS_PRIVACY_TITLE}
+                    {settingsPageTexts.privacy.title}
                 </h3>
             </div>
 
             <div className={'grid grid-cols-1 md:grid-cols-2 gap-6'}>
                 <div className={'p-4 rounded-xl bg-surface-section'}>
                     <h4 className={'font-medium text-foreground mb-1'}>
-                        {SettingsTexts
-                            .SETTINGS_PRIVACY_VISIBILITY_TITLE}
+                        {settingsPageTexts
+                            .privacy.visibility.title}
                     </h4>
                     <p className={'text-sm text-muted-foreground mb-3'}>
-                        {SettingsTexts
-                            .SETTINGS_PRIVACY_VISIBILITY_DESCRIPTION}
+                        {settingsPageTexts
+                            .privacy.visibility.description}
                     </p>
                     <select
                         value={profileVisibility}
@@ -49,33 +49,33 @@ export const PrivacySettings = () => {
                             'w-full px-3 py-2 rounded-lg bg-surface-card border border-border text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary/20'
                         }
                     >
-                        {SettingsTexts
-                            .SETTINGS_PRIVACY_VISIBILITY_OPTIONS.map(
-                            (option) => (
-                                <option
-                                    key={option.value}
-                                    value={option.value}
-                                >
-                                    {option.label}
-                                </option>
-                            )
-                        )}
+                        {settingsPageTexts
+                            .privacy.visibility.options.map(
+                                (option) => (
+                                    <option
+                                        key={option.value}
+                                        value={option.value}
+                                    >
+                                        {option.label}
+                                    </option>
+                                )
+                            )}
                     </select>
                 </div>
 
                 <div className={'p-4 rounded-xl bg-surface-section'}>
                     <h4 className={'font-medium text-foreground mb-1'}>
-                        {SettingsTexts
-                            .SETTINGS_PRIVACY_DATA_SHARING_TITLE}
+                        {settingsPageTexts
+                            .privacy.dataSharing.title}
                     </h4>
                     <p className={'text-sm text-muted-foreground mb-3'}>
-                        {SettingsTexts
-                            .SETTINGS_PRIVACY_DATA_SHARING_DESCRIPTION}
+                        {settingsPageTexts
+                            .privacy.dataSharing.description}
                     </p>
                     <SettingToggle
                         label={
-                            SettingsTexts
-                                .SETTINGS_PRIVACY_ANONYMOUS_PARTICIPATION_LABEL
+                            settingsPageTexts
+                                .privacy.anonymousParticipation.label
                         }
                         checked={anonymousParticipation}
                         onChange={

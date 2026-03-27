@@ -7,7 +7,7 @@ import {Home} from 'lucide-react'
 import {Icon} from '@/components/shared/ui/Icon'
 import {Button} from '@/components/ui/button'
 
-import {NOT_FOUND_PAGE} from '@/constants/errorMessages'
+import {notFoundPageTexts} from '@/constants/componentTexts/ui/errors'
 
 type NotFoundContentProps = {
     onGoBackAction: () => void
@@ -22,22 +22,22 @@ export const NotFoundContent = ({
                 name={'error/map'}
                 size={16}
             />
-            {NOT_FOUND_PAGE.badgeLabel}
+            {notFoundPageTexts.badgeLabel}
         </div>
 
         <h1 className={'font-headline text-4xl md:text-6xl font-extrabold text-on-surface mb-6 leading-tight tracking-tight'}>
-            {NOT_FOUND_PAGE.mainHeading}
+            {notFoundPageTexts.mainHeading}
         </h1>
 
         <p className={'font-body text-on-surface-variant text-base md:text-lg md:max-w-md mb-10 leading-relaxed'}>
-            {NOT_FOUND_PAGE.description}
+            {notFoundPageTexts.description}
         </p>
 
         <div className={'flex flex-col sm:flex-row items-center gap-4'}>
             <Button asChild>
                 <Link href={'/dashboard'}>
                     <Home className={'w-5 h-5'}/>
-                    {NOT_FOUND_PAGE.returnDashboardBtn}
+                    {notFoundPageTexts.returnDashboardBtn}
                 </Link>
             </Button>
             <Button
@@ -48,7 +48,7 @@ export const NotFoundContent = ({
                     name={'error/arrow-back'}
                     size={20}
                 />
-                {NOT_FOUND_PAGE.previousPageBtn}
+                {notFoundPageTexts.previousPageBtn}
             </Button>
         </div>
     </div>

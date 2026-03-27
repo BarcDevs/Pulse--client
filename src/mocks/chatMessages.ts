@@ -1,4 +1,4 @@
-import * as ChatTexts from '@/constants/chatTexts'
+import {chatTexts} from '@/constants/componentTexts/chat'
 
 type ChatMessage = {
     id: string
@@ -12,26 +12,26 @@ export const initialChatMessages: ChatMessage[] = [
     {
         id: '1',
         role: 'assistant',
-        content: ChatTexts.CHAT_OPENING_MESSAGE,
+        content: chatTexts.messages.openingMessage,
         timestamp: '08:30 AM'
     },
     {
         id: '2',
         role: 'user',
-        content: ChatTexts.CHAT_EXAMPLE_USER_RESTLESSNESS,
+        content: chatTexts.messages.exampleUserRestlessness,
         timestamp: '08:32 AM'
     },
     {
         id: '3',
         role: 'assistant',
-        content: ChatTexts.CHAT_AI_RESPONSE_1,
+        content: chatTexts.messages.aiResponse1,
         timestamp: '08:33 AM',
-        suggestions: ChatTexts.CHAT_SUGGESTIONS
+        suggestions: chatTexts.messages.suggestions
     },
     {
         id: '4',
         role: 'user',
-        content: ChatTexts.CHAT_AI_RESPONSE_2,
+        content: chatTexts.messages.aiResponse2,
         timestamp: '08:35 AM'
     }
 ]

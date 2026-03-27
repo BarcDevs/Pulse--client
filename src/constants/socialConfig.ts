@@ -1,4 +1,4 @@
-export const SOCIAL_LINKS = [
+export const socialMediaLinks = [
     {
         title: 'Facebook',
         href: 'https://www.facebook.com/HealEase-109044114129580',

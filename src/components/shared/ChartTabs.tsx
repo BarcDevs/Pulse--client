@@ -4,14 +4,14 @@ import {
     TabsTrigger
 } from '@/components/ui/tabs'
 
-import {CHART_TIME_PERIODS} from '@/constants/sharedComponentTexts'
+import {chartTimePeriods} from '@/constants/componentTexts/progressCharts'
 
 type ChartTabsProps = {
     defaultValue?: string
 }
 
 export const ChartTabs = ({
-    defaultValue = 'weekly',
+    defaultValue = 'weekly'
 }: ChartTabsProps) => (
     <Tabs
         defaultValue={defaultValue}
@@ -22,19 +22,19 @@ export const ChartTabs = ({
                 value={'daily'}
                 className={'h-6 px-3 text-xs'}
             >
-                {CHART_TIME_PERIODS.daily}
+                {chartTimePeriods.daily}
             </TabsTrigger>
             <TabsTrigger
                 value={'weekly'}
                 className={'h-6 px-3 text-xs'}
             >
-                {CHART_TIME_PERIODS.weekly}
+                {chartTimePeriods.weekly}
             </TabsTrigger>
             <TabsTrigger
                 value={'monthly'}
                 className={'h-6 px-3 text-xs'}
             >
-                {CHART_TIME_PERIODS.monthly}
+                {chartTimePeriods.monthly}
             </TabsTrigger>
         </TabsList>
     </Tabs>

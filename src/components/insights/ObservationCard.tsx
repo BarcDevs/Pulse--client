@@ -1,22 +1,23 @@
-import * as InsightsDetailTexts from '@/constants/insightsDetailTexts'
+import {insightsDetail}
+    from '@/constants/componentTexts/insightsDetail'
 
 export const ObservationCard = () => (
     <div className={'rounded-xl bg-surface-section p-4'}>
         <p className={'text-xs font-medium uppercase tracking-wider text-muted-foreground'}>
-            {InsightsDetailTexts.INSIGHTS_PATTERNS_OBSERVATION_LABEL}
+            {insightsDetail.patterns.observation.label}
         </p>
         <h4 className={'mt-1 font-semibold text-foreground'}>
-            {InsightsDetailTexts.INSIGHTS_PATTERNS_OBSERVATION_TITLE}
+            {insightsDetail.patterns.observation.title}
         </h4>
         <p className={'mt-2 text-sm text-muted-foreground'}>
-            {InsightsDetailTexts.INSIGHTS_PATTERNS_OBSERVATION_DESCRIPTION}
+            {insightsDetail.patterns.observation.description}
         </p>
         <div className={'mt-4'}>
             <div className={'text-3xl font-bold text-primary'}>
-                {InsightsDetailTexts.INSIGHTS_PATTERNS_OBSERVATION_SUCCESS_VALUE}
+                {insightsDetail.patterns.observation.successValue}
             </div>
             <p className={'text-xs text-muted-foreground'}>
-                {InsightsDetailTexts.INSIGHTS_PATTERNS_OBSERVATION_SUCCESS_LABEL}
+                {insightsDetail.patterns.observation.successLabel}
             </p>
         </div>
     </div>

@@ -15,8 +15,8 @@ import {HeaderTitle} from '@/components/header/HeaderTitle'
 import {UserMenu} from '@/components/header/UserMenu'
 import {FormInput} from '@/components/shared/FormInput'
 
-import {getHeaderConfig} from '@/constants/getHeaderConfig'
-import {HEADER_SEARCH_PLACEHOLDER} from '@/constants/layoutTexts'
+import {appLayoutTexts} from '@/constants/componentTexts/ui/layout'
+import {getHeaderConfig} from '@/constants/config/getHeaderConfig'
 
 
 export const AppHeader = () => {
@@ -54,7 +54,7 @@ export const AppHeader = () => {
                         <Search className={'absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground'}/>
                         <FormInput
                             id={'headerSearch'}
-                            placeholder={HEADER_SEARCH_PLACEHOLDER}
+                            placeholder={appLayoutTexts.header.searchPlaceholder}
                             value={searchValue}
                             onChange={(e) => setSearchValue(e.target.value)}
                             type={'text'}

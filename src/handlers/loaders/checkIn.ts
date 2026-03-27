@@ -1,6 +1,6 @@
 import {CheckIn, CheckInStats} from '@/types/checkIn'
 
-import {DEFAULTS} from '@/constants/defaults'
+import {defaults} from '@/constants/defaults'
 
 import {fetchCheckIns, fetchCheckInStats} from '@/api/checkIn'
 
@@ -11,7 +11,7 @@ type CheckInLoaderData = {
 
 export const checkInLoader = async (): Promise<CheckInLoaderData> => {
     const [historyRes, statsRes] = await Promise.all([
-        fetchCheckIns(DEFAULTS.checkIn.historyLimit),
+        fetchCheckIns(defaults.checkIn.historyLimit),
         fetchCheckInStats()
     ])
 
@@ -23,7 +23,7 @@ export const checkInLoader = async (): Promise<CheckInLoaderData> => {
 
 export const newCheckInLoader = async (): Promise<CheckInLoaderData> => {
     const [historyRes, statsRes] = await Promise.all([
-        fetchCheckIns(DEFAULTS.checkIn.historyLimit),
+        fetchCheckIns(defaults.checkIn.historyLimit),
         fetchCheckInStats()
     ])
 

@@ -6,7 +6,7 @@ import {Button} from '@/components/ui/button'
 
 import {cn} from '@/lib/utils'
 
-import * as SettingsTexts from '@/constants/settingsTexts'
+import {settingsPageTexts} from '@/constants/componentTexts/settings'
 
 type ThemeSelectorProps = {
     theme: Theme
@@ -19,10 +19,10 @@ export const ThemeSelector = ({
 }: ThemeSelectorProps) => (
     <div>
         <h4 className={'font-medium text-foreground mb-1'}>
-            {SettingsTexts.SETTINGS_PREFERENCES_THEME_TITLE}
+            {settingsPageTexts.preferences.theme.title}
         </h4>
         <p className={'text-sm text-muted-foreground mb-3'}>
-            {SettingsTexts.SETTINGS_PREFERENCES_THEME_DESCRIPTION}
+            {settingsPageTexts.preferences.theme.description}
         </p>
         <div className={'flex gap-2'}>
             <Button
@@ -40,7 +40,7 @@ export const ThemeSelector = ({
                 )}
             >
                 <Sun className={'h-4 w-4'}/>
-                {SettingsTexts.SETTINGS_PREFERENCES_THEME_LIGHT}
+                {settingsPageTexts.preferences.theme.light}
             </Button>
             <Button
                 onClick={() => onThemeChange('dark')}
@@ -57,7 +57,7 @@ export const ThemeSelector = ({
                 )}
             >
                 <Moon className={'h-4 w-4'}/>
-                {SettingsTexts.SETTINGS_PREFERENCES_THEME_DARK}
+                {settingsPageTexts.preferences.theme.dark}
             </Button>
         </div>
     </div>

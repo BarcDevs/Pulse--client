@@ -14,9 +14,9 @@ import {
     CardTitle
 } from '@/components/ui/card'
 
-import {SIGNUP} from '@/constants/authTexts'
+import {authTexts} from '@/constants/componentTexts/auth'
 
-import {TIMINGS} from '@/config/timings'
+import {timings} from '@/config/timings'
 
 const SignupPage = () => {
     const router = useRouter()
@@ -28,17 +28,17 @@ const SignupPage = () => {
         setTimeout(() => {
             setIsLoading(false)
             router.push('/dashboard')
-        }, TIMINGS.AUTH_API_DELAY)
+        }, timings.AUTH_API_DELAY)
     }
 
     return (
         <Card className={'w-full max-w-md border-0 shadow-lg'}>
             <CardHeader className={'text-center'}>
                 <CardTitle className={'text-2xl font-semibold'}>
-                    {SIGNUP.title}
+                    {authTexts.signup.title}
                 </CardTitle>
                 <CardDescription>
-                    {SIGNUP.description}
+                    {authTexts.signup.description}
                 </CardDescription>
             </CardHeader>
             <CardContent>

@@ -1,21 +1,21 @@
 import {Badge} from '@/components/ui/badge'
 
-import * as InsightsDetailTexts
-        from '@/constants/insightsDetailTexts'
+import {insightsDetail}
+    from '@/constants/componentTexts/insightsDetail'
 
 export const PredictionCard = () => (
     <div className={'rounded-xl bg-primary p-4 text-white'}>
         <p className={'text-xs font-medium uppercase tracking-wider opacity-80'}>
-            {InsightsDetailTexts.INSIGHTS_PATTERNS_PREDICTION_LABEL}
+            {insightsDetail.patterns.prediction.label}
         </p>
         <h4 className={'mt-1 font-semibold'}>
-            {InsightsDetailTexts.INSIGHTS_PATTERNS_PREDICTION_TITLE}
+            {insightsDetail.patterns.prediction.title}
         </h4>
         <p className={'mt-2 text-sm opacity-90'}>
-            {InsightsDetailTexts.INSIGHTS_PATTERNS_PREDICTION_DESCRIPTION}
+            {insightsDetail.patterns.prediction.description}
         </p>
         <Badge className={'mt-4 border-0 bg-white/20 text-white'}>
-            {InsightsDetailTexts.INSIGHTS_PATTERNS_PREDICTION_BADGE}
+            {insightsDetail.patterns.prediction.badge}
         </Badge>
     </div>
 )

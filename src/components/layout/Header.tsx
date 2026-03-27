@@ -7,10 +7,7 @@ import {Bell, Search} from 'lucide-react'
 import {FormInput} from '@/components/shared/FormInput'
 import {Button} from '@/components/ui/button'
 
-import {
-    HEADER_AVATAR_INITIALS,
-    HEADER_SEARCH_PLACEHOLDER
-} from '@/constants/layoutTexts'
+import {appLayoutTexts} from '@/constants/componentTexts/ui/layout'
 
 type HeaderProps = {
     title: string
@@ -19,16 +16,24 @@ type HeaderProps = {
     actions?: ReactNode
 }
 
-export const Header = ({ title, subtitle, showSearch = false, actions }: HeaderProps) => {
+export const Header = ({
+    title,
+    subtitle,
+    showSearch = false,
+    actions
+}: HeaderProps) => {
     const [searchValue, setSearchValue] = useState('')
 
     return (
         <header className={'sticky top-0 z-30 flex h-16 items-center justify-between bg-surface-page px-6'}>
             <div>
-                <h1 className={'text-xl font-semibold text-foreground'}>{title}</h1>
-                {subtitle && (
-                    <p className={'text-sm text-muted-foreground'}>{subtitle}</p>
-                )}
+                <h1 className={'text-xl font-semibold text-foreground'}>
+                    {title}
+                </h1>
+                {subtitle &&
+                    <p className={'text-sm text-muted-foreground'}>
+                        {subtitle}
+                    </p>}
             </div>
 
             <div className={'flex items-center gap-3'}>
@@ -37,7 +42,7 @@ export const Header = ({ title, subtitle, showSearch = false, actions }: HeaderP
                         <Search className={'absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground'}/>
                         <FormInput
                             id={'headerSearch'}
-                            placeholder={HEADER_SEARCH_PLACEHOLDER}
+                            placeholder={appLayoutTexts.header.searchPlaceholder}
                             value={searchValue}
                             onChange={(e) => setSearchValue(e.target.value)}
                             type={'text'}
@@ -49,13 +54,17 @@ export const Header = ({ title, subtitle, showSearch = false, actions }: HeaderP
 
                 {actions}
 
-                <Button variant={'ghost'} size={'icon'} className={'relative'}>
+                <Button
+                    variant={'ghost'}
+                    size={'icon'}
+                    className={'relative'}
+                >
                     <Bell className={'h-5 w-5 text-muted-foreground'}/>
                     <span className={'absolute right-2 top-2 h-2 w-2 rounded-full bg-destructive'}/>
                 </Button>
 
                 <div className={'h-10 w-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-medium'}>
-                    {HEADER_AVATAR_INITIALS}
+                    {appLayoutTexts.header.avatarInitials}
                 </div>
             </div>
         </header>

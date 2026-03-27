@@ -1,11 +1,6 @@
 import {AuthFormType, FormConfig} from '@/types/forms'
 
-import {
-    FORGOT_PASSWORD,
-    LOGIN,
-    RESET_PASSWORD,
-    SIGNUP
-} from '@/constants/authTexts'
+import {authTexts} from '@/constants/componentTexts/auth'
 
 type AuthFormConfigs = Record<
     AuthFormType,
@@ -17,13 +12,13 @@ const authFormConfigs: AuthFormConfigs = {
         fields: {
             email: {
                 type: 'email',
-                label: LOGIN.emailLabel,
-                placeholder: LOGIN.emailPlaceholder,
+                label: authTexts.login.emailLabel,
+                placeholder: authTexts.login.emailPlaceholder,
                 required: true
             },
             password: {
                 type: 'password',
-                label: LOGIN.passwordLabel,
+                label: authTexts.login.passwordLabel,
                 placeholder: '••••••••',
                 required: true
             },
@@ -35,13 +30,13 @@ const authFormConfigs: AuthFormConfigs = {
         },
         buttons: {
             primary: {
-                label: LOGIN.loginButton,
-                loadingLabel: LOGIN.loggingInButton
+                label: authTexts.login.loginButton,
+                loadingLabel: authTexts.login.loggingInButton
             }
         },
         links: [
             {
-                label: LOGIN.forgotPasswordLink,
+                label: authTexts.login.forgotPasswordLink,
                 href: '/forgot-password'
             }
         ]
@@ -51,45 +46,45 @@ const authFormConfigs: AuthFormConfigs = {
         fields: {
             firstName: {
                 type: 'text',
-                label: SIGNUP.firstNameLabel,
-                placeholder: SIGNUP.firstNamePlaceholder,
+                label: authTexts.signup.firstNameLabel,
+                placeholder: authTexts.signup.firstNamePlaceholder,
                 required: true
             },
             lastName: {
                 type: 'text',
-                label: SIGNUP.lastNameLabel,
-                placeholder: SIGNUP.lastNamePlaceholder,
+                label: authTexts.signup.lastNameLabel,
+                placeholder: authTexts.signup.lastNamePlaceholder,
                 required: true
             },
             email: {
                 type: 'email',
-                label: SIGNUP.emailLabel,
-                placeholder: SIGNUP.emailPlaceholder,
+                label: authTexts.signup.emailLabel,
+                placeholder: authTexts.signup.emailPlaceholder,
                 required: true
             },
             password: {
                 type: 'password',
-                label: SIGNUP.passwordLabel,
-                placeholder: SIGNUP.passwordPlaceholder,
+                label: authTexts.signup.passwordLabel,
+                placeholder: authTexts.signup.passwordPlaceholder,
                 required: true,
                 description: 'Min 8 characters with letters and numbers'
             },
             confirmPassword: {
                 type: 'password',
-                label: SIGNUP.confirmPasswordLabel,
-                placeholder: SIGNUP.confirmPasswordPlaceholder,
+                label: authTexts.signup.confirmPasswordLabel,
+                placeholder: authTexts.signup.confirmPasswordPlaceholder,
                 required: true
             }
         },
         buttons: {
             primary: {
-                label: SIGNUP.signupButton,
-                loadingLabel: SIGNUP.signingUpButton
+                label: authTexts.signup.signupButton,
+                loadingLabel: authTexts.signup.signingUpButton
             }
         },
         links: [
             {
-                label: `${SIGNUP.loginText} ${SIGNUP.loginLink}`,
+                label: `${authTexts.signup.loginText} ${authTexts.signup.loginLink}`,
                 href: '/login'
             }
         ]
@@ -99,20 +94,20 @@ const authFormConfigs: AuthFormConfigs = {
         fields: {
             email: {
                 type: 'email',
-                label: FORGOT_PASSWORD.emailLabel,
-                placeholder: FORGOT_PASSWORD.emailPlaceholder,
+                label: authTexts.forgotPassword.emailLabel,
+                placeholder: authTexts.forgotPassword.emailPlaceholder,
                 required: true
             }
         },
         buttons: {
             primary: {
-                label: FORGOT_PASSWORD.submitButton,
-                loadingLabel: FORGOT_PASSWORD.sendingButton
+                label: authTexts.forgotPassword.submitButton,
+                loadingLabel: authTexts.forgotPassword.sendingButton
             }
         },
         links: [
             {
-                label: FORGOT_PASSWORD.backButton,
+                label: authTexts.forgotPassword.backButton,
                 href: '/login'
             }
         ]
@@ -122,26 +117,26 @@ const authFormConfigs: AuthFormConfigs = {
         fields: {
             password: {
                 type: 'password',
-                label: RESET_PASSWORD.passwordLabel,
-                placeholder: RESET_PASSWORD.passwordPlaceholder,
+                label: authTexts.resetPassword.passwordLabel,
+                placeholder: authTexts.resetPassword.passwordPlaceholder,
                 required: true
             },
             confirmPassword: {
                 type: 'password',
-                label: RESET_PASSWORD.confirmPasswordLabel,
-                placeholder: RESET_PASSWORD.passwordPlaceholder,
+                label: authTexts.resetPassword.confirmPasswordLabel,
+                placeholder: authTexts.resetPassword.passwordPlaceholder,
                 required: true
             }
         },
         buttons: {
             primary: {
-                label: RESET_PASSWORD.submitButton,
-                loadingLabel: RESET_PASSWORD.resettingButton
+                label: authTexts.resetPassword.submitButton,
+                loadingLabel: authTexts.resetPassword.resettingButton
             }
         },
         links: [
             {
-                label: RESET_PASSWORD.backButton,
+                label: authTexts.resetPassword.backButton,
                 href: '/login'
             }
         ]

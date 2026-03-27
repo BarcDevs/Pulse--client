@@ -1,9 +1,6 @@
 import {Button} from '@/components/ui/button'
 
-import {
-    CHAT_SUGGESTED_FOR_YOU,
-    CHAT_SUGGESTIONS
-} from '@/constants/chatTexts'
+import {chatTexts} from '@/constants/componentTexts/chat'
 
 type ChatSuggestionsPanelProps = {
     onSuggestionClick: (suggestion: string) => void
@@ -14,10 +11,10 @@ export const ChatSuggestionsPanel = ({
 }: ChatSuggestionsPanelProps) => (
     <div className={'mb-3'}>
         <p className={'mb-2 text-xs font-medium uppercase tracking-wider text-muted-foreground'}>
-            {CHAT_SUGGESTED_FOR_YOU}
+            {chatTexts.suggestedForYou}
         </p>
         <div className={'flex flex-wrap gap-2'}>
-            {CHAT_SUGGESTIONS.map(
+            {chatTexts.messages.suggestions.map(
                 (suggestion) => (
                     <Button
                         key={suggestion}

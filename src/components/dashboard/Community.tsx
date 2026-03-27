@@ -14,10 +14,7 @@ import {
 
 import {cn} from '@/lib/utils'
 
-import {
-    DASHBOARD_COMMUNITY_LABEL,
-    DASHBOARD_COMMUNITY_VIEW_ALL
-} from '@/constants/dashboardTexts'
+import {dashboardPageTexts} from '@/constants/componentTexts/dashboard'
 
 import {COMMUNITY_UPDATES_TRANSFORMED}
     from '@/mocks/communityMockTexts'
@@ -26,13 +23,13 @@ export const DashboardCommunity = () => (
     <Card className={'border-0 shadow-sm'}>
         <CardHeader className={'flex flex-row items-center justify-between pb-2'}>
             <CardTitle className={'text-base font-semibold'}>
-                {DASHBOARD_COMMUNITY_LABEL}
+                {dashboardPageTexts.community.label}
             </CardTitle>
             <Link
                 href={'/community'}
                 className={'text-sm font-medium text-primary hover:underline'}
             >
-                {DASHBOARD_COMMUNITY_VIEW_ALL}
+                {dashboardPageTexts.community.viewAll}
             </Link>
         </CardHeader>
         <CardContent>

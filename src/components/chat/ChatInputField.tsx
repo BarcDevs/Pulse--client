@@ -10,7 +10,7 @@ import {
 } from '@/components/ui/avatar'
 import {Button} from '@/components/ui/button'
 
-import {CHAT_INPUT_PLACEHOLDER} from '@/constants/chatTexts'
+import {chatTexts} from '@/constants/componentTexts/chat'
 
 type ChatInputFieldProps = {
     value: string
@@ -41,7 +41,7 @@ export const ChatInputField = ({
                     onChange(e.target.value)
                 }
                 onKeyDown={onKeyDown}
-                placeholder={CHAT_INPUT_PLACEHOLDER}
+                placeholder={chatTexts.inputPlaceholder}
                 className={'w-full rounded-full border border-border bg-muted px-4 py-3 pr-12 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20'}
                 required={false}
             />

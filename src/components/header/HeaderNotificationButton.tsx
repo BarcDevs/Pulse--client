@@ -3,10 +3,7 @@ import {Bell} from 'lucide-react'
 import {Badge} from '@/components/ui/badge'
 import {Button} from '@/components/ui/button'
 
-import {
-    HEADER_NOTIFICATION_BADGE_COUNT,
-    NOTIFICATIONS_ARIA
-} from '@/constants/layoutTexts'
+import {appLayoutTexts} from '@/constants/componentTexts/ui/layout'
 
 export const HeaderNotificationButton = () => (
     <Button
@@ -16,10 +13,10 @@ export const HeaderNotificationButton = () => (
     >
         <Bell className={'size-5 text-muted-foreground'}/>
         <Badge className={'absolute -right-1 -top-1 size-5 rounded-full p-0 text-[10px]'}>
-            {HEADER_NOTIFICATION_BADGE_COUNT}
+            {appLayoutTexts.header.notificationBadgeCount}
         </Badge>
         <span className={'sr-only'}>
-            {NOTIFICATIONS_ARIA}
+            {appLayoutTexts.header.notificationsAria}
         </span>
     </Button>
 )

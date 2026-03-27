@@ -1,15 +1,15 @@
 import Link from 'next/link'
 
-import {FOOTER_LINKS} from '@/constants/componentData'
-import {FOOTER_LEGAL_TITLE} from '@/constants/footerTexts'
+import {footer} from '@/constants/componentTexts/ui/footer'
+import {footerLinks} from '@/constants/config/navigation'
 
 export const FooterLegal = () => (
     <div>
         <h3 className={'font-semibold mb-4'}>
-            {FOOTER_LEGAL_TITLE}
+            {footer.legalTitle}
         </h3>
         <ul className={'space-y-2'}>
-            {FOOTER_LINKS.legal.map(link => (
+            {footerLinks.legal.map(link => (
                 <li key={link.href}>
                     <Link
                         href={link.href}

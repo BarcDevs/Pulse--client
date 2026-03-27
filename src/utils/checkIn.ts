@@ -1,8 +1,8 @@
 import {CheckIn} from '@/types/checkIn'
 
-import {DEFAULTS} from '@/constants/defaults'
+import {defaults} from '@/constants/defaults'
 
-const {maxSuggestedActivities} = DEFAULTS.checkIn
+const {maxSuggestedActivities} = defaults.checkIn
 
 type ActivityCounter = Map<
     string,

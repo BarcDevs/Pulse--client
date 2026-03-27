@@ -1,16 +1,16 @@
-import { Button } from '@/components/ui/button'
+import {Button} from '@/components/ui/button'
 
-import * as communityTexts from '@/constants/communityTexts'
+import {communityPageTexts} from '@/constants/componentTexts/community'
 
-const trendingTopics = communityTexts.COMMUNITY_TRENDING_TOPICS
+const trendingTopics = communityPageTexts.trending
 
 export const TrendingTopicsCard = () => (
     <div className={'rounded-2xl bg-surface-card p-5'}>
         <h3 className={'mb-4 font-semibold text-foreground'}>
-            {communityTexts.COMMUNITY_TRENDING_TOPICS_TITLE}
+            {communityPageTexts.trending.title}
         </h3>
         <div className={'flex flex-wrap gap-2'}>
-            {trendingTopics.map((topic) => (
+            {trendingTopics.topics.map((topic) => (
                 <Button
                     key={topic}
                     variant={'ghost'}

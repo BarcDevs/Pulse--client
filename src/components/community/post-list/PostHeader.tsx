@@ -1,6 +1,6 @@
 import {cn} from '@/lib/utils'
 
-import * as CommunityTexts from '@/constants/communityTexts'
+import {communityPageTexts} from '@/constants/componentTexts/community'
 
 type PostHeaderProps = {
     category: string
@@ -23,7 +23,7 @@ export const PostHeader = ({
             {category}
         </span>
         <span className={'text-xs text-muted-foreground'}>
-            {CommunityTexts.COMMUNITY_POSTED_BY}
+            {communityPageTexts.posts.postedBy}
             {` ${author} - ${timeAgo}`}
         </span>
     </div>

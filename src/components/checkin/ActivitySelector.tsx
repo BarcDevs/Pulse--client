@@ -12,11 +12,7 @@ import {
     CardTitle
 } from '@/components/ui/card'
 
-import {
-    CHECKIN_ACTIVITIES_DEFAULT,
-    CHECKIN_ACTIVITIES_PLACEHOLDER,
-    CHECKIN_ACTIVITIES_TITLE
-} from '@/constants/checkInTexts'
+import {checkInTexts} from '@/constants/componentTexts/checkIn'
 
 import {ActivityToggleButton} from './ActivityToggleButton'
 
@@ -64,13 +60,13 @@ export const CheckInActivities = ({
                 <div className={'flex items-center gap-2'}>
                     <Trophy className={'size-5 text-warning'}/>
                     <CardTitle className={'text-lg font-semibold'}>
-                        {CHECKIN_ACTIVITIES_TITLE}
+                        {checkInTexts.activities.title}
                     </CardTitle>
                 </div>
             </CardHeader>
             <CardContent>
                 <div className={'flex flex-wrap gap-2'}>
-                    {CHECKIN_ACTIVITIES_DEFAULT.map(
+                    {checkInTexts.activities.default.map(
                         (activity) => (
                             <ActivityToggleButton
                                 key={activity}
@@ -83,7 +79,7 @@ export const CheckInActivities = ({
                     <div className={'flex items-center gap-2'}>
                         <FormInput
                             id={'customActivity'}
-                            placeholder={CHECKIN_ACTIVITIES_PLACEHOLDER}
+                            placeholder={checkInTexts.activities.placeholder}
                             value={customActivity}
                             onChange={(e) => setCustomActivity(e.target.value)}
                             onKeyDown={(e) =>

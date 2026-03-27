@@ -20,11 +20,7 @@ import {
     TabsTrigger
 } from '@/components/ui/tabs'
 
-import {
-    DASHBOARD_WEEKLY_CHART_MONTH,
-    DASHBOARD_WEEKLY_CHART_TITLE,
-    DASHBOARD_WEEKLY_CHART_WEEK
-} from '@/constants/dashboardTexts'
+import {dashboardPageTexts} from '@/constants/componentTexts/dashboard'
 
 import {WEEKLY_CHART_DATA_DERIVED} from '@/mocks/chartData'
 
@@ -34,7 +30,7 @@ export const DashboardWeeklyChart = () => (
     <Card className={'border-0 shadow-sm'}>
         <CardHeader className={'flex flex-row items-center justify-between pb-2'}>
             <CardTitle className={'text-lg font-semibold'}>
-                {DASHBOARD_WEEKLY_CHART_TITLE}
+                {dashboardPageTexts.weeklyChart.title}
             </CardTitle>
             <Tabs
                 defaultValue={'week'}
@@ -45,13 +41,13 @@ export const DashboardWeeklyChart = () => (
                         value={'week'}
                         className={'h-6 px-3 text-xs'}
                     >
-                        {DASHBOARD_WEEKLY_CHART_WEEK}
+                        {dashboardPageTexts.weeklyChart.week}
                     </TabsTrigger>
                     <TabsTrigger
                         value={'month'}
                         className={'h-6 px-3 text-xs'}
                     >
-                        {DASHBOARD_WEEKLY_CHART_MONTH}
+                        {dashboardPageTexts.weeklyChart.month}
                     </TabsTrigger>
                 </TabsList>
             </Tabs>

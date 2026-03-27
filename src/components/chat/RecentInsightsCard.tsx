@@ -7,7 +7,7 @@ import {
     CardTitle
 } from '@/components/ui/card'
 
-import * as ChatTexts from '@/constants/chatTexts'
+import {chatTexts} from '@/constants/componentTexts/chat'
 
 import {InsightItem} from './InsightItem'
 
@@ -15,26 +15,26 @@ export const RecentInsightsCard = () => (
     <Card className={'border-0 bg-surface-section shadow-none'}>
         <CardHeader className={'pb-2'}>
             <CardTitle className={'text-sm font-medium text-muted-foreground'}>
-                {ChatTexts.CHAT_SIDEBAR_INSIGHTS_TITLE}
+                {chatTexts.sidebar.insightsTitle}
             </CardTitle>
             <p className={'text-xs text-muted-foreground'}>
-                {ChatTexts.CHAT_SIDEBAR_INSIGHTS_TIMEFRAME}
+                {chatTexts.sidebar.insightsTimeframe}
             </p>
         </CardHeader>
         <CardContent className={'space-y-4'}>
             <InsightItem
                 icon={TrendingUp}
                 iconBg={'bg-amber-100'}
-                label={ChatTexts.CHAT_SIDEBAR_EMOTIONAL_TREND_LABEL}
-                title={ChatTexts.CHAT_SIDEBAR_EMOTIONAL_TREND_TITLE}
-                description={ChatTexts.CHAT_SIDEBAR_EMOTIONAL_TREND_DESCRIPTION}
+                label={chatTexts.sidebar.emotionalTrendLabel}
+                title={chatTexts.sidebar.emotionalTrendTitle}
+                description={chatTexts.sidebar.emotionalTrendDescription}
             />
             <InsightItem
                 icon={Moon}
                 iconBg={'bg-blue-100'}
-                label={ChatTexts.CHAT_SIDEBAR_SLEEP_QUALITY_LABEL}
-                title={ChatTexts.CHAT_SIDEBAR_SLEEP_QUALITY_TITLE}
-                description={ChatTexts.CHAT_SIDEBAR_SLEEP_QUALITY_DESCRIPTION}
+                label={chatTexts.sidebar.sleepQualityLabel}
+                title={chatTexts.sidebar.sleepQualityTitle}
+                description={chatTexts.sidebar.sleepQualityDescription}
             />
         </CardContent>
     </Card>

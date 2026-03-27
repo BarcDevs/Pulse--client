@@ -2,10 +2,12 @@ import {Button} from '@/components/ui/button'
 
 import {cn} from '@/lib/utils'
 
-import * as InsightsComponentTexts from '@/constants/insightsComponentTexts'
+import {insightsPageTexts}
+    from '@/constants/componentTexts/insightsComponent'
 
 type BehavioralPatternsTabsProps = {
     activeTab: '7days' | '30days'
+// todo: make a type
     onTabChange: (tab: '7days' | '30days') => void
 }
 
@@ -29,7 +31,7 @@ export const BehavioralPatternsTabs = ({
                     'text-muted-foreground hover:text-foreground'
             )}
         >
-            {InsightsComponentTexts.INSIGHTS_BEHAVIORAL_PATTERNS_TAB_7DAYS}
+            {insightsPageTexts.behavioralPatterns.tabs.sevenDays}
         </Button>
         <Button
             onClick={() => onTabChange('30days')}
@@ -46,7 +48,7 @@ export const BehavioralPatternsTabs = ({
                     'text-muted-foreground hover:text-foreground'
             )}
         >
-            {InsightsComponentTexts.INSIGHTS_BEHAVIORAL_PATTERNS_TAB_30DAYS}
+            {insightsPageTexts.behavioralPatterns.tabs.thirtyDays}
         </Button>
     </div>
 )
