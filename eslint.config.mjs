@@ -131,6 +131,13 @@ const config = [
             }],
             'simple-import-sort/exports': 'warn'
         }
+    },
+
+    // shadcn/ui components - totally disable ESLint checks
+    {
+        ignores: [
+            'src/components/ui/**'
+        ]
     }
 ]
 

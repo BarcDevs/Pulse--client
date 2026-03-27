@@ -14,17 +14,15 @@ import {
     CardTitle
 } from '@/components/ui/card'
 
-import {LOGIN} from '@/constants/authTexts'
+import {SIGNUP} from '@/constants/authTexts'
 
 import {TIMINGS} from '@/config/timings'
 
-import {LoginSecurityFooter} from './LoginSecurityFooter'
-
-const LoginPage = () => {
+const SignupPage = () => {
     const router = useRouter()
     const [isLoading, setIsLoading] = useState(false)
 
-    const handleLoginSuccess = async () => {
+    const handleSignupSuccess = async () => {
         setIsLoading(true)
 
         setTimeout(() => {
@@ -37,25 +35,23 @@ const LoginPage = () => {
         <Card className={'w-full max-w-md border-0 shadow-lg'}>
             <CardHeader className={'text-center'}>
                 <CardTitle className={'text-2xl font-semibold'}>
-                    {LOGIN.title}
+                    {SIGNUP.title}
                 </CardTitle>
                 <CardDescription>
-                    {LOGIN.description}
+                    {SIGNUP.description}
                 </CardDescription>
             </CardHeader>
             <CardContent>
                 <AuthForm
-                    formType={'login'}
-                    onSuccess={handleLoginSuccess}
+                    formType={'signup'}
+                    onSuccess={handleSignupSuccess}
                     isLoading={isLoading}
                 />
 
                 <GoogleLoginButton/>
-
-                <LoginSecurityFooter/>
             </CardContent>
         </Card>
     )
 }
 
-export default LoginPage
+export default SignupPage

@@ -1,10 +1,8 @@
 'use client'
 
-import {
-    SyntheticEvent,
-    useState,
-} from 'react'
+import {useState} from 'react'
 
+import {AuthForm} from '@/components/form/AuthForm'
 import {Logo} from '@/components/shared/Logo'
 import {
     Card,
@@ -19,21 +17,16 @@ import {FORGOT_PASSWORD} from '@/constants/authTexts'
 import {TIMINGS} from '@/config/timings'
 
 import {EmailVerificationView} from './EmailVerificationView'
-import {ForgotPasswordForm} from './ForgotPasswordForm'
 
 const ForgotPasswordPage = () => {
-    //todo: move form out of page as a reusable form
     const [email, setEmail] = useState('')
     const [isLoading, setIsLoading] = useState(false)
     const [isSubmitted, setIsSubmitted] = useState(false)
 
-    const handleSubmit = async (
-        e: SyntheticEvent<HTMLFormElement>
-    ) => {
-        e.preventDefault()
+    const handleSubmit = async (data: {email: string}) => {
+        setEmail(data.email)
         setIsLoading(true)
 
-        // Simulate todo: API call
         setTimeout(() => {
             setIsLoading(false)
             setIsSubmitted(true)
@@ -57,11 +50,10 @@ const ForgotPasswordPage = () => {
                     </CardDescription>
                 </CardHeader>
                 <CardContent>
-                    <ForgotPasswordForm
-                        email={email}
+                    <AuthForm
+                        formType={'forgotPassword'}
+                        onSuccess={handleSubmit}
                         isLoading={isLoading}
-                        onEmailChange={setEmail}
-                        onSubmit={handleSubmit}
                     />
                 </CardContent>
             </Card>

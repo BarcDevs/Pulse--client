@@ -1,28 +1,54 @@
-export const AUTH_BRAND_NAME = 'HealEase'
-
-export const AUTH_BRAND_TAGLINE = 'THE DIGITAL SANCTUARY'
+export const AUTH_COMMON = {
+    emailLabel: 'EMAIL ADDRESS',
+    emailPlaceholder: 'name@example.com',
+    passwordPlaceholder: '••••••••',
+    orContinueWith: 'OR CONTINUE WITH',
+    googleButton: 'Google',
+    continueWithGoogle: 'Continue with Google',
+}
 
 export const LOGIN = {
     title: 'Welcome Back',
     description: 'Please enter your details to access your sanctuary.',
-    emailLabel: 'EMAIL ADDRESS',
-    emailPlaceholder: 'name@example.com',
+    emailLabel: AUTH_COMMON.emailLabel,
+    emailPlaceholder: AUTH_COMMON.emailPlaceholder,
     passwordLabel: 'PASSWORD',
     forgotPasswordLink: 'Forgot Password?',
     loginButton: 'Log In',
     loggingInButton: 'Logging in...',
-    orContinueWith: 'OR CONTINUE WITH',
-    googleButton: 'Google',
+    orContinueWith: AUTH_COMMON.orContinueWith,
+    googleButton: AUTH_COMMON.googleButton,
     signupText: `Don't have an account?`,
     signupLink: 'Sign Up',
     hipaaText: 'SECURE HIPAA COMPLIANT CONNECTION',
 }
 
+export const SIGNUP = {
+    title: 'Create Your Account',
+    description: 'Join thousands of patients on their recovery journey. It takes less than a minute.',
+    firstNameLabel: 'FIRST NAME',
+    firstNamePlaceholder: 'John',
+    lastNameLabel: 'LAST NAME',
+    lastNamePlaceholder: 'Doe',
+    emailLabel: AUTH_COMMON.emailLabel,
+    emailPlaceholder: AUTH_COMMON.emailPlaceholder,
+    passwordLabel: 'PASSWORD',
+    passwordPlaceholder: AUTH_COMMON.passwordPlaceholder,
+    confirmPasswordLabel: 'CONFIRM PASSWORD',
+    confirmPasswordPlaceholder: AUTH_COMMON.passwordPlaceholder,
+    signupButton: 'Create Account',
+    signingUpButton: 'Creating account...',
+    loginText: 'Already have an account?',
+    loginLink: 'Sign In',
+    orContinueWith: AUTH_COMMON.orContinueWith,
+    googleButton: AUTH_COMMON.googleButton,
+}
+
 export const FORGOT_PASSWORD = {
     title: 'Forgot password?',
     description: `Don't worry, it happens to the best of us. Enter the email address associated with your account and we'll send you a link to reset your password.`,
-    emailLabel: 'EMAIL ADDRESS',
-    emailPlaceholder: 'name@example.com',
+    emailLabel: AUTH_COMMON.emailLabel,
+    emailPlaceholder: AUTH_COMMON.emailPlaceholder,
     submitButton: 'Send Reset Link',
     sendingButton: 'Sending...',
     backButton: 'Back to Login',
@@ -38,7 +64,7 @@ export const RESET_PASSWORD = {
     description: 'Choose a secure password to regain access to your recovery dashboard.',
     passwordLabel: 'NEW PASSWORD',
     confirmPasswordLabel: 'CONFIRM NEW PASSWORD',
-    passwordPlaceholder: '********',
+    passwordPlaceholder: '••••••••',
     minLengthText: 'Min 8 characters',
     specialCharText: 'One special symbol',
     submitButton: 'Reset Password',
