@@ -5,6 +5,7 @@ import {useState} from 'react'
 import {useRouter} from 'next/navigation'
 
 import {GoogleLoginButton} from '@/components/auth/forms/GoogleLoginButton'
+import {LoginSecurityFooter} from '@/components/auth/sections/LoginSecurityFooter'
 import {AuthForm} from '@/components/form/AuthForm'
 import {
     Card,
@@ -17,8 +18,6 @@ import {
 import {authTexts} from '@/constants/componentTexts/auth'
 
 import {timings} from '@/config/timings'
-
-import {LoginSecurityFooter} from './LoginSecurityFooter'
 
 const LoginPage = () => {
     const router = useRouter()

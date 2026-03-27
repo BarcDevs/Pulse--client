@@ -5,6 +5,7 @@ import {useState} from 'react'
 import Link from 'next/link'
 import {useRouter} from 'next/navigation'
 
+import {PasswordRequirementsList} from '@/components/auth/password/PasswordRequirementsList'
 import {AuthForm} from '@/components/form/AuthForm'
 import {Logo} from '@/components/shared/Logo'
 import {
@@ -18,8 +19,6 @@ import {
 import {authTexts} from '@/constants/componentTexts/auth'
 
 import {timings} from '@/config/timings'
-
-import {PasswordRequirementsList} from './PasswordRequirementsList'
 
 const ResetPasswordPage = () => {
     const router = useRouter()
