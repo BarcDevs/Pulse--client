@@ -38,13 +38,6 @@ export const progressPageTexts = {
         trendingFlat: 'trending_flat',
         improved: 'improved'
     },
-    recoveryInsight: {
-        label: 'Recovery Insight',
-        title: 'Your pain levels are dropping concurrently with improved sleep consistency.',
-        description: 'Data suggests that the 30-minute meditation you started 4 days ago is having a 12% positive impact on your morning mood scores. Keep this routine!',
-        keep: 'Keep One',
-        acknowledge: 'Acknowledge'
-    },
     stats: {
         streak: {
             label: 'Current Streak',

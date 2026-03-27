@@ -10,7 +10,7 @@ export const RecoveryInsight = () => (
             <div className={'flex items-center gap-2'}>
                 <Sparkles className={'h-5 w-5'}/>
                 <span className={'text-sm font-medium'}>
-            {progressPageTexts.recoveryInsight.label}
+            {progressPageTexts.insight.label}
         </span>
             </div>
             <Button
@@ -23,11 +23,11 @@ export const RecoveryInsight = () => (
         </div>
 
         <h3 className={'mt-4 text-xl font-semibold'}>
-            {progressPageTexts.recoveryInsight.title}
+            {progressPageTexts.insight.title}
         </h3>
 
         <p className={'mt-3 text-primary-foreground/80 text-sm leading-relaxed'}>
-            {progressPageTexts.recoveryInsight.description}
+            {progressPageTexts.insight.description}
         </p>
 
         <div className={'mt-6 flex items-center gap-3'}>
@@ -35,13 +35,13 @@ export const RecoveryInsight = () => (
                 variant={'secondary'}
                 className={'bg-white text-primary hover:bg-white/90'}
             >
-                {progressPageTexts.recoveryInsight.keep}
+                {progressPageTexts.insight.buttonPrimary}
             </Button>
             <Button
                 variant={'ghost'}
                 className={'text-primary-foreground hover:bg-white/10'}
             >
-                {progressPageTexts.recoveryInsight.acknowledge}
+                {progressPageTexts.insight.buttonSecondary}
             </Button>
         </div>
     </div>
