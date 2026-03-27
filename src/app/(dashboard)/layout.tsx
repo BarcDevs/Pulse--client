@@ -7,17 +7,17 @@ import {CustomSidebar} from '@/components/sidebar/CustomSidebar'
 const DashboardLayout = ({
     children
 }: LayoutProps) => (
-    <div className='flex flex-col min-h-screen'>
-        <div className='flex flex-1 overflow-hidden'>
-            <CustomSidebar />
-            <div className='flex flex-col flex-1'>
-                <AppHeader title='Dashboard' />
-                <main className='flex-1 overflow-auto bg-surface-page'>
+    <div className={'flex flex-col min-h-screen'}>
+        <div className={'flex flex-1 overflow-hidden'}>
+            <CustomSidebar/>
+            <div className={'flex flex-col flex-1'}>
+                <AppHeader/>
+                <main className={'flex-1 overflow-auto bg-surface-page'}>
                     {children}
                 </main>
             </div>
         </div>
-        <Footer />
+        <Footer/>
     </div>
 )
 

@@ -2,20 +2,32 @@
 
 import {useState} from 'react'
 
-import {CHAT_MESSAGES_DEFAULT} from '@/constants/chatTexts'
+import {initialChatMessages} from '@/mocks/chatMessages'
 
 import {ChatPanel} from './ChatPanel'
 import {ChatInput} from './Input'
 import {ChatMessages} from './Messages'
 
-export const ChatContent = () => {
-    const [messages] = useState(CHAT_MESSAGES_DEFAULT)
+export const ChatPageContent = () => {
+    const [messages, setMessages] = useState(initialChatMessages)
     const [inputValue, setInputValue] = useState('')
 
     const handleSend = () => {
-        if (inputValue.trim()) {
-            setInputValue('')
+        if (!inputValue.trim())
+            return
+
+        const newMessage = {
+            id: Date.now().toString(),
+            role: 'user' as const,
+            content: inputValue,
+            timestamp: new Date().toLocaleTimeString([], {
+                hour: '2-digit',
+                minute: '2-digit'
+            })
         }
+
+        setMessages([...messages, newMessage])
+        setInputValue('')
     }
 
     return (

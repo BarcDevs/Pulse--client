@@ -2,7 +2,7 @@ import {Categories} from './Categories'
 import {CommunityPanel} from './CommunityPanel'
 import {PostList} from './PostList'
 
-export const CommunityContent = () => (
+export const CommunityPageContent = () => (
     <div className={'p-6'}>
         <Categories/>
 
@@ -10,6 +10,7 @@ export const CommunityContent = () => (
             <div className={'lg:col-span-2'}>
                 <PostList/>
             </div>
+
             <CommunityPanel/>
         </div>
     </div>

@@ -1,13 +1,7 @@
-import {CheckInContent} from '@/components/checkIn/CheckInContent'
-import {Header} from '@/components/layout/Header'
-
-import {HEADER_HEALTH_OVERVIEW} from '@/constants/layoutTexts'
+import {CheckInPageContent} from '@/components/checkIn/CheckInPageContent'
 
 const DailyCheckInPage = () => (
-    <>
-        <Header title={HEADER_HEALTH_OVERVIEW}/>
-        <CheckInContent/>
-    </>
+    <CheckInPageContent/>
 )
 
 export default DailyCheckInPage
