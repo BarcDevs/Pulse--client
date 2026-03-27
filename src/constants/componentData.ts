@@ -80,16 +80,20 @@ export const NAV_LINKS = [
 export const FOOTER_LINKS = {
     quick: [
         {
-            title: 'About',
-            href: '/about'
+            title: 'Daily Check-In',
+            href: '/check-in'
         },
         {
-            title: 'Contact',
-            href: '/contact'
+            title: 'My Progress',
+            href: '/progress'
         },
         {
-            title: 'Support',
-            href: '/support'
+            title: 'Community Forum',
+            href: '/forum'
+        },
+        {
+            title: 'My Insights',
+            href: '/insights'
         }
     ],
     legal: [
