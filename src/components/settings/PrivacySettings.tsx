@@ -1,21 +1,25 @@
 'use client'
 
-import { useState } from 'react'
+import {Lock} from 'lucide-react'
 
-import { Lock } from 'lucide-react'
+import {SettingToggle} from '@/components/shared/SettingToggle'
 
-import { SettingToggle } from '@/components/shared/SettingToggle'
+import {usePrivacySettingsForm} from '@/hooks/usePrivacySettingsForm'
 
 import * as SettingsTexts from '@/constants/settingsTexts'
 
 export const PrivacySettings = () => {
-    const [profileVisibility, setProfileVisibility] = useState('onlyMe')
-    const [anonymousParticipation, setAnonymousParticipation] = useState(true)
+    const {form} = usePrivacySettingsForm()
+
+    const profileVisibility = form.watch('profileVisibility')
+    const anonymousParticipation = form.watch(
+        'anonymousParticipation'
+    )
 
     return (
         <div className={'rounded-2xl bg-surface-card p-6'}>
             <div className={'flex items-center gap-2 mb-6'}>
-                <Lock className={'h-5 w-5 text-primary'} />
+                <Lock className={'h-5 w-5 text-primary'}/>
                 <h3 className={'text-lg font-semibold text-foreground'}>
                     {SettingsTexts.SETTINGS_PRIVACY_TITLE}
                 </h3>
@@ -24,19 +28,29 @@ export const PrivacySettings = () => {
             <div className={'grid grid-cols-1 md:grid-cols-2 gap-6'}>
                 <div className={'p-4 rounded-xl bg-surface-section'}>
                     <h4 className={'font-medium text-foreground mb-1'}>
-                        {SettingsTexts.SETTINGS_PRIVACY_VISIBILITY_TITLE}
+                        {SettingsTexts
+                            .SETTINGS_PRIVACY_VISIBILITY_TITLE}
                     </h4>
                     <p className={'text-sm text-muted-foreground mb-3'}>
-                        {SettingsTexts.SETTINGS_PRIVACY_VISIBILITY_DESCRIPTION}
+                        {SettingsTexts
+                            .SETTINGS_PRIVACY_VISIBILITY_DESCRIPTION}
                     </p>
                     <select
                         value={profileVisibility}
-                        onChange={(e) => setProfileVisibility(e.target.value)}
+                        onChange={
+                            (e) => form.setValue(
+                                'profileVisibility',
+                                e.target.value as
+                                    'onlyMe' | 'friends' |
+                                    'public'
+                            )
+                        }
                         className={
                             'w-full px-3 py-2 rounded-lg bg-surface-card border border-border text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary/20'
                         }
                     >
-                        {SettingsTexts.SETTINGS_PRIVACY_VISIBILITY_OPTIONS.map(
+                        {SettingsTexts
+                            .SETTINGS_PRIVACY_VISIBILITY_OPTIONS.map(
                             (option) => (
                                 <option
                                     key={option.value}
@@ -51,15 +65,25 @@ export const PrivacySettings = () => {
 
                 <div className={'p-4 rounded-xl bg-surface-section'}>
                     <h4 className={'font-medium text-foreground mb-1'}>
-                        {SettingsTexts.SETTINGS_PRIVACY_DATA_SHARING_TITLE}
+                        {SettingsTexts
+                            .SETTINGS_PRIVACY_DATA_SHARING_TITLE}
                     </h4>
                     <p className={'text-sm text-muted-foreground mb-3'}>
-                        {SettingsTexts.SETTINGS_PRIVACY_DATA_SHARING_DESCRIPTION}
+                        {SettingsTexts
+                            .SETTINGS_PRIVACY_DATA_SHARING_DESCRIPTION}
                     </p>
                     <SettingToggle
-                        label={SettingsTexts.SETTINGS_PRIVACY_ANONYMOUS_PARTICIPATION_LABEL}
+                        label={
+                            SettingsTexts
+                                .SETTINGS_PRIVACY_ANONYMOUS_PARTICIPATION_LABEL
+                        }
                         checked={anonymousParticipation}
-                        onChange={setAnonymousParticipation}
+                        onChange={
+                            (value) => form.setValue(
+                                'anonymousParticipation',
+                                value
+                            )
+                        }
                     />
                 </div>
             </div>

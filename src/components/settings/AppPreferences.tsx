@@ -1,19 +1,32 @@
 'use client'
 
-import {useState} from 'react'
-
 import {Palette} from 'lucide-react'
 
 import type {Theme} from '@/types'
+
+import {useAppPreferencesForm} from '@/hooks/useAppPreferencesForm'
 
 import * as SettingsTexts from '@/constants/settingsTexts'
 
 import {LanguageSelector} from './LanguageSelector'
 import {ThemeSelector} from './ThemeSelector'
 
-export const AppPreferences = () => {
-    const [theme, setTheme] = useState<Theme>('light')
-    const [language, setLanguage] = useState('en-US')
+type AppPreferencesProps = {
+    theme?: Theme
+    language?: string
+}
+
+export const AppPreferences = ({
+    theme = 'light',
+    language = 'en-US'
+}: AppPreferencesProps) => {
+    const {form} = useAppPreferencesForm({
+        theme,
+        language
+    })
+
+    const currentTheme = form.watch('theme')
+    const currentLanguage = form.watch('language')
 
     return (
         <div className={'rounded-2xl bg-surface-card p-6'}>
@@ -26,12 +39,22 @@ export const AppPreferences = () => {
 
             <div className={'space-y-6'}>
                 <ThemeSelector
-                    theme={theme}
-                    onThemeChange={setTheme}
+                    theme={currentTheme}
+                    onThemeChange={
+                        (value) => form.setValue(
+                            'theme',
+                            value
+                        )
+                    }
                 />
                 <LanguageSelector
-                    language={language}
-                    onLanguageChange={setLanguage}
+                    language={currentLanguage}
+                    onLanguageChange={
+                        (value) => form.setValue(
+                            'language',
+                            value
+                        )
+                    }
                 />
             </div>
         </div>
