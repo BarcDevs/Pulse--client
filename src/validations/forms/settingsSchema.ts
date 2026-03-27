@@ -5,9 +5,8 @@ export const notificationsSettingsSchema = z.object({
     communityAlerts: z.boolean()
 })
 
-export type NotificationsSettingsSchema = z.infer<
-    typeof notificationsSettingsSchema
->
+export type NotificationsSettingsSchema =
+    z.infer<typeof notificationsSettingsSchema>
 
 export const privacySettingsSchema = z.object({
     profileVisibility: z.enum([
@@ -18,9 +17,8 @@ export const privacySettingsSchema = z.object({
     anonymousParticipation: z.boolean()
 })
 
-export type PrivacySettingsSchema = z.infer<
-    typeof privacySettingsSchema
->
+export type PrivacySettingsSchema =
+    z.infer<typeof privacySettingsSchema>
 
 export const appPreferencesSchema = z.object({
     theme: z.enum([
@@ -30,6 +28,5 @@ export const appPreferencesSchema = z.object({
     language: z.string()
 })
 
-export type AppPreferencesSchema = z.infer<
-    typeof appPreferencesSchema
->
+export type AppPreferencesSchema =
+    z.infer<typeof appPreferencesSchema>
