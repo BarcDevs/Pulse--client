@@ -1,11 +1,10 @@
 import {InsightsContent} from '@/components/insights/InsightsContent'
-import {AppShell} from '@/components/layout/AppShell'
 import {Header} from '@/components/layout/Header'
 
 import * as PageSubtitles from '@/constants/pageSubtitlesTexts'
 
 const InsightsPage = () => (
-    <AppShell>
+    <>
         <Header
             title={PageSubtitles.INSIGHTS_PAGE_TITLE}
             subtitle={PageSubtitles.INSIGHTS_PAGE_SUBTITLE}
@@ -17,7 +16,7 @@ const InsightsPage = () => (
             }
         />
         <InsightsContent/>
-    </AppShell>
+    </>
 )
 
 export default InsightsPage

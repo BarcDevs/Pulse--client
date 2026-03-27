@@ -1,7 +1,6 @@
 import {Plus} from 'lucide-react'
 
 import {CommunityContent} from '@/components/community/CommunityContent'
-import {AppShell} from '@/components/layout/AppShell'
 import {Header} from '@/components/layout/Header'
 import {Button} from '@/components/ui/button'
 
@@ -9,7 +8,7 @@ import * as CommunityTexts from '@/constants/communityTexts'
 import * as PageSubtitles from '@/constants/pageSubtitlesTexts'
 
 const CommunityPage = () => (
-    <AppShell>
+    <>
         <Header
             title={PageSubtitles.COMMUNITY_PAGE_TITLE}
             subtitle={PageSubtitles.COMMUNITY_PAGE_SUBTITLE}
@@ -22,7 +21,7 @@ const CommunityPage = () => (
             }
         />
         <CommunityContent/>
-    </AppShell>
+    </>
 )
 
 export default CommunityPage

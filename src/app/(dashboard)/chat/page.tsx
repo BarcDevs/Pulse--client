@@ -60,7 +60,7 @@ const ChatPage = () => {
     }
 
     return (
-        <div className={'flex min-h-screen flex-col'}>
+        <>
             <header className={'sticky top-0 z-10 flex h-16 items-center justify-between border-b border-border bg-surface-card px-4 md:px-6'}>
                 <div className={'flex items-center gap-4'}>
                     <h1 className={'text-lg font-semibold text-foreground'}>
@@ -88,7 +88,7 @@ const ChatPage = () => {
 
                 <ChatPanel/>
             </div>
-        </div>
+        </>
     )
 }
 
