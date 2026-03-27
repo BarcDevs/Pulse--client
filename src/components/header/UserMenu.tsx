@@ -13,17 +13,17 @@ import {
     DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu'
 
-import {useUser} from '@/hooks/use-user'
+import {useUser} from '@/hooks/useUser'
 
 import {getUserFallback} from '@/lib/utils'
 
 export const UserMenu = () => {
-    const {user, isLoading} = useUser()
+    const { user, isLoading } = useUser()
 
     if (isLoading)
         return (
             <div className={'flex items-center gap-3 rounded-lg p-2'}>
-                <div className={'size-9 rounded-full bg-surface-section animate-pulse'} />
+                <div className={'size-9 rounded-full bg-surface-section animate-pulse'}/>
             </div>
         )
 

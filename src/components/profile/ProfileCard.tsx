@@ -2,7 +2,7 @@
 
 import {Card, CardContent} from '@/components/ui/card'
 
-import {useUser} from '@/hooks/use-user'
+import {useUser} from '@/hooks/useUser'
 
 import {getUserFallback} from '@/lib/utils'
 

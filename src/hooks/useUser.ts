@@ -17,16 +17,26 @@ type UseUserReturn = {
 }
 
 export const useUser = (): UseUserReturn => {
-    const [user, setUser] = useState<User | null>(null)
-    const [isLoading, setIsLoading] = useState(true)
-    const [error, setError] = useState<unknown | null>(null)
+    const [user, setUser] =
+        useState<User | null>(null)
+
+    const [isLoading, setIsLoading] =
+        useState(true)
+
+    const [error, setError] =
+        useState<unknown | null>(null)
 
     useEffect(() => {
         const fetchUser = async () => {
             try {
                 setIsLoading(true)
-                const profile = await getProfile()
-                setUser(profile as unknown as User)
+                const profile =
+                    await getProfile()
+
+                setUser(
+                    profile as unknown as User
+                )
+
                 setError(null)
             } catch (err) {
                 setError(err)
