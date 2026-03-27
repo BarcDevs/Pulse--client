@@ -4,7 +4,8 @@ import {Palette} from 'lucide-react'
 
 import type {Theme} from '@/types'
 
-import {useAppPreferencesForm} from '@/hooks/useAppPreferencesForm'
+import {useAppPreferencesForm}
+    from '@/hooks/forms/useAppPreferencesForm'
 
 import {settingsPageTexts} from '@/constants/componentTexts/settings'
 

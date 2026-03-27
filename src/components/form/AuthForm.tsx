@@ -9,12 +9,13 @@ import {AuthFormType} from '@/types/forms'
 import {Button} from '@/components/ui/button'
 import {Form} from '@/components/ui/form'
 
-import {useAuthForm} from '@/hooks/useAuthForm'
+import {useAuthForm} from '@/hooks/forms/useAuthForm'
 
 import authFormConfigs from '@/config/forms/authFormConfig'
 
 import {DynamicFormField} from './DynamicFormField'
 
+//todo: fix ts warnings
 type AuthFormProps = {
     formType: AuthFormType
     onSuccess: (data: any) => void | Promise<void>

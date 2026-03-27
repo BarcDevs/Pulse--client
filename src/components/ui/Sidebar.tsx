@@ -24,7 +24,7 @@ import {
   TooltipTrigger,
 } from '@/components/ui/tooltip'
 
-import { useIsMobile } from '@/hooks/useMobile'
+import { useIsMobile } from '@/hooks/ui/useMobile'
 
 import { cn } from '@/lib/utils'
 

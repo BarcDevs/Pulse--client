@@ -95,3 +95,7 @@ export const handleSignup = async (
 export const refreshAuthData = async () => false
 
 export const handleLogout = async () => {}
+
+export const redirectToGoogleAuth = async () => {
+    // TODO: Implement Google OAuth integration
+}

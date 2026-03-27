@@ -6,7 +6,7 @@ import {
     AvatarFallback
 } from '@/components/ui/avatar'
 
-import {useUser} from '@/hooks/useUser'
+import {useUser} from '@/hooks/ui/useUser'
 
 import {getUserFallback} from '@/lib/utils'
 

@@ -4,17 +4,19 @@ import {Lock} from 'lucide-react'
 
 import {SettingToggle} from '@/components/shared/SettingToggle'
 
-import {usePrivacySettingsForm} from '@/hooks/usePrivacySettingsForm'
+import {usePrivacySettingsForm}
+    from '@/hooks/forms/usePrivacySettingsForm'
 
-import {settingsPageTexts} from '@/constants/componentTexts/settings'
+import {settingsPageTexts}
+    from '@/constants/componentTexts/settings'
 
 export const PrivacySettings = () => {
     const { form } = usePrivacySettingsForm()
 
-    const profileVisibility = form.watch('profileVisibility')
-    const anonymousParticipation = form.watch(
-        'anonymousParticipation'
-    )
+    const profileVisibility = form
+        .watch('profileVisibility')
+    const anonymousParticipation = form
+        .watch('anonymousParticipation')
 
     return (
         <div className={'rounded-2xl bg-surface-card p-6'}>
@@ -41,17 +43,15 @@ export const PrivacySettings = () => {
                             (e) => form.setValue(
                                 'profileVisibility',
                                 e.target.value as
-                                    'onlyMe' | 'friends' |
+                                    'onlyMe' |
+                                    'friends' |
                                     'public'
-                            )
-                        }
-                        className={
-                            'w-full px-3 py-2 rounded-lg bg-surface-card border border-border text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary/20'
-                        }
+                            )}
+                        className={'w-full px-3 py-2 rounded-lg bg-surface-card border border-border text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary/20'}
                     >
                         {settingsPageTexts
-                            .privacy.visibility.options.map(
-                                (option) => (
+                            .privacy.visibility.options
+                            .map((option) => (
                                     <option
                                         key={option.value}
                                         value={option.value}
@@ -73,9 +73,8 @@ export const PrivacySettings = () => {
                             .privacy.dataSharing.description}
                     </p>
                     <SettingToggle
-                        label={
-                            settingsPageTexts
-                                .privacy.anonymousParticipation.label
+                        label={settingsPageTexts
+                            .privacy.anonymousParticipation.label
                         }
                         checked={anonymousParticipation}
                         onChange={

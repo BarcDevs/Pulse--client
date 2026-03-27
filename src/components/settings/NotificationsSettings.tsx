@@ -4,7 +4,7 @@ import {Bell} from 'lucide-react'
 
 import {SettingToggle} from '@/components/shared/SettingToggle'
 
-import {useNotificationsSettingsForm} from '@/hooks/useNotificationsSettingsForm'
+import {useNotificationsSettingsForm} from '@/hooks/forms/useNotificationsSettingsForm'
 
 import {settingsPageTexts} from '@/constants/componentTexts/settings'
 

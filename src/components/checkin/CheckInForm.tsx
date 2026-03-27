@@ -7,7 +7,7 @@ import type {
 
 import {Button} from '@/components/ui/button'
 
-import {useCheckInForm} from '@/hooks/useCheckInForm'
+import {useCheckInForm} from '@/hooks/forms/useCheckInForm'
 
 import {checkInTexts} from '@/constants/componentTexts/checkIn'
 

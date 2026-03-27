@@ -13,7 +13,7 @@ import {
     DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu'
 
-import {useUser} from '@/hooks/useUser'
+import {useUser} from '@/hooks/ui/useUser'
 
 import {getUserFallback} from '@/lib/utils'
 
