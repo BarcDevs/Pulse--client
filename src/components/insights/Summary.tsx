@@ -91,9 +91,18 @@ export const InsightsSummary = () => (
                                     <span className={'text-2xl font-bold text-foreground'}>
                                         {stat.value}
                                     </span>
-                                <span className={cn('text-sm', stat.trendColor)}>
-                                        {stat.trend}
-                                    </span>
+                                {(() => {
+                                    const {iconName, text} = parseTrendText(stat.trend)
+                                    return (
+                                        <span className={cn(
+                                            'text-sm flex items-center gap-1',
+                                            stat.trendColor
+                                        )}>
+                                            {getTrendIcon(iconName)}
+                                            {text}
+                                        </span>
+                                    )
+                                })()}
                             </div>
                             <p className={'mt-1 text-sm text-muted-foreground'}>
                                 {stat.description}
