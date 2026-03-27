@@ -10,15 +10,15 @@ import {NavSection} from './sections/NavSection'
 import {SidebarBottom} from './SidebarBottom'
 import {SidebarBottomError} from './SidebarBottomError'
 
-type SidebarProps = {
+type CustomSidebarProps = {
     isErrorPage?: boolean
     className?: ClassName
 }
 
-export const Sidebar = ({
+export const CustomSidebar = ({
     isErrorPage = false,
     className
-}: SidebarProps) => (
+}: CustomSidebarProps) => (
     <aside className={cn(
         'w-64 border-r border-border bg-surface-card flex flex-col max-sm:hidden',
         className
