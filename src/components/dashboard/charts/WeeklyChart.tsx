@@ -5,6 +5,7 @@ import {
     BarChart,
     Cell,
     ResponsiveContainer,
+    Tooltip,
     XAxis,
     YAxis
 } from 'recharts'
@@ -79,6 +80,16 @@ export const DashboardWeeklyChart = () => (
                                 fontSize: 12
                             }}
                             width={30}
+                        />
+                        <Tooltip
+                            contentStyle={{
+                                backgroundColor:
+                                    'var(--background)',
+                                border:
+                                    '1px solid var(--border)',
+                                borderRadius: '6px'
+                            }}
+                            cursor={false}
                         />
                         <Bar
                             dataKey={'value'}
