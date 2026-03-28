@@ -1,7 +1,7 @@
 'use client'
 
-import {CheckInForm} from '@/components/checkIn/CheckInForm'
-import {CheckInQuote} from '@/components/checkIn/Quote'
+import {CheckInForm} from '@/components/checkIn/forms/CheckInForm'
+import {CheckInQuote} from '@/components/checkIn/sections/Quote'
 
 import {checkInTexts} from '@/constants/componentTexts/checkIn'
 
