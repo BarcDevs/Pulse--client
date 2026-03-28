@@ -14,11 +14,11 @@ export const GoogleLoginButton = () => {
 
     return (
         <>
-            <div className={'relative'}>
+            <div className={'relative my-6'}>
                 <div className={'absolute inset-0 flex items-center'}>
                     <div className={'w-full border-t'}/>
                 </div>
-                <div className={'relative flex justify-center text-xs uppercase my-4'}>
+                <div className={'relative flex justify-center text-xs uppercase'}>
                     <p className={'bg-background px-2 text-muted-foreground'}>
                         {authTexts.common.orContinueWith}
                     </p>
@@ -28,7 +28,7 @@ export const GoogleLoginButton = () => {
             <Button
                 type={'button'}
                 variant={'outline'}
-                className={'h-11 w-full'}
+                className={'h-11 w-full mb-6'}
                 onClick={handleClick}
             >
                 <Icon
