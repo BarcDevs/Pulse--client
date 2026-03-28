@@ -1,3 +1,4 @@
+import {Icon} from '@/components/shared/ui/Icon'
 import {Button} from '@/components/ui/button'
 
 type PostVotesProps = {
@@ -13,20 +14,10 @@ export const PostVotes = ({
             size={'sm'}
             className={'h-6 w-6 p-0 text-muted-foreground hover:text-primary'}
         >
-            {/*todo: extract svg*/}
-            <svg
-                className={'h-5 w-5'}
-                fill={'none'}
-                viewBox={'0 0 24 24'}
-                stroke={'currentColor'}
-            >
-                <path
-                    strokeLinecap={'round'}
-                    strokeLinejoin={'round'}
-                    strokeWidth={2}
-                    d={'M5 15l7-7 7 7'}
-                />
-            </svg>
+            <Icon
+                name={'arrow-up'}
+                size={20}
+            />
         </Button>
         <span className={'text-sm font-semibold text-foreground'}>
             {votes}
@@ -36,20 +27,10 @@ export const PostVotes = ({
             size={'sm'}
             className={'h-6 w-6 p-0 text-muted-foreground hover:text-primary'}
         >
-            {/*todo: extract svg*/}
-            <svg
-                className={'h-5 w-5'}
-                fill={'none'}
-                viewBox={'0 0 24 24'}
-                stroke={'currentColor'}
-            >
-                <path
-                    strokeLinecap={'round'}
-                    strokeLinejoin={'round'}
-                    strokeWidth={2}
-                    d={'M19 9l-7 7-7-7'}
-                />
-            </svg>
+            <Icon
+                name={'arrow-down'}
+                size={20}
+            />
         </Button>
     </div>
 )
