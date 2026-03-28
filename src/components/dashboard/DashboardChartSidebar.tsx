@@ -1,6 +1,6 @@
-import {DashboardAIInsight} from './AiInsight'
-import {CommunityActivity} from './CommunityActivity'
-import {DashboardWeeklyChart} from './WeeklyChart'
+import {DashboardAIInsight} from './cards/AiInsight'
+import {DashboardWeeklyChart} from './charts/WeeklyChart'
+import {CommunityActivity} from './community/CommunityActivity'
 
 export const DashboardChartSidebar = () => (
     <div className={'grid grid-cols-1 lg:grid-cols-3 gap-6'}>

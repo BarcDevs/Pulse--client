@@ -24,7 +24,7 @@ import {dashboardPageTexts} from '@/constants/componentTexts/dashboard'
 
 import {WEEKLY_CHART_DATA_DERIVED} from '@/mocks/chartData'
 
-import {BarChartCells} from './BarChartCells'
+import {BarChartCells} from '../stats/BarChartCells'
 
 export const DashboardWeeklyChart = () => (
     <Card className={'border-0 shadow-sm'}>
