@@ -1,7 +1,7 @@
 'use client'
 
-import {CheckInForm} from './CheckInForm'
-import {CheckInQuote} from './Quote'
+import {CheckInForm} from './forms/CheckInForm'
+import {CheckInQuote} from './sections/Quote'
 
 export const CheckInPageContent = () => (
     <div className={'space-y-6 p-6'}>

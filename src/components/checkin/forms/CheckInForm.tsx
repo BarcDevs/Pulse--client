@@ -15,9 +15,9 @@ import {handleCheckInSubmit} from '@/handlers/actions/checkIn'
 
 import type {CheckInSchema} from '@/validations/forms/checkInSchema'
 
-import {CheckInActivities} from './ActivitySelector'
-import {CheckInJournal} from './Journal'
-import {CheckInSliders} from './Sliders'
+import {CheckInActivities} from '../inputs/ActivitySelector'
+import {CheckInSliders} from '../inputs/Sliders'
+import {CheckInJournal} from '../sections/Journal'
 
 type CheckInFormProps = {
     latestCheckIn?: CheckIn | null
