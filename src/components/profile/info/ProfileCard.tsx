@@ -6,10 +6,11 @@ import {useUser} from '@/hooks/ui/useUser'
 
 import {getUserFallback} from '@/lib/utils'
 
+import {ProfileStats} from '../stats/ProfileStats'
+
 import {ProfileAvatar} from './ProfileAvatar'
 import {ProfileInfo} from './ProfileInfo'
 import {ProfileLevel} from './ProfileLevel'
-import {ProfileStats} from './ProfileStats'
 
 export const ProfileCard = () => {
     const { user } = useUser()

@@ -1,9 +1,9 @@
-import {ActiveGoals} from './ActiveGoals'
-import {ProfileBasicInfo} from './BasicInfo'
-import {DailyActivityPreferences} from './DailyActivityPreferences'
-import {ProfileCard} from './ProfileCard'
+import {ActiveGoals} from './goals/ActiveGoals'
+import {ProfileCard} from './info/ProfileCard'
+import {ProfileBasicInfo} from './settings/BasicInfo'
+import {DailyActivityPreferences} from './settings/DailyActivityPreferences'
+import {SystemPrivacy} from './settings/SystemPrivacy'
 import {RecoveryIdentity} from './RecoveryIdentity'
-import {SystemPrivacy} from './SystemPrivacy'
 
 export const ProfilePageContent = () => (
     <div className={'p-6 space-y-6'}>
