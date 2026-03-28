@@ -1,5 +1,5 @@
-import {MAIN_NAV_ITEMS} from '@/components/sidebar/config'
-import {NavButton} from '@/components/sidebar/sections/NavButton'
+import {MAIN_NAV_ITEMS} from '@/components/layout/sidebar/config'
+import {NavButton} from '@/components/layout/sidebar/sections/NavButton'
 
 export const NavSection = () => (
     <div className={'space-y-1 px-4'}>

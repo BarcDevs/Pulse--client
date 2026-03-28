@@ -1,6 +1,6 @@
 'use client'
 
-import {BOTTOM_NAV_ITEMS} from '@/components/sidebar/config'
+import {BOTTOM_NAV_ITEMS} from '@/components/layout/sidebar/config'
 import {
     Avatar,
     AvatarFallback

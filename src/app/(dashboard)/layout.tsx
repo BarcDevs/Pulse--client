@@ -1,8 +1,8 @@
 import {LayoutProps} from '@/types'
 
 import {AppHeader} from '@/components/AppHeader'
+import {Sidebar} from '@/components/layout/sidebar/Sidebar'
 import {Footer} from '@/components/shared/Footer'
-import {Sidebar} from '@/components/sidebar/Sidebar'
 
 const DashboardLayout = ({
     children

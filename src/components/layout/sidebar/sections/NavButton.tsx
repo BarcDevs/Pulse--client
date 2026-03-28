@@ -2,7 +2,7 @@
 
 import {usePathname, useRouter} from 'next/navigation'
 
-import {NavItem} from '@/components/sidebar/config'
+import {NavItem} from '@/components/layout/sidebar/config'
 import {Button} from '@/components/ui/button'
 
 import {cn} from '@/lib/utils'

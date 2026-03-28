@@ -1,6 +1,6 @@
 'use client'
 
-import {NavButton} from '@/components/sidebar/sections/NavButton'
+import {NavButton} from '@/components/layout/sidebar/sections/NavButton'
 import {
     Avatar,
     AvatarFallback
