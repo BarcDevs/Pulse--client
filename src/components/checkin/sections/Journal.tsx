@@ -1,4 +1,7 @@
 import {PenLine} from 'lucide-react'
+import type {ChangeEvent} from 'react'
+
+import type {FormControlProps} from '@/types/forms'
 
 import {
     Card,
@@ -10,32 +13,36 @@ import {Textarea} from '@/components/ui/textarea'
 
 import {checkInTexts} from '@/constants/componentTexts/checkIn'
 
-// todo: fix ts warnings
-type CheckInJournalProps = {
-    value: string
-    onChange: (value: string) => void
-}
+import type {CheckInSchema} from '@/validations/forms/checkInSchema'
+
+type CheckInJournalProps = FormControlProps<CheckInSchema>
 
 export const CheckInJournal = ({
-    value,
-    onChange
-}: CheckInJournalProps) => (
-    <Card className={'mt-6 border-0 shadow-sm'}>
-        <CardHeader className={'pb-3'}>
-            <div className={'flex items-center gap-2'}>
-                <PenLine className={'size-5 text-primary'}/>
-                <CardTitle className={'text-lg font-semibold'}>
-                    {checkInTexts.journal.title}
-                </CardTitle>
-            </div>
-        </CardHeader>
-        <CardContent>
-            <Textarea
-                placeholder={checkInTexts.journal.placeholder}
-                value={value}
-                onChange={(e) => onChange(e.target.value)}
-                className={'min-h-30 resize-none border-border bg-surface-card placeholder:text-muted-foreground'}
-            />
-        </CardContent>
-    </Card>
-)
+    watch,
+    setValueAction
+}: CheckInJournalProps) => {
+    const notes = watch('notes') ?? ''
+
+    const handleNotesChange = (e: ChangeEvent<HTMLTextAreaElement>) => setValueAction('notes', e.target.value)
+
+    return (
+        <Card className={'mt-6 border-0 shadow-sm'}>
+            <CardHeader className={'pb-3'}>
+                <div className={'flex items-center gap-2'}>
+                    <PenLine className={'size-5 text-primary'}/>
+                    <CardTitle className={'text-lg font-semibold'}>
+                        {checkInTexts.journal.title}
+                    </CardTitle>
+                </div>
+            </CardHeader>
+            <CardContent>
+                <Textarea
+                    placeholder={checkInTexts.journal.placeholder}
+                    value={notes}
+                    onChange={handleNotesChange}
+                    className={'min-h-30 resize-none border-border bg-surface-card placeholder:text-muted-foreground'}
+                />
+            </CardContent>
+        </Card>
+    )
+}

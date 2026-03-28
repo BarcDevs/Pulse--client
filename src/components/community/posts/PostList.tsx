@@ -19,23 +19,24 @@ export const PostList = () => {
         communityPageTexts.posts.defaultTab
     )
 
+    const handleTabChange = (tab: string) =>
+        setActiveTab(tab)
+
     return (
         <div className={'rounded-2xl bg-surface-card overflow-hidden'}>
             <div className={'flex border-b border-border'}>
                 {tabs.map((tab) => (
                     <Button
                         key={tab}
-                        onClick={() => setActiveTab(tab)}
-                        variant={
-                            activeTab === tab
-                                ? 'default'
-                                : 'ghost'
-                        }
+                        onClick={() => handleTabChange(tab)}
+                        variant={activeTab === tab ?
+                            'default' :
+                            'ghost'}
                         className={cn(
                             'px-6 py-4 text-sm font-medium rounded-none border-b-2',
-                            activeTab === tab
-                                ? 'text-primary border-primary'
-                                : 'text-muted-foreground hover:text-foreground border-transparent'
+                            activeTab === tab ?
+                                'text-primary border-primary' :
+                                'text-muted-foreground hover:text-foreground border-transparent'
                         )}
                     >
                         {tab}

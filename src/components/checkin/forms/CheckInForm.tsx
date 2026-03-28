@@ -33,9 +33,6 @@ export const CheckInForm = ({
         stats
     })
 
-    const selectedActivities = form.watch('activities')
-    const notes = form.watch('notes') ?? ''
-
     const onSubmit = async (data: CheckInSchema) => {
         try {
             await handleCheckInSubmit(data)
@@ -52,38 +49,16 @@ export const CheckInForm = ({
             className={'space-y-6'}
         >
             <CheckInSliders
-                mood={form.getValues('moodScore')}
-                setMood={
-                    (value) => form.setValue(
-                        'moodScore',
-                        value
-                    )
-                }
-                comfort={form.getValues('painLevel')}
-                setComfort={
-                    (value) => form.setValue(
-                        'painLevel',
-                        value
-                    )
-                }
+                watch={form.watch}
+                setValueAction={form.setValue}
             />
             <CheckInJournal
-                value={notes}
-                onChange={
-                    (value) => form.setValue(
-                        'notes',
-                        value
-                    )
-                }
+                watch={form.watch}
+                setValueAction={form.setValue}
             />
             <CheckInActivities
-                selectedActivities={selectedActivities}
-                setSelectedActivities={
-                    (activities) => form.setValue(
-                        'activities',
-                        activities
-                    )
-                }
+                watch={form.watch}
+                setValueAction={form.setValue}
             />
             <div className={'flex justify-center pt-4'}>
                 <Button

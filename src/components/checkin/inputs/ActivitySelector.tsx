@@ -4,6 +4,8 @@ import {useState} from 'react'
 
 import {Trophy} from 'lucide-react'
 
+import type {FormControlProps} from '@/types/forms'
+
 import {FormInput} from '@/components/shared/inputs/FormInput'
 import {
     Card,
@@ -14,39 +16,39 @@ import {
 
 import {checkInTexts} from '@/constants/componentTexts/checkIn'
 
+import type {CheckInSchema} from '@/validations/forms/checkInSchema'
+
 import {ActivityToggleButton} from './ActivityToggleButton'
 
-// todo: fix ts warning
-type CheckInActivitiesProps = {
-    selectedActivities: string[]
-    setSelectedActivities: (activities: string[]) => void
-}
+type CheckInActivitiesProps = FormControlProps<CheckInSchema>
 
 export const CheckInActivities = ({
-    selectedActivities,
-    setSelectedActivities
+    watch,
+    setValueAction
 }: CheckInActivitiesProps) => {
     const [customActivity, setCustomActivity] = useState('')
+    const selectedActivities = watch('activities') ?? []
+
+    const handleActivitiesChange = (updated: string[]) =>
+        setValueAction('activities', updated)
 
     const toggleActivity = (activity: string) => {
-        if (selectedActivities.includes(activity)) {
-            setSelectedActivities(
-                selectedActivities.filter((a) =>
-                    a !== activity
-                )
-            )
-        } else {
-            setSelectedActivities([
+        const updated = selectedActivities
+            .includes(activity) ?
+            selectedActivities.filter((a) =>
+                a !== activity
+            ) : [
                 ...selectedActivities,
                 activity
-            ])
-        }
+            ]
+        handleActivitiesChange(updated)
     }
 
     const addCustomActivity = () => {
         if (customActivity.trim() &&
-            !selectedActivities.includes(customActivity.trim())) {
-            setSelectedActivities([
+            !selectedActivities
+                .includes(customActivity.trim())) {
+            handleActivitiesChange([
                 ...selectedActivities,
                 customActivity.trim()
             ])
