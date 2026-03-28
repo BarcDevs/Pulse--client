@@ -1,5 +1,5 @@
-import {Post} from '@/types/forum'
-import {ForumSearchParams} from '@/types/router'
+import {Post} from '@/types/forum/forum'
+import {ForumSearchParams} from '@/types/utils/router'
 
 import {fetchPost, fetchPosts} from '@/api/forum'
 

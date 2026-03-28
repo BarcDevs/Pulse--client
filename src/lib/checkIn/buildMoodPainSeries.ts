@@ -1,4 +1,4 @@
-import type {CheckIn, MoodPainSeriesPoint} from '@/types/checkIn'
+import type {CheckIn, MoodPainSeriesPoint} from '@/types/checkIn/checkIn'
 
 export const buildMoodPainSeries = (
     history: CheckIn[]

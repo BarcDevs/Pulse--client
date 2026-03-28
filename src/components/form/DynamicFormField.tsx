@@ -4,7 +4,7 @@ import {
     Path
 } from 'react-hook-form'
 
-import {FieldConfig} from '@/types/forms'
+import {FieldConfig} from '@/types/forms/forms'
 
 import {
     FormField,

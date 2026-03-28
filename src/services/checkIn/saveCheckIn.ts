@@ -1,4 +1,4 @@
-import {CheckIn} from '@/types/checkIn'
+import {CheckIn} from '@/types/checkIn/checkIn'
 
 import {isTodayCheckIn} from '@/lib/checkIn/loaderHelpers'
 

@@ -3,7 +3,7 @@
 import type {
     CheckIn,
     CheckInStats
-} from '@/types/checkIn'
+} from '@/types/checkIn/checkIn'
 
 import {Button} from '@/components/ui/button'
 

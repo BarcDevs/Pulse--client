@@ -1,4 +1,4 @@
-import {AuthFormType, FormConfig} from '@/types/forms'
+import {AuthFormType, FormConfig} from '@/types/forms/forms'
 
 import {authTexts} from '@/constants/componentTexts/auth'
 

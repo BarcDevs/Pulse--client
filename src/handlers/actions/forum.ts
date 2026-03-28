@@ -1,4 +1,4 @@
-import {Post} from '@/types/forum'
+import {Post} from '@/types/forum/forum'
 import {Response} from '@/types/responses'
 
 import {createPost, updatePost} from '@/api/forum'

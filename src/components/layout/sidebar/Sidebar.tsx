@@ -1,6 +1,6 @@
 'use client'
 
-import {ClassName} from '@/types/react'
+import {ClassName} from '@/types/utils/react'
 
 import {Logo} from '@/components/shared/brand/Logo'
 

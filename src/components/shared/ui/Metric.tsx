@@ -1,4 +1,4 @@
-import {ClassName} from '@/types/react'
+import {ClassName} from '@/types/utils/react'
 
 import {Icon} from '@/components/shared/ui/Icon'
 

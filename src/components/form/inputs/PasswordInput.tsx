@@ -8,7 +8,7 @@ import {
 } from 'lucide-react'
 import {FieldValues} from 'react-hook-form'
 
-import {FieldConfig} from '@/types/forms'
+import {FieldConfig} from '@/types/forms/forms'
 
 import {Button} from '@/components/ui/button'
 import {

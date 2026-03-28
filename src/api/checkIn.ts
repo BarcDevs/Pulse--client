@@ -1,4 +1,4 @@
-import {CheckIn, CheckInStats} from '@/types/checkIn'
+import {CheckIn, CheckInStats} from '@/types/checkIn/checkIn'
 import {ApiResponse, Response} from '@/types/responses'
 
 import {ENDPOINTS} from '@/constants/endpoints'

@@ -3,7 +3,7 @@
 //     useMutation,
 //     useQueryClient
 // } from '@tanstack/react-query'
-// import {Profile} from '@/types/profile'
+// import {Profile} from '@/types/profile/profile'
 // import {
 //     addActivities,
 //     addInterests,

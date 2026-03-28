@@ -1,4 +1,4 @@
-import {CheckIn} from '@/types/checkIn'
+import {CheckIn} from '@/types/checkIn/checkIn'
 
 import {createCheckIn, patchCheckIn,submitCheckIn} from '@/api/checkIn'
 import {CheckInSchema} from '@/validations/forms/checkInSchema'

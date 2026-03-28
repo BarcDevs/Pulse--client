@@ -1,6 +1,6 @@
 // TODO: TanStack Query setup pending
 // import {useQuery} from '@tanstack/react-query'
-// import {ProfileOptions} from '@/types/profile'
+// import {ProfileOptions} from '@/types/profile/profile'
 // import {hourInMs} from '@/constants/time'
 // import {getProfileOptions} from '@/api/profile'
 

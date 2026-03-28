@@ -4,7 +4,7 @@ import {useEffect} from 'react'
 
 import Link from 'next/link'
 
-import {AuthFormType} from '@/types/forms'
+import {AuthFormType} from '@/types/forms/forms'
 
 import {Button} from '@/components/ui/button'
 import {Form} from '@/components/ui/form'

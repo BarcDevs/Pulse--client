@@ -3,7 +3,7 @@ import {
     HealthInterest,
     Profile,
     ProfileOptions,
-    ProfileUpdateInput} from '@/types/profile'
+    ProfileUpdateInput} from '@/types/profile/profile'
 
 import {api} from './index'
 

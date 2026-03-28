@@ -1,4 +1,4 @@
-import {CheckIn, CheckInStats} from '@/types/checkIn'
+import {CheckIn, CheckInStats} from '@/types/checkIn/checkIn'
 
 import {defaults} from '@/constants/defaults'
 

@@ -1,4 +1,4 @@
-import {Post, Reply} from '@/types/forum'
+import {Post, Reply} from '@/types/forum/forum'
 import {ApiResponse, Response} from '@/types/responses'
 
 import {api} from '@/api/index'
