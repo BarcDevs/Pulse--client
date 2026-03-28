@@ -33,8 +33,8 @@ export const GoogleLoginButton = () => {
             >
                 <Icon
                     name={'social/google'}
-                    className={'size-5 mr-2'}
-                    size={5}
+                    size={20}
+                    className={'mr-2'}
                 />
                 {authTexts.common.continueWithGoogle}
             </Button>
