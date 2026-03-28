@@ -15,7 +15,7 @@ export type NavItem = {
     href: string
 }
 
-export const MAIN_NAV_ITEMS: NavItem[] = [
+export const mainNavItems: NavItem[] = [
     {
         icon: Home,
         label: 'Dashboard',
@@ -48,7 +48,7 @@ export const MAIN_NAV_ITEMS: NavItem[] = [
     },
 ]
 
-export const BOTTOM_NAV_ITEMS: NavItem[] = [
+export const bottomNavItems: NavItem[] = [
     {
         icon: Settings,
         label: 'Settings',

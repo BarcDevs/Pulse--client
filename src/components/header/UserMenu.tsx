@@ -16,7 +16,7 @@ import {useUser} from '@/hooks/ui/useUser'
 
 import {getUserFallback} from '@/lib/utils'
 
-import {BOTTOM_NAV_ITEMS} from '@/constants/navigationItems'
+import {bottomNavItems} from '@/constants/navigationItems'
 
 export const UserMenu = () => {
     const { user, isLoading } = useUser()
@@ -68,7 +68,7 @@ export const UserMenu = () => {
                     </p>
                 </div>
                 <DropdownMenuSeparator/>
-                {BOTTOM_NAV_ITEMS.map((item) => (
+                {bottomNavItems.map((item) => (
                     <DropdownMenuItem
                         key={item.href}
                         asChild

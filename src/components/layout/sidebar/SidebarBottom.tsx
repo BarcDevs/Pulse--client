@@ -10,7 +10,7 @@ import {useUser} from '@/hooks/ui/useUser'
 
 import {getUserFallback} from '@/lib/utils'
 
-import {BOTTOM_NAV_ITEMS} from '@/constants/navigationItems'
+import {bottomNavItems} from '@/constants/navigationItems'
 
 export const SidebarBottom = () => {
     const { user } = useUser()
@@ -38,7 +38,7 @@ export const SidebarBottom = () => {
                 </div>
             </div>
             <div className={'space-y-1'}>
-                {BOTTOM_NAV_ITEMS.map((item) => (
+                {bottomNavItems.map((item) => (
                     <NavButton
                         item={item}
                         key={item.href}
