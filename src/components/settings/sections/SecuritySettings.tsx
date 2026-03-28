@@ -7,7 +7,7 @@ import {cn} from '@/lib/utils'
 import {settingsPageTexts} from '@/constants/componentTexts/settings'
 import {securitySettings} from '@/constants/securitySettings'
 
-import {SecuritySettingItem} from './SecuritySettingItem'
+import {SecuritySettingItem} from '../items/SecuritySettingItem'
 
 export const SecuritySettings = () => (
     <div className={'rounded-2xl bg-surface-card p-6'}>

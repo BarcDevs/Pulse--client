@@ -9,8 +9,8 @@ import {useAppPreferencesForm}
 
 import {settingsPageTexts} from '@/constants/componentTexts/settings'
 
-import {LanguageSelector} from './LanguageSelector'
-import {ThemeSelector} from './ThemeSelector'
+import {LanguageSelector} from '../selectors/LanguageSelector'
+import {ThemeSelector} from '../selectors/ThemeSelector'
 
 type AppPreferencesProps = {
     theme?: Theme

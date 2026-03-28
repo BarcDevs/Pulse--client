@@ -2,8 +2,8 @@
 
 import {useState} from 'react'
 
+import {SettingsSidebar} from './nav/SettingsSidebar'
 import {SettingsDisplay} from './SettingsDisplay'
-import {SettingsSidebar} from './SettingsSidebar'
 
 export const SettingsPageContent = () => {
     const [activeTab, setActiveTab] = useState('notifications')
