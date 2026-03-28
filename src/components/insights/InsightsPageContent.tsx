@@ -1,5 +1,5 @@
-import {AlertCards} from './AlertCards'
-import {BehavioralPatterns} from './BehavioralPatterns'
+import {AlertCards} from './alerts/AlertCards'
+import {BehavioralPatterns} from './behavioralPatterns/BehavioralPatterns'
 import {InsightsTopRow} from './InsightsTopRow'
 import {InsightsSummary} from './Summary'
 

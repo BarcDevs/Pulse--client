@@ -5,10 +5,10 @@ import {useState} from 'react'
 import {insightsPageTexts}
     from '@/constants/componentTexts/insightsComponent'
 
-import {CorrelationCard} from './behavioral-patterns/CorrelationCard'
-import {ObservationCard} from './behavioral-patterns/ObservationCard'
-import {PredictionCard} from './behavioral-patterns/PredictionCard'
 import {BehavioralPatternsTabs} from './BehavioralPatternsTabs'
+import {CorrelationCard} from './CorrelationCard'
+import {ObservationCard} from './ObservationCard'
+import {PredictionCard} from './PredictionCard'
 
 export const BehavioralPatterns = () => {
     const [activeTab, setActiveTab] =

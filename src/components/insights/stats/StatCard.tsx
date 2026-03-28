@@ -3,7 +3,7 @@ import {cn} from '@/lib/utils'
 import {
     getTrendIcon,
     parseTrendText
-} from './trendUtils'
+} from '../trendUtils'
 
 type StatCardProps = {
     label: string

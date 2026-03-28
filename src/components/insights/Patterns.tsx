@@ -12,9 +12,9 @@ import {
 
 import {insightsDetail} from '@/constants/componentTexts/insightsDetail'
 
-import {CorrelationCard} from './CorrelationCard'
-import {ObservationCard} from './ObservationCard'
-import {PredictionCard} from './PredictionCard'
+import {CorrelationCard} from './details/CorrelationCard'
+import {ObservationCard} from './details/ObservationCard'
+import {PredictionCard} from './details/PredictionCard'
 
 export const InsightsPatterns = () => (
     <Card className={'mt-6 border-0 shadow-sm'}>

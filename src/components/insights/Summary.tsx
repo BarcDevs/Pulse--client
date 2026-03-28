@@ -10,7 +10,7 @@ import {
 import {insightsPageTexts}
     from '@/constants/componentTexts/insightsComponent'
 
-import {StatsCards} from './StatsCards'
+import {StatsCards} from './stats/StatsCards'
 
 export const InsightsSummary = () => (
     <Card className={'mt-6 border-0 shadow-sm'}>
