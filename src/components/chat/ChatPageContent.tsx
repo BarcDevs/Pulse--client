@@ -36,8 +36,8 @@ export const ChatPageContent = () => {
                 <ChatMessages messages={messages}/>
                 <ChatInput
                     value={inputValue}
-                    onChange={setInputValue}
-                    onSend={handleSend}
+                    onChangeAction={setInputValue}
+                    onSendAction={handleSend}
                 />
             </div>
 
