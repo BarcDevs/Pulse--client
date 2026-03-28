@@ -10,7 +10,7 @@ on:
   push:
     branches:
       - main
-      - rfc/codebase-refactoring
+      - development
 
 jobs:
   qodana:
