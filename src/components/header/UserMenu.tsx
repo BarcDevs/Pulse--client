@@ -1,6 +1,5 @@
 'use client'
 
-import {BOTTOM_NAV_ITEMS} from '@/components/layout/sidebar/config'
 import {
     Avatar,
     AvatarFallback
@@ -16,6 +15,8 @@ import {
 import {useUser} from '@/hooks/ui/useUser'
 
 import {getUserFallback} from '@/lib/utils'
+
+import {BOTTOM_NAV_ITEMS} from '@/constants/navigationItems'
 
 export const UserMenu = () => {
     const { user, isLoading } = useUser()

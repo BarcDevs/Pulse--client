@@ -10,7 +10,7 @@ import {useUser} from '@/hooks/ui/useUser'
 
 import {getUserFallback} from '@/lib/utils'
 
-import {BOTTOM_NAV_ITEMS} from './config'
+import {BOTTOM_NAV_ITEMS} from '@/constants/navigationItems'
 
 export const SidebarBottom = () => {
     const { user } = useUser()

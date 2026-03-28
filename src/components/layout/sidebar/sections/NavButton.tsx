@@ -2,10 +2,11 @@
 
 import {usePathname, useRouter} from 'next/navigation'
 
-import {NavItem} from '@/components/layout/sidebar/config'
 import {Button} from '@/components/ui/button'
 
 import {cn} from '@/lib/utils'
+
+import {NavItem} from '@/constants/navigationItems'
 
 type NavButtonProps = {
     item: NavItem
