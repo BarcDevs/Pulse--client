@@ -1,6 +1,8 @@
 // TODO: TanStack Query setup pending
 // import {queryClient} from '@/lib/queryClient'
 
+import config from '@/config'
+
 import {signup} from '@/api/auth'
 // TODO: Redux setup pending
 // import {store} from '@/store'
@@ -97,5 +99,5 @@ export const refreshAuthData = async () => false
 export const handleLogout = async () => {}
 
 export const redirectToGoogleAuth = async () => {
-    // TODO: Implement Google OAuth integration
+    window.location.href = `${config.serverUrl}/api/v1/auth/google`
 }
