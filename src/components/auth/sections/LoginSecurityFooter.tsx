@@ -1,7 +1,5 @@
 import Link from 'next/link'
 
-import {Shield} from 'lucide-react'
-
 import {authTexts} from '@/constants/componentTexts/auth'
 
 type LoginSecurityFooterProps = {
@@ -23,10 +21,5 @@ export const LoginSecurityFooter = ({
                 </Link>
             </p>
         )}
-
-        <div className={'flex items-center justify-center gap-2 text-xs text-muted-foreground'}>
-            <Shield className={'size-4'}/>
-            {authTexts.login.hipaaText}
-        </div>
     </>
 )
