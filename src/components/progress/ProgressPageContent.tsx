@@ -1,5 +1,5 @@
+import {ProgressStatsCharts} from './stats/ProgressStatsCharts'
 import {ProgressMilestones} from './Milestones'
-import {ProgressStatsCharts} from './ProgressStatsCharts'
 import {RecoveryInsight} from './RecoveryInsight'
 
 export const ProgressPageContent = () => (

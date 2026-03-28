@@ -1,5 +1,6 @@
-import {MoodTrendChart} from './MoodTrendChart'
-import {PainIntensityChart} from './PainIntensityChart'
+import {MoodTrendChart} from '../charts/MoodTrendChart'
+import {PainIntensityChart} from '../charts/PainIntensityChart'
+
 import {ProgressStats} from './ProgressStats'
 import {WellnessScore} from './WellnessScore'
 

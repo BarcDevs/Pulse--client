@@ -9,7 +9,7 @@ import {progressPageTexts} from '@/constants/componentTexts/progress'
 import {progressMilestones}
     from '@/constants/progressMaps'
 
-import {MilestoneCard} from './MilestoneCard'
+import {MilestoneCard} from './cards/MilestoneCard'
 
 export const ProgressMilestones = () => (
     <Card className={'mt-6 border-0 shadow-sm'}>

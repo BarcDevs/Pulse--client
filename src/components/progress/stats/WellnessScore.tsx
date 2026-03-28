@@ -1,6 +1,6 @@
 import {progressPageTexts} from '@/constants/componentTexts/progress'
 
-import {WellnessScoreCard} from './WellnessScoreCard'
+import {WellnessScoreCard} from '../cards/WellnessScoreCard'
 
 export const WellnessScore = () => (
     <div className={'rounded-2xl bg-surface-card p-6'}>
