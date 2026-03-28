@@ -1,6 +1,6 @@
-import {Categories} from './Categories'
+import {Categories} from './categories/Categories'
+import {PostList} from './posts/PostList'
 import {CommunityPanel} from './CommunityPanel'
-import {PostList} from './PostList'
 
 export const CommunityPageContent = () => (
     <div className={'p-6'}>

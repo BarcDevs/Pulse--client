@@ -8,7 +8,7 @@ import {cn} from '@/lib/utils'
 
 import {communityPageTexts} from '@/constants/componentTexts/community'
 
-import {PostItem} from './post-list/PostItem'
+import {PostItem} from './postList/PostItem'
 
 const tabs = communityPageTexts.posts.tabs
 
