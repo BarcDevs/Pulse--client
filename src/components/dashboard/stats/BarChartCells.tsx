@@ -22,9 +22,9 @@ export const BarChartCells = ({
         {data.map((entry, index) => (
             <Cell
                 key={`cell-${index}`}
-                fill={entry.day === highlightDay
-                    ? highlightColor
-                    : defaultColor
+                fill={entry.day === highlightDay ?
+                    highlightColor :
+                    defaultColor
                 }
             />
         ))}

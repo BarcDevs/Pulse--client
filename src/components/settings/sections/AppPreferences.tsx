@@ -29,6 +29,12 @@ export const AppPreferences = ({
     const currentTheme = form.watch('theme')
     const currentLanguage = form.watch('language')
 
+    const handleThemeChange = (value: string) =>
+        form.setValue('theme', value as any)
+
+    const handleLanguageChange = (value: string) =>
+        form.setValue('language', value)
+
     return (
         <div className={'rounded-2xl bg-surface-card p-6'}>
             <div className={'flex items-center gap-2 mb-6'}>
@@ -41,21 +47,11 @@ export const AppPreferences = ({
             <div className={'space-y-6'}>
                 <ThemeSelector
                     theme={currentTheme}
-                    onThemeChange={
-                        (value) => form.setValue(
-                            'theme',
-                            value
-                        )
-                    }
+                    onThemeChange={handleThemeChange}
                 />
                 <LanguageSelector
                     language={currentLanguage}
-                    onLanguageChange={
-                        (value) => form.setValue(
-                            'language',
-                            value
-                        )
-                    }
+                    onLanguageChange={handleLanguageChange}
                 />
             </div>
         </div>

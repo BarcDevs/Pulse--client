@@ -1,6 +1,10 @@
 'use client'
 
-import {ReactNode, useState} from 'react'
+import {
+    ChangeEvent,
+    ReactNode,
+    useState
+} from 'react'
 
 import {Bell, Search} from 'lucide-react'
 
@@ -24,6 +28,10 @@ export const Header = ({
 }: HeaderProps) => {
     const [searchValue, setSearchValue] = useState('')
 
+    const handleSearchChange = (
+        e: ChangeEvent<HTMLInputElement>
+    ) => setSearchValue(e.target.value)
+
     return (
         <header className={'sticky top-0 z-30 flex h-16 items-center justify-between bg-surface-page px-6'}>
             <div>
@@ -44,7 +52,7 @@ export const Header = ({
                             id={'headerSearch'}
                             placeholder={appLayoutTexts.header.searchPlaceholder}
                             value={searchValue}
-                            onChange={(e) => setSearchValue(e.target.value)}
+                            onChange={handleSearchChange}
                             type={'text'}
                             className={'h-10 w-64 rounded-lg bg-surface-card pl-10 pr-4 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/20'}
                             required={false}

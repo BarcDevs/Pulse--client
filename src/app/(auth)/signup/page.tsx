@@ -44,7 +44,7 @@ const SignupPage = () => {
             <CardContent>
                 <AuthForm
                     formType={'signup'}
-                    onSuccess={handleSignupSuccess}
+                    onSuccessAction={handleSignupSuccess}
                     isLoading={isLoading}
                 />
 

@@ -1,6 +1,6 @@
 'use client'
 
-import {useState} from 'react'
+import {ChangeEvent, useState} from 'react'
 
 import {usePathname} from 'next/navigation'
 
@@ -33,6 +33,10 @@ export const AppHeader = () => {
     const headerClassName = 'sticky top-0 z-10 flex h-16 items-center justify-between border-b border-border bg-surface-card px-4 md:px-6'
     const formInputClassName = 'h-10 w-64 rounded-lg bg-surface-card pl-10 pr-4 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/20'
 
+    const handleSearchChange = (
+        e: ChangeEvent<HTMLInputElement>
+    ) => setSearchValue(e.target.value)
+
     return (
         <header className={headerClassName}>
             <HeaderTitle
@@ -56,7 +60,7 @@ export const AppHeader = () => {
                             id={'headerSearch'}
                             placeholder={appLayoutTexts.header.searchPlaceholder}
                             value={searchValue}
-                            onChange={(e) => setSearchValue(e.target.value)}
+                            onChange={handleSearchChange}
                             type={'text'}
                             className={formInputClassName}
                             required={false}

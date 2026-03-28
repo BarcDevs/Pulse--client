@@ -50,9 +50,9 @@ const ResetPasswordPage = () => {
                 <CardContent>
                     <AuthForm
                         formType={'resetPassword'}
-                        onSuccess={handleResetSuccess}
+                        onSuccessAction={handleResetSuccess}
                         isLoading={isLoading}
-                        onPasswordChange={setPassword}
+                        onPasswordChangeAction={setPassword}
                     />
 
                     <PasswordRequirementsList password={password}/>

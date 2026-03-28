@@ -45,7 +45,7 @@ const LoginPage = () => {
             <CardContent>
                 <AuthForm
                     formType={'login'}
-                    onSuccess={handleLoginSuccess}
+                    onSuccessAction={handleLoginSuccess}
                     isLoading={isLoading}
                 />
 

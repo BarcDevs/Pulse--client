@@ -1,4 +1,4 @@
-import {ComponentProps, ReactNode} from 'react'
+import type {ComponentProps, ReactNode} from 'react'
 
 export type Prettify<T> = {
     [K in keyof T]: T[K];

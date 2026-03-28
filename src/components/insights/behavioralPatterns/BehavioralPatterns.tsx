@@ -22,7 +22,7 @@ export const BehavioralPatterns = () => {
                 </h3>
                 <BehavioralPatternsTabs
                     activeTab={activeTab}
-                    onTabChange={setActiveTab}
+                    onTabChangeAction={setActiveTab}
                 />
             </div>
 

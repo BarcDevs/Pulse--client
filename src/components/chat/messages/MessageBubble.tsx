@@ -20,9 +20,9 @@ export const MessageBubble = ({
     <div
         className={cn(
             'max-w-[80%] rounded-2xl px-4 py-3',
-            role === 'user'
-                ? 'bg-primary text-white'
-                : 'bg-surface-card text-foreground shadow-sm'
+            role === 'user' ?
+                'bg-primary text-white' :
+                'bg-surface-card text-foreground shadow-sm'
         )}
     >
         <p className={'whitespace-pre-wrap text-sm leading-relaxed'}>
@@ -36,14 +36,14 @@ export const MessageBubble = ({
         <p
             className={cn(
                 'mt-2 text-xs',
-                role === 'user'
-                    ? 'text-white/70'
-                    : 'text-muted-foreground'
+                role === 'user' ?
+                    'text-white/70' :
+                    'text-muted-foreground'
             )}
         >
-            {role === 'assistant'
-                ? chatTexts.messages.assistantLabel
-                : chatTexts.messages.youLabel}
+            {role === 'assistant' ?
+                chatTexts.messages.assistantLabel :
+                chatTexts.messages.youLabel}
             {' - '}
             {timestamp}
         </p>

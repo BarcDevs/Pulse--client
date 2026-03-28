@@ -14,6 +14,12 @@ export const NotificationsSettings = () => {
     const dailyReminder = form.watch('dailyReminder')
     const communityAlerts = form.watch('communityAlerts')
 
+    const handleDailyReminderChange = (value: boolean) =>
+        form.setValue('dailyReminder', value)
+
+    const handleCommunityAlertsChange = (value: boolean) =>
+        form.setValue('communityAlerts', value)
+
     return (
         <div className={'rounded-2xl bg-surface-card p-6'}>
             <div className={'flex items-center gap-2 mb-6'}>
@@ -34,12 +40,7 @@ export const NotificationsSettings = () => {
                             .notifications.dailyReminder.description
                     }
                     checked={dailyReminder}
-                    onChange={
-                        (value) => form.setValue(
-                            'dailyReminder',
-                            value
-                        )
-                    }
+                    onChange={handleDailyReminderChange}
                 />
 
                 <SettingToggle
@@ -52,12 +53,7 @@ export const NotificationsSettings = () => {
                             .notifications.communityAlerts.description
                     }
                     checked={communityAlerts}
-                    onChange={
-                        (value) => form.setValue(
-                            'communityAlerts',
-                            value
-                        )
-                    }
+                    onChange={handleCommunityAlertsChange}
                 />
             </div>
         </div>

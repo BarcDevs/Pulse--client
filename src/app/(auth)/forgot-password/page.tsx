@@ -51,7 +51,7 @@ const ForgotPasswordPage = () => {
                 <CardContent>
                     <AuthForm
                         formType={'forgotPassword'}
-                        onSuccess={handleSubmit}
+                        onSuccessAction={handleSubmit}
                         isLoading={isLoading}
                     />
                 </CardContent>

@@ -22,10 +22,13 @@ export const NavButton = ({
         pathname.startsWith(item.href + '/')
     const Icon = item.icon
 
+    const handleNavigation = () =>
+        router.push(item.href)
+
     return (
         <Button
             key={item.href}
-            onClick={() => router.push(item.href)}
+            onClick={handleNavigation}
             variant={'ghost'}
             className={cn(
                 'w-full justify-start gap-3',
