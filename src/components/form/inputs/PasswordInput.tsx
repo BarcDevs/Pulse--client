@@ -38,7 +38,9 @@ export const PasswordInput = <T extends FieldValues>({
             <FormControl>
                 <div className={'relative'}>
                     <Input
-                        type={showPassword ? 'text' : 'password'}
+                        type={showPassword ?
+                            'text' :
+                            'password'}
                         placeholder={config.placeholder}
                         disabled={config.disabled}
                         autoComplete={'current-password'}

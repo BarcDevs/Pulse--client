@@ -31,10 +31,9 @@ export const Sidebar = ({
                 <NavSection />
             </div>
         </div>
-        {isErrorPage ? (
-            <SidebarBottomError />
-        ) : (
+        {isErrorPage ?
+            <SidebarBottomError /> :
             <SidebarBottom />
-        )}
+        }
     </aside>
 )

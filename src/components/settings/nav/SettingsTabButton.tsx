@@ -22,9 +22,9 @@ export const SettingsTabButton = ({
         variant={isActive ? 'default' : 'ghost'}
         className={cn(
             'w-full justify-start gap-3 px-4 py-3 rounded-xl',
-            isActive
-                ? 'bg-primary text-primary-foreground'
-                : 'text-muted-foreground hover:bg-surface-section hover:text-foreground'
+            isActive ?
+                'bg-primary text-primary-foreground' :
+                'text-muted-foreground hover:bg-surface-section hover:text-foreground'
         )}
     >
         <Icon className={'h-5 w-5'}/>

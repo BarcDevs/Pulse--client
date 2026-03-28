@@ -38,9 +38,9 @@ export const AuthForm = ({
         formType === 'resetPassword' ||
         formType === 'signup'
 
-    const passwordValue = isPasswordFormType
-        ? (form.watch('password' as any) as string)
-        : undefined
+    const passwordValue = isPasswordFormType ?
+        (form.watch('password' as any) as string) :
+        undefined
 
     useEffect(() => {
         if (
@@ -80,9 +80,9 @@ export const AuthForm = ({
                     disabled={isLoading}
                     className={'h-11 w-full'}
                 >
-                    {isLoading
-                        ? config.buttons.primary.loadingLabel
-                        : config.buttons.primary.label
+                    {isLoading ?
+                        config.buttons.primary.loadingLabel :
+                        config.buttons.primary.label
                     }
                 </Button>
 

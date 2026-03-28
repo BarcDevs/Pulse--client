@@ -33,9 +33,9 @@ export const useAuthForm = ({
         try {
             onSuccessAction(data)
         } catch (error) {
-            const message = error instanceof Error
-                ? error.message
-                : 'Submission failed'
+            const message = error instanceof Error ?
+                error.message :
+                'Submission failed'
             form.setError('root', {
                 type: 'manual',
                 message

@@ -35,9 +35,9 @@ export const FormInput = ({
     const isPasswordField = type === 'password'
 
     const inputType =
-        isPasswordField && showPassword
-            ? 'text'
-            : type
+        isPasswordField && showPassword ?
+            'text' :
+            type
 
     return (
         <div className={label ? 'space-y-2' : ''}>
@@ -58,7 +58,9 @@ export const FormInput = ({
                     onChange={onChange}
                     className={className || cn(
                         'h-11 border-border bg-muted',
-                        isPasswordField ? 'pr-10' : ''
+                        isPasswordField ?
+                            'pr-10' :
+                            ''
                     )}
                     required={required}
                     {...rest}

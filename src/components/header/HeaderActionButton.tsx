@@ -17,11 +17,11 @@ export const HeaderActionButton = ({
         <Button
             variant={isOutline ? 'outline' : 'default'}
             className={
-                isNewPost
-                    ? 'bg-primary hover:bg-primary/90 text-primary-foreground'
-                    : isOutline
-                        ? 'text-muted-foreground'
-                        : ''
+                isNewPost ?
+                    'bg-primary hover:bg-primary/90 text-primary-foreground' :
+                    isOutline ?
+                        'text-muted-foreground' :
+                        ''
             }
         >
             {renderIcon(action.icon)}

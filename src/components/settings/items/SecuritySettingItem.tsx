@@ -16,20 +16,18 @@ export const SecuritySettingItem = ({
     variant = 'default'
 }: SecuritySettingItemProps) => (
     <div
-        className={
-            variant === 'destructive'
-                ? 'flex items-center justify-between p-4 rounded-xl border border-destructive/20 bg-destructive/5'
-                : 'flex items-center justify-between p-4 rounded-xl bg-surface-section'
-        }
+        className={variant === 'destructive' ?
+            'flex items-center justify-between p-4 rounded-xl border border-destructive/20 bg-destructive/5' :
+            'flex items-center justify-between p-4 rounded-xl bg-surface-section'}
     >
         <div className={'flex items-center gap-3'}>
             {icon}
             <div>
                 <h4
                     className={
-                        variant === 'destructive'
-                            ? 'font-medium text-destructive'
-                            : 'font-medium text-foreground'
+                        variant === 'destructive' ?
+                            'font-medium text-destructive' :
+                            'font-medium text-foreground'
                     }
                 >
                     {label}

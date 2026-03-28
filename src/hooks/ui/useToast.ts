@@ -139,10 +139,12 @@ export const reducer = (
             const toasts = state.toasts.map(
                 (t) =>
                     t.id === toastId ||
-                    toastId === undefined ? {
-                        ...t,
-                        open: false
-                    } : t
+                    toastId === undefined ?
+                        {
+                            ...t,
+                            open: false
+                        } :
+                        t
             )
 
             return {
