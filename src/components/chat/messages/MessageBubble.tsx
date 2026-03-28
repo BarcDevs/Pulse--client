@@ -2,7 +2,7 @@ import {cn} from '@/lib/utils'
 
 import {chatTexts} from '@/constants/componentTexts/chat'
 
-import {MessageSuggestions} from './MessageSuggestions'
+import {MessageSuggestions} from '../suggestions/MessageSuggestions'
 
 type MessageBubbleProps = {
     role: 'user' | 'assistant'

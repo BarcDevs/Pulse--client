@@ -2,8 +2,9 @@
 
 import {KeyboardEvent} from 'react'
 
+import {ChatSuggestionsPanel} from '../suggestions/ChatSuggestionsPanel'
+
 import {ChatInputField} from './ChatInputField'
-import {ChatSuggestionsPanel} from './ChatSuggestionsPanel'
 
 // todo - fix ts warning
 type ChatInputProps = {

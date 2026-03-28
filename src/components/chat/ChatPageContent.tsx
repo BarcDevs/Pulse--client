@@ -4,9 +4,9 @@ import {useState} from 'react'
 
 import {initialChatMessages} from '@/mocks/chatMessages'
 
+import {ChatInput} from './inputs/Input'
+import {ChatMessages} from './messages/Messages'
 import {ChatPanel} from './ChatPanel'
-import {ChatInput} from './Input'
-import {ChatMessages} from './Messages'
 
 export const ChatPageContent = () => {
     const [messages, setMessages] = useState(initialChatMessages)
