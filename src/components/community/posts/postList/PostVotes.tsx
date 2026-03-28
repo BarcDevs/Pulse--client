@@ -15,7 +15,7 @@ export const PostVotes = ({
             className={'h-6 w-6 p-0 text-muted-foreground hover:text-primary'}
         >
             <Icon
-                name={'arrow-up'}
+                name={'navigation/arrow-up'}
                 size={20}
             />
         </Button>
@@ -28,7 +28,7 @@ export const PostVotes = ({
             className={'h-6 w-6 p-0 text-muted-foreground hover:text-primary'}
         >
             <Icon
-                name={'arrow-down'}
+                name={'navigation/arrow-down'}
                 size={20}
             />
         </Button>
