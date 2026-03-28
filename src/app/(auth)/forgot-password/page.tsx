@@ -4,7 +4,7 @@ import {useState} from 'react'
 
 import {EmailVerificationView} from '@/components/auth/views/EmailVerificationView'
 import {AuthForm} from '@/components/form/AuthForm'
-import {Logo} from '@/components/shared/Logo'
+import {Logo} from '@/components/shared/brand/Logo'
 import {
     Card,
     CardContent,

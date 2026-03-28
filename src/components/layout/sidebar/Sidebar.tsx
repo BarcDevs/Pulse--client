@@ -2,7 +2,7 @@
 
 import {ClassName} from '@/types/react'
 
-import {Logo} from '@/components/shared/Logo'
+import {Logo} from '@/components/shared/brand/Logo'
 
 import {cn} from '@/lib/utils'
 

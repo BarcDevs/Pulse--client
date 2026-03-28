@@ -1,6 +1,6 @@
 import {Plus} from 'lucide-react'
 
-import {ActivityItem} from '@/components/shared/ActivityItem'
+import {ActivityItem} from '@/components/shared/lists/ActivityItem'
 import {Button} from '@/components/ui/button'
 import {
     Card,

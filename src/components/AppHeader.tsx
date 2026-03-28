@@ -13,7 +13,7 @@ import {HeaderNotificationButton}
     from '@/components/header/HeaderNotificationButton'
 import {HeaderTitle} from '@/components/header/HeaderTitle'
 import {UserMenu} from '@/components/header/UserMenu'
-import {FormInput} from '@/components/shared/FormInput'
+import {FormInput} from '@/components/shared/inputs/FormInput'
 
 import {appLayoutTexts} from '@/constants/componentTexts/ui/layout'
 import {getHeaderConfig} from '@/constants/config/getHeaderConfig'

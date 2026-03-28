@@ -1,6 +1,6 @@
 import {Activity, Smile} from 'lucide-react'
 
-import {SliderCard} from '@/components/shared/SliderCard'
+import {SliderCard} from '@/components/shared/inputs/SliderCard'
 
 import {checkInTexts} from '@/constants/componentTexts/checkIn'
 

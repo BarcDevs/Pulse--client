@@ -4,7 +4,7 @@ import {ReactNode, useState} from 'react'
 
 import {Bell, Search} from 'lucide-react'
 
-import {FormInput} from '@/components/shared/FormInput'
+import {FormInput} from '@/components/shared/inputs/FormInput'
 import {Button} from '@/components/ui/button'
 
 import {appLayoutTexts} from '@/constants/componentTexts/ui/layout'

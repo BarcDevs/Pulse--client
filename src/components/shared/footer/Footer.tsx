@@ -5,10 +5,10 @@ import {cn} from '@/lib/utils'
 import {landing} from '@/constants/componentTexts/landing'
 import {footer} from '@/constants/componentTexts/ui/footer'
 
-import {FooterBrand} from './footer/FooterBrand'
-import {FooterLegal} from './footer/FooterLegal'
-import {FooterLinks} from './footer/FooterLinks'
-import {FooterSocial} from './footer/FooterSocial'
+import {FooterBrand} from './FooterBrand'
+import {FooterLegal} from './FooterLegal'
+import {FooterLinks} from './FooterLinks'
+import {FooterSocial} from './FooterSocial'
 
 type FooterProps = {
     className?: ClassName

@@ -1,4 +1,4 @@
-import {TrendAreaChart} from '@/components/shared/TrendAreaChart'
+import {TrendAreaChart} from '@/components/shared/charts/TrendAreaChart'
 
 import {
     moodTrendChartData,

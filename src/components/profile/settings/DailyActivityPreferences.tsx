@@ -2,7 +2,7 @@
 
 import {Settings2} from 'lucide-react'
 
-import {ActivityItem} from '@/components/shared/ActivityItem'
+import {ActivityItem} from '@/components/shared/lists/ActivityItem'
 import {Button} from '@/components/ui/button'
 
 import {profilePageTexts} from '@/constants/componentTexts/profile'

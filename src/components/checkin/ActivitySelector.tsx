@@ -4,7 +4,7 @@ import {useState} from 'react'
 
 import {Trophy} from 'lucide-react'
 
-import {FormInput} from '@/components/shared/FormInput'
+import {FormInput} from '@/components/shared/inputs/FormInput'
 import {
     Card,
     CardContent,

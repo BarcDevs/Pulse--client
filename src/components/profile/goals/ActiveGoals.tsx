@@ -1,4 +1,4 @@
-import {GoalProgressBar} from '@/components/shared/GoalProgressBar'
+import {GoalProgressBar} from '@/components/shared/bars/GoalProgressBar'
 import {Button} from '@/components/ui/button'
 
 import {profilePageTexts} from '@/constants/componentTexts/profile'

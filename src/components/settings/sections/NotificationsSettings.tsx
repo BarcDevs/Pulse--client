@@ -2,7 +2,7 @@
 
 import {Bell} from 'lucide-react'
 
-import {SettingToggle} from '@/components/shared/SettingToggle'
+import {SettingToggle} from '@/components/shared/inputs/SettingToggle'
 
 import {useNotificationsSettingsForm} from '@/hooks/forms/useNotificationsSettingsForm'
 
