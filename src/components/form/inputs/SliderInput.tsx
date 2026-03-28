@@ -27,7 +27,8 @@ export const SliderInput = <T extends FieldValues>({
         <FormControl>
             <Slider
                 value={[field.value || (config.min ?? 0)]}
-                onValueChange={(value) => field.onChange(value[0])}
+                onValueChange={(value) =>
+                    field.onChange(value[0])}
                 disabled={config.disabled}
                 min={config.min ?? 0}
                 max={config.max ?? 100}
