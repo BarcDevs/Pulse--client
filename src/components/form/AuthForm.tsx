@@ -5,6 +5,7 @@ import {useEffect} from 'react'
 import Link from 'next/link'
 
 import {AuthFormType} from '@/types/forms/forms'
+import {SetState} from '@/types/utils/react'
 
 import {Button} from '@/components/ui/button'
 import {Form} from '@/components/ui/form'
@@ -15,23 +16,22 @@ import authFormConfigs from '@/config/forms/authFormConfig'
 
 import {DynamicFormField} from './DynamicFormField'
 
-//todo: fix ts warnings
 type AuthFormProps = {
     formType: AuthFormType
-    onSuccess: (data: any) => void | Promise<void>
+    onSuccessAction: SetState<any>
     isLoading?: boolean
-    onPasswordChange?: (password: string) => void
+    onPasswordChangeAction?: SetState<string>
 }
 
 export const AuthForm = ({
     formType,
-    onSuccess,
+    onSuccessAction,
     isLoading = false,
-    onPasswordChange
+    onPasswordChangeAction
 }: AuthFormProps) => {
     const { form, handleSubmit } = useAuthForm({
         formType,
-        onSuccess
+        onSuccessAction
     })
 
     const isPasswordFormType =
@@ -44,15 +44,15 @@ export const AuthForm = ({
 
     useEffect(() => {
         if (
-            onPasswordChange &&
+            onPasswordChangeAction &&
             isPasswordFormType &&
             typeof passwordValue === 'string'
         ) {
-            onPasswordChange(passwordValue)
+            onPasswordChangeAction(passwordValue)
         }
     }, [
         passwordValue,
-        onPasswordChange,
+        onPasswordChangeAction,
         isPasswordFormType
     ])
 
