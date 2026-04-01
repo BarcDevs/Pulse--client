@@ -16,6 +16,8 @@ HealEase — Recovery support platform for patients transitioning from hospital/
 - Text blocks: Don't break unless really long (120–150 chars OK)
 - Text: never use `—` character. only the simple hyphen `-` for all text, including classnames and config keys. This avoids encoding issues and ensures consistency across all contexts (JSX, CSS, config, etc.)
 - Use unified imports for module that has many imports
+- Short conditional blocks - never use `{`
+- Never break line around single imports - if import is too long, break before the `from` keyword
 
 ### Language & Format
 - Quotes: Single quotes (') for all strings, imports, JSX props
@@ -39,6 +41,7 @@ HealEase — Recovery support platform for patients transitioning from hospital/
 - Time values: Always use `src/constants/time` (minuteInMs, hourInMs, etc.) instead of hardcoding milliseconds
 - No backwards-compatibility shims for removed code
 - Don't use redundant braces or parentheses
+- Avoid single statement followed by return — inline: `if (x) return fn()` not `if (x) { fn(); return }`
 
 ### Code Formatting
 - Line length: Target 40-50 characters maximum for code lines (strings can be longer if necessary). Break lines that exceed this threshold
