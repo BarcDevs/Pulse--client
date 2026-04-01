@@ -9,6 +9,8 @@ import {cn} from '@/lib/utils'
 
 import {meta} from '@/config/meta'
 
+import {AuthProvider} from '@/context/AuthProvider'
+
 import '@/styles/globals.css'
 
 const inter = Inter({
@@ -26,7 +28,9 @@ const RootLayout = ({
             inter.variable,
             'font-sans antialiased bg-surface-page'
         )}>
-            {children}
+            <AuthProvider>
+                {children}
+            </AuthProvider>
             <Analytics/>
         </body>
     </html>

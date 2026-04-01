@@ -2,8 +2,6 @@
 
 import {useState} from 'react'
 
-import {useRouter} from 'next/navigation'
-
 import {GoogleLoginButton} from '@/components/auth/forms/GoogleLoginButton'
 import {LoginSecurityFooter} from '@/components/auth/sections/LoginSecurityFooter'
 import {AuthForm} from '@/components/form/AuthForm'
@@ -15,21 +13,22 @@ import {
     CardTitle
 } from '@/components/ui/card'
 
+import {useAuthHandlers} from '@/hooks/useAuthHandlers'
+
 import {authTexts} from '@/constants/componentTexts/auth'
 
-import {timings} from '@/config/timings'
+import type {LoginSchema} from '@/validations/forms/loginSchema'
 
 const LoginPage = () => {
-    const router = useRouter()
+    const { handleLogin } = useAuthHandlers()
     const [isLoading, setIsLoading] = useState(false)
 
-    const handleLoginSuccess = async () => {
+    const handleLoginSuccess = async (
+        credentials: LoginSchema
+    ) => {
         setIsLoading(true)
-
-        setTimeout(() => {
-            setIsLoading(false)
-            router.push('/dashboard')
-        }, timings.AUTH_API_DELAY)
+        await handleLogin(credentials)
+        setIsLoading(false)
     }
 
     return (
