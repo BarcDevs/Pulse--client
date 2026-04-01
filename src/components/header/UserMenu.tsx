@@ -1,14 +1,6 @@
 'use client'
 
-import Link from 'next/link'
-
-import {LogIn} from 'lucide-react'
-
-import {
-    Avatar,
-    AvatarFallback
-} from '@/components/ui/avatar'
-import {Button} from '@/components/ui/button'
+import {UserAvatar} from '@/components/header/UserAvatar'
 import {UserLoginButton} from '@/components/header/UserLoginButton'
 import {UserSkeleton} from '@/components/header/UserSkeleton'
 import {
@@ -42,21 +34,11 @@ export const UserMenu = () => {
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
-                <button className={'flex items-center gap-3 rounded-lg p-2 hover:bg-surface-section transition-colors'}>
-                    <Avatar className={'size-9'}>
-                        <AvatarFallback className={'bg-primary-light text-primary'}>
-                            {initials}
-                        </AvatarFallback>
-                    </Avatar>
-                    <div className={'hidden md:flex flex-col items-start'}>
-                        <p className={'text-sm font-medium text-foreground'}>
-                            {user.firstName}
-                        </p>
-                        <p className={'text-xs text-muted-foreground'}>
-                            {user.firstName} {user.lastName}
-                        </p>
-                    </div>
-                </button>
+                <UserAvatar
+                    firstName={user.firstName}
+                    lastName={user.lastName}
+                    initials={initials}
+                />
             </DropdownMenuTrigger>
             <DropdownMenuContent
                 align={'end'}
