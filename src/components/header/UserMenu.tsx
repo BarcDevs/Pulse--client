@@ -1,9 +1,15 @@
 'use client'
 
+import Link from 'next/link'
+
+import {LogIn} from 'lucide-react'
+
 import {
     Avatar,
     AvatarFallback
 } from '@/components/ui/avatar'
+import {Button} from '@/components/ui/button'
+import {UserLoginButton} from '@/components/header/UserLoginButton'
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -29,7 +35,7 @@ export const UserMenu = () => {
         )
 
     if (!user)
-        return null
+        return <UserLoginButton/>
 
     const initials = getUserFallback(
         user.firstName,
