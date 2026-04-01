@@ -10,6 +10,7 @@ import {
 } from '@/components/ui/avatar'
 import {Button} from '@/components/ui/button'
 import {UserLoginButton} from '@/components/header/UserLoginButton'
+import {UserSkeleton} from '@/components/header/UserSkeleton'
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -28,11 +29,7 @@ export const UserMenu = () => {
     const { user, isLoading } = useUser()
 
     if (isLoading)
-        return (
-            <div className={'flex items-center gap-3 rounded-lg p-2'}>
-                <div className={'size-9 rounded-full bg-surface-section animate-pulse'}/>
-            </div>
-        )
+        return <UserSkeleton/>
 
     if (!user)
         return <UserLoginButton/>
