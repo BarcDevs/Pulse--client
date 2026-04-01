@@ -1,7 +1,8 @@
-import {renderIcon} from '@/components/header/renderIcon'
 import {Button} from '@/components/ui/button'
 
 import type {ActionConfig} from '@/constants/config/headerPageConfigs'
+
+import {renderIcon} from './renderIcon'
 
 type HeaderActionButtonProps = {
     action: ActionConfig

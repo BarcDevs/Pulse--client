@@ -7,12 +7,12 @@ import {usePathname} from 'next/navigation'
 import {Search} from 'lucide-react'
 
 import {HeaderActionButton}
-    from '@/components/header/HeaderActionButton'
-import {HeaderBadge} from '@/components/header/HeaderBadge'
+    from '@/components/layout/header/HeaderActionButton'
+import {HeaderBadge} from '@/components/layout/header/HeaderBadge'
 import {HeaderNotificationButton}
-    from '@/components/header/HeaderNotificationButton'
-import {HeaderTitle} from '@/components/header/HeaderTitle'
-import {UserMenu} from '@/components/header/UserMenu'
+    from '@/components/layout/header/HeaderNotificationButton'
+import {HeaderTitle} from '@/components/layout/header/HeaderTitle'
+import {UserMenu} from '@/components/layout/header/UserMenu'
 import {FormInput} from '@/components/shared/inputs/FormInput'
 
 import {appLayoutTexts} from '@/constants/componentTexts/ui/layout'

@@ -1,8 +1,5 @@
 'use client'
 
-import {UserAvatar} from '@/components/header/UserAvatar'
-import {UserLoginButton} from '@/components/header/UserLoginButton'
-import {UserSkeleton} from '@/components/header/UserSkeleton'
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -16,6 +13,10 @@ import {useUser} from '@/hooks/ui/useUser'
 import {getUserFallback} from '@/lib/utils'
 
 import {bottomNavItems} from '@/constants/navigationItems'
+
+import {UserAvatar} from './UserAvatar'
+import {UserLoginButton} from './UserLoginButton'
+import {UserSkeleton} from './UserSkeleton'
 
 export const UserMenu = () => {
     const { user, isLoading } = useUser()
