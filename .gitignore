@@ -5,6 +5,7 @@
 node_modules/
 .next/
 .DS_Store
+next-env.d.ts
 
 # Logs
 logs
