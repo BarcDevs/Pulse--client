@@ -1,36 +1,16 @@
-import {
-    NextRequest,
-    NextResponse
-} from 'next/server'
+import {NextRequest, NextResponse} from 'next/server'
 
-import {handleAuthRoute} from '@/middleware/authRouteHandler'
-import {handleProtectedRoute} from '@/middleware/protectedRouteHandler'
+import {authRouteMiddleware} from '@/middleware/authRouteMiddleware'
+import {protectedRouteMiddleware} from '@/middleware/protectedRouteMiddleware'
 
 export const middleware = (
     request: NextRequest
 ) => {
-    const sessionCookie = request.cookies.get(
-        'accessToken'
-    )?.value
+    let next = NextResponse.next()
+    next = protectedRouteMiddleware(request, next)
+    next = authRouteMiddleware(request, next)
 
-    const protectedRouteResponse =
-        handleProtectedRoute(
-            request,
-            sessionCookie
-        )
-
-    if (protectedRouteResponse)
-        return protectedRouteResponse
-
-    const authRouteResponse = handleAuthRoute(
-        request,
-        sessionCookie
-    )
-
-    if (authRouteResponse)
-        return authRouteResponse
-
-    return NextResponse.next()
+    return next
 }
 
 export const config = {
