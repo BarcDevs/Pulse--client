@@ -8,7 +8,7 @@ import {
     DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu'
 
-import {useUser} from '@/hooks/ui/useUser'
+import {useAuth} from '@/context/AuthContext'
 
 import {getUserFallback} from '@/lib/utils'
 
@@ -19,7 +19,7 @@ import {UserLoginButton} from './UserLoginButton'
 import {UserSkeleton} from './UserSkeleton'
 
 export const UserMenu = () => {
-    const { user, isLoading } = useUser()
+    const { user, isLoading } = useAuth()
 
     if (isLoading)
         return <UserSkeleton/>
