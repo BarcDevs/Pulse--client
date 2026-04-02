@@ -2,13 +2,17 @@
 
 import {
     ReactNode,
-    useEffect,
+    useCallback,
     useState
 } from 'react'
 
+import {useQueryClient} from '@tanstack/react-query'
+
 import type {User} from '@/types'
 
-import {getMe} from '@/api/auth'
+import {useGetMe} from '@/hooks/queries/useGetMe'
+
+import {AUTH_QUERY_KEYS} from '@/constants/queryKeys'
 
 import {AuthContext} from './AuthContext'
 
@@ -17,32 +21,56 @@ export const AuthProvider = ({
 }: {
     children: ReactNode
 }) => {
-    const [user, setUser] = useState<
-        User | null
-    >(null)
-    const [isLoading, setIsLoading] = useState(true)
+    const {
+        user,
+        isLoading: queryLoading,
+        error
+    } = useGetMe()
 
-    useEffect(() => {
-        const initAuth = async () => {
-            try {
-                const response = await getMe()
-                const user = response.data.data.user
-                setUser(user)
-            } catch {
-                setUser(null)
-            } finally {
-                setIsLoading(false)
+    const [mutationLoading, setMutationLoading] = useState(false)
+
+    const queryClient = useQueryClient()
+
+    const setUser = useCallback(
+        (newUser: User | null) => {
+            if (newUser === null) {
+                queryClient.removeQueries({
+                    queryKey: AUTH_QUERY_KEYS.getMe
+                })
+            } else {
+                queryClient.setQueryData(
+                    AUTH_QUERY_KEYS.getMe,
+                    {
+                        data: {
+                            user: newUser,
+                            _csrf: ''
+                        },
+                        success: true
+                    }
+                )
             }
-        }
+        },
+        [queryClient]
+    )
 
-        initAuth()
-    }, [])
+    const setIsLoading = useCallback(
+        (loading: boolean) => {
+            setMutationLoading(loading)
+        },
+        []
+    )
+
+    if (error)
+        console.error('Auth error:', error)
+
+    const isLoading = queryLoading || mutationLoading
 
     return (
         <AuthContext.Provider
             value={{
                 user,
                 isLoading,
+                error,
                 setUser,
                 setIsLoading
             }}

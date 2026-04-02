@@ -10,6 +10,7 @@ import type {User} from '@/types'
 type AuthContextType = {
     user: User | null
     isLoading: boolean
+    error: Error | null
     setUser: (user: User | null) => void
     setIsLoading: (loading: boolean) => void
 }

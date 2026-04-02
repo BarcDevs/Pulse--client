@@ -11,6 +11,8 @@ import {meta} from '@/config/meta'
 
 import {AuthProvider} from '@/context/AuthProvider'
 
+import {QueryProvider} from '@/app/providers/QueryProvider'
+
 import '@/styles/globals.css'
 
 const inter = Inter({
@@ -28,9 +30,11 @@ const RootLayout = ({
             inter.variable,
             'font-sans antialiased bg-surface-page'
         )}>
-            <AuthProvider>
-                {children}
-            </AuthProvider>
+            <QueryProvider>
+                <AuthProvider>
+                    {children}
+                </AuthProvider>
+            </QueryProvider>
             <Analytics/>
         </body>
     </html>
