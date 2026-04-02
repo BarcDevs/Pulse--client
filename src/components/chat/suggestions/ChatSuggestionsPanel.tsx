@@ -1,9 +1,11 @@
+import type {SetState} from '@/types/utils/react'
+
 import {Button} from '@/components/ui/button'
 
 import {chatTexts} from '@/constants/componentTexts/chat'
 
 type ChatSuggestionsPanelProps = {
-    onSuggestionClick: (suggestion: string) => void
+    onSuggestionClick: SetState<string>
 }
 
 export const ChatSuggestionsPanel = ({

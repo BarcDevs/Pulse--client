@@ -10,18 +10,20 @@ import {
     YAxis
 } from 'recharts'
 
+import type {SetState} from '@/types/utils/react'
+
 import {ChartTooltipContent} from '@/components/ui/chart-tooltip'
 
 type HistoryChartContentProps = {
     reorderedData: unknown[]
     hoveredIndex: number | null
-    setHoveredIndex: (index: number | null) => void
+    setHoveredIndexAction: SetState<number | null>
 }
 
 export const HistoryChartContent = ({
     reorderedData,
     hoveredIndex,
-    setHoveredIndex
+    setHoveredIndexAction
 }: HistoryChartContentProps) => (
     <div
         className={'h-60 w-full'}
@@ -68,8 +70,13 @@ export const HistoryChartContent = ({
                     radius={[6, 6, 0, 0]}
                     fill={'#e8f4fd'}
                     isAnimationActive={false}
-                    onMouseEnter={(_, index) => setHoveredIndex(index)}
-                    onMouseLeave={() => setHoveredIndex(null)}
+                    onMouseEnter={
+                        (_, index) =>
+                            setHoveredIndexAction(index)
+                    }
+                    onMouseLeave={() =>
+                        setHoveredIndexAction(null)
+                    }
                 >
                     {reorderedData.map(
                         (_, index) => (

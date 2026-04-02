@@ -84,7 +84,9 @@ export const DashboardHistoryChart = () => {
                     <HistoryChartContent
                         reorderedData={reorderedData}
                         hoveredIndex={hoveredIndex}
-                        setHoveredIndex={setHoveredIndex}
+                        setHoveredIndexAction={
+                            setHoveredIndex
+                        }
                     />
                 )}
             </CardContent>

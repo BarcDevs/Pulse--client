@@ -1,6 +1,7 @@
-import {KeyboardEvent} from 'react'
-
 import {Send} from 'lucide-react'
+import type {KeyboardEvent} from 'react'
+
+import type {SetState} from '@/types/utils/react'
 
 import {FormInput} from '@/components/shared/inputs/FormInput'
 import {
@@ -14,7 +15,7 @@ import {chatTexts} from '@/constants/componentTexts/chat'
 
 type ChatInputFieldProps = {
     value: string
-    onChange: (value: string) => void
+    onChange: SetState<string>
     onSend: () => void
     onKeyDown: (e: KeyboardEvent<HTMLInputElement>) => void
 }

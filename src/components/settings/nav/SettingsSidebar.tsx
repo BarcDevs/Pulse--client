@@ -5,6 +5,8 @@ import {
     Shield
 } from 'lucide-react'
 
+import type {SetState} from '@/types/utils/react'
+
 import {settingsPageTexts}
     from '@/constants/componentTexts/settings'
 
@@ -13,7 +15,7 @@ import {SettingsTabButton} from './SettingsTabButton'
 
 type SettingsSidebarProps = {
     activeTab: string
-    onTabChange: (tabId: string) => void
+    onTabChange: SetState<string>
 }
 
 const iconMap = {

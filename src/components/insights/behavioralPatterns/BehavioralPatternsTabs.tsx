@@ -1,3 +1,5 @@
+import type {SetState} from '@/types/utils/react'
+
 import {Button} from '@/components/ui/button'
 
 import {cn} from '@/lib/utils'
@@ -7,8 +9,7 @@ import {insightsPageTexts}
 
 type BehavioralPatternsTabsProps = {
     activeTab: '7days' | '30days'
-    // todo: make a type
-    onTabChangeAction: (tab: '7days' | '30days') => void
+    onTabChangeAction: SetState<'7days' | '30days'>
 }
 
 export const BehavioralPatternsTabs = ({
