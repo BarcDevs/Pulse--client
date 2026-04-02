@@ -6,7 +6,7 @@ import {
     handleRequestError,
     handleRequestSuccess,
     handleResponseError,
-    handleResponseSuccess} from '@/lib/api-interceptors'
+    handleResponseSuccess} from '@/lib/apiInterceptors'
 
 import config from '@/config'
 
