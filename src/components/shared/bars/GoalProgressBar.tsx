@@ -30,7 +30,8 @@ export const GoalProgressBar = ({
             <Progress
                 value={progress}
                 className={'mt-2 h-2 bg-white/20 *:data-[slot=progress-indicator]:bg-white'}
-            /> : <div className={'h-2 bg-white/20 rounded-full overflow-hidden'}>
+            /> :
+            <div className={'h-2 bg-white/20 rounded-full overflow-hidden'}>
                 <div
                     className={'h-full bg-white rounded-full transition-all'}
                     style={{ width: `${progress}%` }}

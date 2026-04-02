@@ -48,6 +48,7 @@ HealEase — Recovery support platform for patients transitioning from hospital/
 - Break long lines and function parameters onto multiple lines
 - 2+ conditions in if statements → one condition per line, no condition and action in same line
 - Ternary conditions with long or complex expressions → break to multiple lines
+- Ternary operators should be place on the right, never in the left
 - Inline objects with 3+ properties, or 2+ in long lines → always break to new lines
 - 2+ chained accessor calls → break after root object
 - Nested objects always on a new line — never inline inside a parent object or array

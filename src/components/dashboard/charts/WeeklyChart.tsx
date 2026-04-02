@@ -100,9 +100,9 @@ export const DashboardWeeklyChart = () => (
                                     <Cell
                                         key={`cell-${index}`}
                                         fill={
-                                            entry.day === 'THU'
-                                                ? '#4a90e2'
-                                                : '#e8f4fd'
+                                            entry.day === 'THU' ?
+                                                '#4a90e2' :
+                                                '#e8f4fd'
                                         }
                                     />
                                 )

@@ -39,14 +39,14 @@ export const useCheckInForm = ({
 
     const form = useForm<CheckInSchema>({
         resolver: zodResolver(checkInSchema),
-        defaultValues: isTodayCheckInExists && latestCheckIn ?
-            {
+        defaultValues:
+            isTodayCheckInExists &&
+            latestCheckIn ? {
                 moodScore: latestCheckIn.moodScore,
                 painLevel: latestCheckIn.painLevel,
                 activities: latestCheckIn.activities,
                 notes: latestCheckIn.notes ?? ''
-            } :
-            {
+            } : {
                 moodScore: moodConfig.min,
                 painLevel: painConfig.min,
                 activities: [],

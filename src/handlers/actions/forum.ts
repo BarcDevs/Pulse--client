@@ -10,8 +10,10 @@ import {PostSchema} from '@/validations/forms/postSchema'
  * @param postId - optional. Pass it if you want to update an existing post
  * @returns axios response
  */
-export const submitForm = async (post: PostSchema, postId?: string)
-    : Promise<Response<Post>> =>
+export const submitForm = async (
+    post: PostSchema,
+    postId?: string
+): Promise<Response<Post>> =>
     postId ?
         (await updatePost(postId, post)).data :
         (await createPost(post)).data
