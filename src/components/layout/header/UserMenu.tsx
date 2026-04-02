@@ -8,11 +8,11 @@ import {
     DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu'
 
-import {useAuth} from '@/context/AuthContext'
-
 import {getUserFallback} from '@/lib/utils'
 
 import {bottomNavItems} from '@/constants/navigationItems'
+
+import {useAuth} from '@/context/AuthContext'
 
 import {UserAvatar} from './UserAvatar'
 import {UserLoginButton} from './UserLoginButton'
@@ -35,24 +35,12 @@ export const UserMenu = () => {
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
-                <UserAvatar
-                    firstName={user.firstName}
-                    lastName={user.lastName}
-                    initials={initials}
-                />
+                <UserAvatar initials={initials}/>
             </DropdownMenuTrigger>
             <DropdownMenuContent
                 align={'end'}
                 className={'w-56'}
             >
-                <div className={'px-2 py-1.5'}>
-                    <p className={'text-sm font-medium text-foreground'}>
-                        {user.firstName} {user.lastName}
-                    </p>
-                    <p className={'text-xs text-muted-foreground'}>
-                        Account
-                    </p>
-                </div>
                 <DropdownMenuSeparator/>
                 {bottomNavItems.map((item) => (
                     <DropdownMenuItem

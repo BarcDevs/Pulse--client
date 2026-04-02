@@ -1,5 +1,6 @@
 'use client'
 
+import {dashboardPageTexts} from '@/constants/componentTexts/dashboard'
 import {ChangeEvent, useState} from 'react'
 
 import {usePathname} from 'next/navigation'
@@ -18,10 +19,13 @@ import {FormInput} from '@/components/shared/inputs/FormInput'
 import {appLayoutTexts} from '@/constants/componentTexts/ui/layout'
 import {getHeaderConfig} from '@/constants/config/getHeaderConfig'
 
+import {useAuth} from '@/context/AuthContext'
+
 
 export const AppHeader = () => {
     const [searchValue, setSearchValue] = useState('')
     const pathname = usePathname()
+    const { user } = useAuth()
     const {
         title,
         subtitle,
@@ -29,6 +33,11 @@ export const AppHeader = () => {
         actions,
         badge
     } = getHeaderConfig(pathname.slice(1))
+
+    const welcomeSubtitle =
+        pathname === '/dashboard' && user ?
+            `${dashboardPageTexts.greeting} ${user.firstName}` :
+            subtitle
 
     const headerClassName = 'sticky top-0 z-10 flex h-16 items-center justify-between border-b border-border bg-surface-card px-4 md:px-6'
     const formInputClassName = 'h-10 w-64 rounded-lg bg-surface-card pl-10 pr-4 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/20'
@@ -41,7 +50,7 @@ export const AppHeader = () => {
         <header className={headerClassName}>
             <HeaderTitle
                 title={title}
-                subtitle={subtitle}
+                subtitle={welcomeSubtitle}
             />
 
             <div className={'flex items-center gap-3'}>

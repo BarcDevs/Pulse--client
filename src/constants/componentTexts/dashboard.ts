@@ -1,6 +1,6 @@
 export const dashboardPageTexts = {
     title: 'Dashboard',
-    subtitle: 'Welcome back, Alex',
+    greeting: 'Welcome back,',
     checkIn: {
         badge: 'ACTION REQUIRED',
         title: 'Ready for your Daily Check-In?',
