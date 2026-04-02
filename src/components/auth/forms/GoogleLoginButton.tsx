@@ -3,9 +3,9 @@
 import {Icon} from '@/components/shared/ui/Icon'
 import {Button} from '@/components/ui/button'
 
-import {authTexts} from '@/constants/componentTexts/auth'
+import {redirectToGoogleAuth} from '@/lib/auth'
 
-import {redirectToGoogleAuth} from '@/handlers/auth'
+import {authTexts} from '@/constants/componentTexts/auth'
 
 export const GoogleLoginButton = () => {
     const handleClick = async () => {

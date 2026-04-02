@@ -8,6 +8,8 @@ import {
     clearCsrfToken
 } from '@/lib/csrf'
 
+import config from '@/config'
+
 export type QueuedRequest = {
     resolve: (value: any) => void
     reject: (error: any) => void
@@ -79,10 +81,13 @@ export const initiateLogout = async () => {
             '@/api/auth'
             )
         await logout()
-    } catch {
-        // Ignore errors during logout
-    }
+    } catch {/* Ignore errors during logout */}
 
     if (typeof window !== 'undefined')
         window.location.href = '/login'
+}
+
+export const redirectToGoogleAuth = async () => {
+    window.location.href =
+        `${config.serverUrl}/api/v1/auth/google`
 }
