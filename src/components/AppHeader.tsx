@@ -1,6 +1,5 @@
 'use client'
 
-import {dashboardPageTexts} from '@/constants/componentTexts/dashboard'
 import {ChangeEvent, useState} from 'react'
 
 import {usePathname} from 'next/navigation'
@@ -16,6 +15,7 @@ import {HeaderTitle} from '@/components/layout/header/HeaderTitle'
 import {UserMenu} from '@/components/layout/header/UserMenu'
 import {FormInput} from '@/components/shared/inputs/FormInput'
 
+import {dashboardPageTexts} from '@/constants/componentTexts/dashboard'
 import {appLayoutTexts} from '@/constants/componentTexts/ui/layout'
 import {getHeaderConfig} from '@/constants/config/getHeaderConfig'
 
