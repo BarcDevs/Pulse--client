@@ -2,7 +2,7 @@ import {useQuery} from '@tanstack/react-query'
 
 import type {Profile} from '@/types/profile/profile'
 
-import {AUTH_QUERY_KEYS} from '@/constants/queryKeys'
+import {authQueryKeys} from '@/constants/queryKeys'
 import {minuteInMs} from '@/constants/time'
 
 import {useAuth} from '@/context/AuthContext'
@@ -22,7 +22,7 @@ export const useProfile = (
         !authIsLoading
 
     const query = useQuery<Profile, Error>({
-        queryKey: AUTH_QUERY_KEYS.profile,
+        queryKey: authQueryKeys.profile,
         queryFn: () => getProfileApi(),
         enabled: isEnabled,
         staleTime: 5 * minuteInMs,

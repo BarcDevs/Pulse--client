@@ -4,7 +4,7 @@ import type {User} from '@/types'
 import type {Response} from '@/types/responses'
 import type {AuthResponse} from '@/types/responses/auth'
 
-import {AUTH_QUERY_KEYS} from '@/constants/queryKeys'
+import {authQueryKeys} from '@/constants/queryKeys'
 import {minuteInMs} from '@/constants/time'
 
 import {getMe as getMeApi} from '@/api/auth'
@@ -15,7 +15,7 @@ export const useGetMe = () => {
         Error,
         User
     >({
-        queryKey: AUTH_QUERY_KEYS.getMe,
+        queryKey: authQueryKeys.getMe,
         queryFn: async () => {
             const response = await getMeApi()
             return response.data

@@ -1,35 +1,32 @@
-// TODO: TanStack Query setup pending
-// import {
-//     useQuery,
-//     useQueryClient
-// } from '@tanstack/react-query'
-// import {Profile} from '@/types/profile/profile'
-// import {minuteInMs} from '@/constants/time'
-// import {getProfile} from '@/api/profile'
+import {
+    useQuery,
+    useQueryClient
+} from '@tanstack/react-query'
+
+import {Profile} from '@/types/profile/profile'
+
+import {minuteInMs} from '@/constants/time'
+
+import {getProfile} from '@/api/profile'
 
 export const profileQueryKey = [
     'profile',
     'me'
 ] as const
 
-// TODO: TanStack Query implementation pending
-// export const useProfileQuery = () => {
-//     return useQuery<Profile>({
-//         queryKey: profileQueryKey,
-//         queryFn: getProfile,
-//         staleTime: 5 * minuteInMs
-//     })
-// }
+export const useProfileQuery = () => {
+    return useQuery<Profile>({
+        queryKey: profileQueryKey,
+        queryFn: getProfile,
+        staleTime: 5 * minuteInMs
+    })
+}
 
-// export const useInvalidateProfileQuery = () => {
-//     const queryClient = useQueryClient()
+export const useInvalidateProfileQuery = () => {
+    const queryClient = useQueryClient()
 
-//     return () =>
-//         queryClient.invalidateQueries({
-//             queryKey: profileQueryKey
-//         })
-// }
-
-// Temporary stubs
-export const useProfileQuery = () => ({})
-export const useInvalidateProfileQuery = () => () => {}
+    return () =>
+        queryClient.invalidateQueries({
+            queryKey: profileQueryKey
+        })
+}

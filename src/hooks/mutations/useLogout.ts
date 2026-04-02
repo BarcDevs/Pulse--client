@@ -3,7 +3,7 @@ import {
     useQueryClient
 } from '@tanstack/react-query'
 
-import {AUTH_QUERY_KEYS} from '@/constants/queryKeys'
+import {authQueryKeys} from '@/constants/queryKeys'
 
 import {logout as logoutApi} from '@/api/auth'
 
@@ -20,10 +20,10 @@ export const useLogout = () => {
         },
         onSuccess: () => {
             queryClient.removeQueries({
-                queryKey: AUTH_QUERY_KEYS.getMe
+                queryKey: authQueryKeys.getMe
             })
             queryClient.removeQueries({
-                queryKey: AUTH_QUERY_KEYS.profile
+                queryKey: authQueryKeys.profile
             })
         },
         onError: (error: Error) => {

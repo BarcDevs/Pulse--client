@@ -4,7 +4,7 @@ import {useRouter} from 'next/navigation'
 
 import {useQueryClient} from '@tanstack/react-query'
 
-import {AUTH_QUERY_KEYS} from '@/constants/queryKeys'
+import {authQueryKeys} from '@/constants/queryKeys'
 
 import {useAuth} from '@/context/AuthContext'
 
@@ -28,7 +28,7 @@ export const useAuthHandlers = () => {
         try {
             await login(credentials)
             await queryClient.invalidateQueries({
-                queryKey: AUTH_QUERY_KEYS.getMe
+                queryKey: authQueryKeys.getMe
             })
             router.push('/dashboard')
 
@@ -59,7 +59,7 @@ export const useAuthHandlers = () => {
         try {
             await signup(userData)
             await queryClient.invalidateQueries({
-                queryKey: AUTH_QUERY_KEYS.getMe
+                queryKey: authQueryKeys.getMe
             })
             router.push('/dashboard')
             return true

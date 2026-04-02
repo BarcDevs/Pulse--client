@@ -1,18 +1,17 @@
 'use client'
 
 import {
-    ReactNode,
     useCallback,
     useState
 } from 'react'
 
 import {useQueryClient} from '@tanstack/react-query'
 
-import type {User} from '@/types'
+import type {LayoutProps, User} from '@/types'
 
 import {useGetMe} from '@/hooks/queries/useGetMe'
 
-import {AUTH_QUERY_KEYS} from '@/constants/queryKeys'
+import {authQueryKeys} from '@/constants/queryKeys'
 
 import {AuthContext} from './AuthContext'
 
@@ -33,11 +32,11 @@ export const AuthProvider = ({
         (newUser: User | null) => {
             if (newUser === null) {
                 queryClient.removeQueries({
-                    queryKey: AUTH_QUERY_KEYS.getMe
+                    queryKey: authQueryKeys.getMe
                 })
             } else {
                 queryClient.setQueryData(
-                    AUTH_QUERY_KEYS.getMe,
+                    authQueryKeys.getMe,
                     {
                         data: {
                             user: newUser,
