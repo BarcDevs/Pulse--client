@@ -2,6 +2,10 @@
 
 import {useRouter} from 'next/navigation'
 
+import {useQueryClient} from '@tanstack/react-query'
+
+import {AUTH_QUERY_KEYS} from '@/constants/queryKeys'
+
 import {useAuth} from '@/context/AuthContext'
 
 import {
@@ -13,18 +17,21 @@ import type {LoginSchema} from '@/validations/forms/loginSchema'
 import type {SignupSchema} from '@/validations/forms/signupSchema'
 
 export const useAuthHandlers = () => {
-    const { setUser, setIsLoading } = useAuth()
+    const { setIsLoading } = useAuth()
     const router = useRouter()
+    const queryClient = useQueryClient()
 
     const handleLogin = async (
         credentials: LoginSchema
     ): Promise<boolean> => {
         setIsLoading(true)
         try {
-            const response = await login(credentials)
-            const user = response.data.data.user
-            setUser(user)
+            await login(credentials)
+            await queryClient.invalidateQueries({
+                queryKey: AUTH_QUERY_KEYS.getMe
+            })
             router.push('/dashboard')
+
             return true
         } catch (error: unknown) {
             const message =
@@ -35,6 +42,7 @@ export const useAuthHandlers = () => {
                 'Login error:',
                 message
             )
+
             return false
         } finally {
             setIsLoading(false)
@@ -49,9 +57,10 @@ export const useAuthHandlers = () => {
     ): Promise<boolean> => {
         setIsLoading(true)
         try {
-            const response = await signup(userData)
-            const user = response.data.data.user
-            setUser(user)
+            await signup(userData)
+            await queryClient.invalidateQueries({
+                queryKey: AUTH_QUERY_KEYS.getMe
+            })
             router.push('/dashboard')
             return true
         } catch (error: unknown) {
