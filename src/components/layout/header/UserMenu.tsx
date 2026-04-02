@@ -34,7 +34,7 @@ export const UserMenu = () => {
 
     return (
         <DropdownMenu>
-            <DropdownMenuTrigger asChild>
+            <DropdownMenuTrigger className={'flex items-center gap-3 rounded-lg p-2 hover:bg-surface-section transition-colors'}>
                 <UserAvatar initials={initials}/>
             </DropdownMenuTrigger>
             <DropdownMenuContent
