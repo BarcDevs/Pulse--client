@@ -3,7 +3,7 @@ import {NextRequest, NextResponse} from 'next/server'
 import {authRouteMiddleware} from '@/middleware/authRouteMiddleware'
 import {protectedRouteMiddleware} from '@/middleware/protectedRouteMiddleware'
 
-export const middleware = (
+export const proxy = (
     request: NextRequest
 ) => {
     let next = NextResponse.next()
