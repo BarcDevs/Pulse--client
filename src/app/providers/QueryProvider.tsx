@@ -21,10 +21,10 @@ export const QueryProvider = ({
     const queryClient = getQueryClient()
 
     return (
-        <HydrationBoundary state={dehydratedState}>
-            <QueryClientProvider client={queryClient}>
+        <QueryClientProvider client={queryClient}>
+            <HydrationBoundary state={dehydratedState}>
                 {children}
-            </QueryClientProvider>
-        </HydrationBoundary>
+            </HydrationBoundary>
+        </QueryClientProvider>
     )
 }
