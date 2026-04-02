@@ -11,10 +11,11 @@ export const checkInTexts = {
         min: 'Very Low',
         max: 'Very High'
     },
-    comfort: {
-        label: 'Physical Comfort',
-        min: 'Very Uncomfortable',
-        max: 'Very Comfortable'
+    pain: {
+        label: 'Pain Level',
+        helper: 'How physically comfortable do you feel today?',
+        min: 'No Pain',
+        max: 'Severe Pain'
     },
     activities: {
         title: 'Activities',

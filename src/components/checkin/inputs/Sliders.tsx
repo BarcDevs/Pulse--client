@@ -15,12 +15,12 @@ export const CheckInSliders = ({
     setValueAction
 }: CheckInSlidersProps) => {
     const mood = watch('moodScore')
-    const comfort = watch('painLevel')
+    const pain = watch('painLevel')
 
     const handleMoodChange = (value: number) =>
         setValueAction('moodScore', value)
 
-    const handleComfortChange = (value: number) =>
+    const handlePainChange = (value: number) =>
         setValueAction('painLevel', value)
 
     return (
@@ -36,11 +36,11 @@ export const CheckInSliders = ({
             />
             <SliderCard
                 icon={Activity}
-                label={checkInTexts.comfort.label}
-                minLabel={checkInTexts.comfort.min}
-                maxLabel={checkInTexts.comfort.max}
-                value={comfort}
-                onChange={handleComfortChange}
+                label={checkInTexts.pain.label}
+                minLabel={checkInTexts.pain.min}
+                maxLabel={checkInTexts.pain.max}
+                value={pain}
+                onChange={handlePainChange}
                 colorVar={'secondary'}
             />
         </div>
