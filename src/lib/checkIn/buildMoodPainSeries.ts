@@ -1,3 +1,5 @@
+import {format} from 'date-fns'
+
 import type {CheckIn, MoodPainSeriesPoint} from '@/types/checkIn/checkIn'
 
 export const buildMoodPainSeries = (
@@ -8,8 +10,12 @@ export const buildMoodPainSeries = (
         .sort((a, b) =>
             a.checkInDate.localeCompare(b.checkInDate)
         )
-        .map(item => ({
-            date: item.checkInDate.slice(0, 10),
-            mood: item.moodScore,
-            pain: item.painLevel
-        }))
+        .map(item => {
+            const dateObj = new Date(item.checkInDate)
+            return {
+                date: format(dateObj, 'd MMM'),
+                originalDate: item.checkInDate,
+                mood: item.moodScore,
+                pain: item.painLevel
+            }
+        })

@@ -1,4 +1,9 @@
-import {CheckIn, CheckInStats} from '@/types/checkIn/checkIn'
+import {format} from 'date-fns'
+
+import {
+    CheckIn,
+    CheckInStats
+} from '@/types/checkIn/checkIn'
 import {ApiResponse, Response} from '@/types/responses'
 
 import {ENDPOINTS} from '@/constants/endpoints'
@@ -14,6 +19,37 @@ export const fetchCheckIns = async (
         ENDPOINTS.checkIn.base,
         { params }
     )
+}
+
+export const fetchCheckInHistory = async (
+    days?: number
+) => {
+    const params = days ? { limit: days } : {}
+    const response = await api.get<Response<CheckIn[]>>(
+        ENDPOINTS.checkIn.base,
+        { params }
+    )
+
+    const transformed = response.data.data.map(
+        (checkIn) => {
+            const dateObj = new Date(checkIn.checkInDate)
+            return {
+                date: format(dateObj, 'd MMM'),
+                originalDate: checkIn.checkInDate,
+                mood: checkIn.moodScore,
+                pain: checkIn.painLevel,
+                energy: checkIn.energy
+            }
+        }
+    )
+
+    return {
+        ...response,
+        data: {
+            ...response.data,
+            data: transformed
+        }
+    }
 }
 
 export const submitCheckIn = async (

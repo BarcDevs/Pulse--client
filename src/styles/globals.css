@@ -477,4 +477,9 @@
 [data-chart] .recharts-surface {
   @apply outline-hidden;
 }
+
+.mood-tooltip .recharts-tooltip-label,
+.mood-tooltip .recharts-tooltip-item {
+  color: #4a90e2 !important;
+}
 /*endregion*/

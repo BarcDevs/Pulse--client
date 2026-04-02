@@ -1,3 +1,5 @@
+'use client'
+
 import {Sparkles} from 'lucide-react'
 
 import {
@@ -7,22 +9,33 @@ import {
     CardTitle
 } from '@/components/ui/card'
 
+import {useCheckIns} from '@/hooks/queries/useCheckIns'
+
+import {getLatestInsights} from '@/lib/insights/getLatestInsights'
+
 import {dashboardPageTexts} from '@/constants/componentTexts/dashboard'
 
-export const DashboardAIInsight = () => (
-    <Card className={'border-0 shadow-sm'}>
-        <CardHeader className={'pb-2'}>
-            <div className={'flex items-center gap-2'}>
-                <Sparkles className={'size-4 text-accent'}/>
-                <CardTitle className={'text-sm font-medium text-muted-foreground'}>
-                    {dashboardPageTexts.aiInsight.label}
-                </CardTitle>
-            </div>
-        </CardHeader>
-        <CardContent>
-            <blockquote className={'border-l-2 border-primary pl-4 italic text-foreground'}>
-                {dashboardPageTexts.aiInsight.text}
-            </blockquote>
-        </CardContent>
-    </Card>
-)
+export const DashboardAIInsight = () => {
+    const {data: checkInsResponse} = useCheckIns(1)
+
+    const insightText =
+        getLatestInsights(checkInsResponse)
+
+    return (
+        <Card className={'border-0 shadow-sm'}>
+            <CardHeader className={'pb-2'}>
+                <div className={'flex items-center gap-2'}>
+                    <Sparkles className={'size-4 text-accent'}/>
+                    <CardTitle className={'text-sm font-medium text-muted-foreground'}>
+                        {dashboardPageTexts.aiInsight.label}
+                    </CardTitle>
+                </div>
+            </CardHeader>
+            <CardContent>
+                <blockquote className={'border-l-2 border-primary pl-4 italic text-foreground'}>
+                    {insightText}
+                </blockquote>
+            </CardContent>
+        </Card>
+    )
+}

@@ -11,6 +11,7 @@ export const dashboardPageTexts = {
         label: 'AI INSIGHT',
         text: '"Your mood is 20% higher on days you stretch. Consider adding a short session tonight."'
     },
+    noInsights: 'Insight not found. Please complete more check-ins to receive personalized insights.',
     community: {
         label: 'Community',
         viewAll: 'VIEW ALL'
@@ -21,8 +22,8 @@ export const dashboardPageTexts = {
         title: '5 mins mindfulness',
         description: 'Lower cortisol levels and improve your mood for the next 4 hours.'
     },
-    weeklyChart: {
-        title: 'Weekly Recovery Trend',
+    historyChart: {
+        title: 'Recovery Trend',
         week: 'Week',
         month: 'Month'
     },

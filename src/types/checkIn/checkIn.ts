@@ -9,6 +9,7 @@ export type CheckInInsight = {
 
 export type MoodPainSeriesPoint = {
     date: string
+    originalDate: string
     mood: number
     pain: number
     energy?: number

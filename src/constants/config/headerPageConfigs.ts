@@ -33,8 +33,7 @@ export const headerPageConfigs: Record<
     HeaderPageConfig
 > = {
     dashboard: {
-        title: dashboardPageTexts.title,
-        subtitle: dashboardPageTexts.subtitle
+        title: dashboardPageTexts.title
     },
     chat: {
         title: chatTexts.pageTitle,
