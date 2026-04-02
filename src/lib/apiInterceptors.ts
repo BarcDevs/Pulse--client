@@ -23,18 +23,19 @@ export const handleRequestSuccess = (
             new Error('App shutting down')
         )
 
-    const method = config.method?.toUpperCase()
-    const isMutation = [
-        'POST',
-        'PUT',
-        'PATCH',
-        'DELETE'
-    ].includes(method || '')
+    const csrfToken = getCsrfToken()
 
-    if (isMutation) {
-        const csrfToken = getCsrfToken()
-        if (csrfToken)
-            config.headers['X-CSRF-Token'] = csrfToken
+    if (
+        csrfToken &&
+        [
+            'POST',
+            'PUT',
+            'PATCH',
+            'DELETE'
+        ].includes((config.method || '')
+            .toUpperCase())
+    ) {
+        config.headers['x-csrf-token'] = csrfToken
     }
 
     return config

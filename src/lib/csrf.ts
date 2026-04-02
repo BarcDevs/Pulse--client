@@ -1,3 +1,5 @@
+'use client'
+
 let csrfToken: string | null = null
 
 export const getCsrfToken = (): string | null =>

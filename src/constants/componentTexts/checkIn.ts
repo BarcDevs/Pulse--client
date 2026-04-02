@@ -4,6 +4,7 @@ export const checkInTexts = {
     pageSubtitle:
         'Take a moment to center yourself and log your progress.',
     submitButton: 'Submit Check-In',
+    submittingButton: 'Submitting...',
     autosaveStatus: 'AUTOSAVED AT 09:42 AM',
     mood: {
         label: 'Mood',
@@ -17,7 +18,7 @@ export const checkInTexts = {
     },
     activities: {
         title: 'Activities',
-        placeholder: 'Select activities from the list below',
+        placeholder: 'Add custom',
         default: [
             'Meditation',
             'Exercise',
@@ -33,5 +34,16 @@ export const checkInTexts = {
         placeholder:
             `How are you feeling today? What's on your mind?`
     },
-    quote: 'Every day is a new opportunity for growth.'
+    quotes: [
+        'Every day is a new opportunity for growth.',
+        'Your healing journey is unique and valuable.',
+        'Progress, not perfection, is the goal.',
+        'One step forward is still moving in the right direction.',
+        'You are stronger than you think.',
+        'Small victories deserve to be celebrated.',
+        'Take it one day at a time.',
+        'Your effort today shapes your tomorrow.',
+        'Be gentle with yourself through this process.',
+        'Healing looks different for everyone.'
+    ]
 }

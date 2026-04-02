@@ -1,5 +1,6 @@
 import {CheckIn} from '@/types/checkIn/checkIn'
 
+import {checkInTexts} from '@/constants/componentTexts/checkIn'
 import {defaults} from '@/constants/defaults'
 
 const {maxSuggestedActivities} = defaults.checkIn
@@ -38,3 +39,10 @@ export const aggregateActivities =
             .slice(0, maxSuggestedActivities)
             .map(item => item.label)
     }
+
+export const getRandomQuote = (): string => {
+    const randomIndex = Math.floor(
+        Math.random() * checkInTexts.quotes.length
+    )
+    return checkInTexts.quotes[randomIndex]
+}

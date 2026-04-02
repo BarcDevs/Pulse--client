@@ -31,15 +31,6 @@ import {useAuth} from '@/hooks/useAuth'
 // ==================== useAuth ====================
 describe('useAuth',
     () => {
-        const mockUser = {
-            id: '1',
-            firstName: 'John',
-            lastName: 'Doe',
-            email: 'john@example.com',
-            username: 'johndoe',
-            role: 'USER'
-        }
-
         beforeEach(() => {
             vi.clearAllMocks()
 

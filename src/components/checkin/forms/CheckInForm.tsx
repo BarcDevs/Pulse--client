@@ -1,5 +1,7 @@
 'use client'
 
+import {useRouter} from 'next/navigation'
+
 import type {
     CheckIn,
     CheckInStats
@@ -28,7 +30,11 @@ export const CheckInForm = ({
     latestCheckIn = null,
     stats = null
 }: CheckInFormProps) => {
-    const { form } = useCheckInForm({
+    const router = useRouter()
+    const {
+        form,
+        suggestedActivities
+    } = useCheckInForm({
         latestCheckIn,
         stats
     })
@@ -36,6 +42,7 @@ export const CheckInForm = ({
     const onSubmit = async (data: CheckInSchema) => {
         try {
             await handleCheckInSubmit(data)
+            router.push('/progress')
         } catch {
             form.setError('root', {
                 message: 'Failed to submit check-in. Please try again.'
@@ -59,6 +66,7 @@ export const CheckInForm = ({
             <CheckInActivities
                 watch={form.watch}
                 setValueAction={form.setValue}
+                suggestedActivities={suggestedActivities}
             />
             <div className={'flex justify-center pt-4'}>
                 <Button
@@ -66,7 +74,9 @@ export const CheckInForm = ({
                     size={'lg'}
                     disabled={form.formState.isSubmitting}
                 >
-                    {checkInTexts.submitButton}
+                    {form.formState.isSubmitting ?
+                        checkInTexts.submittingButton :
+                        checkInTexts.submitButton}
                 </Button>
             </div>
         </form>

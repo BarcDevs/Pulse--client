@@ -1,11 +1,12 @@
-import
-{LucideIcon} from 'lucide-react'
+import {LucideIcon} from 'lucide-react'
 
 import {
     Card,
     CardContent
 } from '@/components/ui/card'
 import {Slider} from '@/components/ui/slider'
+
+import {checkInFormSchema} from '@/config/schema/checkInForm'
 
 type SliderCardProps = {
     icon: LucideIcon
@@ -28,26 +29,38 @@ export const SliderCard = ({
 }: SliderCardProps) => (
     <Card className={'border-0 shadow-sm'}>
         <CardContent className={'pt-6'}>
-            <div className={'mb-4 flex items-center gap-3'}>
-                <div className={'flex size-10 items-center justify-center rounded-full'} style={{
-                    backgroundColor: `var(--${colorVar}-light)`
-                }}
-                >
-                    <Icon
-                        className={'size-5'}
+            <div className={'mb-4 flex items-center justify-between'}>
+                <div className={'flex items-center gap-3'}>
+                    <div
+                        className={'flex size-10 items-center justify-center rounded-full'}
                         style={{
-                            color: `var(--${colorVar})`
+                            backgroundColor: `var(--${colorVar}-light)`
                         }}
-                    />
-                </div>
-                <span className={'font-medium text-foreground'}>
+                    >
+                        <Icon
+                            className={'size-5'}
+                            style={{
+                                color: `var(--${colorVar})`
+                            }}
+                        />
+                    </div>
+                    <span className={'font-medium text-foreground'}>
                         {label}
                     </span>
+                </div>
+                <span
+                    className={'text-sm font-semibold'}
+                    style={{
+                        color: `var(--${colorVar})`
+                    }}
+                >
+                    {value}
+                </span>
             </div>
             <Slider
                 value={[value]}
                 onValueChange={(values) => onChange(values[0])}
-                max={100}
+                max={checkInFormSchema.moodScore.max}
                 step={1}
                 className={'w-full'}
             />

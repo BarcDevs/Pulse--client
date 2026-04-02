@@ -20,17 +20,27 @@ import type {CheckInSchema} from '@/validations/forms/checkInSchema'
 
 import {ActivityToggleButton} from './ActivityToggleButton'
 
-type CheckInActivitiesProps = FormControlProps<CheckInSchema>
+type CheckInActivitiesProps = FormControlProps<CheckInSchema> & {
+    suggestedActivities?: string[]
+}
 
 export const CheckInActivities = ({
     watch,
-    setValueAction
+    setValueAction,
+    suggestedActivities = []
 }: CheckInActivitiesProps) => {
     const [customActivity, setCustomActivity] = useState('')
     const selectedActivities = watch('activities') ?? []
 
-    const handleActivitiesChange = (updated: string[]) =>
+    const handleActivitiesChange = (updated: string[]) => {
         setValueAction('activities', updated)
+    }
+
+    const customActivities = selectedActivities.filter(
+        (activity) => !checkInTexts.activities.default.includes(
+            activity
+        )
+    )
 
     const toggleActivity = (activity: string) => {
         const updated = selectedActivities
@@ -45,13 +55,15 @@ export const CheckInActivities = ({
     }
 
     const addCustomActivity = () => {
-        if (customActivity.trim() &&
-            !selectedActivities
-                .includes(customActivity.trim())) {
-            handleActivitiesChange([
+        const trimmed = customActivity.trim()
+
+        if (trimmed &&
+            !selectedActivities.includes(trimmed)) {
+            const updated = [
                 ...selectedActivities,
-                customActivity.trim()
-            ])
+                trimmed
+            ]
+            handleActivitiesChange(updated)
             setCustomActivity('')
         }
     }
@@ -66,32 +78,67 @@ export const CheckInActivities = ({
                     </CardTitle>
                 </div>
             </CardHeader>
-            <CardContent>
-                <div className={'flex flex-wrap gap-2'}>
-                    {checkInTexts.activities.default.map(
-                        (activity) => (
+            <CardContent className={'space-y-4'}>
+                {suggestedActivities.length > 0 && (
+                    <div>
+                        <p className={'mb-2 text-xs text-muted-foreground'}>
+                            Your top activities:
+                        </p>
+                        <div className={'flex flex-wrap gap-2'}>
+                            {suggestedActivities.map(
+                                (activity) => (
+                                    <ActivityToggleButton
+                                        key={activity}
+                                        activity={activity}
+                                        isSelected={selectedActivities.includes(activity)}
+                                        onToggle={toggleActivity}
+                                    />
+                                ))}
+                        </div>
+                    </div>
+                )}
+
+                <div>
+                    <p className={'mb-2 text-xs text-muted-foreground'}>
+                        All activities:
+                    </p>
+                    <div className={'flex flex-wrap gap-2'}>
+                        {checkInTexts.activities.default.map(
+                            (activity) => (
+                                <ActivityToggleButton
+                                    key={activity}
+                                    activity={activity}
+                                    isSelected={selectedActivities.includes(activity)}
+                                    onToggle={toggleActivity}
+                                />
+                            ))}
+
+                        {customActivities.map((activity) => (
                             <ActivityToggleButton
                                 key={activity}
                                 activity={activity}
-                                isSelected={selectedActivities.includes(activity)}
+                                isSelected={true}
                                 onToggle={toggleActivity}
                             />
                         ))}
 
-                    <div className={'flex items-center gap-2'}>
-                        <FormInput
-                            id={'customActivity'}
-                            placeholder={checkInTexts.activities.placeholder}
-                            value={customActivity}
-                            onChange={(e) => setCustomActivity(e.target.value)}
-                            onKeyDown={(e) =>
-                                e.key === 'Enter' &&
-                                addCustomActivity()
-                            }
-                            className={'h-9 w-32 rounded-full border-border bg-surface-card'}
-                            required={false}
-                            type={'text'}
-                        />
+                        <div className={'flex items-center gap-2'}>
+                            <FormInput
+                                id={'customActivity'}
+                                placeholder={checkInTexts.activities.placeholder}
+                                value={customActivity}
+                                onChange={(e) => setCustomActivity(e.target.value)}
+                                onKeyDown={(e) => {
+                                    if (e.key === 'Enter') {
+                                        e.preventDefault()
+                                        addCustomActivity()
+                                    }
+                                }}
+                                className={'h-9 w-32 rounded-full border-border bg-surface-card'}
+                                required={false}
+                                type={'text'}
+                            />
+                        </div>
                     </div>
                 </div>
             </CardContent>

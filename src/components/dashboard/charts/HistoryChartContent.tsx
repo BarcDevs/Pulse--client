@@ -58,7 +58,6 @@ export const HistoryChartContent = ({
                 <Tooltip
                     content={
                         <ChartTooltipContent
-                            hideLabel
                             formatter={(value) => ['Mood: ' + value]}
                         />
                     }
