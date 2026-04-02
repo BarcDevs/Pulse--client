@@ -1,14 +1,12 @@
-import type {User} from '@/types'
 import type {Response} from '@/types/responses'
+import {AuthResponse as AuthResponseT}
+    from '@/types/responses/auth'
 
 import {api} from '@/api/index'
 import type {LoginSchema} from '@/validations/forms/loginSchema'
 import type {SignupSchema} from '@/validations/forms/signupSchema'
 
-type AuthResponse = Response<{
-    user: User
-    _csrf: string
-}>
+type AuthResponse = Response<AuthResponseT>
 
 export const login = (credentials: LoginSchema) =>
     api.post<AuthResponse>('/auth/login', credentials)
