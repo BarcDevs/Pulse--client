@@ -8,15 +8,15 @@ import {
     DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu'
 
+import {useAuth} from '@/context/AuthContext'
 import {getUserFallback} from '@/lib/utils'
 
 import {bottomNavItems} from '@/constants/navigationItems'
 
-import {useAuth} from '@/context/AuthContext'
-
 import {UserAvatar} from './UserAvatar'
 import {UserLoginButton} from './UserLoginButton'
 import {UserSkeleton} from './UserSkeleton'
+import {UserMenuItem} from './UserMenuItem'
 
 export const UserMenu = () => {
     const { user, isLoading } = useAuth()
@@ -43,15 +43,10 @@ export const UserMenu = () => {
             >
                 <DropdownMenuSeparator/>
                 {bottomNavItems.map((item) => (
-                    <DropdownMenuItem
-                        key={item.href}
-                        asChild
-                    >
-                        <a href={item.href}>
-                            <item.icon className={'mr-2 size-4'}/>
-                            <span>{item.label}</span>
-                        </a>
-                    </DropdownMenuItem>
+                        <UserMenuItem
+                            key={item.label}
+                            item={item}
+                        />
                 ))}
             </DropdownMenuContent>
         </DropdownMenu>

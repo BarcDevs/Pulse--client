@@ -78,7 +78,7 @@ export const initiateLogout = async () => {
 
     try {
         const { logout } = await import(
-            '@/api/auth'
+                '@/api/auth'
             )
         await logout()
     } catch {/* Ignore errors during logout */}
