@@ -7,7 +7,6 @@ src/
 ├── components/     # React components organized by feature (ui, layout, auth, check-in, community, etc.)
 ├── hooks/          # Custom React hooks (useAuth, useToast, etc.)
 ├── middleware/     # Next.js middleware handlers (route protection, auth, extensible pipeline)
-├── store/          # Redux Toolkit slices (authSlice, tokenSlice)
 ├── services/       # Business logic and utilities (checkIn calculations, etc.)
 ├── utils/          # Helper utilities (api, router, redirect, sentry)
 ├── lib/            # Library code (chart utilities, style helpers)

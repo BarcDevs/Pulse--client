@@ -21,7 +21,7 @@ Keep components small (~40 lines), one per file. Use shadcn/ui components when a
 - Order: react → third-party → @/ → relative → styles
 
 ## State & Props
-- Avoid prop drilling — use context, Redux, or composition
+- Avoid prop drilling — use context or composition
 - Use hooks at top of component
 - Extract reusable logic and helper functions to separate files
 - AVOID BREAK LINES IN CLASSNAMES - NOT THE STRING ITSELF AND NOT AROUND IT. example: 

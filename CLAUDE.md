@@ -69,7 +69,7 @@ Groups (auto-fixed by `npm run lint:fix`):
 
 ## Tech Stack
 Core: Next 16 + App Router, React 19, TypeScript 5, TailwindCSS 4
-State: Redux Toolkit 2, redux-persist, TanStack Query
+State: React Context, TanStack Query
 Forms: react-hook-form 7, Zod, shadcn/ui
 API: Axios with interceptors (CSRF auto-injected)
 UI: shadcn/ui, Radix UI, lucide-react
@@ -80,7 +80,7 @@ Arrow functions | Single quotes | No semicolons | 4-space indent | Nested conten
 JSX props: prop={'value'} | Export at bottom | Keep components ~40 lines
 Use api from @/api | Access env via config | Use shadcn/ui components
 Avoid prop drilling | Clean imports | Delete unused code
-SOLID principles | Industry standards | Type-safe forms | Redux for global state
+SOLID principles | Industry standards | Type-safe forms
 
 Never: React.* types | Function declarations | Double quotes | import.meta.env outside config
 Never: Direct fetch/axios | Inline exports | Commented code | window.location for navigation

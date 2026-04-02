@@ -113,12 +113,11 @@ Key directories:
 - **src/api/** — API client modules by domain
 - **src/components/** — React components (ui, shared, layout, feature-specific)
 - **src/hooks/** — Custom React hooks
-- **src/store/** — Redux Toolkit state management
 - **src/services/** — Business logic and utilities
 - **src/validations/** — Zod validation schemas
 - **src/types/** — TypeScript type definitions
 - **src/constants/** — App constants and configuration
-- **src/context/** — React Context providers
+- **src/context/** — React Context providers (auth state management)
 - **src/config/** — Environment and feature configuration
 
 ---
@@ -166,7 +165,7 @@ HealEase supports two authentication methods:
 Both methods use the same session system:
 - JWT stored in HTTP-only `accessToken` cookie (auto-sent on requests)
 - CSRF token in `_csrf` cookie (read and sent as `x-csrf-token` header for mutations)
-- Redux state tracks authenticated user
+- React Context (AuthContext) with TanStack Query manages authenticated user
 - Auto-refresh of auth state on app mount and periodic validation
 
 ---

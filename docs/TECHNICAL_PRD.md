@@ -222,7 +222,7 @@ Profiles include:
 ```
 React Frontend (Next.js App Router + TanStack Query)
     ↓
-Redux (Auth state + CSRF tokens)
+React Context (Auth state) + TanStack Query (Server state)
     ↓
 Axios API Client (with CSRF interceptor)
     ↓
@@ -235,7 +235,7 @@ Google AI API (for insight generation)
 
 ### Frontend Architecture
 - **Framework**: Next.js 16 with App Router (file-based routing with layout groups)
-- **State**: Redux Toolkit (auth, CSRF) + TanStack Query (server state caching) + React Context
+- **State**: React Context (auth state) + TanStack Query (server state caching)
 - **UI**: React 19 with shadcn/ui components and Radix UI
 - **Styling**: TailwindCSS 4 + custom CSS variables
 - **Forms**: react-hook-form + Zod validation

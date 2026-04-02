@@ -9,7 +9,8 @@ type CheckInLoaderData = {
     stats: CheckInStats
 }
 
-export const checkInLoader = async (): Promise<CheckInLoaderData> => {
+export const checkInLoader = async ():
+    Promise<CheckInLoaderData> => {
     const [historyRes, statsRes] = await Promise.all([
         fetchCheckIns(defaults.checkIn.historyLimit),
         fetchCheckInStats()
@@ -21,7 +22,8 @@ export const checkInLoader = async (): Promise<CheckInLoaderData> => {
     }
 }
 
-export const newCheckInLoader = async (): Promise<CheckInLoaderData> => {
+export const newCheckInLoader = async ():
+    Promise<CheckInLoaderData> => {
     const [historyRes, statsRes] = await Promise.all([
         fetchCheckIns(defaults.checkIn.historyLimit),
         fetchCheckInStats()
