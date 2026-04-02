@@ -18,9 +18,7 @@ import {AuthContext} from './AuthContext'
 
 export const AuthProvider = ({
     children
-}: {
-    children: ReactNode
-}) => {
+}: LayoutProps) => {
     const {
         user,
         isLoading: queryLoading,
