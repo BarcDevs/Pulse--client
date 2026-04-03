@@ -25,7 +25,8 @@ export const dashboardPageTexts = {
     historyChart: {
         title: 'Recovery Trend',
         week: 'Week',
-        month: 'Month'
+        month: 'Month',
+        incompleteWeek: 'Build your recovery timeline. Every day tracked brings clarity to your journey'
     },
     statsCards: [
         {
