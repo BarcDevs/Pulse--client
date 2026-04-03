@@ -1,6 +1,6 @@
 'use client'
 
-import {Sparkles, X} from 'lucide-react'
+import {Sparkles} from 'lucide-react'
 
 import {Button} from '@/components/ui/button'
 
@@ -14,7 +14,7 @@ export const RecoveryInsight = () => {
     const insights = latestCheckIn?.insights ?? []
     const firstInsight = insights[0]
 
-    if (!firstInsight) {
+    if (!firstInsight)
         return (
             <div className={'rounded-2xl bg-linear-to-r from-primary-gradient-start to-primary-gradient-end p-6 text-primary-foreground'}>
                 <div className={'flex items-start justify-between'}>
@@ -24,13 +24,6 @@ export const RecoveryInsight = () => {
                             {progressPageTexts.insight.label}
                         </span>
                     </div>
-                    <Button
-                        variant={'ghost'}
-                        size={'sm'}
-                        className={'h-6 w-6 p-0 hover:bg-white/10'}
-                    >
-                        <X className={'h-4 w-4'}/>
-                    </Button>
                 </div>
 
                 <p className={'mt-4 text-primary-foreground/80 text-sm leading-relaxed'}>
@@ -53,7 +46,6 @@ export const RecoveryInsight = () => {
                 </div>
             </div>
         )
-    }
 
     return (
         <div className={'rounded-2xl bg-linear-to-r from-primary-gradient-start to-primary-gradient-end p-6 text-primary-foreground'}>
@@ -64,13 +56,6 @@ export const RecoveryInsight = () => {
                         {progressPageTexts.insight.label}
                     </span>
                 </div>
-                <Button
-                    variant={'ghost'}
-                    size={'sm'}
-                    className={'h-6 w-6 p-0 hover:bg-white/10'}
-                >
-                    <X className={'h-4 w-4'}/>
-                </Button>
             </div>
 
             <p className={'mt-4 text-primary-foreground/80 text-sm leading-relaxed'}>

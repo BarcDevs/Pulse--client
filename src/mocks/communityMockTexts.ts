@@ -19,16 +19,6 @@ export const COMMUNITY_UPDATES = [
     },
 ]
 
-export const CHART_DAYS = [
-    'MON',
-    'TUE',
-    'WED',
-    'THU',
-    'FRI',
-    'SAT',
-    'SUN'
-]
-
 export const COMMUNITY_UPDATES_TRANSFORMED =
     COMMUNITY_UPDATES.map((update) => ({
         name: update.name,

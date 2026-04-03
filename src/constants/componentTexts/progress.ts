@@ -31,7 +31,6 @@ export const progressPageTexts = {
     },
     wellness: {
         label: 'Weekly Wellness Average',
-        title: 'Stable & Improving',
         timeframe: 'Last week vs. this week',
         mood: 'Mood',
         pain: 'Pain',
@@ -48,35 +47,13 @@ export const progressPageTexts = {
         streak: {
             label: 'Current Streak',
             unit: 'days',
-            bestPrefix: 'Personal best:',
-            bestValue: '24 days'
+            bestPrefix: 'Personal best:'
         },
         milestones: {
             label: 'Total Milestones',
             unit: 'badges',
             nextPrefix: 'Next:',
             nextValue: 'Mind/Body Precision, 6 days'
-        },
-        currentStreak: {
-            label: 'CURRENT STREAK',
-            unit: 'days'
-        },
-        totalBadges: {
-            label: 'TOTAL BADGES',
-            unit: 'badges'
-        },
-        weeklyScore: {
-            badge: 'WEEKLY MOOD AVERAGE',
-            title: 'Stable & Improving',
-            moodLabel: 'MOOD SCORE',
-            moodValue: '6.2 / 10',
-            trend: 'trending_flat',
-            timeframe: 'Last week vs. this week',
-            previousValue: '7.8 / 10'
-        },
-        aiSummary: {
-            label: 'AI SUMMARY',
-            text: 'Your recovery trajectory shows consistent improvement over the past 2 weeks.'
         }
     },
     insight: {
