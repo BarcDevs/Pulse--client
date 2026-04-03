@@ -17,6 +17,7 @@ HealEase — Recovery support platform for patients transitioning from hospital/
 - Text: never use `—` character. only the simple hyphen `-` for all text, including classnames and config keys. This avoids encoding issues and ensures consistency across all contexts (JSX, CSS, config, etc.)
 - Use unified imports for module that has many imports
 - Short conditional blocks - never use `{`
+- **NO redundant spaces:** Don't break single imports to multiple lines unless very long (50+ chars)
 - Never break line around single imports - if import is too long, break before the `from` keyword
 
 ### Language & Format
@@ -48,7 +49,6 @@ HealEase — Recovery support platform for patients transitioning from hospital/
 - Break long lines and function parameters onto multiple lines
 - 2+ conditions in if statements → one condition per line, no condition and action in same line
 - Ternary conditions with long or complex expressions → break to multiple lines
-- Ternary operators should be place ON THE RIGHT, never in the left
 - Inline objects with 3+ properties, or 2+ in long lines → always break to new lines
 - 2+ chained accessor calls → break after root object
 - Nested objects always on a new line — never inline inside a parent object or array

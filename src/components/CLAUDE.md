@@ -1,6 +1,8 @@
 # Components — Code Conventions
 
-Keep components small (~40 lines), one per file. Use shadcn/ui components when available.
+## Component structure:
+- Keep components small (~40 lines), one per file. Use shadcn/ui components when available.
+- Design a single render path per component and move state differences into small conditional values or fragments instead of branching entire JSX trees.
 
 ## Files & Naming
 - PascalCase filenames and components
