@@ -16,7 +16,7 @@ export const RecoveryInsight = () => {
     const isEmpty = !insight
 
     const mainText = isEmpty
-        ? 'Complete your daily check-in to unlock personalized insights.'
+        ? progressPageTexts.insight.emptyInsight
         : insight.text
 
     const secondaryText = insight?.content
