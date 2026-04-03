@@ -58,6 +58,7 @@ export const progressPageTexts = {
     },
     insight: {
         label: 'AI RECOVERY INSIGHT',
+        emptyInsight: 'Complete your daily check-in to unlock personalized insights.',
         buttonPrimary: 'Keep Going',
         buttonSecondary: 'Acknowledge'
     }
