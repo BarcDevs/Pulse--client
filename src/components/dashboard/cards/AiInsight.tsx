@@ -2,6 +2,8 @@
 
 import {Sparkles} from 'lucide-react'
 
+import {ClassName} from '@/types/utils'
+
 import {
     Card,
     CardContent,
@@ -17,7 +19,7 @@ import {cn} from '@/lib/utils'
 import {dashboardPageTexts} from '@/constants/componentTexts/dashboard'
 
 type DashboardAIInsightProps = {
-    className?: string
+    className?: ClassName
 }
 
 export const DashboardAIInsight = ({
@@ -33,7 +35,7 @@ export const DashboardAIInsight = ({
             'border-0 shadow-sm',
             className
         )}>
-            <CardHeader className={'pb-2'}>
+            <CardHeader>
                 <div className={'flex items-center gap-2'}>
                     <Sparkles className={'size-4 text-accent'}/>
                     <CardTitle className={'text-sm font-medium text-muted-foreground'}>

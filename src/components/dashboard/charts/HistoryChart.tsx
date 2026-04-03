@@ -49,8 +49,8 @@ export const DashboardHistoryChart = () => {
         && period === 'week'
 
     return (
-        <Card className={'border-0 shadow-sm'}>
-            <CardHeader className={'flex flex-row items-center justify-between pb-2'}>
+        <Card className={'border-0 shadow-sm h-full'}>
+            <CardHeader className={'flex flex-row items-center justify-between pb-6'}>
                 <CardTitle className={'text-lg font-semibold'}>
                     {dashboardPageTexts.historyChart.title}
                 </CardTitle>

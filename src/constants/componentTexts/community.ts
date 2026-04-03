@@ -136,6 +136,22 @@ export const communityPageTexts = {
                 time: '2 hours ago',
                 avatar: 'M',
                 avatarBg: 'bg-emerald-100 text-emerald-600'
+            },
+            {
+                id: 4,
+                user: 'Elena',
+                action: 'replied to a post',
+                time: '3 hours ago',
+                avatar: 'E',
+                avatarBg: 'bg-purple-100 text-purple-600'
+            },
+            {
+                id: 5,
+                user: 'David',
+                action: 'started a new discussion',
+                time: '4 hours ago',
+                avatar: 'D',
+                avatarBg: 'bg-orange-100 text-orange-600'
             }
         ]
     }
