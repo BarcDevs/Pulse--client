@@ -22,5 +22,4 @@ export const logout = () =>
     api.get<Response<null>>('/auth/logout')
 
 export const refresh = () =>
-    // todo: replace csrf route with refresh in server
-    api.get<Response<{_csrf: string}>>('/auth/csrf')
+    api.get<Response<{_csrf: string}>>('/auth/refresh')
