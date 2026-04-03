@@ -45,7 +45,8 @@ export const DashboardHistoryChart = () => {
     const reorderedData = dir === 'ltr' ?
         reverseChartData(chartData) :
         chartData
-    const isIncompleteWeek = chartData.length < 7
+    const isIncompleteWeek = chartData.length > 0
+        && chartData.length < 7
         && period === 'week'
 
     return (
@@ -68,7 +69,6 @@ export const DashboardHistoryChart = () => {
                                 'h-8 bg-muted opacity-50 cursor-not-allowed' :
                                 'h-8 bg-muted'
                         }
-                        suppressHydrationWarning={true}
                     >
                         <TabsTrigger
                             value={'week'}
