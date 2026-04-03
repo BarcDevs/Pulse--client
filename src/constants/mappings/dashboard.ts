@@ -16,10 +16,10 @@ export const dashboardStatsStyleMap = {
     MOOD: {
         iconColor: 'text-primary',
         iconBg: 'bg-primary-light',
-        descriptionColor: undefined
+        descriptionColor: 'text-primary'
     },
     PAIN: {
-        descriptionColor: 'text-secondary',
+        descriptionColor: 'text-warning',
         iconColor: 'text-destructive',
         iconBg: 'bg-red-50'
     },

@@ -1,3 +1,4 @@
+// TODO: Replace hardcoded stat descriptions with AI-generated insights
 export const getStatDescription = (
     statKey: 'MOOD' | 'PAIN' | 'STREAK',
     currentValue: number | undefined,
@@ -17,7 +18,7 @@ export const getStatDescription = (
             return currentValue <= 3 ?
                 'Decreasing' :
                 currentValue <= 6 ?
-                    'Moderate' :
+                    'Elevated' :
                     'High'
         case 'STREAK':
             return currentValue === longestValue ?
