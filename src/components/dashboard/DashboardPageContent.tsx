@@ -2,6 +2,7 @@
 
 import {useLatestCheckIn} from '@/hooks/queries/useLatestCheckIn'
 
+import {DashboardAIInsight} from './cards/AiInsight'
 import {DashboardCheckInCard} from './cards/CheckInCard'
 import {DashboardTodaysFocus} from './cards/TodaysFocus'
 import {DashboardStatsCards} from './stats/StatsCards'
@@ -13,16 +14,21 @@ export const DashboardPageContent = () => {
     return (
         <div className={'p-6 space-y-6'}>
             <div className={'grid grid-cols-1 lg:grid-cols-3 gap-6'}>
-                {!isTodayCheckInExists && (
-                    <div className={'lg:col-span-2'}>
+                <div className={'lg:col-span-2'}>
+                    {!isTodayCheckInExists && (
                         <DashboardCheckInCard/>
-                    </div>
-                )}
+                    )}
+                    {isTodayCheckInExists && (
+                        <DashboardAIInsight className={'pt-6 px-10 pb-10 h-full'}/>
+                    )}
+                </div>
                 <DashboardTodaysFocus/>
             </div>
 
             <DashboardStatsCards/>
-            <DashboardChartSidebar/>
+            <DashboardChartSidebar
+                showAIInsight={!isTodayCheckInExists}
+            />
         </div>
     )
 }

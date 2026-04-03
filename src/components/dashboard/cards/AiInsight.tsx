@@ -12,17 +12,27 @@ import {
 import {useCheckIns} from '@/hooks/queries/useCheckIns'
 
 import {getLatestInsights} from '@/lib/insights/getLatestInsights'
+import {cn} from '@/lib/utils'
 
 import {dashboardPageTexts} from '@/constants/componentTexts/dashboard'
 
-export const DashboardAIInsight = () => {
-    const {data: checkInsResponse} = useCheckIns(1)
+type DashboardAIInsightProps = {
+    className?: string
+}
+
+export const DashboardAIInsight = ({
+    className
+}: DashboardAIInsightProps) => {
+    const { data: checkInsResponse } = useCheckIns(1)
 
     const insightText =
         getLatestInsights(checkInsResponse)
 
     return (
-        <Card className={'border-0 shadow-sm'}>
+        <Card className={cn(
+            'border-0 shadow-sm',
+            className
+        )}>
             <CardHeader className={'pb-2'}>
                 <div className={'flex items-center gap-2'}>
                     <Sparkles className={'size-4 text-accent'}/>
