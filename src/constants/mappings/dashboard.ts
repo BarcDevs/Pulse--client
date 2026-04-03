@@ -5,13 +5,11 @@ import {
     TrendingUp
 } from 'lucide-react'
 
-import {dashboardPageTexts} from '@/constants/componentTexts/dashboard'
-
 export const dashboardStatsIconMap = {
     MOOD: Smile,
     PAIN: Activity,
     STREAK: Flame,
-    progress: TrendingUp
+    PROGRESS: TrendingUp
 }
 
 export const dashboardStatsStyleMap = {
@@ -30,21 +28,9 @@ export const dashboardStatsStyleMap = {
         iconBg: 'bg-amber-50',
         descriptionColor: undefined
     },
-    progress: {
+    PROGRESS: {
         iconColor: 'text-secondary',
         iconBg: 'bg-secondary-light',
         descriptionColor: undefined
     }
 }
-
-export const dashboardStatsWithIcons =
-    dashboardPageTexts.statsCards.map((stat) => ({
-        ...stat,
-        icon:
-            dashboardStatsIconMap[
-                stat.label as keyof typeof dashboardStatsIconMap
-                ],
-        ...dashboardStatsStyleMap[
-            stat.label as keyof typeof dashboardStatsStyleMap
-            ]
-    }))

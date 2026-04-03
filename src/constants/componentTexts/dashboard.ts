@@ -9,7 +9,6 @@ export const dashboardPageTexts = {
     },
     aiInsight: {
         label: 'AI INSIGHT',
-        text: '"Your mood is 20% higher on days you stretch. Consider adding a short session tonight."'
     },
     noInsights: 'Insight not found. Please complete more check-ins to receive personalized insights.',
     community: {
@@ -17,6 +16,7 @@ export const dashboardPageTexts = {
         viewAll: 'VIEW ALL'
     },
     todaysFocus: {
+        //todo: replace with real data
         label: `Today's Focus`,
         badge: 'RECOMMENDED FOR YOU',
         title: '5 mins mindfulness',
@@ -27,31 +27,5 @@ export const dashboardPageTexts = {
         week: 'Week',
         month: 'Month',
         incompleteWeek: 'Build your recovery timeline. Every day tracked brings clarity to your journey'
-    },
-    statsCards: [
-        {
-            label: 'MOOD',
-            value: '8',
-            subValue: '/10',
-            description: 'Stable'
-        },
-        {
-            label: 'PAIN',
-            value: '3',
-            subValue: '/10',
-            description: 'Decreasing'
-        },
-        {
-            label: 'STREAK',
-            value: '12',
-            subValue: ' days',
-            description: 'New record!'
-        },
-        {
-            label: 'progress',
-            value: '+15',
-            subValue: '%',
-            description: 'vs. last week'
-        }
-    ]
+    }
 }
