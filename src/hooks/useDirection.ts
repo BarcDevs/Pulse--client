@@ -1,19 +1,17 @@
 'use client'
 
-import {
-    useEffect,
-    useState
-} from 'react'
+import {useState} from 'react'
 
 export const useDirection = () => {
-    const [dir, setDir] = useState<'ltr' | 'rtl'>('ltr')
+    const [dir] = useState<'ltr' | 'rtl'>(() => {
+        if (typeof document === 'undefined')
+            return 'ltr'
 
-    useEffect(() => {
-        setDir(
-            (document?.documentElement?.dir as 'ltr' | 'rtl') ||
+        return (
+            (document.documentElement.dir as 'ltr' | 'rtl') ||
             'ltr'
         )
-    }, [])
+    })
 
     return dir
 }
