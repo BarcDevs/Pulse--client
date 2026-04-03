@@ -68,6 +68,7 @@ export const DashboardHistoryChart = () => {
                                 'h-8 bg-muted opacity-50 cursor-not-allowed' :
                                 'h-8 bg-muted'
                         }
+                        suppressHydrationWarning={true}
                     >
                         <TabsTrigger
                             value={'week'}

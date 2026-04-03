@@ -1,14 +1,15 @@
+import {useRouter} from 'next/navigation'
+
 import {
     useMutation,
     useQueryClient
 } from '@tanstack/react-query'
 
-import {authQueryKeys} from '@/constants/queryKeys'
-
 import {logout as logoutApi} from '@/api/auth'
 
 export const useLogout = () => {
     const queryClient = useQueryClient()
+    const router = useRouter()
 
     const mutation = useMutation<
         void,
@@ -18,13 +19,9 @@ export const useLogout = () => {
         mutationFn: async () => {
             await logoutApi()
         },
-        onSuccess: () => {
-            queryClient.removeQueries({
-                queryKey: authQueryKeys.getMe
-            })
-            queryClient.removeQueries({
-                queryKey: authQueryKeys.profile
-            })
+        onSuccess: async () => {
+            queryClient.removeQueries()
+            await router.push('/login')
         },
         onError: (error: Error) => {
             console.error('Logout error:', error)
