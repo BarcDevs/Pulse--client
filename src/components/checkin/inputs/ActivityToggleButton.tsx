@@ -15,6 +15,7 @@ export const ActivityToggleButton = ({
 }: ActivityToggleButtonProps) => (
     <Button
         key={activity}
+        type={'button'}
         onClick={() => onToggle(activity)}
         variant={isSelected ? 'default' : 'secondary'}
         size={'sm'}
