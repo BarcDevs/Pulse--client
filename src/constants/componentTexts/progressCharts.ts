@@ -1,3 +1,5 @@
+import type {TrendAreaChartProps} from '@/components/shared/charts/TrendAreaChart'
+
 export const progressCharts = {
     moodChart: {
         title: 'Mood Trend',
@@ -34,22 +36,58 @@ export const chartTabTriggers: Record<string, string> = {
     month: 'Month'
 }
 
-export const moodTrendChartData = [
-    { date: 'Mon', actual: 5, target: 6 },
-    { date: 'Tue', actual: 6, target: 6 },
-    { date: 'Wed', actual: 5.5, target: 6 },
-    { date: 'Thu', actual: 7, target: 6 },
-    { date: 'Fri', actual: 6.5, target: 6 },
-    { date: 'Sat', actual: 8, target: 6 },
-    { date: 'Sun', actual: 7.5, target: 6 }
-]
+export const chartNotifications = {
+    moodIncomplete: 'Track your mood patterns to discover what brings you joy',
+    painIncomplete: 'Every day brings new insights into your recovery',
+    loadError: 'Failed to load data'
+}
 
-export const painIntensityChartData = [
-    { date: 'Mon', actual: 2 },
-    { date: 'Tue', actual: 3 },
-    { date: 'Wed', actual: 2.5 },
-    { date: 'Thu', actual: 4 },
-    { date: 'Fri', actual: 3 },
-    { date: 'Sat', actual: 2 },
-    { date: 'Sun', actual: 2.5 }
-]
+type TrendChartConfig = Omit<
+    TrendAreaChartProps,
+    'chart' | 'onPeriodChangeAction'
+> & {
+    chart: Omit<
+        TrendAreaChartProps['chart'],
+        'data'
+    >
+}
+
+export const trendChartConfigs: Record<
+    'mood' | 'pain',
+    TrendChartConfig
+> = {
+    mood: {
+        header: {
+            title: progressCharts.moodTrendChart.title,
+            subtitle: progressCharts.moodTrendChart.subtitle
+        },
+        chart: {
+            dataKey: 'actual',
+            targetKey: 'target'
+        },
+        style: {
+            color: 'var(--primary)',
+            gradientId: 'moodGradient'
+        },
+        legend: {
+            label: progressCharts.moodTrendChart.legendLabel,
+            targetLabel: progressCharts.moodTrendChart.targetLabel
+        }
+    },
+    pain: {
+        header: {
+            title: progressCharts.painIntensityChart.title,
+            subtitle: progressCharts.painIntensityChart.subtitle
+        },
+        chart: {
+            dataKey: 'actual'
+        },
+        style: {
+            color: 'var(--secondary)',
+            gradientId: 'painGradient'
+        },
+        legend: {
+            label: progressCharts.painIntensityChart.legendLabel
+        }
+    }
+}

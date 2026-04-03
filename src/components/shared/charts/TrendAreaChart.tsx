@@ -7,8 +7,15 @@ import {
     ResponsiveContainer,
     Tooltip,
     XAxis,
-    YAxis,
+    YAxis
 } from 'recharts'
+
+import {
+    ChartConfig,
+    HeaderConfig,
+    LegendConfig,
+    StyleConfig
+} from '@/types/charts/trendChart'
 
 import {
     Card,
@@ -20,32 +27,12 @@ import {
 import {ChartLegend} from './ChartLegend'
 import {ChartTabs} from './ChartTabs'
 
-type ChartConfig = {
-    data: Array<Record<string, unknown>>
-    dataKey: string
-    targetKey?: string
-}
-
-type StyleConfig = {
-    color: string
-    gradientId: string
-}
-
-type LegendConfig = {
-    label: string
-    targetLabel?: string
-}
-
-type HeaderConfig = {
-    title: string
-    subtitle: string
-}
-
-type TrendAreaChartProps = {
+export type TrendAreaChartProps = {
     header: HeaderConfig
     chart: ChartConfig
     style: StyleConfig
     legend: LegendConfig
+    onPeriodChangeAction?: (value: string) => void
 }
 
 export const TrendAreaChart = ({
@@ -53,13 +40,17 @@ export const TrendAreaChart = ({
     chart,
     style,
     legend,
+    onPeriodChangeAction
 }: TrendAreaChartProps) => (
     <Card className={'border-0 shadow-sm'}>
         <CardHeader className={'flex flex-row items-center justify-between pb-2'}>
             <CardTitle className={'text-lg font-semibold'}>
                 {header.title}
             </CardTitle>
-            <ChartTabs defaultValue={'weekly'}/>
+            <ChartTabs
+                defaultValue={'weekly'}
+                onValueChange={onPeriodChangeAction}
+            />
         </CardHeader>
         <CardContent>
             <p className={'mb-4 text-sm text-muted-foreground'}>
@@ -97,7 +88,7 @@ export const TrendAreaChart = ({
                             tickLine={false}
                             tick={{
                                 fill: 'var(--muted-foreground)',
-                                fontSize: 12,
+                                fontSize: 12
                             }}
                         />
                         <YAxis
@@ -106,7 +97,7 @@ export const TrendAreaChart = ({
                             tickLine={false}
                             tick={{
                                 fill: 'var(--muted-foreground)',
-                                fontSize: 12,
+                                fontSize: 12
                             }}
                             width={30}
                         />
@@ -114,7 +105,7 @@ export const TrendAreaChart = ({
                             contentStyle={{
                                 backgroundColor: 'var(--card)',
                                 border: '1px solid var(--border)',
-                                borderRadius: '8px',
+                                borderRadius: '8px'
                             }}
                         />
                         <Area

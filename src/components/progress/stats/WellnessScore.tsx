@@ -1,34 +1,68 @@
+'use client'
+
+import {useCheckInStats} from '@/hooks/queries/useCheckInStats'
+
+import {
+    getTrendData,
+    getWellnessStatus
+} from '@/lib/stats/getTrendLabel'
+
 import {progressPageTexts} from '@/constants/componentTexts/progress'
 
 import {WellnessScoreCard} from '../cards/WellnessScoreCard'
 
-export const WellnessScore = () => (
-    <div className={'rounded-2xl bg-surface-card p-6'}>
-        <div className={'flex items-center justify-between mb-4'}>
-            <div>
-                <p className={'text-xs font-medium text-muted-foreground uppercase tracking-wider'}>
-                    {progressPageTexts.wellness.label}
-                </p>
-                <h3 className={'mt-1 text-xl font-semibold text-foreground'}>
-                    {progressPageTexts.wellness.title}
-                </h3>
-            </div>
-            <span className={'text-xs text-muted-foreground'}>
-              {progressPageTexts.wellness.timeframe}
-          </span>
-        </div>
+export const WellnessScore = () => {
+    const { data } = useCheckInStats('weekly')
 
-        <div className={'grid grid-cols-2 gap-4'}>
-            <WellnessScoreCard
-                label={progressPageTexts.wellness.mood}
-                score={6.2}
-                trend={progressPageTexts.wellness.trendingFlat}
-            />
-            <WellnessScoreCard
-                label={progressPageTexts.wellness.pain}
-                score={7.8}
-                trend={progressPageTexts.wellness.improved}
-            />
+    const moodScore = data?.data
+        ?.averageMoodScore ?? 0
+    const painScore = data?.data
+        ?.averagePainLevel ?? 0
+    const moodTrend = getTrendData(
+        data?.data?.moodTrend ?? [],
+        'mood'
+    )
+    const painTrend = getTrendData(
+        data?.data?.painTrend ?? [],
+        'pain'
+    )
+    const wellnessStatus = getWellnessStatus(
+        moodTrend,
+        painTrend
+    )
+
+    return (
+        <div className={'rounded-2xl bg-surface-card p-6'}>
+            <div className={'flex items-center justify-between mb-4'}>
+                <div>
+                    <p className={'text-xs font-medium text-muted-foreground uppercase tracking-wider'}>
+                        {progressPageTexts
+                            .wellness.label}
+                    </p>
+                    <h3 className={'mt-1 text-xl font-semibold text-foreground'}>
+                        {wellnessStatus}
+                    </h3>
+                </div>
+                <span className={'text-xs text-muted-foreground'}>
+                    {progressPageTexts
+                        .wellness.timeframe}
+                </span>
+            </div>
+
+            <div className={'grid grid-cols-2 gap-4'}>
+                <WellnessScoreCard
+                    label={progressPageTexts
+                        .wellness.mood}
+                    score={moodScore}
+                    trend={moodTrend}
+                />
+                <WellnessScoreCard
+                    label={progressPageTexts
+                        .wellness.pain}
+                    score={painScore}
+                    trend={painTrend}
+                />
+            </div>
         </div>
-    </div>
-)
+    )
+}

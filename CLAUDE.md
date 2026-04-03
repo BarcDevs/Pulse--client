@@ -20,7 +20,7 @@ HealEase — Recovery support platform for patients transitioning from hospital/
 - Never break line around single imports - if import is too long, break before the `from` keyword
 
 ### Language & Format
-- Quotes: Single quotes (') for all strings, imports, JSX props
+- Quotes: Single quotes (') for all strings, imports, JSX props, backtick allowed for template strings
 - Semicolons: None (except where required)
 - Indentation: 4 spaces
 - Naming: camelCase (non-components), camelCase (folders)

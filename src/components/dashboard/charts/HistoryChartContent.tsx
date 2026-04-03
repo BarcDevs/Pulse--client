@@ -60,7 +60,7 @@ export const HistoryChartContent = ({
                 <Tooltip
                     content={
                         <ChartTooltipContent
-                            formatter={(value) => ['Mood: ' + value]}
+                            formatter={(value) => [`Mood: ${value}`]}
                         />
                     }
                     cursor={false}

@@ -5,6 +5,7 @@ import {
     CheckInStats
 } from '@/types/checkIn/checkIn'
 import {ApiResponse, Response} from '@/types/responses'
+import {TimePeriod} from '@/types/time'
 
 import {ENDPOINTS} from '@/constants/endpoints'
 
@@ -60,18 +61,22 @@ export const submitCheckIn = async (
         { ...data }
     )
 
-export const fetchCheckInStats = async ():
-    ApiResponse<CheckInStats> =>
-    api.get<Response<CheckInStats>>(
-        ENDPOINTS.checkIn.stats
+export const fetchCheckInStats = async (
+    period?: TimePeriod
+): ApiResponse<CheckInStats> => {
+    const params = period ? { period } : {}
+    return api.get<Response<CheckInStats>>(
+        ENDPOINTS.checkIn.stats,
+        { params }
     )
+}
 
 export const createCheckIn = async (
     data: CheckInSchema
 ): ApiResponse<CheckIn> =>
     api.post<Response<CheckIn>>(
         ENDPOINTS.checkIn.base,
-        {...data}
+        { ...data }
     )
 
 export const patchCheckIn = async (
@@ -80,7 +85,7 @@ export const patchCheckIn = async (
 ): ApiResponse<CheckIn> =>
     api.patch<Response<CheckIn>>(
         `${ENDPOINTS.checkIn.base}/${id}`,
-        {...data}
+        { ...data }
     )
 
 export const updateCheckIn = async (
@@ -89,7 +94,7 @@ export const updateCheckIn = async (
 ): ApiResponse<CheckIn> =>
     api.patch<Response<CheckIn>>(
         `${ENDPOINTS.checkIn.base}/${id}`,
-        {...data}
+        { ...data }
     )
 
 export const getCheckIn = async (

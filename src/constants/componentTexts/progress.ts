@@ -35,8 +35,14 @@ export const progressPageTexts = {
         timeframe: 'Last week vs. this week',
         mood: 'Mood',
         pain: 'Pain',
-        trendingFlat: 'trending_flat',
-        improved: 'improved'
+        trends: {
+            improving: 'Improving',
+            declining: 'Declining',
+            steady: 'Steady',
+            increasing: 'Increasing',
+            stable: 'Stable',
+            building: 'Building your journey'
+        }
     },
     stats: {
         streak: {
@@ -75,8 +81,6 @@ export const progressPageTexts = {
     },
     insight: {
         label: 'AI RECOVERY INSIGHT',
-        title: 'Your pain levels are dropping concurrently with improved sleep consistency.',
-        description: 'Data suggests that the 15-minute meditation you started 4 days ago is having a 12% positive impact on your morning mood scores. Keep this routine!',
         buttonPrimary: 'Keep Going',
         buttonSecondary: 'Acknowledge'
     }

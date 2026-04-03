@@ -8,13 +8,18 @@ import {chartTimePeriods} from '@/constants/componentTexts/progressCharts'
 
 type ChartTabsProps = {
     defaultValue?: string
+    onValueChange?: (
+        value: string
+    ) => void
 }
 
 export const ChartTabs = ({
-    defaultValue = 'weekly'
+    defaultValue = 'weekly',
+    onValueChange
 }: ChartTabsProps) => (
     <Tabs
         defaultValue={defaultValue}
+        onValueChange={onValueChange}
         className={'w-auto'}
     >
         <TabsList className={'h-8 bg-muted'}>

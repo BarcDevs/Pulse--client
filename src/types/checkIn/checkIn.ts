@@ -37,6 +37,12 @@ export type CheckInInput = {
     notes?: string
 }
 
+export type TrendPoint = {
+    date: string
+    actual: number
+    target?: number
+}
+
 export type CheckInStats = {
     total: number
     totalCheckIns: number
@@ -47,6 +53,9 @@ export type CheckInStats = {
     topActivities: string[]
     currentStreak: number
     longestStreak: number
+    moodTrend: TrendPoint[]
+    painTrend: TrendPoint[]
+    milestonesAchieved: number
 }
 
 export type PaginatedResponse<T> = {
