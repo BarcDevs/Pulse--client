@@ -1,6 +1,6 @@
-import type { Response } from '@/types/responses'
 import { AuthResponse as AuthResponseT }
-    from '@/types/responses/auth'
+    from '@/types/auth'
+import type { Response } from '@/types/responses'
 
 import { api } from '@/api/index'
 import type { LoginSchema } from '@/validations/forms/loginSchema'

@@ -2,9 +2,15 @@
 
 import { useEffect, useState } from 'react'
 
-import type { CheckIn, CheckInStats } from '@/types/checkIn/checkIn'
+import type {
+    CheckIn,
+    CheckInStats
+} from '@/types/checkIn'
 
-import { fetchCheckIns, fetchCheckInStats } from '@/api/checkIn'
+import {
+    fetchCheckIns,
+    fetchCheckInStats
+} from '@/api/checkIn'
 
 import { CheckInForm } from './forms/CheckInForm'
 import { CheckInQuote } from './sections/Quote'

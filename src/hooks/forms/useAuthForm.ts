@@ -2,7 +2,7 @@ import { useForm } from 'react-hook-form'
 
 import { zodResolver } from '@hookform/resolvers/zod'
 
-import { SetState } from '@/types/utils/react'
+import { SetState } from '@/types/react'
 
 import { authFormConfigs } from '@/config/forms/authFormConfigs'
 

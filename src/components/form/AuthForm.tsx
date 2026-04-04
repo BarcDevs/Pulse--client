@@ -4,8 +4,8 @@ import { useEffect } from 'react'
 
 import Link from 'next/link'
 
-import { AuthFormType } from '@/types/forms/forms'
-import { SetState } from '@/types/utils/react'
+import { AuthFormType } from '@/types/forms'
+import { SetState } from '@/types/react'
 
 import { Button } from '@/components/ui/button'
 import { Form } from '@/components/ui/form'

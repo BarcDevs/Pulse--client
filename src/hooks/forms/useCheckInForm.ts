@@ -4,7 +4,7 @@ import { useForm, useWatch } from 'react-hook-form'
 
 import { zodResolver } from '@hookform/resolvers/zod'
 
-import { CheckIn, CheckInStats } from '@/types/checkIn/checkIn'
+import { CheckIn, CheckInStats } from '@/types/checkIn'
 
 import { isTodayCheckIn } from '@/lib/checkIn/loaderHelpers'
 

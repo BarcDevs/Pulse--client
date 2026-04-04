@@ -1,4 +1,4 @@
-import { ClassName } from '@/types/utils/react'
+import { ClassName } from '@/types/react'
 
 import { cn } from '@/lib/utils'
 

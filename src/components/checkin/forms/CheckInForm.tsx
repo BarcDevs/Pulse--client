@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation'
 import type {
     CheckIn,
     CheckInStats
-} from '@/types/checkIn/checkIn'
+} from '@/types/checkIn'
 
 import { Button } from '@/components/ui/button'
 

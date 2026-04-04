@@ -15,7 +15,7 @@ import {
     HeaderConfig,
     LegendConfig,
     StyleConfig
-} from '@/types/charts/trendChart'
+} from '@/types/charts'
 
 import {
     Card,

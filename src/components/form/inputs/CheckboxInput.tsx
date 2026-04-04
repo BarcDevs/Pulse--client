@@ -1,6 +1,6 @@
 import { FieldValues } from 'react-hook-form'
 
-import { FieldConfig } from '@/types/forms/forms'
+import { FieldConfig } from '@/types/forms'
 
 import { Checkbox } from '@/components/ui/checkbox'
 import {

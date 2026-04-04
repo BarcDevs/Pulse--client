@@ -5,5 +5,5 @@ import {
 } from 'react'
 
 export type SetState<T> = Dispatch<SetStateAction<T>>
-export type ClassName = 
+export type ClassName =
     HTMLProps<HTMLElement>['className']

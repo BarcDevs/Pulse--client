@@ -1,7 +1,7 @@
 import { Send } from 'lucide-react'
 import type { KeyboardEvent } from 'react'
 
-import type { SetState } from '@/types/utils/react'
+import type { SetState } from '@/types/react'
 
 import { FormInput } from '@/components/shared/inputs/FormInput'
 import {

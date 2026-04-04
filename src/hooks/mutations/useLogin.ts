@@ -3,8 +3,8 @@ import {
     useQueryClient
 } from '@tanstack/react-query'
 
+import type { AuthResponse } from '@/types/auth'
 import type { Response } from '@/types/responses'
-import type { AuthResponse } from '@/types/responses/auth'
 
 import { login as loginApi } from '@/api/auth'
 import type { LoginSchema } from '@/validations/forms/loginSchema'

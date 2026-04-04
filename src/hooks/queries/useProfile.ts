@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 
-import type { Profile } from '@/types/profile/profile'
+import type { Profile } from '@/types/profile'
 
 import { authQueryKeys } from '@/constants/queryKeys'
 import { minuteInMs } from '@/constants/time'

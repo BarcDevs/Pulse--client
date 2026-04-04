@@ -1,4 +1,4 @@
-import { TrendPoint } from '@/types/checkIn/checkIn'
+import { TrendPoint } from '@/types/checkIn'
 
 export type TrendData = {
     label: string

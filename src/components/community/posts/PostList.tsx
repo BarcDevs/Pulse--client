@@ -7,7 +7,7 @@ import {
     useState
 } from 'react'
 
-import type { FilterType } from '@/types/forum/forum'
+import type { FilterType } from '@/types/community'
 
 import { Button } from '@/components/ui/button'
 

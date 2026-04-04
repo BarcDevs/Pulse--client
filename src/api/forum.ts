@@ -1,5 +1,12 @@
-import type { PartialTag, Post, Reply } from '@/types/forum/forum'
-import type { ApiResponse, Response } from '@/types/responses'
+import type {
+    PartialTag,
+    Post,
+    Reply
+} from '@/types/community'
+import type {
+    ApiResponse,
+    Response
+} from '@/types/responses'
 
 import { api } from '@/api/index'
 import { PostSchema } from '@/validations/forms/postSchema'
@@ -37,7 +44,7 @@ export const deletePost = async (
     )
 
 export const fetchReplies = async (postId: string) =>
-    api.get<Response<{replies: Reply[]}>>(
+    api.get<Response<{ replies: Reply[] }>>(
         `/forum/posts/${postId}/replies`
     )
 
@@ -45,7 +52,7 @@ export const createReply = async (
     postId: string,
     reply: Reply
 ) =>
-    api.post<Response<{reply: Reply}>>(
+    api.post<Response<{ reply: Reply }>>(
         `/forum/posts/${postId}/replies`, {
             ...reply
         })
@@ -55,7 +62,7 @@ export const updateReply = async (
     replyId: string,
     reply: Reply
 ) =>
-    api.put<Response<{reply: Reply}>>(
+    api.put<Response<{ reply: Reply }>>(
         `/forum/posts/${postId}/replies/${replyId}`, {
             ...reply
         })

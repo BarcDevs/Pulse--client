@@ -1,4 +1,4 @@
-import type { CheckInStats } from '@/types/checkIn/checkIn'
+import type { CheckInStats } from '@/types/checkIn'
 
 import {
     STAT_LABELS,

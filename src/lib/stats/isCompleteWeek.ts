@@ -1,4 +1,4 @@
-import { TrendPoint } from '@/types/checkIn/checkIn'
+import { TrendPoint } from '@/types/checkIn'
 
 export const isCompleteWeek = (
     trendData: TrendPoint[]

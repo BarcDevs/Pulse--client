@@ -3,7 +3,7 @@ import {
     useQueryClient
 } from '@tanstack/react-query'
 
-import { Profile } from '@/types/profile/profile'
+import { Profile } from '@/types/profile'
 
 import { minuteInMs } from '@/constants/time'
 

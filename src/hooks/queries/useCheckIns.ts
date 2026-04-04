@@ -2,7 +2,7 @@
 
 import { useQuery } from '@tanstack/react-query'
 
-import type { CheckIn } from '@/types/checkIn/checkIn'
+import type { CheckIn } from '@/types/checkIn'
 import type { Response } from '@/types/responses'
 
 import { checkInQueryKeys } from '@/constants/queryKeys'

@@ -1,4 +1,4 @@
-import type { FilterType } from '@/types/forum/forum'
+import type { FilterType } from '@/types/community'
 
 export type ForumSearchParams = {
     filter?: FilterType | undefined

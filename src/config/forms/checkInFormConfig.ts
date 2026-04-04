@@ -1,4 +1,4 @@
-import type { FormConfig } from '@/types/forms/forms'
+import type { FormConfig } from '@/types/forms'
 
 import { checkInFormSchema } from '@/config/schema/checkInForm'
 

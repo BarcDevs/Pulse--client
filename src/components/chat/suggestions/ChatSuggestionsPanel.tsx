@@ -1,4 +1,4 @@
-import type { SetState } from '@/types/utils/react'
+import type { SetState } from '@/types/react'
 
 import { Button } from '@/components/ui/button'
 

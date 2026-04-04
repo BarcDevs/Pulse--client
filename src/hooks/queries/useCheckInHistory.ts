@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query'
 
 import type {
     MoodPainSeriesPoint
-} from '@/types/checkIn/checkIn'
+} from '@/types/checkIn'
 import type { Response } from '@/types/responses'
 
 import { checkInQueryKeys } from '@/constants/queryKeys'

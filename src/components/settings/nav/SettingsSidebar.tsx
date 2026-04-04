@@ -5,7 +5,7 @@ import {
     Shield
 } from 'lucide-react'
 
-import type { SetState } from '@/types/utils/react'
+import type { SetState } from '@/types/react'
 
 import { settingsPageTexts }
     from '@/constants/componentTexts/settings'

@@ -1,4 +1,4 @@
-import { Post } from '@/types/forum/forum'
+import { Post } from '@/types/community'
 
 import { toRelative } from '@/lib/time'
 

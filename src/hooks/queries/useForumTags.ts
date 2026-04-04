@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 
-import type { PartialTag } from '@/types/forum/forum'
+import type { PartialTag } from '@/types/community'
 import type { Response } from '@/types/responses'
 
 import { forumQueryKeys } from '@/constants/queryKeys'

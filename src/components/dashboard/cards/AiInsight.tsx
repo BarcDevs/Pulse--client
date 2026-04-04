@@ -2,7 +2,7 @@
 
 import { Sparkles } from 'lucide-react'
 
-import { ClassName } from '@/types/utils'
+import { ClassName } from '@/types/react'
 
 import {
     Card,

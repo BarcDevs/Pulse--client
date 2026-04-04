@@ -3,7 +3,7 @@ import { format } from 'date-fns'
 import {
     CheckIn,
     CheckInStats
-} from '@/types/checkIn/checkIn'
+} from '@/types/checkIn'
 import { ApiResponse, Response } from '@/types/responses'
 import { TimePeriod } from '@/types/time'
 

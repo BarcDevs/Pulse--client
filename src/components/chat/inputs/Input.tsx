@@ -2,7 +2,7 @@
 
 import { KeyboardEvent } from 'react'
 
-import type { SetState } from '@/types/utils/react'
+import type { SetState } from '@/types/react'
 
 import { ChatSuggestionsPanel } from '../suggestions/ChatSuggestionsPanel'
 

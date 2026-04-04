@@ -10,7 +10,7 @@ import {
     YAxis
 } from 'recharts'
 
-import type { SetState } from '@/types/utils/react'
+import type { SetState } from '@/types/react'
 
 import { ChartTooltipContent } from '@/components/ui/chart-tooltip'
 

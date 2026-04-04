@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 
-import type { CheckInStats } from '@/types/checkIn/checkIn'
+import type { CheckInStats } from '@/types/checkIn'
 import type { Response } from '@/types/responses'
 import { TimePeriod } from '@/types/time'
 

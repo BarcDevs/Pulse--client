@@ -1,4 +1,4 @@
-import { CheckIn } from '@/types/checkIn/checkIn'
+import { CheckIn } from '@/types/checkIn'
 
 import { checkInTexts } from '@/constants/componentTexts/checkIn'
 import { defaults } from '@/constants/defaults'
