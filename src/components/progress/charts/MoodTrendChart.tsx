@@ -9,6 +9,8 @@ import {DataNotification} from '@/components/shared/notifications/DataNotificati
 
 import {useCheckInStats} from '@/hooks/queries/useCheckInStats'
 
+import {isCompleteWeek} from '@/lib/stats/isCompleteWeek'
+
 import {
     chartNotifications,
     trendChartConfigs
@@ -23,8 +25,9 @@ export const MoodTrendChart = () => {
     } = useCheckInStats(period)
 
     const chartData = data?.data?.moodTrend || []
-    const isIncompleteWeek = chartData.length < 7
-        && period === 'weekly'
+    const isIncompleteWeek = !isCompleteWeek(
+        chartData
+    ) && period === 'weekly'
 
     const handlePeriodChange = (
         value: string
