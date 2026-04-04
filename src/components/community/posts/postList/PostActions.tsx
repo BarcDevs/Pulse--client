@@ -19,7 +19,7 @@ export const PostActions = ({
         <Button
             variant={'ghost'}
             size={'sm'}
-            className={'h-auto gap-1.5 p-0 text-xs text-muted-foreground hover:text-foreground'}
+            className={'h-auto gap-1.5 p-0 text-xs text-muted-foreground hover:text-white'}
         >
             <MessageSquare className={'h-4 w-4'}/>
             {replies} {communityPageTexts.posts.repliesLabel}
@@ -27,7 +27,7 @@ export const PostActions = ({
         <Button
             variant={'ghost'}
             size={'sm'}
-            className={'h-auto gap-1.5 p-0 text-xs text-muted-foreground hover:text-foreground'}
+            className={'h-auto gap-1.5 p-0 text-xs text-muted-foreground hover:text-white'}
         >
             <Share2 className={'h-4 w-4'}/>
             {communityPageTexts.posts.share}
@@ -35,7 +35,7 @@ export const PostActions = ({
         <Button
             variant={'ghost'}
             size={'sm'}
-            className={'h-auto gap-1.5 p-0 text-xs text-muted-foreground hover:text-foreground'}
+            className={'h-auto gap-1.5 p-0 text-xs text-muted-foreground hover:text-white'}
         >
             <Bookmark className={'h-4 w-4'}/>
             {communityPageTexts.posts.save}

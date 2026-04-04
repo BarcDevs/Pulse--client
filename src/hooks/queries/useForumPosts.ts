@@ -12,7 +12,9 @@ type ForumQuery = {
     category?: string
     search?: string
     limit?: number
-    offset?: number
+    page?: number
+    filter?: string
+    tag?: string
 }
 
 export const useForumPosts = (

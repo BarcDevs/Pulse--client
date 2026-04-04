@@ -1,17 +1,28 @@
+'use client'
+
+import { useState } from 'react'
+
 import { Categories } from './categories/Categories'
 import { PostList } from './posts/PostList'
 import { CommunityPanel } from './CommunityPanel'
 
-export const CommunityPageContent = () => (
-    <div className={'p-6'}>
-        <Categories/>
+export const CommunityPageContent = () => {
+    const [selectedTag, setSelectedTag] = useState<string | null>(null)
 
-        <div className={'mt-6 grid grid-cols-1 lg:grid-cols-3 gap-6'}>
-            <div className={'lg:col-span-2'}>
-                <PostList/>
+    return (
+        <div className={'p-6'}>
+            <Categories/>
+
+            <div className={'mt-6 grid grid-cols-1 lg:grid-cols-3 gap-6'}>
+                <div className={'lg:col-span-2'}>
+                    <PostList tag={selectedTag}/>
+                </div>
+
+                <CommunityPanel
+                    selectedTag={selectedTag}
+                    onTagSelect={setSelectedTag}
+                />
             </div>
-
-            <CommunityPanel/>
         </div>
-    </div>
-)
+    )
+}

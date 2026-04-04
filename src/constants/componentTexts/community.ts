@@ -42,6 +42,8 @@ export const communityPageTexts = {
         share: 'Share',
         save: 'Save',
         newPostButton: 'New Post',
+        loading: 'Loading posts...',
+        empty: 'No posts yet. Be the first to share your journey and inspire others.',
         list: [
             {
                 id: 1,

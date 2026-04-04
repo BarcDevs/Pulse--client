@@ -32,6 +32,7 @@ export const SanctuaryCard = () => (
             size={'sm'}
             className={'mt-4 w-full'}
         >
+            {/* todo: add community guidelines */}
             {communityPageTexts.sanctuary.readGuidelines}
         </Button>
     </div>

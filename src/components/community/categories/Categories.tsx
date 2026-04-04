@@ -6,6 +6,7 @@ import { communityCategoriesWithIcons }
 
 import { CategoryCard } from './CategoryCard'
 
+// todo: integrate with categories API for dynamic counts
 export const Categories = () => (
     <div>
         <div className={'flex items-center justify-between mb-4'}>
