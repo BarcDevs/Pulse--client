@@ -13,6 +13,7 @@ HealEase — Recovery support platform for patients transitioning from hospital/
 ### Code Style
 - Never use array index as key - use the current element as an index
 - Braces around values inside: Object literal braces, component props and import/export braces
+- Spaces inside braces: `{ field }` not `{field}`
 - Text blocks: Don't break unless really long (120–150 chars OK)
 - Text: never use `—` character. only the simple hyphen `-` for all text, including classnames and config keys. This avoids encoding issues and ensures consistency across all contexts (JSX, CSS, config, etc.)
 - Use unified imports for module that has many imports
@@ -56,6 +57,11 @@ HealEase — Recovery support platform for patients transitioning from hospital/
 - 2+ function parameters → each on its own line
 - Generic utility types (`Pick`, `Omit` etc.) with 3+ keys → each key on its own line
 - 2+ elements in an array → each on its own line
+
+### Formatting Tools
+
+- **ESLint** (`.eslint.config.mjs`): Enforces all formatting rules. Run `npm run lint:fix` to auto-apply fixes before committing.
+- **.editorconfig**: Cross-IDE settings (4-space indent, UTF-8, LF line endings). Respected by WebStorm, VS Code, etc.
 
 ### Imports (eslint-plugin-simple-import-sort)
 Groups (auto-fixed by `npm run lint:fix`):
