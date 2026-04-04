@@ -1,14 +1,14 @@
 'use client'
 
-import {useState} from 'react'
+import { useState } from 'react'
 
-import {Button} from '@/components/ui/button'
+import { Button } from '@/components/ui/button'
 
-import {cn} from '@/lib/utils'
+import { cn } from '@/lib/utils'
 
-import {communityPageTexts} from '@/constants/componentTexts/community'
+import { communityPageTexts } from '@/constants/componentTexts/community'
 
-import {PostItem} from './postList/PostItem'
+import { PostItem } from './postList/PostItem'
 
 const tabs = communityPageTexts.posts.tabs
 
@@ -29,14 +29,14 @@ export const PostList = () => {
                     <Button
                         key={tab}
                         onClick={() => handleTabChange(tab)}
-                        variant={activeTab === tab ?
-                            'default' :
-                            'ghost'}
+                        variant={activeTab === tab
+                            ? 'default'
+                            : 'ghost'}
                         className={cn(
                             'px-6 py-4 text-sm font-medium rounded-none border-b-2',
-                            activeTab === tab ?
-                                'text-primary border-primary' :
-                                'text-muted-foreground hover:text-foreground border-transparent'
+                            activeTab === tab
+                                ? 'text-primary border-primary'
+                                : 'text-muted-foreground hover:text-foreground border-transparent'
                         )}
                     >
                         {tab}

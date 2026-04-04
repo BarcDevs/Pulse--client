@@ -1,10 +1,10 @@
-import {useQuery} from '@tanstack/react-query'
+import { useQuery } from '@tanstack/react-query'
 
-import {ProfileOptions} from '@/types/profile/profile'
+import { ProfileOptions } from '@/types/profile/profile'
 
-import {hourInMs} from '@/constants/time'
+import { hourInMs } from '@/constants/time'
 
-import {getProfileOptions} from '@/api/profile'
+import { getProfileOptions } from '@/api/profile'
 
 export const profileOptionsQueryKey = [
     'profile',

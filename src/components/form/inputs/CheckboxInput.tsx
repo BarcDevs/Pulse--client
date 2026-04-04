@@ -1,8 +1,8 @@
-import {FieldValues} from 'react-hook-form'
+import { FieldValues } from 'react-hook-form'
 
-import {FieldConfig} from '@/types/forms/forms'
+import { FieldConfig } from '@/types/forms/forms'
 
-import {Checkbox} from '@/components/ui/checkbox'
+import { Checkbox } from '@/components/ui/checkbox'
 import {
     FormControl,
     FormDescription,

@@ -1,8 +1,8 @@
 import Image from 'next/image'
 
-import {ClassName} from '@/types/utils/react'
+import { ClassName } from '@/types/utils/react'
 
-import {cn} from '@/lib/utils'
+import { cn } from '@/lib/utils'
 
 type IconProps = {
     name: string

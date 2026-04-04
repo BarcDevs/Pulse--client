@@ -1,8 +1,8 @@
-import {Post, Reply} from '@/types/forum/forum'
-import {ApiResponse, Response} from '@/types/responses'
+import { Post, Reply } from '@/types/forum/forum'
+import { ApiResponse, Response } from '@/types/responses'
 
-import {api} from '@/api/index'
-import {PostSchema} from '@/validations/forms/postSchema'
+import { api } from '@/api/index'
+import { PostSchema } from '@/validations/forms/postSchema'
 
 export const fetchPosts = async (query: any) =>
     await api.get<Response<Post[]>>(

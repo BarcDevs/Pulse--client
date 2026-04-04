@@ -1,10 +1,10 @@
-import {Toaster} from 'sonner'
+import { Toaster } from 'sonner'
 
-import {LayoutProps} from '@/types'
+import { LayoutProps } from '@/types'
 
-import {LangProvider} from '@/context/langContext'
+import { LangProvider } from '@/context/langContext'
 
-const ContextProvider = ({children}: LayoutProps) => (
+const ContextProvider = ({ children }: LayoutProps) => (
     <LangProvider>
         {children}
         <Toaster/>

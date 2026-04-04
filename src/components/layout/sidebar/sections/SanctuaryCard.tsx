@@ -1,9 +1,9 @@
-import {Lock, Shield, UserX} from 'lucide-react'
+import { Lock, Shield, UserX } from 'lucide-react'
 
-import {GuidelineItem} from '@/components/shared/content/GuidelineItem'
-import {Button} from '@/components/ui/button'
+import { GuidelineItem } from '@/components/shared/content/GuidelineItem'
+import { Button } from '@/components/ui/button'
 
-import {communityPageTexts} from '@/constants/componentTexts/community'
+import { communityPageTexts } from '@/constants/componentTexts/community'
 
 export const SanctuaryCard = () => (
     <div className={'rounded-2xl border border-primary/20 bg-primary/5 p-5'}>

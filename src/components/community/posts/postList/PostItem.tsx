@@ -1,7 +1,7 @@
-import {PostActions} from './PostActions'
-import {PostHeader} from './PostHeader'
-import {PostMedia} from './PostMedia'
-import {PostVotes} from './PostVotes'
+import { PostActions } from './PostActions'
+import { PostHeader } from './PostHeader'
+import { PostMedia } from './PostMedia'
+import { PostVotes } from './PostVotes'
 // todo: use real post type
 type Post = {
     id: string

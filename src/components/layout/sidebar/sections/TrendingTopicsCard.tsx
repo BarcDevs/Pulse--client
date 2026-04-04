@@ -1,6 +1,6 @@
-import {Button} from '@/components/ui/button'
+import { Button } from '@/components/ui/button'
 
-import {communityPageTexts} from '@/constants/componentTexts/community'
+import { communityPageTexts } from '@/constants/componentTexts/community'
 
 const trendingTopics = communityPageTexts.trending
 

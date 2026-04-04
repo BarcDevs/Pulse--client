@@ -1,14 +1,14 @@
 'use client'
 
-import {useState} from 'react'
+import { useState } from 'react'
 
-import {insightsPageTexts}
+import { insightsPageTexts }
     from '@/constants/componentTexts/insightsComponent'
 
-import {BehavioralPatternsTabs} from './BehavioralPatternsTabs'
-import {CorrelationCard} from './CorrelationCard'
-import {ObservationCard} from './ObservationCard'
-import {PredictionCard} from './PredictionCard'
+import { BehavioralPatternsTabs } from './BehavioralPatternsTabs'
+import { CorrelationCard } from './CorrelationCard'
+import { ObservationCard } from './ObservationCard'
+import { PredictionCard } from './PredictionCard'
 
 export const BehavioralPatterns = () => {
     const [activeTab, setActiveTab] =

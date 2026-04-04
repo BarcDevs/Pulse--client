@@ -1,6 +1,6 @@
-import {TrendingUp} from 'lucide-react'
+import { TrendingUp } from 'lucide-react'
 
-import {insightsPageTexts}
+import { insightsPageTexts }
     from '@/constants/componentTexts/insightsComponent'
 
 export const PredictionCard = () => (

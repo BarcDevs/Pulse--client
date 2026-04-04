@@ -1,12 +1,12 @@
 'use client'
 
-import {Settings2} from 'lucide-react'
+import { Settings2 } from 'lucide-react'
 
-import {ActivityItem} from '@/components/shared/lists/ActivityItem'
-import {Button} from '@/components/ui/button'
+import { ActivityItem } from '@/components/shared/lists/ActivityItem'
+import { Button } from '@/components/ui/button'
 
-import {profilePageTexts} from '@/constants/componentTexts/profile'
-import {dailyActivities} from '@/constants/componentTexts/profileActivity'
+import { profilePageTexts } from '@/constants/componentTexts/profile'
+import { dailyActivities } from '@/constants/componentTexts/profileActivity'
 
 export const DailyActivityPreferences = () => (
     <div className={'rounded-2xl bg-surface-card p-6'}>

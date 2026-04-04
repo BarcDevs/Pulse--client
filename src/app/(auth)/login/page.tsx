@@ -1,10 +1,10 @@
 'use client'
 
-import {useState} from 'react'
+import { useState } from 'react'
 
-import {GoogleLoginButton} from '@/components/auth/forms/GoogleLoginButton'
-import {LoginSecurityFooter} from '@/components/auth/sections/LoginSecurityFooter'
-import {AuthForm} from '@/components/form/AuthForm'
+import { GoogleLoginButton } from '@/components/auth/forms/GoogleLoginButton'
+import { LoginSecurityFooter } from '@/components/auth/sections/LoginSecurityFooter'
+import { AuthForm } from '@/components/form/AuthForm'
 import {
     Card,
     CardContent,
@@ -13,11 +13,11 @@ import {
     CardTitle
 } from '@/components/ui/card'
 
-import {useAuthHandlers} from '@/hooks/useAuthHandlers'
+import { useAuthHandlers } from '@/hooks/useAuthHandlers'
 
-import {authTexts} from '@/constants/componentTexts/auth'
+import { authTexts } from '@/constants/componentTexts/auth'
 
-import type {LoginSchema} from '@/validations/forms/loginSchema'
+import type { LoginSchema } from '@/validations/forms/loginSchema'
 
 const LoginPage = () => {
     const { handleLogin } = useAuthHandlers()

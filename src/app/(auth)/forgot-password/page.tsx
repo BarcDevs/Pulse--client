@@ -1,10 +1,10 @@
 'use client'
 
-import {useState} from 'react'
+import { useState } from 'react'
 
-import {EmailVerificationView} from '@/components/auth/views/EmailVerificationView'
-import {AuthForm} from '@/components/form/AuthForm'
-import {Logo} from '@/components/shared/brand/Logo'
+import { EmailVerificationView } from '@/components/auth/views/EmailVerificationView'
+import { AuthForm } from '@/components/form/AuthForm'
+import { Logo } from '@/components/shared/brand/Logo'
 import {
     Card,
     CardContent,
@@ -13,9 +13,9 @@ import {
     CardTitle
 } from '@/components/ui/card'
 
-import {authTexts} from '@/constants/componentTexts/auth'
+import { authTexts } from '@/constants/componentTexts/auth'
 
-import {timings} from '@/config/timings'
+import { timings } from '@/config/timings'
 
 const ForgotPasswordPage = () => {
     const [email, setEmail] = useState('')

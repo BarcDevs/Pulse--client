@@ -1,7 +1,7 @@
-import {Plus} from 'lucide-react'
+import { Plus } from 'lucide-react'
 
-import {ActivityItem} from '@/components/shared/lists/ActivityItem'
-import {Button} from '@/components/ui/button'
+import { ActivityItem } from '@/components/shared/lists/ActivityItem'
+import { Button } from '@/components/ui/button'
 import {
     Card,
     CardContent,
@@ -9,8 +9,8 @@ import {
     CardTitle
 } from '@/components/ui/card'
 
-import {profilePageTexts} from '@/constants/componentTexts/profile'
-import {profileActivitiesWithIcons}
+import { profilePageTexts } from '@/constants/componentTexts/profile'
+import { profileActivitiesWithIcons }
     from '@/constants/mappings/profile'
 
 export const ProfileActivities = () => (

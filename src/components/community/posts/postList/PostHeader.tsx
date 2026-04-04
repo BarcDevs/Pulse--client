@@ -1,6 +1,6 @@
-import {cn} from '@/lib/utils'
+import { cn } from '@/lib/utils'
 
-import {communityPageTexts} from '@/constants/componentTexts/community'
+import { communityPageTexts } from '@/constants/componentTexts/community'
 
 type PostHeaderProps = {
     category: string

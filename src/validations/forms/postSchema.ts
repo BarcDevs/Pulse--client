@@ -26,7 +26,7 @@ export const postSchema = z.object({
         .max(config.tags.max,
             `Cannot have more than ${config.tags.max} tags`)
 })
-    .superRefine(({category}, ctx) => {
+    .superRefine(({ category }, ctx) => {
         if (!category) {
             ctx.addIssue({
                 code: z.ZodIssueCode.custom,

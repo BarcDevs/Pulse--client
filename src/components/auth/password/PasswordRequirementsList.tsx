@@ -1,8 +1,8 @@
-import {authTexts} from '@/constants/componentTexts/auth'
+import { authTexts } from '@/constants/componentTexts/auth'
 
 import authFormConfig from '@/config/schema/authForm'
 
-import {PasswordRequirementItem}
+import { PasswordRequirementItem }
     from './PasswordRequirementItem'
 
 type PasswordRequirementsListProps = {

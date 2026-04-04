@@ -1,5 +1,5 @@
-import {GoalProgressBar} from '@/components/shared/bars/GoalProgressBar'
-import {Button} from '@/components/ui/button'
+import { GoalProgressBar } from '@/components/shared/bars/GoalProgressBar'
+import { Button } from '@/components/ui/button'
 import {
     Card,
     CardContent,
@@ -7,7 +7,7 @@ import {
     CardTitle
 } from '@/components/ui/card'
 
-import {profilePageTexts} from '@/constants/componentTexts/profile'
+import { profilePageTexts } from '@/constants/componentTexts/profile'
 
 const goals = profilePageTexts.goals.list
 

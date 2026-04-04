@@ -1,11 +1,11 @@
-import {Badge} from '@/components/ui/badge'
+import { Badge } from '@/components/ui/badge'
 import {
     Card,
     CardContent
 } from '@/components/ui/card'
-import {Progress} from '@/components/ui/progress'
+import { Progress } from '@/components/ui/progress'
 
-import {chatTexts} from '@/constants/componentTexts/chat'
+import { chatTexts } from '@/constants/componentTexts/chat'
 
 export const NextMilestoneCard = () => (
     <Card className={'border-0 bg-primary text-white shadow-none'}>

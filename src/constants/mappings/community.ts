@@ -5,7 +5,7 @@ import {
     Users
 } from 'lucide-react'
 
-import {communityPageTexts} from '@/constants/componentTexts/community'
+import { communityPageTexts } from '@/constants/componentTexts/community'
 
 export const communityCategoriesIconMap = {
     'Support Groups': Users,

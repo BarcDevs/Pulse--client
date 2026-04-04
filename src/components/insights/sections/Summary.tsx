@@ -1,16 +1,16 @@
-import {FileText} from 'lucide-react'
+import { FileText } from 'lucide-react'
 
-import {Button} from '@/components/ui/button'
+import { Button } from '@/components/ui/button'
 import {
     Card,
     CardHeader,
     CardTitle
 } from '@/components/ui/card'
 
-import {insightsPageTexts}
+import { insightsPageTexts }
     from '@/constants/componentTexts/insightsComponent'
 
-import {StatsCards} from '../stats/StatsCards'
+import { StatsCards } from '../stats/StatsCards'
 
 export const InsightsSummary = () => (
     <Card className={'mt-6 border-0 shadow-sm'}>

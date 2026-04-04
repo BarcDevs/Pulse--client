@@ -1,9 +1,9 @@
 'use client'
 
-import {useState} from 'react'
+import { useState } from 'react'
 
-import {SettingsSidebar} from './nav/SettingsSidebar'
-import {SettingsDisplay} from './SettingsDisplay'
+import { SettingsSidebar } from './nav/SettingsSidebar'
+import { SettingsDisplay } from './SettingsDisplay'
 
 export const SettingsPageContent = () => {
     const [activeTab, setActiveTab] = useState('notifications')

@@ -5,7 +5,7 @@ import {
     Rocket
 } from 'lucide-react'
 
-import {progressPageTexts} from '@/constants/componentTexts/progress'
+import { progressPageTexts } from '@/constants/componentTexts/progress'
 
 export const progressMilestonesIconMap = {
     'First Step': Rocket,

@@ -1,13 +1,13 @@
 'use client'
 
-import {useEffect, useState} from 'react'
+import { useEffect, useState } from 'react'
 
-import type {CheckIn, CheckInStats} from '@/types/checkIn/checkIn'
+import type { CheckIn, CheckInStats } from '@/types/checkIn/checkIn'
 
-import {fetchCheckIns, fetchCheckInStats} from '@/api/checkIn'
+import { fetchCheckIns, fetchCheckInStats } from '@/api/checkIn'
 
-import {CheckInForm} from './forms/CheckInForm'
-import {CheckInQuote} from './sections/Quote'
+import { CheckInForm } from './forms/CheckInForm'
+import { CheckInQuote } from './sections/Quote'
 
 export const CheckInPageContent = () => {
     const [latestCheckIn, setLatestCheckIn] = 

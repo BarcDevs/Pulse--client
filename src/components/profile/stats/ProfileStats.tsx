@@ -1,6 +1,6 @@
-import {profilePageTexts} from '@/constants/componentTexts/profile'
+import { profilePageTexts } from '@/constants/componentTexts/profile'
 
-import {ProfileStatItem} from './ProfileStatItem'
+import { ProfileStatItem } from './ProfileStatItem'
 
 export const ProfileStats = () => (
     <div className={'mt-6 grid w-full grid-cols-3 gap-4 border-t border-border pt-6'}>

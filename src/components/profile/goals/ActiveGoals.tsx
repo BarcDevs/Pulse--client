@@ -1,7 +1,7 @@
-import {GoalProgressBar} from '@/components/shared/bars/GoalProgressBar'
-import {Button} from '@/components/ui/button'
+import { GoalProgressBar } from '@/components/shared/bars/GoalProgressBar'
+import { Button } from '@/components/ui/button'
 
-import {profilePageTexts} from '@/constants/componentTexts/profile'
+import { profilePageTexts } from '@/constants/componentTexts/profile'
 
 export const ActiveGoals = () => (
     <div className={'rounded-2xl bg-primary p-6 text-primary-foreground'}>

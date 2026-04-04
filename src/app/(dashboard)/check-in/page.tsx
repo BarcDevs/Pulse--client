@@ -1,9 +1,9 @@
 'use client'
 
-import {CheckInForm} from '@/components/checkIn/forms/CheckInForm'
-import {CheckInQuote} from '@/components/checkIn/sections/Quote'
+import { CheckInForm } from '@/components/checkIn/forms/CheckInForm'
+import { CheckInQuote } from '@/components/checkIn/sections/Quote'
 
-import {checkInTexts} from '@/constants/componentTexts/checkIn'
+import { checkInTexts } from '@/constants/componentTexts/checkIn'
 
 const CheckInPage = () => (
     <div className={'flex-1 p-4 md:p-6'}>

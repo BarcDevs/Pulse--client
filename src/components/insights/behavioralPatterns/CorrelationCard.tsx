@@ -1,6 +1,6 @@
-import {ArrowUpRight} from 'lucide-react'
+import { ArrowUpRight } from 'lucide-react'
 
-import {insightsPageTexts}
+import { insightsPageTexts }
     from '@/constants/componentTexts/insightsComponent'
 
 const CORRELATION_HEIGHTS = [40, 65, 50, 80, 45, 70, 55]

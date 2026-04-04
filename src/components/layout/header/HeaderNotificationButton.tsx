@@ -1,9 +1,9 @@
-import {Bell} from 'lucide-react'
+import { Bell } from 'lucide-react'
 
-import {Badge} from '@/components/ui/badge'
-import {Button} from '@/components/ui/button'
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
 
-import {appLayoutTexts} from '@/constants/componentTexts/ui/layout'
+import { appLayoutTexts } from '@/constants/componentTexts/ui/layout'
 
 export const HeaderNotificationButton = () => (
     <Button

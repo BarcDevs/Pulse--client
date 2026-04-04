@@ -1,6 +1,6 @@
-import {Badge} from '@/components/ui/badge'
+import { Badge } from '@/components/ui/badge'
 
-import {insightsDetail}
+import { insightsDetail }
     from '@/constants/componentTexts/insightsDetail'
 
 export const PredictionCard = () => (

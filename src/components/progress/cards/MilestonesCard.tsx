@@ -1,10 +1,10 @@
 'use client'
 
-import {Award} from 'lucide-react'
+import { Award } from 'lucide-react'
 
-import {useCheckInStats} from '@/hooks/queries/useCheckInStats'
+import { useCheckInStats } from '@/hooks/queries/useCheckInStats'
 
-import {progressPageTexts} from '@/constants/componentTexts/progress'
+import { progressPageTexts } from '@/constants/componentTexts/progress'
 
 export const MilestonesCard = () => {
     const { data } = useCheckInStats('weekly')

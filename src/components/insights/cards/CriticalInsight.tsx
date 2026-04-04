@@ -1,8 +1,8 @@
-import {AlertTriangle, BarChart3} from 'lucide-react'
+import { AlertTriangle, BarChart3 } from 'lucide-react'
 
-import {Button} from '@/components/ui/button'
+import { Button } from '@/components/ui/button'
 
-import {insightsPageTexts}
+import { insightsPageTexts }
     from '@/constants/componentTexts/insightsComponent'
 
 export const CriticalInsight = () => (

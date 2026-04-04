@@ -1,4 +1,4 @@
-import {insightsDetail}
+import { insightsDetail }
     from '@/constants/componentTexts/insightsDetail'
 
 export const ObservationCard = () => (

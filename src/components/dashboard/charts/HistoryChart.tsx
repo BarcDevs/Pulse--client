@@ -1,8 +1,8 @@
 'use client'
 
-import {useState} from 'react'
+import { useState } from 'react'
 
-import {DataNotification} from '@/components/shared/notifications/DataNotification'
+import { DataNotification } from '@/components/shared/notifications/DataNotification'
 import {
     Card,
     CardContent,
@@ -15,14 +15,14 @@ import {
     TabsTrigger
 } from '@/components/ui/tabs'
 
-import {useCheckInHistory} from '@/hooks/queries/useCheckInHistory'
-import {useDirection} from '@/hooks/useDirection'
+import { useCheckInHistory } from '@/hooks/queries/useCheckInHistory'
+import { useDirection } from '@/hooks/useDirection'
 
-import {reverseChartData} from '@/utils/chart'
+import { reverseChartData } from '@/utils/chart'
 
-import {dashboardPageTexts} from '@/constants/componentTexts/dashboard'
+import { dashboardPageTexts } from '@/constants/componentTexts/dashboard'
 
-import {HistoryChartContent} from './HistoryChartContent'
+import { HistoryChartContent } from './HistoryChartContent'
 
 type Period = 'week' | 'month'
 
@@ -42,9 +42,9 @@ export const DashboardHistoryChart = () => {
     } = useCheckInHistory(daysToShow)
 
     const chartData = historyResponse?.data ?? []
-    const reorderedData = dir === 'ltr' ?
-        reverseChartData(chartData) :
-        chartData
+    const reorderedData = dir === 'ltr'
+        ? reverseChartData(chartData)
+        : chartData
     const isIncompleteWeek = chartData.length > 0
         && chartData.length < 7
         && period === 'week'
@@ -58,16 +58,16 @@ export const DashboardHistoryChart = () => {
                 <Tabs
                     value={period}
                     onValueChange={(value) =>
-                        !isIncompleteWeek &&
-                        setPeriod(value as Period)
+                        !isIncompleteWeek
+                        && setPeriod(value as Period)
                     }
                     className={'w-auto'}
                 >
                     <TabsList
                         className={
-                            isIncompleteWeek ?
-                                'h-8 bg-muted opacity-50 cursor-not-allowed' :
-                                'h-8 bg-muted'
+                            isIncompleteWeek
+                                ? 'h-8 bg-muted opacity-50 cursor-not-allowed'
+                                : 'h-8 bg-muted'
                         }
                     >
                         <TabsTrigger
@@ -98,14 +98,14 @@ export const DashboardHistoryChart = () => {
                         <HistoryChartContent
                             reorderedData={reorderedData}
                             hoveredIndex={
-                                isIncompleteWeek ?
-                                    null :
-                                    hoveredIndex
+                                isIncompleteWeek
+                                    ? null
+                                    : hoveredIndex
                             }
                             setHoveredIndexAction={
-                                isIncompleteWeek ?
-                                    () => {} :
-                                    setHoveredIndex
+                                isIncompleteWeek
+                                    ? () => {}
+                                    : setHoveredIndex
                             }
                         />
                         {isIncompleteWeek && (

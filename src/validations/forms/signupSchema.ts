@@ -17,7 +17,7 @@ export const signupSchema = z.object({
         .regex(config.password.format, config.password.formatMessage),
     confirmPassword: z.string()
         .min(1, 'Confirm password is required')
-}).superRefine(({password, confirmPassword}, ctx) => {
+}).superRefine(({ password, confirmPassword }, ctx) => {
     if (password !== confirmPassword) {
         ctx.addIssue({
             code: z.ZodIssueCode.custom,

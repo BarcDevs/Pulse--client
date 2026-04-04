@@ -1,10 +1,10 @@
-import {Button} from '@/components/ui/button'
+import { Button } from '@/components/ui/button'
 
-import {communityPageTexts} from '@/constants/componentTexts/community'
-import {communityCategoriesWithIcons}
+import { communityPageTexts } from '@/constants/componentTexts/community'
+import { communityCategoriesWithIcons }
     from '@/constants/mappings/community'
 
-import {CategoryCard} from './CategoryCard'
+import { CategoryCard } from './CategoryCard'
 
 export const Categories = () => (
     <div>

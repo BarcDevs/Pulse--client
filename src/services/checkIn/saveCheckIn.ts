@@ -1,12 +1,12 @@
-import {CheckIn} from '@/types/checkIn/checkIn'
+import { CheckIn } from '@/types/checkIn/checkIn'
 
-import {isTodayCheckIn} from '@/lib/checkIn/loaderHelpers'
+import { isTodayCheckIn } from '@/lib/checkIn/loaderHelpers'
 
 import {
     createCheckIn,
     patchCheckIn
 } from '@/api/checkIn'
-import {CheckInSchema} from '@/validations/forms/checkInSchema'
+import { CheckInSchema } from '@/validations/forms/checkInSchema'
 
 export type CheckInSaveResult = {
     checkIn: CheckIn
@@ -17,8 +17,8 @@ export const saveCheckIn = async (
     data: CheckInSchema,
     latestCheckIn: CheckIn | null | undefined
 ): Promise<CheckInSaveResult> => {
-    const checkInExists = latestCheckIn &&
-        isTodayCheckIn(latestCheckIn)
+    const checkInExists = latestCheckIn
+        && isTodayCheckIn(latestCheckIn)
 
     if (checkInExists) {
         const res = await patchCheckIn(latestCheckIn.id, data)

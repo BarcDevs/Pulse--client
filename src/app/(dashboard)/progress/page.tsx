@@ -1,4 +1,4 @@
-import {ProgressPageContent} from '@/components/progress/ProgressPageContent'
+import { ProgressPageContent } from '@/components/progress/ProgressPageContent'
 
 const ProgressPage = () => (
     <ProgressPageContent/>

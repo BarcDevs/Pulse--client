@@ -1,10 +1,10 @@
-import type {SetState} from '@/types/utils/react'
+import type { SetState } from '@/types/utils/react'
 
-import {Button} from '@/components/ui/button'
+import { Button } from '@/components/ui/button'
 
-import {cn} from '@/lib/utils'
+import { cn } from '@/lib/utils'
 
-import {insightsPageTexts}
+import { insightsPageTexts }
     from '@/constants/componentTexts/insightsComponent'
 
 type BehavioralPatternsTabsProps = {
@@ -27,16 +27,16 @@ export const BehavioralPatternsTabs = ({
             <Button
                 onClick={handleSevenDaysClick}
                 variant={
-                    activeTab === '7days' ?
-                        'default' :
-                        'ghost'
+                    activeTab === '7days'
+                        ? 'default'
+                        : 'ghost'
                 }
                 size={'sm'}
                 className={cn(
                     'rounded-md text-xs font-medium',
-                    activeTab === '7days' ?
-                        'bg-surface-card text-foreground shadow-sm' :
-                        'text-muted-foreground hover:text-foreground'
+                    activeTab === '7days'
+                        ? 'bg-surface-card text-foreground shadow-sm'
+                        : 'text-muted-foreground hover:text-foreground'
                 )}
             >
                 {insightsPageTexts.behavioralPatterns.tabs.sevenDays}
@@ -44,16 +44,16 @@ export const BehavioralPatternsTabs = ({
             <Button
                 onClick={handleThirtyDaysClick}
                 variant={
-                    activeTab === '30days' ?
-                        'default' :
-                        'ghost'
+                    activeTab === '30days'
+                        ? 'default'
+                        : 'ghost'
                 }
                 size={'sm'}
                 className={cn(
                     'rounded-md text-xs font-medium',
-                    activeTab === '30days' ?
-                        'bg-primary text-primary-foreground' :
-                        'text-muted-foreground hover:text-foreground'
+                    activeTab === '30days'
+                        ? 'bg-primary text-primary-foreground'
+                        : 'text-muted-foreground hover:text-foreground'
                 )}
             >
                 {insightsPageTexts.behavioralPatterns.tabs.thirtyDays}

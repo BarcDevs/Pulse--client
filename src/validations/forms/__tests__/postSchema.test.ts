@@ -79,8 +79,8 @@ describe(
                 if ( !result.success ) {
                     const categoryIssue =
                         result.error.issues.find(
-                            i => i.message ===
-                                'Category is invalid'
+                            i => i.message
+                                === 'Category is invalid'
                         )
                     expect(categoryIssue).toBeDefined()
                 }
@@ -107,8 +107,8 @@ describe(
                 if ( !result.success ) {
                     const titleIssue =
                         result.error.issues.find(
-                            i => i.message ===
-                                'Title is too short'
+                            i => i.message
+                                === 'Title is too short'
                         )
                     expect(titleIssue).toBeDefined()
                 }
@@ -125,8 +125,8 @@ describe(
                 if ( !result.success ) {
                     const titleIssue =
                         result.error.issues.find(
-                            i => i.message ===
-                                'Title is too long'
+                            i => i.message
+                                === 'Title is too long'
                         )
                     expect(titleIssue).toBeDefined()
                 }
@@ -169,8 +169,8 @@ describe(
                 if ( !result.success ) {
                     const bodyIssue =
                         result.error.issues.find(
-                            i => i.message ===
-                                'Content is too short'
+                            i => i.message
+                                === 'Content is too short'
                         )
                     expect(bodyIssue).toBeDefined()
                 }

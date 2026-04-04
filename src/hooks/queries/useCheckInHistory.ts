@@ -1,14 +1,14 @@
-import {useQuery} from '@tanstack/react-query'
+import { useQuery } from '@tanstack/react-query'
 
 import type {
     MoodPainSeriesPoint
 } from '@/types/checkIn/checkIn'
-import type {Response} from '@/types/responses'
+import type { Response } from '@/types/responses'
 
-import {checkInQueryKeys} from '@/constants/queryKeys'
-import {minuteInMs} from '@/constants/time'
+import { checkInQueryKeys } from '@/constants/queryKeys'
+import { minuteInMs } from '@/constants/time'
 
-import {fetchCheckInHistory} from '@/api/checkIn'
+import { fetchCheckInHistory } from '@/api/checkIn'
 
 export const useCheckInHistory = (
     days: number,

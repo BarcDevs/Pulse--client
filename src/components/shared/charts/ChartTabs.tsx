@@ -4,7 +4,7 @@ import {
     TabsTrigger
 } from '@/components/ui/tabs'
 
-import {chartTimePeriods} from '@/constants/componentTexts/progressCharts'
+import { chartTimePeriods } from '@/constants/componentTexts/progressCharts'
 
 type ChartTabsProps = {
     defaultValue?: string

@@ -1,10 +1,10 @@
-import {useForm} from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 
-import {zodResolver} from '@hookform/resolvers/zod'
+import { zodResolver } from '@hookform/resolvers/zod'
 
 import {
     type NotificationsSettingsSchema,
-    notificationsSettingsSchema} from '@/validations/forms/settingsSchema'
+    notificationsSettingsSchema } from '@/validations/forms/settingsSchema'
 
 export const useNotificationsSettingsForm = () => {
     const form = useForm<NotificationsSettingsSchema>({
@@ -15,5 +15,5 @@ export const useNotificationsSettingsForm = () => {
         }
     })
 
-    return {form}
+    return { form }
 }

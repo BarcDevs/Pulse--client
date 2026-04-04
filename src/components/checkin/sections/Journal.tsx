@@ -1,7 +1,7 @@
-import {PenLine} from 'lucide-react'
-import type {ChangeEvent} from 'react'
+import { PenLine } from 'lucide-react'
+import type { ChangeEvent } from 'react'
 
-import type {FormControlProps} from '@/types/forms'
+import type { FormControlProps } from '@/types/forms'
 
 import {
     Card,
@@ -9,11 +9,11 @@ import {
     CardHeader,
     CardTitle
 } from '@/components/ui/card'
-import {Textarea} from '@/components/ui/textarea'
+import { Textarea } from '@/components/ui/textarea'
 
-import {checkInTexts} from '@/constants/componentTexts/checkIn'
+import { checkInTexts } from '@/constants/componentTexts/checkIn'
 
-import type {CheckInSchema} from '@/validations/forms/checkInSchema'
+import type { CheckInSchema } from '@/validations/forms/checkInSchema'
 
 type CheckInJournalProps = FormControlProps<CheckInSchema>
 

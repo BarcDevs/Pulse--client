@@ -1,8 +1,8 @@
-import {HelpCircle} from 'lucide-react'
+import { HelpCircle } from 'lucide-react'
 
-import {Button} from '@/components/ui/button'
+import { Button } from '@/components/ui/button'
 
-import {settingsPageTexts} from '@/constants/componentTexts/settings'
+import { settingsPageTexts } from '@/constants/componentTexts/settings'
 
 export const SettingsSidebarFooter = () => (
     <div className={'pt-4 mt-4 border-t border-border'}>

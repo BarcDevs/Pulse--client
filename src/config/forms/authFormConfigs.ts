@@ -1,5 +1,5 @@
-import {loginSchema} from '@/validations/forms/loginSchema'
-import {signupSchema} from '@/validations/forms/signupSchema'
+import { loginSchema } from '@/validations/forms/loginSchema'
+import { signupSchema } from '@/validations/forms/signupSchema'
 
 type AuthFormType =
     'login' |

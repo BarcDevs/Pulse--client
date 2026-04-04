@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-import {landing} from '@/constants/componentTexts/landing'
+import { landing } from '@/constants/componentTexts/landing'
 
 export const Logo = ({}) => (
     <Link

@@ -1,8 +1,8 @@
-import type {SetState} from '@/types/utils/react'
+import type { SetState } from '@/types/utils/react'
 
-import {Button} from '@/components/ui/button'
+import { Button } from '@/components/ui/button'
 
-import {chatTexts} from '@/constants/componentTexts/chat'
+import { chatTexts } from '@/constants/componentTexts/chat'
 
 type ChatSuggestionsPanelProps = {
     onSuggestionClick: SetState<string>

@@ -1,7 +1,7 @@
-import {cn} from '@/lib/utils'
+import { cn } from '@/lib/utils'
 
-import {profilePageTexts} from '@/constants/componentTexts/profile'
-import {recoveryFocusAreasWithIcons}
+import { profilePageTexts } from '@/constants/componentTexts/profile'
+import { recoveryFocusAreasWithIcons }
     from '@/constants/mappings/profile'
 
 export const RecoveryIdentity = () => (

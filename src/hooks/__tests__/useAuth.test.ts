@@ -6,7 +6,7 @@ import {
     vi
 } from 'vitest'
 
-import {renderHook} from '@testing-library/react'
+import { renderHook } from '@testing-library/react'
 
 const {
     mockHandleLogin,
@@ -26,7 +26,7 @@ vi.mock('@/handlers/auth', () => ({
     refreshAuthData: vi.fn()
 }))
 
-import {useAuth} from '@/hooks/useAuth'
+import { useAuth } from '@/hooks/useAuth'
 
 // ==================== useAuth ====================
 describe('useAuth',
@@ -36,7 +36,7 @@ describe('useAuth',
 
             vi.stubGlobal(
                 'location',
-                {reload: vi.fn()}
+                { reload: vi.fn() }
             )
         })
 
@@ -46,7 +46,7 @@ describe('useAuth',
                 it(
                     'should return null user when not authenticated',
                     () => {
-                        const {result} = renderHook(
+                        const { result } = renderHook(
                             () => useAuth()
                         )
                         expect(result.current.user).toBeNull()
@@ -55,7 +55,7 @@ describe('useAuth',
                 it(
                     'should return user when authenticated',
                     () => {
-                        const {result} = renderHook(
+                        const { result } = renderHook(
                             () => useAuth()
                         )
                         expect(result.current.user)
@@ -69,7 +69,7 @@ describe('useAuth',
                 it(
                     'should return false when not authenticated',
                     () => {
-                        const {result} = renderHook(() =>
+                        const { result } = renderHook(() =>
                             useAuth())
                         expect(result.current.isLoggedIn)
                             .toBe(false)
@@ -78,7 +78,7 @@ describe('useAuth',
                 it(
                     'should return true when authenticated',
                     () => {
-                        const {result} = renderHook(
+                        const { result } = renderHook(
                             () => useAuth()
                         )
                         expect(result.current.isLoggedIn)
@@ -101,7 +101,7 @@ describe('useAuth',
                         mockHandleLogin
                             .mockResolvedValueOnce(true)
 
-                        const {result} = renderHook(() =>
+                        const { result } = renderHook(() =>
                             useAuth()
                         )
                         await result.current.login(credentials)
@@ -116,7 +116,7 @@ describe('useAuth',
                         mockHandleLogin
                             .mockResolvedValueOnce(true)
 
-                        const {result} = renderHook(() =>
+                        const { result } = renderHook(() =>
                             useAuth()
                         )
                         const loginResult =
@@ -148,7 +148,7 @@ describe('useAuth',
                         mockHandleSignup
                             .mockResolvedValueOnce(true)
 
-                        const {result} = renderHook(
+                        const { result } = renderHook(
                             () => useAuth()
                         )
                         await result.current.register(signupData)
@@ -163,7 +163,7 @@ describe('useAuth',
                         mockHandleSignup
                             .mockResolvedValueOnce(true)
 
-                        const {result} = renderHook(
+                        const { result } = renderHook(
                             () => useAuth()
                         )
                         const registerResult =
@@ -188,7 +188,7 @@ describe('useAuth',
                         mockHandleLogout
                             .mockResolvedValueOnce(undefined)
 
-                        const {result} = renderHook(() =>
+                        const { result } = renderHook(() =>
                             useAuth()
                         )
                         await result.current.logout()
@@ -203,7 +203,7 @@ describe('useAuth',
                         mockHandleLogout
                             .mockResolvedValueOnce(undefined)
 
-                        const {result} = renderHook(
+                        const { result } = renderHook(
                             () => useAuth()
                         )
                         await result.current.logout()
@@ -222,7 +222,7 @@ describe('useAuth',
                         mockHandleLogout
                             .mockResolvedValueOnce(undefined)
 
-                        const {result} = renderHook(
+                        const { result } = renderHook(
                             () => useAuth()
                         )
                         await result.current.checkAuth()
@@ -234,7 +234,7 @@ describe('useAuth',
                 it(
                     'should not call logout when token is still valid',
                     async () => {
-                        const {result} = renderHook(
+                        const { result } = renderHook(
                             () => useAuth()
                         )
                         await result.current.checkAuth()
@@ -246,7 +246,7 @@ describe('useAuth',
                 it(
                     'should not call logout when expiresAt is null',
                     async () => {
-                        const {result} = renderHook(
+                        const { result } = renderHook(
                             () => useAuth()
                         )
                         await result.current.checkAuth()

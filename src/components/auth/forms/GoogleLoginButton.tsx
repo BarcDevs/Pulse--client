@@ -1,11 +1,11 @@
 'use client'
 
-import {Icon} from '@/components/shared/ui/Icon'
-import {Button} from '@/components/ui/button'
+import { Icon } from '@/components/shared/ui/Icon'
+import { Button } from '@/components/ui/button'
 
-import {redirectToGoogleAuth} from '@/lib/auth'
+import { redirectToGoogleAuth } from '@/lib/auth'
 
-import {authTexts} from '@/constants/componentTexts/auth'
+import { authTexts } from '@/constants/componentTexts/auth'
 
 export const GoogleLoginButton = () => {
     const handleClick = async () => {

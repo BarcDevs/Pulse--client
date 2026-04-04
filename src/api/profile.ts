@@ -3,12 +3,12 @@ import {
     HealthInterest,
     Profile,
     ProfileOptions,
-    ProfileUpdateInput} from '@/types/profile/profile'
+    ProfileUpdateInput } from '@/types/profile/profile'
 
-import {api} from './index'
+import { api } from './index'
 
 export const getProfile = async (): Promise<Profile> => {
-    const {data} = await api.get<Profile>(
+    const { data } = await api.get<Profile>(
         '/profile/me'
     )
     return data
@@ -17,7 +17,7 @@ export const getProfile = async (): Promise<Profile> => {
 export const updateProfile = async (
     updates: ProfileUpdateInput
 ): Promise<Profile> => {
-    const {data} = await api.patch<Profile>(
+    const { data } = await api.patch<Profile>(
         '/profile/me',
         updates
     )
@@ -26,7 +26,7 @@ export const updateProfile = async (
 
 export const getProfileOptions = async ():
     Promise<ProfileOptions> => {
-    const {data} = await api.get<ProfileOptions>(
+    const { data } = await api.get<ProfileOptions>(
         '/profile/options'
     )
     return data
@@ -35,11 +35,11 @@ export const getProfileOptions = async ():
 export const addInterests = async (
     slugs: string[]
 ): Promise<HealthInterest[]> => {
-    const {data} = await api.post<
+    const { data } = await api.post<
         HealthInterest[]
     >(
         '/health-interests',
-        {slugs}
+        { slugs }
     )
     return data
 }
@@ -55,11 +55,11 @@ export const removeInterest = async (
 export const addActivities = async (
     slugs: string[]
 ): Promise<ActivityPreference[]> => {
-    const {data} = await api.post<
+    const { data } = await api.post<
         ActivityPreference[]
     >(
         '/activities',
-        {slugs}
+        { slugs }
     )
     return data
 }

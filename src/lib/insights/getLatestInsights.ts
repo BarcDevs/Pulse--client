@@ -1,7 +1,7 @@
-import {CheckIn} from '@/types/checkIn'
-import {Response} from '@/types/responses'
+import { CheckIn } from '@/types/checkIn'
+import { Response } from '@/types/responses'
 
-import {dashboardPageTexts}
+import { dashboardPageTexts }
     from '@/constants/componentTexts/dashboard'
 
 export const getLatestInsights = (
@@ -10,6 +10,6 @@ export const getLatestInsights = (
     const latestInsight =
         checkInsResponse?.data?.[0]?.insights?.[0]
 
-    return latestInsight?.content ??
-        dashboardPageTexts.noInsights
+    return latestInsight?.content
+        ?? dashboardPageTexts.noInsights
 }

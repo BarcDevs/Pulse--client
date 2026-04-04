@@ -1,5 +1,5 @@
-import {Download, Plus, Share2} from 'lucide-react'
-import type {ReactNode} from 'react'
+import { Download, Plus, Share2 } from 'lucide-react'
+import type { ReactNode } from 'react'
 
 export const renderIcon = (
     icon: 'plus' | 'download' | 'share2' | undefined

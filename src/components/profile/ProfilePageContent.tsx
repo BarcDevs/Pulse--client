@@ -1,9 +1,9 @@
-import {ActiveGoals} from './goals/ActiveGoals'
-import {ProfileCard} from './info/ProfileCard'
-import {ProfileBasicInfo} from './settings/BasicInfo'
-import {DailyActivityPreferences} from './settings/DailyActivityPreferences'
-import {SystemPrivacy} from './settings/SystemPrivacy'
-import {RecoveryIdentity} from './RecoveryIdentity'
+import { ActiveGoals } from './goals/ActiveGoals'
+import { ProfileCard } from './info/ProfileCard'
+import { ProfileBasicInfo } from './settings/BasicInfo'
+import { DailyActivityPreferences } from './settings/DailyActivityPreferences'
+import { SystemPrivacy } from './settings/SystemPrivacy'
+import { RecoveryIdentity } from './RecoveryIdentity'
 
 export const ProfilePageContent = () => (
     <div className={'p-6 space-y-6'}>

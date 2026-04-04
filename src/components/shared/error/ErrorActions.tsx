@@ -1,13 +1,13 @@
 'use client'
 
-import {useRouter} from 'next/navigation'
+import { useRouter } from 'next/navigation'
 
-import {RotateCcw} from 'lucide-react'
+import { RotateCcw } from 'lucide-react'
 
-import {Icon} from '@/components/shared/ui/Icon'
-import {Button} from '@/components/ui/button'
+import { Icon } from '@/components/shared/ui/Icon'
+import { Button } from '@/components/ui/button'
 
-import {errorPageTexts} from '@/constants/componentTexts/ui/errors'
+import { errorPageTexts } from '@/constants/componentTexts/ui/errors'
 
 type ErrorActionsProps = {
     resetAction: () => void

@@ -1,8 +1,8 @@
 'use client'
 
-import {NotFoundContent} from '@/components/shared/error/notFound/NotFoundContent'
-import {NotFoundImage} from '@/components/shared/error/notFound/NotFoundImage'
-import {NotFoundResources} from '@/components/shared/error/notFound/NotFoundResources'
+import { NotFoundContent } from '@/components/shared/error/notFound/NotFoundContent'
+import { NotFoundImage } from '@/components/shared/error/notFound/NotFoundImage'
+import { NotFoundResources } from '@/components/shared/error/notFound/NotFoundResources'
 
 const NotFoundPage = () => {
     const handleGoBack = () => {

@@ -6,10 +6,10 @@ import {
     YAxis
 } from 'recharts'
 
-import {insightsDetail}
+import { insightsDetail }
     from '@/constants/componentTexts/insightsDetail'
 
-import {PATTERNS_SOCIAL_DATA} from '@/mocks/chartData'
+import { PATTERNS_SOCIAL_DATA } from '@/mocks/chartData'
 
 export const CorrelationCard = () => (
     <div className={'rounded-xl bg-surface-section p-4'}>

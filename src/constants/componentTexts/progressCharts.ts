@@ -1,4 +1,4 @@
-import type {TrendAreaChartProps} from '@/components/shared/charts/TrendAreaChart'
+import type { TrendAreaChartProps } from '@/components/shared/charts/TrendAreaChart'
 
 export const progressCharts = {
     moodChart: {

@@ -109,8 +109,8 @@ describe(
                 if ( !result.success ) {
                     const mismatchIssue =
                         result.error.issues.find(
-                            i => i.message ===
-                                'Passwords do not match'
+                            i => i.message
+                                === 'Passwords do not match'
                         )
                     expect(mismatchIssue).toBeDefined()
                 }
@@ -128,8 +128,8 @@ describe(
                 if ( !result.success ) {
                     const mismatchIssue =
                         result.error.issues.find(
-                            i => i.message ===
-                                'Passwords do not match'
+                            i => i.message
+                                === 'Passwords do not match'
                         )
                     expect(mismatchIssue?.path)
                         .toContain('confirmPassword')
@@ -148,8 +148,8 @@ describe(
                 if ( !result.success ) {
                     const emptyIssue =
                         result.error.issues.find(
-                            i => i.message ===
-                                'Confirm password is required'
+                            i => i.message
+                                === 'Confirm password is required'
                         )
                     expect(emptyIssue).toBeDefined()
                 }

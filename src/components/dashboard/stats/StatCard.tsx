@@ -1,8 +1,8 @@
-import {ReactNode} from 'react'
+import { ReactNode } from 'react'
 
-import {Card, CardContent} from '@/components/ui/card'
+import { Card, CardContent } from '@/components/ui/card'
 
-import {cn} from '@/lib/utils'
+import { cn } from '@/lib/utils'
 
 type StatCardProps = {
     label: string
@@ -38,8 +38,8 @@ export const StatCard = ({
                     </p>
                     <p className={'text-2xl font-bold text-foreground'}>
                         {value}
-                        {subValue &&
-                            <span className={'text-lg font-normal text-muted-foreground'}>
+                        {subValue
+                            && <span className={'text-lg font-normal text-muted-foreground'}>
                                 {subValue}
                             </span>}
                     </p>

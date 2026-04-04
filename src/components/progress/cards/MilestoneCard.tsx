@@ -1,6 +1,6 @@
-import {ComponentType} from 'react'
+import { ComponentType } from 'react'
 
-import {cn} from '@/lib/utils'
+import { cn } from '@/lib/utils'
 
 type MilestoneCardProps = {
     icon: ComponentType<{className?: string}>
@@ -22,9 +22,9 @@ export const MilestoneCard = ({
     <div
         className={cn(
             'flex flex-col items-center rounded-xl p-6 text-center',
-            achieved ?
-                'bg-surface-section' :
-                'bg-muted opacity-60'
+            achieved
+                ? 'bg-surface-section'
+                : 'bg-muted opacity-60'
         )}
     >
         <div

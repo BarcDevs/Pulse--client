@@ -1,12 +1,12 @@
 'use client'
 
-import {useState} from 'react'
+import { useState } from 'react'
 
-import {Trophy} from 'lucide-react'
+import { Trophy } from 'lucide-react'
 
-import type {FormControlProps} from '@/types/forms'
+import type { FormControlProps } from '@/types/forms'
 
-import {FormInput} from '@/components/shared/inputs/FormInput'
+import { FormInput } from '@/components/shared/inputs/FormInput'
 import {
     Card,
     CardContent,
@@ -14,11 +14,11 @@ import {
     CardTitle
 } from '@/components/ui/card'
 
-import {checkInTexts} from '@/constants/componentTexts/checkIn'
+import { checkInTexts } from '@/constants/componentTexts/checkIn'
 
-import type {CheckInSchema} from '@/validations/forms/checkInSchema'
+import type { CheckInSchema } from '@/validations/forms/checkInSchema'
 
-import {ActivityToggleButton} from './ActivityToggleButton'
+import { ActivityToggleButton } from './ActivityToggleButton'
 
 type CheckInActivitiesProps = FormControlProps<CheckInSchema> & {
     suggestedActivities?: string[]
@@ -44,8 +44,8 @@ export const CheckInActivities = ({
 
     const toggleActivity = (activity: string) => {
         const updated = selectedActivities
-            .includes(activity) ?
-            selectedActivities.filter((a) =>
+            .includes(activity)
+            ? selectedActivities.filter((a) =>
                 a !== activity
             ) : [
                 ...selectedActivities,
@@ -57,8 +57,8 @@ export const CheckInActivities = ({
     const addCustomActivity = () => {
         const trimmed = customActivity.trim()
 
-        if (trimmed &&
-            !selectedActivities.includes(trimmed)) {
+        if (trimmed
+            && !selectedActivities.includes(trimmed)) {
             const updated = [
                 ...selectedActivities,
                 trimmed

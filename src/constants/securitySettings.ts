@@ -4,7 +4,7 @@ import {
     Mail
 } from 'lucide-react'
 
-import {settingsPageTexts} from './componentTexts/settings'
+import { settingsPageTexts } from './componentTexts/settings'
 
 type SecuritySettingItem = {
     id: string

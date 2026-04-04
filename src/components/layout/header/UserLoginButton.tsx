@@ -1,8 +1,8 @@
 import Link from 'next/link'
 
-import {LogIn} from 'lucide-react'
+import { LogIn } from 'lucide-react'
 
-import {Button} from '@/components/ui/button'
+import { Button } from '@/components/ui/button'
 
 export const UserLoginButton = () => (
     <Button

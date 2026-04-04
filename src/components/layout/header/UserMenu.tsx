@@ -7,16 +7,16 @@ import {
     DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu'
 
-import {getUserFallback} from '@/lib/utils'
+import { getUserFallback } from '@/lib/utils'
 
-import {bottomNavItems} from '@/constants/navigationItems'
+import { bottomNavItems } from '@/constants/navigationItems'
 
-import {useAuth} from '@/context/AuthContext'
+import { useAuth } from '@/context/AuthContext'
 
-import {UserAvatar} from './UserAvatar'
-import {UserLoginButton} from './UserLoginButton'
-import {UserMenuItem} from './UserMenuItem'
-import {UserSkeleton} from './UserSkeleton'
+import { UserAvatar } from './UserAvatar'
+import { UserLoginButton } from './UserLoginButton'
+import { UserMenuItem } from './UserMenuItem'
+import { UserSkeleton } from './UserSkeleton'
 
 export const UserMenu = () => {
     const { user, isLoading } = useAuth()

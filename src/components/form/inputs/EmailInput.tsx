@@ -1,13 +1,13 @@
-import {FieldValues} from 'react-hook-form'
+import { FieldValues } from 'react-hook-form'
 
-import {FieldConfig} from '@/types/forms/forms'
+import { FieldConfig } from '@/types/forms/forms'
 
 import {
     FormControl,
     FormDescription,
     FormLabel
 } from '@/components/ui/form'
-import {Input} from '@/components/ui/input'
+import { Input } from '@/components/ui/input'
 
 type EmailInputProps<T extends FieldValues> = {
     field: T
@@ -19,8 +19,8 @@ export const EmailInput = <T extends FieldValues> ({
     config
 }: EmailInputProps<T>) => (
     <>
-        {config.label &&
-            <FormLabel>
+        {config.label
+            && <FormLabel>
                 {config.label}
             </FormLabel>}
         <FormControl>

@@ -1,6 +1,6 @@
-import {twMerge} from 'tailwind-merge'
+import { twMerge } from 'tailwind-merge'
 
-import {PartialUser} from '@/types'
+import { PartialUser } from '@/types'
 
 import {
     Avatar,
@@ -8,7 +8,7 @@ import {
     AvatarImage,
 } from '@/components/ui/avatar'
 
-import {getUserFallback} from '@/lib/utils'
+import { getUserFallback } from '@/lib/utils'
 
 type Props = {
     user: PartialUser
@@ -18,7 +18,7 @@ type Props = {
 }
 
 export const UserLabel = ({
-    user: {firstName, lastName, username},
+    user: { firstName, lastName, username },
     withName,
     textStyles,
     image,

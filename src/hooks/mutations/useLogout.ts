@@ -1,11 +1,11 @@
-import {useRouter} from 'next/navigation'
+import { useRouter } from 'next/navigation'
 
 import {
     useMutation,
     useQueryClient
 } from '@tanstack/react-query'
 
-import {logout as logoutApi} from '@/api/auth'
+import { logout as logoutApi } from '@/api/auth'
 
 export const useLogout = () => {
     const queryClient = useQueryClient()

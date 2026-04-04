@@ -1,12 +1,12 @@
 'use client'
 
-import {usePathname, useRouter} from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 
-import {Button} from '@/components/ui/button'
+import { Button } from '@/components/ui/button'
 
-import {cn} from '@/lib/utils'
+import { cn } from '@/lib/utils'
 
-import {NavItem} from '@/constants/navigationItems'
+import { NavItem } from '@/constants/navigationItems'
 
 type NavButtonProps = {
     item: NavItem
@@ -18,8 +18,8 @@ export const NavButton = ({
     const pathname = usePathname()
     const router = useRouter()
 
-    const isActive = pathname === item.href ||
-        pathname.startsWith(item.href + '/')
+    const isActive = pathname === item.href
+        || pathname.startsWith(item.href + '/')
     const Icon = item.icon
 
     const handleNavigation = () =>

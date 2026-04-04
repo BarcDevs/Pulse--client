@@ -5,9 +5,9 @@ import {
     useState
 } from 'react'
 
-import type {User} from '@/types'
+import type { User } from '@/types'
 
-import {getProfile} from '@/api/profile'
+import { getProfile } from '@/api/profile'
 
 type UseUserReturn = {
     user: User | null

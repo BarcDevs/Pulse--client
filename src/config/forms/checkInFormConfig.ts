@@ -1,6 +1,6 @@
-import type {FormConfig} from '@/types/forms/forms'
+import type { FormConfig } from '@/types/forms/forms'
 
-import {checkInFormSchema} from '@/config/schema/checkInForm'
+import { checkInFormSchema } from '@/config/schema/checkInForm'
 
 const checkInFormConfig: FormConfig = {
     fields: {

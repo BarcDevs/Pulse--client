@@ -1,17 +1,17 @@
-import {Send} from 'lucide-react'
-import type {KeyboardEvent} from 'react'
+import { Send } from 'lucide-react'
+import type { KeyboardEvent } from 'react'
 
-import type {SetState} from '@/types/utils/react'
+import type { SetState } from '@/types/utils/react'
 
-import {FormInput} from '@/components/shared/inputs/FormInput'
+import { FormInput } from '@/components/shared/inputs/FormInput'
 import {
     Avatar,
     AvatarFallback,
     AvatarImage
 } from '@/components/ui/avatar'
-import {Button} from '@/components/ui/button'
+import { Button } from '@/components/ui/button'
 
-import {chatTexts} from '@/constants/componentTexts/chat'
+import { chatTexts } from '@/constants/componentTexts/chat'
 
 type ChatInputFieldProps = {
     value: string

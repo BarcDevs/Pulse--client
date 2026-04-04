@@ -1,7 +1,7 @@
-import {Button} from '@/components/ui/button'
+import { Button } from '@/components/ui/button'
 
-import {profilePageTexts} from '@/constants/componentTexts/profile'
-import {profileSystemPrivacySettingsWithIcons} from '@/constants/mappings/profile'
+import { profilePageTexts } from '@/constants/componentTexts/profile'
+import { profileSystemPrivacySettingsWithIcons } from '@/constants/mappings/profile'
 
 export const SystemPrivacy = () => (
     <div className={'rounded-2xl bg-surface-card p-6'}>

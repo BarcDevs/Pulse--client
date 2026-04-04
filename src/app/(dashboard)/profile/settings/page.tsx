@@ -1,4 +1,4 @@
-import {SettingsPageContent} from '@/components/settings/SettingsPageContent'
+import { SettingsPageContent } from '@/components/settings/SettingsPageContent'
 
 const SettingsPage = () => (
     <SettingsPageContent/>

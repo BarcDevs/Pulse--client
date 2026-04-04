@@ -1,25 +1,25 @@
 'use client'
 
-import {useRouter} from 'next/navigation'
+import { useRouter } from 'next/navigation'
 
 import type {
     CheckIn,
     CheckInStats
 } from '@/types/checkIn/checkIn'
 
-import {Button} from '@/components/ui/button'
+import { Button } from '@/components/ui/button'
 
-import {useCheckInForm} from '@/hooks/forms/useCheckInForm'
+import { useCheckInForm } from '@/hooks/forms/useCheckInForm'
 
-import {checkInTexts} from '@/constants/componentTexts/checkIn'
+import { checkInTexts } from '@/constants/componentTexts/checkIn'
 
-import {handleCheckInSubmit} from '@/handlers/actions/checkIn'
+import { handleCheckInSubmit } from '@/handlers/actions/checkIn'
 
-import type {CheckInSchema} from '@/validations/forms/checkInSchema'
+import type { CheckInSchema } from '@/validations/forms/checkInSchema'
 
-import {CheckInActivities} from '../inputs/ActivitySelector'
-import {CheckInSliders} from '../inputs/Sliders'
-import {CheckInJournal} from '../sections/Journal'
+import { CheckInActivities } from '../inputs/ActivitySelector'
+import { CheckInSliders } from '../inputs/Sliders'
+import { CheckInJournal } from '../sections/Journal'
 
 type CheckInFormProps = {
     latestCheckIn?: CheckIn | null
@@ -74,9 +74,9 @@ export const CheckInForm = ({
                     size={'lg'}
                     disabled={form.formState.isSubmitting}
                 >
-                    {form.formState.isSubmitting ?
-                        checkInTexts.submittingButton :
-                        checkInTexts.submitButton}
+                    {form.formState.isSubmitting
+                        ? checkInTexts.submittingButton
+                        : checkInTexts.submitButton}
                 </Button>
             </div>
         </form>

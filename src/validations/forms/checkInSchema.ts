@@ -1,6 +1,6 @@
 import * as z from 'zod'
 
-import {checkInFormSchema} from '@/config/schema/checkInForm'
+import { checkInFormSchema } from '@/config/schema/checkInForm'
 
 export const checkInSchema = z.object({
     moodScore: z.number()

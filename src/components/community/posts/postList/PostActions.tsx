@@ -4,9 +4,9 @@ import {
     Share2
 } from 'lucide-react'
 
-import {Button} from '@/components/ui/button'
+import { Button } from '@/components/ui/button'
 
-import {communityPageTexts} from '@/constants/componentTexts/community'
+import { communityPageTexts } from '@/constants/componentTexts/community'
 
 type PostActionsProps = {
     replies: number

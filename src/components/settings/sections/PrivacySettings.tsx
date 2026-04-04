@@ -1,13 +1,13 @@
 'use client'
 
-import {Lock} from 'lucide-react'
+import { Lock } from 'lucide-react'
 
-import {SettingToggle} from '@/components/shared/inputs/SettingToggle'
+import { SettingToggle } from '@/components/shared/inputs/SettingToggle'
 
-import {usePrivacySettingsForm}
+import { usePrivacySettingsForm }
     from '@/hooks/forms/usePrivacySettingsForm'
 
-import {settingsPageTexts}
+import { settingsPageTexts }
     from '@/constants/componentTexts/settings'
 
 export const PrivacySettings = () => {

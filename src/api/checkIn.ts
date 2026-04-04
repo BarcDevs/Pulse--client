@@ -1,16 +1,16 @@
-import {format} from 'date-fns'
+import { format } from 'date-fns'
 
 import {
     CheckIn,
     CheckInStats
 } from '@/types/checkIn/checkIn'
-import {ApiResponse, Response} from '@/types/responses'
-import {TimePeriod} from '@/types/time'
+import { ApiResponse, Response } from '@/types/responses'
+import { TimePeriod } from '@/types/time'
 
-import {ENDPOINTS} from '@/constants/endpoints'
+import { ENDPOINTS } from '@/constants/endpoints'
 
-import {api} from '@/api/index'
-import {CheckInSchema} from '@/validations/forms/checkInSchema'
+import { api } from '@/api/index'
+import { CheckInSchema } from '@/validations/forms/checkInSchema'
 
 export const fetchCheckIns = async (
     limit?: number

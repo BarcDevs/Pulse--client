@@ -1,6 +1,6 @@
-import {LucideIcon} from 'lucide-react'
+import { LucideIcon } from 'lucide-react'
 
-import {ActivityTagsList} from './ActivityTagsList'
+import { ActivityTagsList } from './ActivityTagsList'
 
 type ActivityItemProps = {
     icon: LucideIcon
@@ -18,13 +18,13 @@ export const ActivityItem = ({
     variant = 'default'
 }: ActivityItemProps) => {
     const baseClasses = 'flex items-start gap-4 rounded-xl p-4'
-    const containerClasses = variant === 'card' ?
-        `${baseClasses} bg-surface-section` :
-        `${baseClasses} flex items-center gap-4`
+    const containerClasses = variant === 'card'
+        ? `${baseClasses} bg-surface-section`
+        : `${baseClasses} flex items-center gap-4`
 
-    const iconContainerClasses = variant === 'card' ?
-        'flex size-10 shrink-0 items-center justify-center rounded-xl bg-primary-light' :
-        'h-12 w-12 rounded-xl bg-surface-card flex items-center justify-center'
+    const iconContainerClasses = variant === 'card'
+        ? 'flex size-10 shrink-0 items-center justify-center rounded-xl bg-primary-light'
+        : 'h-12 w-12 rounded-xl bg-surface-card flex items-center justify-center'
 
     return (
         <div className={containerClasses}>

@@ -5,15 +5,15 @@ import {
     useState
 } from 'react'
 
-import {useQueryClient} from '@tanstack/react-query'
+import { useQueryClient } from '@tanstack/react-query'
 
-import type {LayoutProps, User} from '@/types'
+import type { LayoutProps, User } from '@/types'
 
-import {useGetMe} from '@/hooks/queries/useGetMe'
+import { useGetMe } from '@/hooks/queries/useGetMe'
 
-import {authQueryKeys} from '@/constants/queryKeys'
+import { authQueryKeys } from '@/constants/queryKeys'
 
-import {AuthContext} from './AuthContext'
+import { AuthContext } from './AuthContext'
 
 export const AuthProvider = ({
     children

@@ -1,16 +1,16 @@
 'use client'
 
-import {Palette} from 'lucide-react'
+import { Palette } from 'lucide-react'
 
-import type {Theme} from '@/types'
+import type { Theme } from '@/types'
 
-import {useAppPreferencesForm}
+import { useAppPreferencesForm }
     from '@/hooks/forms/useAppPreferencesForm'
 
-import {settingsPageTexts} from '@/constants/componentTexts/settings'
+import { settingsPageTexts } from '@/constants/componentTexts/settings'
 
-import {LanguageSelector} from '../selectors/LanguageSelector'
-import {ThemeSelector} from '../selectors/ThemeSelector'
+import { LanguageSelector } from '../selectors/LanguageSelector'
+import { ThemeSelector } from '../selectors/ThemeSelector'
 
 type AppPreferencesProps = {
     theme?: Theme

@@ -1,4 +1,4 @@
-import {errorPageTexts} from '@/constants/componentTexts/ui/errors'
+import { errorPageTexts } from '@/constants/componentTexts/ui/errors'
 
 export const ErrorContent = () => (
     <div className={'space-y-4 max-w-2xl'}>

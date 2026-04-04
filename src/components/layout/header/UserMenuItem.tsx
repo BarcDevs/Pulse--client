@@ -1,11 +1,11 @@
-import {useRouter} from 'next/navigation'
+import { useRouter } from 'next/navigation'
 
-import {Button} from '@/components/ui/button'
-import {DropdownMenuItem} from '@/components/ui/dropdown-menu'
+import { Button } from '@/components/ui/button'
+import { DropdownMenuItem } from '@/components/ui/dropdown-menu'
 
-import {useLogout} from '@/hooks/mutations/useLogout'
+import { useLogout } from '@/hooks/mutations/useLogout'
 
-import {bottomNavItems} from '@/constants/navigationItems'
+import { bottomNavItems } from '@/constants/navigationItems'
 
 type UserMenuItemProps = {
     item: typeof bottomNavItems[0]
@@ -15,11 +15,11 @@ export const UserMenuItem = ({
     item
 }: UserMenuItemProps) => {
     const router = useRouter()
-    const {logoutAsync} = useLogout()
+    const { logoutAsync } = useLogout()
     const isLogout = item.label === 'Logout'
 
-    const handleClick = isLogout ?
-        () => logoutAsync()
+    const handleClick = isLogout
+        ? () => logoutAsync()
         : () => router.push(item.href)
 
     return (

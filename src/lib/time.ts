@@ -1,4 +1,4 @@
-import {formatDistance} from 'date-fns'
+import { formatDistance } from 'date-fns'
 
 /**
  * Converts the given date to a relative time format, e.g., "2 hours ago", "in 5 minutes", etc.

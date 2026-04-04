@@ -1,13 +1,13 @@
-import {useQuery} from '@tanstack/react-query'
+import { useQuery } from '@tanstack/react-query'
 
-import type {User} from '@/types'
-import type {Response} from '@/types/responses'
-import type {AuthResponse} from '@/types/responses/auth'
+import type { User } from '@/types'
+import type { Response } from '@/types/responses'
+import type { AuthResponse } from '@/types/responses/auth'
 
-import {authQueryKeys} from '@/constants/queryKeys'
-import {minuteInMs} from '@/constants/time'
+import { authQueryKeys } from '@/constants/queryKeys'
+import { minuteInMs } from '@/constants/time'
 
-import {getMe as getMeApi} from '@/api/auth'
+import { getMe as getMeApi } from '@/api/auth'
 
 export const useGetMe = () => {
     const query = useQuery<

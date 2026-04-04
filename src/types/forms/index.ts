@@ -1,4 +1,4 @@
 export type {
     AuthFormType,
     FieldConfig,
-    FormConfig} from './forms'
+    FormConfig } from './forms'

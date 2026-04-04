@@ -1,6 +1,6 @@
-import {format} from 'date-fns'
+import { format } from 'date-fns'
 
-import type {CheckIn, MoodPainSeriesPoint} from '@/types/checkIn/checkIn'
+import type { CheckIn, MoodPainSeriesPoint } from '@/types/checkIn/checkIn'
 
 export const buildMoodPainSeries = (
     history: CheckIn[]

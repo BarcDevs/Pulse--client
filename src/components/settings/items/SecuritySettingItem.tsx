@@ -1,6 +1,6 @@
-import {Edit2} from 'lucide-react'
+import { Edit2 } from 'lucide-react'
 
-import {Button} from '@/components/ui/button'
+import { Button } from '@/components/ui/button'
 
 type SecuritySettingItemProps = {
     icon: React.ReactNode
@@ -16,18 +16,18 @@ export const SecuritySettingItem = ({
     variant = 'default'
 }: SecuritySettingItemProps) => (
     <div
-        className={variant === 'destructive' ?
-            'flex items-center justify-between p-4 rounded-xl border border-destructive/20 bg-destructive/5' :
-            'flex items-center justify-between p-4 rounded-xl bg-surface-section'}
+        className={variant === 'destructive'
+            ? 'flex items-center justify-between p-4 rounded-xl border border-destructive/20 bg-destructive/5'
+            : 'flex items-center justify-between p-4 rounded-xl bg-surface-section'}
     >
         <div className={'flex items-center gap-3'}>
             {icon}
             <div>
                 <h4
                     className={
-                        variant === 'destructive' ?
-                            'font-medium text-destructive' :
-                            'font-medium text-foreground'
+                        variant === 'destructive'
+                            ? 'font-medium text-destructive'
+                            : 'font-medium text-foreground'
                     }
                 >
                     {label}
@@ -37,8 +37,8 @@ export const SecuritySettingItem = ({
                 </p>
             </div>
         </div>
-        {variant === 'default' &&
-            <Button
+        {variant === 'default'
+            && <Button
                 variant={'ghost'}
                 size={'sm'}
                 className={'h-8 w-8 p-0 rounded-lg hover:bg-surface-card'}

@@ -1,17 +1,17 @@
-import type {Metadata} from 'next'
-import {Inter} from 'next/font/google'
+import type { Metadata } from 'next'
+import { Inter } from 'next/font/google'
 
-import {Analytics} from '@vercel/analytics/next'
+import { Analytics } from '@vercel/analytics/next'
 
-import {LayoutProps} from '@/types'
+import { LayoutProps } from '@/types'
 
-import {cn} from '@/lib/utils'
+import { cn } from '@/lib/utils'
 
-import {meta} from '@/config/meta'
+import { meta } from '@/config/meta'
 
-import {AuthProvider} from '@/context/AuthProvider'
+import { AuthProvider } from '@/context/AuthProvider'
 
-import {QueryProvider} from '@/app/providers/QueryProvider'
+import { QueryProvider } from '@/app/providers/QueryProvider'
 
 import '@/styles/globals.css'
 

@@ -85,8 +85,20 @@ export const communityPageTexts = {
         title: 'Recovery Mentors',
         chatButton: 'Chat',
         list: [
-            { id: 1, name: 'David Chen', role: 'Certified Coach', avatar: 'D', online: true },
-            { id: 2, name: 'Maria G.', role: 'Wellness Guide', avatar: 'M', online: false }
+            {
+                id: 1,
+                name: 'David Chen',
+                role: 'Certified Coach',
+                avatar: 'D',
+                online: true,
+            },
+            {
+                id: 2,
+                name: 'Maria G.',
+                role: 'Wellness Guide',
+                avatar: 'M',
+                online: false,
+            }
         ]
     },
     sanctuary: {

@@ -1,4 +1,4 @@
-import type {Metadata} from 'next'
+import type { Metadata } from 'next'
 
 export const meta: Metadata = {
     title: 'HealEase - Recovery & Wellness Sanctuary',

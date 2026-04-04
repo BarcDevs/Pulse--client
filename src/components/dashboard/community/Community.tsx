@@ -12,11 +12,11 @@ import {
     CardTitle
 } from '@/components/ui/card'
 
-import {cn} from '@/lib/utils'
+import { cn } from '@/lib/utils'
 
-import {dashboardPageTexts} from '@/constants/componentTexts/dashboard'
+import { dashboardPageTexts } from '@/constants/componentTexts/dashboard'
 
-import {COMMUNITY_UPDATES_TRANSFORMED}
+import { COMMUNITY_UPDATES_TRANSFORMED }
     from '@/mocks/communityMockTexts'
 
 export const DashboardCommunity = () => (

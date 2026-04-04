@@ -1,11 +1,11 @@
 'use client'
 
-import {Sidebar} from '@/components/layout/sidebar/Sidebar'
-import {ErrorActions} from '@/components/shared/error/ErrorActions'
-import {ErrorContent} from '@/components/shared/error/ErrorContent'
-import {ErrorDebug} from '@/components/shared/error/ErrorDebug'
-import {ErrorIllustration} from '@/components/shared/error/ErrorIllustration'
-import {ErrorInfoCards} from '@/components/shared/error/ErrorInfoCards'
+import { Sidebar } from '@/components/layout/sidebar/Sidebar'
+import { ErrorActions } from '@/components/shared/error/ErrorActions'
+import { ErrorContent } from '@/components/shared/error/ErrorContent'
+import { ErrorDebug } from '@/components/shared/error/ErrorDebug'
+import { ErrorIllustration } from '@/components/shared/error/ErrorIllustration'
+import { ErrorInfoCards } from '@/components/shared/error/ErrorInfoCards'
 
 type ErrorProps = {
     error: Error & {digest?: string}

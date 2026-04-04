@@ -1,9 +1,9 @@
-import {CardContent} from '@/components/ui/card'
+import { CardContent } from '@/components/ui/card'
 
-import {insightsPageTexts}
+import { insightsPageTexts }
     from '@/constants/componentTexts/insightsComponent'
 
-import {StatCard} from './StatCard'
+import { StatCard } from './StatCard'
 
 export const StatsCards = () => (
     <CardContent>

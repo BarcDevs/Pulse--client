@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-import {authTexts} from '@/constants/componentTexts/auth'
+import { authTexts } from '@/constants/componentTexts/auth'
 
 type LoginSecurityFooterProps = {
     showSignup?: boolean

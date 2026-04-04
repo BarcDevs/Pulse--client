@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-import {LayoutProps} from '@/types'
+import { LayoutProps } from '@/types'
 
 const AuthLayout = ({ children }: LayoutProps) => (
     <div className={'flex min-h-screen flex-col bg-linear-to-br from-surface-page via-primary-light/30 to-accent-light/20'}>

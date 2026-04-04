@@ -1,12 +1,12 @@
-import {useQuery} from '@tanstack/react-query'
+import { useQuery } from '@tanstack/react-query'
 
-import type {Post} from '@/types/forum/forum'
-import type {Response} from '@/types/responses'
+import type { Post } from '@/types/forum/forum'
+import type { Response } from '@/types/responses'
 
-import {forumQueryKeys} from '@/constants/queryKeys'
-import {minuteInMs} from '@/constants/time'
+import { forumQueryKeys } from '@/constants/queryKeys'
+import { minuteInMs } from '@/constants/time'
 
-import {fetchPosts} from '@/api/forum'
+import { fetchPosts } from '@/api/forum'
 
 type ForumQuery = {
     category?: string

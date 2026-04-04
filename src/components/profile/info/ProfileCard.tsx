@@ -1,16 +1,16 @@
 'use client'
 
-import {Card, CardContent} from '@/components/ui/card'
+import { Card, CardContent } from '@/components/ui/card'
 
-import {useUser} from '@/hooks/ui/useUser'
+import { useUser } from '@/hooks/ui/useUser'
 
-import {getUserFallback} from '@/lib/utils'
+import { getUserFallback } from '@/lib/utils'
 
-import {ProfileStats} from '../stats/ProfileStats'
+import { ProfileStats } from '../stats/ProfileStats'
 
-import {ProfileAvatar} from './ProfileAvatar'
-import {ProfileInfo} from './ProfileInfo'
-import {ProfileLevel} from './ProfileLevel'
+import { ProfileAvatar } from './ProfileAvatar'
+import { ProfileInfo } from './ProfileInfo'
+import { ProfileLevel } from './ProfileLevel'
 
 export const ProfileCard = () => {
     const { user } = useUser()

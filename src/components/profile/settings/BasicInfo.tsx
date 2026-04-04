@@ -1,6 +1,6 @@
-import {Pencil} from 'lucide-react'
+import { Pencil } from 'lucide-react'
 
-import {Button} from '@/components/ui/button'
+import { Button } from '@/components/ui/button'
 import {
     Card,
     CardContent,
@@ -8,7 +8,7 @@ import {
     CardTitle
 } from '@/components/ui/card'
 
-import {profilePageTexts} from '@/constants/componentTexts/profile'
+import { profilePageTexts } from '@/constants/componentTexts/profile'
 
 const infoFields = profilePageTexts.basicInfo.fields
 

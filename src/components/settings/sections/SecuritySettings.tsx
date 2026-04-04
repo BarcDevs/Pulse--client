@@ -1,13 +1,13 @@
 'use client'
 
-import {Shield} from 'lucide-react'
+import { Shield } from 'lucide-react'
 
-import {cn} from '@/lib/utils'
+import { cn } from '@/lib/utils'
 
-import {settingsPageTexts} from '@/constants/componentTexts/settings'
-import {securitySettings} from '@/constants/securitySettings'
+import { settingsPageTexts } from '@/constants/componentTexts/settings'
+import { securitySettings } from '@/constants/securitySettings'
 
-import {SecuritySettingItem} from '../items/SecuritySettingItem'
+import { SecuritySettingItem } from '../items/SecuritySettingItem'
 
 export const SecuritySettings = () => (
     <div className={'rounded-2xl bg-surface-card p-6'}>
@@ -21,9 +21,9 @@ export const SecuritySettings = () => (
         <div className={'space-y-4'}>
             {securitySettings.map((setting) => {
                 const IconComponent = setting.iconComponent
-                const iconColor = setting.variant === 'destructive' ?
-                    'text-destructive' :
-                    'text-muted-foreground'
+                const iconColor = setting.variant === 'destructive'
+                    ? 'text-destructive'
+                    : 'text-muted-foreground'
 
                 return (
                     <SecuritySettingItem

@@ -1,4 +1,4 @@
-import {z} from 'zod'
+import { z } from 'zod'
 
 import config from '@/config/schema/profileForm'
 

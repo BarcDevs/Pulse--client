@@ -1,15 +1,15 @@
 'use client'
 
-import {useLatestCheckIn} from '@/hooks/queries/useLatestCheckIn'
+import { useLatestCheckIn } from '@/hooks/queries/useLatestCheckIn'
 
-import {DashboardAIInsight} from './cards/AiInsight'
-import {DashboardCheckInCard} from './cards/CheckInCard'
-import {DashboardTodaysFocus} from './cards/TodaysFocus'
-import {DashboardStatsCards} from './stats/StatsCards'
-import {DashboardChartSidebar} from './DashboardChartSidebar'
+import { DashboardAIInsight } from './cards/AiInsight'
+import { DashboardCheckInCard } from './cards/CheckInCard'
+import { DashboardTodaysFocus } from './cards/TodaysFocus'
+import { DashboardStatsCards } from './stats/StatsCards'
+import { DashboardChartSidebar } from './DashboardChartSidebar'
 
 export const DashboardPageContent = () => {
-    const {isTodayCheckInExists} = useLatestCheckIn()
+    const { isTodayCheckInExists } = useLatestCheckIn()
 
     return (
         <div className={'p-6 space-y-6'}>

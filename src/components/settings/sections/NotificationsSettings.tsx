@@ -1,12 +1,12 @@
 'use client'
 
-import {Bell} from 'lucide-react'
+import { Bell } from 'lucide-react'
 
-import {SettingToggle} from '@/components/shared/inputs/SettingToggle'
+import { SettingToggle } from '@/components/shared/inputs/SettingToggle'
 
-import {useNotificationsSettingsForm} from '@/hooks/forms/useNotificationsSettingsForm'
+import { useNotificationsSettingsForm } from '@/hooks/forms/useNotificationsSettingsForm'
 
-import {settingsPageTexts} from '@/constants/componentTexts/settings'
+import { settingsPageTexts } from '@/constants/componentTexts/settings'
 
 export const NotificationsSettings = () => {
     const { form } = useNotificationsSettingsForm()

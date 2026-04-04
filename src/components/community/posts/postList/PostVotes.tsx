@@ -1,5 +1,5 @@
-import {Icon} from '@/components/shared/ui/Icon'
-import {Button} from '@/components/ui/button'
+import { Icon } from '@/components/shared/ui/Icon'
+import { Button } from '@/components/ui/button'
 
 type PostVotesProps = {
     votes: number

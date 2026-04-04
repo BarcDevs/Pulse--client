@@ -1,6 +1,6 @@
-import {Button} from '@/components/ui/button'
+import { Button } from '@/components/ui/button'
 
-import {cn} from '@/lib/utils'
+import { cn } from '@/lib/utils'
 
 type ActivityToggleButtonProps = {
     activity: string
@@ -21,13 +21,13 @@ export const ActivityToggleButton = ({
         size={'sm'}
         className={cn(
             'rounded-full text-sm font-medium',
-            isSelected ?
-                'bg-primary text-white' :
-                'bg-muted text-foreground hover:bg-muted/80'
+            isSelected
+                ? 'bg-primary text-white'
+                : 'bg-muted text-foreground hover:bg-muted/80'
         )}
     >
-        {isSelected &&
-            <span className={'mr-1'}>+</span>}
+        {isSelected
+            && <span className={'mr-1'}>+</span>}
         {activity}
     </Button>
 )

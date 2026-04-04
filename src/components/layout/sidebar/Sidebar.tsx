@@ -1,13 +1,13 @@
 'use client'
 
-import {ClassName} from '@/types/utils/react'
+import { ClassName } from '@/types/utils/react'
 
-import {Logo} from '@/components/shared/brand/Logo'
+import { Logo } from '@/components/shared/brand/Logo'
 
-import {cn} from '@/lib/utils'
+import { cn } from '@/lib/utils'
 
-import {NavSection} from './sections/NavSection'
-import {SidebarBottomError} from './SidebarBottomError'
+import { NavSection } from './sections/NavSection'
+import { SidebarBottomError } from './SidebarBottomError'
 
 type SidebarProps = {
     isErrorPage?: boolean
@@ -30,8 +30,8 @@ export const Sidebar = ({
                 <NavSection/>
             </div>
         </div>
-        {isErrorPage &&
-            <SidebarBottomError/>
+        {isErrorPage
+            && <SidebarBottomError/>
         }
     </aside>
 )

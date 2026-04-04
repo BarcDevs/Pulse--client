@@ -1,4 +1,4 @@
-import {PartialUser, Prettify, User} from '@/types/index'
+import { PartialUser, Prettify, User } from '@/types/index'
 
 type Post_Base = {
     id: string

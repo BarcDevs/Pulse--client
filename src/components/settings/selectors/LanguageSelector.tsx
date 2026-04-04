@@ -1,4 +1,4 @@
-import {settingsPageTexts} from '@/constants/componentTexts/settings'
+import { settingsPageTexts } from '@/constants/componentTexts/settings'
 
 type LanguageSelectorProps = {
     language: string

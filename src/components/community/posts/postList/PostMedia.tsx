@@ -1,6 +1,6 @@
-import {Play} from 'lucide-react'
+import { Play } from 'lucide-react'
 
-import {communityPageTexts} from '@/constants/componentTexts/community'
+import { communityPageTexts } from '@/constants/componentTexts/community'
 
 export const PostMedia = () => (
     <div className={'mt-3 relative rounded-xl overflow-hidden bg-surface-section aspect-video'}>

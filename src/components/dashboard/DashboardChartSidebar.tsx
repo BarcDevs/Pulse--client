@@ -1,6 +1,6 @@
-import {DashboardAIInsight} from './cards/AiInsight'
-import {DashboardHistoryChart} from './charts/HistoryChart'
-import {CommunityActivity} from './community/CommunityActivity'
+import { DashboardAIInsight } from './cards/AiInsight'
+import { DashboardHistoryChart } from './charts/HistoryChart'
+import { CommunityActivity } from './community/CommunityActivity'
 
 type DashboardChartSidebarProps = {
     showAIInsight: boolean

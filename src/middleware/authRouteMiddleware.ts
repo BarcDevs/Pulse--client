@@ -3,7 +3,7 @@ import {
     NextResponse
 } from 'next/server'
 
-import {authRoutes} from '@/constants/proxyRoutes'
+import { authRoutes } from '@/constants/proxyRoutes'
 
 /**
  * Redirects authenticated users away from auth routes
@@ -25,8 +25,8 @@ export const authRouteMiddleware = (
     )
 
     if (
-        isAuthRoute &&
-        sessionCookie
+        isAuthRoute
+        && sessionCookie
     ) {
         return NextResponse.redirect(
             new URL('/dashboard', request.url)

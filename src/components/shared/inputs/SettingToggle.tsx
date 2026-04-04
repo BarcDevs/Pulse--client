@@ -1,6 +1,6 @@
-import {Button} from '@/components/ui/button'
+import { Button } from '@/components/ui/button'
 
-import {cn} from '@/lib/utils'
+import { cn } from '@/lib/utils'
 
 type SettingToggleProps = {
     label: string

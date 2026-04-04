@@ -1,4 +1,4 @@
-import {CommunityPageContent} from '@/components/community/CommunityPageContent'
+import { CommunityPageContent } from '@/components/community/CommunityPageContent'
 
 const CommunityPage = () => (
     <CommunityPageContent/>

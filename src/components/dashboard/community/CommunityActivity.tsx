@@ -2,11 +2,11 @@
 
 import Link from 'next/link'
 
-import {cn} from '@/lib/utils'
+import { cn } from '@/lib/utils'
 
-import {communityPageTexts} from '@/constants/componentTexts/community'
+import { communityPageTexts } from '@/constants/componentTexts/community'
 
-import {CommunityActivityItem} from './CommunityActivityItem'
+import { CommunityActivityItem } from './CommunityActivityItem'
 
 type CommunityActivityProps = {
     fullHeight?: boolean
@@ -16,9 +16,9 @@ export const CommunityActivity = ({
     fullHeight = false
 }: CommunityActivityProps) => {
     const recommendedCommunityPosts=
-        fullHeight ?
-            communityPageTexts.activity.list.slice(0, 5) :
-            communityPageTexts.activity.list.slice(0, 3)
+        fullHeight
+            ? communityPageTexts.activity.list.slice(0, 5)
+            : communityPageTexts.activity.list.slice(0, 3)
 
     return (
         <div className={cn(

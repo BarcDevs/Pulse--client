@@ -1,11 +1,11 @@
 import Link from 'next/link'
 
-import {ArrowRight, ClipboardCheck} from 'lucide-react'
+import { ArrowRight, ClipboardCheck } from 'lucide-react'
 
-import {Badge} from '@/components/ui/badge'
-import {Button} from '@/components/ui/button'
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
 
-import {dashboardPageTexts} from '@/constants/componentTexts/dashboard'
+import { dashboardPageTexts } from '@/constants/componentTexts/dashboard'
 
 export const DashboardCheckInCard = () => (
     <div className={'relative overflow-hidden rounded-2xl bg-linear-to-r from-primary-gradient-start to-primary-gradient-end p-6 text-white'}>

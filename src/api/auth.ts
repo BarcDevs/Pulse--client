@@ -1,10 +1,10 @@
-import type {Response} from '@/types/responses'
-import {AuthResponse as AuthResponseT}
+import type { Response } from '@/types/responses'
+import { AuthResponse as AuthResponseT }
     from '@/types/responses/auth'
 
-import {api} from '@/api/index'
-import type {LoginSchema} from '@/validations/forms/loginSchema'
-import type {SignupSchema} from '@/validations/forms/signupSchema'
+import { api } from '@/api/index'
+import type { LoginSchema } from '@/validations/forms/loginSchema'
+import type { SignupSchema } from '@/validations/forms/signupSchema'
 
 type AuthResponse = Response<AuthResponseT>
 

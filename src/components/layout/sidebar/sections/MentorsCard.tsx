@@ -1,6 +1,6 @@
-import {communityPageTexts} from '@/constants/componentTexts/community'
+import { communityPageTexts } from '@/constants/componentTexts/community'
 
-import {MentorItem} from './MentorItem'
+import { MentorItem } from './MentorItem'
 
 const mentors = communityPageTexts.mentors
 

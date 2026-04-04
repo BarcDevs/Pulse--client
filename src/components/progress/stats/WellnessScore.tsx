@@ -1,15 +1,15 @@
 'use client'
 
-import {useCheckInStats} from '@/hooks/queries/useCheckInStats'
+import { useCheckInStats } from '@/hooks/queries/useCheckInStats'
 
 import {
     getTrendData,
     getWellnessStatus
 } from '@/lib/stats/getTrendLabel'
 
-import {progressPageTexts} from '@/constants/componentTexts/progress'
+import { progressPageTexts } from '@/constants/componentTexts/progress'
 
-import {WellnessScoreCard} from '../cards/WellnessScoreCard'
+import { WellnessScoreCard } from '../cards/WellnessScoreCard'
 
 export const WellnessScore = () => {
     const { data } = useCheckInStats('weekly')

@@ -1,8 +1,8 @@
-import {ClassName} from '@/types/utils/react'
+import { ClassName } from '@/types/utils/react'
 
-import {Icon} from '@/components/shared/ui/Icon'
+import { Icon } from '@/components/shared/ui/Icon'
 
-import {cn} from '@/lib/utils'
+import { cn } from '@/lib/utils'
 
 type MetricProps = {
     image: string

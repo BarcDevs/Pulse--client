@@ -1,10 +1,10 @@
 import Link from 'next/link'
 
-import {ArrowLeft, Mail} from 'lucide-react'
+import { ArrowLeft, Mail } from 'lucide-react'
 
-import {Card, CardContent} from '@/components/ui/card'
+import { Card, CardContent } from '@/components/ui/card'
 
-import {authTexts} from '@/constants/componentTexts/auth'
+import { authTexts } from '@/constants/componentTexts/auth'
 
 type EmailVerificationViewProps = {
     email: string

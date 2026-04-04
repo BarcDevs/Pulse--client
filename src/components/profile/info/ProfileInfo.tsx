@@ -1,4 +1,4 @@
-import {profilePageTexts} from '@/constants/componentTexts/profile'
+import { profilePageTexts } from '@/constants/componentTexts/profile'
 
 type ProfileInfoProps = {
     firstName: string
