@@ -77,7 +77,8 @@ export const communityPageTexts = {
         readGuidelines: 'Read Guidelines'
     },
     trending: {
-        title: 'Trending Topics'
+        title: 'Trending Topics',
+        loading: 'Loading topics...'
     },
     activity: {
         title: 'Community',

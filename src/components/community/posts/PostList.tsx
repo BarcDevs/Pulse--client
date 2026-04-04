@@ -7,13 +7,13 @@ import {
     useState
 } from 'react'
 
+import type { FilterType } from '@/types/forum/forum'
+
 import { Button } from '@/components/ui/button'
 
 import { useForumPosts } from '@/hooks/queries/useForumPosts'
 
 import { cn } from '@/lib/utils'
-
-import type { FilterType } from '@/types/forum/forum'
 
 import { communityPageTexts } from '@/constants/componentTexts/community'
 
@@ -21,7 +21,7 @@ import { PostItem } from './postList/PostItem'
 
 const PAGE_SIZE = 20
 const FILTER_LABELS = communityPageTexts.posts.filterLabels
-const tabs = Object.keys(FILTER_LABELS) as (keyof typeof FILTER_LABELS)[]
+const tabs = Object.keys(FILTER_LABELS) as FilterType[]
 
 type Post = Parameters<typeof PostItem>[0]['post']
 
