@@ -30,58 +30,21 @@ export const communityPageTexts = {
         ]
     },
     posts: {
-        tabs: [
-            'Popular',
-            'Recent',
-            'Unanswered'
-        ],
-        defaultTab: 'Popular',
-        videoDuration: '10:24',
-        postedBy: 'Posted by',
+        filterLabels: {
+            newest: 'Newest',
+            popular: 'Popular',
+            hot: 'Hot',
+            unanswered: 'Unanswered'
+        },
         repliesLabel: 'replies',
+        postedBy: 'Posted by',
         share: 'Share',
         save: 'Save',
         newPostButton: 'New Post',
         loading: 'Loading posts...',
         empty: 'No posts yet. Be the first to share your journey and inspire others.',
-        list: [
-            {
-                id: 1,
-                category: 'Success Stories',
-                categoryColor: 'bg-purple-100 text-purple-700',
-                author: 'Marcus T.',
-                timeAgo: '3 hours ago',
-                title: 'My first 90 days: Finding peace in the routine of early mornings.',
-                content: `I used to dread the sunrise because it meant another day of struggle. Now, my 5 AM tea and meditation are the anchor of my day. If you're in the first...`,
-                votes: 47,
-                replies: 18,
-                hasMedia: false
-            },
-            {
-                id: 2,
-                category: 'Support Groups',
-                categoryColor: 'bg-blue-100 text-blue-700',
-                author: 'Sarah Jenkins',
-                timeAgo: '5 hours ago',
-                title: 'Managing social anxiety during family gatherings this weekend',
-                content: `Does anyone have tips for navigating conversations about 'why I'm not drinking' with pushy relatives? Feeling a bit nervous about the upcoming...`,
-                votes: 123,
-                replies: 42,
-                hasMedia: false
-            },
-            {
-                id: 3,
-                category: 'Yoga & Movement',
-                categoryColor: 'bg-emerald-100 text-emerald-700',
-                author: 'YogaCoach_Ben',
-                timeAgo: '8 hours ago',
-                title: 'Gentle 10-minute flow for releasing neck tension.',
-                content: '',
-                votes: 89,
-                replies: 24,
-                hasMedia: true
-            }
-        ]
+        emptyWithFilter: (tag: string) =>
+            `No posts found with tag "#${tag}". Try a different tag or browse all posts.`
     },
     mentors: {
         title: 'Recovery Mentors',
@@ -92,14 +55,14 @@ export const communityPageTexts = {
                 name: 'David Chen',
                 role: 'Certified Coach',
                 avatar: 'D',
-                online: true,
+                online: true
             },
             {
                 id: 2,
                 name: 'Maria G.',
                 role: 'Wellness Guide',
                 avatar: 'M',
-                online: false,
+                online: false
             }
         ]
     },
@@ -114,14 +77,7 @@ export const communityPageTexts = {
         readGuidelines: 'Read Guidelines'
     },
     trending: {
-        title: 'Trending Topics',
-        topics: [
-            '#DailyGratitude',
-            '#SobrietyTips',
-            '#HealthyHabits',
-            '#SelfCare',
-            '#SleepHygiene'
-        ]
+        title: 'Trending Topics'
     },
     activity: {
         title: 'Community',

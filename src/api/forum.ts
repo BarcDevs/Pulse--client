@@ -1,5 +1,5 @@
-import { Post, Reply } from '@/types/forum/forum'
-import { ApiResponse, Response } from '@/types/responses'
+import type { PartialTag, Post, Reply } from '@/types/forum/forum'
+import type { ApiResponse, Response } from '@/types/responses'
 
 import { api } from '@/api/index'
 import { PostSchema } from '@/validations/forms/postSchema'
@@ -60,3 +60,7 @@ export const updateReply = async (
             ...reply
         })
 
+export const fetchTags = async () =>
+    api.get<Response<PartialTag[]>>(
+        '/forum/tags'
+    )

@@ -2,6 +2,7 @@
 
 import {
     useEffect,
+    useMemo,
     useRef,
     useState
 } from 'react'
@@ -12,12 +13,15 @@ import { useForumPosts } from '@/hooks/queries/useForumPosts'
 
 import { cn } from '@/lib/utils'
 
+import type { FilterType } from '@/types/forum/forum'
+
 import { communityPageTexts } from '@/constants/componentTexts/community'
 
 import { PostItem } from './postList/PostItem'
 
-const tabs = communityPageTexts.posts.tabs
 const PAGE_SIZE = 20
+const FILTER_LABELS = communityPageTexts.posts.filterLabels
+const tabs = Object.keys(FILTER_LABELS) as (keyof typeof FILTER_LABELS)[]
 
 type Post = Parameters<typeof PostItem>[0]['post']
 
@@ -26,34 +30,48 @@ type PostListProps = {
 }
 
 export const PostList = ({ tag }: PostListProps) => {
-    const [activeTab, setActiveTab] = useState(
-        communityPageTexts.posts.defaultTab
-    )
+    const [activeFilter, setActiveFilter] = useState<FilterType>('newest')
     const [allPosts, setAllPosts] = useState<Post[]>([])
     const [page, setPage] = useState(1)
     const [hasMore, setHasMore] = useState(true)
     const sentinelRef = useRef<HTMLDivElement>(null)
+    const prevQueryRef = useRef<string>('')
+
+    const query = useMemo(() => ({
+        limit: PAGE_SIZE,
+        page,
+        filter: activeFilter,
+        ...(tag ? { tag } : {})
+    }), [page, tag, activeFilter])
 
     const {
         data,
         isLoading,
         isFetching
-    } = useForumPosts({
-        limit: PAGE_SIZE,
-        page,
-        tag: tag || undefined
-    })
+    } = useForumPosts(query)
 
-     
     useEffect(() => {
+        const queryStr = JSON.stringify(query)
         const posts = data?.data ?? []
+
+        // If query changed, reset and start fresh
+        if (queryStr !== prevQueryRef.current) {
+            prevQueryRef.current = queryStr
+            // eslint-disable-next-line react-hooks/set-state-in-effect
+            setAllPosts([])
+            setPage(1)
+            setHasMore(true)
+            // Return early and wait for data with new query
+            if (posts.length === 0) return
+        }
+
         if (posts.length === 0) return
 
-        // eslint-disable-next-line react-hooks/set-state-in-effect
+        // Append posts from current page
         setAllPosts((prevPosts) => [...prevPosts, ...posts])
         if (posts.length < PAGE_SIZE)
             setHasMore(false)
-    }, [data?.data])
+    }, [data?.data, query])
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -76,19 +94,17 @@ export const PostList = ({ tag }: PostListProps) => {
         return () => observer.disconnect()
     }, [hasMore, isFetching])
 
-    useEffect(() => {
-        // eslint-disable-next-line react-hooks/set-state-in-effect
-        setAllPosts([])
-        setPage(1)
-        setHasMore(true)
-    }, [tag])
 
-    const handleTabChange = (tab: string) => {
-        setActiveTab(tab)
+    const handleFilterChange = (filter: FilterType) => {
+        setActiveFilter(filter)
         setAllPosts([])
         setPage(1)
         setHasMore(true)
     }
+
+    const emptyMessage = tag
+        ? communityPageTexts.posts.emptyWithFilter(tag)
+        : communityPageTexts.posts.empty
 
     return (
         <div className={'rounded-2xl bg-surface-card overflow-hidden'}>
@@ -96,18 +112,18 @@ export const PostList = ({ tag }: PostListProps) => {
                 {tabs.map((tab) => (
                     <Button
                         key={tab}
-                        onClick={() => handleTabChange(tab)}
-                        variant={activeTab === tab
+                        onClick={() => handleFilterChange(tab)}
+                        variant={activeFilter === tab
                             ? 'default'
                             : 'ghost'}
                         className={cn(
                             'px-6 py-4 text-sm font-medium rounded-none border-b-2',
-                            activeTab === tab
+                            activeFilter === tab
                                 ? 'text-primary-light border-primary'
                                 : 'text-muted-foreground hover:text-primary-light border-transparent'
                         )}
                     >
-                        {tab}
+                        {FILTER_LABELS[tab]}
                     </Button>
                 ))}
             </div>
@@ -119,7 +135,7 @@ export const PostList = ({ tag }: PostListProps) => {
                     </div>
                 ) : allPosts.length === 0 ? (
                     <div className={'p-6 text-center text-muted-foreground'}>
-                        {communityPageTexts.posts.empty}
+                        {emptyMessage}
                     </div>
                 ) : (
                     <>

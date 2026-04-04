@@ -1,4 +1,6 @@
-import { PartialUser, Prettify, User } from '@/types/index'
+import { PartialUser, Prettify, User } from '@/types'
+
+export type FilterType = 'newest' | 'popular' | 'hot' | 'unanswered'
 
 type Post_Base = {
     id: string

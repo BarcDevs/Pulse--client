@@ -12,8 +12,8 @@ export const CommunityPanel = ({
     onTagSelect
 }: CommunityPanelProps) => (
     <div className={'space-y-6'}>
-        <MentorsCard />
-        <SanctuaryCard />
+        <MentorsCard/>
+        <SanctuaryCard/>
         <TrendingTopicsCard
             selectedTag={selectedTag}
             onTagSelect={onTagSelect}

@@ -3,4 +3,5 @@ export type {
     Post,
     Reply,
     Tag,
-    Votes } from './forum'
+    Votes
+} from './forum'

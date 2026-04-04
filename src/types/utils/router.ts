@@ -1,4 +1,4 @@
-import { FilterType } from '@/constants/filter'
+import type { FilterType } from '@/types/forum/forum'
 
 export type ForumSearchParams = {
     filter?: FilterType | undefined

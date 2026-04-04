@@ -4,7 +4,6 @@ import { toRelative } from '@/lib/time'
 
 import { PostActions } from './PostActions'
 import { PostHeader } from './PostHeader'
-import { PostVotes } from './PostVotes'
 
 type PostItemProps = {
     post: Post
@@ -25,7 +24,6 @@ export const PostItem = ({
 }: PostItemProps) => (
     <div className={'p-6 hover:bg-surface-section/50 transition-colors'}>
         <div className={'flex gap-4'}>
-            <PostVotes votes={post.votes.upvotes}/>
             <div className={'flex-1 min-w-0'}>
                 <div className={'flex items-start justify-between gap-4 mb-2'}>
                     <div className={'flex-1 min-w-0'}>
@@ -43,11 +41,9 @@ export const PostItem = ({
                 <h3 className={'font-semibold text-foreground mb-2'}>
                     {post.title}
                 </h3>
-                {post.body && (
-                    <p className={'text-sm text-muted-foreground line-clamp-2'}>
-                        {post.body}
-                    </p>
-                )}
+                <p className={'text-sm text-muted-foreground line-clamp-2'}>
+                    {post.body}
+                </p>
                 <PostActions
                     replies={Array.isArray(post.replies)
                         ? post.replies.length

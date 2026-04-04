@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 
-import type { Post } from '@/types/forum/forum'
+import type { FilterType, Post } from '@/types/forum/forum'
 import type { Response } from '@/types/responses'
 
 import { forumQueryKeys } from '@/constants/queryKeys'
@@ -13,7 +13,7 @@ type ForumQuery = {
     search?: string
     limit?: number
     page?: number
-    filter?: string
+    filter?: FilterType
     tag?: string
 }
 
