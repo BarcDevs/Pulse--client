@@ -25,8 +25,15 @@ export const useForumPosts = (
 ) => {
     return useQuery<Response<Post[]>>({
         queryKey: query
-            ? [...forumQueryKeys.posts, query]
-            : forumQueryKeys.posts,
+            ? [
+                ...forumQueryKeys.posts,
+                query.page ?? 1,
+                query.filter ?? 'newest',
+                query.limit ?? 20,
+                query.tag,
+                query.category,
+                query.search
+            ] : forumQueryKeys.posts,
         queryFn: async () => {
             const response = await fetchPosts(query)
             return response.data
