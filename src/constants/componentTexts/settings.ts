@@ -1,3 +1,19 @@
+import type { ProfileVisibility } from '@/types/profile'
+
+export const DEFAULT_LANGUAGE = 'en-US'
+export const DEFAULT_VISIBILITY: ProfileVisibility = 'onlyMe'
+
+export const visibilityMap: Record<ProfileVisibility, string> = {
+    onlyMe: 'Only Me',
+    mentors: 'Mentors Only',
+    community: 'Community'
+}
+
+export const languageMap: Record<string, string> = {
+    'en-US': 'English (US)',
+    'he-IL': 'עברית'
+}
+
 export const settingsPageTexts = {
     title: 'Settings',
     subtitle: 'Customize your HealEase experience',
@@ -29,7 +45,8 @@ export const settingsPageTexts = {
     },
     buttons: {
         discardChanges: 'Discard Changes',
-        savePreferences: 'Save Preferences'
+        savePreferences: 'Save Preferences',
+        savingPreferences: 'Saving...'
     },
     notifications: {
         title: 'Notifications',
@@ -63,17 +80,15 @@ export const settingsPageTexts = {
     },
     security: {
         title: 'Account & Security',
-        email: {
-            label: 'Email Address',
-            value: 'alex@example.com'
-        },
+        email: 'Email Address',
         password: {
             label: 'Password',
             value: 'Last changed 3 months ago'
         },
         deactivate: {
             label: 'Deactivate Account',
-            description: 'Permanently remove your recovery data'
+            description: 'Permanently remove your recovery data',
+            buttonText: 'Deactivate'
         }
     },
     preferences: {
@@ -89,9 +104,7 @@ export const settingsPageTexts = {
             description: 'The language used across the app interface',
             options: [
                 { value: 'en-US', label: 'English (US)' },
-                { value: 'es', label: 'Spanish' },
-                { value: 'fr', label: 'French' },
-                { value: 'de', label: 'German' }
+                { value: 'he-IL', label: 'עברית' },
             ]
         }
     }

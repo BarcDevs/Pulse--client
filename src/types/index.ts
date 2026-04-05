@@ -26,6 +26,9 @@ export type User = {
     username: string
     email: string
     role: Role
+    passwordUpdatedAt?: string
+    createdAt: string
+    deletedAt?: string | null
 }
 
 export type PartialUser = {

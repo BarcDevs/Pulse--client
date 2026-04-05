@@ -4,7 +4,8 @@ import { zodResolver } from '@hookform/resolvers/zod'
 
 import {
     type NotificationsSettingsSchema,
-    notificationsSettingsSchema } from '@/validations/forms/settingsSchema'
+    notificationsSettingsSchema
+} from '@/validations/forms/settingsSchema'
 
 export const useNotificationsSettingsForm = () => {
     const form = useForm<NotificationsSettingsSchema>({

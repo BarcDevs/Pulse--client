@@ -1,3 +1,5 @@
+export type ProfileVisibility = 'onlyMe' | 'mentors' | 'community'
+
 export type HealthInterest = {
     id: string
     slug: string
@@ -25,6 +27,13 @@ export type Profile = {
     bio?: string
     location?: string
     timezone?: string
+    dateFormat?: string
+    theme: string
+    language: string
+    dailyReminder: boolean
+    communityAlerts: boolean
+    profileVisibility: ProfileVisibility
+    anonymousParticipation: boolean
     healthInterests: HealthInterest[]
     activityPreferences: ActivityPreference[]
     createdAt: string
@@ -40,4 +49,11 @@ export type ProfileUpdateInput = {
     bio?: string | null
     location?: string | null
     timezone?: string | null
+    image?: string | null
+    theme?: string
+    language?: string
+    dailyReminder?: boolean
+    communityAlerts?: boolean
+    profileVisibility?: ProfileVisibility
+    anonymousParticipation?: boolean
 }

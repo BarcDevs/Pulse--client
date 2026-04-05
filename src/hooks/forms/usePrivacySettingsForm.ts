@@ -4,7 +4,8 @@ import { zodResolver } from '@hookform/resolvers/zod'
 
 import {
     type PrivacySettingsSchema,
-    privacySettingsSchema } from '@/validations/forms/settingsSchema'
+    privacySettingsSchema
+} from '@/validations/forms/settingsSchema'
 
 export const usePrivacySettingsForm = () => {
     const form = useForm<PrivacySettingsSchema>({

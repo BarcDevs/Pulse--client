@@ -6,7 +6,8 @@ import type { Theme } from '@/types'
 
 import {
     type AppPreferencesSchema,
-    appPreferencesSchema } from '@/validations/forms/settingsSchema'
+    appPreferencesSchema
+} from '@/validations/forms/settingsSchema'
 
 type UseAppPreferencesFormProps = {
     theme?: Theme

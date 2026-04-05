@@ -4,21 +4,12 @@ import { Bell } from 'lucide-react'
 
 import { SettingToggle } from '@/components/shared/inputs/SettingToggle'
 
-import { useNotificationsSettingsForm } from '@/hooks/forms/useNotificationsSettingsForm'
-
 import { settingsPageTexts } from '@/constants/componentTexts/settings'
 
+import { useSettings } from '@/context/SettingsContext'
+
 export const NotificationsSettings = () => {
-    const { form } = useNotificationsSettingsForm()
-
-    const dailyReminder = form.watch('dailyReminder')
-    const communityAlerts = form.watch('communityAlerts')
-
-    const handleDailyReminderChange = (value: boolean) =>
-        form.setValue('dailyReminder', value)
-
-    const handleCommunityAlertsChange = (value: boolean) =>
-        form.setValue('communityAlerts', value)
+    const { settings, onSettingChange } = useSettings()
 
     return (
         <div className={'rounded-2xl bg-surface-card p-6'}>
@@ -39,8 +30,10 @@ export const NotificationsSettings = () => {
                         settingsPageTexts
                             .notifications.dailyReminder.description
                     }
-                    checked={dailyReminder}
-                    onChange={handleDailyReminderChange}
+                    checked={settings?.dailyReminder || false}
+                    onChangeAction={(value) =>
+                        onSettingChange('dailyReminder', value)
+                    }
                 />
 
                 <SettingToggle
@@ -52,8 +45,10 @@ export const NotificationsSettings = () => {
                         settingsPageTexts
                             .notifications.communityAlerts.description
                     }
-                    checked={communityAlerts}
-                    onChange={handleCommunityAlertsChange}
+                    checked={settings?.communityAlerts || false}
+                    onChangeAction={(value) =>
+                        onSettingChange('communityAlerts', value)
+                    }
                 />
             </div>
         </div>
