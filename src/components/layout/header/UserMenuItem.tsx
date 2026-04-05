@@ -32,7 +32,7 @@ export const UserMenuItem = ({
                 className={'w-full flex justify-start px-2 py-1.5 text-sm cursor-pointer hover:bg-surface-section transition-colors'}
                 variant={'ghost'}
             >
-                <item.icon className={'mr-2 size-4'}/>
+                <item.icon className={'mr-2 size-4 hover:text-accent-light'}/>
                 <span>{item.label}</span>
             </Button>
         </DropdownMenuItem>
