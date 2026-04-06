@@ -8,9 +8,14 @@ export const loginSchema = z.object({
         .email('Invalid email'),
     password: z.string()
         .min(1, 'Password is required')
-        .min(config.password.minLength,
-            `Password must be at least ${config.password.minLength} characters`)
-        .regex(config.password.format, config.password.formatMessage),
+        .min(
+            config.password.minLength,
+            `Password must be at least ${config.password.minLength} characters`
+        )
+        .regex(
+            config.password.format,
+            config.password.formatMessage
+        ),
     remember: z.boolean()
 })
 

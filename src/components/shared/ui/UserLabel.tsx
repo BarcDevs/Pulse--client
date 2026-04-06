@@ -5,7 +5,7 @@ import { PartialUser } from '@/types'
 import {
     Avatar,
     AvatarFallback,
-    AvatarImage,
+    AvatarImage
 } from '@/components/ui/avatar'
 
 import { getUserFallback } from '@/lib/utils'
@@ -21,7 +21,7 @@ export const UserLabel = ({
     user: { firstName, lastName, username },
     withName,
     textStyles,
-    image,
+    image
 }: Props) => (
     <div className={'flex-center flex-row flex-wrap gap-1'}>
         <Avatar>
@@ -34,7 +34,7 @@ export const UserLabel = ({
         <div
             className={twMerge(
                 'flex flex-col font-bold',
-                textStyles,
+                textStyles
             )}
         >
             <p>{username}</p>

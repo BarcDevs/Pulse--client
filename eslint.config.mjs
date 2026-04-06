@@ -141,6 +141,7 @@ const config = [
                 }
             ],
             'simple-import-sort/exports': 'warn',
+            'comma-dangle': ['warn', 'never'],
             'custom-rules/enforce-object-breaking': 'warn'
         }
     },

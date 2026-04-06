@@ -42,7 +42,11 @@ export const PostList = ({ tag }: PostListProps) => {
         page,
         filter: activeFilter,
         ...(tag ? { tag } : {})
-    }), [page, tag, activeFilter])
+    }), [
+        page,
+        tag,
+        activeFilter
+    ])
 
     const {
         data,
@@ -68,7 +72,10 @@ export const PostList = ({ tag }: PostListProps) => {
         if (posts.length === 0) return
 
         // Append posts from current page
-        setAllPosts((prevPosts) => [...prevPosts, ...posts])
+        setAllPosts((prevPosts) => [
+            ...prevPosts,
+            ...posts
+        ])
         if (posts.length < PAGE_SIZE)
             setHasMore(false)
     }, [data?.data, query])

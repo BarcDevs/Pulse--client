@@ -8,7 +8,7 @@ export const dashboardPageTexts = {
         button: 'Start Check-In'
     },
     aiInsight: {
-        label: 'AI INSIGHT',
+        label: 'AI INSIGHT'
     },
     noInsights: 'Insight not found. Please complete more check-ins to receive personalized insights.',
     community: {

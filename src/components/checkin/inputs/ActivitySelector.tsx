@@ -37,9 +37,10 @@ export const CheckInActivities = ({
     }
 
     const customActivities = selectedActivities.filter(
-        (activity) => !checkInTexts.activities.default.includes(
-            activity
-        )
+        (activity) =>
+            !checkInTexts.activities.default.includes(
+                activity
+            )
     )
 
     const toggleActivity = (activity: string) => {
@@ -93,7 +94,8 @@ export const CheckInActivities = ({
                                         isSelected={selectedActivities.includes(activity)}
                                         onToggle={toggleActivity}
                                     />
-                                ))}
+                                )
+                            )}
                         </div>
                     </div>
                 )}
@@ -111,7 +113,8 @@ export const CheckInActivities = ({
                                     isSelected={selectedActivities.includes(activity)}
                                     onToggle={toggleActivity}
                                 />
-                            ))}
+                            )
+                        )}
 
                         {customActivities.map((activity) => (
                             <ActivityToggleButton

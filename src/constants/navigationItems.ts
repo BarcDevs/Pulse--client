@@ -6,7 +6,7 @@ import {
     LogOut,
     MessageCircle,
     Settings,
-    Users,
+    Users
 } from 'lucide-react'
 
 export type NavItem = {
@@ -19,44 +19,44 @@ export const mainNavItems: NavItem[] = [
     {
         icon: Home,
         label: 'Dashboard',
-        href: '/dashboard',
+        href: '/dashboard'
     },
     {
         icon: CalendarCheck,
         label: 'Daily Check-In',
-        href: '/daily-checkin',
+        href: '/daily-checkin'
     },
     {
         icon: BarChart3,
         label: 'Progress',
-        href: '/progress',
+        href: '/progress'
     },
     {
         icon: Lightbulb,
         label: 'Insights',
-        href: '/insights',
+        href: '/insights'
     },
     {
         icon: Users,
         label: 'Community',
-        href: '/community',
+        href: '/community'
     },
     {
         icon: MessageCircle,
         label: 'Chat',
-        href: '/chat',
-    },
+        href: '/chat'
+    }
 ]
 
 export const bottomNavItems: NavItem[] = [
     {
         icon: Settings,
         label: 'Settings',
-        href: '/profile/settings',
+        href: '/profile/settings'
     },
     {
         icon: LogOut,
         label: 'Logout',
-        href: '/logout',
-    },
+        href: '/logout'
+    }
 ]

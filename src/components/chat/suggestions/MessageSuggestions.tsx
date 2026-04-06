@@ -5,7 +5,7 @@ type MessageSuggestionsProps = {
 }
 
 export const MessageSuggestions = ({
-    suggestions,
+    suggestions
 }: MessageSuggestionsProps) => (
     <div className={'mt-3 flex flex-wrap gap-2'}>
         {suggestions.map((suggestion) => (

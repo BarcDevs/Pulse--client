@@ -104,7 +104,7 @@ export const settingsPageTexts = {
             description: 'The language used across the app interface',
             options: [
                 { value: 'en-US', label: 'English (US)' },
-                { value: 'he-IL', label: 'עברית' },
+                { value: 'he-IL', label: 'עברית' }
             ]
         }
     }
