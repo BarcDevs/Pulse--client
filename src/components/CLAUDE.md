@@ -26,7 +26,7 @@
 - Avoid prop drilling — use context or composition
 - Use hooks at top of component
 - Extract reusable logic and helper functions to separate files
-- AVOID BREAK LINES IN CLASSNAMES - NOT THE STRING ITSELF AND NOT AROUND IT. example: 
+- AVOID BREAK LINES IN CLASSNAMES EVEN WHEN THEY'RE LONG - NOT THE STRING ITSELF AND NOT AROUND IT. example: 
  `'some-classes' +
     'other-classes'` ❌ → `'some-classes other-classes'` ✓
 - Avoid redundant linebreaks in lines shorter that the threshold (50-60 chars)

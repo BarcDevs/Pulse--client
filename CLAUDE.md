@@ -103,6 +103,7 @@ Use /commit skill when auto-commiting
 
 ## Git
 - **ALWAYS ask before committing** — Never auto-commit without explicit approval
+- Never jump ahead trying to commit without being asked, even if you think the changes are ready
 - Write clear commit messages (imperative, present tense)
 - Commit messages must accurately describe what was **implemented** not just what changed (e.g., "replace mock data with real API integration" not "fix imports")
 - When committing after fixing issues found during review: include the original work scope in the message, not just the fix (e.g., "feat: replace mock data..." not "fix: correct import order")
