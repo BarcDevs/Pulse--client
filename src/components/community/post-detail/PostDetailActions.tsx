@@ -11,7 +11,7 @@ import {
 import { Post } from '@/types/community'
 
 import { PostActionButton } from '@/components/community/posts/postList/PostActionButton'
-import { DeleteMenu } from '@/components/community/shared/DeleteMenu'
+import { DeleteMenu } from '@/components/shared/DeleteMenu'
 
 import { useForumPostMutations } from '@/hooks/mutations/useForumPostMutations'
 

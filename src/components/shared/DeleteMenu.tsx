@@ -2,7 +2,7 @@
 
 import { MoreVertical } from 'lucide-react'
 
-import { DeleteButton } from '@/components/community/shared/DeleteButton'
+import { DeleteButton } from '@/components/shared/DeleteButton'
 import { Button } from '@/components/ui/button'
 import {
     DropdownMenu,

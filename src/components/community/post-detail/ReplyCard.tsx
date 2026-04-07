@@ -4,7 +4,7 @@ import { ThumbsUp } from 'lucide-react'
 
 import { Reply } from '@/types/community'
 
-import { DeleteMenu } from '@/components/community/shared/DeleteMenu'
+import { DeleteMenu } from '@/components/shared/DeleteMenu'
 import { UserAvatar } from '@/components/shared/UserAvatar'
 
 import { toRelative } from '@/lib/time'

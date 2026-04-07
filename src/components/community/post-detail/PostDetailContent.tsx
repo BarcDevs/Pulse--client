@@ -6,7 +6,7 @@ import { PostDetailActions } from '@/components/community/post-detail/PostDetail
 import { PostDetailCard } from '@/components/community/post-detail/PostDetailCard'
 import { PostNotFound } from '@/components/community/post-detail/PostNotFound'
 import { RepliesSection } from '@/components/community/post-detail/RepliesSection'
-import { ErrorStateCard } from '@/components/community/shared/ErrorStateCard'
+import { ErrorStateCard } from '@/components/shared/ErrorStateCard'
 import { Skeleton } from '@/components/ui/skeleton'
 
 import { useForumPost } from '@/hooks/queries/useForumPost'

@@ -6,7 +6,7 @@ import { RepliesEmptyState } from '@/components/community/post-detail/RepliesEmp
 import { RepliesList } from '@/components/community/post-detail/RepliesList'
 import { UnauthenticatedReplyPrompt } from '@/components/community/post-detail/UnauthenticatedReplyPrompt'
 import { PostForm } from '@/components/community/post-form/PostForm'
-import { ErrorStateCard } from '@/components/community/shared/ErrorStateCard'
+import { ErrorStateCard } from '@/components/shared/ErrorStateCard'
 import { Skeleton } from '@/components/ui/skeleton'
 
 import { useForumPostMutations } from '@/hooks/mutations/useForumPostMutations'
