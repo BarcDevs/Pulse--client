@@ -27,7 +27,7 @@ export const useForumReplies = (
                 throw new Error('Post ID is required')
             }
             const response = await fetchReplies(postId)
-            return response.data.data as RepliesResponse
+            return response.data.data
         },
         enabled: !!postId,
         staleTime: minuteInMs * 5
