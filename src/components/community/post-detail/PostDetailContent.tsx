@@ -1,9 +1,12 @@
 'use client'
 
+import { isAxiosError } from 'axios'
+
 import { PostDetailActions } from '@/components/community/post-detail/PostDetailActions'
 import { PostDetailCard } from '@/components/community/post-detail/PostDetailCard'
 import { PostNotFound } from '@/components/community/post-detail/PostNotFound'
 import { RepliesSection } from '@/components/community/post-detail/RepliesSection'
+import { ErrorStateCard } from '@/components/community/shared/ErrorStateCard'
 import { Skeleton } from '@/components/ui/skeleton'
 
 import { useForumPost } from '@/hooks/queries/useForumPost'
@@ -12,6 +15,7 @@ import { toRelative } from '@/lib/time'
 
 import { sanitizeHtml } from '@/utils/sanitizeHtml'
 
+import { communityPageTexts } from '@/constants/componentTexts/community'
 import { communityCategoriesColorMap }
     from '@/constants/mappings/community'
 
@@ -22,7 +26,8 @@ export const PostDetailContent = () => {
     const {
         data: post,
         isLoading: isPostLoading,
-        isError: isPostError
+        isError: isPostError,
+        error: postError
     } = useForumPost(postId)
 
     if (isPostLoading) {
@@ -35,8 +40,17 @@ export const PostDetailContent = () => {
         )
     }
 
-    if (isPostError)
-        return <PostNotFound/>
+    if (isPostError) {
+        const isNotFound =
+            isAxiosError(postError) &&
+            postError.response?.status === 404
+        if (isNotFound) return <PostNotFound/>
+        return (
+            <ErrorStateCard
+                message={communityPageTexts.postDetail.postLoadError}
+            />
+        )
+    }
 
     const sanitizedBody = post
         ? sanitizeHtml(post.body)

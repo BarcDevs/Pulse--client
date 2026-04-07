@@ -140,7 +140,8 @@ export const communityPageTexts = {
         notFoundTitle: 'Post not found',
         notFoundDescription: 'The post you are looking for does not exist or has been deleted.',
         backToCommunity: 'Back to Community',
-        repliesLoadError: 'Failed to load replies'
+        repliesLoadError: 'Failed to load replies',
+        postLoadError: 'Failed to load post. Please check your connection.'
     },
     postActions: {
         solidarity: 'Solidarity',
