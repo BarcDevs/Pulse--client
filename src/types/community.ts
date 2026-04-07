@@ -31,9 +31,7 @@ export type Reply = Prettify<Post_Base>
 
 export type Votes = {
     upvotes: number
-    downvotes: number
     upvotedBy: string[]
-    downvotedBy: string[]
 }
 
 export type PartialTag = {

@@ -40,9 +40,7 @@ export const useForumPostMutations = ({
                 authorId: user?.id || '',
                 votes: {
                     upvotes: 0,
-                    downvotes: 0,
                     upvotedBy: [],
-                    downvotedBy: []
                 }
             }
             return createReply(postId, reply)
@@ -70,9 +68,7 @@ export const useForumPostMutations = ({
                 authorId: user?.id || '',
                 votes: {
                     upvotes: 0,
-                    downvotes: 0,
                     upvotedBy: [],
-                    downvotedBy: []
                 }
             }
             return updateReply(postId, replyId, reply)

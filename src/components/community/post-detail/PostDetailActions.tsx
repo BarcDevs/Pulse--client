@@ -58,14 +58,9 @@ export const PostDetailActions = ({
                     <ThumbsUp className={'h-4 w-4'}/>
                     {`${post?.votes.upvotes ?? 0}`}
                 </span>
-                {isPostOwner && (
-                    <span className={'flex items-center gap-1 text-sm text-muted-foreground'}>
-                        <ThumbsDown className={'h-4 w-4'}/>
-                        {`${post?.votes.downvotes ?? 0}`}
-                    </span>
-                )}
             </div>
 
+            {/* todo: make upvotes click as upvote button */}
             <div className={'flex items-center gap-2'}>
                 <PostActionButton
                     icon={ThumbsUp}

@@ -90,12 +90,6 @@ export const ReplyCard = ({
                         <ThumbsUp className={'h-3 w-3'}/>
                         {`${reply.votes.upvotes}`}
                     </span>
-                    {isOwner && (
-                        <span className={'flex items-center gap-1 text-xs text-muted-foreground'}>
-                            <ThumbsDown className={'h-3 w-3'}/>
-                            {`${reply.votes.downvotes}`}
-                        </span>
-                    )}
                 </div>
             </div>
         </div>

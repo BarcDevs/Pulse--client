@@ -209,7 +209,7 @@ Profiles include:
 ### 7. Community Forum
 - Post creation (title, body, optional tags)
 - Nested replies
-- Voting (upvote/downvote per post/reply)
+- Voting per post/reply
 - User profiles visible on posts
 - Tag-based filtering
 - Post/reply editing and deletion (by author or admin)
