@@ -1,5 +1,6 @@
 'use client'
 
+import { UserAvatar } from '@/components/shared/UserAvatar'
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -13,7 +14,6 @@ import { bottomNavItems } from '@/constants/navigationItems'
 
 import { useAuth } from '@/context/AuthContext'
 
-import { UserAvatar } from './UserAvatar'
 import { UserLoginButton } from './UserLoginButton'
 import { UserMenuItem } from './UserMenuItem'
 import { UserSkeleton } from './UserSkeleton'
