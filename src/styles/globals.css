@@ -1,7 +1,12 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
+@import 'react-quill-new/dist/quill.snow.css';
 
 @custom-variant dark (&:is(.dark *));
+
+.ql-editor {
+  min-height: 160px;
+}
 
 :root {
   /* HealEase Design System */

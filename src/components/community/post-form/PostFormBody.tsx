@@ -40,11 +40,11 @@ export const PostFormBody = ({
         name={'body'}
         render={({ field }) => (
             <FormItem>
-                <FormLabel>
-                    {isReply
-                        ? communityPageTexts.postForm.writeReply
-                        : communityPageTexts.postForm.content}
-                </FormLabel>
+                {!isReply && (
+                    <FormLabel>
+                        {communityPageTexts.postForm.content}
+                    </FormLabel>
+                )}
                 <FormControl>
                     <div className={'border border-input rounded-md bg-white'}>
                         <ReactQuill
