@@ -85,9 +85,13 @@ export const RepliesSection = ({
                 </div>
             )}
 
-            {!isLoading && replies.length === 0 && !isReplyFormOpen && (
-                <RepliesEmptyState/>
-            )}
+            {
+                !isLoading
+                && !isError
+                && replies.length === 0
+                && !isReplyFormOpen && (
+                    <RepliesEmptyState/>
+                )}
 
             {!isLoading && replies.length > 0 && (
                 <RepliesList

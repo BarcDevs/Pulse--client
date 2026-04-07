@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { communityPageTexts } from '@/constants/componentTexts/community'
 
 export const UnauthenticatedReplyPrompt = () => (
-    <div className={'rounded-md bg-secondary/50 border border-border p-4 text-center'}>
+    <div className={'rounded-md bg-muted/50 border border-border p-4 text-center'}>
         <p className={'text-sm text-muted-foreground mb-3'}>
             {communityPageTexts.postDetail.loginToReply}
         </p>
