@@ -42,7 +42,6 @@ export const CommunityActivity = ({
                     <CommunityActivityItem
                         key={activity.id}
                         avatar={activity.avatar}
-                        avatarBg={activity.avatarBg}
                         user={activity.user}
                         action={activity.action}
                         time={activity.time}

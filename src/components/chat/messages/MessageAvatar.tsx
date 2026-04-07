@@ -1,7 +1,4 @@
-import {
-    Avatar,
-    AvatarFallback
-} from '@/components/ui/avatar'
+import { UserAvatar } from '@/components/shared/UserAvatar'
 
 type MessageAvatarProps = {
     role: 'user' | 'assistant'
@@ -12,9 +9,11 @@ export const MessageAvatar = ({
     role,
     initials = 'U'
 }: MessageAvatarProps) => (
-    <Avatar className={'size-9 shrink-0'}>
-        <AvatarFallback className={'bg-primary text-white'}>
-            {role === 'assistant' ? 'AI' : initials}
-        </AvatarFallback>
-    </Avatar>
+    <UserAvatar
+        initials={role === 'assistant' ? 'AI' : initials}
+        className={{
+            wrapper: 'size-9 shrink-0',
+            fallback: 'bg-primary text-white'
+        }}
+    />
 )

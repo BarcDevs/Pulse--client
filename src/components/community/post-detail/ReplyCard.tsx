@@ -5,14 +5,10 @@ import { ThumbsUp } from 'lucide-react'
 import { Reply } from '@/types/community'
 
 import { DeleteMenu } from '@/components/community/shared/DeleteMenu'
-import {
-    Avatar,
-    AvatarFallback,
-    AvatarImage
-} from '@/components/ui/avatar'
+import { UserAvatar } from '@/components/shared/UserAvatar'
 
 import { toRelative } from '@/lib/time'
-import { cn } from '@/lib/utils'
+import { cn, getUserFallback } from '@/lib/utils'
 
 import { sanitizeHtml } from '@/utils/sanitizeHtml'
 
@@ -40,6 +36,12 @@ export const ReplyCard = ({
     const timeAgo = toRelative(new Date(reply.createdAt))
     const sanitizedBody = sanitizeHtml(reply.body)
 
+    const { author } = reply
+    const initials = author && getUserFallback(
+        author.firstName,
+        author.lastName
+    )
+
     return (
         <div className={cn(
             'flex gap-3 p-4 rounded-lg border border-border bg-secondary-50',
@@ -47,17 +49,7 @@ export const ReplyCard = ({
                 ? 'ml-6 border-l-2 border-l-muted'
                 : 'border-l-4 border-l-primary'
         )}>
-            {/* todo: split user avatar */}
-            <Avatar className={'h-8 w-8 shrink-0'}>
-                <AvatarImage src={''}/>
-                <AvatarFallback>
-                    {
-                        reply.author?.firstName
-                            ?.charAt(0)
-                            .toUpperCase()
-                    }
-                </AvatarFallback>
-            </Avatar>
+            {initials && <UserAvatar initials={initials}/>}
 
             <div className={'flex-1 min-w-0'}>
                 <div className={'flex items-center justify-between gap-2 mb-1'}>

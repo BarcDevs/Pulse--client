@@ -89,40 +89,35 @@ export const communityPageTexts = {
                 user: 'Sarah',
                 action: 'shared a milestone',
                 time: '30 min ago',
-                avatar: 'S',
-                avatarBg: 'bg-pink-100 text-pink-600'
+                avatar: 'S'
             },
             {
                 id: 2,
                 user: 'James',
                 action: 'joined the Yoga group',
                 time: '1 hour ago',
-                avatar: 'J',
-                avatarBg: 'bg-blue-100 text-blue-600'
+                avatar: 'J'
             },
             {
                 id: 3,
                 user: 'Marcus',
                 action: 'posted a question',
                 time: '2 hours ago',
-                avatar: 'M',
-                avatarBg: 'bg-emerald-100 text-emerald-600'
+                avatar: 'M'
             },
             {
                 id: 4,
                 user: 'Elena',
                 action: 'replied to a post',
                 time: '3 hours ago',
-                avatar: 'E',
-                avatarBg: 'bg-purple-100 text-purple-600'
+                avatar: 'E'
             },
             {
                 id: 5,
                 user: 'David',
                 action: 'started a new discussion',
                 time: '4 hours ago',
-                avatar: 'D',
-                avatarBg: 'bg-orange-100 text-orange-600'
+                avatar: 'D'
             }
         ]
     },
