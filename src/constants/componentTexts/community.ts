@@ -125,5 +125,39 @@ export const communityPageTexts = {
                 avatarBg: 'bg-orange-100 text-orange-600'
             }
         ]
+    },
+    confirmations: {
+        deletePost: 'Are you sure you want to delete this post?',
+        deleteReply: 'Are you sure you want to delete this reply?'
+    },
+    postDetail: {
+        loading: 'Loading replies...',
+        replies: 'Replies',
+        reply: 'Reply',
+        noReplies: 'No replies yet. Be the first to share your thoughts!',
+        loginToReply: 'Please log in to reply',
+        loginButton: 'Log In',
+        notFoundTitle: 'Post not found',
+        notFoundDescription: 'The post you are looking for does not exist or has been deleted.',
+        backToCommunity: 'Back to Community',
+        repliesLoadError: 'Failed to load replies'
+    },
+    postActions: {
+        solidarity: 'Solidarity',
+        reply: 'Reply',
+        share: 'Share'
+    },
+    postForm: {
+        writeReply: 'Write a Reply',
+        createPost: 'Create Post',
+        content: 'Content',
+        cancel: 'Cancel',
+        sendReply: 'Send Reply',
+        title: 'Title',
+        titlePlaceholder: 'Post title',
+        category: 'Category',
+        categoryPlaceholder: 'Select category',
+        bodyPlaceholderReply: 'Write your reply...',
+        bodyPlaceholderPost: 'Write your post...'
     }
 }

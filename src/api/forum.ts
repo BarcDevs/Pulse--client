@@ -67,6 +67,14 @@ export const updateReply = async (
             ...reply
         })
 
+export const deleteReply = async (
+    postId: string,
+    replyId: string
+): ApiResponse<object> =>
+    api.delete<Response<object>>(
+        `/forum/posts/${postId}/replies/${replyId}`
+    )
+
 export const fetchTags = async () =>
     api.get<Response<PartialTag[]>>(
         '/forum/tags'
