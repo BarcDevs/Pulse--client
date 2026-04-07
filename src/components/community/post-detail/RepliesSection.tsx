@@ -53,7 +53,7 @@ export const RepliesSection = ({
     const replies: Reply[] = repliesData?.replies ?? []
 
     return (
-        <section className={'space-y-4'}>
+        <section className={'space-y-4 pb-6'}>
             <div className={'flex items-center justify-between'}>
                 <h2 className={'text-lg font-semibold'}>
                     {isLoading
@@ -69,6 +69,19 @@ export const RepliesSection = ({
 
             {isError && (
                 <ErrorStateCard message={communityPageTexts.postDetail.repliesLoadError}/>
+            )}
+
+            {isAuthenticated && (
+                <PostForm
+                    isReply={true}
+                    postId={postId}
+                    isOpen={isReplyFormOpen}
+                    onCancelAction={() => setIsReplyFormOpen(false)}
+                />
+            )}
+
+            {!isAuthenticated && (
+                <UnauthenticatedReplyPrompt/>
             )}
 
             {isLoading && (
@@ -99,19 +112,6 @@ export const RepliesSection = ({
                     onDeleteReply={handleDeleteReply}
                     isDeleting={deleteReply.isPending}
                 />
-            )}
-
-            {isAuthenticated && (
-                <PostForm
-                    isReply={true}
-                    postId={postId}
-                    isOpen={isReplyFormOpen}
-                    onCancelAction={() => setIsReplyFormOpen(false)}
-                />
-            )}
-
-            {!isAuthenticated && (
-                <UnauthenticatedReplyPrompt/>
             )}
         </section>
     )
