@@ -42,9 +42,12 @@ export const PostDetailContent = () => {
 
     if (isPostError) {
         const isNotFound =
-            isAxiosError(postError) &&
-            postError.response?.status === 404
-        if (isNotFound) return <PostNotFound/>
+            isAxiosError(postError)
+            && postError.response?.status === 404
+
+        if (isNotFound)
+            return <PostNotFound/>
+
         return (
             <ErrorStateCard
                 message={communityPageTexts.postDetail.postLoadError}
@@ -70,15 +73,22 @@ export const PostDetailContent = () => {
 
     return (
         <div className={'space-y-6'}>
-            <PostDetailCard
-                post={post}
-                sanitizedBody={sanitizedBody}
-                categoryColor={categoryColor}
-                author={author}
-                timeAgo={timeAgo}
-            />
-            <PostDetailActions postId={postId} post={post}/>
-            <RepliesSection postId={postId}/>
+            <div>
+                <PostDetailCard
+                    post={post}
+                    sanitizedBody={sanitizedBody}
+                    categoryColor={categoryColor}
+                    author={author}
+                    timeAgo={timeAgo}
+                />
+                <PostDetailActions
+                    postId={postId}
+                    post={post}
+                />
+            </div>
+            <div className={'px-6'}>
+                <RepliesSection postId={postId}/>
+            </div>
         </div>
     )
 }

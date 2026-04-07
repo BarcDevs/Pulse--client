@@ -53,17 +53,16 @@ export const RepliesSection = ({
     const replies: Reply[] = repliesData?.replies ?? []
 
     return (
-        <div className={'space-y-4'}>
+        <section className={'space-y-4'}>
             <div className={'flex items-center justify-between'}>
                 <h2 className={'text-lg font-semibold'}>
-                    {
-                        isLoading
-                            ? communityPageTexts.postDetail.loading
-                            : `${replies.length} ${
-                                replies.length === 1
-                                    ? communityPageTexts.postDetail.reply
-                                    : communityPageTexts.postDetail.replies
-                            }`
+                    {isLoading
+                        ? communityPageTexts.postDetail.loading
+                        : `${replies.length} ${
+                            replies.length === 1
+                                ? communityPageTexts.postDetail.reply
+                                : communityPageTexts.postDetail.replies
+                        }`
                     }
                 </h2>
             </div>
@@ -114,6 +113,6 @@ export const RepliesSection = ({
             {!isAuthenticated && (
                 <UnauthenticatedReplyPrompt/>
             )}
-        </div>
+        </section>
     )
 }
