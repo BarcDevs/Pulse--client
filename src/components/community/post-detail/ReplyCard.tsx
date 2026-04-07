@@ -1,6 +1,6 @@
 'use client'
 
-import { ThumbsDown, ThumbsUp } from 'lucide-react'
+import { ThumbsUp } from 'lucide-react'
 
 import { Reply } from '@/types/community'
 
@@ -47,6 +47,7 @@ export const ReplyCard = ({
                 ? 'ml-6 border-l-2 border-l-muted'
                 : 'border-l-4 border-l-primary'
         )}>
+            {/* todo: split user avatar */}
             <Avatar className={'h-8 w-8 shrink-0'}>
                 <AvatarImage src={''}/>
                 <AvatarFallback>

@@ -5,7 +5,6 @@ import { useRouter } from 'next/navigation'
 import {
     MessageSquare,
     Share2,
-    ThumbsDown,
     ThumbsUp
 } from 'lucide-react'
 
