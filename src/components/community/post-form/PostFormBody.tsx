@@ -17,7 +17,7 @@ import { reactQuillSetup } from '@/constants/config/reactQuillSetup'
 
 const ReactQuill = dynamic(
     async () => {
-        const { default: RQ } = await import('react-quill')
+        const { default: RQ } = await import('react-quill-new')
         return RQ
     },
     {
