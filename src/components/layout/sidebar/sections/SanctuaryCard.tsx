@@ -1,4 +1,8 @@
-import { Lock, Shield, UserX } from 'lucide-react'
+import {
+    Lock,
+    Shield,
+    UserX
+} from 'lucide-react'
 
 import { GuidelineItem } from '@/components/shared/content/GuidelineItem'
 import { Button } from '@/components/ui/button'

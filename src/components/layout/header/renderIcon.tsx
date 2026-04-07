@@ -1,4 +1,8 @@
-import { Download, Plus, Share2 } from 'lucide-react'
+import {
+    Download,
+    Plus,
+    Share2
+} from 'lucide-react'
 import type { ReactNode } from 'react'
 
 export const renderIcon = (

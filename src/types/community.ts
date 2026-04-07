@@ -1,4 +1,8 @@
-import { PartialUser, Prettify, User } from '@/types'
+import {
+    PartialUser,
+    Prettify,
+    User
+} from '@/types'
 
 export type FilterType = 'newest' | 'popular' | 'hot' | 'unanswered'
 
@@ -14,7 +18,7 @@ type Post_Base = {
 
 export type Post = Prettify<{
     title: string
-    replies: Reply[] | {id: string}[]
+    replies: Reply[] | { id: string }[]
     views: number
     tags: Tag[] | PartialTag[]
     category: string
