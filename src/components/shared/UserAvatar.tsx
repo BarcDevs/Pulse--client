@@ -29,18 +29,12 @@ export const UserAvatar = ({
     } = className || {}
 
     return (
-        <Avatar className={cn(
-            'size-9 cursor-pointer',
-            wrapper
-        )}>
+        <Avatar className={wrapper ?? 'size-9 cursor-pointer'}>
             <AvatarImage
                 src={imageSrc}
                 className={image}
             />
-            <AvatarFallback className={cn(
-                'bg-primary-light text-primary',
-                fallback
-            )}>
+            <AvatarFallback className={fallback ?? 'bg-primary-light text-primary'}>
                 {initials}
             </AvatarFallback>
         </Avatar>
