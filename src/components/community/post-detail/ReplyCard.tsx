@@ -1,5 +1,7 @@
 'use client'
 
+import { ThumbsDown, ThumbsUp } from 'lucide-react'
+
 import { Reply } from '@/types/community'
 
 import { DeleteMenu } from '@/components/community/shared/DeleteMenu'
@@ -39,15 +41,13 @@ export const ReplyCard = ({
     const sanitizedBody = sanitizeHtml(reply.body)
 
     return (
-        <div
-            className={cn(
-                'flex gap-3 p-4 rounded-lg border border-border bg-secondary-50',
-                isNested
-                    ? 'ml-6 border-l-2 border-l-muted'
-                    : 'border-l-4 border-l-primary'
-            )}
-        >
-            <Avatar className={'h-8 w-8 flex-shrink-0'}>
+        <div className={cn(
+            'flex gap-3 p-4 rounded-lg border border-border bg-secondary-50',
+            isNested
+                ? 'ml-6 border-l-2 border-l-muted'
+                : 'border-l-4 border-l-primary'
+        )}>
+            <Avatar className={'h-8 w-8 shrink-0'}>
                 <AvatarImage src={''}/>
                 <AvatarFallback>
                     {

@@ -52,13 +52,6 @@ export const PostDetailActions = ({
     }
 
     return (
-        <div className={'flex items-center justify-end gap-6 py-4 px-6 border-b border-border'}>
-            <PostActionButton
-                icon={ThumbsUp}
-                text={communityPageTexts.postActions.solidarity}
-                onClick={() => {
-                }}
-            />
         <div className={'flex items-center justify-between py-4 px-6 border-b border-border'}>
             <div className={'flex items-center gap-3'}>
                 <span className={'flex items-center gap-1 text-sm text-muted-foreground'}>
@@ -73,34 +66,41 @@ export const PostDetailActions = ({
                 )}
             </div>
 
-
-            <PostActionButton
-                icon={MessageSquare}
-                text={communityPageTexts.postActions.reply}
-                onClick={() => {
-                    if (!isAuthenticated) {
-                        router.push('/login')
-                        return
-                    }
-                    setIsReplyFormOpen(!isReplyFormOpen)
-                }}
-            />
-
-            <PostActionButton
-                icon={Share2}
-                text={communityPageTexts.postActions.share}
-                onClick={() => {
-                }}
-            />
-
-            {isPostOwner && (
-                <DeleteMenu
-                    onDeleteAction={handleDeletePost}
-                    confirmMessage={communityPageTexts.confirmations.deletePost}
-                    isLoading={deletePost.isPending}
-                    iconSize={18}
+            <div className={'flex items-center gap-2'}>
+                <PostActionButton
+                    icon={ThumbsUp}
+                    text={communityPageTexts.postActions.solidarity}
+                    onClick={() => {
+                    }}
                 />
-            )}
+
+                <PostActionButton
+                    icon={MessageSquare}
+                    text={communityPageTexts.postActions.reply}
+                    onClick={() => {
+                        if (!isAuthenticated) {
+                            return router.push('/login')
+                        }
+                        setIsReplyFormOpen(!isReplyFormOpen)
+                    }}
+                />
+
+                <PostActionButton
+                    icon={Share2}
+                    text={communityPageTexts.postActions.share}
+                    onClick={() => {
+                    }}
+                />
+
+                {isPostOwner && (
+                    <DeleteMenu
+                        onDeleteAction={handleDeletePost}
+                        confirmMessage={communityPageTexts.confirmations.deletePost}
+                        isLoading={deletePost.isPending}
+                        iconSize={18}
+                    />
+                )}
+            </div>
         </div>
     )
 }
