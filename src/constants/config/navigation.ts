@@ -12,15 +12,5 @@ export const footerLinks = {
             href: '/cookies',
             title: 'Cookie Policy'
         }
-    ],
-    social: [
-        {
-            href: 'https://twitter.com',
-            title: 'Twitter'
-        },
-        {
-            href: 'https://linkedin.com',
-            title: 'LinkedIn'
-        }
     ]
 }
