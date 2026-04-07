@@ -2,10 +2,10 @@
 
 import { isAxiosError } from 'axios'
 
-import { PostDetailActions } from '@/components/community/post-detail/PostDetailActions'
-import { PostDetailCard } from '@/components/community/post-detail/PostDetailCard'
-import { PostNotFound } from '@/components/community/post-detail/PostNotFound'
-import { RepliesSection } from '@/components/community/post-detail/RepliesSection'
+import { PostDetailActions } from '@/components/community/postDetail/PostDetailActions'
+import { PostDetailCard } from '@/components/community/postDetail/PostDetailCard'
+import { PostNotFound } from '@/components/community/postDetail/PostNotFound'
+import { RepliesSection } from '@/components/community/postDetail/RepliesSection'
 import { ErrorStateCard } from '@/components/shared/ErrorStateCard'
 import { Skeleton } from '@/components/ui/skeleton'
 

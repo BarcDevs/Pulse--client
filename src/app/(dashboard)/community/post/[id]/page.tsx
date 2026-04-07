@@ -3,7 +3,7 @@
 import { use } from 'react'
 
 import { PostDetailPage }
-    from '@/components/community/post-detail/PostDetailPage'
+    from '@/components/community/postDetail/PostDetailPage'
 
 type PostDetailPageProps = {
     params: Promise<{

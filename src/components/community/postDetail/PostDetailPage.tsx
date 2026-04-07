@@ -1,6 +1,6 @@
 'use client'
 
-import { PostDetailContent } from '@/components/community/post-detail/PostDetailContent'
+import { PostDetailContent } from '@/components/community/postDetail/PostDetailContent'
 
 import { PostDetailProvider } from '@/context/PostDetailContext'
 

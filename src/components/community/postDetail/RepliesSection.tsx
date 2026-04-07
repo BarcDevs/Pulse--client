@@ -2,10 +2,10 @@
 
 import { Reply } from '@/types/community'
 
-import { RepliesEmptyState } from '@/components/community/post-detail/RepliesEmptyState'
-import { RepliesList } from '@/components/community/post-detail/RepliesList'
-import { UnauthenticatedReplyPrompt } from '@/components/community/post-detail/UnauthenticatedReplyPrompt'
-import { PostForm } from '@/components/community/post-form/PostForm'
+import { RepliesEmptyState } from '@/components/community/postDetail/RepliesEmptyState'
+import { RepliesList } from '@/components/community/postDetail/RepliesList'
+import { UnauthenticatedReplyPrompt } from '@/components/community/postDetail/UnauthenticatedReplyPrompt'
+import { PostForm } from '@/components/community/postForm/PostForm'
 import { ErrorStateCard } from '@/components/shared/ErrorStateCard'
 import { Skeleton } from '@/components/ui/skeleton'
 

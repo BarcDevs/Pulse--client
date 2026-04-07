@@ -2,7 +2,7 @@
 
 import { Reply } from '@/types/community'
 
-import { ReplyCard } from '@/components/community/post-detail/ReplyCard'
+import { ReplyCard } from '@/components/community/postDetail/ReplyCard'
 
 type RepliesListProps = {
     replies: Reply[]

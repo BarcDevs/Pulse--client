@@ -1,9 +1,9 @@
 'use client'
 
-import { PostFormActions } from '@/components/community/post-form/PostFormActions'
-import { PostFormBody } from '@/components/community/post-form/PostFormBody'
-import { PostFormFields } from '@/components/community/post-form/PostFormFields'
-import { PostFormHeader } from '@/components/community/post-form/PostFormHeader'
+import { PostFormActions } from '@/components/community/postForm/PostFormActions'
+import { PostFormBody } from '@/components/community/postForm/PostFormBody'
+import { PostFormFields } from '@/components/community/postForm/PostFormFields'
+import { PostFormHeader } from '@/components/community/postForm/PostFormHeader'
 import { Form } from '@/components/ui/form'
 
 import { usePostForm } from '@/hooks/forms/usePostForm'
