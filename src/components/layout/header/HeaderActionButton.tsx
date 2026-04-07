@@ -2,7 +2,7 @@ import { Button } from '@/components/ui/button'
 
 import type { ActionConfig } from '@/constants/config/headerPageConfigs'
 
-import { renderIcon } from './renderIcon'
+import { headerIcon } from './headerIcon'
 
 type HeaderActionButtonProps = {
     action: ActionConfig
@@ -25,7 +25,7 @@ export const HeaderActionButton = ({
                         : ''
             }
         >
-            {renderIcon(action.icon)}
+            {headerIcon(action.icon)}
             {action.label}
         </Button>
     )

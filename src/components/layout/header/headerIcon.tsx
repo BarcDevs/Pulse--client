@@ -5,7 +5,7 @@ import {
 } from 'lucide-react'
 import type { ReactNode } from 'react'
 
-export const renderIcon = (
+export const headerIcon = (
     icon: 'plus' | 'download' | 'share2' | undefined
 ): ReactNode => {
     const iconStyle = 'mr-2 h-4 w-4'
