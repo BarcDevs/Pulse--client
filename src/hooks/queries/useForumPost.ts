@@ -1,3 +1,5 @@
+import { isAxiosError } from 'axios'
+
 import { useQuery } from '@tanstack/react-query'
 
 import { Post } from '@/types/community'
@@ -23,5 +25,7 @@ export const useForumPost = (
         return response.data.data as Post
     },
     enabled: !!postId,
-    staleTime: minuteInMs * 5
+    staleTime: minuteInMs * 5,
+    retry: (_, error) =>
+        isAxiosError(error) && !!error.response
 })
