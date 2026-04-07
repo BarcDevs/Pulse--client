@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 import {
     MessageSquare,
     Share2,
+    ThumbsDown,
     ThumbsUp
 } from 'lucide-react'
 
@@ -58,6 +59,20 @@ export const PostDetailActions = ({
                 onClick={() => {
                 }}
             />
+        <div className={'flex items-center justify-between py-4 px-6 border-b border-border'}>
+            <div className={'flex items-center gap-3'}>
+                <span className={'flex items-center gap-1 text-sm text-muted-foreground'}>
+                    <ThumbsUp className={'h-4 w-4'}/>
+                    {`${post?.votes.upvotes ?? 0}`}
+                </span>
+                {isPostOwner && (
+                    <span className={'flex items-center gap-1 text-sm text-muted-foreground'}>
+                        <ThumbsDown className={'h-4 w-4'}/>
+                        {`${post?.votes.downvotes ?? 0}`}
+                    </span>
+                )}
+            </div>
+
 
             <PostActionButton
                 icon={MessageSquare}

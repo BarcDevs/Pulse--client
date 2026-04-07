@@ -84,6 +84,19 @@ export const ReplyCard = ({
                         __html: sanitizedBody
                     }}
                 />
+
+                <div className={'flex items-center gap-3 mt-2'}>
+                    <span className={'flex items-center gap-1 text-xs text-muted-foreground'}>
+                        <ThumbsUp className={'h-3 w-3'}/>
+                        {`${reply.votes.upvotes}`}
+                    </span>
+                    {isOwner && (
+                        <span className={'flex items-center gap-1 text-xs text-muted-foreground'}>
+                            <ThumbsDown className={'h-3 w-3'}/>
+                            {`${reply.votes.downvotes}`}
+                        </span>
+                    )}
+                </div>
             </div>
         </div>
     )

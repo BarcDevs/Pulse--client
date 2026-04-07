@@ -6,12 +6,14 @@ type PostActionButtonProps = {
     text: string
     onClick: () => void
     icon: LucideIcon
+    count?: number
 }
 
 export const PostActionButton = ({
     text,
     onClick,
-    icon: Icon
+    icon: Icon,
+    count
 }: PostActionButtonProps) => (
     <Button
         variant={'ghost'}
@@ -21,5 +23,10 @@ export const PostActionButton = ({
     >
         <Icon className={'h-4 w-4'}/>
         {text}
+        {count !== undefined && (
+            <span>
+                {count}
+            </span>
+        )}
     </Button>
 )
