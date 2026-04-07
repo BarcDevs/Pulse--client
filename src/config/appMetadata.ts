@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 
-export const meta: Metadata = {
+export const appMetadata: Metadata = {
     title: 'HealEase - Recovery & Wellness Sanctuary',
     description: 'Your digital sanctuary for recovery and wellness. Track your journey, connect with community, and heal with AI-powered insights.',
     icons: {

@@ -7,7 +7,7 @@ import { LayoutProps } from '@/types'
 
 import { cn } from '@/lib/utils'
 
-import { meta } from '@/config/meta'
+import { appMetadata } from '@/config/appMetadata'
 
 import { AuthProvider } from '@/context/AuthProvider'
 
@@ -20,7 +20,7 @@ const inter = Inter({
     variable: '--font-inter'
 })
 
-export const metadata: Metadata = meta
+export const metadata: Metadata = appMetadata
 
 const RootLayout = ({
     children
