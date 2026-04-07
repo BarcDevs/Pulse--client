@@ -30,8 +30,8 @@ export const HistoryChartContent = ({
         dir={'ltr'}
     >
         <ResponsiveContainer
-            width={800}
-            height={240}
+            width={'100%'}
+            height={'100%'}
         >
             <BarChart
                 data={reorderedData}
