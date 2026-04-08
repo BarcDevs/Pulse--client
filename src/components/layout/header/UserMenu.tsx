@@ -10,7 +10,7 @@ import {
 
 import { getUserFallback } from '@/lib/utils'
 
-import { bottomNavItems } from '@/constants/navigationItems'
+import { userMenuItems } from '@/constants/navigationItems'
 
 import { useAuth } from '@/context/AuthContext'
 
@@ -45,7 +45,7 @@ export const UserMenu = () => {
                 className={'w-56'}
             >
                 <DropdownMenuSeparator/>
-                {bottomNavItems.map((item) => (
+                {userMenuItems.map((item) => (
                         <UserMenuItem
                             key={item.label}
                             item={item}

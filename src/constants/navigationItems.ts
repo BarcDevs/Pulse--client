@@ -5,7 +5,7 @@ import {
     Lightbulb,
     LogOut,
     MessageCircle,
-    Settings,
+    Settings, User,
     Users
 } from 'lucide-react'
 
@@ -48,7 +48,12 @@ export const mainNavItems: NavItem[] = [
     }
 ]
 
-export const bottomNavItems: NavItem[] = [
+export const userMenuItems: NavItem[] = [
+    {
+        icon: User,
+        label: 'Profile',
+        href: '/profile'
+    },
     {
         icon: Settings,
         label: 'Settings',

@@ -5,10 +5,10 @@ import { DropdownMenuItem } from '@/components/ui/dropdown-menu'
 
 import { useLogout } from '@/hooks/mutations/useLogout'
 
-import { bottomNavItems } from '@/constants/navigationItems'
+import { userMenuItems } from '@/constants/navigationItems'
 
 type UserMenuItemProps = {
-    item: typeof bottomNavItems[0]
+    item: typeof userMenuItems[0]
 }
 
 export const UserMenuItem = ({
