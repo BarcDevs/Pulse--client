@@ -19,10 +19,6 @@ const CheckInPage = () => (
 
             <CheckInForm/>
 
-            <p className={'mt-4 text-center text-xs text-muted-foreground'}>
-                {checkInTexts.autosaveStatus}
-            </p>
-
             <CheckInQuote/>
         </div>
     </div>
