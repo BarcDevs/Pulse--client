@@ -1,4 +1,4 @@
-import type { ComponentProps, ReactNode } from 'react'
+import type { ReactNode } from 'react'
 
 export type Prettify<T> = {
     [K in keyof T]: T[K];
@@ -15,47 +15,4 @@ export type Language = {
     dir: 'ltr' | 'rtl'
 }
 
-export type Role = 'USER' | 'ADMIN'
-
 export type Theme = 'light' | 'dark'
-
-type UserProfile = {
-    id: string
-    userId: string
-    image?: string | null
-    bio?: string | null
-    location?: string | null
-    timezone?: string | null
-    dateFormat?: string | null
-    theme: string
-    language: string
-    dailyReminder: boolean
-    communityAlerts: boolean
-    profileVisibility: string
-    anonymousParticipation: boolean
-    createdAt: Date
-    updatedAt: Date
-}
-
-export type User = {
-    id: string
-    firstName: string
-    lastName: string
-    username: string
-    email: string
-    role: Role
-    passwordUpdatedAt?: string
-    createdAt: string
-    deletedAt?: string | null
-    profile?: UserProfile
-}
-
-export type PartialUser = {
-    id: string
-    firstName: string
-    lastName: string
-    username: string
-    profile?: UserProfile
-}
-
-export type InputProps = ComponentProps<'input'>

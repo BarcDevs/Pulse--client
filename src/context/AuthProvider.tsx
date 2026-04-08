@@ -7,7 +7,8 @@ import {
 
 import { useQueryClient } from '@tanstack/react-query'
 
-import type { LayoutProps, User } from '@/types'
+import type { LayoutProps } from '@/types'
+import type { User } from '@/types/user'
 
 import { useGetMe } from '@/hooks/queries/useGetMe'
 

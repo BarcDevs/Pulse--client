@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 
-import type { User } from '@/types'
+import type { User } from '@/types/user'
 import type { AuthResponse } from '@/types/auth'
 import type { Response } from '@/types/responses'
 

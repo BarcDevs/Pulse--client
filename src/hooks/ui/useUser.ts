@@ -5,7 +5,7 @@ import {
     useState
 } from 'react'
 
-import type { User } from '@/types'
+import type { User } from '@/types/user'
 
 import { getProfile } from '@/api/profile'
 

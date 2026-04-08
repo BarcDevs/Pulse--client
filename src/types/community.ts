@@ -1,8 +1,8 @@
+import { Prettify } from '@/types'
 import {
     PartialUser,
-    Prettify,
     User
-} from '@/types'
+} from '@/types/user'
 
 export type FilterType = 'newest' | 'popular' | 'hot' | 'unanswered'
 
