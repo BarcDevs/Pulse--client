@@ -1,8 +1,8 @@
 import { useQuery } from '@tanstack/react-query'
 
-import type { User } from '@/types/user'
 import type { AuthResponse } from '@/types/auth'
 import type { Response } from '@/types/responses'
+import type { User } from '@/types/user'
 
 import { authQueryKeys } from '@/constants/queryKeys'
 import { minuteInMs } from '@/constants/time'

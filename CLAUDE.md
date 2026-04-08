@@ -9,6 +9,7 @@ HealEase — Recovery support platform for patients transitioning from hospital/
 - Write clean, maintainable, readable code
 - One concern per file
 - Provide a full file edit instead of one edit at a time
+- For every function that you want to create make sure it is not already exists
 
 ### Code Style
 - Never use array index as key - use the current element as an index

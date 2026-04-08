@@ -222,7 +222,7 @@ describe(
                             authorId: 'user-1',
                             votes: {
                                 upvotes: 0,
-                                upvotedBy: [],
+                                upvotedBy: []
                             }
                         }
                         vi.mocked(api.post)
@@ -259,7 +259,7 @@ describe(
                             authorId: 'user-1',
                             votes: {
                                 upvotes: 0,
-                                upvotedBy: [],
+                                upvotedBy: []
                             }
                         }
                         vi.mocked(api.put)

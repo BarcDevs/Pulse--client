@@ -1,5 +1,25 @@
 export type ProfileVisibility = 'onlyMe' | 'mentors' | 'community'
 
+export type UserProfile = {
+    id: string
+    userId: string
+    image?: string | null
+    bio?: string | null
+    location?: string | null
+    timezone?: string | null
+    dateFormat?: string | null
+    theme: string
+    language: string
+    dailyReminder: boolean
+    communityAlerts: boolean
+    profileVisibility: string
+    anonymousParticipation: boolean
+    healthInterests?: HealthInterest[]
+    activityPreferences?: ActivityPreference[]
+    createdAt: string
+    updatedAt: string
+}
+
 export type HealthInterest = {
     id: string
     slug: string

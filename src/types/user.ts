@@ -1,22 +1,6 @@
-export type Role = 'USER' | 'ADMIN'
+import type { UserProfile } from '@/types/profile'
 
-export type UserProfile = {
-    id: string
-    userId: string
-    image?: string | null
-    bio?: string | null
-    location?: string | null
-    timezone?: string | null
-    dateFormat?: string | null
-    theme: string
-    language: string
-    dailyReminder: boolean
-    communityAlerts: boolean
-    profileVisibility: string
-    anonymousParticipation: boolean
-    createdAt: Date
-    updatedAt: Date
-}
+export type Role = 'USER' | 'ADMIN'
 
 export type User = {
     id: string

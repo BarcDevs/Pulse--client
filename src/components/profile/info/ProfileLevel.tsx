@@ -2,6 +2,7 @@ import { Badge } from '@/components/ui/badge'
 
 import { profilePageTexts } from '@/constants/componentTexts/profile'
 
+// TODO: Add user level/badge data to Profile type
 export const ProfileLevel = () => (
     <Badge className={'mt-3 bg-secondary text-white'}>
         {profilePageTexts.levelBadge}

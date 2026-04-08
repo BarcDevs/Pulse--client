@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button'
 
 import { profilePageTexts } from '@/constants/componentTexts/profile'
 
+// TODO: Add user's active goals with progress tracking to Profile type
 export const ActiveGoals = () => (
     <div className={'rounded-2xl bg-primary p-6 text-primary-foreground'}>
         <h3 className={'text-lg font-semibold mb-6'}>

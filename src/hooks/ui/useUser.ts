@@ -1,13 +1,9 @@
 'use client'
 
-import {
-    useEffect,
-    useState
-} from 'react'
-
 import type { User } from '@/types/user'
 
-import { getProfile } from '@/api/profile'
+import { useGetMe } from '@/hooks/queries/useGetMe'
+import { useProfile } from '@/hooks/queries/useProfile'
 
 type UseUserReturn = {
     user: User | null
@@ -17,42 +13,25 @@ type UseUserReturn = {
 }
 
 export const useUser = (): UseUserReturn => {
-    const [user, setUser] =
-        useState<User | null>(null)
+    const {
+        user,
+        isLoading: userLoading,
+        error: userError
+    } = useGetMe()
 
-    const [isLoading, setIsLoading] =
-        useState(true)
+    const {
+        profile,
+        isLoading: profileLoading
+    } = useProfile()
 
-    const [error, setError] =
-        useState<unknown | null>(null)
-
-    useEffect(() => {
-        const fetchUser = async () => {
-            try {
-                setIsLoading(true)
-                const profile =
-                    await getProfile()
-
-                setUser(
-                    profile as unknown as User
-                )
-
-                setError(null)
-            } catch (err) {
-                setError(err)
-                setUser(null)
-            } finally {
-                setIsLoading(false)
-            }
-        }
-
-        fetchUser()
-    }, [])
+    const completeUser = user && profile
+        ? { ...user, profile }
+        : user
 
     return {
-        user,
-        isLoading,
-        error,
-        isAuthenticated: !!user
+        user: completeUser ?? null,
+        isLoading: userLoading || profileLoading,
+        error: userError,
+        isAuthenticated: !!completeUser
     }
 }
