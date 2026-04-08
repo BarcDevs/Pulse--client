@@ -29,6 +29,7 @@ export const ProfileCard = () => {
                 <div className={'relative'}>
                     <UserAvatar
                         initials={initials}
+                        imageSrc={user.profile?.image ?? undefined}
                         className={{
                             wrapper: 'size-24 border-4 border-primary-light',
                             fallback: 'bg-primary text-2xl text-white'

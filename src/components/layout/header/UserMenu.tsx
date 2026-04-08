@@ -35,7 +35,10 @@ export const UserMenu = () => {
     return (
         <DropdownMenu>
             <DropdownMenuTrigger className={'flex items-center gap-3 rounded-lg p-2 hover:bg-surface-section transition-colors'}>
-                <UserAvatar initials={initials}/>
+                <UserAvatar
+                    initials={initials}
+                    imageSrc={user.profile?.image ?? undefined}
+                />
             </DropdownMenuTrigger>
             <DropdownMenuContent
                 align={'end'}

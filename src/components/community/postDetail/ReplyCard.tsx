@@ -49,7 +49,12 @@ export const ReplyCard = ({
                 ? 'ml-6 border-l-2 border-l-muted'
                 : 'border-l-4 border-l-primary'
         )}>
-            {initials && <UserAvatar initials={initials}/>}
+            {initials && (
+                <UserAvatar
+                    initials={initials}
+                    imageSrc={author?.profile?.image ?? undefined}
+                />
+            )}
 
             <div className={'flex-1 min-w-0'}>
                 <div className={'flex items-center justify-between gap-2 mb-1'}>
