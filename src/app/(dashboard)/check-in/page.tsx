@@ -8,6 +8,8 @@ import { checkInTexts } from '@/constants/componentTexts/checkIn'
 const CheckInPage = () => (
     <div className={'flex-1 p-4 md:p-6'}>
         <div className={'mx-auto max-w-2xl'}>
+            <CheckInQuote/>
+
             <div className={'mb-8 text-center'}>
                 <h1 className={'text-3xl font-semibold text-foreground'}>
                     {checkInTexts.pageTitle}
@@ -18,8 +20,6 @@ const CheckInPage = () => (
             </div>
 
             <CheckInForm/>
-
-            <CheckInQuote/>
         </div>
     </div>
 )
