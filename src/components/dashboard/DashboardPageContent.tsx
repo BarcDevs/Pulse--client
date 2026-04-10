@@ -2,6 +2,8 @@
 
 import { useLatestCheckIn } from '@/hooks/queries/useLatestCheckIn'
 
+import { FEATURES } from '@/config/features'
+
 import { DashboardAIInsight } from './cards/AiInsight'
 import { DashboardCheckInCard } from './cards/CheckInCard'
 import { DashboardTodaysFocus } from './cards/TodaysFocus'
@@ -18,7 +20,7 @@ export const DashboardPageContent = () => {
                     {!isTodayCheckInExists && (
                         <DashboardCheckInCard/>
                     )}
-                    {isTodayCheckInExists && (
+                    {FEATURES.motivationFeedback && isTodayCheckInExists && (
                         <DashboardAIInsight className={'pt-6 px-10 pb-10 h-full'}/>
                     )}
                 </div>

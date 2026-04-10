@@ -15,14 +15,14 @@ vi.mock(
         }
     } ))
 
+import { api } from '@/api'
 import {
-    getCsrfToken,
     getMe,
     login,
     logout,
+    refresh,
     signup
 } from '@/api/auth'
-import { api } from '@/api/index'
 
 // ==================== auth API ====================
 describe(
@@ -133,12 +133,12 @@ describe(
                     })
             })
 
-        // ==================== getCsrfToken ====================
+        // ==================== refresh ====================
         describe(
-            'getCsrfToken',
+            'refresh',
             () => {
                 it(
-                    'should GET /auth/csrf',
+                    'should GET /auth/refresh',
                     async () => {
                         vi.mocked(api.get)
                             .mockResolvedValueOnce({
@@ -148,9 +148,9 @@ describe(
                                 }
                             })
 
-                        await getCsrfToken()
+                        await refresh()
                         expect(api.get)
-                            .toHaveBeenCalledWith('/auth/csrf')
+                            .toHaveBeenCalledWith('/auth/refresh')
                     })
             })
 

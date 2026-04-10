@@ -19,6 +19,8 @@ import { dashboardPageTexts } from '@/constants/componentTexts/dashboard'
 import { appLayoutTexts } from '@/constants/componentTexts/ui/layout'
 import { getHeaderConfig } from '@/constants/config/getHeaderConfig'
 
+import { FEATURES } from '@/config/features'
+
 import { useAuth } from '@/context/AuthContext'
 
 
@@ -84,7 +86,9 @@ export const AppHeader = () => {
                     />
                 ))}
 
-                <HeaderNotificationButton/>
+                {FEATURES.notifications && (
+                    <HeaderNotificationButton/>
+                )}
                 <UserMenu/>
             </div>
         </header>

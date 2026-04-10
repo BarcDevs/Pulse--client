@@ -12,6 +12,8 @@ import { getUserFallback } from '@/lib/utils'
 
 import { userMenuItems } from '@/constants/navigationItems'
 
+import { FEATURES } from '@/config/features'
+
 import { useAuth } from '@/context/AuthContext'
 
 import { UserLoginButton } from './UserLoginButton'
@@ -45,12 +47,14 @@ export const UserMenu = () => {
                 className={'w-56'}
             >
                 <DropdownMenuSeparator/>
-                {userMenuItems.map((item) => (
+                {userMenuItems
+                    .filter((item) => item.label !== 'Settings' || FEATURES.profilePreferences)
+                    .map((item) => (
                         <UserMenuItem
                             key={item.label}
                             item={item}
                         />
-                ))}
+                    ))}
             </DropdownMenuContent>
         </DropdownMenu>
     )

@@ -1,4 +1,8 @@
-import { describe, expect, it } from 'vitest'
+import {
+    describe,
+    expect,
+    it
+} from 'vitest'
 
 import { postSchema } from '@/validations/forms/postSchema'
 

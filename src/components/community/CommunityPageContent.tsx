@@ -2,6 +2,8 @@
 
 import { useState } from 'react'
 
+import { FEATURES } from '@/config/features'
+
 import { Categories } from './categories/Categories'
 import { PostList } from './posts/PostList'
 import { CommunityPanel } from './CommunityPanel'
@@ -9,7 +11,7 @@ import { CommunityPanel } from './CommunityPanel'
 export const CommunityPageContent = () => {
     const [selectedTag, setSelectedTag] = useState<string | null>(null)
 
-    return (
+    return FEATURES.forumLinking ? (
         <div className={'p-6'}>
             <Categories/>
 
@@ -24,5 +26,5 @@ export const CommunityPageContent = () => {
                 />
             </div>
         </div>
-    )
+    ) : null
 }
