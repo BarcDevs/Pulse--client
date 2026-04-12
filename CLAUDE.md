@@ -10,6 +10,7 @@ HealEase — Recovery support platform for patients transitioning from hospital/
 - One concern per file
 - Provide a full file edit instead of one edit at a time
 - For every function that you want to create make sure it is not already exists
+- Avoid using re-export files
 
 ### Code Style
 - Never use array index as key - use the current element as an index
