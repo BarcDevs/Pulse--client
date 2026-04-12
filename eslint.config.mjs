@@ -2,14 +2,15 @@ import eslintPluginReact from 'eslint-plugin-react'
 import eslintPluginReactHooks from 'eslint-plugin-react-hooks'
 import eslintPluginReactRefresh from 'eslint-plugin-react-refresh'
 import eslintPluginSimpleImportSort from 'eslint-plugin-simple-import-sort'
-import { dirname } from 'path'
-import { fileURLToPath } from 'url'
+import {dirname} from 'path'
+import {fileURLToPath} from 'url'
 
-import { FlatCompat } from '@eslint/eslintrc'
+import {FlatCompat} from '@eslint/eslintrc'
 import eslintPluginTypescript from '@typescript-eslint/eslint-plugin'
 import typescriptParser from '@typescript-eslint/parser'
 import js from '@eslint/js'
 import enforceObjectBreaking from './eslint-rules/enforce-object-breaking.js'
+import enforceFunctionCallBreaking from './eslint-rules/enforce-function-call-breaking.js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
@@ -66,7 +67,8 @@ const config = [
             'simple-import-sort': eslintPluginSimpleImportSort,
             'custom-rules': {
                 rules: {
-                    'enforce-object-breaking': enforceObjectBreaking
+                    'enforce-object-breaking': enforceObjectBreaking,
+                    'enforce-function-call-breaking': enforceFunctionCallBreaking
                 }
             }
         },
@@ -79,7 +81,7 @@ const config = [
             '@typescript-eslint/no-unused-expressions': 'error',
             'no-console': [
                 'warn',
-                { allow: ['warn', 'error'] }
+                {allow: ['warn', 'error']}
             ],
             'react/no-unescaped-entities': 'off',
             'react/prop-types': 'off',
@@ -95,7 +97,7 @@ const config = [
             'operator-linebreak': [
                 'warn',
                 'before',
-                { overrides: { '=': 'after' } }
+                {overrides: {'=': 'after'}}
             ],
             'simple-import-sort/imports': [
                 'warn',
@@ -142,13 +144,20 @@ const config = [
             ],
             'simple-import-sort/exports': 'warn',
             'comma-dangle': ['warn', 'never'],
-            'custom-rules/enforce-object-breaking': 'warn'
+            'custom-rules/enforce-object-breaking': 'warn',
+            'custom-rules/enforce-function-call-breaking': 'warn'
         }
     },
 
     // shadcn/ui components - totally disable ESLint checks
     {
         ignores: ['src/components/ui/**']
+    },
+
+    // Test files - disable function call breaking rule
+    {
+        files: ['**/__tests__/**/*.{js,ts,tsx}', '**/*.test.{js,ts,tsx}'],
+        rules: {'custom-rules/enforce-function-call-breaking': 'off'}
     }
 ]
 
