@@ -46,7 +46,7 @@ export const PostDetailCard = ({
 
             <div className={'flex flex-wrap gap-2 items-center'}>
                 {post.tags && post.tags.length > 0 && (
-                    <div className={'flex flex-wrap gap-2'}>
+                    <div className={'flex--wrap gap-2'}>
                         {Array.isArray(post.tags)
                             ? post.tags.map(
                                 (tag) => (

@@ -13,7 +13,7 @@ export const ActivityTagsList = ({
 
     return (
         <div className={isCard
-            ? 'flex flex-wrap gap-1'
+            ? 'flex--wrap gap-1'
             : 'flex gap-2'
         }>
             {tags.map((tag) =>

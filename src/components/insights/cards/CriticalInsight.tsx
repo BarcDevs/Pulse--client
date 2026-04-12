@@ -6,9 +6,9 @@ import { insightsPageTexts }
     from '@/constants/componentTexts/insightsComponent'
 
 export const CriticalInsight = () => (
-    <div className={'rounded-2xl bg-surface-card p-6'}>
+    <div className={'card-base'}>
         <div className={'flex items-center gap-2 mb-4'}>
-            <span className={'inline-flex items-center gap-1.5 rounded-full bg-destructive/10 px-3 py-1 text-xs font-medium text-destructive'}>
+            <span className={'badge-base bg-destructive/10 text-destructive'}>
                 <AlertTriangle className={'h-3 w-3'}/>
                 {insightsPageTexts.criticalInsight.label}
             </span>

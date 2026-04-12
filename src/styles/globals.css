@@ -357,7 +357,7 @@
 }
 
 @utility metrics {
-    @apply flex--row items-center gap-2.5;
+    @apply flex flex-row items-center gap-2.5;
 }
 
 @utility flex--row {
@@ -368,7 +368,7 @@
     @apply flex flex-col;
 }
 
-@utility flex-center {
+@utility flex--center {
     @apply flex items-center justify-center;
 }
 
@@ -388,6 +388,10 @@
     @apply flex flex-col items-center justify-between;
 }
 
+@utility flex-row-center-between {
+    @apply flex flex-row items-center justify-between;
+}
+
 @utility flex-start-center {
     @apply flex justify-start items-center;
 }
@@ -398,6 +402,14 @@
 
 @utility flex-start-around {
     @apply flex justify-around items-start;
+}
+
+@utility flex--wrap {
+    @apply flex flex-wrap;
+}
+
+@utility flex--start {
+    @apply flex items-start;
 }
 
 @utility flex-row-between {
@@ -434,6 +446,20 @@
 
 @utility inline-flex-start {
     @apply inline-flex items-start justify-start;
+}
+/*endregion*/
+
+/*region component utilities*/
+@utility card-base {
+    @apply rounded-2xl bg-surface-card p-6;
+}
+
+@utility label-uppercase {
+    @apply text-xs font-medium uppercase tracking-wider;
+}
+
+@utility badge-base {
+    @apply inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium;
 }
 /*endregion*/
 

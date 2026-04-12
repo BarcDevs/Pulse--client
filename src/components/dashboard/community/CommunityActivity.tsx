@@ -25,7 +25,7 @@ export const CommunityActivity = ({
             'rounded-2xl bg-surface-card p-5',
             fullHeight && 'h-full'
         )}>
-            <div className={'flex items-center justify-between'}>
+            <div className={'flex-center-between'}>
                 <h3 className={'text-sm font-semibold text-foreground'}>
                     {communityPageTexts.activity.title}
                 </h3>

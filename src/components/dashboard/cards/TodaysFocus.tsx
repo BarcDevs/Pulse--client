@@ -27,7 +27,7 @@ export const DashboardTodaysFocus = () => (
         </CardHeader>
         <CardContent>
             <div className={'flex items-start gap-4'}>
-                <div className={'flex size-12 shrink-0 items-center justify-center rounded-xl bg-primary-light'}>
+                <div className={'flex--center size-12 shrink-0 rounded-xl bg-primary-light'}>
                     <Brain className={'size-6 text-primary'}/>
                 </div>
                 <div>

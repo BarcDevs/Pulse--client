@@ -15,8 +15,8 @@ export const BehavioralPatterns = () => {
         useState<'7days' | '30days'>('30days')
 
     return (
-        <div className={'rounded-2xl bg-surface-card p-6'}>
-            <div className={'flex items-center justify-between mb-6'}>
+        <div className={'card-base'}>
+            <div className={'flex-center-between mb-6'}>
                 <h3 className={'text-lg font-semibold text-foreground'}>
                     {insightsPageTexts.behavioralPatterns.title}
                 </h3>

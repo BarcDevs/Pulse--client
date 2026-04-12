@@ -12,10 +12,10 @@ export const ChatSuggestionsPanel = ({
     onSuggestionClick
 }: ChatSuggestionsPanelProps) => (
     <div className={'mb-3'}>
-        <p className={'mb-2 text-xs font-medium uppercase tracking-wider text-muted-foreground'}>
+        <p className={'mb-2 label-uppercase text-muted-foreground'}>
             {chatTexts.suggestedForYou}
         </p>
-        <div className={'flex flex-wrap gap-2'}>
+        <div className={'flex--wrap gap-2'}>
             {chatTexts.messages.suggestions.map(
                 (suggestion) => (
                     <Button

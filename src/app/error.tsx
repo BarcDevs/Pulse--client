@@ -34,7 +34,7 @@ const ErrorPage = ({
     return (
         <div className={'flex'}>
             <Sidebar isErrorPage={true}/>
-            <main className={'flex-1 flex flex-col items-center justify-center min-h-screen px-4 py-8 md:py-16 max-w-3xl mx-auto w-full text-center bg-surface-bright'}>
+            <main className={'flex-1 flex--center min-h-screen px-4 py-8 md:py-16 max-w-3xl mx-auto w-full text-center bg-surface-bright'}>
                 <ErrorIllustration/>
                 <ErrorContent/>
                 <ErrorActions resetAction={reset}/>

@@ -15,10 +15,10 @@ export const StreakCard = () => {
         ?.longestStreak ?? 0
 
     return (
-        <div className={'rounded-2xl bg-surface-card p-6'}>
-            <div className={'flex items-start justify-between'}>
+        <div className={'card-base'}>
+            <div className={'flex-start-between'}>
                 <div>
-                    <p className={'text-xs font-medium text-muted-foreground uppercase tracking-wider'}>
+                    <p className={'text-muted-foreground label-uppercase'}>
                         {progressPageTexts.stats
                             .streak.label}
                     </p>
@@ -39,7 +39,7 @@ export const StreakCard = () => {
                         </span>
                     </p>
                 </div>
-                <div className={'h-12 w-12 rounded-xl bg-orange-50 flex items-center justify-center'}>
+                <div className={'h-12 w-12 rounded-xl bg-orange-50 flex--center'}>
                     <Calendar className={'h-6 w-6 text-warning'}/>
                 </div>
             </div>

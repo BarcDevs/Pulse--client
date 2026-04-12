@@ -24,7 +24,7 @@ export const StatCard = ({
 
     return (
         <div className={'rounded-xl bg-surface-section p-4'}>
-            <p className={'text-xs font-medium uppercase tracking-wider text-muted-foreground'}>
+            <p className={'label-uppercase text-muted-foreground'}>
                 {label}
             </p>
             <div className={'mt-2 flex items-baseline gap-2'}>

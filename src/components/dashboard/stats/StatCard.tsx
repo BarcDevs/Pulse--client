@@ -27,13 +27,13 @@ export const StatCard = ({
         <CardContent className={'pt-6'}>
             <div className={'flex items-center gap-4'}>
                 <div className={cn(
-                    'flex size-12 shrink-0 items-center justify-center rounded-xl',
+                    'size-12 shrink-0 flex--center rounded-xl',
                     iconBg
                 )}>
                     {icon}
                 </div>
                 <div>
-                    <p className={'text-xs font-medium uppercase tracking-wider text-muted-foreground'}>
+                    <p className={'label-uppercase text-muted-foreground'}>
                         {label}
                     </p>
                     <p className={'text-2xl font-bold text-foreground'}>

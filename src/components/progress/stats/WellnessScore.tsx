@@ -32,10 +32,10 @@ export const WellnessScore = () => {
     )
 
     return (
-        <div className={'rounded-2xl bg-surface-card p-6'}>
-            <div className={'flex items-center justify-between mb-4'}>
+        <div className={'card-base'}>
+            <div className={'flex-center-between mb-4'}>
                 <div>
-                    <p className={'text-xs font-medium text-muted-foreground uppercase tracking-wider'}>
+                    <p className={'text-muted-foreground label-uppercase'}>
                         {progressPageTexts
                             .wellness.label}
                     </p>

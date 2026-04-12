@@ -85,7 +85,7 @@ export const CheckInActivities = ({
                         <p className={'mb-2 text-xs text-muted-foreground'}>
                             Your top activities:
                         </p>
-                        <div className={'flex flex-wrap gap-2'}>
+                        <div className={'flex--wrap gap-2'}>
                             {suggestedActivities.map(
                                 (activity) => (
                                     <ActivityToggleButton
@@ -104,7 +104,7 @@ export const CheckInActivities = ({
                     <p className={'mb-2 text-xs text-muted-foreground'}>
                         All activities:
                     </p>
-                    <div className={'flex flex-wrap gap-2'}>
+                    <div className={'flex--wrap gap-2'}>
                         {checkInTexts.activities.default.map(
                             (activity) => (
                                 <ActivityToggleButton

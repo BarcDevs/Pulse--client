@@ -50,7 +50,7 @@ export const ProfileBasicInfo = () => {
 
     return (
         <Card className={'border-0 shadow-sm'}>
-            <CardHeader className={'flex flex-row items-center justify-between'}>
+            <CardHeader className={'flex-row-center-between'}>
                 <CardTitle className={'text-lg font-semibold'}>
                     {profilePageTexts.basicInfo.title}
                 </CardTitle>
@@ -67,7 +67,7 @@ export const ProfileBasicInfo = () => {
                 <div className={'grid gap-6 sm:grid-cols-2'}>
                     {infoFields.map((field) => (
                         <div key={field.label}>
-                            <p className={'text-xs font-medium uppercase tracking-wider text-muted-foreground'}>
+                            <p className={'label-uppercase text-muted-foreground'}>
                                 {field.label}
                             </p>
                             <p className={'mt-1 text-sm font-medium text-foreground'}>

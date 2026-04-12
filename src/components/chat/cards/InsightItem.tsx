@@ -19,7 +19,7 @@ export const InsightItem = ({
 }: InsightItemProps) => (
     <div className={'flex gap-3'}>
         <div className={cn(
-            'flex size-8 shrink-0 items-center justify-center rounded-lg',
+            'flex--center size-8 shrink-0 rounded-lg',
             iconBg
         )}>
             <Icon className={'size-4'}/>

@@ -35,7 +35,7 @@ export const TrendingTopicsCard = ({
                     {communityPageTexts.trending.loading}
                 </div>
             ) : (
-                <div className={'flex flex-wrap gap-2'}>
+                <div className={'flex--wrap gap-2'}>
                     {topicsList.map((topic) => (
                         <Button
                             key={topic.id}
