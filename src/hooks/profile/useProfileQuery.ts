@@ -3,11 +3,11 @@ import {
     useQueryClient
 } from '@tanstack/react-query'
 
-import {Profile} from '@/types/profile/profile'
+import { Profile } from '@/types/profile'
 
-import {minuteInMs} from '@/constants/time'
+import { minuteInMs } from '@/constants/time'
 
-import {getProfile} from '@/api/profile'
+import { getProfile } from '@/api/profile'
 
 export const profileQueryKey = [
     'profile',

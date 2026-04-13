@@ -14,8 +14,10 @@ export const postSchema = z.object({
     body: z.string()
         .min(1, 'Content is required')
         .min(config.body.minLength, 'Content is too short')
-        .max(config.body.maxLength,
-            `Content must be less than ${config.body.maxLength} characters`),
+        .max(
+            config.body.maxLength,
+            `Content must be less than ${config.body.maxLength} characters`
+        ),
     tags: z.array(
         z.string()
             .min(config.tags.minLength, 'Tag is too short')
@@ -23,10 +25,12 @@ export const postSchema = z.object({
             .toUpperCase()
     )
         .min(1, 'At least one tag is required')
-        .max(config.tags.max,
-            `Cannot have more than ${config.tags.max} tags`)
+        .max(
+            config.tags.max,
+            `Cannot have more than ${config.tags.max} tags`
+        )
 })
-    .superRefine(({category}, ctx) => {
+    .superRefine(({ category }, ctx) => {
         if (!category) {
             ctx.addIssue({
                 code: z.ZodIssueCode.custom,

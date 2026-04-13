@@ -30,63 +30,40 @@ export const communityPageTexts = {
         ]
     },
     posts: {
-        tabs: [
-            'Popular',
-            'Recent',
-            'Unanswered'
-        ],
-        defaultTab: 'Popular',
-        videoDuration: '10:24',
-        postedBy: 'Posted by',
+        filterLabels: {
+            newest: 'Newest',
+            popular: 'Popular',
+            hot: 'Hot',
+            unanswered: 'Unanswered'
+        },
         repliesLabel: 'replies',
+        postedBy: 'Posted by',
         share: 'Share',
         save: 'Save',
         newPostButton: 'New Post',
-        list: [
-            {
-                id: 1,
-                category: 'Success Stories',
-                categoryColor: 'bg-purple-100 text-purple-700',
-                author: 'Marcus T.',
-                timeAgo: '3 hours ago',
-                title: 'My first 90 days: Finding peace in the routine of early mornings.',
-                content: `I used to dread the sunrise because it meant another day of struggle. Now, my 5 AM tea and meditation are the anchor of my day. If you're in the first...`,
-                votes: 47,
-                replies: 18,
-                hasMedia: false
-            },
-            {
-                id: 2,
-                category: 'Support Groups',
-                categoryColor: 'bg-blue-100 text-blue-700',
-                author: 'Sarah Jenkins',
-                timeAgo: '5 hours ago',
-                title: 'Managing social anxiety during family gatherings this weekend',
-                content: `Does anyone have tips for navigating conversations about 'why I'm not drinking' with pushy relatives? Feeling a bit nervous about the upcoming...`,
-                votes: 123,
-                replies: 42,
-                hasMedia: false
-            },
-            {
-                id: 3,
-                category: 'Yoga & Movement',
-                categoryColor: 'bg-emerald-100 text-emerald-700',
-                author: 'YogaCoach_Ben',
-                timeAgo: '8 hours ago',
-                title: 'Gentle 10-minute flow for releasing neck tension.',
-                content: '',
-                votes: 89,
-                replies: 24,
-                hasMedia: true
-            }
-        ]
+        loading: 'Loading posts...',
+        empty: 'No posts yet. Be the first to share your journey and inspire others.',
+        emptyWithFilter: (tag: string) =>
+            `No posts found with tag "#${tag}". Try a different tag or browse all posts.`
     },
     mentors: {
         title: 'Recovery Mentors',
         chatButton: 'Chat',
         list: [
-            { id: 1, name: 'David Chen', role: 'Certified Coach', avatar: 'D', online: true },
-            { id: 2, name: 'Maria G.', role: 'Wellness Guide', avatar: 'M', online: false }
+            {
+                id: 1,
+                name: 'David Chen',
+                role: 'Certified Coach',
+                avatar: 'D',
+                online: true
+            },
+            {
+                id: 2,
+                name: 'Maria G.',
+                role: 'Wellness Guide',
+                avatar: 'M',
+                online: false
+            }
         ]
     },
     sanctuary: {
@@ -101,13 +78,7 @@ export const communityPageTexts = {
     },
     trending: {
         title: 'Trending Topics',
-        topics: [
-            '#DailyGratitude',
-            '#SobrietyTips',
-            '#HealthyHabits',
-            '#SelfCare',
-            '#SleepHygiene'
-        ]
+        loading: 'Loading topics...'
     },
     activity: {
         title: 'Community',
@@ -118,41 +89,71 @@ export const communityPageTexts = {
                 user: 'Sarah',
                 action: 'shared a milestone',
                 time: '30 min ago',
-                avatar: 'S',
-                avatarBg: 'bg-pink-100 text-pink-600'
+                avatar: 'S'
             },
             {
                 id: 2,
                 user: 'James',
                 action: 'joined the Yoga group',
                 time: '1 hour ago',
-                avatar: 'J',
-                avatarBg: 'bg-blue-100 text-blue-600'
+                avatar: 'J'
             },
             {
                 id: 3,
                 user: 'Marcus',
                 action: 'posted a question',
                 time: '2 hours ago',
-                avatar: 'M',
-                avatarBg: 'bg-emerald-100 text-emerald-600'
+                avatar: 'M'
             },
             {
                 id: 4,
                 user: 'Elena',
                 action: 'replied to a post',
                 time: '3 hours ago',
-                avatar: 'E',
-                avatarBg: 'bg-purple-100 text-purple-600'
+                avatar: 'E'
             },
             {
                 id: 5,
                 user: 'David',
                 action: 'started a new discussion',
                 time: '4 hours ago',
-                avatar: 'D',
-                avatarBg: 'bg-orange-100 text-orange-600'
+                avatar: 'D'
             }
         ]
+    },
+    confirmations: {
+        deletePost: 'Are you sure you want to delete this post?',
+        deleteReply: 'Are you sure you want to delete this reply?'
+    },
+    postDetail: {
+        loading: 'Loading replies...',
+        replies: 'Replies',
+        reply: 'Reply',
+        noReplies: 'No replies yet. Be the first to share your thoughts!',
+        loginToReply: 'Please log in to reply',
+        loginButton: 'Log In',
+        notFoundTitle: 'Post not found',
+        notFoundDescription: 'The post you are looking for does not exist or has been deleted.',
+        backToCommunity: 'Back to Community',
+        repliesLoadError: 'Failed to load replies',
+        postLoadError: 'Failed to load post. Please check your connection.'
+    },
+    postActions: {
+        solidarity: 'Solidarity',
+        reply: 'Reply',
+        share: 'Share'
+    },
+    postForm: {
+        writeReply: 'Write a Reply',
+        createPost: 'Create Post',
+        content: 'Content',
+        cancel: 'Cancel',
+        sendReply: 'Send Reply',
+        title: 'Title',
+        titlePlaceholder: 'Post title',
+        category: 'Category',
+        categoryPlaceholder: 'Select category',
+        bodyPlaceholderReply: 'Write your reply...',
+        bodyPlaceholderPost: 'Write your post...'
     }
 }

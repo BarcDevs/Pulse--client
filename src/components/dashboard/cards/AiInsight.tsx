@@ -1,8 +1,8 @@
 'use client'
 
-import {Sparkles} from 'lucide-react'
+import { Sparkles } from 'lucide-react'
 
-import {ClassName} from '@/types/utils'
+import { ClassName } from '@/types/react'
 
 import {
     Card,
@@ -11,12 +11,12 @@ import {
     CardTitle
 } from '@/components/ui/card'
 
-import {useCheckIns} from '@/hooks/queries/useCheckIns'
+import { useCheckIns } from '@/hooks/queries/useCheckIns'
 
-import {getLatestInsights} from '@/lib/insights/getLatestInsights'
-import {cn} from '@/lib/utils'
+import { getLatestInsights } from '@/lib/insights/getLatestInsights'
+import { cn } from '@/lib/utils'
 
-import {dashboardPageTexts} from '@/constants/componentTexts/dashboard'
+import { dashboardPageTexts } from '@/constants/componentTexts/dashboard'
 
 type DashboardAIInsightProps = {
     className?: ClassName

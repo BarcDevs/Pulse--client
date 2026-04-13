@@ -1,20 +1,20 @@
 'use client'
 
-import {useEffect} from 'react'
+import { useEffect } from 'react'
 
 import Link from 'next/link'
 
-import {AuthFormType} from '@/types/forms/forms'
-import {SetState} from '@/types/utils/react'
+import { AuthFormType } from '@/types/forms'
+import { SetState } from '@/types/react'
 
-import {Button} from '@/components/ui/button'
-import {Form} from '@/components/ui/form'
+import { Button } from '@/components/ui/button'
+import { Form } from '@/components/ui/form'
 
-import {useAuthForm} from '@/hooks/forms/useAuthForm'
+import { useAuthForm } from '@/hooks/forms/useAuthForm'
 
 import authFormConfigs from '@/config/forms/authFormConfig'
 
-import {DynamicFormField} from './DynamicFormField'
+import { DynamicFormField } from './DynamicFormField'
 
 type AuthFormProps = {
     formType: AuthFormType
@@ -35,18 +35,18 @@ export const AuthForm = ({
     })
 
     const isPasswordFormType =
-        formType === 'resetPassword' ||
-        formType === 'signup'
+        formType === 'resetPassword'
+        || formType === 'signup'
 
-    const passwordValue = isPasswordFormType ?
-        (form.watch('password' as any) as string) :
-        undefined
+    const passwordValue = isPasswordFormType
+        ? (form.watch('password' as any) as string)
+        : undefined
 
     useEffect(() => {
         if (
-            onPasswordChangeAction &&
-            isPasswordFormType &&
-            typeof passwordValue === 'string'
+            onPasswordChangeAction
+            && isPasswordFormType
+            && typeof passwordValue === 'string'
         ) {
             onPasswordChangeAction(passwordValue)
         }
@@ -80,9 +80,9 @@ export const AuthForm = ({
                     disabled={isLoading}
                     className={'h-11 w-full'}
                 >
-                    {isLoading ?
-                        config.buttons.primary.loadingLabel :
-                        config.buttons.primary.label
+                    {isLoading
+                        ? config.buttons.primary.loadingLabel
+                        : config.buttons.primary.label
                     }
                 </Button>
 

@@ -1,13 +1,13 @@
 'use client'
 
-import {useState} from 'react'
+import { useState } from 'react'
 
 import Link from 'next/link'
-import {useRouter} from 'next/navigation'
+import { useRouter } from 'next/navigation'
 
-import {PasswordRequirementsList} from '@/components/auth/password/PasswordRequirementsList'
-import {AuthForm} from '@/components/form/AuthForm'
-import {Logo} from '@/components/shared/brand/Logo'
+import { PasswordRequirementsList } from '@/components/auth/password/PasswordRequirementsList'
+import { AuthForm } from '@/components/form/AuthForm'
+import { Logo } from '@/components/shared/brand/Logo'
 import {
     Card,
     CardContent,
@@ -16,9 +16,9 @@ import {
     CardTitle
 } from '@/components/ui/card'
 
-import {authTexts} from '@/constants/componentTexts/auth'
+import { authTexts } from '@/constants/componentTexts/auth'
 
-import {timings} from '@/config/timings'
+import { timings } from '@/config/timings'
 
 const ResetPasswordPage = () => {
     const router = useRouter()

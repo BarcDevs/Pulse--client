@@ -1,11 +1,11 @@
-import {Badge} from '@/components/ui/badge'
+import { Badge } from '@/components/ui/badge'
 
-import {insightsDetail}
+import { insightsDetail }
     from '@/constants/componentTexts/insightsDetail'
 
 export const PredictionCard = () => (
     <div className={'rounded-xl bg-primary p-4 text-white'}>
-        <p className={'text-xs font-medium uppercase tracking-wider opacity-80'}>
+        <p className={'label-uppercase opacity-80'}>
             {insightsDetail.patterns.prediction.label}
         </p>
         <h4 className={'mt-1 font-semibold'}>

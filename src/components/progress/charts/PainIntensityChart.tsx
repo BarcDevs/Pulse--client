@@ -1,13 +1,15 @@
 'use client'
 
-import {useState} from 'react'
+import { useState } from 'react'
 
-import {TimePeriod} from '@/types/time'
+import { TimePeriod } from '@/types/time'
 
-import {TrendAreaChart} from '@/components/shared/charts/TrendAreaChart'
-import {DataNotification} from '@/components/shared/notifications/DataNotification'
+import { TrendAreaChart } from '@/components/shared/charts/TrendAreaChart'
+import { DataNotification } from '@/components/shared/notifications/DataNotification'
 
-import {useCheckInStats} from '@/hooks/queries/useCheckInStats'
+import { useCheckInStats } from '@/hooks/queries/useCheckInStats'
+
+import { isCompleteWeek } from '@/lib/stats/isCompleteWeek'
 
 import {
     chartNotifications,
@@ -23,8 +25,9 @@ export const PainIntensityChart = () => {
     } = useCheckInStats(period)
 
     const chartData = data?.data?.painTrend || []
-    const isIncompleteWeek = chartData.length < 7 &&
-        period === 'weekly'
+    const isIncompleteWeek = !isCompleteWeek(
+        chartData
+    ) && period === 'weekly'
 
     const handlePeriodChange = (
         value: string

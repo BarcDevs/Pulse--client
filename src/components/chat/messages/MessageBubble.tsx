@@ -1,8 +1,8 @@
-import {cn} from '@/lib/utils'
+import { cn } from '@/lib/utils'
 
-import {chatTexts} from '@/constants/componentTexts/chat'
+import { chatTexts } from '@/constants/componentTexts/chat'
 
-import {MessageSuggestions} from '../suggestions/MessageSuggestions'
+import { MessageSuggestions } from '../suggestions/MessageSuggestions'
 
 type MessageBubbleProps = {
     role: 'user' | 'assistant'
@@ -20,30 +20,30 @@ export const MessageBubble = ({
     <div
         className={cn(
             'max-w-[80%] rounded-2xl px-4 py-3',
-            role === 'user' ?
-                'bg-primary text-white' :
-                'bg-surface-card text-foreground shadow-sm'
+            role === 'user'
+                ? 'bg-primary text-white'
+                : 'bg-surface-card text-foreground shadow-sm'
         )}
     >
         <p className={'whitespace-pre-wrap text-sm leading-relaxed'}>
             {content}
         </p>
 
-        {suggestions &&
-            <MessageSuggestions suggestions={suggestions}/>
+        {suggestions
+            && <MessageSuggestions suggestions={suggestions}/>
         }
 
         <p
             className={cn(
                 'mt-2 text-xs',
-                role === 'user' ?
-                    'text-white/70' :
-                    'text-muted-foreground'
+                role === 'user'
+                    ? 'text-white/70'
+                    : 'text-muted-foreground'
             )}
         >
-            {role === 'assistant' ?
-                chatTexts.messages.assistantLabel :
-                chatTexts.messages.youLabel}
+            {role === 'assistant'
+                ? chatTexts.messages.assistantLabel
+                : chatTexts.messages.youLabel}
             {' - '}
             {timestamp}
         </p>

@@ -1,6 +1,6 @@
-import {format} from 'date-fns'
+import { format } from 'date-fns'
 
-import {CheckIn, CheckInStats} from '@/types/checkIn/checkIn'
+import { CheckIn, CheckInStats } from '@/types/checkIn'
 
 export const normalizeStats =
     (raw: CheckInStats): CheckInStats => ({

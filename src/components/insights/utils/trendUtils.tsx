@@ -41,5 +41,5 @@ export const parseTrendText = (trend: string) => {
         }
     }
 
-    return {iconName, text}
+    return { iconName, text }
 }

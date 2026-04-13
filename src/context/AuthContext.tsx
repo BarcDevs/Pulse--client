@@ -5,7 +5,7 @@ import {
     useContext
 } from 'react'
 
-import type {User} from '@/types'
+import type { User } from '@/types/user'
 
 type AuthContextType = {
     user: User | null

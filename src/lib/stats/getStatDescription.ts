@@ -9,21 +9,21 @@ export const getStatDescription = (
 
     switch (statKey) {
         case 'MOOD':
-            return currentValue >= 7 ?
-                'Great' :
-                currentValue >= 5 ?
-                    'Stable' :
-                    'Low'
+            return currentValue >= 7
+                ? 'Great'
+                : currentValue >= 5
+                    ? 'Stable'
+                    : 'Low'
         case 'PAIN':
-            return currentValue <= 3 ?
-                'Decreasing' :
-                currentValue <= 6 ?
-                    'Elevated' :
-                    'High'
+            return currentValue <= 3
+                ? 'Decreasing'
+                : currentValue <= 6
+                    ? 'Elevated'
+                    : 'High'
         case 'STREAK':
-            return currentValue === longestValue ?
-                'New record!' :
-                `${longestValue} best`
+            return currentValue === longestValue
+                ? 'New record!'
+                : `${longestValue} best`
         default:
             return ''
     }

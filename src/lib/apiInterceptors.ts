@@ -26,8 +26,8 @@ export const handleRequestSuccess = (
     const csrfToken = getCsrfToken()
 
     if (
-        csrfToken &&
-        [
+        csrfToken
+        && [
             'POST',
             'PUT',
             'PATCH',
@@ -49,8 +49,8 @@ export const handleResponseSuccess = (
 ) => {
     const data = response.data as any
     const csrfToken =
-        data?.data?._csrf ||
-        data?._csrf
+        data?.data?._csrf
+        || data?._csrf
     if (csrfToken)
         setCsrfToken(csrfToken)
     return response
@@ -76,9 +76,9 @@ export const handleResponseError = async (
     const alreadyRetried = originalRequest?._retry
 
     if (
-        isUnauthorized &&
-        !isAuthEndpoint &&
-        !alreadyRetried
+        isUnauthorized
+        && !isAuthEndpoint
+        && !alreadyRetried
     ) {
         originalRequest._retry = true
 

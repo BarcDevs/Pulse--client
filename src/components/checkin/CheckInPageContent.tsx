@@ -1,16 +1,22 @@
 'use client'
 
-import {useEffect, useState} from 'react'
+import { useEffect, useState } from 'react'
 
-import type {CheckIn, CheckInStats} from '@/types/checkIn/checkIn'
+import type {
+    CheckIn,
+    CheckInStats
+} from '@/types/checkIn'
 
-import {fetchCheckIns, fetchCheckInStats} from '@/api/checkIn'
+import {
+    fetchCheckIns,
+    fetchCheckInStats
+} from '@/api/checkIn'
 
-import {CheckInForm} from './forms/CheckInForm'
-import {CheckInQuote} from './sections/Quote'
+import { CheckInForm } from './forms/CheckInForm'
+import { CheckInQuote } from './sections/Quote'
 
 export const CheckInPageContent = () => {
-    const [latestCheckIn, setLatestCheckIn] = 
+    const [latestCheckIn, setLatestCheckIn] =
         useState<CheckIn | null>(null)
     const [stats, setStats] =
         useState<CheckInStats | null>(null)
@@ -40,6 +46,7 @@ export const CheckInPageContent = () => {
     }, [])
 
     if (isLoading) {
+        // todo: add proper skeleton
         return (
             <div className={'space-y-6 p-6'}>
                 <div className={'h-20 animate-pulse rounded bg-muted'}/>

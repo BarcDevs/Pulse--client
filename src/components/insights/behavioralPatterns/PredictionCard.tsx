@@ -1,11 +1,11 @@
-import {TrendingUp} from 'lucide-react'
+import { TrendingUp } from 'lucide-react'
 
-import {insightsPageTexts}
+import { insightsPageTexts }
     from '@/constants/componentTexts/insightsComponent'
 
 export const PredictionCard = () => (
     <div className={'rounded-xl bg-primary p-5 text-primary-foreground'}>
-        <span className={'text-xs font-medium uppercase tracking-wider opacity-80'}>
+        <span className={'label-uppercase opacity-80'}>
             {insightsPageTexts.behavioralPatterns.prediction.label}
         </span>
         <h4 className={'mt-2 text-base font-medium'}>

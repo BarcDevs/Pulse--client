@@ -1,13 +1,13 @@
-import {FieldValues} from 'react-hook-form'
+import { FieldValues } from 'react-hook-form'
 
-import {FieldConfig} from '@/types/forms/forms'
+import { FieldConfig } from '@/types/forms'
 
 import {
     FormControl,
     FormDescription,
     FormLabel
 } from '@/components/ui/form'
-import {Slider} from '@/components/ui/slider'
+import { Slider } from '@/components/ui/slider'
 
 type SliderInputProps<T extends FieldValues> = {
     field: T
@@ -19,8 +19,8 @@ export const SliderInput = <T extends FieldValues>({
     config
 }: SliderInputProps<T>) => (
     <>
-        {config.label &&
-            <FormLabel>
+        {config.label
+            && <FormLabel>
                 {config.label}
             </FormLabel>
         }

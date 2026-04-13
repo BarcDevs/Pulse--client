@@ -1,12 +1,14 @@
 'use client'
 
-import {useState} from 'react'
+import { useState } from 'react'
 
-import {initialChatMessages} from '@/mocks/chatMessages'
+import { FEATURES } from '@/config/features'
 
-import {ChatInput} from './inputs/Input'
-import {ChatMessages} from './messages/Messages'
-import {ChatPanel} from './ChatPanel'
+import { initialChatMessages } from '@/mocks/chatMessages'
+
+import { ChatInput } from './inputs/Input'
+import { ChatMessages } from './messages/Messages'
+import { ChatPanel } from './ChatPanel'
 
 export const ChatPageContent = () => {
     const [messages, setMessages] = useState(initialChatMessages)
@@ -30,7 +32,7 @@ export const ChatPageContent = () => {
         setInputValue('')
     }
 
-    return (
+    return FEATURES.chat ? (
         <div className={'flex h-[calc(100vh-4rem)]'}>
             <div className={'flex-1 flex flex-col'}>
                 <ChatMessages messages={messages}/>
@@ -43,5 +45,5 @@ export const ChatPageContent = () => {
 
             <ChatPanel/>
         </div>
-    )
+    ) : null
 }

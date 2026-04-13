@@ -1,14 +1,14 @@
-import {ClassName} from '@/types/utils/react'
+import { ClassName } from '@/types/react'
 
-import {cn} from '@/lib/utils'
+import { cn } from '@/lib/utils'
 
-import {landing} from '@/constants/componentTexts/landing'
-import {footer} from '@/constants/componentTexts/ui/footer'
+import { landing } from '@/constants/componentTexts/landing'
+import { footer } from '@/constants/componentTexts/ui/footer'
 
-import {FooterBrand} from './FooterBrand'
-import {FooterLegal} from './FooterLegal'
-import {FooterLinks} from './FooterLinks'
-import {FooterSocial} from './FooterSocial'
+import { FooterBrand } from './FooterBrand'
+import { FooterLegal } from './FooterLegal'
+import { FooterLinks } from './FooterLinks'
+import { FooterSocial } from './FooterSocial'
 
 type FooterProps = {
     className?: ClassName

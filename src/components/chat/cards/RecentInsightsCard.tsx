@@ -1,4 +1,4 @@
-import {Moon, TrendingUp} from 'lucide-react'
+import { Moon, TrendingUp } from 'lucide-react'
 
 import {
     Card,
@@ -7,9 +7,9 @@ import {
     CardTitle
 } from '@/components/ui/card'
 
-import {chatTexts} from '@/constants/componentTexts/chat'
+import { chatTexts } from '@/constants/componentTexts/chat'
 
-import {InsightItem} from './InsightItem'
+import { InsightItem } from './InsightItem'
 
 export const RecentInsightsCard = () => (
     <Card className={'border-0 bg-surface-section shadow-none'}>

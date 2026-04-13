@@ -1,26 +1,117 @@
 'use client'
 
-import {useState} from 'react'
+import {
+    useEffect,
+    useMemo,
+    useRef,
+    useState
+} from 'react'
 
-import {Button} from '@/components/ui/button'
+import type { FilterType } from '@/types/community'
 
-import {cn} from '@/lib/utils'
+import { Button } from '@/components/ui/button'
 
-import {communityPageTexts} from '@/constants/componentTexts/community'
+import { useForumPosts } from '@/hooks/queries/useForumPosts'
 
-import {PostItem} from './postList/PostItem'
+import { cn } from '@/lib/utils'
 
-const tabs = communityPageTexts.posts.tabs
+import { communityPageTexts } from '@/constants/componentTexts/community'
 
-const posts = communityPageTexts.posts
+import { PostItem } from './postList/PostItem'
 
-export const PostList = () => {
-    const [activeTab, setActiveTab] = useState(
-        communityPageTexts.posts.defaultTab
-    )
+const PAGE_SIZE = 20
+const FILTER_LABELS = communityPageTexts.posts.filterLabels
+const tabs = Object.keys(FILTER_LABELS) as FilterType[]
 
-    const handleTabChange = (tab: string) =>
-        setActiveTab(tab)
+type Post = Parameters<typeof PostItem>[0]['post']
+
+type PostListProps = {
+    tag?: string | null
+}
+
+export const PostList = ({ tag }: PostListProps) => {
+    const [activeFilter, setActiveFilter] = useState<FilterType>('newest')
+    const [allPosts, setAllPosts] = useState<Post[]>([])
+    const [page, setPage] = useState(1)
+    const [hasMore, setHasMore] = useState(true)
+    const sentinelRef = useRef<HTMLDivElement>(null)
+    const prevQueryRef = useRef<string>('')
+
+    const query = useMemo(() => ({
+        limit: PAGE_SIZE,
+        page,
+        filter: activeFilter,
+        ...(tag ? { tag } : {})
+    }), [
+        page,
+        tag,
+        activeFilter
+    ])
+
+    const {
+        data,
+        isLoading,
+        isFetching
+    } = useForumPosts(query)
+
+    useEffect(() => {
+        const queryStr = JSON.stringify(query)
+        const posts = data?.data ?? []
+
+        // If query changed, reset and start fresh
+        if (queryStr !== prevQueryRef.current) {
+            prevQueryRef.current = queryStr
+            // eslint-disable-next-line react-hooks/set-state-in-effect
+            setAllPosts([])
+            setPage(1)
+            setHasMore(true)
+            // Return early and wait for data with new query
+            if (posts.length === 0) return
+        }
+
+        if (posts.length === 0) return
+
+        // Append posts from current page
+        setAllPosts((prevPosts) => [
+            ...prevPosts,
+            ...posts
+        ])
+        if (posts.length < PAGE_SIZE)
+            setHasMore(false)
+    }, [data?.data, query])
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                if (
+                    entries[0].isIntersecting
+                    && hasMore
+                    && !isFetching
+                ) {
+                    setPage((prev) => prev + 1)
+                }
+            },
+            { threshold: 0.1 }
+        )
+
+        if (sentinelRef.current) {
+            observer.observe(sentinelRef.current)
+        }
+
+        return () => observer.disconnect()
+    }, [hasMore, isFetching])
+
+
+    const handleFilterChange = (filter: FilterType) => {
+        setActiveFilter(filter)
+        setAllPosts([])
+        setPage(1)
+        setHasMore(true)
+    }
+
+    const emptyMessage = tag
+        ? communityPageTexts.posts.emptyWithFilter(tag)
+        : communityPageTexts.posts.empty
 
     return (
         <div className={'rounded-2xl bg-surface-card overflow-hidden'}>
@@ -28,29 +119,51 @@ export const PostList = () => {
                 {tabs.map((tab) => (
                     <Button
                         key={tab}
-                        onClick={() => handleTabChange(tab)}
-                        variant={activeTab === tab ?
-                            'default' :
-                            'ghost'}
+                        onClick={() => handleFilterChange(tab)}
+                        variant={activeFilter === tab
+                            ? 'default'
+                            : 'ghost'}
                         className={cn(
                             'px-6 py-4 text-sm font-medium rounded-none border-b-2',
-                            activeTab === tab ?
-                                'text-primary border-primary' :
-                                'text-muted-foreground hover:text-foreground border-transparent'
+                            activeFilter === tab
+                                ? 'text-primary-light border-primary'
+                                : 'text-muted-foreground hover:text-primary-light border-transparent'
                         )}
                     >
-                        {tab}
+                        {FILTER_LABELS[tab]}
                     </Button>
                 ))}
             </div>
 
             <div className={'divide-y divide-border'}>
-                {posts.list.map((post) => (
-                    <PostItem
-                        key={post.id}
-                        post={post}
-                    />
-                ))}
+                {isLoading && allPosts.length === 0 ? (
+                    <div className={'p-6 text-center text-muted-foreground'}>
+                        {communityPageTexts.posts.loading}
+                    </div>
+                ) : allPosts.length === 0 ? (
+                    <div className={'p-6 text-center text-muted-foreground'}>
+                        {emptyMessage}
+                    </div>
+                ) : (
+                    <>
+                        {allPosts.map((post) => (
+                            <PostItem
+                                key={post.id}
+                                post={post}
+                            />
+                        ))}
+                        {hasMore && (
+                            <div
+                                ref={sentinelRef}
+                                className={'p-6 text-center text-muted-foreground'}
+                            >
+                                {isFetching
+                                    ? communityPageTexts.posts.loading
+                                    : null}
+                            </div>
+                        )}
+                    </>
+                )}
             </div>
         </div>
     )

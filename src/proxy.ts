@@ -1,7 +1,7 @@
-import {NextRequest, NextResponse} from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
 
-import {authRouteMiddleware} from '@/middleware/authRouteMiddleware'
-import {protectedRouteMiddleware} from '@/middleware/protectedRouteMiddleware'
+import { authRouteMiddleware } from '@/middleware/authRouteMiddleware'
+import { protectedRouteMiddleware } from '@/middleware/protectedRouteMiddleware'
 
 export const proxy = (
     request: NextRequest

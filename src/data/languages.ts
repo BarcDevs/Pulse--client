@@ -1,4 +1,4 @@
-import {Language} from '@/types'
+import { Language } from '@/types'
 
 const languages : Record<string, Language> = {
     en: {

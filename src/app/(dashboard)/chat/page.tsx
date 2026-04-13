@@ -1,4 +1,4 @@
-import {ChatPageContent} from '@/components/chat/ChatPageContent'
+import { ChatPageContent } from '@/components/chat/ChatPageContent'
 
 const ChatPage = () => (
     <ChatPageContent/>

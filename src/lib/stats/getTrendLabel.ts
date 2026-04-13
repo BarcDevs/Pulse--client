@@ -1,4 +1,4 @@
-import {TrendPoint} from '@/types/checkIn/checkIn'
+import { TrendPoint } from '@/types/checkIn'
 
 export type TrendData = {
     label: string
@@ -28,8 +28,8 @@ export const getTrendData = (
         .reduce((sum, p) => sum + p.actual, 0) / mid
     const secondHalf = trendData
             .slice(mid)
-            .reduce((sum, p) => sum + p.actual, 0) /
-        (trendData.length - mid)
+            .reduce((sum, p) => sum + p.actual, 0)
+        / (trendData.length - mid)
 
     const diff = secondHalf - firstHalf
     const threshold = 0.5

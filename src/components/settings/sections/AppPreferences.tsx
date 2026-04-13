@@ -1,42 +1,21 @@
 'use client'
 
-import {Palette} from 'lucide-react'
+import { Palette } from 'lucide-react'
 
-import type {Theme} from '@/types'
+import {
+    DEFAULT_LANGUAGE,
+    settingsPageTexts
+} from '@/constants/componentTexts/settings'
 
-import {useAppPreferencesForm}
-    from '@/hooks/forms/useAppPreferencesForm'
+import { useSettings } from '@/context/SettingsContext'
 
-import {settingsPageTexts} from '@/constants/componentTexts/settings'
+import { LanguageSelector } from '../selectors/LanguageSelector'
 
-import {LanguageSelector} from '../selectors/LanguageSelector'
-import {ThemeSelector} from '../selectors/ThemeSelector'
-
-type AppPreferencesProps = {
-    theme?: Theme
-    language?: string
-}
-
-export const AppPreferences = ({
-    theme = 'light',
-    language = 'en-US'
-}: AppPreferencesProps) => {
-    const { form } = useAppPreferencesForm({
-        theme,
-        language
-    })
-
-    const currentTheme = form.watch('theme')
-    const currentLanguage = form.watch('language')
-
-    const handleThemeChange = (value: string) =>
-        form.setValue('theme', value as any)
-
-    const handleLanguageChange = (value: string) =>
-        form.setValue('language', value)
+export const AppPreferences = () => {
+    const { settings, onSettingChange } = useSettings()
 
     return (
-        <div className={'rounded-2xl bg-surface-card p-6'}>
+        <div className={'card-base'}>
             <div className={'flex items-center gap-2 mb-6'}>
                 <Palette className={'h-5 w-5 text-primary'}/>
                 <h3 className={'text-lg font-semibold text-foreground'}>
@@ -45,13 +24,18 @@ export const AppPreferences = ({
             </div>
 
             <div className={'space-y-6'}>
-                <ThemeSelector
-                    theme={currentTheme}
-                    onThemeChange={handleThemeChange}
-                />
+                {/* todo: add theme toggle */}
+                {/*<ThemeSelector*/}
+                {/*    theme={(settings?.theme as any) || 'light'}*/}
+                {/*    onThemeChange={(value) =>*/}
+                {/*        onSettingChange('theme', value)*/}
+                {/*    }*/}
+                {/*/>*/}
                 <LanguageSelector
-                    language={currentLanguage}
-                    onLanguageChange={handleLanguageChange}
+                    language={settings?.language || DEFAULT_LANGUAGE}
+                    onLanguageChangeAction={(value) =>
+                        onSettingChange('language', value)
+                    }
                 />
             </div>
         </div>

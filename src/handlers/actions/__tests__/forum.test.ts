@@ -22,10 +22,8 @@ vi.mock('@/api/forum', () => ({
     getPostReplies: vi.fn(),
     deletePost: vi.fn(),
     upvotePost: vi.fn(),
-    downvotePost: vi.fn(),
     removeVote: vi.fn(),
     upvoteReply: vi.fn(),
-    downvoteReply: vi.fn(),
     removeReplyVote: vi.fn()
 }))
 
@@ -50,9 +48,7 @@ describe(
             authorId: 'user-1',
             votes: {
                 upvotes: 0,
-                downvotes: 0,
-                upvotedBy: [],
-                downvotedBy: []
+                upvotedBy: []
             }
         }
 

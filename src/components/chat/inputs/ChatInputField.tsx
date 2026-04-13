@@ -1,17 +1,13 @@
-import {Send} from 'lucide-react'
-import type {KeyboardEvent} from 'react'
+import { Send } from 'lucide-react'
+import type { KeyboardEvent } from 'react'
 
-import type {SetState} from '@/types/utils/react'
+import type { SetState } from '@/types/react'
 
-import {FormInput} from '@/components/shared/inputs/FormInput'
-import {
-    Avatar,
-    AvatarFallback,
-    AvatarImage
-} from '@/components/ui/avatar'
-import {Button} from '@/components/ui/button'
+import { FormInput } from '@/components/shared/inputs/FormInput'
+import { UserAvatar } from '@/components/shared/UserAvatar'
+import { Button } from '@/components/ui/button'
 
-import {chatTexts} from '@/constants/componentTexts/chat'
+import { chatTexts } from '@/constants/componentTexts/chat'
 
 type ChatInputFieldProps = {
     value: string
@@ -27,12 +23,8 @@ export const ChatInputField = ({
     onKeyDown
 }: ChatInputFieldProps) => (
     <div className={'flex items-center gap-3'}>
-        <Avatar className={'size-9 shrink-0'}>
-            <AvatarImage src={'/avatars/alex.jpg'}/>
-            <AvatarFallback className={'bg-primary-light text-primary'}>
-                AR
-            </AvatarFallback>
-        </Avatar>
+        <UserAvatar initials={'AR'}/>
+
         <div className={'relative flex-1'}>
             <FormInput
                 id={'chatInput'}

@@ -1,13 +1,13 @@
-import {useQuery} from '@tanstack/react-query'
+import { useQuery } from '@tanstack/react-query'
 
-import type {Profile} from '@/types/profile/profile'
+import type { Profile } from '@/types/profile'
 
-import {authQueryKeys} from '@/constants/queryKeys'
-import {minuteInMs} from '@/constants/time'
+import { authQueryKeys } from '@/constants/queryKeys'
+import { minuteInMs } from '@/constants/time'
 
-import {useAuth} from '@/context/AuthContext'
+import { useAuth } from '@/context/AuthContext'
 
-import {getProfile as getProfileApi} from '@/api/profile'
+import { getProfile as getProfileApi } from '@/api/profile'
 
 export const useProfile = (
     options?: {
@@ -17,9 +17,9 @@ export const useProfile = (
     const { user, isLoading: authIsLoading } = useAuth()
 
     const isEnabled =
-        options?.enabled !== false &&
-        !!user &&
-        !authIsLoading
+        options?.enabled !== false
+        && !!user
+        && !authIsLoading
 
     const query = useQuery<Profile, Error>({
         queryKey: authQueryKeys.profile,

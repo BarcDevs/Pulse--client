@@ -1,8 +1,8 @@
-import {MoodTrendChart} from '../charts/MoodTrendChart'
-import {PainIntensityChart} from '../charts/PainIntensityChart'
+import { MoodTrendChart } from '../charts/MoodTrendChart'
+import { PainIntensityChart } from '../charts/PainIntensityChart'
 
-import {ProgressStats} from './ProgressStats'
-import {WellnessScore} from './WellnessScore'
+import { ProgressStats } from './ProgressStats'
+import { WellnessScore } from './WellnessScore'
 
 export const ProgressStatsCharts = () => (
     <div className={'space-y-6'}>

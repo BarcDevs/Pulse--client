@@ -1,9 +1,14 @@
-import {Brain} from 'lucide-react'
+import { Brain } from 'lucide-react'
 
-import {Badge} from '@/components/ui/badge'
-import {Card, CardContent, CardHeader, CardTitle} from '@/components/ui/card'
+import { Badge } from '@/components/ui/badge'
+import {
+    Card,
+    CardContent,
+    CardHeader,
+    CardTitle
+} from '@/components/ui/card'
 
-import {dashboardPageTexts} from '@/constants/componentTexts/dashboard'
+import { dashboardPageTexts } from '@/constants/componentTexts/dashboard'
 
 export const DashboardTodaysFocus = () => (
     <Card className={'border-0 shadow-sm'}>
@@ -22,7 +27,7 @@ export const DashboardTodaysFocus = () => (
         </CardHeader>
         <CardContent>
             <div className={'flex items-start gap-4'}>
-                <div className={'flex size-12 shrink-0 items-center justify-center rounded-xl bg-primary-light'}>
+                <div className={'flex--center size-12 shrink-0 rounded-xl bg-primary-light'}>
                     <Brain className={'size-6 text-primary'}/>
                 </div>
                 <div>

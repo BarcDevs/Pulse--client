@@ -16,5 +16,5 @@ export const timings = {
 
     // Debounce and throttle delays
     DEBOUNCE_DELAY: 300,
-    THROTTLE_DELAY: 500,
+    THROTTLE_DELAY: 500
 } as const

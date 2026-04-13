@@ -1,12 +1,12 @@
-import {LucideIcon} from 'lucide-react'
+import { LucideIcon } from 'lucide-react'
 
 import {
     Card,
     CardContent
 } from '@/components/ui/card'
-import {Slider} from '@/components/ui/slider'
+import { Slider } from '@/components/ui/slider'
 
-import {checkInFormSchema} from '@/config/schema/checkInForm'
+import { checkInFormSchema } from '@/config/schema/checkInForm'
 
 type SliderCardProps = {
     icon: LucideIcon

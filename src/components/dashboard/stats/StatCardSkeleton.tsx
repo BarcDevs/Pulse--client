@@ -2,7 +2,7 @@ import {
     Card,
     CardContent
 } from '@/components/ui/card'
-import {Skeleton} from '@/components/ui/skeleton'
+import { Skeleton } from '@/components/ui/skeleton'
 
 export const StatCardSkeleton = () => (
     <Card className={'border-0 shadow-sm'}>

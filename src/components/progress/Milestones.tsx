@@ -5,11 +5,11 @@ import {
     CardTitle
 } from '@/components/ui/card'
 
-import {progressPageTexts} from '@/constants/componentTexts/progress'
-import {progressMilestones}
+import { progressPageTexts } from '@/constants/componentTexts/progress'
+import { progressMilestones }
     from '@/constants/progressMaps'
 
-import {MilestoneCard} from './cards/MilestoneCard'
+import { MilestoneCard } from './cards/MilestoneCard'
 
 export const ProgressMilestones = () => (
     <Card className={'mt-6 border-0 shadow-sm'}>

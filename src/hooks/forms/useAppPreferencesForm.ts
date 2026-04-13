@@ -1,12 +1,13 @@
-import {useForm} from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 
-import {zodResolver} from '@hookform/resolvers/zod'
+import { zodResolver } from '@hookform/resolvers/zod'
 
-import type {Theme} from '@/types'
+import type { Theme } from '@/types'
 
 import {
     type AppPreferencesSchema,
-    appPreferencesSchema} from '@/validations/forms/settingsSchema'
+    appPreferencesSchema
+} from '@/validations/forms/settingsSchema'
 
 type UseAppPreferencesFormProps = {
     theme?: Theme
@@ -25,5 +26,5 @@ export const useAppPreferencesForm = ({
         }
     })
 
-    return {form}
+    return { form }
 }

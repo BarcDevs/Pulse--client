@@ -3,7 +3,7 @@ import {
     useQueryClient
 } from '@tanstack/react-query'
 
-import {Profile} from '@/types/profile/profile'
+import { Profile } from '@/types/profile'
 
 import {
     addActivities,
@@ -13,7 +13,7 @@ import {
     updateProfile
 } from '@/api/profile'
 
-import {profileQueryKey} from './useProfileQuery'
+import { profileQueryKey } from './useProfileQuery'
 
 export const useUpdateProfileMutation = () => {
     const queryClient = useQueryClient()

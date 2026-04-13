@@ -1,18 +1,20 @@
-import {useQuery} from '@tanstack/react-query'
+import { useQuery } from '@tanstack/react-query'
 
-import type {Post} from '@/types/forum/forum'
-import type {Response} from '@/types/responses'
+import type { FilterType, Post } from '@/types/community'
+import type { Response } from '@/types/responses'
 
-import {forumQueryKeys} from '@/constants/queryKeys'
-import {minuteInMs} from '@/constants/time'
+import { forumQueryKeys } from '@/constants/queryKeys'
+import { minuteInMs } from '@/constants/time'
 
-import {fetchPosts} from '@/api/forum'
+import { fetchPosts } from '@/api/forum'
 
 type ForumQuery = {
     category?: string
     search?: string
     limit?: number
-    offset?: number
+    page?: number
+    filter?: FilterType
+    tag?: string
 }
 
 export const useForumPosts = (
@@ -23,8 +25,15 @@ export const useForumPosts = (
 ) => {
     return useQuery<Response<Post[]>>({
         queryKey: query
-            ? [...forumQueryKeys.posts, query]
-            : forumQueryKeys.posts,
+            ? [
+                ...forumQueryKeys.posts,
+                query.page ?? 1,
+                query.filter ?? 'newest',
+                query.limit ?? 20,
+                query.tag,
+                query.category,
+                query.search
+            ] : forumQueryKeys.posts,
         queryFn: async () => {
             const response = await fetchPosts(query)
             return response.data

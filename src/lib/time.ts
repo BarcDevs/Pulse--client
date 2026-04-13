@@ -1,4 +1,7 @@
-import {formatDistance} from 'date-fns'
+import {
+    format,
+    formatDistance
+} from 'date-fns'
 
 /**
  * Converts the given date to a relative time format, e.g., "2 hours ago", "in 5 minutes", etc.
@@ -28,4 +31,22 @@ export const toShortNumber = (num: number): string => {
     } else {
         return num.toString()
     }
+}
+
+/**
+ * Formats a date according to the user's preferred date format.
+ *
+ * @param {Date} date - The date to format
+ * @param {string | undefined} dateFormat - The user's preferred date format (if undefined, defaults to 'dd/MM/yyyy')
+ * @return {string} The formatted date
+ */
+export const formatByUserPreference = (
+    date: Date,
+    dateFormat?: string
+): string => {
+    if (!date || isNaN(date.getTime()))
+        return 'Invalid Date'
+
+    const formatString = dateFormat ?? 'dd/MM/yyyy'
+    return format(date, formatString)
 }

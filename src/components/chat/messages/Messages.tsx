@@ -1,9 +1,9 @@
 'use client'
 
-import {cn} from '@/lib/utils'
+import { cn } from '@/lib/utils'
 
-import {MessageAvatar} from './MessageAvatar'
-import {MessageBubble} from './MessageBubble'
+import { MessageAvatar } from './MessageAvatar'
+import { MessageBubble } from './MessageBubble'
 
 type Message = {
     id: string
@@ -27,9 +27,9 @@ export const ChatMessages = ({
                     key={message.id}
                     className={cn(
                         'flex gap-3',
-                        message.role === 'user' ?
-                            'flex-row-reverse' :
-                            'flex-row'
+                        message.role === 'user'
+                            ? 'flex-row-reverse'
+                            : 'flex-row'
                     )}
                 >
                     <MessageAvatar role={message.role}/>

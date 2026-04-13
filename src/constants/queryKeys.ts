@@ -13,7 +13,8 @@ export const forumQueryKeys = {
     posts: ['forum', 'posts'] as const,
     post: (id: string) => ['forum', 'posts', id] as const,
     replies: (postId: string) =>
-        ['forum', 'posts', postId, 'replies'] as const
+        ['forum', 'posts', postId, 'replies'] as const,
+    tags: ['forum', 'tags'] as const
 }
 
 export const insightsQueryKeys = {

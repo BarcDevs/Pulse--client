@@ -9,10 +9,13 @@ HealEase — Recovery support platform for patients transitioning from hospital/
 - Write clean, maintainable, readable code
 - One concern per file
 - Provide a full file edit instead of one edit at a time
+- For every function that you want to create make sure it is not already exists
+- Avoid using re-export files
 
 ### Code Style
 - Never use array index as key - use the current element as an index
 - Braces around values inside: Object literal braces, component props and import/export braces
+- Spaces inside braces: `{ field }` not `{field}`
 - Text blocks: Don't break unless really long (120–150 chars OK)
 - Text: never use `—` character. only the simple hyphen `-` for all text, including classnames and config keys. This avoids encoding issues and ensures consistency across all contexts (JSX, CSS, config, etc.)
 - Use unified imports for module that has many imports
@@ -57,6 +60,11 @@ HealEase — Recovery support platform for patients transitioning from hospital/
 - Generic utility types (`Pick`, `Omit` etc.) with 3+ keys → each key on its own line
 - 2+ elements in an array → each on its own line
 
+### Formatting Tools
+
+- **ESLint** (`.eslint.config.mjs`): Enforces all formatting rules. Run `npm run lint:fix` to auto-apply fixes before committing.
+- **.editorconfig**: Cross-IDE settings (4-space indent, UTF-8, LF line endings). Respected by WebStorm, VS Code, etc.
+
 ### Imports (eslint-plugin-simple-import-sort)
 Groups (auto-fixed by `npm run lint:fix`):
 1. React
@@ -96,8 +104,13 @@ Use /commit skill when auto-commiting
 5. No commented-out code
 
 ## Git
+- **ALWAYS ask before committing** — Never auto-commit without explicit approval
+- Don't run /commit skill on small fixes or formatting changes
+- Never jump ahead trying to commit without being asked, even if you think the changes are ready
 - Write clear commit messages (imperative, present tense)
+- Commit messages must accurately describe what was **implemented** not just what changed (e.g., "replace mock data with real API integration" not "fix imports")
+- When committing after fixing issues found during review: include the original work scope in the message, not just the fix (e.g., "feat: replace mock data..." not "fix: correct import order")
 - Use branches for features/fixes
-- Use conventional commit format (feat, fix, docs, style, rfc, test, chore)
+- Use conventional commit format (feat, fix, docs, style, rfc, test, chore). breaking changes should have `!` after the type (e.g., `feat!: ...`)
 - Avoid large commits; keep them focused and atomic (every commit should have one change or fix)
 - Claude plans should instructions never be committed

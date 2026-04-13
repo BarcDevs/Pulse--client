@@ -10,9 +10,9 @@ import {
     YAxis
 } from 'recharts'
 
-import type {SetState} from '@/types/utils/react'
+import type { SetState } from '@/types/react'
 
-import {ChartTooltipContent} from '@/components/ui/chart-tooltip'
+import { ChartTooltipContent } from '@/components/ui/chart-tooltip'
 
 type HistoryChartContentProps = {
     reorderedData: unknown[]
@@ -30,8 +30,8 @@ export const HistoryChartContent = ({
         dir={'ltr'}
     >
         <ResponsiveContainer
-            width={800}
-            height={240}
+            width={'100%'}
+            height={'100%'}
         >
             <BarChart
                 data={reorderedData}
@@ -83,9 +83,9 @@ export const HistoryChartContent = ({
                             <Cell
                                 key={`bar-${index}`}
                                 fill={
-                                    hoveredIndex === index ?
-                                        '#4a90e2' :
-                                        '#e8f4fd'
+                                    hoveredIndex === index
+                                        ? '#4a90e2'
+                                        : '#e8f4fd'
                                 }
                             />
                         )

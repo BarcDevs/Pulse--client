@@ -53,15 +53,15 @@ export const flushQueue = (
     authState.requestQueue.forEach((req) => {
         if (authState.isShuttingDown) {
             req.reject(
-                error ||
-                new AxiosError('App shutting down')
+                error
+                || new AxiosError('App shutting down')
             )
         } else if (success) {
             req.resolve(api(req.config))
         } else {
             req.reject(
-                error ||
-                new AxiosError('Refresh failed')
+                error
+                || new AxiosError('Refresh failed')
             )
         }
     })

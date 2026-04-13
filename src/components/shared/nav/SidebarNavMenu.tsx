@@ -6,7 +6,7 @@ import { LucideIcon } from 'lucide-react'
 import {
     SidebarMenu,
     SidebarMenuButton,
-    SidebarMenuItem,
+    SidebarMenuItem
 } from '@/components/ui/sidebar'
 
 type NavItem = {
@@ -21,7 +21,7 @@ type SidebarNavMenuProps = {
 }
 
 export const SidebarNavMenu = ({
-    items,
+    items
 }: SidebarNavMenuProps) => {
     const pathname = usePathname()
 

@@ -5,13 +5,13 @@ import {
     Shield
 } from 'lucide-react'
 
-import type {SetState} from '@/types/utils/react'
+import type { SetState } from '@/types/react'
 
-import {settingsPageTexts}
+import { settingsPageTexts }
     from '@/constants/componentTexts/settings'
 
-import {SettingsSidebarFooter} from './SettingsSidebarFooter'
-import {SettingsTabButton} from './SettingsTabButton'
+import { SettingsSidebarFooter } from './SettingsSidebarFooter'
+import { SettingsTabButton } from './SettingsTabButton'
 
 type SettingsSidebarProps = {
     activeTab: string

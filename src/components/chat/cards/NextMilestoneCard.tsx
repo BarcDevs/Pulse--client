@@ -1,16 +1,16 @@
-import {Badge} from '@/components/ui/badge'
+import { Badge } from '@/components/ui/badge'
 import {
     Card,
     CardContent
 } from '@/components/ui/card'
-import {Progress} from '@/components/ui/progress'
+import { Progress } from '@/components/ui/progress'
 
-import {chatTexts} from '@/constants/componentTexts/chat'
+import { chatTexts } from '@/constants/componentTexts/chat'
 
 export const NextMilestoneCard = () => (
     <Card className={'border-0 bg-primary text-white shadow-none'}>
         <CardContent className={'pt-6'}>
-            <p className={'text-xs font-medium uppercase tracking-wider opacity-80'}>
+            <p className={'label-uppercase opacity-80'}>
                 {chatTexts.sidebar.nextMilestoneLabel}
             </p>
             <h3 className={'mt-1 text-lg font-semibold'}>

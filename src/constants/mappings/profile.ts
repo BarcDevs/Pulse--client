@@ -11,8 +11,8 @@ import {
     Sun
 } from 'lucide-react'
 
-import {profilePageTexts} from '@/constants/componentTexts/profile'
-import {profileDetail} from '@/constants/componentTexts/profileDetail'
+import { profilePageTexts } from '@/constants/componentTexts/profile'
+import { profileDetail } from '@/constants/componentTexts/profileDetail'
 
 type ActivityWithIcon = {
     title: string

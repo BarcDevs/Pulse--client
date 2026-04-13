@@ -1,15 +1,17 @@
 'use client'
 
-import {useLatestCheckIn} from '@/hooks/queries/useLatestCheckIn'
+import { useLatestCheckIn } from '@/hooks/queries/useLatestCheckIn'
 
-import {DashboardAIInsight} from './cards/AiInsight'
-import {DashboardCheckInCard} from './cards/CheckInCard'
-import {DashboardTodaysFocus} from './cards/TodaysFocus'
-import {DashboardStatsCards} from './stats/StatsCards'
-import {DashboardChartSidebar} from './DashboardChartSidebar'
+import { FEATURES } from '@/config/features'
+
+import { DashboardAIInsight } from './cards/AiInsight'
+import { DashboardCheckInCard } from './cards/CheckInCard'
+import { DashboardTodaysFocus } from './cards/TodaysFocus'
+import { DashboardStatsCards } from './stats/StatsCards'
+import { DashboardChartSidebar } from './DashboardChartSidebar'
 
 export const DashboardPageContent = () => {
-    const {isTodayCheckInExists} = useLatestCheckIn()
+    const { isTodayCheckInExists } = useLatestCheckIn()
 
     return (
         <div className={'p-6 space-y-6'}>
@@ -18,7 +20,7 @@ export const DashboardPageContent = () => {
                     {!isTodayCheckInExists && (
                         <DashboardCheckInCard/>
                     )}
-                    {isTodayCheckInExists && (
+                    {FEATURES.motivationFeedback && isTodayCheckInExists && (
                         <DashboardAIInsight className={'pt-6 px-10 pb-10 h-full'}/>
                     )}
                 </div>

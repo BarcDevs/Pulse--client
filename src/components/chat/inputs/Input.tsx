@@ -1,12 +1,12 @@
 'use client'
 
-import {KeyboardEvent} from 'react'
+import { KeyboardEvent } from 'react'
 
-import type {SetState} from '@/types/utils/react'
+import type { SetState } from '@/types/react'
 
-import {ChatSuggestionsPanel} from '../suggestions/ChatSuggestionsPanel'
+import { ChatSuggestionsPanel } from '../suggestions/ChatSuggestionsPanel'
 
-import {ChatInputField} from './ChatInputField'
+import { ChatInputField } from './ChatInputField'
 
 type ChatInputProps = {
     value: string

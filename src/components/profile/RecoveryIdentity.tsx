@@ -1,15 +1,15 @@
-import {cn} from '@/lib/utils'
+import { cn } from '@/lib/utils'
 
-import {profilePageTexts} from '@/constants/componentTexts/profile'
-import {recoveryFocusAreasWithIcons}
+import { profilePageTexts } from '@/constants/componentTexts/profile'
+import { recoveryFocusAreasWithIcons }
     from '@/constants/mappings/profile'
 
 export const RecoveryIdentity = () => (
-    <div className={'rounded-2xl bg-surface-card p-6'}>
+    <div className={'card-base'}>
         <h3 className={'text-lg font-semibold text-foreground mb-2'}>{profilePageTexts.recoveryIdentity.title}</h3>
         <p className={'text-sm text-muted-foreground mb-6'}>{profilePageTexts.recoveryIdentity.subtitle}</p>
 
-        <div className={'flex flex-wrap gap-3 mb-6'}>
+        <div className={'flex--wrap gap-3 mb-6'}>
             {recoveryFocusAreasWithIcons
                 .map((area) => (
                     <div

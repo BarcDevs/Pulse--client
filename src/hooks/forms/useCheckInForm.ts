@@ -1,14 +1,14 @@
-import {useMemo} from 'react'
+import { useMemo } from 'react'
 
-import {useForm, useWatch} from 'react-hook-form'
+import { useForm, useWatch } from 'react-hook-form'
 
-import {zodResolver} from '@hookform/resolvers/zod'
+import { zodResolver } from '@hookform/resolvers/zod'
 
-import {CheckIn, CheckInStats} from '@/types/checkIn/checkIn'
+import { CheckIn, CheckInStats } from '@/types/checkIn'
 
-import {isTodayCheckIn} from '@/lib/checkIn/loaderHelpers'
+import { isTodayCheckIn } from '@/lib/checkIn/loaderHelpers'
 
-import {checkInFormSchema} from '@/config/schema/checkInForm'
+import { checkInFormSchema } from '@/config/schema/checkInForm'
 
 import {
     CheckInSchema,
@@ -40,8 +40,8 @@ export const useCheckInForm = ({
     const form = useForm<CheckInSchema>({
         resolver: zodResolver(checkInSchema),
         defaultValues:
-            isTodayCheckInExists &&
-            latestCheckIn ? {
+            isTodayCheckInExists
+            && latestCheckIn ? {
                 moodScore: latestCheckIn.moodScore,
                 painLevel: latestCheckIn.painLevel,
                 activities: latestCheckIn.activities,

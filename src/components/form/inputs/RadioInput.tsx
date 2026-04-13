@@ -1,6 +1,6 @@
-import {FieldValues} from 'react-hook-form'
+import { FieldValues } from 'react-hook-form'
 
-import {FieldConfig} from '@/types/forms/forms'
+import { FieldConfig } from '@/types/forms'
 
 import {
     FormControl,
@@ -22,8 +22,8 @@ export const RadioInput = <T extends FieldValues>({
     config
 }: RadioInputProps<T>) => (
     <>
-        {config.label &&
-            <FormLabel>
+        {config.label
+            && <FormLabel>
                 {config.label}
             </FormLabel>
         }

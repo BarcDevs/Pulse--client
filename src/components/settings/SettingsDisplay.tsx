@@ -1,8 +1,8 @@
-import {AppPreferences} from './sections/AppPreferences'
-import {NotificationsSettings} from './sections/NotificationsSettings'
-import {PrivacySettings} from './sections/PrivacySettings'
-import {SecuritySettings} from './sections/SecuritySettings'
-import {SettingsFooter} from './SettingsFooter'
+import { AppPreferences } from './sections/AppPreferences'
+import { NotificationsSettings } from './sections/NotificationsSettings'
+import { PrivacySettings } from './sections/PrivacySettings'
+import { SecuritySettings } from './sections/SecuritySettings'
+import { SettingsFooter } from './SettingsFooter'
 
 type SettingsDisplayProps = {
     activeTab: string

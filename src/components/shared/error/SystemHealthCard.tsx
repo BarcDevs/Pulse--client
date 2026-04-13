@@ -1,6 +1,6 @@
-import {Icon} from '@/components/shared/ui/Icon'
+import { Icon } from '@/components/shared/ui/Icon'
 
-import {errorPageTexts} from '@/constants/componentTexts/ui/errors'
+import { errorPageTexts } from '@/constants/componentTexts/ui/errors'
 
 export const SystemHealthCard = () => (
     <div className={'p-6 bg-surface-container-low rounded-xl border border-outline-variant/5'}>

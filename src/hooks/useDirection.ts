@@ -1,6 +1,6 @@
 'use client'
 
-import {useState} from 'react'
+import { useState } from 'react'
 
 export const useDirection = () => {
     const [dir] = useState<'ltr' | 'rtl'>(() => {
@@ -8,8 +8,8 @@ export const useDirection = () => {
             return 'ltr'
 
         return (
-            (document.documentElement.dir as 'ltr' | 'rtl') ||
-            'ltr'
+            (document.documentElement.dir as 'ltr' | 'rtl')
+            || 'ltr'
         )
     })
 

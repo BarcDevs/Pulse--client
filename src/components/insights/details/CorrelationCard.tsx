@@ -6,14 +6,14 @@ import {
     YAxis
 } from 'recharts'
 
-import {insightsDetail}
+import { insightsDetail }
     from '@/constants/componentTexts/insightsDetail'
 
-import {PATTERNS_SOCIAL_DATA} from '@/mocks/chartData'
+import { PATTERNS_SOCIAL_DATA } from '@/mocks/chartData'
 
 export const CorrelationCard = () => (
     <div className={'rounded-xl bg-surface-section p-4'}>
-        <p className={'text-xs font-medium uppercase tracking-wider text-muted-foreground'}>
+        <p className={'label-uppercase text-muted-foreground'}>
             {insightsDetail.patterns.correlation.label}
         </p>
         <h4 className={'mt-1 font-semibold text-foreground'}>

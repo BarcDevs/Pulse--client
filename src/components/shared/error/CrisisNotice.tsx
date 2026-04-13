@@ -1,4 +1,4 @@
-import {errorPageTexts} from '@/constants/componentTexts/ui/errors'
+import { errorPageTexts } from '@/constants/componentTexts/ui/errors'
 
 export const CrisisNotice = () => (
     <div className={'mt-10 text-slate-400 text-xs'}>

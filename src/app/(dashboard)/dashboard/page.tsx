@@ -1,4 +1,4 @@
-import {DashboardPageContent} from '@/components/dashboard/DashboardPageContent'
+import { DashboardPageContent } from '@/components/dashboard/DashboardPageContent'
 
 const DashboardPage = () => (
     <DashboardPageContent/>

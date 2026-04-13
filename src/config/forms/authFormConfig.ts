@@ -1,6 +1,6 @@
-import {AuthFormType, FormConfig} from '@/types/forms/forms'
+import { AuthFormType, FormConfig } from '@/types/forms'
 
-import {authTexts} from '@/constants/componentTexts/auth'
+import { authTexts } from '@/constants/componentTexts/auth'
 
 type AuthFormConfigs = Record<
     AuthFormType,

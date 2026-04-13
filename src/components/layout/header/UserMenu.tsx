@@ -1,5 +1,6 @@
 'use client'
 
+import { UserAvatar } from '@/components/shared/UserAvatar'
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -7,16 +8,17 @@ import {
     DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu'
 
-import {getUserFallback} from '@/lib/utils'
+import { getUserFallback } from '@/lib/utils'
 
-import {bottomNavItems} from '@/constants/navigationItems'
+import { userMenuItems } from '@/constants/navigationItems'
 
-import {useAuth} from '@/context/AuthContext'
+import { FEATURES } from '@/config/features'
 
-import {UserAvatar} from './UserAvatar'
-import {UserLoginButton} from './UserLoginButton'
-import {UserMenuItem} from './UserMenuItem'
-import {UserSkeleton} from './UserSkeleton'
+import { useAuth } from '@/context/AuthContext'
+
+import { UserLoginButton } from './UserLoginButton'
+import { UserMenuItem } from './UserMenuItem'
+import { UserSkeleton } from './UserSkeleton'
 
 export const UserMenu = () => {
     const { user, isLoading } = useAuth()
@@ -35,19 +37,24 @@ export const UserMenu = () => {
     return (
         <DropdownMenu>
             <DropdownMenuTrigger className={'flex items-center gap-3 rounded-lg p-2 hover:bg-surface-section transition-colors'}>
-                <UserAvatar initials={initials}/>
+                <UserAvatar
+                    initials={initials}
+                    imageSrc={user.profile?.image ?? undefined}
+                />
             </DropdownMenuTrigger>
             <DropdownMenuContent
                 align={'end'}
                 className={'w-56'}
             >
                 <DropdownMenuSeparator/>
-                {bottomNavItems.map((item) => (
+                {userMenuItems
+                    .filter((item) => item.label !== 'Settings' || FEATURES.profilePreferences)
+                    .map((item) => (
                         <UserMenuItem
                             key={item.label}
                             item={item}
                         />
-                ))}
+                    ))}
             </DropdownMenuContent>
         </DropdownMenu>
     )

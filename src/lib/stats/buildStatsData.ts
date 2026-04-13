@@ -1,11 +1,11 @@
-import type {CheckInStats} from '@/types/checkIn/checkIn'
+import type { CheckInStats } from '@/types/checkIn'
 
 import {
     STAT_LABELS,
     type StatLabel
 } from '@/constants/stats'
 
-import {getStatDescription} from './getStatDescription'
+import { getStatDescription } from './getStatDescription'
 
 type StatData = {
     label: string

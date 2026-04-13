@@ -6,9 +6,9 @@ import {
     QueryClientProvider
 } from '@tanstack/react-query'
 
-import {LayoutProps} from '@/types'
+import { LayoutProps } from '@/types'
 
-import {getQueryClient} from '@/lib/queryClient'
+import { getQueryClient } from '@/lib/queryClient'
 
 type QueryProviderProps = LayoutProps & {
     dehydratedState?: DehydratedState | null

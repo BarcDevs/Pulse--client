@@ -1,10 +1,10 @@
 'use client'
 
-import {Award} from 'lucide-react'
+import { Award } from 'lucide-react'
 
-import {useCheckInStats} from '@/hooks/queries/useCheckInStats'
+import { useCheckInStats } from '@/hooks/queries/useCheckInStats'
 
-import {progressPageTexts} from '@/constants/componentTexts/progress'
+import { progressPageTexts } from '@/constants/componentTexts/progress'
 
 export const MilestonesCard = () => {
     const { data } = useCheckInStats('weekly')
@@ -13,10 +13,10 @@ export const MilestonesCard = () => {
         ?.milestonesAchieved ?? 0
 
     return (
-        <div className={'rounded-2xl bg-surface-card p-6'}>
-            <div className={'flex items-start justify-between'}>
+        <div className={'card-base'}>
+            <div className={'flex-start-between'}>
                 <div>
-                    <p className={'text-xs font-medium text-muted-foreground uppercase tracking-wider'}>
+                    <p className={'text-muted-foreground label-uppercase'}>
                         {progressPageTexts.stats
                             .milestones.label}
                     </p>
@@ -38,7 +38,7 @@ export const MilestonesCard = () => {
                         </span>
                     </p>
                 </div>
-                <div className={'h-12 w-12 rounded-xl bg-purple-50 flex items-center justify-center'}>
+                <div className={'h-12 w-12 rounded-xl bg-purple-50 flex--center'}>
                     <Award className={'h-6 w-6 text-accent'}/>
                 </div>
             </div>

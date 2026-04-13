@@ -1,6 +1,6 @@
-import {Quote} from 'lucide-react'
+import { Quote } from 'lucide-react'
 
-import {getRandomQuote} from '@/utils/checkIn'
+import { getRandomQuote } from '@/utils/checkIn'
 
 export const CheckInQuote = () => {
     const quote = getRandomQuote()

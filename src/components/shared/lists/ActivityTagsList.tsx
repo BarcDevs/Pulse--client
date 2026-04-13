@@ -1,4 +1,4 @@
-import {Badge} from '@/components/ui/badge'
+import { Badge } from '@/components/ui/badge'
 
 type ActivityTagsListProps = {
     tags: string[]
@@ -12,20 +12,20 @@ export const ActivityTagsList = ({
     const isCard = variant === 'card'
 
     return (
-        <div className={isCard ?
-            'flex flex-wrap gap-1' :
-            'flex gap-2'
+        <div className={isCard
+            ? 'flex--wrap gap-1'
+            : 'flex gap-2'
         }>
             {tags.map((tag) =>
-                isCard ?
-                    <Badge
+                isCard
+                    ? <Badge
                         key={tag}
                         variant={'outline'}
                         className={'border-border text-xs'}
                     >
                         {tag}
-                    </Badge> :
-                    <span
+                    </Badge>
+                    : <span
                         key={tag}
                         className={'px-3 py-1 rounded-full bg-surface-card text-xs font-medium text-muted-foreground'}
                     >

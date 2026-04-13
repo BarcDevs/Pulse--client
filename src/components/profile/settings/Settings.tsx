@@ -1,4 +1,4 @@
-import {Button} from '@/components/ui/button'
+import { Button } from '@/components/ui/button'
 import {
     Card,
     CardContent,
@@ -6,8 +6,8 @@ import {
     CardTitle
 } from '@/components/ui/card'
 
-import {profilePageTexts} from '@/constants/componentTexts/profile'
-import {profileSettingsWithIcons} from '@/constants/mappings/profile'
+import { profilePageTexts } from '@/constants/componentTexts/profile'
+import { profileSettingsWithIcons } from '@/constants/mappings/profile'
 
 export const ProfileSettings = () => (
     <Card className={'border-0 shadow-sm'}>

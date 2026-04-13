@@ -5,7 +5,7 @@ type ProfileStatItemProps = {
 
 export const ProfileStatItem = ({
     value,
-    label,
+    label
 }: ProfileStatItemProps) => (
     <div className={'text-center'}>
         <p className={'text-2xl font-bold text-foreground'}>

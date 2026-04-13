@@ -1,4 +1,4 @@
-import {chatTexts} from '@/constants/componentTexts/chat'
+import { chatTexts } from '@/constants/componentTexts/chat'
 
 type ChatMessage = {
     id: string

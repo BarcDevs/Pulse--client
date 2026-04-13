@@ -4,7 +4,7 @@ import {
     Path
 } from 'react-hook-form'
 
-import {FieldConfig} from '@/types/forms/forms'
+import { FieldConfig } from '@/types/forms'
 
 import {
     FormField,
@@ -12,14 +12,14 @@ import {
     FormMessage
 } from '@/components/ui/form'
 
-import {CheckboxInput} from './inputs/CheckboxInput'
-import {EmailInput} from './inputs/EmailInput'
-import {PasswordInput} from './inputs/PasswordInput'
-import {RadioInput} from './inputs/RadioInput'
-import {SelectInput} from './inputs/SelectInput'
-import {SliderInput} from './inputs/SliderInput'
-import {TextAreaInput} from './inputs/TextAreaInput'
-import {TextInput} from './inputs/TextInput'
+import { CheckboxInput } from './inputs/CheckboxInput'
+import { EmailInput } from './inputs/EmailInput'
+import { PasswordInput } from './inputs/PasswordInput'
+import { RadioInput } from './inputs/RadioInput'
+import { SelectInput } from './inputs/SelectInput'
+import { SliderInput } from './inputs/SliderInput'
+import { TextAreaInput } from './inputs/TextAreaInput'
+import { TextInput } from './inputs/TextInput'
 
 type DynamicFormFieldProps<T extends FieldValues> = {
     name: Path<T>

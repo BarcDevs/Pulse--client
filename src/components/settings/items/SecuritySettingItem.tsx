@@ -1,49 +1,51 @@
-import {Edit2} from 'lucide-react'
+import { ReactNode } from 'react'
 
-import {Button} from '@/components/ui/button'
+import { Edit2 } from 'lucide-react'
+
+import { Button } from '@/components/ui/button'
+
+import { securitySettingStyles } from '@/constants/securitySettings'
 
 type SecuritySettingItemProps = {
-    icon: React.ReactNode
+    icon: ReactNode
     label: string
     value: string
     variant?: 'default' | 'destructive'
+    buttonText?: string
 }
 
 export const SecuritySettingItem = ({
     icon,
     label,
     value,
-    variant = 'default'
-}: SecuritySettingItemProps) => (
-    <div
-        className={variant === 'destructive' ?
-            'flex items-center justify-between p-4 rounded-xl border border-destructive/20 bg-destructive/5' :
-            'flex items-center justify-between p-4 rounded-xl bg-surface-section'}
-    >
-        <div className={'flex items-center gap-3'}>
-            {icon}
-            <div>
-                <h4
-                    className={
-                        variant === 'destructive' ?
-                            'font-medium text-destructive' :
-                            'font-medium text-foreground'
-                    }
-                >
-                    {label}
-                </h4>
-                <p className={'text-sm text-muted-foreground'}>
-                    {value}
-                </p>
+    variant = 'default',
+    buttonText
+}: SecuritySettingItemProps) => {
+    const styles = securitySettingStyles[variant]
+    const isDestructive = variant === 'destructive'
+
+    return (
+        <div className={styles.container}>
+            <div className={'flex items-center gap-3'}>
+                {icon}
+                <div>
+                    <h4 className={styles.label}>
+                        {label}
+                    </h4>
+                    <p className={'text-sm text-muted-foreground'}>
+                        {value}
+                    </p>
+                </div>
             </div>
-        </div>
-        {variant === 'default' &&
             <Button
-                variant={'ghost'}
+                variant={isDestructive ? 'destructive' : 'ghost'}
                 size={'sm'}
-                className={'h-8 w-8 p-0 rounded-lg hover:bg-surface-card'}
+                className={styles.button}
             >
-                <Edit2 className={'h-4 w-4 text-muted-foreground'}/>
-            </Button>}
-    </div>
-)
+                {isDestructive ? buttonText : (
+                    <Edit2 className={'h-4 w-4 text-muted-foreground'}/>
+                )}
+            </Button>
+        </div>
+    )
+}

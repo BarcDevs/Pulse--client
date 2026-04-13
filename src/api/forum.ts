@@ -1,8 +1,15 @@
-import {Post, Reply} from '@/types/forum/forum'
-import {ApiResponse, Response} from '@/types/responses'
+import type {
+    PartialTag,
+    Post,
+    Reply
+} from '@/types/community'
+import type {
+    ApiResponse,
+    Response
+} from '@/types/responses'
 
-import {api} from '@/api/index'
-import {PostSchema} from '@/validations/forms/postSchema'
+import { api } from '@/api/index'
+import { PostSchema } from '@/validations/forms/postSchema'
 
 export const fetchPosts = async (query: any) =>
     await api.get<Response<Post[]>>(
@@ -37,7 +44,7 @@ export const deletePost = async (
     )
 
 export const fetchReplies = async (postId: string) =>
-    api.get<Response<{replies: Reply[]}>>(
+    api.get<Response<{ replies: Reply[] }>>(
         `/forum/posts/${postId}/replies`
     )
 
@@ -45,7 +52,7 @@ export const createReply = async (
     postId: string,
     reply: Reply
 ) =>
-    api.post<Response<{reply: Reply}>>(
+    api.post<Response<{ reply: Reply }>>(
         `/forum/posts/${postId}/replies`, {
             ...reply
         })
@@ -55,8 +62,20 @@ export const updateReply = async (
     replyId: string,
     reply: Reply
 ) =>
-    api.put<Response<{reply: Reply}>>(
+    api.put<Response<{ reply: Reply }>>(
         `/forum/posts/${postId}/replies/${replyId}`, {
             ...reply
         })
 
+export const deleteReply = async (
+    postId: string,
+    replyId: string
+): ApiResponse<object> =>
+    api.delete<Response<object>>(
+        `/forum/posts/${postId}/replies/${replyId}`
+    )
+
+export const fetchTags = async () =>
+    api.get<Response<PartialTag[]>>(
+        '/forum/tags'
+    )

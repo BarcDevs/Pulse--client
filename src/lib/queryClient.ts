@@ -3,7 +3,7 @@ import {
     QueryClient
 } from '@tanstack/react-query'
 
-import {minuteInMs} from '@/constants/time'
+import { minuteInMs } from '@/constants/time'
 
 export const createQueryClient = () =>
     new QueryClient({
@@ -22,8 +22,8 @@ export const createQueryClient = () =>
             },
             dehydrate: {
                 shouldDehydrateQuery: (query: any) =>
-                    defaultShouldDehydrateQuery(query) ||
-                    query.state.status === 'pending'
+                    defaultShouldDehydrateQuery(query)
+                    || query.state.status === 'pending'
             }
         }
     })

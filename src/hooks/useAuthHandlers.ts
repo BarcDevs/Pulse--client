@@ -1,20 +1,20 @@
 'use client'
 
-import {useRouter} from 'next/navigation'
+import { useRouter } from 'next/navigation'
 
-import {useQueryClient} from '@tanstack/react-query'
+import { useQueryClient } from '@tanstack/react-query'
 
-import {authQueryKeys} from '@/constants/queryKeys'
+import { authQueryKeys } from '@/constants/queryKeys'
 
-import {useAuth} from '@/context/AuthContext'
+import { useAuth } from '@/context/AuthContext'
 
 import {
     login,
     logout,
     signup
 } from '@/api/auth'
-import type {LoginSchema} from '@/validations/forms/loginSchema'
-import type {SignupSchema} from '@/validations/forms/signupSchema'
+import type { LoginSchema } from '@/validations/forms/loginSchema'
+import type { SignupSchema } from '@/validations/forms/signupSchema'
 
 export const useAuthHandlers = () => {
     const { setIsLoading } = useAuth()
@@ -84,9 +84,9 @@ export const useAuthHandlers = () => {
             await logout()
         } catch (error: unknown) {
             const message =
-                error instanceof Error ?
-                    error.message :
-                    'Logout failed'
+                error instanceof Error
+                    ? error.message
+                    : 'Logout failed'
             console.error(
                 'Logout error:',
                 message

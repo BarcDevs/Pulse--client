@@ -1,20 +1,52 @@
-import {profilePageTexts} from '@/constants/componentTexts/profile'
+'use client'
 
-import {ProfileStatItem} from './ProfileStatItem'
+import {
+    useEffect,
+    useState
+} from 'react'
 
-export const ProfileStats = () => (
-    <div className={'mt-6 grid w-full grid-cols-3 gap-4 border-t border-border pt-6'}>
-        <ProfileStatItem
-            value={profilePageTexts.stats.days.value}
-            label={profilePageTexts.stats.days.label}
-        />
-        <ProfileStatItem
-            value={profilePageTexts.stats.milestones.value}
-            label={profilePageTexts.stats.milestones.label}
-        />
-        <ProfileStatItem
-            value={profilePageTexts.stats.healthScore.value}
-            label={profilePageTexts.stats.healthScore.label}
-        />
-    </div>
-)
+import type { CheckInStats } from '@/types/checkIn'
+
+import { profilePageTexts } from '@/constants/componentTexts/profile'
+
+import { fetchCheckInStats } from '@/api/checkIn'
+
+import { ProfileStatItem } from './ProfileStatItem'
+
+export const ProfileStats = () => {
+    const [stats, setStats] = useState<CheckInStats | null>(null)
+
+    useEffect(() => {
+        const getStats = async () => {
+            try {
+                const { data } = await fetchCheckInStats()
+                setStats(data.data)
+            } catch (err) {
+                console.error('Failed to fetch stats:', err)
+            }
+        }
+
+        getStats()
+    }, [])
+
+    // TODO: Add health score to CheckInStats type
+    const days = stats?.total ?? profilePageTexts.stats.days.value
+    const milestones = stats?.milestonesAchieved ?? profilePageTexts.stats.milestones.value
+
+    return (
+        <div className={'mt-6 grid w-full grid-cols-3 gap-4 border-t border-border pt-6'}>
+            <ProfileStatItem
+                value={String(days)}
+                label={profilePageTexts.stats.days.label}
+            />
+            <ProfileStatItem
+                value={String(milestones)}
+                label={profilePageTexts.stats.milestones.label}
+            />
+            <ProfileStatItem
+                value={profilePageTexts.stats.healthScore.value}
+                label={profilePageTexts.stats.healthScore.label}
+            />
+        </div>
+    )
+}

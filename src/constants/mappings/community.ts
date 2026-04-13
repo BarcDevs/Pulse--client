@@ -5,7 +5,7 @@ import {
     Users
 } from 'lucide-react'
 
-import {communityPageTexts} from '@/constants/componentTexts/community'
+import { communityPageTexts } from '@/constants/componentTexts/community'
 
 export const communityCategoriesIconMap = {
     'Support Groups': Users,
@@ -14,10 +14,11 @@ export const communityCategoriesIconMap = {
     'Yoga & Movement': Activity
 }
 
-export const communityCategoriesColorMap = {
+export const communityCategoriesColorMap:
+    Record<string, string> = {
     'Support Groups': 'bg-blue-50 text-primary',
     'Success Stories': 'bg-purple-50 text-accent',
-    'Nutrition': 'bg-orange-50 text-warning',
+    Nutrition: 'bg-orange-50 text-warning',
     'Yoga & Movement': 'bg-emerald-50 text-secondary'
 }
 

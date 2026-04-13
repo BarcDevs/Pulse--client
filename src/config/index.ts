@@ -1,4 +1,4 @@
-import {dayInMs} from '@/constants/time'
+import { dayInMs } from '@/constants/time'
 
 type Config = {
     serverUrl: string

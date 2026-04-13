@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-import {notFoundPageTexts} from '@/constants/componentTexts/ui/errors'
+import { notFoundPageTexts } from '@/constants/componentTexts/ui/errors'
 
 export const NotFoundResources = () => (
     <div className={'mt-16 grid grid-cols-2 gap-6 opacity-60'}>

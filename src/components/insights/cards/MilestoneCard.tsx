@@ -1,8 +1,8 @@
-import {Trophy} from 'lucide-react'
+import { Trophy } from 'lucide-react'
 
-import {insightsPageTexts}
+import { insightsPageTexts }
     from '@/constants/componentTexts/insightsComponent'
-import {insightsDetail}
+import { insightsDetail }
     from '@/constants/componentTexts/insightsDetail'
 
 export const MilestoneCard = () => (

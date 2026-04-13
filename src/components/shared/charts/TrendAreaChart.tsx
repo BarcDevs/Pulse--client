@@ -15,7 +15,7 @@ import {
     HeaderConfig,
     LegendConfig,
     StyleConfig
-} from '@/types/charts/trendChart'
+} from '@/types/charts'
 
 import {
     Card,
@@ -24,8 +24,8 @@ import {
     CardTitle
 } from '@/components/ui/card'
 
-import {ChartLegend} from './ChartLegend'
-import {ChartTabs} from './ChartTabs'
+import { ChartLegend } from './ChartLegend'
+import { ChartTabs } from './ChartTabs'
 
 export type TrendAreaChartProps = {
     header: HeaderConfig

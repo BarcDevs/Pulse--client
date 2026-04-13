@@ -1,6 +1,6 @@
-import {Quote} from 'lucide-react'
+import { Quote } from 'lucide-react'
 
-import {chatTexts} from '@/constants/componentTexts/chat'
+import { chatTexts } from '@/constants/componentTexts/chat'
 
 export const InsightQuoteCard = () => (
     <div className={'rounded-xl bg-surface-section p-4'}>

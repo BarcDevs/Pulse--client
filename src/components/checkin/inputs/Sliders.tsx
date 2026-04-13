@@ -1,12 +1,12 @@
-import {Activity, Smile} from 'lucide-react'
+import { Activity, Smile } from 'lucide-react'
 
-import type {FormControlProps} from '@/types/forms'
+import type { FormControlProps } from '@/types/forms'
 
-import {SliderCard} from '@/components/shared/inputs/SliderCard'
+import { SliderCard } from '@/components/shared/inputs/SliderCard'
 
-import {checkInTexts} from '@/constants/componentTexts/checkIn'
+import { checkInTexts } from '@/constants/componentTexts/checkIn'
 
-import type {CheckInSchema} from '@/validations/forms/checkInSchema'
+import type { CheckInSchema } from '@/validations/forms/checkInSchema'
 
 type CheckInSlidersProps = FormControlProps<CheckInSchema>
 

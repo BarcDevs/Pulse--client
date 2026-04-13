@@ -2,12 +2,12 @@
 
 import Link from 'next/link'
 
-import {Home} from 'lucide-react'
+import { Home } from 'lucide-react'
 
-import {Icon} from '@/components/shared/ui/Icon'
-import {Button} from '@/components/ui/button'
+import { Icon } from '@/components/shared/ui/Icon'
+import { Button } from '@/components/ui/button'
 
-import {notFoundPageTexts} from '@/constants/componentTexts/ui/errors'
+import { notFoundPageTexts } from '@/constants/componentTexts/ui/errors'
 
 type NotFoundContentProps = {
     onGoBackAction: () => void

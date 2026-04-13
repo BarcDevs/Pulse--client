@@ -1,7 +1,7 @@
-import {Icon} from '@/components/shared/ui/Icon'
+import { Icon } from '@/components/shared/ui/Icon'
 
-import {footer} from '@/constants/componentTexts/ui/footer'
-import {socialMediaLinks}
+import { footer } from '@/constants/componentTexts/ui/footer'
+import { socialMediaLinks }
     from '@/constants/socialConfig'
 
 export const FooterSocial = () => (

@@ -1,6 +1,12 @@
-import {createContext, ReactNode, useContext, useEffect, useState} from 'react'
+import {
+    createContext,
+    ReactNode,
+    useContext,
+    useEffect,
+    useState
+} from 'react'
 
-import {Language} from '@/types'
+import { Language } from '@/types'
 
 import languages from '@/data/languages'
 
@@ -34,7 +40,7 @@ const LangContext = createContext<ContextValue>({
 
 const useLanguage = () => useContext(LangContext)
 
-const LangProvider = ({children}: ContextProps) => {
+const LangProvider = ({ children }: ContextProps) => {
     const [lang, setLang] = useState<Language>(getLangFromStorage())
 
     useEffect(() => {
@@ -49,10 +55,10 @@ const LangProvider = ({children}: ContextProps) => {
     }
 
     return (
-        <LangContext.Provider value={{lang, changeLang}}>
+        <LangContext.Provider value={{ lang, changeLang }}>
             {children}
         </LangContext.Provider>
     )
 }
 
-export {LangProvider, useLanguage}
+export { LangProvider, useLanguage }

@@ -4,7 +4,7 @@ import {
     TrendingUp
 } from 'lucide-react'
 
-import {TrendData} from '@/lib/stats/getTrendLabel'
+import { TrendData } from '@/lib/stats/getTrendLabel'
 
 type WellnessScoreCardProps = {
     label: string

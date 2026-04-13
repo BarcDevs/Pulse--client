@@ -1,6 +1,6 @@
-import {Shield} from 'lucide-react'
+import { Shield } from 'lucide-react'
 
-import {Badge} from '@/components/ui/badge'
+import { Badge } from '@/components/ui/badge'
 
 type HeaderBadgeProps = {
     label: string
@@ -13,11 +13,11 @@ export const HeaderBadge = ({
     variant = 'default',
     icon
 }: HeaderBadgeProps) => {
-    const badgeClassName = variant === 'secondary' ?
-        'bg-secondary-light text-secondary' :
-        variant === 'live' ?
-            'bg-secondary/10 text-secondary' :
-            ''
+    const badgeClassName = variant === 'secondary'
+        ? 'bg-secondary-light text-secondary'
+        : variant === 'live'
+            ? 'bg-secondary/10 text-secondary'
+            : ''
 
     return (
         <Badge className={`gap-2 ${badgeClassName}`}>

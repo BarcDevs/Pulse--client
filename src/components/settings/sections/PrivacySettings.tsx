@@ -1,22 +1,26 @@
 'use client'
 
-import {Lock} from 'lucide-react'
+import { Lock } from 'lucide-react'
 
-import {SettingToggle} from '@/components/shared/inputs/SettingToggle'
+import type { ProfileVisibility } from '@/types/profile'
 
-import {usePrivacySettingsForm}
-    from '@/hooks/forms/usePrivacySettingsForm'
+import { DropdownSelector }
+    from '@/components/shared/inputs/DropdownSelector'
+import { SettingToggle }
+    from '@/components/shared/inputs/SettingToggle'
 
-import {settingsPageTexts}
-    from '@/constants/componentTexts/settings'
+import {
+    DEFAULT_VISIBILITY,
+    settingsPageTexts,
+    visibilityMap
+} from '@/constants/componentTexts/settings'
+
+import { useSettings } from '@/context/SettingsContext'
 
 export const PrivacySettings = () => {
-    const { form } = usePrivacySettingsForm()
-
-    const profileVisibility = form
-        .watch('profileVisibility')
-    const anonymousParticipation = form
-        .watch('anonymousParticipation')
+    const { settings, onSettingChange } = useSettings()
+    const currentVisibility: ProfileVisibility =
+        settings?.profileVisibility || DEFAULT_VISIBILITY
 
     return (
         <div className={'rounded-2xl bg-surface-card p-6'}>
@@ -28,40 +32,20 @@ export const PrivacySettings = () => {
             </div>
 
             <div className={'grid grid-cols-1 md:grid-cols-2 gap-6'}>
-                <div className={'p-4 rounded-xl bg-surface-section'}>
-                    <h4 className={'font-medium text-foreground mb-1'}>
-                        {settingsPageTexts
-                            .privacy.visibility.title}
-                    </h4>
-                    <p className={'text-sm text-muted-foreground mb-3'}>
-                        {settingsPageTexts
-                            .privacy.visibility.description}
-                    </p>
-                    <select
-                        value={profileVisibility}
-                        onChange={
-                            (e) => form.setValue(
-                                'profileVisibility',
-                                e.target.value as
-                                    'onlyMe' |
-                                    'friends' |
-                                    'public'
-                            )}
-                        className={'w-full px-3 py-2 rounded-lg bg-surface-card border border-border text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary/20'}
-                    >
-                        {settingsPageTexts
-                            .privacy.visibility.options
-                            .map((option) => (
-                                    <option
-                                        key={option.value}
-                                        value={option.value}
-                                    >
-                                        {option.label}
-                                    </option>
-                                )
-                            )}
-                    </select>
-                </div>
+                <DropdownSelector
+                    value={currentVisibility}
+                    options={visibilityMap}
+                    onChangeAction={(value) =>
+                        onSettingChange(
+                            'profileVisibility',
+                            value
+                        )
+                    }
+                    label={settingsPageTexts
+                        .privacy.visibility.title}
+                    description={settingsPageTexts
+                        .privacy.visibility.description}
+                />
 
                 <div className={'p-4 rounded-xl bg-surface-section'}>
                     <h4 className={'font-medium text-foreground mb-1'}>
@@ -76,9 +60,11 @@ export const PrivacySettings = () => {
                         label={settingsPageTexts
                             .privacy.anonymousParticipation.label
                         }
-                        checked={anonymousParticipation}
-                        onChange={
-                            (value) => form.setValue(
+                        checked={settings?.anonymousParticipation
+                            || false
+                        }
+                        onChangeAction={(value) =>
+                            onSettingChange(
                                 'anonymousParticipation',
                                 value
                             )

@@ -1,12 +1,12 @@
 'use client'
 
-import {Sparkles} from 'lucide-react'
+import { Sparkles } from 'lucide-react'
 
-import {Button} from '@/components/ui/button'
+import { Button } from '@/components/ui/button'
 
-import {useLatestCheckIn} from '@/hooks/queries/useLatestCheckIn'
+import { useLatestCheckIn } from '@/hooks/queries/useLatestCheckIn'
 
-import {progressPageTexts} from '@/constants/componentTexts/progress'
+import { progressPageTexts } from '@/constants/componentTexts/progress'
 
 export const RecoveryInsight = () => {
     const { latestCheckIn } = useLatestCheckIn()

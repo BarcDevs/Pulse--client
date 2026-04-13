@@ -1,17 +1,17 @@
 'use client'
 
-import {useCheckInStats} from '@/hooks/queries/useCheckInStats'
+import { useCheckInStats } from '@/hooks/queries/useCheckInStats'
 
-import {buildStatsData} from '@/lib/stats/buildStatsData'
-import {cn} from '@/lib/utils'
+import { buildStatsData } from '@/lib/stats/buildStatsData'
+import { cn } from '@/lib/utils'
 
 import {
     dashboardStatsIconMap,
     dashboardStatsStyleMap
 } from '@/constants/mappings/dashboard'
 
-import {StatCard} from './StatCard'
-import {StatCardSkeleton} from './StatCardSkeleton'
+import { StatCard } from './StatCard'
+import { StatCardSkeleton } from './StatCardSkeleton'
 
 export const DashboardStatsCards = () => {
     const {

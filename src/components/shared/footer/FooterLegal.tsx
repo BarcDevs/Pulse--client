@@ -1,7 +1,7 @@
 import Link from 'next/link'
 
-import {footer} from '@/constants/componentTexts/ui/footer'
-import {footerLinks} from '@/constants/config/navigation'
+import { footer } from '@/constants/componentTexts/ui/footer'
+import { footerLinks } from '@/constants/config/navigation'
 
 export const FooterLegal = () => (
     <div>

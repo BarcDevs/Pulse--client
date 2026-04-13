@@ -20,8 +20,8 @@ export const useIsMobile = () => {
 
         const onChange = () => {
             setIsMobile(
-                window.innerWidth <
-                MOBILE_BREAKPOINT
+                window.innerWidth
+                < MOBILE_BREAKPOINT
             )
         }
 

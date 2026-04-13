@@ -1,17 +1,19 @@
+import { appSettings } from '@/config/appSettings'
+
 export const socialMediaLinks = [
     {
         title: 'Facebook',
-        href: 'https://www.facebook.com/HealEase-109044114129580',
+        href: appSettings.socialMediaUrls.facebook,
         icon: 'social/facebook'
     },
     {
         title: 'X',
-        href: 'https://www.instagram.com/healease.co/',
+        href: appSettings.socialMediaUrls.x,
         icon: 'social/x'
     },
     {
         title: 'LinkedIn',
-        href: 'https://www.linkedin.com/company/healease/',
+        href: appSettings.socialMediaUrls.linkedin,
         icon: 'social/linkedin'
     }
 ]
