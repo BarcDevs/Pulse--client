@@ -11,6 +11,7 @@ export const NavSection = () => (
                 (item) => (
                     (item.href !== '/insights' || FEATURES.insights)
                     && (item.href !== '/progress' || FEATURES.progressInsights)
+                    && (item.href !== '/recovery-goals' || FEATURES.recoveryGoals)
                     && (item.href !== '/community' || FEATURES.forumLinking)
                     && (item.href !== '/chat' || FEATURES.chat)
                 )

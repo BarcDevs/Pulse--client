@@ -5,7 +5,9 @@ import {
     Lightbulb,
     LogOut,
     MessageCircle,
-    Settings, User,
+    Settings,
+    Trophy,
+    User,
     Users
 } from 'lucide-react'
 
@@ -30,6 +32,11 @@ export const mainNavItems: NavItem[] = [
         icon: BarChart3,
         label: 'Progress',
         href: '/progress'
+    },
+    {
+        icon: Trophy,
+        label: 'Recovery Goals',
+        href: '/recovery-goals'
     },
     {
         icon: Lightbulb,
