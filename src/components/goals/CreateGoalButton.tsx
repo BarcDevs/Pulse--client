@@ -8,7 +8,7 @@ export const CreateGoalButton = ({
     <div className={'mt-16 flex flex-col items-center'}>
         <button
             onClick={onCreate}
-            className={'bg-gradient-to-r from-primary to-primary-container text-white font-headline font-bold py-4 px-10 rounded-xl shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all duration-200 flex items-center gap-3'}
+            className={'bg-gradient-to-r from-primary via-primary-container to-secondary-container text-white font-headline font-bold py-4 px-10 rounded-xl shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 hover:scale-[1.03] active:scale-95 transition-all duration-200 flex items-center gap-3'}
         >
             <span
                 className={'material-symbols-outlined'}

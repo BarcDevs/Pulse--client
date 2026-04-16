@@ -1,3 +1,5 @@
+import { Pencil } from 'lucide-react'
+
 import { Goal } from '@/types/goals'
 
 type DraftGoalCardProps = {
@@ -23,12 +25,7 @@ export const DraftGoalCard = ({
                 onClick={onEdit}
                 className={'bg-surface-container-lowest p-3 rounded-xl text-on-surface-variant shadow-sm group-hover:text-primary transition-all'}
             >
-                <span
-                    className={'material-symbols-outlined'}
-                    data-icon={'edit'}
-                >
-                    edit
-                </span>
+                <Pencil className={'size-5'}/>
             </button>
         </div>
     </div>

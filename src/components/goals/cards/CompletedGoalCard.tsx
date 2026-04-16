@@ -1,5 +1,6 @@
 import { Goal } from '@/types/goals'
 
+import { Icon } from '@/components/shared/ui/Icon'
 import { Badge } from '@/components/ui/badge'
 
 type CompletedGoalCardProps = {
@@ -46,13 +47,12 @@ export const CompletedGoalCard = ({
                 </div>
             </div>
 
-            <div className={'hidden md:flex w-24 h-24 items-center justify-center bg-secondary/10 rounded-full text-secondary shrink-0'}>
-                <span
-                    className={'material-symbols-outlined text-5xl'}
-                    data-icon={'emoji_events'}
-                >
-                    emoji_events
-                </span>
+            <div className={'hidden md:flex w-24 h-24 items-center justify-center bg-secondary/10 rounded-full shrink-0'}>
+                <Icon
+                    name={'emoji_events'}
+                    size={80}
+                    className={'opacity-70'}
+                />
             </div>
         </div>
     </div>
