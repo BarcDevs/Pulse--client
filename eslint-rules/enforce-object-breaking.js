@@ -8,7 +8,7 @@ export default {
         type: 'layout',
         docs: {
             description:
-                'Enforce breaking object literals/types with 2+ properties to new lines',
+                'Enforce breaking object literals/types with 3+ properties to new lines',
             category: 'Stylistic Issues'
         },
         fixable: 'code'
@@ -58,11 +58,16 @@ export default {
                 const endLine = lastParam.loc.end.line
 
                 if ( startLine === endLine ) {
-                    context.report({
-                        node,
-                        message:
-                            'Function with 3+ parameters must have each parameter on its own line'
-                    })
+                    const paramSpan =
+                        lastParam.loc.end.column
+                        - firstParam.loc.start.column
+                    if ( paramSpan >= 30 ) {
+                        context.report({
+                            node,
+                            message:
+                                'Function with 3+ parameters must have each parameter on its own line'
+                        })
+                    }
                 }
             },
 
@@ -75,11 +80,16 @@ export default {
                 const endLine = lastParam.loc.end.line
 
                 if ( startLine === endLine ) {
-                    context.report({
-                        node,
-                        message:
-                            'Function with 3+ parameters must have each parameter on its own line'
-                    })
+                    const paramSpan =
+                        lastParam.loc.end.column
+                        - firstParam.loc.start.column
+                    if ( paramSpan >= 30 ) {
+                        context.report({
+                            node,
+                            message:
+                                'Function with 3+ parameters must have each parameter on its own line'
+                        })
+                    }
                 }
             },
 
