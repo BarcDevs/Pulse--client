@@ -2,8 +2,7 @@
 
 import { Skeleton } from '@/components/ui/skeleton'
 
-import { useGoalMutations } from '@/hooks/mutations/useGoalMutations'
-import { useGoals } from '@/hooks/queries/useGoals'
+import { useRecoveryGoalsData } from '@/hooks/useRecoveryGoalsData'
 
 import {
     getBadge,
@@ -18,25 +17,13 @@ import { RecoveryGoalsHeader } from './RecoveryGoalsHeader'
 import { StatSummaryCard } from './StatSummaryCard'
 
 export const RecoveryGoalsPageContent = () => {
-    const { data: goalsResponse, isLoading } = useGoals()
-    const { updateMilestone } = useGoalMutations()
-
-    const goals = goalsResponse?.data || []
-    const activeGoal = goals[0]
-    const overallPercentage = activeGoal
-        ? getProgressPercentage(activeGoal) : 0
-
-    const handleToggleMilestone = (
-        goalId: string,
-        milestoneId: string,
-        isCompleted: boolean
-    ) => {
-        updateMilestone.mutate({
-            goalId,
-            milestoneId,
-            data: { isCompleted }
-        })
-    }
+    const {
+        goals,
+        activeGoal,
+        overallPercentage,
+        isLoading,
+        handleToggleMilestone
+    } = useRecoveryGoalsData()
 
     return (
         <div className={'p-8 md:p-12 max-w-7xl mx-auto w-full'}>
