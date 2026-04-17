@@ -1,5 +1,6 @@
 'use client'
 
+import { EmptyState } from '@/components/shared/EmptyState'
 import { Skeleton } from '@/components/ui/skeleton'
 
 import { useRecoveryGoalsData } from '@/hooks/useRecoveryGoalsData'
@@ -41,11 +42,12 @@ export const RecoveryGoalsPageContent = () => {
             )}
 
             {!isLoading && !activeGoal && (
-                <div className={'text-center py-12 text-on-surface-variant'}>
-                    <p className={'text-lg'}>
-                        {recoveryGoalsPageTexts.emptyState.message}
-                    </p>
-                </div>
+                <EmptyState
+                    message={
+                        recoveryGoalsPageTexts.emptyState.message
+                    }
+                    className={'py-12'}
+                />
             )}
 
             {!isLoading && activeGoal && (

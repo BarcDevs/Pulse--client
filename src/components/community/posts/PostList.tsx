@@ -9,6 +9,7 @@ import {
 
 import type { FilterType } from '@/types/community'
 
+import { EmptyState } from '@/components/shared/EmptyState'
 import { Button } from '@/components/ui/button'
 
 import { useForumPosts } from '@/hooks/queries/useForumPosts'
@@ -61,7 +62,7 @@ export const PostList = ({ tag }: PostListProps) => {
         // If query changed, reset and start fresh
         if (queryStr !== prevQueryRef.current) {
             prevQueryRef.current = queryStr
-             
+
             setAllPosts([])
             setPage(1)
             setHasMore(true)
@@ -137,13 +138,11 @@ export const PostList = ({ tag }: PostListProps) => {
 
             <div className={'divide-y divide-border'}>
                 {isLoading && allPosts.length === 0 ? (
-                    <div className={'p-6 text-center text-muted-foreground'}>
-                        {communityPageTexts.posts.loading}
-                    </div>
+                    <EmptyState
+                        message={communityPageTexts.posts.loading}
+                    />
                 ) : allPosts.length === 0 ? (
-                    <div className={'p-6 text-center text-muted-foreground'}>
-                        {emptyMessage}
-                    </div>
+                    <EmptyState message={emptyMessage}/>
                 ) : (
                     <>
                         {allPosts.map((post) => (
@@ -153,13 +152,13 @@ export const PostList = ({ tag }: PostListProps) => {
                             />
                         ))}
                         {hasMore && (
-                            <div
-                                ref={sentinelRef}
-                                className={'p-6 text-center text-muted-foreground'}
-                            >
-                                {isFetching
-                                    ? communityPageTexts.posts.loading
-                                    : null}
+                            // todo: add skeleton
+                            <div ref={sentinelRef}>
+                                {isFetching && (
+                                    <EmptyState
+                                        message={communityPageTexts.posts.loading}
+                                    />
+                                )}
                             </div>
                         )}
                     </>
