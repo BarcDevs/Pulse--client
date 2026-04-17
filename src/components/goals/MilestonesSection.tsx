@@ -1,6 +1,6 @@
 import { ChevronRight } from 'lucide-react'
 
-import { Milestone } from '@/types/goals'
+import { GoalMilestone } from '@/types/goals'
 
 import { Button } from '@/components/ui/button'
 
@@ -9,13 +9,18 @@ import { recoveryGoalsPageTexts } from '@/constants/componentTexts/recoveryGoals
 import { MilestoneCard } from './MilestoneCard'
 
 type MilestonesSectionProps = {
-    milestones: Milestone[]
+    milestones: GoalMilestone[]
     onViewAll?: () => void
+    onToggleMilestone?: (
+        milestoneId: string,
+        isCompleted: boolean
+    ) => void
 }
 
 export const MilestonesSection = ({
     milestones,
-    onViewAll
+    onViewAll,
+    onToggleMilestone
 }: MilestonesSectionProps) => (
     <div className={'md:col-span-12'}>
         <div className={'flex items-center justify-between mb-6'}>
@@ -45,6 +50,7 @@ export const MilestonesSection = ({
                 <MilestoneCard
                     key={milestone.id}
                     milestone={milestone}
+                    onToggle={onToggleMilestone}
                 />
             ))}
         </div>

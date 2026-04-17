@@ -1,9 +1,9 @@
-import { StatSummaryCard as StatSummaryCardType } from '@/types/goals'
+import { StatSummaryCardData } from '@/types/goals'
 
 import { CategoryStatRow } from './CategoryStatRow'
 
 type StatSummaryCardProps = {
-    data: StatSummaryCardType
+    data: StatSummaryCardData
 }
 
 export const StatSummaryCard = ({

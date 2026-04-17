@@ -1,4 +1,5 @@
-import { InsightsPageContent } from '@/components/insights/InsightsPageContent'
+import { InsightsPageContent }
+    from '@/components/insights/InsightsPageContent'
 
 const InsightsPage = () => (
     <InsightsPageContent/>

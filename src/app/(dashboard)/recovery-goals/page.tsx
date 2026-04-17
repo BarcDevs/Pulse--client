@@ -4,17 +4,9 @@ import { RecoveryGoalsPageContent } from '@/components/goals/RecoveryGoalsPageCo
 
 import { FEATURES } from '@/config/features'
 
-import { MOCK_RECOVERY_GOALS_DATA } from '@/mocks/goal'
-
 const RecoveryGoalsPage = () => {
-    if (!FEATURES.recoveryGoals)
-        return null
-
-    return (
-        <RecoveryGoalsPageContent
-            data={MOCK_RECOVERY_GOALS_DATA}
-        />
-    )
+    if (!FEATURES.recoveryGoals) return null
+    return <RecoveryGoalsPageContent/>
 }
 
 export default RecoveryGoalsPage

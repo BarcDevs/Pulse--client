@@ -29,3 +29,11 @@ export const profileQueryKeys = {
     interests: ['profile', 'interests'] as const,
     activities: ['profile', 'activities'] as const
 }
+
+export const recoveryGoalsQueryKeys = {
+    all: ['recoveryGoals'] as const,
+    goal: (id: string) =>
+        ['recoveryGoals', id] as const,
+    milestones: (goalId: string) =>
+        ['recoveryGoals', goalId, 'milestones'] as const
+}

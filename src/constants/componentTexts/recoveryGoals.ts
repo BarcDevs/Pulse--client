@@ -19,5 +19,8 @@ export const recoveryGoalsPageTexts = {
     actions: {
         completeToday: 'Complete Today',
         editPlan: 'Edit Plan'
+    },
+    emptyState: {
+        message: 'No recovery goals yet. Create one to get started.'
     }
 }
