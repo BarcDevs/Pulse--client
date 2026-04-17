@@ -32,6 +32,9 @@
 - Avoid redundant linebreaks in lines shorter that the threshold (50-60 chars)
 - If you need to specify certain part of a component with a comment, that probably means that part should be extracted into a separate component
 
+## Component Style
+- If you need to use an unknown color, look for it in the global.css, if not exists add a custom tw color and use it. but never use hardcoded color
+
 ## shadcn/ui
 - Always use shadcn/ui components when available
 - Components in `src/components/ui/`
