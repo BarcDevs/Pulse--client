@@ -3,6 +3,7 @@ import { checkInTexts } from '@/constants/componentTexts/checkIn'
 import { communityPageTexts } from '@/constants/componentTexts/community'
 import { dashboardPageTexts } from '@/constants/componentTexts/dashboard'
 import { progressPageTexts } from '@/constants/componentTexts/progress'
+import { recoveryGoalsPageTexts } from '@/constants/componentTexts/recoveryGoals'
 import { settingsPageTexts } from '@/constants/componentTexts/settings'
 import { appLayoutTexts } from '@/constants/componentTexts/ui/layout'
 import { PAGES } from '@/constants/componentTexts/ui/pageSubtitles'
@@ -64,6 +65,9 @@ export const headerPageConfigs: Record<
             variant: 'live',
             icon: 'pulse'
         }
+    },
+    'recovery-goals': {
+        title: recoveryGoalsPageTexts.header.title
     },
     profile: {
         title: PAGES.profile.TITLE,

@@ -1,53 +1,51 @@
-import { Goal } from '@/types/goals'
+import { RecoveryGoalsData } from '@/types/goals'
 
-export const MOCK_GOALS: Goal[] = [
-    {
-        id: '1',
+export const MOCK_RECOVERY_GOALS_DATA: RecoveryGoalsData = {
+    mainGoal: {
+        overallPercentage: 65,
+        badge: 'ON TRACK',
         title: 'Restore Circadian Rhythms',
-        description: 'Establishing a consistent sleep-wake cycle to support neurological recovery and emotional regulation.',
-        status: 'active',
-        badge: 'Active Focus',
-        metaText: 'Week 4 of 8',
-        week: 4,
-        totalWeeks: 8,
-        completionPercentage: 33,
-        checklist: [
+        description: 'Establishing a consistent sleep-wake cycle to support neurological recovery and emotional regulation.'
+    },
+    statSummary: {
+        title: 'Recovery Summary',
+        description: 'Progress breakdown by category',
+        categories: [
             {
-                id: 'cl-1',
-                text: 'No screens 60 minutes before bed',
-                completed: true
+                label: 'Sleep Quality',
+                percentage: 75
             },
             {
-                id: 'cl-2',
-                text: 'Morning sunlight exposure (15 mins)',
-                completed: false
+                label: 'Energy Levels',
+                percentage: 60
             },
             {
-                id: 'cl-3',
-                text: 'Bedtime consistency (± 15 mins)',
-                completed: false
+                label: 'Consistency',
+                percentage: 58
             }
         ]
     },
-    {
-        id: '2',
-        title: 'Daily Hydration Anchor',
-        description: 'Building the foundation of health by meeting consistent hydration markers throughout the day.',
-        status: 'completed',
-        badge: 'Achieved',
-        metaText: 'Completed June 12',
-        completedDate: 'June 12',
-        achievements: [
-            '21 Day Streak',
-            '2.5L Target Met'
-        ]
-    },
-    {
-        id: '3',
-        title: 'Cognitive Reframing Habit',
-        description: 'Scheduled to begin next month',
-        status: 'draft',
-        badge: 'Draft',
-        metaText: 'Scheduled to begin next month'
-    }
-]
+    milestones: [
+        {
+            id: 'm-1',
+            title: 'No screens 60 min before bed',
+            description: 'Reduce blue light exposure for better sleep onset',
+            progressPercentage: 85,
+            progressColor: 'bg-emerald-500'
+        },
+        {
+            id: 'm-2',
+            title: 'Morning sunlight exposure',
+            description: 'Get 15 minutes of natural light each morning',
+            progressPercentage: 60,
+            progressColor: 'bg-amber-500'
+        },
+        {
+            id: 'm-3',
+            title: 'Consistent bedtime',
+            description: 'Sleep and wake within ±15 minutes daily',
+            progressPercentage: 50,
+            progressColor: 'bg-blue-500'
+        }
+    ]
+}

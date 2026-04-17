@@ -61,7 +61,7 @@ export const PostList = ({ tag }: PostListProps) => {
         // If query changed, reset and start fresh
         if (queryStr !== prevQueryRef.current) {
             prevQueryRef.current = queryStr
-            // eslint-disable-next-line react-hooks/set-state-in-effect
+             
             setAllPosts([])
             setPage(1)
             setHasMore(true)

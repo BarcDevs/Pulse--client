@@ -1,4 +1,0 @@
-<svg class="w-full h-full transform -rotate-90" viewBox="0 0 128 128">
-    <circle cx="64" cy="64" r="56" fill="transparent" stroke="currentColor" stroke-width="8" class="text-surface-container-high"/>
-    <circle cx="64" cy="64" r="56" fill="transparent" stroke="currentColor" stroke-width="8" stroke-linecap="round" class="text-primary"/>
-</svg>

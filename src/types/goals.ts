@@ -1,22 +1,31 @@
-export type GoalStatus = 'active' | 'completed' | 'draft'
-
-export type GoalChecklistItem = {
-    id: string
-    text: string
-    completed: boolean
+export type CategoryStat = {
+    label: string
+    percentage: number
 }
 
-export type Goal = {
+export type Milestone = {
     id: string
     title: string
     description: string
-    status: GoalStatus
-    week?: number
-    totalWeeks?: number
-    completionPercentage?: number
+    progressPercentage: number
+    progressColor: string
+}
+
+export type MainGoalCard = {
+    overallPercentage: number
     badge: string
-    metaText: string
-    checklist?: GoalChecklistItem[]
-    completedDate?: string
-    achievements?: string[]
+    title: string
+    description: string
+}
+
+export type StatSummaryCard = {
+    title: string
+    description: string
+    categories: CategoryStat[]
+}
+
+export type RecoveryGoalsData = {
+    mainGoal: MainGoalCard
+    statSummary: StatSummaryCard
+    milestones: Milestone[]
 }
