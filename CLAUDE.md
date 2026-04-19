@@ -2,6 +2,9 @@
 
 HealEase — Recovery support platform for patients transitioning from hospital/clinical care. Daily check-ins + AI insights + community forum, built with Next.js 16, React 19, TypeScript, TanStack Query.
 
+This project is the client-side code for the HealEase app.
+Server is in ../healease--server.
+
 ## Core Rules (Apply Everywhere)
 
 ### Principles
