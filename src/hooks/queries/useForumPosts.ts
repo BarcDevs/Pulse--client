@@ -1,7 +1,7 @@
-import { useQuery } from '@tanstack/react-query'
-
 import type { FilterType, Post } from '@/types/community'
 import type { Response } from '@/types/responses'
+
+import { useQueryWithError } from '@/hooks/useQueryWithError'
 
 import { forumQueryKeys } from '@/constants/queryKeys'
 import { minuteInMs } from '@/constants/time'
@@ -23,7 +23,7 @@ export const useForumPosts = (
         enabled?: boolean
     }
 ) => {
-    return useQuery<Response<Post[]>>({
+    return useQueryWithError<Response<Post[]>>({
         queryKey: query
             ? [
                 ...forumQueryKeys.posts,
@@ -39,6 +39,7 @@ export const useForumPosts = (
             return response.data
         },
         staleTime: 5 * minuteInMs,
-        enabled: options?.enabled !== false
+        enabled: options?.enabled !== false,
+        retry: false
     })
 }

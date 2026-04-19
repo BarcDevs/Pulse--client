@@ -1,7 +1,7 @@
-import { useQuery } from '@tanstack/react-query'
-
 import type { MoodPainSeriesPoint } from '@/types/checkIn'
 import type { Response } from '@/types/responses'
+
+import { useQueryWithError } from '@/hooks/useQueryWithError'
 
 import { checkInQueryKeys } from '@/constants/queryKeys'
 import { minuteInMs } from '@/constants/time'
@@ -14,7 +14,7 @@ export const useCheckInHistory = (
         enabled?: boolean
     }
 ) => {
-    return useQuery<Response<MoodPainSeriesPoint[]>>({
+    return useQueryWithError<Response<MoodPainSeriesPoint[]>>({
         queryKey: [
             ...checkInQueryKeys.all,
             'history',
@@ -25,6 +25,7 @@ export const useCheckInHistory = (
             return response.data
         },
         staleTime: 5 * minuteInMs,
-        enabled: options?.enabled !== false
+        enabled: options?.enabled !== false,
+        retry: false
     })
 }

@@ -30,7 +30,8 @@ export const RepliesSection = ({
     const {
         data: repliesData,
         isLoading,
-        isError
+        isError,
+        error
     } = useForumReplies(postId)
     const {
         isReplyFormOpen,
@@ -67,9 +68,7 @@ export const RepliesSection = ({
                 </h2>
             </div>
 
-            {isError && (
-                <ErrorStateCard message={communityPageTexts.postDetail.repliesLoadError}/>
-            )}
+            {isError && <ErrorStateCard error={error}/>}
 
             {isAuthenticated && (
                 <PostForm

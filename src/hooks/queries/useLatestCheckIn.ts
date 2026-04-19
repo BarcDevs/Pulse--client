@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query'
+import { useQueryWithError } from '@/hooks/useQueryWithError'
 
 import { isTodayCheckIn } from '@/lib/checkIn/loaderHelpers'
 
@@ -11,14 +11,17 @@ export const useLatestCheckIn = () => {
     const {
         data: response,
         isLoading,
-        error
-    } = useQuery({
+        isError,
+        error,
+        refetch
+    } = useQueryWithError({
         queryKey: checkInQueryKeys.all,
         queryFn: async () => {
             const result = await fetchCheckIns(1)
             return result.data
         },
-        staleTime: 5 * minuteInMs
+        staleTime: 5 * minuteInMs,
+        retry: false
     })
 
     const latestCheckIn = response?.data?.[0] ?? null
@@ -29,6 +32,8 @@ export const useLatestCheckIn = () => {
         latestCheckIn,
         isTodayCheckInExists,
         isLoading,
-        error
+        isError,
+        error,
+        refetch
     }
 }

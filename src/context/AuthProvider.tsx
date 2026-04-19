@@ -10,6 +10,8 @@ import { useQueryClient } from '@tanstack/react-query'
 import type { LayoutProps } from '@/types'
 import type { User } from '@/types/user'
 
+import { ErrorBannerWrapper } from '@/components/shared/ErrorBannerWrapper'
+
 import { useGetMe } from '@/hooks/queries/useGetMe'
 
 import { authQueryKeys } from '@/constants/queryKeys'
@@ -73,7 +75,9 @@ export const AuthProvider = ({
                 setIsLoading
             }}
         >
-            {children}
+            <ErrorBannerWrapper>
+                {children}
+            </ErrorBannerWrapper>
         </AuthContext.Provider>
     )
 }

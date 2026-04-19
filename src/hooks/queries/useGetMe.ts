@@ -1,8 +1,6 @@
-import { useQuery } from '@tanstack/react-query'
-
-import type { AuthResponse } from '@/types/auth'
-import type { Response } from '@/types/responses'
 import type { User } from '@/types/user'
+
+import { useQueryWithError } from '@/hooks/useQueryWithError'
 
 import { authQueryKeys } from '@/constants/queryKeys'
 import { minuteInMs } from '@/constants/time'
@@ -10,21 +8,15 @@ import { minuteInMs } from '@/constants/time'
 import { getMe as getMeApi } from '@/api/auth'
 
 export const useGetMe = () => {
-    const query = useQuery<
-        Response<AuthResponse>,
-        Error,
-        User
-    >({
+    const query = useQueryWithError<User>({
         queryKey: authQueryKeys.getMe,
         queryFn: async () => {
             const response = await getMeApi()
-            return response.data
+            return response.data.data.user
         },
-        select: (
-            data: Response<AuthResponse>
-        ) => data.data.user,
         staleTime: 30 * minuteInMs,
-        gcTime: 15 * minuteInMs
+        gcTime: 15 * minuteInMs,
+        retry: false
     })
 
     return {

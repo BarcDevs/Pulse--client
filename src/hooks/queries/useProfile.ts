@@ -1,6 +1,6 @@
-import { useQuery } from '@tanstack/react-query'
-
 import type { Profile } from '@/types/profile'
+
+import { useQueryWithError } from '@/hooks/useQueryWithError'
 
 import { authQueryKeys } from '@/constants/queryKeys'
 import { minuteInMs } from '@/constants/time'
@@ -21,12 +21,13 @@ export const useProfile = (
         && !!user
         && !authIsLoading
 
-    const query = useQuery<Profile, Error>({
+    const query = useQueryWithError<Profile>({
         queryKey: authQueryKeys.profile,
         queryFn: () => getProfileApi(),
         enabled: isEnabled,
         staleTime: 5 * minuteInMs,
-        gcTime: 10 * minuteInMs
+        gcTime: 10 * minuteInMs,
+        retry: false
     })
 
     return {

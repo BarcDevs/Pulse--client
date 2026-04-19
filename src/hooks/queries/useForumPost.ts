@@ -1,8 +1,6 @@
-import { isAxiosError } from 'axios'
-
-import { useQuery } from '@tanstack/react-query'
-
 import { Post } from '@/types/community'
+
+import { useQueryWithError } from '@/hooks/useQueryWithError'
 
 import { forumQueryKeys } from '@/constants/queryKeys'
 import { minuteInMs } from '@/constants/time'
@@ -11,7 +9,7 @@ import { fetchPost } from '@/api/forum'
 
 export const useForumPost = (
     postId: string | null | undefined
-) => useQuery<Post>({
+) => useQueryWithError<Post>({
     queryKey: postId
         ? forumQueryKeys.post(postId)
         : ['forum',
@@ -26,6 +24,5 @@ export const useForumPost = (
     },
     enabled: !!postId,
     staleTime: minuteInMs * 5,
-    retry: (_, error) =>
-        isAxiosError(error) && !!error.response
+    retry: false
 })

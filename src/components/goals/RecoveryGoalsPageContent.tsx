@@ -1,6 +1,7 @@
 'use client'
 
 import { EmptyState } from '@/components/shared/EmptyState'
+import { ErrorStateCard } from '@/components/shared/ErrorStateCard'
 import { Skeleton } from '@/components/ui/skeleton'
 
 import { useRecoveryGoalsData } from '@/hooks/useRecoveryGoalsData'
@@ -23,6 +24,8 @@ export const RecoveryGoalsPageContent = () => {
         activeGoal,
         overallPercentage,
         isLoading,
+        isError,
+        error,
         handleToggleMilestone
     } = useRecoveryGoalsData()
 
@@ -41,7 +44,13 @@ export const RecoveryGoalsPageContent = () => {
                 </div>
             )}
 
-            {!isLoading && !activeGoal && (
+            {isError && (
+                <div className={'mt-8 max-w-md mx-auto'}>
+                    <ErrorStateCard error={error}/>
+                </div>
+            )}
+
+            {!isLoading && !isError && !activeGoal && (
                 <EmptyState
                     message={
                         recoveryGoalsPageTexts.emptyState.message
@@ -50,7 +59,7 @@ export const RecoveryGoalsPageContent = () => {
                 />
             )}
 
-            {!isLoading && activeGoal && (
+            {!isLoading && !isError && activeGoal && (
                 <div className={'grid grid-cols-1 md:grid-cols-12 gap-6 mt-8'}>
                     <MainProgressCard
                         goal={activeGoal}

@@ -10,6 +10,9 @@ type UseRecoveryGoalsDataReturn = {
     activeGoal: Goal | undefined
     overallPercentage: number
     isLoading: boolean
+    isError: boolean
+    error: Error | null
+    refetch: () => void
     handleToggleMilestone: (
         goalId: string,
         milestoneId: string,
@@ -19,8 +22,13 @@ type UseRecoveryGoalsDataReturn = {
 
 export const useRecoveryGoalsData =
     (): UseRecoveryGoalsDataReturn => {
-        const { data: goalsResponse, isLoading } =
-            useGoals()
+        const {
+            data: goalsResponse,
+            isLoading,
+            isError,
+            error,
+            refetch
+        } = useGoals()
         const { updateMilestone } = useGoalMutations()
 
         const goals = goalsResponse?.data || []
@@ -46,6 +54,9 @@ export const useRecoveryGoalsData =
             activeGoal,
             overallPercentage,
             isLoading,
+            isError,
+            error,
+            refetch,
             handleToggleMilestone
         }
     }

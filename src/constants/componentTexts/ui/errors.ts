@@ -35,9 +35,15 @@ export const notFoundPageTexts = {
 export const networkErrorPageTexts = {
     title: 'Connection Paused.',
     description:
-        'Our sanctuary is currently offline for a moment of restoration. We\'re working quickly to bring it back for you.',
+        `Our sanctuary is currently offline for a moment of restoration. We're working quickly to bring it back for you.`,
     tryAgainBtn: 'Try Again',
     checkStatusBtn: 'Check Status',
     supportMessage: 'If you need immediate support, please reach out to our 24/7 care team at',
     supportPhone: '1-800-HEAL-NOW'
+}
+
+export const inlineErrorTexts = {
+    generic: errorPageTexts.description,
+    network: networkErrorPageTexts.description,
+    tryAgainBtn: networkErrorPageTexts.tryAgainBtn
 }

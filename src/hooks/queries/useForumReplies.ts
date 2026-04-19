@@ -1,6 +1,6 @@
-import { useQuery } from '@tanstack/react-query'
-
 import { Reply } from '@/types/community'
+
+import { useQueryWithError } from '@/hooks/useQueryWithError'
 
 import { forumQueryKeys } from '@/constants/queryKeys'
 import { minuteInMs } from '@/constants/time'
@@ -14,7 +14,7 @@ type RepliesResponse = {
 export const useForumReplies = (
     postId: string | null | undefined
 ) => {
-    return useQuery<RepliesResponse>({
+    return useQueryWithError<RepliesResponse>({
         queryKey: postId
             ? forumQueryKeys.replies(postId)
             : [
@@ -31,6 +31,7 @@ export const useForumReplies = (
             return { replies: response.data.data as unknown as Reply[] }
         },
         enabled: !!postId,
-        staleTime: minuteInMs * 5
+        staleTime: minuteInMs * 5,
+        retry: false
     })
 }

@@ -15,7 +15,6 @@ import { toRelative } from '@/lib/time'
 
 import { sanitizeHtml } from '@/utils/sanitizeHtml'
 
-import { communityPageTexts } from '@/constants/componentTexts/community'
 import { communityCategoriesColorMap }
     from '@/constants/mappings/community'
 
@@ -48,11 +47,7 @@ export const PostDetailContent = () => {
         if (isNotFound)
             return <PostNotFound/>
 
-        return (
-            <ErrorStateCard
-                message={communityPageTexts.postDetail.postLoadError}
-            />
-        )
+        return <ErrorStateCard error={postError}/>
     }
 
     const sanitizedBody = post
