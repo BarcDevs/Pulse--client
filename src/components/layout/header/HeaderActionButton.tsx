@@ -12,13 +12,14 @@ export const HeaderActionButton = ({
     action
 }: HeaderActionButtonProps) => {
     const isOutline = action.variant === 'outline'
-    const isNewPost = action.type === 'newPost'
+    const isPrimaryAction = action.type === 'newPost'
+        || action.type === 'newGoal'
 
     return (
         <Button
             variant={isOutline ? 'outline' : 'default'}
             className={
-                isNewPost
+                isPrimaryAction
                     ? 'bg-primary hover:bg-primary/90 text-primary-foreground'
                     : isOutline
                         ? 'text-muted-foreground'
