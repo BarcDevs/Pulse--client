@@ -8,7 +8,11 @@ export const ROUTES = {
     CHECK_IN_NEW: '/check-in/new',
     FORUM: '/forum',
     FORUM_CREATE: '/forum/posts/create',
-    PROFILE_SETTINGS: '/profile/settings'
+    PROFILE_SETTINGS: '/profile/settings',
+    RECOVERY_GOALS: '/recovery-goals',
+    RECOVERY_GOALS_CREATE: '/recovery-goals/create',
+    recoveryGoalsEdit: (goalId: string) =>
+        `/recovery-goals/${goalId}/edit`
 } as const
 
 export const ROUTE_IDS = {

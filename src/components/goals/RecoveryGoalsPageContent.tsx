@@ -90,12 +90,11 @@ export const RecoveryGoalsPageContent = () => {
                         onToggleMilestone={(
                             milestoneId,
                             isCompleted
-                        ) =>
-                            handleToggleMilestone(
-                                activeGoal.id,
-                                milestoneId,
-                                isCompleted
-                            )
+                        ) => handleToggleMilestone(
+                            activeGoal.id,
+                            milestoneId,
+                            isCompleted
+                        )
                         }
                     />
                 </div>

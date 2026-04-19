@@ -10,15 +10,13 @@ type MainProgressCardProps = {
     overallPercentage: number
     badge: string
     onCompleteToday?: () => void
-    onEditPlan?: () => void
 }
 
 export const MainProgressCard = ({
     goal,
     overallPercentage,
     badge,
-    onCompleteToday,
-    onEditPlan
+    onCompleteToday
 }: MainProgressCardProps) => (
     <div className={'md:col-span-8 bg-white rounded-xl overflow-hidden'}>
         <div className={'flex flex-col md:flex-row gap-0'}>
@@ -42,8 +40,8 @@ export const MainProgressCard = ({
                 </div>
 
                 <GoalActionButtons
-                    onCompleteToday={onCompleteToday}
-                    onEditPlan={onEditPlan}
+                    goalId={goal.id}
+                    onCompleteTodayAction={onCompleteToday}
                 />
             </div>
         </div>
