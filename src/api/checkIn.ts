@@ -8,9 +8,8 @@ import type {
 import type { Response } from '@/types/responses'
 import type { TimePeriod } from '@/types/time'
 
-import { ENDPOINTS } from '@/constants/endpoints'
-
 import { api } from '@/api/index'
+import { ENDPOINTS } from '@/api/routes'
 import { CheckInSchema } from '@/validations/forms/checkInSchema'
 
 export const fetchCheckIns = async (

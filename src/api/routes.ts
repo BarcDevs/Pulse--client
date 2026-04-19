@@ -14,7 +14,8 @@ export const ENDPOINTS = {
         reply: (
             postId: string,
             replyId: string
-        ) => `/forum/posts/${postId}/replies/${replyId}`
+        ) => `/forum/posts/${postId}/replies/${replyId}`,
+        tags: '/forum/tags'
     },
     checkIn: {
         base: '/check-in',

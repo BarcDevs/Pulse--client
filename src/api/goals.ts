@@ -7,9 +7,8 @@ import type {
 } from '@/types/goals'
 import type { Response } from '@/types/responses'
 
-import { ENDPOINTS } from '@/constants/endpoints'
-
 import { api } from '@/api/index'
+import { ENDPOINTS } from '@/api/routes'
 
 export const fetchGoals = async ():
     Promise<Goal[]> => {
