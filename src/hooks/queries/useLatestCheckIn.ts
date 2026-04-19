@@ -16,15 +16,12 @@ export const useLatestCheckIn = () => {
         refetch
     } = useQueryWithNetworkError({
         queryKey: checkInQueryKeys.all,
-        queryFn: async () => {
-            const result = await fetchCheckIns(1)
-            return result.data
-        },
+        queryFn: () => fetchCheckIns(1),
         staleTime: 5 * minuteInMs,
         retry: false
     })
 
-    const latestCheckIn = response?.data?.[0] ?? null
+    const latestCheckIn = response?.[0] ?? null
     const isTodayCheckInExists = latestCheckIn
         ? isTodayCheckIn(latestCheckIn) : false
 

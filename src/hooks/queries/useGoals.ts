@@ -1,7 +1,6 @@
 'use client'
 
-import { Goal } from '@/types/goals'
-import { Response } from '@/types/responses'
+import type { Goal } from '@/types/goals'
 
 import { useQueryWithNetworkError } from '@/hooks/useQueryWithNetworkError'
 
@@ -11,12 +10,9 @@ import { minuteInMs } from '@/constants/time'
 import { fetchGoals } from '@/api/goals'
 
 export const useGoals = () =>
-    useQueryWithNetworkError<Response<Goal[]>>({
+    useQueryWithNetworkError<Goal[]>({
         queryKey: recoveryGoalsQueryKeys.all,
-        queryFn: async () => {
-            const response = await fetchGoals()
-            return response.data
-        },
+        queryFn: () => fetchGoals(),
         staleTime: 5 * minuteInMs,
         retry: false
     })

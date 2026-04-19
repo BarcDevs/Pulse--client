@@ -4,7 +4,6 @@ import {
 } from '@tanstack/react-query'
 
 import type { AuthResponse } from '@/types/auth'
-import type { Response } from '@/types/responses'
 
 import { login as loginApi } from '@/api/auth'
 import type { LoginSchema } from '@/validations/forms/loginSchema'
@@ -13,16 +12,13 @@ export const useLogin = () => {
     const queryClient = useQueryClient()
 
     const mutation = useMutation<
-        Response<AuthResponse>,
+        AuthResponse,
         Error,
         LoginSchema
     >({
-        mutationFn: async (
+        mutationFn: (
             credentials: LoginSchema
-        ) => {
-            const response = await loginApi(credentials)
-            return response.data
-        },
+        ) => loginApi(credentials),
         onSuccess: () => {
             queryClient.resetQueries()
         },

@@ -21,25 +21,25 @@ export const saveCheckIn = async (
         && isTodayCheckIn(latestCheckIn)
 
     if (checkInExists) {
-        const res = await patchCheckIn(latestCheckIn.id, data)
+        const checkIn = await patchCheckIn(latestCheckIn.id, data)
         return {
-            checkIn: res.data.data,
+            checkIn,
             created: false
         }
     }
 
     try {
-        const res = await createCheckIn(data)
+        const checkIn = await createCheckIn(data)
         return {
-            checkIn: res.data.data,
+            checkIn,
             created: true
         }
     } catch (err) {
         const status = (err as any).response?.status
         if (status === 409) {
-            const res = await patchCheckIn(latestCheckIn!.id, data)
+            const checkIn = await patchCheckIn(latestCheckIn!.id, data)
             return {
-                checkIn: res.data.data,
+                checkIn,
                 created: false
             }
         }

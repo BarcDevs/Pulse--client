@@ -42,7 +42,7 @@ export const DashboardHistoryChart = () => {
         isError
     } = useCheckInHistory(daysToShow)
 
-    const chartData = historyResponse?.data ?? []
+    const chartData = historyResponse ?? []
     const reorderedData = dir === 'ltr'
         ? reverseChartData(chartData)
         : chartData

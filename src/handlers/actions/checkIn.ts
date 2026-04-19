@@ -10,23 +10,20 @@ import { CheckInSchema } from '@/validations/forms/checkInSchema'
 export const handleCheckInSubmit = async (
     data: CheckInSchema
 ): Promise<CheckIn> => {
-    const res = await submitCheckIn(data)
-    return res.data.data
+    return submitCheckIn(data)
 }
 
 export const handleCheckInCreate = async (
     data: CheckInSchema
 ): Promise<CheckIn> => {
-    const res = await createCheckIn(data)
-    return res.data.data
+    return createCheckIn(data)
 }
 
 export const handleCheckInUpdate = async (
     id: string,
     data: Partial<CheckInSchema>
 ): Promise<CheckIn> => {
-    const res = await patchCheckIn(id, data)
-    return res.data.data
+    return patchCheckIn(id, data)
 }
 
 export const handleCheckInSave = async (

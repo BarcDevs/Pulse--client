@@ -30,8 +30,8 @@ export const CheckInPageContent = () => {
                         fetchCheckIns(1),
                         fetchCheckInStats()
                     ])
-                setLatestCheckIn(checkInsRes.data.data[0] ?? null)
-                setStats(statsRes.data.data)
+                setLatestCheckIn(checkInsRes[0] ?? null)
+                setStats(statsRes)
             } catch (error) {
                 console.error(
                     'Failed to load check-in data:',

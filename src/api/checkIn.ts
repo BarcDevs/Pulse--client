@@ -1,11 +1,12 @@
 import { format } from 'date-fns'
 
-import {
+import type {
     CheckIn,
-    CheckInStats
+    CheckInStats,
+    MoodPainSeriesPoint
 } from '@/types/checkIn'
-import { ApiResponse, Response } from '@/types/responses'
-import { TimePeriod } from '@/types/time'
+import type { Response } from '@/types/responses'
+import type { TimePeriod } from '@/types/time'
 
 import { ENDPOINTS } from '@/constants/endpoints'
 
@@ -14,92 +15,101 @@ import { CheckInSchema } from '@/validations/forms/checkInSchema'
 
 export const fetchCheckIns = async (
     limit?: number
-): ApiResponse<CheckIn[]> => {
+): Promise<CheckIn[]> => {
     const params = { limit }
-    return api.get<Response<CheckIn[]>>(
+    const res = await api.get<Response<CheckIn[]>>(
         ENDPOINTS.checkIn.base,
         { params }
     )
+    return res.data.data
 }
 
 export const fetchCheckInHistory = async (
     days?: number
-) => {
+): Promise<MoodPainSeriesPoint[]> => {
     const params = days ? { limit: days } : {}
-    const response = await api.get<Response<CheckIn[]>>(
+    const res = await api.get<Response<CheckIn[]>>(
         ENDPOINTS.checkIn.base,
         { params }
     )
-
-    const transformed = response.data.data.map(
+    return res.data.data.map(
         (checkIn) => {
-            const dateObj = new Date(checkIn.checkInDate)
+            const dateObj =
+                new Date(checkIn.checkInDate)
             return {
-                date: format(dateObj, 'd MMM'),
-                originalDate: checkIn.checkInDate,
+                date: format(
+                    dateObj,
+                    'd MMM'
+                ),
+                originalDate:
+                    checkIn.checkInDate,
                 mood: checkIn.moodScore,
-                pain: checkIn.painLevel,
-                energy: checkIn.energy
+                pain: checkIn.painLevel
             }
         }
     )
-
-    return {
-        ...response,
-        data: {
-            ...response.data,
-            data: transformed
-        }
-    }
 }
 
 export const submitCheckIn = async (
     data: CheckInSchema
-): ApiResponse<CheckIn> =>
-    api.post<Response<CheckIn>>(
+): Promise<CheckIn> => {
+    const res = await api.post<Response<CheckIn>>(
         ENDPOINTS.checkIn.base,
         { ...data }
     )
+    return res.data.data
+}
 
 export const fetchCheckInStats = async (
     period?: TimePeriod
-): ApiResponse<CheckInStats> => {
+): Promise<CheckInStats> => {
     const params = period ? { period } : {}
-    return api.get<Response<CheckInStats>>(
+    const res = await api.get<Response<CheckInStats>>(
         ENDPOINTS.checkIn.stats,
         { params }
     )
+    return res.data.data
 }
 
 export const createCheckIn = async (
     data: CheckInSchema
-): ApiResponse<CheckIn> =>
-    api.post<Response<CheckIn>>(
+): Promise<CheckIn> => {
+    const res = await api.post<Response<CheckIn>>(
         ENDPOINTS.checkIn.base,
         { ...data }
     )
+    return res.data.data
+}
 
 export const patchCheckIn = async (
     id: string,
     data: Partial<CheckInSchema>
-): ApiResponse<CheckIn> =>
-    api.patch<Response<CheckIn>>(
+): Promise<CheckIn> => {
+    const res = await api.patch<Response<CheckIn>>(
         `${ENDPOINTS.checkIn.base}/${id}`,
         { ...data }
     )
+    return res.data.data
+}
 
 export const updateCheckIn = async (
     id: string,
     data: Partial<CheckInSchema>
-): ApiResponse<CheckIn> =>
-    api.patch<Response<CheckIn>>(
+): Promise<CheckIn> => {
+    const res = await api.patch<Response<CheckIn>>(
         `${ENDPOINTS.checkIn.base}/${id}`,
         { ...data }
     )
+    return res.data.data
+}
 
 export const getCheckIn = async (
     id: string
-): ApiResponse<CheckIn> =>
-    api.get<Response<CheckIn>>(
+): Promise<CheckIn> => {
+    const res = await api.get<{
+        data: CheckIn
+    }>(
         `${ENDPOINTS.checkIn.base}/${id}`
     )
+    return res.data.data
+}

@@ -23,7 +23,7 @@ export const TrendingTopicsCard = ({
         isError
     } = useForumTags()
     const topicsList = (
-        tagsData?.data ?? []
+        tagsData ?? []
     ).slice(0, MAX_TRENDING_TOPICS)
     const isEmpty = (
         isLoading && topicsList.length === 0

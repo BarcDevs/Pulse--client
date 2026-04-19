@@ -19,8 +19,7 @@ export const useForumPost = (
         if (!postId) {
             throw new Error('Post ID is required')
         }
-        const response = await fetchPost(postId)
-        return response.data.data as Post
+        return fetchPost(postId)
     },
     enabled: !!postId,
     staleTime: minuteInMs * 5,

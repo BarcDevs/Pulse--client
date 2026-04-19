@@ -11,10 +11,10 @@ export const StreakCard = () => {
 
     const currentStreak = isError
         ? '-'
-        : data?.data?.currentStreak ?? 0
+        : data?.currentStreak ?? 0
     const longestStreak = isError
         ? '-'
-        : data?.data?.longestStreak ?? 0
+        : data?.longestStreak ?? 0
 
     return (
         <div className={'card-base'}>

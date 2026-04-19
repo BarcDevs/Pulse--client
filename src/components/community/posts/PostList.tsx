@@ -62,7 +62,7 @@ export const PostList = ({ tag }: PostListProps) => {
 
     useEffect(() => {
         const queryStr = JSON.stringify(query)
-        const posts = data?.data ?? []
+        const posts = data ?? []
         const lastPostId = posts[posts.length - 1]?.id ?? null
 
         if (queryStr !== prevQueryRef.current) {
@@ -90,7 +90,7 @@ export const PostList = ({ tag }: PostListProps) => {
         if (posts.length < PAGE_SIZE) {
             setTimeout(() => setHasMore(false), 0)
         }
-    }, [data?.data, query])
+    }, [data, query])
 
     useEffect(() => {
         const observer = new IntersectionObserver(

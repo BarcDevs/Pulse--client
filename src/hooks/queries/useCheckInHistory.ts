@@ -1,5 +1,4 @@
 import type { MoodPainSeriesPoint } from '@/types/checkIn'
-import type { Response } from '@/types/responses'
 
 import { useQueryWithNetworkError } from '@/hooks/useQueryWithNetworkError'
 
@@ -13,16 +12,13 @@ export const useCheckInHistory = (
     options?: {
         enabled?: boolean
     }
-) => useQueryWithNetworkError<Response<MoodPainSeriesPoint[]>>({
+) => useQueryWithNetworkError<MoodPainSeriesPoint[]>({
     queryKey: [
         ...checkInQueryKeys.all,
         'history',
         days
     ] as const,
-    queryFn: async () => {
-        const response = await fetchCheckInHistory(days)
-        return response.data
-    },
+    queryFn: () => fetchCheckInHistory(days),
     staleTime: 5 * minuteInMs,
     enabled: options?.enabled !== false,
     retry: false

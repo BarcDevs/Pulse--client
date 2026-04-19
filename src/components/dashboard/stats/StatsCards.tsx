@@ -19,7 +19,7 @@ export const DashboardStatsCards = () => {
         isLoading,
         isError
     } = useCheckInStats()
-    const stats = statsResponse?.data
+    const stats = statsResponse
     const statsData = buildStatsData(stats)
     const displayStats = isError
         ? statsData.map((stat) => ({

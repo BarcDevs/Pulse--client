@@ -1,7 +1,6 @@
 'use client'
 
 import type { CheckIn } from '@/types/checkIn'
-import type { Response } from '@/types/responses'
 
 import { useQueryWithNetworkError } from '@/hooks/useQueryWithNetworkError'
 
@@ -15,16 +14,13 @@ export const useCheckIns = (
     options?: {
         enabled?: boolean
     }
-) => useQueryWithNetworkError<Response<CheckIn[]>>({
+) => useQueryWithNetworkError<CheckIn[]>({
     queryKey: [
         ...checkInQueryKeys.all,
         'list',
         limit
     ] as const,
-    queryFn: async () => {
-        const response = await fetchCheckIns(limit)
-        return response.data
-    },
+    queryFn: () => fetchCheckIns(limit),
     staleTime: 5 * minuteInMs,
     enabled: options?.enabled !== false,
     retry: false

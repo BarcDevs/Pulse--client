@@ -31,7 +31,7 @@ export const MoodTrendChart = () => {
         isError
     } = useCheckInStats(period)
 
-    const chartData = data?.data?.moodTrend || []
+    const chartData = data?.moodTrend || []
     const isIncompleteWeek = !isCompleteWeek(
         chartData
     ) && period === 'weekly'

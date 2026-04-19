@@ -1,6 +1,5 @@
 import type { CheckInStats } from '@/types/checkIn'
-import type { Response } from '@/types/responses'
-import { TimePeriod } from '@/types/time'
+import type { TimePeriod } from '@/types/time'
 
 import { useQueryWithNetworkError } from '@/hooks/useQueryWithNetworkError'
 
@@ -16,13 +15,9 @@ export const useCheckInStats = (
         ? [...checkInQueryKeys.stats, period]
         : checkInQueryKeys.stats
 
-    return useQueryWithNetworkError<Response<CheckInStats>>({
+    return useQueryWithNetworkError<CheckInStats>({
         queryKey,
-        queryFn: async () => {
-            const response =
-                await fetchCheckInStats(period)
-            return response.data
-        },
+        queryFn: () => fetchCheckInStats(period),
         staleTime: 10 * minuteInMs,
         retry: false
     })

@@ -30,7 +30,7 @@ export const PainIntensityChart = () => {
         isError
     } = useCheckInStats(period)
 
-    const chartData = data?.data?.painTrend || []
+    const chartData = data?.painTrend || []
     const isIncompleteWeek = !isCompleteWeek(
         chartData
     ) && period === 'weekly'

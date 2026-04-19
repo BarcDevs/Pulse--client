@@ -1,5 +1,4 @@
 import type { FilterType, Post } from '@/types/community'
-import type { Response } from '@/types/responses'
 
 import { useQueryWithNetworkError } from '@/hooks/useQueryWithNetworkError'
 
@@ -22,7 +21,7 @@ export const useForumPosts = (
     options?: {
         enabled?: boolean
     }
-) => useQueryWithNetworkError<Response<Post[]>>({
+) => useQueryWithNetworkError<Post[]>({
     queryKey: query
         ? [
             ...forumQueryKeys.posts,
@@ -33,10 +32,7 @@ export const useForumPosts = (
             query.category,
             query.search
         ] : forumQueryKeys.posts,
-    queryFn: async () => {
-        const response = await fetchPosts(query)
-        return response.data
-    },
+    queryFn: () => fetchPosts(query),
     staleTime: 5 * minuteInMs,
     enabled: options?.enabled !== false,
     retry: false

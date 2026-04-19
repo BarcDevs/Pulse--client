@@ -12,7 +12,7 @@ export const useGetMe = () => {
         queryKey: authQueryKeys.getMe,
         queryFn: async () => {
             const response = await getMeApi()
-            return response.data.data.user
+            return response.user
         },
         staleTime: 30 * minuteInMs,
         gcTime: 15 * minuteInMs,

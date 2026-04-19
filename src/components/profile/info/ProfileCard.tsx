@@ -28,8 +28,8 @@ export const ProfileCard = () => {
     useEffect(() => {
         const getStats = async () => {
             try {
-                const { data } = await fetchCheckInStats()
-                setStats(data.data)
+                const stats = await fetchCheckInStats()
+                setStats(stats)
             } catch (err) {
                 console.error('Failed to fetch stats:', err)
             }

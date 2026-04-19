@@ -12,7 +12,6 @@ export type MoodPainSeriesPoint = {
     originalDate: string
     mood: number
     pain: number
-    energy?: number
 }
 
 export type CheckIn = {
@@ -21,7 +20,6 @@ export type CheckIn = {
     checkInDate: string
     moodScore: number
     painLevel: number
-    energy?: number
     activities: string[]
     notes?: string
     insights?: CheckInInsight[]

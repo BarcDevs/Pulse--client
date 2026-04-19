@@ -31,7 +31,7 @@ export const useRecoveryGoalsData =
         } = useGoals()
         const { updateMilestone } = useGoalMutations()
 
-        const goals = goalsResponse?.data || []
+        const goals = goalsResponse || []
         const activeGoal = goals[0]
         const overallPercentage = activeGoal
             ? getProgressPercentage(activeGoal)

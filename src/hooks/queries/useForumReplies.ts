@@ -25,9 +25,7 @@ export const useForumReplies = (
         if (!postId) {
             throw new Error('Post ID is required')
         }
-        // TODO: remove cast when fetchReplies type is corrected to Response<Reply[]>
-        const response = await fetchReplies(postId)
-        return { replies: response.data.data as unknown as Reply[] }
+        return fetchReplies(postId)
     },
     enabled: !!postId,
     staleTime: minuteInMs * 5,

@@ -11,7 +11,7 @@ export const MilestonesCard = () => {
 
     const milestonesAchieved = isError
         ? '-'
-        : data?.data?.milestonesAchieved ?? 0
+        : data?.milestonesAchieved ?? 0
 
     return (
         <div className={'card-base'}>

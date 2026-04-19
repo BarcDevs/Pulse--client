@@ -16,16 +16,16 @@ export const WellnessScore = () => {
 
     const moodScore = isError
         ? '-'
-        : data?.data?.averageMoodScore ?? 0
+        : data?.averageMoodScore ?? 0
     const painScore = isError
         ? '-'
-        : data?.data?.averagePainLevel ?? 0
+        : data?.averagePainLevel ?? 0
     const moodTrend = getTrendData(
-        isError ? [] : data?.data?.moodTrend ?? [],
+        isError ? [] : data?.moodTrend ?? [],
         'mood'
     )
     const painTrend = getTrendData(
-        isError ? [] : data?.data?.painTrend ?? [],
+        isError ? [] : data?.painTrend ?? [],
         'pain'
     )
     const wellnessStatus = getWellnessStatus(
