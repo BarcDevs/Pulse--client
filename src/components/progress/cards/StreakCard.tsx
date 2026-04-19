@@ -7,12 +7,14 @@ import { useCheckInStats } from '@/hooks/queries/useCheckInStats'
 import { progressPageTexts } from '@/constants/componentTexts/progress'
 
 export const StreakCard = () => {
-    const { data } = useCheckInStats('weekly')
+    const { data, isError } = useCheckInStats('weekly')
 
-    const currentStreak = data?.data
-        ?.currentStreak ?? 0
-    const longestStreak = data?.data
-        ?.longestStreak ?? 0
+    const currentStreak = isError
+        ? '-'
+        : data?.data?.currentStreak ?? 0
+    const longestStreak = isError
+        ? '-'
+        : data?.data?.longestStreak ?? 0
 
     return (
         <div className={'card-base'}>

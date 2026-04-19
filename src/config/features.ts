@@ -1,6 +1,6 @@
 export const FEATURES = {
     // Insights page - AI insights about recovery patterns
-    insights: true,
+    insights: false,
     // Advanced analytics - behavioral patterns, predictions, summaries
     advancedInsights: false,
     // Recovery goals - user goals and milestones

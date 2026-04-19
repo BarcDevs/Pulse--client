@@ -8,7 +8,7 @@ import { TrendData } from '@/lib/stats/getTrendLabel'
 
 type WellnessScoreCardProps = {
     label: string
-    score: number
+    score: number | string
     trend: TrendData
 }
 
@@ -36,7 +36,9 @@ export const WellnessScoreCard = ({
         </p>
         <div className={'flex items-baseline gap-1 mt-1'}>
             <span className={'text-2xl font-bold text-foreground'}>
-                {score.toFixed(1)}
+                {typeof score === 'string'
+                    ? score
+                    : score.toFixed(1)}
             </span>
             <span className={'text-muted-foreground'}>
                 / 10

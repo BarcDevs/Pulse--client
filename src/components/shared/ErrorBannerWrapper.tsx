@@ -9,11 +9,14 @@ import { useAuth } from '@/context/AuthContext'
 export const ErrorBannerWrapper = ({
     children
 }: LayoutProps) => {
-    const { error } = useAuth()
+    const { error, networkError } = useAuth()
+    const bannerError = networkError || error
 
     return (
         <>
-            {error && <ErrorBanner error={error} />}
+            {bannerError
+                && <ErrorBanner error={bannerError}/>
+            }
             {children}
         </>
     )

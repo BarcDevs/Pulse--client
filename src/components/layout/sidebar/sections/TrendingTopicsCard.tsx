@@ -17,7 +17,11 @@ export const TrendingTopicsCard = ({
     selectedTag,
     onTagSelect
 }: TrendingTopicsCardProps) => {
-    const { data: tagsData, isLoading } = useForumTags()
+    const {
+        data: tagsData,
+        isLoading,
+        isError
+    } = useForumTags()
     const topicsList = (
         tagsData?.data ?? []
     ).slice(0, MAX_TRENDING_TOPICS)
@@ -33,6 +37,10 @@ export const TrendingTopicsCard = ({
             {isEmpty ? (
                 <div className={'text-sm text-muted-foreground'}>
                     {communityPageTexts.trending.loading}
+                </div>
+            ) : isError ? (
+                <div className={'text-sm text-muted-foreground'}>
+                    Failed to load topics
                 </div>
             ) : (
                 <div className={'flex--wrap gap-2'}>

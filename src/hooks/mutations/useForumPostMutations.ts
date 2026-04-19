@@ -71,7 +71,11 @@ export const useForumPostMutations = ({
                     upvotedBy: []
                 }
             }
-            return updateReply(postId, replyId, reply)
+            return updateReply(
+                postId,
+                replyId,
+                reply
+            )
         },
         onSuccess: () => {
             queryClient.invalidateQueries({

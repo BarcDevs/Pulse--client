@@ -6,7 +6,7 @@ import { PostDetailActions } from '@/components/community/postDetail/PostDetailA
 import { PostDetailCard } from '@/components/community/postDetail/PostDetailCard'
 import { PostNotFound } from '@/components/community/postDetail/PostNotFound'
 import { RepliesSection } from '@/components/community/postDetail/RepliesSection'
-import { ErrorStateCard } from '@/components/shared/ErrorStateCard'
+import { ErrorDisplay } from '@/components/shared/ErrorDisplay'
 import { Skeleton } from '@/components/ui/skeleton'
 
 import { useForumPost } from '@/hooks/queries/useForumPost'
@@ -47,7 +47,7 @@ export const PostDetailContent = () => {
         if (isNotFound)
             return <PostNotFound/>
 
-        return <ErrorStateCard error={postError}/>
+        return <ErrorDisplay error={postError}/>
     }
 
     const sanitizedBody = post

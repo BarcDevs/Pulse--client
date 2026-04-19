@@ -12,18 +12,20 @@ import { progressPageTexts } from '@/constants/componentTexts/progress'
 import { WellnessScoreCard } from '../cards/WellnessScoreCard'
 
 export const WellnessScore = () => {
-    const { data } = useCheckInStats('weekly')
+    const { data, isError } = useCheckInStats('weekly')
 
-    const moodScore = data?.data
-        ?.averageMoodScore ?? 0
-    const painScore = data?.data
-        ?.averagePainLevel ?? 0
+    const moodScore = isError
+        ? '-'
+        : data?.data?.averageMoodScore ?? 0
+    const painScore = isError
+        ? '-'
+        : data?.data?.averagePainLevel ?? 0
     const moodTrend = getTrendData(
-        data?.data?.moodTrend ?? [],
+        isError ? [] : data?.data?.moodTrend ?? [],
         'mood'
     )
     const painTrend = getTrendData(
-        data?.data?.painTrend ?? [],
+        isError ? [] : data?.data?.painTrend ?? [],
         'pain'
     )
     const wellnessStatus = getWellnessStatus(

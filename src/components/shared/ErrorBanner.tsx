@@ -4,6 +4,8 @@ import { useState } from 'react'
 
 import { X } from 'lucide-react'
 
+import { Button } from '@/components/ui/button'
+
 import { isNetworkError } from '@/utils/error'
 
 import {
@@ -42,12 +44,15 @@ export const ErrorBanner = ({
                     {description}
                 </p>
             </div>
-            <button
+            {/*todo: replace with CloseButton*/}
+            <Button
                 onClick={() => setDismissed(true)}
-                className={'hover:opacity-70 transition-opacity ml-4'}
+                variant={'ghost'}
+                size={'icon'}
+                className={'ml-4 h-8 w-8'}
             >
                 <X className={'w-4 h-4'}/>
-            </button>
+            </Button>
         </div>
     )
 }

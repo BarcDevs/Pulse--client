@@ -6,7 +6,7 @@ import { RepliesEmptyState } from '@/components/community/postDetail/RepliesEmpt
 import { RepliesList } from '@/components/community/postDetail/RepliesList'
 import { UnauthenticatedReplyPrompt } from '@/components/community/postDetail/UnauthenticatedReplyPrompt'
 import { PostForm } from '@/components/community/postForm/PostForm'
-import { ErrorStateCard } from '@/components/shared/ErrorStateCard'
+import { ErrorDisplay } from '@/components/shared/ErrorDisplay'
 import { Skeleton } from '@/components/ui/skeleton'
 
 import { useForumPostMutations } from '@/hooks/mutations/useForumPostMutations'
@@ -68,7 +68,7 @@ export const RepliesSection = ({
                 </h2>
             </div>
 
-            {isError && <ErrorStateCard error={error}/>}
+            {isError && <ErrorDisplay error={error}/>}
 
             {isAuthenticated && (
                 <PostForm

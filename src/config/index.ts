@@ -33,6 +33,6 @@ const config: Config = {
     sentryDsn: process.env.NEXT_PUBLIC_SENTRY_DSN || ''
 }
 
-export const isDev = false//config.isDev
+export const isDev = config.isDev
 
 export default config

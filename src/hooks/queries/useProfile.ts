@@ -1,6 +1,6 @@
 import type { Profile } from '@/types/profile'
 
-import { useQueryWithError } from '@/hooks/useQueryWithError'
+import { useQueryWithNetworkError } from '@/hooks/useQueryWithNetworkError'
 
 import { authQueryKeys } from '@/constants/queryKeys'
 import { minuteInMs } from '@/constants/time'
@@ -21,7 +21,7 @@ export const useProfile = (
         && !!user
         && !authIsLoading
 
-    const query = useQueryWithError<Profile>({
+    const query = useQueryWithNetworkError<Profile>({
         queryKey: authQueryKeys.profile,
         queryFn: () => getProfileApi(),
         enabled: isEnabled,

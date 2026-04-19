@@ -10,6 +10,7 @@ import { ChatInput } from './inputs/Input'
 import { ChatMessages } from './messages/Messages'
 import { ChatPanel } from './ChatPanel'
 
+// TODO: Implement real AI chat API and add error handling for chat failures
 export const ChatPageContent = () => {
     const [messages, setMessages] = useState(initialChatMessages)
     const [inputValue, setInputValue] = useState('')

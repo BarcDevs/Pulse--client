@@ -1,4 +1,4 @@
-import { useQueryWithError } from '@/hooks/useQueryWithError'
+import { useQueryWithNetworkError } from '@/hooks/useQueryWithNetworkError'
 
 import { isTodayCheckIn } from '@/lib/checkIn/loaderHelpers'
 
@@ -14,7 +14,7 @@ export const useLatestCheckIn = () => {
         isError,
         error,
         refetch
-    } = useQueryWithError({
+    } = useQueryWithNetworkError({
         queryKey: checkInQueryKeys.all,
         queryFn: async () => {
             const result = await fetchCheckIns(1)

@@ -38,7 +38,8 @@ export const DashboardHistoryChart = () => {
 
     const {
         data: historyResponse,
-        isLoading
+        isLoading,
+        isError
     } = useCheckInHistory(daysToShow)
 
     const chartData = historyResponse?.data ?? []
@@ -92,6 +93,10 @@ export const DashboardHistoryChart = () => {
                 {isLoading ? (
                     <div className={'h-60 w-full flex items-center justify-center text-muted-foreground'}>
                         Loading...
+                    </div>
+                ) : isError ? (
+                    <div className={'h-60 flex items-center justify-center text-muted-foreground'}>
+                        Failed to load data
                     </div>
                 ) : (
                     <div className={'relative'}>

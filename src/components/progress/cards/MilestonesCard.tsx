@@ -7,10 +7,11 @@ import { useCheckInStats } from '@/hooks/queries/useCheckInStats'
 import { progressPageTexts } from '@/constants/componentTexts/progress'
 
 export const MilestonesCard = () => {
-    const { data } = useCheckInStats('weekly')
+    const { data, isError } = useCheckInStats('weekly')
 
-    const milestonesAchieved = data?.data
-        ?.milestonesAchieved ?? 0
+    const milestonesAchieved = isError
+        ? '-'
+        : data?.data?.milestonesAchieved ?? 0
 
     return (
         <div className={'card-base'}>

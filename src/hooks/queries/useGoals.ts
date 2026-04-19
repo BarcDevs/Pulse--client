@@ -3,7 +3,7 @@
 import { Goal } from '@/types/goals'
 import { Response } from '@/types/responses'
 
-import { useQueryWithError } from '@/hooks/useQueryWithError'
+import { useQueryWithNetworkError } from '@/hooks/useQueryWithNetworkError'
 
 import { recoveryGoalsQueryKeys } from '@/constants/queryKeys'
 import { minuteInMs } from '@/constants/time'
@@ -11,7 +11,7 @@ import { minuteInMs } from '@/constants/time'
 import { fetchGoals } from '@/api/goals'
 
 export const useGoals = () =>
-    useQueryWithError<Response<Goal[]>>({
+    useQueryWithNetworkError<Response<Goal[]>>({
         queryKey: recoveryGoalsQueryKeys.all,
         queryFn: async () => {
             const response = await fetchGoals()

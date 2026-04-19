@@ -11,8 +11,10 @@ type AuthContextType = {
     user: User | null
     isLoading: boolean
     error: Error | null
+    networkError: Error | null
     setUser: (user: User | null) => void
     setIsLoading: (loading: boolean) => void
+    setNetworkError: (error: Error | null) => void
 }
 
 export const AuthContext = createContext<

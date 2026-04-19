@@ -2,6 +2,8 @@
 
 import {
     useCallback,
+    useEffect,
+    useRef,
     useState
 } from 'react'
 
@@ -13,6 +15,8 @@ import type { User } from '@/types/user'
 import { ErrorBannerWrapper } from '@/components/shared/ErrorBannerWrapper'
 
 import { useGetMe } from '@/hooks/queries/useGetMe'
+
+import { isNetworkError } from '@/utils/error'
 
 import { authQueryKeys } from '@/constants/queryKeys'
 
@@ -28,6 +32,9 @@ export const AuthProvider = ({
     } = useGetMe()
 
     const [mutationLoading, setMutationLoading] = useState(false)
+    const [networkError, setNetworkError] =
+        useState<Error | null>(null)
+    const lastErrorRef = useRef<Error | null>(null)
 
     const queryClient = useQueryClient()
 
@@ -60,6 +67,28 @@ export const AuthProvider = ({
         []
     )
 
+    const setNetworkErrorCallback = useCallback(
+        (error: Error | null) => {
+            setNetworkError(error)
+        },
+        []
+    )
+
+    useEffect(() => {
+        const hasNetworkError = error && isNetworkError(error)
+        const isErrorChanged = error !== lastErrorRef.current
+
+        if (isErrorChanged) {
+            lastErrorRef.current = error ?? null
+
+            if (hasNetworkError) {
+                setTimeout(() => setNetworkError(error), 0)
+            } else if (!error) {
+                setTimeout(() => setNetworkError(null), 0)
+            }
+        }
+    }, [error])
+
     if (error)
         console.error('Auth error:', error)
 
@@ -71,8 +100,10 @@ export const AuthProvider = ({
                 user,
                 isLoading,
                 error,
+                networkError,
                 setUser,
-                setIsLoading
+                setIsLoading,
+                setNetworkError: setNetworkErrorCallback
             }}
         >
             <ErrorBannerWrapper>

@@ -1,7 +1,7 @@
 'use client'
 
 import { EmptyState } from '@/components/shared/EmptyState'
-import { ErrorStateCard } from '@/components/shared/ErrorStateCard'
+import { ErrorDisplay } from '@/components/shared/ErrorDisplay'
 import { Skeleton } from '@/components/ui/skeleton'
 
 import { useRecoveryGoalsData } from '@/hooks/useRecoveryGoalsData'
@@ -46,7 +46,7 @@ export const RecoveryGoalsPageContent = () => {
 
             {isError && (
                 <div className={'mt-8 max-w-md mx-auto'}>
-                    <ErrorStateCard error={error}/>
+                    <ErrorDisplay error={error}/>
                 </div>
             )}
 

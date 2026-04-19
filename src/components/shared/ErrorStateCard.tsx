@@ -29,7 +29,7 @@ export const ErrorStateCard = ({
     }
 
     return (
-        <div className={'rounded-md bg-destructive/10 border border-destructive/20 p-4 text-sm text-destructive space-y-3 flex flex-col items-center text-center'}>
+        <div className={'w-full rounded-md bg-destructive/10 border border-destructive/20 p-4 text-sm text-destructive space-y-3 flex flex-col items-center text-center'}>
             <p>{displayMessage}</p>
             <Button
                 onClick={handleRetry}

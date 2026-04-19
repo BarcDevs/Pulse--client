@@ -10,6 +10,7 @@ import {
     CardHeader,
     CardTitle
 } from '@/components/ui/card'
+import { Skeleton } from '@/components/ui/skeleton'
 
 import { useCheckIns } from '@/hooks/queries/useCheckIns'
 
@@ -25,7 +26,11 @@ type DashboardAIInsightProps = {
 export const DashboardAIInsight = ({
     className
 }: DashboardAIInsightProps) => {
-    const { data: checkInsResponse } = useCheckIns(1)
+    const {
+        data: checkInsResponse,
+        isLoading,
+        isError
+    } = useCheckIns(1)
 
     const insightText =
         getLatestInsights(checkInsResponse)
@@ -44,9 +49,17 @@ export const DashboardAIInsight = ({
                 </div>
             </CardHeader>
             <CardContent>
-                <blockquote className={'border-l-2 border-primary pl-4 italic text-foreground'}>
-                    {insightText}
-                </blockquote>
+                {isLoading ? (
+                    <Skeleton className={'h-12 w-full'}/>
+                ) : isError ? (
+                    <p className={'text-sm text-muted-foreground'}>
+                        Failed to load insights
+                    </p>
+                ) : (
+                    <blockquote className={'border-l-2 border-primary pl-4 italic text-foreground'}>
+                        {insightText}
+                    </blockquote>
+                )}
             </CardContent>
         </Card>
     )

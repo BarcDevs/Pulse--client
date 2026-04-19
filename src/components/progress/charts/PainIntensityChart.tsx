@@ -6,6 +6,12 @@ import { TimePeriod } from '@/types/time'
 
 import { TrendAreaChart } from '@/components/shared/charts/TrendAreaChart'
 import { DataNotification } from '@/components/shared/notifications/DataNotification'
+import {
+    Card,
+    CardContent,
+    CardHeader,
+    CardTitle
+} from '@/components/ui/card'
 
 import { useCheckInStats } from '@/hooks/queries/useCheckInStats'
 
@@ -21,7 +27,7 @@ export const PainIntensityChart = () => {
 
     const {
         data,
-        error
+        isError
     } = useCheckInStats(period)
 
     const chartData = data?.data?.painTrend || []
@@ -34,25 +40,35 @@ export const PainIntensityChart = () => {
     ) => setPeriod(value as TimePeriod)
 
     return (
-        <div className={'relative'}>
-            <TrendAreaChart
-                {...trendChartConfigs.pain}
-                chart={{
-                    ...trendChartConfigs.pain.chart,
-                    data: chartData
-                }}
-                onPeriodChangeAction={handlePeriodChange}
-            />
-            {isIncompleteWeek && (
-                <DataNotification
-                    message={chartNotifications.painIncomplete}
-                />
-            )}
-            {error && (
-                <div className={'text-sm text-destructive mt-2'}>
-                    {chartNotifications.loadError}
-                </div>
-            )}
-        </div>
+        <Card className={'border-0 shadow-sm h-full'}>
+            <CardHeader className={'pb-3'}>
+                <CardTitle className={'text-base font-semibold'}>
+                    {trendChartConfigs.pain.header.title}
+                </CardTitle>
+            </CardHeader>
+            <CardContent>
+                {isError ? (
+                    <div className={'h-60 flex items-center justify-center text-sm text-muted-foreground'}>
+                        Failed to load data
+                    </div>
+                ) : (
+                    <div className={'relative'}>
+                        <TrendAreaChart
+                            {...trendChartConfigs.pain}
+                            chart={{
+                                ...trendChartConfigs.pain.chart,
+                                data: chartData
+                            }}
+                            onPeriodChangeAction={handlePeriodChange}
+                        />
+                        {isIncompleteWeek && (
+                            <DataNotification
+                                message={chartNotifications.painIncomplete}
+                            />
+                        )}
+                    </div>
+                )}
+            </CardContent>
+        </Card>
     )
 }

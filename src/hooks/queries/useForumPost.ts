@@ -1,6 +1,6 @@
 import { Post } from '@/types/community'
 
-import { useQueryWithError } from '@/hooks/useQueryWithError'
+import { useQueryWithNetworkError } from '@/hooks/useQueryWithNetworkError'
 
 import { forumQueryKeys } from '@/constants/queryKeys'
 import { minuteInMs } from '@/constants/time'
@@ -9,7 +9,7 @@ import { fetchPost } from '@/api/forum'
 
 export const useForumPost = (
     postId: string | null | undefined
-) => useQueryWithError<Post>({
+) => useQueryWithNetworkError<Post>({
     queryKey: postId
         ? forumQueryKeys.post(postId)
         : ['forum',

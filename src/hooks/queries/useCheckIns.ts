@@ -3,7 +3,7 @@
 import type { CheckIn } from '@/types/checkIn'
 import type { Response } from '@/types/responses'
 
-import { useQueryWithError } from '@/hooks/useQueryWithError'
+import { useQueryWithNetworkError } from '@/hooks/useQueryWithNetworkError'
 
 import { checkInQueryKeys } from '@/constants/queryKeys'
 import { minuteInMs } from '@/constants/time'
@@ -15,19 +15,17 @@ export const useCheckIns = (
     options?: {
         enabled?: boolean
     }
-) => {
-    return useQueryWithError<Response<CheckIn[]>>({
-        queryKey: [
-            ...checkInQueryKeys.all,
-            'list',
-            limit
-        ] as const,
-        queryFn: async () => {
-            const response = await fetchCheckIns(limit)
-            return response.data
-        },
-        staleTime: 5 * minuteInMs,
-        enabled: options?.enabled !== false,
-        retry: false
-    })
-}
+) => useQueryWithNetworkError<Response<CheckIn[]>>({
+    queryKey: [
+        ...checkInQueryKeys.all,
+        'list',
+        limit
+    ] as const,
+    queryFn: async () => {
+        const response = await fetchCheckIns(limit)
+        return response.data
+    },
+    staleTime: 5 * minuteInMs,
+    enabled: options?.enabled !== false,
+    retry: false
+})
