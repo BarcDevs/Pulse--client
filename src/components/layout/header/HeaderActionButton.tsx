@@ -25,7 +25,9 @@ export const HeaderActionButton = ({
         if (action.type === 'newPost') {
             router.push(ROUTES.FORUM_CREATE)
         } else if (action.type === 'newGoal') {
-            router.push(ROUTES.RECOVERY_GOALS_CREATE)
+            router.push(
+                `${ROUTES.RECOVERY_GOALS}?createGoal=true`
+            )
         }
     }
 

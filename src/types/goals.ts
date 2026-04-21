@@ -32,7 +32,7 @@ export type MilestonePatchInput = {
     isCompleted?: boolean
 }
 
-export type CategoryStat = {
+export type GoalStat = {
     label: string
     percentage: number
 }
@@ -40,5 +40,5 @@ export type CategoryStat = {
 export type StatSummaryCardData = {
     title: string
     description: string
-    categories: CategoryStat[]
+    goal: GoalStat[]
 }

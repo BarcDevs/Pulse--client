@@ -8,13 +8,15 @@ export const recoveryGoalsPageTexts = {
         overall: 'Overall'
     },
     statSummary: {
-        title: 'Recovery Summary',
-        description: 'Progress breakdown by category'
+        title: 'Goals Summary',
+        description: 'Progress breakdown by goal'
     },
     milestones: {
         title: 'Your Milestones',
         subtitle: 'Key focus areas',
-        viewAll: 'View All'
+        viewAll: 'View All',
+        markComplete: 'Mark Complete',
+        markIncomplete: 'Mark Incomplete'
     },
     actions: {
         completeToday: 'Complete Today',

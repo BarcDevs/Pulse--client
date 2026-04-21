@@ -10,7 +10,10 @@ import {
 import { recoveryGoalsPageTexts } from '@/constants/componentTexts/recoveryGoals'
 
 type RandomData = {
-    bundle: { body: string; tips: string[] }
+    bundle: {
+        body: string
+        tips: string[]
+    }
     tip: string
 }
 

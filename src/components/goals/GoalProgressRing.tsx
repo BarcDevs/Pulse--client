@@ -66,18 +66,25 @@ export const GoalProgressRing = ({
 
                 <text
                     x={CX}
-                    y={CY}
+                    y={CY - 12}
                     textAnchor={'middle'}
                     dominantBaseline={'middle'}
                     className={'text-4xl font-bold fill-slate-900'}
                 >
                     {percentage}%
                 </text>
-            </svg>
 
-            <p className={'mt-4 text-sm text-foreground/60 font-medium'}>
-                {recoveryGoalsPageTexts.mainCard.overall}
-            </p>
+                <text
+                    x={CX}
+                    y={CY + 20}
+                    textAnchor={'middle'}
+                    dominantBaseline={'middle'}
+                    className={'text-xs fill-foreground/60 font-medium'}
+                >
+                    {recoveryGoalsPageTexts.mainCard
+                        .overall.toUpperCase()}
+                </text>
+            </svg>
         </div>
     )
 }
