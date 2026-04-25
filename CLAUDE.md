@@ -10,8 +10,7 @@ Server is in ../healease--server.
 ### Principles
 - ALWAYS FOLLOW INDUSTRY STANDARDS & SOLID PRINCIPLES (Single Responsibility, Open/Closed, Liskov Substitution, Interface Segregation, Dependency Inversion)
 - Write clean, maintainable, readable code
-- One concern per file
-- Provide a full file edit instead of one edit at a time
+- Keep one concern per file (SRP)
 - For every function that you want to create make sure it is not already exists
 - Avoid using re-export files
 
