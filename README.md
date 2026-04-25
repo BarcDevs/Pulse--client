@@ -106,7 +106,7 @@ npm run typecheck # TypeScript type checking
 
 ## Folder Structure
 
-See [docs/structure.md](./docs/structure.md) for complete structure.
+See [docs/structure.md](docs/STRUCTURE.md) for complete structure.
 
 Key directories:
 - **src/app/** — Next.js App Router (file-based routing)
