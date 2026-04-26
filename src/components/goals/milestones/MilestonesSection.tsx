@@ -16,7 +16,8 @@ export const MilestonesSection = ({
         handleToggleMilestone
     } = useRecoveryGoalsData()
 
-    if (!activeGoal) return null
+    if (!activeGoal || !activeGoal.milestones)
+        return null
 
     const milestones = activeGoal.milestones
 

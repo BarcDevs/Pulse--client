@@ -13,7 +13,7 @@ export type GoalBadge =
 export const getProgressPercentage = (
     goal: Goal
 ): number => {
-    if (goal.milestones.length === 0) return 0
+    if (!goal.milestones || goal.milestones.length === 0) return 0
     const completed = goal.milestones.filter(
         (m) => m.isCompleted
     ).length
