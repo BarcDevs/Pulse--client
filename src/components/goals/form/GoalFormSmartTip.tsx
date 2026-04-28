@@ -7,7 +7,8 @@ import {
     Lightbulb
 } from 'lucide-react'
 
-import { recoveryGoalsPageTexts } from '@/constants/componentTexts/recoveryGoals'
+import  { recoveryGoalsPageTexts as pageTexts }
+    from '@/constants/componentTexts/recoveryGoals'
 
 type RandomData = {
     bundle: {
@@ -18,7 +19,7 @@ type RandomData = {
 }
 
 export const GoalFormSmartTip = () => {
-    const bundles = recoveryGoalsPageTexts.goalForm.smartTip.bundles
+    const bundles = pageTexts.goalForm.smartTip.bundles
     const [randomData, setRandomData] = useState<
         RandomData
     >(() => {
@@ -56,7 +57,7 @@ export const GoalFormSmartTip = () => {
                     className={'text-secondary'}
                 />
                 <h3 className={'font-headline font-bold text-on-surface'}>
-                    {recoveryGoalsPageTexts.goalForm.smartTip.title}
+                    {pageTexts.goalForm.smartTip.title}
                 </h3>
             </div>
 

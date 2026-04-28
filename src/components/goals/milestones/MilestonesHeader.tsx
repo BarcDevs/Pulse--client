@@ -2,7 +2,8 @@ import { ChevronRight } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
 
-import { recoveryGoalsPageTexts } from '@/constants/componentTexts/recoveryGoals'
+import { recoveryGoalsPageTexts as pageTexts }
+    from '@/constants/componentTexts/recoveryGoals'
 
 import { SectionHeader } from '../SectionHeader'
 
@@ -15,10 +16,8 @@ export const MilestonesHeader = ({
 }: MilestonesHeaderProps) => (
     <div className={'flex items-center justify-between mb-6'}>
         <SectionHeader
-            title={recoveryGoalsPageTexts.milestones
-                .title}
-            subtitle={recoveryGoalsPageTexts.milestones
-                .subtitle}
+            title={pageTexts.milestones.title}
+            subtitle={pageTexts.milestones.subtitle}
         />
 
         <Button
@@ -26,10 +25,10 @@ export const MilestonesHeader = ({
             onClick={onViewAll}
             className={'text-white/70 hover:text-white'}
         >
-            {recoveryGoalsPageTexts.milestones
+            {pageTexts.milestones
                 .viewAll}
 
-            <ChevronRight className={'ml-2 h-4 w-4'} />
+            <ChevronRight className={'ml-2 h-4 w-4'}/>
         </Button>
     </div>
 )

@@ -2,7 +2,8 @@ import { Pencil } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
 
-import { recoveryGoalsPageTexts } from '@/constants/componentTexts/recoveryGoals'
+import  { recoveryGoalsPageTexts as pageTexts }
+    from '@/constants/componentTexts/recoveryGoals'
 
 type EditGoalButtonProps = {
     goalId: string
@@ -19,7 +20,7 @@ export const EditGoalButton = ({
         size={'icon'}
         className={'absolute top-4 right-4 h-9 w-9'}
         title={
-            recoveryGoalsPageTexts.actions.editPlan
+            pageTexts.actions.editPlan
         }
     >
         <Pencil size={16} />

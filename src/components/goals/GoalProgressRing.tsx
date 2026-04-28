@@ -1,4 +1,5 @@
-import { recoveryGoalsPageTexts } from '@/constants/componentTexts/recoveryGoals'
+import { recoveryGoalsPageTexts as pageTexts }
+    from '@/constants/componentTexts/recoveryGoals'
 
 const RADIUS = 88
 const CX = 96
@@ -81,7 +82,7 @@ export const GoalProgressRing = ({
                     dominantBaseline={'middle'}
                     className={'text-xs fill-foreground/60 font-medium'}
                 >
-                    {recoveryGoalsPageTexts.mainCard
+                    {pageTexts.mainCard
                         .overall.toUpperCase()}
                 </text>
             </svg>
