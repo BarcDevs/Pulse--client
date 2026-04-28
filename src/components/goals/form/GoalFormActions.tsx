@@ -4,48 +4,54 @@ import { useRouter } from 'next/navigation'
 
 import { Button } from '@/components/ui/button'
 
-import { recoveryGoalsPageTexts } from '@/constants/componentTexts/recoveryGoals'
+import  { recoveryGoalsPageTexts as pageTexts }
+    from '@/constants/componentTexts/recoveryGoals'
 import { ROUTES } from '@/constants/routes'
 
 type GoalFormActionsProps = {
     isSubmitting: boolean
     isUpdate: boolean
+    onCloseAction?: () => void
 }
 
 export const GoalFormActions = ({
     isSubmitting,
-    isUpdate
+    isUpdate,
+    onCloseAction
 }: GoalFormActionsProps) => {
     const router = useRouter()
 
     const handleCancel = () => {
-        router.push(ROUTES.RECOVERY_GOALS)
+        if (onCloseAction) {
+            onCloseAction()
+        } else {
+            router.push(ROUTES.RECOVERY_GOALS)
+        }
     }
 
     return (
-        <div className={'flex flex-col sm:flex-row gap-4 pt-4'}>
+        <div className={'flex items-center justify-end gap-4 pt-8'}>
             <Button
-                type={'submit'}
+                type={'button'}
+                variant={'ghost'}
+                onClick={handleCancel}
                 disabled={isSubmitting}
-                className={'flex-1 sm:flex-initial bg-primary hover:bg-primary/90 text-white'}
             >
-                {isSubmitting
-                    ? (isUpdate
-                        ? recoveryGoalsPageTexts.goalForm.buttons.updating
-                        : recoveryGoalsPageTexts.goalForm.buttons.creating)
-                    : (isUpdate
-                        ? recoveryGoalsPageTexts.goalForm.buttons.update
-                        : recoveryGoalsPageTexts.goalForm.buttons.create)}
+                {pageTexts.goalForm.buttons.cancel}
             </Button>
 
             <Button
-                type={'button'}
-                variant={'outline'}
-                onClick={handleCancel}
+                type={'submit'}
                 disabled={isSubmitting}
-                className={'flex-1 sm:flex-initial'}
+                className={'bg-linear-to-br from-primary to-primary-container text-primary-foreground'}
             >
-                {recoveryGoalsPageTexts.goalForm.buttons.cancel}
+                {isSubmitting
+                    ? (isUpdate
+                        ? pageTexts.goalForm.buttons.updating
+                        : pageTexts.goalForm.buttons.creating)
+                    : (isUpdate
+                        ? pageTexts.goalForm.buttons.update
+                        : pageTexts.goalForm.buttons.create)}
             </Button>
         </div>
     )

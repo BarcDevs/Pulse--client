@@ -2,29 +2,28 @@
 
 import { useEffect } from 'react'
 
+import { ClipboardPlus, Pencil } from 'lucide-react'
+
 import {
     Dialog,
     DialogContent,
-    DialogHeader,
     DialogTitle
 } from '@/components/ui/dialog'
 
 import { useGoal } from '@/hooks/queries/useGoal'
 
-import { recoveryGoalsPageTexts } from '@/constants/componentTexts/recoveryGoals'
-
 import { GoalForm } from './GoalForm'
 
 type GoalFormModalProps = {
     isOpen: boolean
-    onClose: () => void
+    onCloseAction: () => void
     mode: 'create' | 'edit'
     goalId?: string
 }
 
 export const GoalFormModal = ({
     isOpen,
-    onClose,
+    onCloseAction,
     mode,
     goalId
 }: GoalFormModalProps) => {
@@ -35,39 +34,46 @@ export const GoalFormModal = ({
         mode === 'edit' ? goalId : null
     )
 
-    const title = mode === 'create'
-        ? recoveryGoalsPageTexts.goalForm.createTitle
-        : recoveryGoalsPageTexts.goalForm.updateTitle
-
     useEffect(() => {
         if (mode === 'edit' && !goal && !isLoading) {
-            onClose()
+            onCloseAction()
         }
-    }, [mode, goal, isLoading, onClose])
+    }, [mode, goal, isLoading, onCloseAction])
 
     const shouldRenderForm = mode === 'create'
         || (mode === 'edit' && !isLoading)
 
+    const IconComponent = mode === 'create'
+        ? ClipboardPlus
+        : Pencil
+
     return (
         <Dialog
             open={isOpen}
-            onOpenChange={onClose}
+            onOpenChange={onCloseAction}
         >
-            <DialogContent className={'max-w-xl data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:animate-in data-[state=open]:fade-in-0'}>
-                <DialogHeader>
-                    <DialogTitle>
-                        {title}
-                    </DialogTitle>
-                </DialogHeader>
+            <DialogContent className={'max-w-xl overflow-hidden p-0'}>
+                <DialogTitle className={'sr-only'}>
+                    {mode === 'create' ? 'Create New Goal' : 'Edit Goal'}
+                </DialogTitle>
+                <div
+                    className={'h-32 flex items-end px-8 relative'}
+                    style={{ background: 'linear-gradient(to right, var(--primary-gradient-start), var(--primary-gradient-end))' }}
+                >
+                    <div className={'w-16 h-16 bg-white/20 backdrop-blur-md rounded-xl flex items-center justify-center text-primary-foreground mb-1 shadow-sm'}>
+                        <IconComponent className={'w-8 h-8'}/>
+                    </div>
+                </div>
 
-                {shouldRenderForm && (
-                    <div className={'mt-2'}>
+                <div className={'px-8 pt-12 pb-8'}>
+                    {shouldRenderForm && (
                         <GoalForm
                             goal={goal || undefined}
-                            onSuccess={onClose}
+                            onSuccessAction={onCloseAction}
+                            onCloseAction={onCloseAction}
                         />
-                    </div>
-                )}
+                    )}
+                </div>
             </DialogContent>
         </Dialog>
     )

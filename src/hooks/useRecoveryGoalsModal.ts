@@ -9,6 +9,7 @@ type UseRecoveryGoalsModalReturn = {
     editingGoalId?: string
     modalMode: 'create' | 'edit'
     onOpenEditModal: (goalId: string) => void
+    onOpenCreateModal: () => void
     onCloseModal: () => void
 }
 
@@ -43,6 +44,11 @@ export const useRecoveryGoalsModal =
             setIsModalOpen(true)
         }
 
+        const onOpenCreateModal = () => {
+            setEditingGoalId(undefined)
+            setIsModalOpen(true)
+        }
+
         const onCloseModal = () => {
             setIsModalOpen(false)
             setEditingGoalId(undefined)
@@ -53,6 +59,7 @@ export const useRecoveryGoalsModal =
             editingGoalId,
             modalMode,
             onOpenEditModal,
+            onOpenCreateModal,
             onCloseModal
         }
     }

@@ -1,7 +1,30 @@
 export const recoveryGoalsPageTexts = {
     header: {
-        title: 'Milestones & Intentions',
+        title: 'Recovery Goals',
         description: 'Recovery is not a linear journey. Focus on these small, meaningful steps that build the foundation for your long-term wellbeing.'
+    },
+    categoryLabels: {
+        PHYSICAL: 'Physical',
+        MENTAL: 'Mental',
+        LIFESTYLE: 'Lifestyle'
+    },
+    statusLabels: {
+        ACTIVE: 'Active',
+        COMPLETED: 'Completed',
+        PAUSED: 'Paused',
+        ABANDONED: 'Abandoned'
+    },
+    milestoneStatusLabels: {
+        LOCKED: 'Locked',
+        ACTIVE: 'Active Phase',
+        COMPLETED: 'Completed'
+    },
+    overview: {
+        greeting: 'Keep moving forward.',
+        subtitle: 'Track your recovery goals and milestones.',
+        newGoalButton: 'New Goal',
+        addGoalPlaceholder: 'Add New Goal',
+        addGoalSubtitle: 'Build your path to recovery'
     },
     mainCard: {
         badge: 'ON TRACK',
@@ -18,9 +41,30 @@ export const recoveryGoalsPageTexts = {
         markComplete: 'Mark Complete',
         markIncomplete: 'Mark Incomplete'
     },
+    detail: {
+        breadcrumbGoals: 'Goals',
+        markCompletePhase: 'Complete Phase',
+        markIncompletePhase: 'Mark Incomplete'
+    },
+    insights: {
+        title: 'AI Insights',
+        weeklyViewTitle: 'Weekly View',
+        emptyState: 'No insights yet. Complete more milestones to get personalized insights.',
+        failedToLoad: 'Failed to load insights. Please try again later.'
+    },
     actions: {
         completeToday: 'Complete Today',
         editPlan: 'Edit Plan'
+    },
+    goalCard: {
+        progressLabel: 'Progress'
+    },
+    goalActions: {
+        edit: 'Edit',
+        delete: 'Delete'
+    },
+    goalStats: {
+        activeMilestonesLabel: 'Active Milestones'
     },
     emptyState: {
         message: 'No recovery goals yet. Create one to get started.'
@@ -34,7 +78,10 @@ export const recoveryGoalsPageTexts = {
             titleLabel: 'Goal Title',
             titlePlaceholder: 'e.g., Daily Mindfulness',
             descriptionLabel: 'Description (Optional)',
-            descriptionPlaceholder: 'Detail your plan or motivation...'
+            descriptionPlaceholder: 'Detail your plan or motivation...',
+            categoryLabel: 'Category',
+            categoryPlaceholder: 'Select category',
+            targetDateLabel: 'Target Date'
         },
         buttons: {
             create: 'Create Goal',

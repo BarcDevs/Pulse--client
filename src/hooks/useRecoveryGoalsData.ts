@@ -1,4 +1,4 @@
-import { Goal } from '@/types/goals'
+import { Goal, MilestoneStatus } from '@/types/goals'
 
 import { useGoalMutations } from '@/hooks/mutations/useGoalMutations'
 import { useGoals } from '@/hooks/queries/useGoals'
@@ -45,7 +45,11 @@ export const useRecoveryGoalsData =
             updateMilestone.mutate({
                 goalId,
                 milestoneId,
-                data: { isCompleted }
+                data: {
+                    status: isCompleted
+                        ? MilestoneStatus.COMPLETED
+                        : MilestoneStatus.ACTIVE
+                }
             })
         }
 

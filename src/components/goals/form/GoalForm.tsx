@@ -1,14 +1,13 @@
 'use client'
 
-import { useState } from 'react'
-
 import { useRouter } from 'next/navigation'
 
 import { Controller } from 'react-hook-form'
 
-import { Goal } from '@/types/goals'
+import { Goal, GoalCategory } from '@/types/goals'
 
 import { FormInput } from '@/components/shared/inputs/FormInput'
+import { SelectInput } from '@/components/shared/inputs/SelectInput'
 import {
     Form,
     FormControl,
@@ -20,73 +19,74 @@ import {
 import { Textarea } from '@/components/ui/textarea'
 
 import { useGoalForm } from '@/hooks/forms/useGoalForm'
-import { useGoalMutations } from '@/hooks/mutations/useGoalMutations'
+import { useGoalFormSubmit } from '@/hooks/forms/useGoalFormSubmit'
 
-import { recoveryGoalsPageTexts } from '@/constants/componentTexts/recoveryGoals'
+import { formatByUserPreference } from '@/lib/time'
+
+import { recoveryGoalsPageTexts as pageTexts }
+    from '@/constants/componentTexts/recoveryGoals'
 import { ROUTES } from '@/constants/routes'
 
-import { GoalSchema } from '@/validations/forms/goalSchema'
-
+import { FormHeadline } from './FormHeadline'
 import { GoalFormActions } from './GoalFormActions'
 
 type GoalFormProps = {
     goal?: Goal
-    onSuccess?: () => void
+    onSuccessAction?: () => void
+    onCloseAction?: () => void
 }
 
 export const GoalForm = ({
     goal,
-    onSuccess
+    onSuccessAction,
+    onCloseAction
 }: GoalFormProps) => {
     const router = useRouter()
-    const [error, setError] = useState<string | null>(null)
-    const { createGoal, updateGoal } = useGoalMutations()
-
     const isUpdate = Boolean(goal)
-
-    const handleSubmit = async (
-        data: GoalSchema
-    ) => {
-        try {
-            setError(null)
-            if (isUpdate && goal) {
-                await updateGoal.mutateAsync({
-                    goalId: goal.id,
-                    data
-                })
-            } else await createGoal.mutateAsync(data)
-
-            if (onSuccess) {
-                onSuccess()
+    const {
+        handleSubmit,
+        isSubmitting
+    } = useGoalFormSubmit({
+        goal,
+        onSuccessAction: () => {
+            if (onSuccessAction) {
+                onSuccessAction()
             } else {
                 router.push(ROUTES.RECOVERY_GOALS)
             }
-        } catch (err) {
-            setError(
-                err instanceof Error
-                    ? err.message
-                    : 'Failed to save goal'
-            )
         }
-    }
+    })
 
     const { form, handleSubmit: onSubmit } = useGoalForm({
         onSubmit: handleSubmit,
         defaultValues: goal
             ? {
                 title: goal.title,
-                description: goal.description
+                description: goal.description || '',
+                category: goal.category,
+                targetDate: goal.targetDate || ''
             } : undefined
     })
 
-    const isSubmitting = createGoal.isPending
-        || updateGoal.isPending
+    const categoryOptions =
+        Object.values(GoalCategory).map((cat) => ({
+            value: cat,
+            label: pageTexts.categoryLabels[cat]
+        }))
 
     return (
         <form
             onSubmit={onSubmit}
-            className={'space-y-8'}
+            className={'space-y-6'}
         >
+            <FormHeadline
+                title={isUpdate
+                    ? pageTexts.goalForm.updateTitle
+                    : pageTexts.goalForm.createTitle
+            }
+                subtitle={pageTexts.goalForm.subtitle}
+            />
+
             <Form {...form}>
                 <Controller
                     control={form.control}
@@ -94,12 +94,12 @@ export const GoalForm = ({
                     render={({ field, fieldState }) => (
                         <FormItem>
                             <FormLabel>
-                                {recoveryGoalsPageTexts.goalForm.fields.titleLabel}
+                                {pageTexts.goalForm.fields.titleLabel}
                             </FormLabel>
                             <FormControl>
                                 <FormInput
                                     id={'goal-title'}
-                                    placeholder={recoveryGoalsPageTexts.goalForm.fields.titlePlaceholder}
+                                    placeholder={pageTexts.goalForm.fields.titlePlaceholder}
                                     value={field.value}
                                     onChange={field.onChange}
                                     onBlur={field.onBlur}
@@ -107,10 +107,7 @@ export const GoalForm = ({
                             </FormControl>
                             {fieldState.error && (
                                 <FormMessage>
-                                    {
-                                        fieldState.error
-                                            .message
-                                    }
+                                    {fieldState.error.message}
                                 </FormMessage>
                             )}
                         </FormItem>
@@ -123,29 +120,77 @@ export const GoalForm = ({
                     render={({ field }) => (
                         <FormItem>
                             <FormLabel>
-                                {recoveryGoalsPageTexts.goalForm.fields.descriptionLabel}
+                                {pageTexts.goalForm.fields.descriptionLabel}
                             </FormLabel>
                             <FormControl>
                                 <Textarea
-                                    placeholder={recoveryGoalsPageTexts.goalForm.fields.descriptionPlaceholder}
+                                    placeholder={pageTexts.goalForm.fields.descriptionPlaceholder}
                                     className={'resize-none bg-surface-container-low'}
-                                    rows={5}
+                                    rows={3}
                                     {...field}
                                     value={field.value || ''}
                                 />
                             </FormControl>
-                            <FormMessage />
+                            <FormMessage/>
                         </FormItem>
                     )}
                 />
 
+                <div className={'grid grid-cols-2 gap-6'}>
+                    <SelectInput
+                        control={form.control}
+                        name={'category'}
+                        label={pageTexts.goalForm.fields.categoryLabel}
+                        placeholder={pageTexts.goalForm.fields.categoryPlaceholder}
+                        options={categoryOptions}
+                    />
+                    {/* todo: reusable FormField */}
+                    <FormField
+                        control={form.control}
+                        name={'targetDate'}
+                        render={({ field }) => {
+                            const today =
+                                new Date()
+                                    .toISOString()
+                                    .split('T')[0]
+
+                            return (
+                                <FormItem>
+                                    <FormLabel>
+                                        {pageTexts.goalForm.fields.targetDateLabel}
+                                    </FormLabel>
+                                    <FormControl>
+                                        <FormInput
+                                            id={'goal-date'}
+                                            type={'date'}
+                                            min={today}
+                                            required={false}
+                                            value={field.value || ''}
+                                            onChange={field.onChange}
+                                            onBlur={field.onBlur}
+                                            placeholder={
+                                                formatByUserPreference(
+                                                    new Date()
+                                                )
+                                            }
+                                        />
+                                    </FormControl>
+                                    <FormMessage/>
+                                </FormItem>
+                            )
+                        }}
+                    />
+                </div>
+
                 <GoalFormActions
                     isSubmitting={isSubmitting}
                     isUpdate={isUpdate}
+                    onCloseAction={onCloseAction}
                 />
-                {error && (
+                {/* todo: reusable ErrorMessage component*/}
+                {form.formState.errors.root && (
                     <p className={'text-sm text-destructive mt-4'}>
-                        {error}
+                        {form.formState.errors.root.message}
                     </p>
                 )}
             </Form>

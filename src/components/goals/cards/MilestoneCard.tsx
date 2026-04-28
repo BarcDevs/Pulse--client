@@ -1,51 +1,50 @@
+'use client'
+
+import { ReactNode } from 'react'
+
+import {
+    Activity,
+    Check,
+    Lock
+} from 'lucide-react'
+
 import { GoalMilestone } from '@/types/goals'
 
-import { Button } from '@/components/ui/button'
+import { getMilestoneIconColor } from '@/lib/milestones'
+import { cn } from '@/lib/utils'
 
-import { recoveryGoalsPageTexts } from '@/constants/componentTexts/recoveryGoals'
-
-import { MilestoneHeader } from './MilestoneHeader'
+import { MilestoneCardRenderer } from './MilestoneCardRenderer'
 
 type MilestoneCardProps = {
     milestone: GoalMilestone
-    onToggle?: (
-        milestoneId: string,
-        isCompleted: boolean
-    ) => void
+    onCompleteAction?: () => void
 }
 
 export const MilestoneCard = ({
     milestone,
-    onToggle
-}: MilestoneCardProps) => (
-    <div className={'bg-surface-container-low rounded-xl p-6 border border-surface-variant'}>
-        <MilestoneHeader
-            title={milestone.title}
-            isCompleted={milestone.isCompleted}
-        />
+    onCompleteAction
+}: MilestoneCardProps) => {
+    const icons: Record<string, ReactNode> = {
+        COMPLETED: <Check className={'w-8 h-8 text-primary-foreground'}/>,
+        ACTIVE: <Activity className={'w-8 h-8 text-primary-foreground'}/>,
+        LOCKED: <Lock className={'w-8 h-8 text-outline'}/>
+    }
 
-        <div className={'mt-4'}>
-            <Button
-                onClick={() =>
-                    onToggle?.(
-                        milestone.id,
-                        !milestone.isCompleted
-                    )
-                }
-                variant={
-                    milestone.isCompleted
-                        ? 'default'
-                        : 'outline'
-                }
-                size={'sm'}
-                className={'w-full'}
-            >
-                {milestone.isCompleted
-                    ? recoveryGoalsPageTexts.milestones
-                        .markIncomplete
-                    : recoveryGoalsPageTexts.milestones
-                        .markComplete}
-            </Button>
+    return (
+        <div className={'relative z-10 flex items-start group'}>
+            <div className={cn(
+                getMilestoneIconColor(milestone?.status),
+                'w-20 h-20 rounded-full flex items-center justify-center shrink-0 border-4 border-surface shadow-sm'
+            )}>
+                {icons[milestone?.status]}
+            </div>
+
+            <div className={'ml-8 mt-2 flex-1'}>
+                <MilestoneCardRenderer
+                    milestone={milestone}
+                    onCompleteAction={onCompleteAction}
+                />
+            </div>
         </div>
-    </div>
-)
+    )
+}

@@ -1,10 +1,11 @@
 import type {
     Goal,
+    GoalCategory,
     GoalInput,
     GoalMilestone,
+    GoalStatus,
     MilestoneInput,
-    MilestonePatchInput
-} from '@/types/goals'
+    MilestonePatchInput } from '@/types/goals'
 import type { Response } from '@/types/responses'
 
 import { ENDPOINTS } from '@/constants/endpoints'
@@ -16,7 +17,13 @@ export const fetchGoals = async ():
     const res = await api.get<Response<Goal[]>>(
         ENDPOINTS.recoveryGoals.base
     )
-    return res.data.data
+    return res.data.data.map((goal) => ({
+        ...goal,
+        status: (goal.status as string)
+            .toUpperCase() as GoalStatus,
+        category: (goal.category as string)
+            .toUpperCase() as GoalCategory
+    }))
 }
 
 export const fetchGoal = async (

@@ -24,8 +24,15 @@ export const useGoalMutations = () => {
     const queryClient = useQueryClient()
 
     const createGoalMutation = useMutation({
-        mutationFn: (data: GoalInput) =>
-            createGoal(data),
+        mutationFn: (data: GoalInput) => {
+            const transformedData = {
+                ...data,
+                targetDate: data.targetDate
+                    ? `${data.targetDate}T00:00:00.000Z`
+                    : undefined
+            }
+            return createGoal(transformedData)
+        },
         onSuccess: () => {
             queryClient.invalidateQueries({
                 queryKey: recoveryGoalsQueryKeys.all
@@ -40,7 +47,15 @@ export const useGoalMutations = () => {
         }: {
             goalId: string
             data: Partial<GoalInput>
-        }) => updateGoal(goalId, data),
+        }) => {
+            const transformedData = {
+                ...data,
+                targetDate: data.targetDate
+                    ? `${data.targetDate}T00:00:00.000Z`
+                    : data.targetDate
+            }
+            return updateGoal(goalId, transformedData)
+        },
         onSuccess: (_, { goalId }) => {
             queryClient.invalidateQueries({
                 queryKey: recoveryGoalsQueryKeys.all
@@ -100,6 +115,9 @@ export const useGoalMutations = () => {
                 queryKey: recoveryGoalsQueryKeys.goal(
                     goalId
                 )
+            })
+            queryClient.invalidateQueries({
+                queryKey: recoveryGoalsQueryKeys.all
             })
         }
     })
