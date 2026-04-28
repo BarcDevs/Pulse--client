@@ -1,0 +1,77 @@
+import { useState } from 'react'
+
+import { Plus } from 'lucide-react'
+
+import { GoalStatus } from '@/types/goals'
+
+import { Button } from '@/components/ui/button'
+import { Checkbox } from '@/components/ui/checkbox'
+import {
+    Popover,
+    PopoverContent,
+    PopoverTrigger
+} from '@/components/ui/popover'
+
+import { recoveryGoalsPageTexts as pageTexts }
+    from '@/constants/componentTexts/recoveryGoals'
+
+type GoalsFilterProps = {
+    selectedStatuses: GoalStatus[]
+    toggleStatus: (status: GoalStatus) => void
+    onOpenCreateModal: () => void
+}
+
+export const GoalsFilter = ({
+    selectedStatuses,
+    toggleStatus,
+    onOpenCreateModal
+}: GoalsFilterProps) => {
+    const [isFilterOpen, setIsFilterOpen] = useState(false)
+
+    return (
+        <div className={'flex gap-3'}>
+            <Popover open={isFilterOpen} onOpenChange={setIsFilterOpen}>
+                <PopoverTrigger asChild>
+                    <Button
+                        variant={'outline'}
+                        size={'sm'}
+                    >
+                        Filter
+                    </Button>
+                </PopoverTrigger>
+                <PopoverContent
+                    align={'end'}
+                    className={'w-56 p-4'}
+                >
+                    <div className={'space-y-3'}>
+                        {Object.values(GoalStatus).map((status) => (
+                            <div
+                                key={status}
+                                className={'flex items-center gap-3'}
+                            >
+                                <Checkbox
+                                    id={`status-${status}`}
+                                    checked={selectedStatuses.includes(status)}
+                                    onCheckedChange={() => toggleStatus(status)}
+                                />
+                                <label
+                                    htmlFor={`status-${status}`}
+                                    className={'text-sm font-medium cursor-pointer flex-1'}
+                                >
+                                    {pageTexts.statusLabels[status]}
+                                </label>
+                            </div>
+                        ))}
+                    </div>
+                </PopoverContent>
+            </Popover>
+            <Button
+                onClick={onOpenCreateModal}
+                className={'bg-linear-to-r from-primary to-primary-container text-primary-foreground shadow-lg shadow-blue-500/20'}
+            >
+                <Plus className={'w-4 h-4 mr-2'}/>
+                {pageTexts.overview.newGoalButton}
+            </Button>
+        </div>
+    )
+}
