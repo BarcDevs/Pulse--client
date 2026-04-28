@@ -42,6 +42,8 @@ export const RecoveryGoalsPageContent = () => {
 
     const { handleConfirmDelete } = useConfirmDelete()
 
+    const editingGoal = filteredGoals.find((g) => g.id === editingGoalId)
+
     return (
         <>
             <div className={'p-8 md:p-12 max-w-7xl mx-auto w-full'}>
@@ -93,7 +95,7 @@ export const RecoveryGoalsPageContent = () => {
                 isOpen={isModalOpen}
                 onCloseAction={onCloseModal}
                 mode={modalMode}
-                goalId={editingGoalId}
+                goal={editingGoal}
             />
         </>
     )

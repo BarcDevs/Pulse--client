@@ -1,8 +1,8 @@
 'use client'
 
-import { useEffect } from 'react'
-
 import { ClipboardPlus, Pencil } from 'lucide-react'
+
+import { Goal } from '@/types/goals'
 
 import {
     Dialog,
@@ -10,38 +10,22 @@ import {
     DialogTitle
 } from '@/components/ui/dialog'
 
-import { useGoal } from '@/hooks/queries/useGoal'
-
 import { GoalForm } from './GoalForm'
 
 type GoalFormModalProps = {
     isOpen: boolean
     onCloseAction: () => void
     mode: 'create' | 'edit'
-    goalId?: string
+    goal?: Goal
 }
 
 export const GoalFormModal = ({
     isOpen,
     onCloseAction,
     mode,
-    goalId
+    goal
 }: GoalFormModalProps) => {
-    const {
-        data: goal,
-        isLoading
-    } = useGoal(
-        mode === 'edit' ? goalId : null
-    )
-
-    useEffect(() => {
-        if (mode === 'edit' && !goal && !isLoading) {
-            onCloseAction()
-        }
-    }, [mode, goal, isLoading, onCloseAction])
-
-    const shouldRenderForm = mode === 'create'
-        || (mode === 'edit' && !isLoading)
+    const shouldRenderForm = mode === 'create' || (mode === 'edit' && goal)
 
     const IconComponent = mode === 'create'
         ? ClipboardPlus
