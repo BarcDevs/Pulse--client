@@ -59,14 +59,15 @@ export const GoalForm = ({
 
     const { form, handleSubmit: onSubmit } = useGoalForm({
         onSubmit: handleSubmit,
-        defaultValues: goal
-            ? {
-                title: goal.title,
-                description: goal.description || '',
-                category: goal.category,
-                targetDate: goal.targetDate || ''
-            } : undefined
-    })
+        defaultValues: {
+            title: goal?.title || '',
+            description: goal?.description || '',
+            category: goal?.category,
+            targetDate: goal?.targetDate
+                ? goal.targetDate.split('T')[0]
+                : ''
+        }
+})
 
     const categoryOptions =
         Object.values(GoalCategory).map((cat) => ({

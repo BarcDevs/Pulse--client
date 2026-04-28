@@ -1,3 +1,5 @@
+import { useEffect } from 'react'
+
 import { useForm } from 'react-hook-form'
 
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -19,12 +21,23 @@ export const useGoalForm = ({
     const form = useForm<GoalSchema>({
         resolver: zodResolver(goalSchema),
         defaultValues: {
-            title: '',
-            description: '',
-            ...defaultValues
+            title: defaultValues?.title || '',
+            description: defaultValues?.description || '',
+            category: defaultValues?.category,
+            targetDate: defaultValues?.targetDate || ''
         },
         mode: 'onBlur'
     })
+
+    useEffect(() => {
+        form.reset({
+            title: defaultValues?.title || '',
+            description: defaultValues?.description || '',
+            category: defaultValues?.category,
+            targetDate: defaultValues?.targetDate || ''
+        })
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [defaultValues?.title, defaultValues?.category])
 
     const handleSubmit = form.handleSubmit(
         async (data) => {
