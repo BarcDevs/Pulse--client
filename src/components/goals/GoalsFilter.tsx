@@ -6,6 +6,7 @@ import { GoalStatus } from '@/types/goals'
 
 import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
+import { Label } from '@/components/ui/label'
 import {
     Popover,
     PopoverContent,
@@ -54,12 +55,12 @@ export const GoalsFilter = ({
                                     checked={selectedStatuses.includes(status)}
                                     onCheckedChange={() => toggleStatus(status)}
                                 />
-                                <label
+                                <Label
                                     htmlFor={`status-${status}`}
                                     className={'text-sm font-medium cursor-pointer flex-1'}
                                 >
                                     {pageTexts.statusLabels[status]}
-                                </label>
+                                </Label>
                             </div>
                         ))}
                     </div>
@@ -69,7 +70,7 @@ export const GoalsFilter = ({
                 onClick={onOpenCreateModal}
                 className={'bg-linear-to-r from-primary to-primary-container text-primary-foreground shadow-lg shadow-blue-500/20'}
             >
-                <Plus className={'w-4 h-4 mr-2'}/>
+                <Plus className={'size-4 mr-2'}/>
                 {pageTexts.overview.newGoalButton}
             </Button>
         </div>
