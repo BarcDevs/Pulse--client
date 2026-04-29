@@ -47,6 +47,23 @@ export const RecoveryGoalsPageContent = () => {
     return (
         <>
             <div className={'p-8 md:p-12 max-w-7xl mx-auto w-full'}>
+                <div className={'flex justify-between items-end mb-8'}>
+                    {/*todo: reusable header component*/}
+                    <div>
+                        <h3 className={'text-3xl font-display font-bold tracking-tight text-on-surface'}>
+                            {pageTexts.overview.greeting}
+                        </h3>
+                        <p className={'text-on-surface-variant mt-1'}>
+                            {pageTexts.overview.subtitle}
+                        </p>
+                    </div>
+                    <GoalsFilter
+                        selectedStatuses={selectedStatuses}
+                        toggleStatus={toggleStatus}
+                        onOpenCreateModal={onOpenCreateModal}
+                    />
+                </div>
+
                 {isLoading && (
                     <RecoveryGoalsSkeletons/>
                 )}
@@ -58,23 +75,6 @@ export const RecoveryGoalsPageContent = () => {
                 {!isLoading && !isError && (
                     <div className={'grid grid-cols-1 lg:grid-cols-12 gap-8'}>
                         <div className={'lg:col-span-8'}>
-                            <div className={'flex justify-between items-end mb-8'}>
-                                {/*todo: reusable header component*/}
-                                <div>
-                                    <h3 className={'text-3xl font-display font-bold tracking-tight text-on-surface'}>
-                                        {pageTexts.overview.greeting}
-                                    </h3>
-                                    <p className={'text-on-surface-variant mt-1'}>
-                                        {pageTexts.overview.subtitle}
-                                    </p>
-                                </div>
-                                <GoalsFilter
-                                    selectedStatuses={selectedStatuses}
-                                    toggleStatus={toggleStatus}
-                                    onOpenCreateModal={onOpenCreateModal}
-                                />
-                            </div>
-
                             <GoalsGrid
                                 goals={filteredGoals}
                                 onEdit={onOpenEditModal}

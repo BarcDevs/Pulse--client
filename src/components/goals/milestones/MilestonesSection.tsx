@@ -1,46 +1,55 @@
-import { useRecoveryGoalsData } from '@/hooks/useRecoveryGoalsData'
+'use client'
+
+import {
+    GoalMilestone,
+    MilestoneStatus
+} from '@/types/goals'
+
+import { useGoalMutations } from '@/hooks/mutations/useGoalMutations'
 
 import { MilestoneCard } from '../cards/MilestoneCard'
 
-import { MilestonesHeader } from './MilestonesHeader'
-
 type MilestonesSectionProps = {
-    onViewAll?: () => void
+    goalId: string
+    milestones: GoalMilestone[]
 }
 
 export const MilestonesSection = ({
-    onViewAll
+    goalId,
+    milestones
 }: MilestonesSectionProps) => {
-    const {
-        activeGoal,
-        handleToggleMilestone
-    } = useRecoveryGoalsData()
+    const { updateMilestone } = useGoalMutations()
 
-    if (!activeGoal || !activeGoal.milestones)
-        return null
+    const handleCompleteMilestone = async (
+        milestoneId: string
+    ) => {
+        try {
+            await updateMilestone.mutateAsync({
+                goalId,
+                milestoneId,
+                data: { status: MilestoneStatus.COMPLETED }
+            })
+        } catch (err) {
+            console.error('Failed to complete milestone:', err)
+        }
+    }
 
-    const milestones = activeGoal.milestones
+    const sortedMilestones = [...milestones]
+        .sort((a, b) => a.order - b.order)
 
     return (
-        <div className={'md:col-span-12'}>
-            <MilestonesHeader onViewAll={onViewAll} />
+        <section className={'space-y-4 mb-16 relative'}>
+            <div className={'absolute left-10 top-8 bottom-8 w-0.5 bg-surface-container-highest z-0'}/>
 
-            <div className={'grid grid-cols-1 md:grid-cols-3 gap-6'}>
-                {milestones.map((milestone) => (
+            <div className={'space-y-4'}>
+                {sortedMilestones.map((milestone) => (
                     <MilestoneCard
                         key={milestone.id}
                         milestone={milestone}
-                        onToggle={(
-                            milestoneId,
-                            isCompleted
-                        ) => handleToggleMilestone(
-                            activeGoal.id,
-                            milestoneId,
-                            isCompleted
-                        )}
+                        onCompleteAction={() => handleCompleteMilestone(milestone.id)}
                     />
                 ))}
             </div>
-        </div>
+        </section>
     )
 }

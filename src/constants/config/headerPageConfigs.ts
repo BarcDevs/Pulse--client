@@ -9,9 +9,10 @@ import { appLayoutTexts } from '@/constants/componentTexts/ui/layout'
 import { PAGES } from '@/constants/componentTexts/ui/pageSubtitles'
 
 export type ActionConfig = {
-    type: 'newPost' | 'newGoal' | 'export' | 'share'
+    type: 'newPost' | 'export' | 'share'
     label: string
     variant?: 'default' | 'outline'
+    // todo: replace plain text icon with proper LucideIcon
     icon?: 'plus' | 'download' | 'share2'
 }
 
@@ -67,14 +68,7 @@ export const headerPageConfigs: Record<
         }
     },
     'recovery-goals': {
-        title: recoveryGoalsPageTexts.header.title,
-        actions: [
-            {
-                type: 'newGoal',
-                label: 'Create Goal',
-                icon: 'plus'
-            }
-        ]
+        title: recoveryGoalsPageTexts.header.title
     },
     profile: {
         title: PAGES.profile.TITLE,

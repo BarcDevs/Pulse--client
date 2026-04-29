@@ -1,8 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-
-import { useSearchParams } from 'next/navigation'
+import { useState } from 'react'
 
 type UseRecoveryGoalsModalReturn = {
     isModalOpen: boolean
@@ -15,7 +13,6 @@ type UseRecoveryGoalsModalReturn = {
 
 export const useRecoveryGoalsModal =
     (): UseRecoveryGoalsModalReturn => {
-        const searchParams = useSearchParams()
         const [isModalOpen, setIsModalOpen] = (
             useState(false)
         )
@@ -26,18 +23,6 @@ export const useRecoveryGoalsModal =
         const modalMode = editingGoalId
             ? 'edit'
             : 'create'
-
-        useEffect(() => {
-            const createGoal = (
-                searchParams.get('createGoal') === 'true'
-            )
-            if (createGoal) {
-                queueMicrotask(() => {
-                    setEditingGoalId(undefined)
-                    setIsModalOpen(true)
-                })
-            }
-        }, [searchParams])
 
         const onOpenEditModal = (goalId: string) => {
             setEditingGoalId(goalId)
