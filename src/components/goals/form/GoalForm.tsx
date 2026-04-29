@@ -27,7 +27,6 @@ import { recoveryGoalsPageTexts as pageTexts }
 import { ROUTES } from '@/constants/routes'
 
 import { CategoryChipSelector } from './CategoryChipSelector'
-import { FormHeadline } from './FormHeadline'
 import { GoalFormActions } from './GoalFormActions'
 
 type GoalFormProps = {
@@ -74,14 +73,6 @@ export const GoalForm = ({
             onSubmit={onSubmit}
             className={'space-y-6'}
         >
-            <FormHeadline
-                title={isUpdate
-                    ? pageTexts.goalForm.updateTitle
-                    : pageTexts.goalForm.createTitle
-                }
-                subtitle={pageTexts.goalForm.subtitle}
-            />
-
             <Form {...form}>
                 <Controller
                     control={form.control}

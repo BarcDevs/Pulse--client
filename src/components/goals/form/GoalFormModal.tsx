@@ -1,7 +1,5 @@
 'use client'
 
-import { ClipboardPlus, Pencil } from 'lucide-react'
-
 import { Goal } from '@/types/goals'
 
 import {
@@ -10,7 +8,11 @@ import {
     DialogTitle
 } from '@/components/ui/dialog'
 
+import { recoveryGoalsPageTexts as pageTexts }
+    from '@/constants/componentTexts/recoveryGoals'
+
 import { GoalForm } from './GoalForm'
+import { GoalFormHeader } from './GoalFormHeader'
 
 type GoalFormModalProps = {
     isOpen: boolean
@@ -27,9 +29,9 @@ export const GoalFormModal = ({
 }: GoalFormModalProps) => {
     const shouldRenderForm = mode === 'create' || (mode === 'edit' && goal)
 
-    const IconComponent = mode === 'create'
-        ? ClipboardPlus
-        : Pencil
+    const title = mode === 'create'
+        ? pageTexts.goalForm.createTitle
+        : pageTexts.goalForm.updateTitle
 
     return (
         <Dialog
@@ -40,16 +42,13 @@ export const GoalFormModal = ({
                 <DialogTitle className={'sr-only'}>
                     {mode === 'create' ? 'Create New Goal' : 'Edit Goal'}
                 </DialogTitle>
-                <div
-                    className={'h-32 flex items-end px-8 relative'}
-                    style={{ background: 'linear-gradient(to right, var(--primary-gradient-start), var(--primary-gradient-end))' }}
-                >
-                    <div className={'w-16 h-16 bg-white/20 backdrop-blur-md rounded-xl flex items-center justify-center text-primary-foreground mb-1 shadow-sm'}>
-                        <IconComponent className={'w-8 h-8'}/>
-                    </div>
-                </div>
+                <GoalFormHeader
+                    mode={mode}
+                    title={title}
+                    subtitle={pageTexts.goalForm.subtitle}
+                />
 
-                <div className={'px-8 pt-12 pb-8'}>
+                <div className={'px-8 pt-8 pb-8'}>
                     {shouldRenderForm && (
                         <GoalForm
                             goal={goal || undefined}
