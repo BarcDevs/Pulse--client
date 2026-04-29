@@ -36,10 +36,10 @@ export const getBadge = (percentage: number): GoalBadge => {
 export const getCategoryColor = (category: GoalCategory) => {
     switch (category) {
         case GoalCategory.PHYSICAL:
-            return 'bg-secondary-container text-on-secondary-container'
+            return 'bg-secondary-container text-on-secondary-container hover:bg-secondary-container/80 [&:hover]:text-on-secondary-container'
         case GoalCategory.MENTAL:
-            return 'bg-accent-light text-accent'
+            return 'bg-accent-light text-accent hover:bg-accent-light/80 [&:hover]:text-accent'
         case GoalCategory.LIFESTYLE:
-            return 'bg-primary-light text-primary'
+            return 'bg-primary-light text-primary hover:bg-primary-light/80 [&:hover]:text-primary'
     }
 }

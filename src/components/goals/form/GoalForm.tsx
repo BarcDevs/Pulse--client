@@ -4,10 +4,9 @@ import { useRouter } from 'next/navigation'
 
 import { Controller } from 'react-hook-form'
 
-import { Goal, GoalCategory } from '@/types/goals'
+import { Goal } from '@/types/goals'
 
 import { FormInput } from '@/components/shared/inputs/FormInput'
-import { SelectInput } from '@/components/shared/inputs/SelectInput'
 import {
     Form,
     FormControl,
@@ -27,6 +26,7 @@ import { recoveryGoalsPageTexts as pageTexts }
     from '@/constants/componentTexts/recoveryGoals'
 import { ROUTES } from '@/constants/routes'
 
+import { CategoryChipSelector } from './CategoryChipSelector'
 import { FormHeadline } from './FormHeadline'
 import { GoalFormActions } from './GoalFormActions'
 
@@ -67,13 +67,7 @@ export const GoalForm = ({
                 ? goal.targetDate.split('T')[0]
                 : ''
         }
-})
-
-    const categoryOptions =
-        Object.values(GoalCategory).map((cat) => ({
-            value: cat,
-            label: pageTexts.categoryLabels[cat]
-        }))
+    })
 
     return (
         <form
@@ -84,7 +78,7 @@ export const GoalForm = ({
                 title={isUpdate
                     ? pageTexts.goalForm.updateTitle
                     : pageTexts.goalForm.createTitle
-            }
+                }
                 subtitle={pageTexts.goalForm.subtitle}
             />
 
@@ -137,14 +131,11 @@ export const GoalForm = ({
                     )}
                 />
 
-                <div className={'grid grid-cols-2 gap-6'}>
-                    <SelectInput
+                <div className={'space-y-6'}>
+                    <CategoryChipSelector
                         control={form.control}
-                        name={'category'}
-                        label={pageTexts.goalForm.fields.categoryLabel}
-                        placeholder={pageTexts.goalForm.fields.categoryPlaceholder}
-                        options={categoryOptions}
                     />
+
                     {/* todo: reusable FormField */}
                     <FormField
                         control={form.control}
