@@ -5,85 +5,72 @@ HealEase — Recovery support platform for patients transitioning from hospital/
 This project is the client-side code for the HealEase app.
 Server is in ../healease--server.
 
-## Core Rules (Apply Everywhere)
+## Behavioral Guidelines
 
-### Principles
-- ALWAYS FOLLOW INDUSTRY STANDARDS & SOLID PRINCIPLES (Single Responsibility, Open/Closed, Liskov Substitution, Interface Segregation, Dependency Inversion)
-- Write clean, maintainable, readable code
-- Keep one concern per file (SRP)
-- For every function that you want to create make sure it is not already exists
-- Avoid using re-export files
+**Tradeoff:** These guidelines bias toward caution over speed. For trivial tasks, use judgment.
 
-### Code Style
-- Never use array index as key - use the current element as an index
-- Braces around values inside: Object literal braces, component props and import/export braces
-- Spaces inside braces: `{ field }` not `{field}`
-- Text blocks: Don't break unless really long (120–150 chars OK)
-- Text: never use `—` character. only the simple hyphen `-` for all text, including classnames and config keys. This avoids encoding issues and ensures consistency across all contexts (JSX, CSS, config, etc.)
-- Use unified imports for module that has many imports
-- Short conditional blocks - never use `{`
-- **NO redundant spaces:** Don't break single imports to multiple lines unless very long (50+ chars)
-- Never break line around single imports - if import is too long, break before the `from` keyword
+## 1. Think Before Coding
 
-### Language & Format
-- Quotes: Single quotes (') for all strings, imports, JSX props, backtick allowed for template strings
-- Semicolons: None (except where required)
-- Indentation: 4 spaces
-- Naming: camelCase (non-components), camelCase (folders)
-- Functions: Arrow functions ALWAYS, never regular declarations
-- Types: Prefer `type` over `interface` unless declaration merging needed
-- React Types: Import directly from `react`, not `React.*`
+**Don't assume. Don't hide confusion. Surface tradeoffs.**
 
-## Reading Files
-- Whenever reading files to understand and identify patterns that may be needed in the future, document them in corresponding context to avoid repeating it afterwards
+Before implementing:
+- State your assumptions explicitly. If uncertain, ask.
+- If multiple interpretations exist, present them - don't pick silently.
+- If a simpler approach exists, say so. Push back when warranted.
+- If something is unclear, stop. Name what's confusing. Ask.
 
-### Code Quality
-- CRITICAL: Delete unused code completely — NEVER comment it out
-- No code snippets — provide complete, production-ready code
-- One function/component per file
-- Extract reusable logic
-- Use reusable components from shadcn/ui
-- No hardcoded values — use constants or config
-- Time values: Always use `src/constants/time` (minuteInMs, hourInMs, etc.) instead of hardcoding milliseconds
-- No backwards-compatibility shims for removed code
-- Don't use redundant braces or parentheses
-- Avoid single statement followed by return — inline: `if (x) return fn()` not `if (x) { fn(); return }`
+## 2. Simplicity First
 
-### Code Formatting
-- Line length: Target 40-50 characters maximum for code lines (strings can be longer if necessary). Break lines that exceed this threshold
-- Break long lines and function parameters onto multiple lines
-- 2+ conditions in if statements → one condition per line, no condition and action in same line
-- Ternary conditions with long or complex expressions → break to multiple lines
-- Inline objects with 3+ properties, or 2+ in long lines → always break to new lines
-- 2+ chained accessor calls → break after root object
-- Nested objects always on a new line — never inline inside a parent object or array
-- Objects with 2+ properties → each property on its own line
-- 2+ function parameters → each on its own line
-- Generic utility types (`Pick`, `Omit` etc.) with 3+ keys → each key on its own line
-- 2+ elements in an array → each on its own line
+**Minimum code that solves the problem. Nothing speculative.**
 
-### Formatting Tools
+- No features beyond what was asked.
+- No abstractions for single-use code.
+- No "flexibility" or "configurability" that wasn't requested.
+- No error handling for impossible scenarios.
+- If you write 200 lines and it could be 50, rewrite it.
 
-- **ESLint** (`.eslint.config.mjs`): Enforces all formatting rules. Run `npm run lint:fix` to auto-apply fixes before committing.
-- **.editorconfig**: Cross-IDE settings (4-space indent, UTF-8, LF line endings). Respected by WebStorm, VS Code, etc.
+Ask yourself: "Would a senior engineer say this is overcomplicated?" If yes, simplify.
 
-### Imports (eslint-plugin-simple-import-sort)
-Groups (auto-fixed by `npm run lint:fix`):
-1. React
-2. Next.js
-3. Third-party packages
-4. @-scoped packages (e.g., @tanstack, @radix-ui)
-5. @/ custom (types, components, hooks, lib, utils, services, constants, config, context, handlers, pages)
-6. Relative imports
-7. Styles (last)
+## 3. Surgical Changes
 
-## Tech Stack
-Core: Next 16 + App Router, React 19, TypeScript 5, TailwindCSS 4
-State: React Context, TanStack Query
-Forms: react-hook-form 7, Zod, shadcn/ui
-API: Axios with interceptors (CSRF auto-injected)
-UI: shadcn/ui, Radix UI, lucide-react
-Tools: Sentry, Million.js, date-fns, DOMPurify
+**Touch only what you must. Clean up only your own mess.**
+
+When editing existing code:
+- Don't "improve" adjacent code, comments, or formatting.
+- Don't refactor things that aren't broken.
+- Match existing style, even if you'd do it differently.
+- If you notice unrelated dead code, mention it - don't delete it.
+
+When your changes create orphans:
+- Remove imports/variables/functions that YOUR changes made unused.
+- Don't remove pre-existing dead code unless asked.
+
+The test: Every changed line should trace directly to the user's request.
+
+## 4. Goal-Driven Execution
+
+**Define success criteria. Loop until verified.**
+
+Transform tasks into verifiable goals:
+- "Add validation" → "Write tests for invalid inputs, then make them pass"
+- "Fix the bug" → "Write a test that reproduces it, then make it pass"
+- "Refactor X" → "Ensure tests pass before and after"
+
+For multi-step tasks, state a brief plan:
+```
+1. [Step] → verify: [check]
+2. [Step] → verify: [check]
+3. [Step] → verify: [check]
+```
+
+Strong success criteria let you loop independently. Weak criteria ("make it work") require constant clarification.
+
+---
+
+**These guidelines are working if:** fewer unnecessary changes in diffs, fewer rewrites due to overcomplication, and clarifying questions come before implementation rather than after mistakes.
+
+## Code Style Rules (Apply Everywhere)
+Rules listed in `CORE_RULES.md` but summarized here for quick reference. See that file for detailed explanations and rationale. Style is critical for readability and maintainability. These rules are non-negotiable and must be followed
 
 ## Quick Checklist
 Arrow functions | Single quotes | No semicolons | 4-space indent | Nested content on new lines
@@ -112,8 +99,9 @@ Use /commit skill when auto-commiting
 - Write clear commit messages (imperative, present tense)
 - Commit messages must accurately describe what was **implemented** not just what changed (e.g., "replace mock data with real API integration" not "fix imports")
 - Generate commit messages with the /caveman-commit skill
+- IMPORTANT: when told to commit, actually commit, not just run /caveman-commit, but actually commit with `git commit` (after asking permission)
 - When committing after fixing issues found during review: include the original work scope in the message, not just the fix (e.g., "feat: replace mock data..." not "fix: correct import order")
 - Use branches for features/fixes
 - Use conventional commit format (feat, fix, docs, style, rfc, test, chore). breaking changes should have `!` after the type (e.g., `feat!: ...`)
 - Avoid large commits; keep them focused and atomic (every commit should have one change or fix)
-- Claude plans should instructions never be committed
+- Claude plans should never be committed

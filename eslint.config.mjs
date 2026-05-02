@@ -87,6 +87,8 @@ const config = [
             'react/prop-types': 'off',
             'react/self-closing-comp': 'warn',
             'react/display-name': 'off',
+            'prefer-arrow-callback': 'warn',
+            'func-style': ['warn', 'expression'],
             semi: ['warn', 'never'],
             quotes: ['warn',
                 'single', {
