@@ -26,14 +26,22 @@
 - Avoid prop drilling — use context or composition
 - Use hooks at top of component
 - Extract reusable logic and helper functions to separate files
-- AVOID BREAK LINES IN CLASSNAMES EVEN WHEN THEY'RE LONG - NOT THE STRING ITSELF AND NOT AROUND IT. example: 
- `'some-classes' +
-    'other-classes'` ❌ → `'some-classes other-classes'` ✓
+- Don't break lines in a middle of a string
+- COMPLETELY IGNORE classnames line-breaking
 - Avoid redundant linebreaks in lines shorter that the threshold (50-60 chars)
-- If you need to specify certain part of a component with a comment, that probably means that part should be extracted into a separate component
+- If you need to specify a certain part of a component with a comment, that probably means that part should be extracted into a separate component
+
+## Classnames & Links
+- Classnames: always use `cn()` from `@/lib/utils`. Never use template strings in classnames: `cn('base', condition && 'conditional')` ✓ not `` `base ${condition ? 'x' : 'y'}` `` ❌
+- Navigation: use `<Link>` from `next/link` (not native `<a>` tag). Exception: download links may use `<a>`
+
+## Code blocks wrapped in conditions
+- JSX wrapped in `.map()` or conditional render (`{data && <code>}`): extract to separate component. Don't inline multi-line JSX in render conditionals
+- Skeleton loading sections: own separate component with `Skeletons` suffix (e.g., `GoalCardSkeletons`, `MilestonesSectionSkeletons`). Never inline skeleton JSX in parent component
 
 ## Component Style
-- If you need to use an unknown color, look for it in the global.css, if not exists add a custom tw color and use it. but never use hardcoded color
+- Colors: check `globals.css` @utility blocks first. Only add custom tw color if it doesn't exist. Never hardcode colors. Before adding new custom color, verify it's not already defined under different name
+- Always prefer custom brand colors over tw-native colors
 
 ## shadcn/ui
 - Always use shadcn/ui components when available
