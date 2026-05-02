@@ -15,6 +15,7 @@ export const ProfileInfo = ({
 }: ProfileInfoProps) => {
     const memberDate = formatByUserPreference(
         new Date(createdAt),
+        false,
         dateFormat
     )
 
