@@ -7,8 +7,8 @@ import {
 import { Eye, EyeOff } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
+import { FormLabel } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
 
 import { cn } from '@/lib/utils'
 
@@ -43,12 +43,12 @@ export const FormInput = ({
     return (
         <div className={label ? 'space-y-2' : ''}>
             {label && (
-                <Label
+                <FormLabel
                     htmlFor={id}
                     className={'text-xs font-medium uppercase tracking-wider text-muted-foreground'}
                 >
                     {label}
-                </Label>
+                </FormLabel>
             )}
             <div className={'relative'}>
                 <Input
