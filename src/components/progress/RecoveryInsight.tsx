@@ -7,8 +7,6 @@ import { Button } from '@/components/ui/button'
 import { useLatestCheckIn }
     from '@/hooks/queries/useLatestCheckIn'
 
-import { cn } from '@/lib/utils'
-
 import { progressPageTexts }
     from '@/constants/componentTexts/progress'
 
@@ -26,13 +24,7 @@ export const RecoveryInsight = () => {
     const secondaryText = insight?.title
 
     return (
-        <div className={cn(
-            'rounded-2xl',
-            'bg-linear-to-r',
-            'from-primary-gradient-start to-primary-gradient-end',
-            'p-6',
-            'text-primary-foreground'
-        )}>
+        <div className={'rounded-2xl bg-linear-to-r from-primary-gradient-start to-primary-gradient-end p-6 text-primary-foreground'}>
             <div className={'flex items-start justify-between'}>
                 <div className={'flex items-center gap-2'}>
                     <Sparkles className={'h-5 w-5'}/>

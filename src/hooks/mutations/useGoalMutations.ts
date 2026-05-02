@@ -12,6 +12,7 @@ import {
 import { recoveryGoalsQueryKeys } from '@/constants/queryKeys'
 
 import {
+    completeMilestone,
     createGoal,
     createMilestone,
     deleteGoal,
@@ -139,12 +140,39 @@ export const useGoalMutations = () => {
         }
     })
 
+    const completeMilestoneMutation =
+        useMutation({
+            mutationFn: ({
+                goalId,
+                milestoneId
+            }: {
+                goalId: string
+                milestoneId: string
+            }) =>
+                completeMilestone(
+                    goalId,
+                    milestoneId
+                ),
+            onSuccess: (_, { goalId }) => {
+                queryClient.invalidateQueries({
+                    queryKey:
+                        recoveryGoalsQueryKeys
+                            .goal(goalId)
+                })
+                queryClient.invalidateQueries({
+                    queryKey:
+                    recoveryGoalsQueryKeys.all
+                })
+            }
+        })
+
     return {
         createGoal: createGoalMutation,
         updateGoal: updateGoalMutation,
         deleteGoal: deleteGoalMutation,
         createMilestone: createMilestoneMutation,
         updateMilestone: updateMilestoneMutation,
-        deleteMilestone: deleteMilestoneMutation
+        deleteMilestone: deleteMilestoneMutation,
+        completeMilestone: completeMilestoneMutation
     }
 }

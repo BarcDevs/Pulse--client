@@ -1,19 +1,15 @@
 'use client'
 
-import { ReactNode } from 'react'
-
 import {
-    Activity,
-    Check,
-    Lock
-} from 'lucide-react'
-
-import { GoalMilestone } from '@/types/goals'
+    GoalMilestone,
+    MilestoneStatus
+} from '@/types/goals'
 
 import { getMilestoneIconColor } from '@/lib/milestones'
 import { cn } from '@/lib/utils'
 
 import { MilestoneCardRenderer } from './MilestoneCardRenderer'
+import { milestoneStatusIcons } from './milestoneStatusIcons'
 
 type MilestoneCardProps = {
     milestone: GoalMilestone
@@ -24,21 +20,20 @@ export const MilestoneCard = ({
     milestone,
     onCompleteAction
 }: MilestoneCardProps) => {
-    const icons: Record<string, ReactNode> = {
-        COMPLETED: <Check className={'w-8 h-8 text-primary-foreground'}/>,
-        ACTIVE: <Activity className={'w-8 h-8 text-primary-foreground'}/>,
-        LOCKED: <Lock className={'w-8 h-8 text-outline'}/>
-    }
 
     return (
         <div className={'relative z-10 flex items-start group'}>
             <div className={cn(
-                getMilestoneIconColor(milestone?.status),
-                'w-20 h-20 rounded-full flex items-center justify-center shrink-0 border-4 border-surface shadow-sm'
+                getMilestoneIconColor(
+                    milestone?.status
+                ),
+                milestone?.status
+                    === MilestoneStatus.ACTIVE
+                    && 'shadow-lg shadow-primary/25',
+                'w-20 h-20 rounded-full flex items-center justify-center shrink-0 border-4 border-surface'
             )}>
-                {icons[milestone?.status]}
+                {milestoneStatusIcons[milestone?.status]}
             </div>
-
             <div className={'ml-8 mt-2 flex-1'}>
                 <MilestoneCardRenderer
                     milestone={milestone}

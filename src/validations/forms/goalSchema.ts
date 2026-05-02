@@ -3,6 +3,7 @@ import * as z from 'zod'
 import { GoalCategory } from '@/types/goals'
 
 import { goalFormSchema } from '@/config/schema/goalForm'
+import { milestoneFormSchema } from '@/config/schema/milestoneForm'
 
 export const goalSchema = z.object({
     title: z
@@ -37,4 +38,27 @@ export const goalSchema = z.object({
         )
 })
 
+export const milestoneSchema = z.object({
+    title: z
+        .string()
+        .min(
+            milestoneFormSchema.title.minLength,
+            'Milestone title is required'
+        )
+        .max(
+            milestoneFormSchema.title.maxLength,
+            `Milestone title must be ${milestoneFormSchema.title.maxLength} characters or less`
+        ),
+    description: z
+        .string()
+        .max(
+            milestoneFormSchema.description.maxLength,
+            `Description must be ${milestoneFormSchema.description.maxLength} characters or less`
+        )
+        .optional()
+})
+
 export type GoalSchema = z.infer<typeof goalSchema>
+export type MilestoneSchema = z.infer<
+    typeof milestoneSchema
+>

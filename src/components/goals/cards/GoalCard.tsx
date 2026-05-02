@@ -10,7 +10,7 @@ import { Badge } from '@/components/ui/badge'
 import { getCategoryColor } from '@/lib/goals'
 import { cn } from '@/lib/utils'
 
-import  { recoveryGoalsPageTexts as pageTexts }
+import { recoveryGoalsPageTexts as pageTexts }
     from '@/constants/componentTexts/recoveryGoals'
 import { ROUTES } from '@/constants/routes'
 
@@ -27,14 +27,8 @@ export const GoalCard = ({
 }: GoalCardProps) => {
     const router = useRouter()
 
-    const milestones = goal.milestones || []
-    const completedCount = milestones.filter(
-        (m) => m?.status === 'COMPLETED'
-    ).length
-    const totalCount = milestones.length
-    const progressPercent = totalCount > 0
-        ? Math.round((completedCount / totalCount) * 100)
-        : 0
+    const progressPercent =
+        Math.round((goal.progress ?? 0) * 100)
 
     const categoryColor = getCategoryColor(goal.category)
 
@@ -45,7 +39,8 @@ export const GoalCard = ({
     return (
         <div
             onClick={handleCardClick}
-            className={'bg-surface-container-lowest p-6 rounded-xl group hover:bg-blue-50/30 transition-colors shadow-sm cursor-pointer relative'}>
+            className={'bg-surface-container-lowest p-6 rounded-xl group hover:bg-blue-50/30 transition-colors shadow-sm cursor-pointer relative'}
+        >
             <div className={'flex justify-between items-start mb-6'}>
                 <Badge
                     className={cn(
@@ -72,7 +67,9 @@ export const GoalCard = ({
 
             <div className={'space-y-2'}>
                 <div className={'flex justify-between text-xs font-bold uppercase tracking-wider text-slate-400'}>
-                    <span>{pageTexts.goalCard.progressLabel}</span>
+                    <span>
+                        {pageTexts.goalCard.progressLabel}
+                    </span>
                     <span>{progressPercent}%</span>
                 </div>
                 <div className={'h-2 bg-outline-variant rounded-full overflow-hidden'}>

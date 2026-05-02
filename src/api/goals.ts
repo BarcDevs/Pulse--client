@@ -5,7 +5,8 @@ import type {
     GoalMilestone,
     GoalStatus,
     MilestoneInput,
-    MilestonePatchInput } from '@/types/goals'
+    MilestonePatchInput
+} from '@/types/goals'
 import type { Response } from '@/types/responses'
 
 import { ENDPOINTS } from '@/constants/endpoints'
@@ -29,10 +30,21 @@ export const fetchGoals = async ():
 export const fetchGoal = async (
     goalId: string
 ): Promise<Goal> => {
-    const res = await api.get<Response<Goal>>(
+    const res = await api.get<{
+        data: { goal: Goal; milestones: GoalMilestone[] }
+    }>(
         ENDPOINTS.recoveryGoals.goal(goalId)
     )
-    return res.data.data
+    return {
+        ...res.data.data.goal,
+        milestones: res.data.data.milestones.map(
+            (milestone) => ({
+                ...milestone,
+                status: (milestone.status as string)
+                    .toUpperCase() as typeof milestone.status
+            })
+        )
+    }
 }
 
 export const createGoal = async (
@@ -110,4 +122,19 @@ export const deleteMilestone = async (
         )
     )
     return undefined
+}
+
+export const completeMilestone = async (
+    goalId: string,
+    milestoneId: string
+): Promise<GoalMilestone> => {
+    const res = await api.patch<{
+        data: GoalMilestone
+    }>(
+        ENDPOINTS.recoveryGoals.completeMilestone(
+            goalId,
+            milestoneId
+        )
+    )
+    return res.data.data
 }

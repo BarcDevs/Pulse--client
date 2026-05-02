@@ -1,91 +1,46 @@
-import { recoveryGoalsPageTexts as pageTexts }
-    from '@/constants/componentTexts/recoveryGoals'
-
-const RADIUS = 88
-const CX = 96
-const CY = 96
-const CIRCUMFERENCE = 2 * Math.PI * RADIUS
-
 type GoalProgressRingProps = {
     percentage: number
+    size?: number
+    strokeWidth?: number
 }
 
 export const GoalProgressRing = ({
-    percentage
+    percentage,
+    size = 96,
+    strokeWidth = 8
 }: GoalProgressRingProps) => {
-    const offset = CIRCUMFERENCE
-        - (percentage / 100) * CIRCUMFERENCE
+    const r = (size - strokeWidth) / 2
+    const circumference = 2 * Math.PI * r
+    const offset = circumference * (1 - percentage / 100)
 
     return (
-        <div className={'flex flex-col items-center'}>
-            <svg
-                width={192}
-                height={192}
-                viewBox={'0 0 192 192'}
-                className={'drop-shadow-lg'}
-            >
-                <defs>
-                    <linearGradient
-                        id={'progressGradient'}
-                        x1={'0%'}
-                        y1={'0%'}
-                        x2={'100%'}
-                        y2={'100%'}
-                    >
-                        <stop
-                            offset={'0%'}
-                            stopColor={'var(--primary-gradient-start)'}
-                        />
-                        <stop
-                            offset={'100%'}
-                            stopColor={'var(--primary-gradient-end)'}
-                        />
-                    </linearGradient>
-                </defs>
-
-                <circle
-                    cx={CX}
-                    cy={CY}
-                    r={RADIUS}
-                    fill={'none'}
-                    stroke={'rgba(0, 0, 0, 0.1)'}
-                    strokeWidth={8}
-                />
-
-                <circle
-                    cx={CX}
-                    cy={CY}
-                    r={RADIUS}
-                    fill={'none'}
-                    stroke={'url(#progressGradient)'}
-                    strokeWidth={8}
-                    strokeDasharray={CIRCUMFERENCE}
-                    strokeDashoffset={offset}
-                    strokeLinecap={'round'}
-                    transform={`rotate(-90 ${CX} ${CY})`}
-                />
-
-                <text
-                    x={CX}
-                    y={CY - 12}
-                    textAnchor={'middle'}
-                    dominantBaseline={'middle'}
-                    className={'text-4xl font-bold fill-slate-900'}
-                >
-                    {percentage}%
-                </text>
-
-                <text
-                    x={CX}
-                    y={CY + 20}
-                    textAnchor={'middle'}
-                    dominantBaseline={'middle'}
-                    className={'text-xs fill-foreground/60 font-medium'}
-                >
-                    {pageTexts.mainCard
-                        .overall.toUpperCase()}
-                </text>
-            </svg>
-        </div>
+        <svg
+            width={size}
+            height={size}
+            style={{ transform: 'rotate(-90deg)' }}
+        >
+            <circle
+                cx={size / 2}
+                cy={size / 2}
+                r={r}
+                fill={'none'}
+                stroke={'currentColor'}
+                strokeWidth={strokeWidth}
+                className={'text-border'}
+            />
+            <circle
+                cx={size / 2}
+                cy={size / 2}
+                r={r}
+                fill={'none'}
+                stroke={'currentColor'}
+                strokeWidth={strokeWidth}
+                strokeDasharray={circumference}
+                strokeDashoffset={offset}
+                strokeLinecap={'round'}
+                className={'text-primary'}
+                style={{ transition: 'stroke-dashoffset 0.5s ease' }}
+            />
+        </svg>
     )
 }

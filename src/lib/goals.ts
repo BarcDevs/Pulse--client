@@ -1,7 +1,6 @@
 import {
     Goal,
-    GoalCategory,
-    MilestoneStatus
+    GoalCategory
 } from '@/types/goals'
 
 export const GOAL_BADGES = {
@@ -17,13 +16,7 @@ export type GoalBadge =
 export const getProgressPercentage = (
     goal: Goal
 ): number => {
-    if (!goal.milestones || goal.milestones.length === 0) return 0
-    const completed = goal.milestones.filter(
-        (m) => m?.status === MilestoneStatus.COMPLETED
-    ).length
-    return Math.round(
-        (completed / goal.milestones.length) * 100
-    )
+    return Math.round((goal.progress ?? 0) * 100)
 }
 
 export const getBadge = (percentage: number): GoalBadge => {

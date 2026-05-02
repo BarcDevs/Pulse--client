@@ -1,55 +1,50 @@
 'use client'
 
-import {
-    GoalMilestone,
-    MilestoneStatus
-} from '@/types/goals'
-
-import { useGoalMutations } from '@/hooks/mutations/useGoalMutations'
+import { useGoalMilestones } from '@/hooks/context/useGoalMilestones'
 
 import { MilestoneCard } from '../cards/MilestoneCard'
 
-type MilestonesSectionProps = {
-    goalId: string
-    milestones: GoalMilestone[]
-}
+export const MilestonesSection = () => {
+    const {
+        milestones,
+        completeMilestoneOptimistic
+    } = useGoalMilestones()
 
-export const MilestonesSection = ({
-    goalId,
-    milestones
-}: MilestonesSectionProps) => {
-    const { updateMilestone } = useGoalMutations()
-
-    const handleCompleteMilestone = async (
-        milestoneId: string
-    ) => {
-        try {
-            await updateMilestone.mutateAsync({
-                goalId,
-                milestoneId,
-                data: { status: MilestoneStatus.COMPLETED }
-            })
-        } catch (err) {
-            console.error('Failed to complete milestone:', err)
-        }
-    }
-
-    const sortedMilestones = [...milestones]
+    const sorted = [...milestones]
         .sort((a, b) => a.order - b.order)
+    const isEmpty = sorted.length === 0
 
     return (
-        <section className={'space-y-4 mb-16 relative'}>
-            <div className={'absolute left-10 top-8 bottom-8 w-0.5 bg-surface-container-highest z-0'}/>
+        <section className={'mb-16'}>
+            {isEmpty ? (
+                // todo: use reusable empty state
+                <div className={'py-12 px-6 bg-surface-container-lowest rounded-xl text-center'}>
+                    <p className={'text-on-surface-variant text-lg'}>
+                        No milestones yet
+                    </p>
+                    <p className={'text-on-surface-variant text-sm mt-2'}>
+                        Add milestones to track your progress toward this goal
+                    </p>
+                </div>
+            ) : (
+                <div className={'relative'}>
+                    <div className={'absolute left-10 top-8 bottom-8 w-0.5 bg-surface-container-high'}/>
 
-            <div className={'space-y-4'}>
-                {sortedMilestones.map((milestone) => (
-                    <MilestoneCard
-                        key={milestone.id}
-                        milestone={milestone}
-                        onCompleteAction={() => handleCompleteMilestone(milestone.id)}
-                    />
-                ))}
-            </div>
+                    <div className={'space-y-4'}>
+                        {sorted.map((milestone) => (
+                            <MilestoneCard
+                                key={milestone.id}
+                                milestone={milestone}
+                                onCompleteAction={() =>
+                                    completeMilestoneOptimistic(
+                                        milestone.id
+                                    )
+                                }
+                            />
+                        ))}
+                    </div>
+                </div>
+            )}
         </section>
     )
 }

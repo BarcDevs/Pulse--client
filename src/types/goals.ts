@@ -53,6 +53,7 @@ export type GoalInput = {
 
 export type MilestoneInput = {
     title: string
+    description?: string
 }
 
 export type MilestonePatchInput = {

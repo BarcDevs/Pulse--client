@@ -6,6 +6,8 @@ import { usePathname } from 'next/navigation'
 
 import { Search } from 'lucide-react'
 
+import { GoalDetailBreadcrumb }
+    from '@/components/goals/GoalDetailBreadcrumb'
 import { HeaderActionButton }
     from '@/components/layout/header/HeaderActionButton'
 import { HeaderBadge } from '@/components/layout/header/HeaderBadge'
@@ -23,11 +25,18 @@ import { FEATURES } from '@/config/features'
 
 import { useAuth } from '@/context/AuthContext'
 
-
+// todo: make AppHeader follow OCP rule
 export const AppHeader = () => {
     const [searchValue, setSearchValue] = useState('')
     const pathname = usePathname()
     const { user } = useAuth()
+
+    const segments = pathname.split('/').filter(Boolean)
+    const isGoalDetail =
+        segments[0] === 'recovery-goals'
+        && segments.length === 2
+    const goalId = isGoalDetail ? segments[1] : ''
+
     const {
         title,
         subtitle,
@@ -41,19 +50,19 @@ export const AppHeader = () => {
             ? `${dashboardPageTexts.greeting} ${user.firstName}`
             : subtitle
 
-    const headerClassName = 'sticky top-0 z-10 flex h-16 items-center justify-between border-b border-border bg-surface-card px-4 md:px-6'
-    const formInputClassName = 'h-10 w-64 rounded-lg bg-surface-card pl-10 pr-4 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/20'
-
     const handleSearchChange = (
         e: ChangeEvent<HTMLInputElement>
     ) => setSearchValue(e.target.value)
 
     return (
-        <header className={headerClassName}>
-            <HeaderTitle
-                title={title}
-                subtitle={welcomeSubtitle}
-            />
+        <header className={'sticky top-0 z-10 flex h-16 items-center justify-between border-b border-border bg-surface-card px-4 md:px-6'}>
+            {isGoalDetail
+                ? <GoalDetailBreadcrumb goalId={goalId}/>
+                : <HeaderTitle
+                    title={title}
+                    subtitle={welcomeSubtitle}
+                />
+            }
 
             <div className={'flex items-center gap-3'}>
                 {badge && (
@@ -73,7 +82,7 @@ export const AppHeader = () => {
                             value={searchValue}
                             onChange={handleSearchChange}
                             type={'text'}
-                            className={formInputClassName}
+                            className={'h-10 w-64 rounded-lg bg-surface-card pl-10 pr-4 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/20'}
                             required={false}
                         />
                     </div>

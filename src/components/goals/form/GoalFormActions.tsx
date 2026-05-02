@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation'
 
 import { Button } from '@/components/ui/button'
 
-import  { recoveryGoalsPageTexts as pageTexts }
+import { recoveryGoalsPageTexts as pageTexts }
     from '@/constants/componentTexts/recoveryGoals'
 import { ROUTES } from '@/constants/routes'
 
@@ -43,7 +43,7 @@ export const GoalFormActions = ({
             <Button
                 type={'submit'}
                 disabled={isSubmitting}
-                className={'bg-linear-to-br from-primary to-primary-container text-primary-foreground'}
+                className={'bg-linear-to-br from-primary to-primary/80 text-primary-foreground'}
             >
                 {isSubmitting
                     ? (isUpdate

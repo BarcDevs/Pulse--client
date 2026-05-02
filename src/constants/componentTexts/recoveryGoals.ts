@@ -28,7 +28,7 @@ export const recoveryGoalsPageTexts = {
     },
     mainCard: {
         badge: 'ON TRACK',
-        overall: 'Overall'
+        overall: 'Overall Progress'
     },
     statSummary: {
         title: 'Goals Summary',

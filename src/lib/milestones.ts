@@ -1,6 +1,15 @@
-import { format, parseISO } from 'date-fns'
+import { GoalMilestone, MilestoneStatus } from '@/types/goals'
 
-import { MilestoneStatus } from '@/types/goals'
+export type MilestoneCardConfig = {
+    bgClass: string
+    borderClass: string
+    opacityClass: string
+    padding: string
+    statusLabel: string
+    statusBadgeClass: string
+    titleSize: string
+    contentLayout: string
+}
 
 export const getMilestoneIconColor = (
     status: MilestoneStatus
@@ -12,17 +21,6 @@ export const getMilestoneIconColor = (
             return 'bg-primary'
         default:
             return 'bg-surface-container-highest'
-    }
-}
-
-export const formatMilestoneDate = (
-    dateString?: string
-): string => {
-    if (!dateString) return ''
-    try {
-        return format(parseISO(dateString), 'MMM dd')
-    } catch {
-        return dateString
     }
 }
 
@@ -38,5 +36,35 @@ export const getInsightColor = (
             return 'bg-green-50'
         default:
             return 'bg-slate-50'
+    }
+}
+
+export const getMilestoneCardConfig = (
+    milestone: GoalMilestone,
+    pageTexts: any
+): MilestoneCardConfig => {
+    const isCompleted = milestone.status === MilestoneStatus.COMPLETED
+    const isActive = milestone.status === MilestoneStatus.ACTIVE
+    const isLocked = milestone.status === MilestoneStatus.LOCKED
+
+    return {
+        bgClass: isActive ? 'bg-surface-container-lowest' : 'bg-surface-container-low',
+        borderClass: isActive ? 'border-l-4 border-primary' : '',
+        opacityClass: isLocked ? 'opacity-50 grayscale' : '',
+        padding: isActive ? 'p-8' : 'p-6',
+        statusLabel: isCompleted
+            ? pageTexts.milestoneStatusLabels.COMPLETED
+            : isActive
+                ? pageTexts.milestoneStatusLabels.ACTIVE
+                : pageTexts.milestoneStatusLabels.LOCKED,
+        statusBadgeClass: isActive
+            ? 'inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-primary-fixed text-on-primary-fixed uppercase tracking-tighter mb-3'
+            : isCompleted
+                ? 'text-xs font-bold text-secondary uppercase tracking-widest mb-1 block'
+                : 'text-xs font-bold text-outline uppercase tracking-widest mb-1 block',
+        titleSize: isActive ? 'text-2xl mb-3' : 'text-xl mb-2',
+        contentLayout: isActive
+            ? 'flex flex-col md:flex-row md:items-center justify-between gap-6'
+            : 'flex justify-between items-start'
     }
 }
