@@ -83,7 +83,7 @@ describe(
                             password: 'Test@1234',
                             remember: false
                         })
-                        expect(result).toEqual(mockResponse)
+                        expect(result).toEqual(mockResponse.data.data)
                     })
             })
 

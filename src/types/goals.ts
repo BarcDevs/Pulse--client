@@ -1,9 +1,33 @@
+export enum GoalCategory {
+    PHYSICAL = 'PHYSICAL',
+    MENTAL = 'MENTAL',
+    LIFESTYLE = 'LIFESTYLE'
+}
+
+export enum GoalStatus {
+    ACTIVE = 'ACTIVE',
+    COMPLETED = 'COMPLETED',
+    PAUSED = 'PAUSED',
+    ABANDONED = 'ABANDONED'
+}
+
+export enum MilestoneStatus {
+    LOCKED = 'LOCKED',
+    ACTIVE = 'ACTIVE',
+    COMPLETED = 'COMPLETED'
+}
+
 export type Goal = {
     id: string
-    userId: string
+    profileId: string
     title: string
-    description: string
-    milestones: GoalMilestone[]
+    description: string | null
+    category: GoalCategory
+    status: GoalStatus
+    targetDate?: string | null
+    isPrimary: boolean
+    milestones?: GoalMilestone[]
+    progress?: number
     createdAt: string
     updatedAt: string
 }
@@ -12,8 +36,10 @@ export type GoalMilestone = {
     id: string
     goalId: string
     title: string
-    isCompleted: boolean
+    description?: string
+    status: MilestoneStatus
     order: number
+    completedAt?: string
     createdAt: string
     updatedAt: string
 }
@@ -21,18 +47,21 @@ export type GoalMilestone = {
 export type GoalInput = {
     title: string
     description?: string
+    category: GoalCategory
+    targetDate?: string
 }
 
 export type MilestoneInput = {
     title: string
+    description?: string
 }
 
 export type MilestonePatchInput = {
     title?: string
-    isCompleted?: boolean
+    status?: MilestoneStatus
 }
 
-export type CategoryStat = {
+export type GoalStat = {
     label: string
     percentage: number
 }
@@ -40,5 +69,5 @@ export type CategoryStat = {
 export type StatSummaryCardData = {
     title: string
     description: string
-    categories: CategoryStat[]
+    goal: GoalStat[]
 }

@@ -4,9 +4,11 @@ import { Sparkles } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
 
-import { useLatestCheckIn } from '@/hooks/queries/useLatestCheckIn'
+import { useLatestCheckIn }
+    from '@/hooks/queries/useLatestCheckIn'
 
-import { progressPageTexts } from '@/constants/componentTexts/progress'
+import { progressPageTexts }
+    from '@/constants/componentTexts/progress'
 
 export const RecoveryInsight = () => {
     const { latestCheckIn } = useLatestCheckIn()
@@ -17,9 +19,9 @@ export const RecoveryInsight = () => {
 
     const mainText = isEmpty
         ? progressPageTexts.insight.emptyInsight
-        : insight.text
+        : insight.content
 
-    const secondaryText = insight?.content
+    const secondaryText = insight?.title
 
     return (
         <div className={'rounded-2xl bg-linear-to-r from-primary-gradient-start to-primary-gradient-end p-6 text-primary-foreground'}>

@@ -37,16 +37,23 @@ export const toShortNumber = (num: number): string => {
  * Formats a date according to the user's preferred date format.
  *
  * @param {Date} date - The date to format
+ * @param {boolean} short - If true, removes year from format
  * @param {string | undefined} dateFormat - The user's preferred date format (if undefined, defaults to 'dd/MM/yyyy')
  * @return {string} The formatted date
  */
 export const formatByUserPreference = (
     date: Date,
+    short: boolean = false,
     dateFormat?: string
 ): string => {
     if (!date || isNaN(date.getTime()))
         return 'Invalid Date'
 
-    const formatString = dateFormat ?? 'dd/MM/yyyy'
+    let formatString = dateFormat ?? 'dd/MM/yyyy'
+    if (short) {
+        formatString = formatString
+            .replace(', yyyy', '')
+            .replace('/yyyy', '')
+    }
     return format(date, formatString)
 }

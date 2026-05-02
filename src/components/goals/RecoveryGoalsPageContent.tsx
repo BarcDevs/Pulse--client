@@ -1,105 +1,102 @@
 'use client'
 
-import { EmptyState } from '@/components/shared/EmptyState'
+import { GoalsFilter } from '@/components/goals/GoalsFilter'
+import { RecoveryGoalsSkeletons } from '@/components/goals/RecoveryGoalsSkeletons'
 import { ErrorDisplay } from '@/components/shared/ErrorDisplay'
-import { Skeleton } from '@/components/ui/skeleton'
 
+import { useConfirmDelete } from '@/hooks/useConfirmDelete'
+import { useGoalFiltering } from '@/hooks/useGoalFiltering'
 import { useRecoveryGoalsData } from '@/hooks/useRecoveryGoalsData'
+import { useRecoveryGoalsModal } from '@/hooks/useRecoveryGoalsModal'
 
-import {
-    getBadge,
-    getProgressPercentage
-} from '@/lib/goals'
+import { recoveryGoalsPageTexts as pageTexts }
+    from '@/constants/componentTexts/recoveryGoals'
 
-import { recoveryGoalsPageTexts } from '@/constants/componentTexts/recoveryGoals'
-
-import { MainProgressCard } from './MainProgressCard'
-import { MilestonesSection } from './MilestonesSection'
-import { RecoveryGoalsHeader } from './RecoveryGoalsHeader'
-import { StatSummaryCard } from './StatSummaryCard'
+import { GoalFormModal } from './form/GoalFormModal'
+import { GoalInsightsSection } from './GoalInsightsSection'
+import { GoalsGrid } from './GoalsGrid'
+import { GoalStatsSection } from './GoalStatsSection'
 
 export const RecoveryGoalsPageContent = () => {
     const {
         goals,
-        activeGoal,
-        overallPercentage,
         isLoading,
         isError,
-        error,
-        handleToggleMilestone
+        error
     } = useRecoveryGoalsData()
 
+    const {
+        isModalOpen,
+        editingGoalId,
+        onCloseModal,
+        onOpenEditModal,
+        modalMode,
+        onOpenCreateModal
+    } = useRecoveryGoalsModal()
+
+    const {
+        selectedStatuses,
+        toggleStatus,
+        filteredGoals
+    } = useGoalFiltering(goals)
+
+    const { handleConfirmDelete } = useConfirmDelete()
+
+    const editingGoal = filteredGoals.find((g) => g.id === editingGoalId)
+
     return (
-        <div className={'p-8 md:p-12 max-w-7xl mx-auto w-full'}>
-            <RecoveryGoalsHeader
-                description={
-                    recoveryGoalsPageTexts.header.description
-                }
-            />
-
-            {isLoading && (
-                <div className={'grid grid-cols-1 md:grid-cols-12 gap-6 mt-8'}>
-                    <Skeleton className={'md:col-span-8 h-64 rounded-xl'}/>
-                    <Skeleton className={'md:col-span-4 h-64 rounded-xl'}/>
+        <>
+            <div className={'p-8 md:p-12 max-w-7xl mx-auto w-full'}>
+                <div className={'flex justify-between items-end mb-8'}>
+                    {/*todo: reusable header component*/}
+                    <div>
+                        <h3 className={'text-3xl font-display font-bold tracking-tight text-on-surface'}>
+                            {pageTexts.overview.greeting}
+                        </h3>
+                        <p className={'text-on-surface-variant mt-1'}>
+                            {pageTexts.overview.subtitle}
+                        </p>
+                    </div>
+                    <GoalsFilter
+                        selectedStatuses={selectedStatuses}
+                        toggleStatus={toggleStatus}
+                        onOpenCreateModal={onOpenCreateModal}
+                    />
                 </div>
-            )}
 
-            {isError && (
-                <div className={'mt-8 max-w-md mx-auto'}>
+                {isLoading && (
+                    <RecoveryGoalsSkeletons/>
+                )}
+
+                {isError && (
                     <ErrorDisplay error={error}/>
-                </div>
-            )}
+                )}
 
-            {!isLoading && !isError && !activeGoal && (
-                <EmptyState
-                    message={
-                        recoveryGoalsPageTexts.emptyState.message
-                    }
-                    className={'py-12'}
-                />
-            )}
+                {!isLoading && !isError && (
+                    <div className={'grid grid-cols-1 lg:grid-cols-12 gap-8'}>
+                        <div className={'lg:col-span-8'}>
+                            <GoalsGrid
+                                goals={filteredGoals}
+                                onEdit={onOpenEditModal}
+                                onDelete={handleConfirmDelete}
+                                onCreateAction={onOpenCreateModal}
+                            />
+                        </div>
 
-            {!isLoading && !isError && activeGoal && (
-                <div className={'grid grid-cols-1 md:grid-cols-12 gap-6 mt-8'}>
-                    <MainProgressCard
-                        goal={activeGoal}
-                        overallPercentage={overallPercentage}
-                        badge={getBadge(overallPercentage)}
-                    />
+                        <div className={'lg:col-span-4 space-y-6'}>
+                            <GoalInsightsSection/>
+                            <GoalStatsSection/>
+                        </div>
+                    </div>
+                )}
+            </div>
 
-                    <StatSummaryCard
-                        data={{
-                            title:
-                            recoveryGoalsPageTexts.statSummary
-                                .title,
-                            description:
-                            recoveryGoalsPageTexts.statSummary
-                                .description,
-                            categories: goals.map(
-                                (goal) => ({
-                                    label: goal.title,
-                                    percentage:
-                                        getProgressPercentage(goal)
-                                })
-                            )
-                        }}
-                    />
-
-                    <MilestonesSection
-                        milestones={activeGoal.milestones}
-                        onToggleMilestone={(
-                            milestoneId,
-                            isCompleted
-                        ) =>
-                            handleToggleMilestone(
-                                activeGoal.id,
-                                milestoneId,
-                                isCompleted
-                            )
-                        }
-                    />
-                </div>
-            )}
-        </div>
+            <GoalFormModal
+                isOpen={isModalOpen}
+                onCloseAction={onCloseModal}
+                mode={modalMode}
+                goal={editingGoal}
+            />
+        </>
     )
 }

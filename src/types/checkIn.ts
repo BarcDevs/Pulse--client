@@ -1,10 +1,16 @@
-export type CheckInInsightType = 'tip' | 'warning' | 'positive'
+export type CheckInInsightType = 'MOOD_DROP_ALERT' | 'MOTIVATIONAL' | 'WEEKLY_SUMMARY'
 
 export type CheckInInsight = {
     id: string
+    checkInId: string
     type: CheckInInsightType
-    text: string
-    content?: string
+    content: string
+    title: string
+    userId: string
+    classification: string
+    priority: 'high' | 'normal'
+    metadata?: Record<string, unknown>
+    createdAt: string
 }
 
 export type MoodPainSeriesPoint = {

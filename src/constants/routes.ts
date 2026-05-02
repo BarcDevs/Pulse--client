@@ -8,7 +8,8 @@ export const ROUTES = {
     CHECK_IN_NEW: '/check-in/new',
     FORUM: '/forum',
     FORUM_CREATE: '/forum/posts/create',
-    PROFILE_SETTINGS: '/profile/settings'
+    PROFILE_SETTINGS: '/profile/settings',
+    RECOVERY_GOALS: '/recovery-goals'
 } as const
 
 export const ROUTE_IDS = {

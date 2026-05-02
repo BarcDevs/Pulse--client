@@ -696,4 +696,4 @@ Insights are generated:
 - Frontend: [README.md](../README.md)
 - Backend: [HealEase Server](../../HealEase--server/README.md)
 - Code Standards: [CLAUDE.md](../CLAUDE.md)
-- Folder Structure: [docs/structure.md](./structure.md)
+- Folder Structure: [docs/structure.md](./STRUCTURE.md)

@@ -30,6 +30,10 @@ export const ENDPOINTS = {
         milestone: (
             goalId: string,
             milestoneId: string
-        ) => `/recovery-goals/${goalId}/milestones/${milestoneId}`
+        ) => `/recovery-goals/${goalId}/milestones/${milestoneId}`,
+        completeMilestone: (
+            goalId: string,
+            milestoneId: string
+        ) => `/recovery-goals/${goalId}/milestones/${milestoneId}/complete`
     }
 }

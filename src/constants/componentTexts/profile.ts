@@ -1,4 +1,7 @@
 export const profilePageTexts = {
+    info: {
+        memberSince: 'Member since'
+    },
     levelBadge: 'LEVEL 4: RESILIENT',
     stats: {
         days: {

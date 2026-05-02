@@ -1,29 +1,21 @@
 import { Button } from '@/components/ui/button'
 
-import { recoveryGoalsPageTexts } from '@/constants/componentTexts/recoveryGoals'
+import  { recoveryGoalsPageTexts as pageTexts }
+    from '@/constants/componentTexts/recoveryGoals'
 
 type GoalActionButtonsProps = {
-    onCompleteToday?: () => void
-    onEditPlan?: () => void
+    onCompleteTodayAction?: () => void
 }
 
 export const GoalActionButtons = ({
-    onCompleteToday,
-    onEditPlan
+    onCompleteTodayAction
 }: GoalActionButtonsProps) => (
-    <div className={'flex flex-col gap-3 w-full sm:flex-row'}>
+    <div className={'w-full'}>
         <Button
-            onClick={onCompleteToday}
-            className={'flex-1 bg-linear-to-r from-orange-400 to-pink-500 text-white font-semibold'}
+            onClick={onCompleteTodayAction}
+            className={'w-full bg-linear-to-r from-orange-400 to-pink-500 text-white font-semibold'}
         >
-            {recoveryGoalsPageTexts.actions.completeToday}
-        </Button>
-
-        <Button
-            onClick={onEditPlan}
-            className={'flex-1 bg-surface-section text-foreground hover:bg-surface-section/80'}
-        >
-            {recoveryGoalsPageTexts.actions.editPlan}
+            {pageTexts.actions.completeToday}
         </Button>
     </div>
 )

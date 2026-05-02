@@ -19,6 +19,8 @@ export default defineConfig({
     test: {
         environment: 'jsdom',
         globals: true,
+        // todo: create ci/cd pipeline
+        watch: false,
         setupFiles: ['./src/__tests__/setup.ts'],
         include: [
             'src/**/*.test.ts',
