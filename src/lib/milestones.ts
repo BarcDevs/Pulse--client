@@ -47,16 +47,26 @@ export const getMilestoneCardConfig = (
     const isActive = milestone.status === MilestoneStatus.ACTIVE
     const isLocked = milestone.status === MilestoneStatus.LOCKED
 
+    const getFormattedStatusLabel = (): string => {
+        if (isCompleted)
+            return pageTexts.milestoneCardLabels.completedFormat.replace(
+                '{order}',
+                String(milestone.order)
+            )
+        if (isActive)
+            return pageTexts.milestoneStatusLabels.ACTIVE
+        return pageTexts.milestoneCardLabels.lockedFormat.replace(
+            '{order}',
+            String(milestone.order)
+        )
+    }
+
     return {
         bgClass: isActive ? 'bg-surface-container-lowest' : 'bg-surface-container-low',
         borderClass: isActive ? 'border-l-4 border-primary' : '',
         opacityClass: isLocked ? 'opacity-50 grayscale' : '',
         padding: isActive ? 'p-8' : 'p-6',
-        statusLabel: isCompleted
-            ? pageTexts.milestoneStatusLabels.COMPLETED
-            : isActive
-                ? pageTexts.milestoneStatusLabels.ACTIVE
-                : pageTexts.milestoneStatusLabels.LOCKED,
+        statusLabel: getFormattedStatusLabel(),
         statusBadgeClass: isActive
             ? 'inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-primary-fixed text-on-primary-fixed uppercase tracking-tighter mb-3'
             : isCompleted

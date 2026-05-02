@@ -19,6 +19,10 @@ export const recoveryGoalsPageTexts = {
         ACTIVE: 'Active Phase',
         COMPLETED: 'Completed'
     },
+    milestoneCardLabels: {
+        completedFormat: 'Milestone {order} · Completed',
+        lockedFormat: 'Milestone {order} · Locked'
+    },
     overview: {
         greeting: 'Keep moving forward.',
         subtitle: 'Track your recovery goals and milestones.',

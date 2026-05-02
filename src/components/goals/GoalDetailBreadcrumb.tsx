@@ -2,6 +2,10 @@
 
 import Link from 'next/link'
 
+import { useQueryClient } from '@tanstack/react-query'
+
+import type { Goal } from '@/types/goals'
+
 import {
     Breadcrumb,
     BreadcrumbItem,
@@ -11,9 +15,8 @@ import {
     BreadcrumbSeparator
 } from '@/components/ui/breadcrumb'
 
-import { useGoal } from '@/hooks/queries/useGoal'
-
 import { recoveryGoalsPageTexts } from '@/constants/componentTexts/recoveryGoals'
+import { recoveryGoalsQueryKeys } from '@/constants/queryKeys'
 import { ROUTES } from '@/constants/routes'
 
 type GoalDetailBreadcrumbProps = {
@@ -23,7 +26,10 @@ type GoalDetailBreadcrumbProps = {
 export const GoalDetailBreadcrumb = ({
     goalId
 }: GoalDetailBreadcrumbProps) => {
-    const { data: goal } = useGoal(goalId)
+    const queryClient = useQueryClient()
+    const goal = queryClient.getQueryData<Goal>(
+        recoveryGoalsQueryKeys.goal(goalId)
+    )
 
     return (
         <Breadcrumb>

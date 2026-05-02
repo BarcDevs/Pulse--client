@@ -31,16 +31,11 @@ export const MilestoneCardRenderer = ({
         borderClass,
         opacityClass,
         padding,
+        statusLabel,
         statusBadgeClass,
         titleSize,
         contentLayout
     } = getMilestoneCardConfig(milestone, pageTexts)
-
-    const statusLabel = isCompleted
-        ? `Milestone ${milestone.order} · Completed`
-        : isActive
-            ? 'Active Phase'
-            : `Milestone ${milestone.order} · Locked`
 
     return (
         <div className={cn(

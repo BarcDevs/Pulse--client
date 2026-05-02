@@ -1,5 +1,7 @@
 import { formatByUserPreference } from '@/lib/time'
 
+import { profilePageTexts } from '@/constants/componentTexts/profile'
+
 type ProfileInfoProps = {
     firstName: string
     lastName: string
@@ -25,7 +27,7 @@ export const ProfileInfo = ({
                 {`${firstName} ${lastName}`}
             </h2>
             <p className={'text-sm text-muted-foreground'}>
-                {`Member since ${memberDate}`}
+                {`${profilePageTexts.info.memberSince} ${memberDate}`}
             </p>
         </div>
     )
