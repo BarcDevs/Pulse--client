@@ -5,6 +5,8 @@ import { Analytics } from '@vercel/analytics/next'
 
 import { LayoutProps } from '@/types'
 
+import { Toaster } from '@/components/ui/sonner'
+
 import { cn } from '@/lib/utils'
 
 import { appMetadata } from '@/config/appMetadata'
@@ -35,6 +37,7 @@ const RootLayout = ({
                     {children}
                 </AuthProvider>
             </QueryProvider>
+            <Toaster/>
             <Analytics/>
         </body>
     </html>

@@ -548,3 +548,23 @@
 }
 
 /*endregion*/
+
+/*region sonner toast styling*/
+[data-sonner-toast][data-type="error"] {
+    background: var(--destructive);
+    color: var(--destructive-foreground);
+    border-color: var(--destructive);
+}
+
+[data-sonner-toast][data-type="success"] {
+    background: var(--success);
+    color: var(--success-foreground);
+    border-color: var(--success);
+}
+
+[data-sonner-toast][data-type="warning"] {
+    background: var(--warning);
+    color: var(--warning-foreground);
+    border-color: var(--warning);
+}
+/*endregion*/
