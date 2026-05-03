@@ -45,7 +45,7 @@ export const MilestoneCardRenderer = ({
             padding,
             'rounded-xl flex--col gap-2'
         )}>
-            <span className={statusBadgeClass}>
+            <span className={cn(statusBadgeClass, 'w-fit')}>
                 {statusLabel}
             </span>
             <div className={cn(contentLayout, 'gap-2')}>
