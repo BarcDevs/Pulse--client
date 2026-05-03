@@ -10,21 +10,20 @@
 ## Code Style
 - Never use array index as key - use the current element as an index
 - Braces around values inside: Object literal braces, component props and import/export braces
-- Spaces inside braces: `{ field }` not `{field}`
-- Text blocks: Don't break unless really long (120–150 chars OK)
+done with - Text blocks: Don't break unless really long (120–150 chars OK)
 - Text: never use `—` character. only the simple hyphen `-` for all text, including classnames and config keys. This avoids encoding issues and ensures consistency across all contexts (JSX, CSS, config, etc.)
 - Use unified imports for module that has many imports
 - Short conditional blocks - never use `{`
-- **NO redundant spaces:** Don't break single imports to multiple lines unless very long (50+ chars)
+- Don't break single imports to multiple lines unless very long (50+ chars)
 - Never break line around single imports - if import is too long, break before the `from` keyword
 - Don't make line-breaking too strict
+- **NO redundant spaces**: No extra spaces before `/>` in JSX, no multiple spaces between tokens, no trailing spaces
 
 ## Language & Format
 - Quotes: Single quotes (') for all strings, imports, JSX props, backtick allowed for template strings
-- Semicolons: None (except where required)
 - Indentation: 4 spaces
 - Naming: camelCase (non-components), camelCase (folders)
-- Functions: Arrow functions ALWAYS, never regular declarations
+- Functions: Arrow functions ALWAYS, never `function` declarations
 - Types: Prefer `type` over `interface` unless declaration merging needed
 - React Types: Import directly from `react`, not `React.*`
 
