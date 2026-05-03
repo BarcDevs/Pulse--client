@@ -5,11 +5,11 @@ import { useState } from 'react'
 import { format, parseISO } from 'date-fns'
 import { Plus } from 'lucide-react'
 
-import { Goal } from '@/types/goals'
+import { Goal, MilestoneStatus } from '@/types/goals'
 
 import { Button } from '@/components/ui/button'
 
-import { getProgressPercentage } from '@/lib/goals'
+import { useGoalMilestones } from '@/hooks/context/useGoalMilestones'
 
 import { AddMilestoneModal } from './form/AddMilestoneModal'
 import { GoalProgressRing } from './GoalProgressRing'
@@ -22,7 +22,14 @@ export const GoalDetailHeader = ({
     goal
 }: GoalDetailHeaderProps) => {
     const [addMilestoneOpen, setAddMilestoneOpen] = useState(false)
-    const percentage = getProgressPercentage(goal)
+    const { milestones } = useGoalMilestones()
+
+    const completedCount = milestones.filter(
+        (m) => m.status === MilestoneStatus.COMPLETED
+    ).length
+    const percentage = milestones.length > 0
+        ? Math.round((completedCount / milestones.length) * 100)
+        : 0
 
     const targetDateFormatted = goal.targetDate
         ? format(parseISO(goal.targetDate), 'MMM dd, yyyy')
