@@ -23,6 +23,7 @@ export const ENDPOINTS = {
     },
     recoveryGoals: {
         base: '/recovery-goals',
+        stats: '/recovery-goals/stats',
         goal: (goalId: string) =>
             `/recovery-goals/${goalId}`,
         milestones: (goalId: string) =>

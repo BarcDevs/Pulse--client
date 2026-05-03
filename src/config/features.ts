@@ -9,6 +9,10 @@ export const FEATURES = {
     motivationFeedback: true,
     // Progress tracking - stats, charts, milestones
     progressInsights: true,
+    // Export progress to PDF - deferred feature
+    exportPdf: false,
+    // Share progress - share recovery progress card as image
+    shareProgress: true,
     // Community forum - post sharing and linking
     forumLinking: true,
     // Chat with AI assistant for recovery support

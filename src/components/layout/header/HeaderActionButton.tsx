@@ -24,6 +24,11 @@ export const HeaderActionButton = ({
         if (action.type === 'newPost') {
             router.push(ROUTES.FORUM_CREATE)
         }
+        if (action.type === 'share') {
+            window.dispatchEvent(
+                new CustomEvent('healease:share-progress')
+            )
+        }
     }
 
     return (

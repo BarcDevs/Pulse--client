@@ -5,7 +5,8 @@ import type {
     GoalMilestone,
     GoalStatus,
     MilestoneInput,
-    MilestonePatchInput
+    MilestonePatchInput,
+    RecoveryGoalsStats
 } from '@/types/goals'
 import type { Response } from '@/types/responses'
 
@@ -134,6 +135,16 @@ export const completeMilestone = async (
             goalId,
             milestoneId
         )
+    )
+    return res.data.data
+}
+
+export const fetchRecoveryGoalsStats = async ():
+    Promise<RecoveryGoalsStats> => {
+    const res = await api.get<
+        Response<RecoveryGoalsStats>
+    >(
+        ENDPOINTS.recoveryGoals.stats
     )
     return res.data.data
 }

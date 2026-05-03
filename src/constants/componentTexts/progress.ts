@@ -56,6 +56,22 @@ export const progressPageTexts = {
             nextValue: 'Mind/Body Precision, 6 days'
         }
     },
+    share: {
+        title: 'My Recovery Progress',
+        tagline: 'Small steps. Real progress.',
+        cta: 'Track your recovery with HealEase',
+        filename: 'healease-progress.png',
+        toastShare: 'Shared successfully',
+        toastCopied: 'Image copied to clipboard',
+        toastDownloaded: 'Image saved',
+        streakUnit: 'day streak',
+        noMoodData: 'No mood data yet',
+        currentStreakLabel: 'Current Streak',
+        averageMoodLabel: 'Average Mood',
+        milestonesLabel: 'Milestones Completed',
+        modalTitle: 'Share Your Progress',
+        modalDescription: 'Preview and share your recovery progress with friends and family'
+    },
     insight: {
         label: 'AI RECOVERY INSIGHT',
         emptyInsight: 'Complete your daily check-in to unlock personalized insights.',

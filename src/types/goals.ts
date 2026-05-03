@@ -71,3 +71,27 @@ export type StatSummaryCardData = {
     description: string
     goal: GoalStat[]
 }
+
+export type RecoveryGoalsStats = {
+    goals: {
+        totalCreated: number
+        completed: number
+        completionRate: number
+        streak: number
+        active: number
+        paused: number
+        byCategory: {
+            PHYSICAL: number
+            MENTAL: number
+            LIFESTYLE: number
+        }
+    }
+    milestones: {
+        totalCreated: number
+        completed: number
+        completionRate: number
+        streak: number
+        active: number
+        paused: number
+    }
+}
