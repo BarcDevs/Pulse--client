@@ -43,13 +43,13 @@ export const MilestoneCardRenderer = ({
             borderClass,
             opacityClass,
             padding,
-            'rounded-xl'
+            'rounded-xl flex--col gap-2'
         )}>
             <span className={statusBadgeClass}>
                 {statusLabel}
             </span>
-            <div className={contentLayout}>
-                <div className={cn(isActive && 'flex-1')}>
+            <div className={cn(contentLayout, 'gap-2')}>
+                <div className={cn(isActive && 'flex-1', 'flex--col gap-2')}>
                     <h3 className={cn(
                         'font-bold font-headline',
                         titleSize
@@ -59,7 +59,7 @@ export const MilestoneCardRenderer = ({
                     {milestone.description && (
                         <p className={cn(
                             'text-on-surface-variant',
-                            isActive ? 'mb-6 leading-relaxed' : 'text-sm'
+                            isActive && 'leading-relaxed'
                         )}>
                             {milestone.description}
                         </p>

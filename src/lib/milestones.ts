@@ -65,14 +65,14 @@ export const getMilestoneCardConfig = (
         bgClass: isActive ? 'bg-surface-container-lowest' : 'bg-surface-container-low',
         borderClass: isActive ? 'border-l-4 border-primary' : '',
         opacityClass: isLocked ? 'opacity-50 grayscale' : '',
-        padding: isActive ? 'p-8' : 'p-6',
+        padding: isActive ? 'p-5' : 'p-4',
         statusLabel: getFormattedStatusLabel(),
         statusBadgeClass: isActive
-            ? 'inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-primary-fixed text-on-primary-fixed uppercase tracking-tighter mb-3'
+            ? 'inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-primary-fixed text-on-primary-fixed uppercase tracking-tighter'
             : isCompleted
-                ? 'text-xs font-bold text-secondary uppercase tracking-widest mb-1 block'
-                : 'text-xs font-bold text-outline uppercase tracking-widest mb-1 block',
-        titleSize: isActive ? 'text-2xl mb-3' : 'text-xl mb-2',
+                ? 'text-xs font-bold text-secondary uppercase tracking-widest block'
+                : 'text-xs font-bold text-outline uppercase tracking-widest block',
+        titleSize: isActive ? 'text-2xl' : 'text-xl',
         contentLayout: isActive
             ? 'flex flex-col md:flex-row md:items-center justify-between gap-6'
             : 'flex justify-between items-start'
