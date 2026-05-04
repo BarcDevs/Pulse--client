@@ -20,10 +20,10 @@ export const CorrelationCard = () => {
                 {t(insightsLocales.behavioralPatterns.correlation.label)}
             </p>
             <h4 className={'mt-1 font-semibold text-foreground'}>
-                {t(insightsLocales.patterns.correlation.title)}
+                {t(insightsLocales.behavioralPatterns.correlation.title)}
             </h4>
             <p className={'mt-2 text-sm text-muted-foreground'}>
-                {t(insightsLocales.patterns.correlation.description)}
+                {t(insightsLocales.behavioralPatterns.correlation.description)}
             </p>
             <div className={'mt-4 h-24'}>
                 <ResponsiveContainer

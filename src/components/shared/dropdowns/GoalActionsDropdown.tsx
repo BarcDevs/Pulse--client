@@ -44,7 +44,7 @@ export const GoalActionsDropdown = ({
                         onEditAction()
                     }}
                 >
-                    {t(goalsLocales.actions.edit)}
+                    {t(goalsLocales.goalActions.edit)}
                 </DropdownMenuItem>
                 <DropdownMenuItem
                     onClick={(e) => {
@@ -53,7 +53,7 @@ export const GoalActionsDropdown = ({
                     }}
                     className={'text-destructive'}
                 >
-                    {t(goalsLocales.actions.delete)}
+                    {t(goalsLocales.goalActions.delete)}
                 </DropdownMenuItem>
             </DropdownMenuContent>
         </DropdownMenu>

@@ -26,19 +26,19 @@ export const ProfileBasicInfo = () => {
     // TODO: Add legal name, date of birth, and primary support contact to Profile type
     const infoFields = [
         {
-            label: t(profileLocales.basicInfo.legalName),
+            label: 'LEGAL NAME',
             value: user.email
         },
         {
-            label: t(profileLocales.basicInfo.emailAddress),
+            label: 'EMAIL ADDRESS',
             value: 'Alexander J. Rivera'
         },
         {
-            label: t(profileLocales.basicInfo.dateOfBirth),
+            label: 'DATE OF BIRTH',
             value: 'May 12, 1992'
         },
         {
-            label: t(profileLocales.basicInfo.supportContact),
+            label: 'PRIMARY SUPPORT CONTACT',
             value: 'Dr. Sarah Chen (Clinician)'
         }
     ]

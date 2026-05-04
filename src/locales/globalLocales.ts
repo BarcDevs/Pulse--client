@@ -1,10 +1,17 @@
 export const globalLocales = {
+    nav: {
+        help: 'global.nav.help',
+        about: 'global.nav.about'
+    },
     footer: {
         brandTagline: 'global.footer.brandTagline',
         quickLinksTitle: 'global.footer.quickLinksTitle',
         legalTitle: 'global.footer.legalTitle',
         socialTitle: 'global.footer.socialTitle',
-        copyright: 'global.footer.copyright'
+        copyright: 'global.footer.copyright',
+        support: 'global.footer.support',
+        privacy: 'global.footer.privacy',
+        terms: 'global.footer.terms'
     },
     layout: {
         header: {

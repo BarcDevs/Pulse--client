@@ -18,10 +18,10 @@ export const ObservationCard = () => {
             </p>
             <div className={'mt-4'}>
                 <div className={'text-3xl font-bold text-primary'}>
-                    {t(insightsLocales.behavioralPatterns.observation.successValue)}
+                    {t(insightsLocales.behavioralPatterns.observation.stat)}
                 </div>
                 <p className={'text-xs text-muted-foreground'}>
-                    {t(insightsLocales.behavioralPatterns.observation.successLabel)}
+                    {t(insightsLocales.behavioralPatterns.observation.statLabel)}
                 </p>
             </div>
         </div>

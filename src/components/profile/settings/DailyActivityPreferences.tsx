@@ -25,19 +25,20 @@ export const DailyActivityPreferences = () => {
                         (dailyActivity) =>
                             dailyActivity.title === activity.name
                     )
-                    return match ? {
-                        id: activity.id,
-                        icon: match.icon,
-                        title: activity.name,
-                        subtitle: activity.description,
-                        tags: [activity.category]
-                    } : null
+                    if (match) {
+                        return {
+                            id: activity.id,
+                            title: activity.name,
+                            subtitle: activity.description,
+                            tags: [activity.category],
+                            icon: match.icon
+                        }
+                    }
+                    return null
                 }).filter(
-                    (activity): activity is NonNullable<
-                        typeof activity
-                    > => activity !== null
+                    (activity) => activity !== null
                 )
-            : dailyActivities
+            : []
 
     return (
         <div className={'card-base'}>

@@ -38,7 +38,9 @@ export const PrivacySettings = () => {
             <div className={'grid grid-cols-1 md:grid-cols-2 gap-6'}>
                 <DropdownSelector
                     value={currentVisibility}
-                    options={VISIBILITY_OPTIONS}
+                    options={Object.fromEntries(
+                        VISIBILITY_OPTIONS.map(opt => [opt.value, opt.label])
+                    )}
                     onChangeAction={(value) =>
                         onSettingChange(
                             'profileVisibility',

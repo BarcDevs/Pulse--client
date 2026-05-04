@@ -16,7 +16,6 @@ import {
 import { useShareProgress } from '@/hooks/ui/useShareProgress'
 
 import { progressLocales } from '@/locales/progressLocales'
-import { progressLocales } from '@/locales/progressLocales'
 
 type ShareImageModalProps = {
     open: boolean
@@ -67,13 +66,13 @@ export const ShareProgressModal = ({
                         onClick={download}
                         disabled={isCapturing}
                     >
-                        {sharedTexts.download}
+                        {t(progressLocales.share.download)}
                     </Button>
                     <Button
                         onClick={share}
                         disabled={isCapturing}
                     >
-                        {sharedTexts.share}
+                        {t(progressLocales.share.share)}
                     </Button>
                 </div>
             </DialogContent>

@@ -111,7 +111,8 @@ export const profileSettingsWithIcons: SettingWithIcon[] =
 
 export const profileSystemPrivacySettingsWithIcons: PrivacySetting[] =
     SYSTEM_PRIVACY_SETTINGS.map((setting) => ({
-        ...setting,
+        title: setting.title,
+        subtitle: setting.description,
         icon:
             profileSystemPrivacyIconMap[
                 setting.title as

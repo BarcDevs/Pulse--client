@@ -23,7 +23,9 @@ export const LanguageSelector = ({
     return (
         <DropdownSelector
             value={language}
-            options={LANGUAGE_OPTIONS}
+            options={Object.fromEntries(
+                LANGUAGE_OPTIONS.map(opt => [opt.value, opt.label])
+            )}
             onChangeAction={onLanguageChangeAction}
             label={t(settingsLocales.preferences.language.title)}
             description={t(settingsLocales.preferences.language.description)}

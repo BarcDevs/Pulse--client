@@ -19,7 +19,7 @@ export const PredictionCard = () => {
                 {t(insightsLocales.behavioralPatterns.prediction.description)}
             </p>
             <Badge className={'mt-4 border-0 bg-white/20 text-white'}>
-                {t(insightsLocales.behavioralPatterns.prediction.badge)}
+                {t(insightsLocales.behavioralPatterns.prediction.confidence)}
             </Badge>
         </div>
     )

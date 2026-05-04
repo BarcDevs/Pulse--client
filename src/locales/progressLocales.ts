@@ -49,7 +49,9 @@ export const progressLocales = {
         averageMoodLabel: 'progress.share.averageMoodLabel',
         milestonesLabel: 'progress.share.milestonesLabel',
         modalTitle: 'progress.share.modalTitle',
-        modalDescription: 'progress.share.modalDescription'
+        modalDescription: 'progress.share.modalDescription',
+        download: 'progress.share.download',
+        share: 'progress.share.share'
     },
     insight: {
         label: 'progress.insight.label',
