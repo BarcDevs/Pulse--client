@@ -1,0 +1,1027 @@
+{
+  "auth": {
+    "common": {
+      "emailLabel": "EMAIL ADDRESS",
+      "emailPlaceholder": "name@example.com",
+      "passwordPlaceholder": "••••••••",
+      "orContinueWith": "OR CONTINUE WITH",
+      "googleButton": "Google",
+      "continueWithGoogle": "Continue with Google"
+    },
+    "login": {
+      "title": "Welcome Back",
+      "description": "Please enter your details to access your sanctuary.",
+      "emailLabel": "EMAIL ADDRESS",
+      "emailPlaceholder": "name@example.com",
+      "passwordLabel": "PASSWORD",
+      "forgotPasswordLink": "Forgot Password?",
+      "loginButton": "Log In",
+      "loggingInButton": "Logging in...",
+      "orContinueWith": "OR CONTINUE WITH",
+      "googleButton": "Google",
+      "signupText": "Don't have an account?",
+      "signupLink": "Sign Up",
+      "hipaaText": "SECURE HIPAA COMPLIANT CONNECTION"
+    },
+    "signup": {
+      "title": "Create Your Account",
+      "description": "Join thousands of patients on their recovery journey. It takes less than a minute.",
+      "firstNameLabel": "FIRST NAME",
+      "firstNamePlaceholder": "John",
+      "lastNameLabel": "LAST NAME",
+      "lastNamePlaceholder": "Doe",
+      "emailLabel": "EMAIL ADDRESS",
+      "emailPlaceholder": "name@example.com",
+      "passwordLabel": "PASSWORD",
+      "passwordPlaceholder": "••••••••",
+      "confirmPasswordLabel": "CONFIRM PASSWORD",
+      "confirmPasswordPlaceholder": "••••••••",
+      "signupButton": "Create Account",
+      "signingUpButton": "Creating account...",
+      "loginText": "Already have an account?",
+      "loginLink": "Sign In",
+      "orContinueWith": "OR CONTINUE WITH",
+      "googleButton": "Google"
+    },
+    "forgotPassword": {
+      "title": "Forgot password?",
+      "description": "Don't worry, it happens to the best of us. Enter the email address associated with your account and we'll send you a link to reset your password.",
+      "emailLabel": "EMAIL ADDRESS",
+      "emailPlaceholder": "name@example.com",
+      "submitButton": "Send Reset Link",
+      "sendingButton": "Sending...",
+      "backButton": "Back to Login",
+      "checkEmailTitle": "Check your email",
+      "checkEmailDesc": "We've sent a password reset link to",
+      "supportLink": "support team",
+      "supportText": "If you no longer have access to your email, please contact our",
+      "supportVerification": "for identity verification."
+    },
+    "resetPassword": {
+      "title": "Create New Password",
+      "description": "Choose a secure password to regain access to your recovery dashboard.",
+      "passwordLabel": "NEW PASSWORD",
+      "confirmPasswordLabel": "CONFIRM NEW PASSWORD",
+      "passwordPlaceholder": "••••••••",
+      "minLengthText": "Min 8 characters",
+      "specialCharText": "One special symbol",
+      "submitButton": "Reset Password",
+      "resettingButton": "Resetting...",
+      "backButton": "Back to login",
+      "troubleText": "Having trouble?",
+      "supportLink": "Contact Health Support"
+    }
+  },
+  "chat": {
+    "inputPlaceholder": "Type your question or concern here...",
+    "pageTitle": "AI Chat",
+    "pageSubtitle": "Your supportive recovery companion",
+    "badge": "SAFE SPACE",
+    "suggestedForYou": "Suggested for You",
+    "messages": {
+      "assistantLabel": "AI Chat",
+      "youLabel": "You",
+      "openingMessage": "Hello Alex, I'm here to support you today. How are you feeling?",
+      "exampleUserRestlessness": "I'm feeling a bit restless today...",
+      "aiResponse1": "I understand. Restlessness is a very common part of the recovery journey. It often means your body has energy that needs direction.",
+      "suggestions": ["Try grounding exercise", "Sleep environment tips"],
+      "aiResponse2": "Let's start with the grounding exercise. It's a proven technique that helps calm an active mind and ground you in the present moment."
+    },
+    "sidebar": {
+      "nextMilestoneLabel": "NEXT MILESTONE",
+      "nextMilestoneTitle": "90 Days",
+      "nextMilestoneBadge": "87% Complete",
+      "insightsTitle": "Recent Insights",
+      "insightsTimeframe": "Last 7 days",
+      "emotionalTrendLabel": "Emotional Trend",
+      "emotionalTrendTitle": "Improved",
+      "emotionalTrendDescription": "You're maintaining a stable mood",
+      "sleepQualityLabel": "Sleep Quality",
+      "sleepQualityTitle": "Good",
+      "sleepQualityDescription": "6.5 hours average",
+      "quote": "\"Recovery is not a destination, it's a journey\"",
+      "quoteAuthor": "Recovery Community"
+    }
+  },
+  "checkIn": {
+    "headerTitle": "Health Overview",
+    "pageTitle": "Daily Check-In",
+    "pageSubtitle": "Take a moment to center yourself and log your progress.",
+    "submitButton": "Submit Check-In",
+    "submittingButton": "Submitting...",
+    "autosaveStatus": "AUTOSAVED AT 09:42 AM",
+    "mood": {
+      "label": "Mood",
+      "min": "Very Low",
+      "max": "Very High"
+    },
+    "pain": {
+      "label": "Pain Level",
+      "helper": "How physically comfortable do you feel today?",
+      "min": "No Pain",
+      "max": "Severe Pain"
+    },
+    "activities": {
+      "title": "Activities",
+      "placeholder": "Add custom",
+      "default": ["Meditation", "Exercise", "Social time", "Reading", "Journaling", "Therapy", "Rest"]
+    },
+    "journal": {
+      "title": "Journal Entry",
+      "placeholder": "How are you feeling today? What's on your mind?"
+    },
+    "quotes": [
+      "Every day is a new opportunity for growth.",
+      "Your healing journey is unique and valuable.",
+      "Progress, not perfection, is the goal.",
+      "One step forward is still moving in the right direction.",
+      "You are stronger than you think.",
+      "Small victories deserve to be celebrated.",
+      "Take it one day at a time.",
+      "Your effort today shapes your tomorrow.",
+      "Be gentle with yourself through this process.",
+      "Healing looks different for everyone."
+    ]
+  },
+  "community": {
+    "categories": {
+      "browseTitle": "Browse Categories",
+      "viewAll": "View All",
+      "list": [
+        {
+          "id": 1,
+          "title": "Support Groups",
+          "description": "Find specialized peer-led sessions",
+          "count": "10 Active Groups"
+        },
+        {
+          "id": 2,
+          "title": "Success Stories",
+          "description": "Inspiration from milestones reached",
+          "count": "452 Stories"
+        },
+        {
+          "id": 3,
+          "title": "Nutrition",
+          "description": "Fueling your body for recovery",
+          "count": "New Recipes"
+        },
+        {
+          "id": 4,
+          "title": "Yoga & Movement",
+          "description": "Healing through somatic practice",
+          "count": "Live Today"
+        }
+      ]
+    },
+    "posts": {
+      "filterLabels": {
+        "newest": "Newest",
+        "popular": "Popular",
+        "hot": "Hot",
+        "unanswered": "Unanswered"
+      },
+      "repliesLabel": "replies",
+      "postedBy": "Posted by",
+      "share": "Share",
+      "save": "Save",
+      "newPostButton": "New Post",
+      "loading": "Loading posts...",
+      "empty": "No posts yet. Be the first to share your journey and inspire others.",
+      "emptyWithFilter": "No posts found with tag. Try a different tag or browse all posts."
+    },
+    "mentors": {
+      "title": "Recovery Mentors",
+      "chatButton": "Chat",
+      "list": [
+        {
+          "id": 1,
+          "name": "David Chen",
+          "role": "Certified Coach",
+          "avatar": "D",
+          "online": true
+        },
+        {
+          "id": 2,
+          "name": "Maria G.",
+          "role": "Wellness Guide",
+          "avatar": "M",
+          "online": false
+        }
+      ]
+    },
+    "sanctuary": {
+      "title": "Community Sanctuary",
+      "description": "HealEase is a safe, non-judgmental space. We prioritize empathy, privacy, and supportive dialogue.",
+      "rules": ["Be kind and be open", "No unsolicited medical advice", "Protect user anonymity"],
+      "readGuidelines": "Read Guidelines"
+    },
+    "trending": {
+      "title": "Trending Topics",
+      "loading": "Loading topics..."
+    },
+    "activity": {
+      "title": "Community",
+      "viewAll": "View All",
+      "list": [
+        {
+          "id": 1,
+          "user": "Sarah",
+          "action": "shared a milestone",
+          "time": "30 min ago",
+          "avatar": "S"
+        },
+        {
+          "id": 2,
+          "user": "James",
+          "action": "joined the Yoga group",
+          "time": "1 hour ago",
+          "avatar": "J"
+        },
+        {
+          "id": 3,
+          "user": "Marcus",
+          "action": "posted a question",
+          "time": "2 hours ago",
+          "avatar": "M"
+        },
+        {
+          "id": 4,
+          "user": "Elena",
+          "action": "replied to a post",
+          "time": "3 hours ago",
+          "avatar": "E"
+        },
+        {
+          "id": 5,
+          "user": "David",
+          "action": "started a new discussion",
+          "time": "4 hours ago",
+          "avatar": "D"
+        }
+      ]
+    },
+    "confirmations": {
+      "deletePost": "Are you sure you want to delete this post?",
+      "deleteReply": "Are you sure you want to delete this reply?"
+    },
+    "postDetail": {
+      "loading": "Loading replies...",
+      "replies": "Replies",
+      "reply": "Reply",
+      "noReplies": "No replies yet. Be the first to share your thoughts!",
+      "loginToReply": "Please log in to reply",
+      "loginButton": "Log In",
+      "notFoundTitle": "Post not found",
+      "notFoundDescription": "The post you are looking for does not exist or has been deleted.",
+      "backToCommunity": "Back to Community",
+      "repliesLoadError": "Failed to load replies",
+      "postLoadError": "Failed to load post. Please check your connection."
+    },
+    "postActions": {
+      "solidarity": "Solidarity",
+      "reply": "Reply",
+      "share": "Share"
+    },
+    "postForm": {
+      "writeReply": "Write a Reply",
+      "createPost": "Create Post",
+      "content": "Content",
+      "cancel": "Cancel",
+      "sendReply": "Send Reply",
+      "title": "Title",
+      "titlePlaceholder": "Post title",
+      "category": "Category",
+      "categoryPlaceholder": "Select category",
+      "bodyPlaceholderReply": "Write your reply...",
+      "bodyPlaceholderPost": "Write your post..."
+    }
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "greeting": "Welcome back,",
+    "checkIn": {
+      "badge": "ACTION REQUIRED",
+      "title": "Ready for your Daily Check-In?",
+      "description": "Maintaining consistent tracking is the key to identifying patterns in your recovery journey.",
+      "button": "Start Check-In"
+    },
+    "aiInsight": {
+      "label": "AI INSIGHT"
+    },
+    "noInsights": "Insight not found. Please complete more check-ins to receive personalized insights.",
+    "community": {
+      "label": "Community",
+      "viewAll": "VIEW ALL"
+    },
+    "todaysFocus": {
+      "label": "Today's Focus",
+      "badge": "RECOMMENDED FOR YOU",
+      "title": "5 mins mindfulness",
+      "description": "Lower cortisol levels and improve your mood for the next 4 hours."
+    },
+    "historyChart": {
+      "title": "Recovery Trend",
+      "week": "Week",
+      "month": "Month",
+      "incompleteWeek": "Build your recovery timeline. Every day tracked brings clarity to your journey"
+    }
+  },
+  "insights": {
+    "title": "AI Insights",
+    "subtitle": "Smart observations about your recovery",
+    "aiActive": "AI ANALYSIS ACTIVE",
+    "criticalInsight": {
+      "label": "Critical Insight",
+      "title": "Your mood improves by 15% on days including mobility stretching.",
+      "description": "Our analysis shows a direct correlation between your 8 AM stretching routine and peak afternoon energy levels.",
+      "buttonPrimary": "Schedule Stretch",
+      "buttonSecondary": "View Data Correlation"
+    },
+    "painAlert": {
+      "title": "Pain Trend Alert",
+      "description": "Slightly higher pain levels recorded today compared to your 7-day average. Your sleep quality was also 12% lower last night.",
+      "status": "Attention Required",
+      "action": "Update Journal"
+    },
+    "actionableStep": {
+      "title": "Actionable Step",
+      "description": "Try 10 minutes of restorative yoga today to manage pain and improve evening relaxation before your next sleep cycle.",
+      "button": "Start Session Now"
+    },
+    "header": {
+      "badge": "CRITICAL INSIGHT",
+      "title": "Your mood improves by 15% on days including mobility stretching.",
+      "description": "Our analysis shows a direct correlation between your 8 AM stretching routine and peak afternoon energy levels.",
+      "buttonPrimary": "Schedule Stretch",
+      "buttonSecondary": "View Data Correlation"
+    },
+    "behavioralPatterns": {
+      "title": "Behavioral Patterns",
+      "tabs": {
+        "sevenDays": "7 Days",
+        "thirtyDays": "30 Days"
+      },
+      "correlation": {
+        "label": "Correlation",
+        "title": "Social Interaction vs. Stress",
+        "description": "You report 23% lower stress levels on days when you participate in community group chats."
+      },
+      "observation": {
+        "label": "Observation",
+        "title": "Morning Routine Impact",
+        "description": "Completing a Daily Check-In before 9:00 AM leads to a 30% higher chance of reaching all daily recovery goals.",
+        "stat": "82%",
+        "statLabel": "Success rate when daily"
+      },
+      "prediction": {
+        "label": "AI Prediction",
+        "title": "Projected Recovery Path",
+        "description": "If current adherence maintains, you are on track to increase your range of motion by 8% next week.",
+        "confidence": "High Confidence Analytics"
+      }
+    },
+    "summary": {
+      "title": "Weekly Trend Summary",
+      "description": "Comprehensive overview of your physiological and mental markers.",
+      "exportButton": "Export Report",
+      "stats": [
+        {
+          "label": "VITALITY SCORE",
+          "value": "78",
+          "trend": "arrow_upward 3%",
+          "description": "Consistent upward trend",
+          "icon": "TrendingUp",
+          "trendColor": "text-secondary"
+        },
+        {
+          "label": "ENGAGEMENT",
+          "value": "Low",
+          "trend": "priority_high Improve",
+          "description": "Below baseline in sharing",
+          "icon": "Activity",
+          "trendColor": "text-amber-500"
+        },
+        {
+          "label": "SLEEP QUALITY",
+          "value": "8.2",
+          "trend": "/10 check_circle Stable",
+          "description": "Above the 75th percentile",
+          "icon": "CheckCircle",
+          "trendColor": "text-secondary"
+        },
+        {
+          "label": "MOOD STABILITY",
+          "value": "High",
+          "trend": "trending_up Positive",
+          "description": "Improving steadily",
+          "icon": "Sparkles",
+          "trendColor": "text-secondary"
+        }
+      ]
+    },
+    "milestone": {
+      "title": "Milestone Reached!",
+      "description": "You've logged 10 consecutive days! Consistency is the foundation of lasting recovery.",
+      "label": "Gold Streak Level 1"
+    }
+  },
+  "progress": {
+    "title": "Progress",
+    "subtitle": "Visualizing your recovery journey. Small steps lead to big milestones.",
+    "exportPdf": "Export PDF",
+    "shareJourney": "Share Journey",
+    "milestones": {
+      "title": "Milestones & Achievements",
+      "seeAll": "See All 15",
+      "list": [
+        {
+          "title": "First Step",
+          "description": "Completed first check-in",
+          "achieved": true
+        },
+        {
+          "title": "7-Day Streak",
+          "description": "Checked in for 7 days",
+          "achieved": true
+        },
+        {
+          "title": "Mind Master",
+          "description": "30-Day Clarity",
+          "achieved": true
+        },
+        {
+          "title": "1 Month Active",
+          "description": "Coming soon",
+          "achieved": false
+        }
+      ]
+    },
+    "wellness": {
+      "label": "Weekly Wellness Average",
+      "timeframe": "Last week vs. this week",
+      "mood": "Mood",
+      "pain": "Pain",
+      "trends": {
+        "improving": "Improving",
+        "declining": "Declining",
+        "steady": "Steady",
+        "increasing": "Increasing",
+        "stable": "Stable",
+        "building": "Building your journey"
+      }
+    },
+    "stats": {
+      "streak": {
+        "label": "Current Streak",
+        "unit": "days",
+        "bestPrefix": "Personal best:"
+      },
+      "milestones": {
+        "label": "Total Milestones",
+        "unit": "badges",
+        "nextPrefix": "Next:",
+        "nextValue": "Mind/Body Precision, 6 days"
+      }
+    },
+    "share": {
+      "title": "My Recovery Progress",
+      "tagline": "Small steps. Real progress.",
+      "cta": "Track your recovery with HealEase",
+      "filename": "healease-progress.png",
+      "toastShare": "Shared successfully",
+      "toastCopied": "Image copied to clipboard",
+      "toastDownloaded": "Image saved",
+      "streakUnit": "day streak",
+      "noMoodData": "No mood data yet",
+      "currentStreakLabel": "Current Streak",
+      "averageMoodLabel": "Average Mood",
+      "milestonesLabel": "Milestones Completed",
+      "modalTitle": "Share Your Progress",
+      "modalDescription": "Preview and share your recovery progress with friends and family"
+    },
+    "insight": {
+      "label": "AI RECOVERY INSIGHT",
+      "emptyInsight": "Complete your daily check-in to unlock personalized insights.",
+      "buttonPrimary": "Keep Going",
+      "buttonSecondary": "Acknowledge"
+    },
+    "charts": {
+      "moodChart": {
+        "title": "Mood Trend",
+        "subtitle": "Daily average mood score",
+        "legendLabel": "Actual Score",
+        "targetLabel": "Weekly Target"
+      },
+      "painChart": {
+        "title": "Pain Intensity",
+        "subtitle": "Tracking physical symptoms over time",
+        "legendLabel": "Pain Level (lower is better)"
+      },
+      "moodTrendChart": {
+        "title": "Mood Trend",
+        "subtitle": "Daily average mood score",
+        "legendLabel": "Mood Score",
+        "targetLabel": "Weekly Target"
+      },
+      "painIntensityChart": {
+        "title": "Pain Intensity",
+        "subtitle": "Tracking physical progression over time",
+        "legendLabel": "Pain Level (Joints)"
+      },
+      "timePeriods": {
+        "daily": "Daily",
+        "weekly": "Weekly",
+        "monthly": "Monthly"
+      },
+      "tabTriggers": {
+        "week": "Week",
+        "month": "Month"
+      },
+      "notifications": {
+        "moodIncomplete": "Track your mood patterns to discover what brings you joy",
+        "painIncomplete": "Every day brings new insights into your recovery",
+        "loadError": "Failed to load data"
+      }
+    }
+  },
+  "profile": {
+    "info": {
+      "memberSince": "Member since"
+    },
+    "levelBadge": "LEVEL 4: RESILIENT",
+    "stats": {
+      "days": {
+        "value": "142",
+        "label": "DAYS"
+      },
+      "milestones": {
+        "value": "28",
+        "label": "MILESTONES"
+      },
+      "healthScore": {
+        "value": "8.4",
+        "label": "HEALTH SCORE"
+      }
+    },
+    "recoveryIdentity": {
+      "title": "Recovery Identity",
+      "subtitle": "Core Focus Areas",
+      "focusAreas": [
+        { "label": "Pain Management" },
+        { "label": "Mental Clarity" },
+        { "label": "Mindfulness" }
+      ],
+      "quote": "My goal is to regain physical mobility through consistent therapy while maintaining a calm, focused mindset during stressful transitions."
+    },
+    "basicInfo": {
+      "title": "Basic Information",
+      "edit": "Edit",
+      "fields": [
+        { "label": "LEGAL NAME", "value": "Alexander J. Rivera" },
+        { "label": "EMAIL ADDRESS", "value": "a.rivera@example.com" },
+        { "label": "DATE OF BIRTH", "value": "May 12, 1992" },
+        { "label": "PRIMARY SUPPORT CONTACT", "value": "Dr. Sarah Chen (Clinician)" }
+      ]
+    },
+    "goals": {
+      "title": "Active Goals",
+      "viewRoadmap": "View Roadmap",
+      "list": [
+        { "label": "PHYSIO THERAPY", "progress": 80 },
+        { "label": "DAILY MEDITATION", "progress": 65 },
+        { "label": "SLEEP HYGIENE", "progress": 40 }
+      ]
+    },
+    "activities": {
+      "title": "Daily Activity Preferences",
+      "list": [
+        {
+          "title": "Morning Routine",
+          "time": "Scheduled for 07:30 AM",
+          "tags": ["MEDITATION", "STRETCH"]
+        },
+        {
+          "title": "Evening Reflection",
+          "time": "Scheduled for 09:00 PM",
+          "tags": ["JOURNALING", "GRATITUDE"]
+        }
+      ]
+    },
+    "settings": {
+      "title": "System & Privacy",
+      "list": [
+        {
+          "title": "Security",
+          "description": "Last updated 10 days"
+        },
+        {
+          "title": "Notifications",
+          "description": "Push enabled"
+        },
+        {
+          "title": "Data Sharing",
+          "description": "Clinician view On"
+        },
+        {
+          "title": "Login History",
+          "description": "San Francisco, CA"
+        }
+      ]
+    },
+    "dailyPreferences": {
+      "title": "Daily Activity Preferences",
+      "morningRoutine": {
+        "title": "Morning Routine",
+        "subtitle": "Scheduled for 07:30 AM",
+        "tags": ["Meditation", "Stretch"]
+      },
+      "eveningReflection": {
+        "title": "Evening Reflection",
+        "subtitle": "Scheduled for 09:00 PM",
+        "tags": ["Journaling", "Breathwork"]
+      }
+    },
+    "systemPrivacy": {
+      "title": "System & Privacy",
+      "settings": [
+        {
+          "title": "Security",
+          "subtitle": "Last updated 14 days"
+        },
+        {
+          "title": "Notifications",
+          "subtitle": "Push enabled"
+        },
+        {
+          "title": "Data Sharing",
+          "subtitle": "Clinician view On"
+        },
+        {
+          "title": "Login History",
+          "subtitle": "San Francisco, CA"
+        }
+      ]
+    }
+  },
+  "goals": {
+    "header": {
+      "title": "Recovery Goals",
+      "description": "Recovery is not a linear journey. Focus on these small, meaningful steps that build the foundation for your long-term wellbeing."
+    },
+    "categoryLabels": {
+      "PHYSICAL": "Physical",
+      "MENTAL": "Mental",
+      "LIFESTYLE": "Lifestyle"
+    },
+    "statusLabels": {
+      "ACTIVE": "Active",
+      "COMPLETED": "Completed",
+      "PAUSED": "Paused",
+      "ABANDONED": "Abandoned"
+    },
+    "milestoneStatusLabels": {
+      "LOCKED": "Locked",
+      "ACTIVE": "Active Phase",
+      "COMPLETED": "Completed"
+    },
+    "milestoneCardLabels": {
+      "completedFormat": "Milestone {order} · Completed",
+      "lockedFormat": "Milestone {order} · Locked"
+    },
+    "overview": {
+      "greeting": "Keep moving forward.",
+      "subtitle": "Track your recovery goals and milestones.",
+      "newGoalButton": "New Goal",
+      "addGoalPlaceholder": "Add New Goal",
+      "addGoalSubtitle": "Build your path to recovery"
+    },
+    "mainCard": {
+      "badge": "ON TRACK",
+      "overall": "Overall Progress"
+    },
+    "statSummary": {
+      "title": "Goals Summary",
+      "description": "Progress breakdown by goal"
+    },
+    "milestones": {
+      "title": "Your Milestones",
+      "subtitle": "Key focus areas",
+      "viewAll": "View All",
+      "markComplete": "Mark Complete",
+      "markIncomplete": "Mark Incomplete"
+    },
+    "detail": {
+      "breadcrumbGoals": "Goals",
+      "markCompletePhase": "Complete Phase",
+      "markIncompletePhase": "Mark Incomplete"
+    },
+    "insights": {
+      "title": "AI Insights",
+      "weeklyViewTitle": "Weekly View",
+      "emptyState": "No insights yet. Complete more milestones to get personalized insights.",
+      "failedToLoad": "Failed to load insights. Please try again later."
+    },
+    "actions": {
+      "completeToday": "Complete Today",
+      "editPlan": "Edit Plan"
+    },
+    "goalCard": {
+      "progressLabel": "Progress"
+    },
+    "goalActions": {
+      "edit": "Edit",
+      "delete": "Delete"
+    },
+    "goalStats": {
+      "activeMilestonesLabel": "Active Milestones"
+    },
+    "emptyState": {
+      "message": "No recovery goals yet. Create one to get started."
+    },
+    "goalForm": {
+      "createTitle": "Create New Goal",
+      "updateTitle": "Update Goal",
+      "subtitle": "Define a clear, achievable objective for your recovery journey. Small steps lead to lasting transformation.",
+      "backLabel": "Back to Goals",
+      "fields": {
+        "titleLabel": "Goal Title",
+        "titlePlaceholder": "e.g., Daily Mindfulness",
+        "descriptionLabel": "Description (Optional)",
+        "descriptionPlaceholder": "Detail your plan or motivation...",
+        "categoryLabel": "Category",
+        "categoryPlaceholder": "Select category",
+        "targetDateLabel": "Target Date"
+      },
+      "buttons": {
+        "create": "Create Goal",
+        "update": "Update Goal",
+        "creating": "Creating...",
+        "updating": "Updating...",
+        "cancel": "Cancel"
+      },
+      "smartTip": {
+        "title": "SMART Goals",
+        "bundles": [
+          {
+            "body": "Recovery goals are 40% more likely to be achieved when they are Specific, Measurable, and Timely.",
+            "tips": [
+              "Start small and scale up.",
+              "Connect goals to your core values.",
+              "Write down your goal — it doubles your chance of success.",
+              "Review your goal weekly to stay on track.",
+              "Break big goals into 3-5 milestones."
+            ]
+          },
+          {
+            "body": "The most successful recovery goals combine realistic expectations with genuine motivation grounded in your personal values.",
+            "tips": [
+              "Choose goals that matter to you, not just what sounds good.",
+              "Track progress daily to stay motivated.",
+              "Celebrate small wins along the way.",
+              "Adjust goals as your needs evolve.",
+              "Share your goals with someone you trust."
+            ]
+          },
+          {
+            "body": "Setting goals gives you direction and purpose during recovery. Clear, actionable goals help maintain focus when motivation wavers.",
+            "tips": [
+              "Keep goals visible where you see them daily.",
+              "Use specific, measurable language.",
+              "Set realistic timelines for achievement.",
+              "Build in flexibility for setbacks.",
+              "Link goals to your core values and identity."
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "settings": {
+    "title": "Settings",
+    "subtitle": "Customize your HealEase experience",
+    "tabs": [
+      {
+        "id": "notifications",
+        "label": "Notifications",
+        "icon": "Bell"
+      },
+      {
+        "id": "privacy",
+        "label": "Privacy",
+        "icon": "Lock"
+      },
+      {
+        "id": "security",
+        "label": "Account & Security",
+        "icon": "Shield"
+      },
+      {
+        "id": "preferences",
+        "label": "App Preferences",
+        "icon": "Palette"
+      }
+    ],
+    "support": {
+      "label": "Support",
+      "helpCenter": "Help Center"
+    },
+    "buttons": {
+      "discardChanges": "Discard Changes",
+      "savePreferences": "Save Preferences",
+      "savingPreferences": "Saving..."
+    },
+    "notifications": {
+      "title": "Notifications",
+      "dailyReminder": {
+        "label": "Daily Reminder",
+        "description": "Receive a gentle nudge for your recovery check-ins and meditations"
+      },
+      "communityAlerts": {
+        "label": "Community Alerts",
+        "description": "Get notified when someone interacts with your posts or sends support"
+      }
+    },
+    "privacy": {
+      "title": "Privacy Settings",
+      "visibility": {
+        "title": "Profile Visibility",
+        "description": "Choose who can see your progress and badges",
+        "options": [
+          { "value": "onlyMe", "label": "Only Me" },
+          { "value": "mentors", "label": "Mentors Only" },
+          { "value": "community", "label": "Community" }
+        ]
+      },
+      "dataSharing": {
+        "title": "Data Sharing",
+        "description": "Allow HealEase to use anonymized data for research"
+      },
+      "anonymousParticipation": {
+        "label": "Anonymous Participation"
+      }
+    },
+    "security": {
+      "title": "Account & Security",
+      "email": "Email Address",
+      "password": {
+        "label": "Password",
+        "value": "Last changed 3 months ago"
+      },
+      "deactivate": {
+        "label": "Deactivate Account",
+        "description": "Permanently remove your recovery data",
+        "buttonText": "Deactivate"
+      }
+    },
+    "preferences": {
+      "title": "App Preferences",
+      "theme": {
+        "title": "Theme Mode",
+        "description": "Select your visual preference",
+        "light": "Light",
+        "dark": "Dark"
+      },
+      "language": {
+        "title": "Preferred Language",
+        "description": "The language used across the app interface",
+        "options": [
+          { "value": "en", "label": "English" },
+          { "value": "he", "label": "עברית" }
+        ]
+      }
+    }
+  },
+  "global": {
+    "footer": {
+      "brandTagline": "Your recovery companion",
+      "quickLinksTitle": "Quick Links",
+      "legalTitle": "Legal",
+      "socialTitle": "Follow Us",
+      "copyright": "© 2026 HealEase. All rights reserved."
+    },
+    "layout": {
+      "header": {
+        "searchPlaceholder": "Search...",
+        "notificationsAria": "Notifications",
+        "avatarInitials": "AR",
+        "avatarAlt": "Alex Rivera",
+        "notificationBadgeCount": "3"
+      },
+      "headerItems": {
+        "healthOverview": "Health Overview",
+        "aiChat": "AI Chat",
+        "safeSpace": "Safe Space"
+      }
+    },
+    "pageSubtitles": {
+      "community": {
+        "title": "Community",
+        "subtitle": "Connect with others on their recovery journey"
+      },
+      "insights": {
+        "title": "AI Insights",
+        "subtitle": "Smart observations about your recovery",
+        "badge": "AI Analysis Active"
+      },
+      "profile": {
+        "title": "Profile",
+        "subtitle": "Manage your recovery identity"
+      }
+    },
+    "landing": {
+      "brandName": "HealEase",
+      "descriptions": {
+        "about": "HealEase helps patients transitioning from hospital and clinical care get structured support for their recovery. Daily check-ins help you track progress, AI-powered insights provide guidance, and the community forum connects you with others who understand the journey. Recovery is simpler, and lonelier, when you're doing it alone. HealEase makes it practical.",
+        "benefits": "Structured support for every stage of your recovery",
+        "hero": "Track your recovery with daily check-ins, get AI guidance, and connect with people who understand.",
+        "features": "Simple tools designed for recovery support"
+      },
+      "footer": {
+        "H3": "Recovery, Together.",
+        "desc": "Supporting your healing journey with community, technology, and care.",
+        "rights": "© 2026 HealEase. All rights reserved.",
+        "quickLinks": "Quick Links",
+        "legalLinks": "Legal"
+      },
+      "fields": {
+        "forgotPassword": "Forgot your password?",
+        "remember": "Remember Me"
+      },
+      "buttons": {
+        "exploreForum": "Explore Forum",
+        "joinNow": "Join Now",
+        "signIn": "Sign In",
+        "signUp": "Sign Up",
+        "login": "Login",
+        "logout": "Logout",
+        "verifyCode": "Verify Code",
+        "resetPassword": "Reset Password",
+        "backToLogin": "Back to Login",
+        "createPost": "Create Post",
+        "updatePost": "Update Post",
+        "deletePost": "Delete Post",
+        "newCheckIn": "New Check-in",
+        "updateCheckIn": "Update Check-in",
+        "saveCheckIn": "Save Check-in",
+        "tryAgain": "Try Again",
+        "showStackTrace": "Show stack trace",
+        "goBack": "Go Back",
+        "goHome": "Go Home",
+        "reloadPage": "Reload Page"
+      },
+      "toasts": {
+        "checkInSaved": "Check-in saved successfully!",
+        "checkInUpdated": "Check-in updated successfully!",
+        "checkInError": "Failed to save check-in. Please try again.",
+        "checkInDeleted": "Check-in deleted successfully!"
+      }
+    },
+    "shared": {
+      "download": "Download",
+      "share": "Share"
+    },
+    "errors": {
+      "errorPageTexts": {
+        "badge": "Error 500",
+        "mainHeading": "Deep breaths.",
+        "subHeading": "We're adjusting things.",
+        "description": "Something went wrong on our end, but we're working on it. Your progress is safe-this is just a momentary pause in our system.",
+        "tryRefreshingBtn": "Try Refreshing",
+        "contactSupportBtn": "Contact Support",
+        "crisisNoticeStart": "If you're in immediate crisis, please call our 24/7 hotline at",
+        "hotlineNumber": "1-800-HEAL-NOW",
+        "journalSavedTitle": "Journal Saved",
+        "journalSavedDesc": "Your last entry was automatically synced 4 minutes ago.",
+        "systemHealthTitle": "System Health",
+        "systemHealthDesc": "Most services are operational. We're isolating this hiccup.",
+        "autoRecoveryTitle": "Auto-Recovery",
+        "autoRecoveryDesc": "Our team has been notified and is fixing this as you read this."
+      },
+      "notFoundPageTexts": {
+        "badgeLabel": "COMPASS LOST",
+        "mainHeading": "This path seems to have wandered off...",
+        "description": "Recovery is a journey of many trails. Sometimes we take a turn that leads to a quiet clearing. Let's guide you back to your sanctuary.",
+        "returnDashboardBtn": "Return to Dashboard",
+        "previousPageBtn": "Previous Page",
+        "resourceCenterLabel": "Resource Center",
+        "dailyJournalLink": "Daily Journal",
+        "supportHubLabel": "Support Hub",
+        "groupMeetingsLink": "Group Meetings"
+      },
+      "networkErrorPageTexts": {
+        "title": "Connection Paused.",
+        "description": "Our sanctuary is currently offline for a moment of restoration. We're working quickly to bring it back for you.",
+        "tryAgainBtn": "Try Again",
+        "checkStatusBtn": "Check Status",
+        "supportMessage": "If you need immediate support, please reach out to our 24/7 care team at",
+        "supportPhone": "1-800-HEAL-NOW"
+      },
+      "inlineErrorTexts": {
+        "generic": "Something went wrong on our end, but we're working on it. Your progress is safe-this is just a momentary pause in our system.",
+        "network": "Our sanctuary is currently offline for a moment of restoration. We're working quickly to bring it back for you.",
+        "tryAgainBtn": "Try Again"
+      }
+    }
+  }
+}

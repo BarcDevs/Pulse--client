@@ -1,10 +1,13 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Inter, Noto_Sans_Hebrew } from 'next/font/google'
+import { NextIntlClientProvider } from 'next-intl'
+import { getLocale, getMessages } from 'next-intl/server'
 
 import { Analytics } from '@vercel/analytics/next'
 
-import { LayoutProps } from '@/types'
+import type { LayoutProps } from '@/types'
 
+import { DirectionProvider } from '@/components/ui/direction'
 import { Toaster } from '@/components/ui/sonner'
 
 import { cn } from '@/lib/utils'
@@ -22,25 +25,50 @@ const inter = Inter({
     variable: '--font-inter'
 })
 
+const notoSansHebrew = Noto_Sans_Hebrew({
+    subsets: ['hebrew'],
+    variable: '--font-noto-sans-hebrew'
+})
+
 export const metadata: Metadata = appMetadata
 
-const RootLayout = ({
+const RootLayout = async ({
     children
-}: Readonly<LayoutProps>) => (
-    <html lang={'en'}>
-        <body className={cn(
-            inter.variable,
-            'font-sans antialiased bg-surface-page'
-        )}>
-            <QueryProvider>
-                <AuthProvider>
-                    {children}
-                </AuthProvider>
-            </QueryProvider>
-            <Toaster/>
-            <Analytics/>
+}: Readonly<LayoutProps>) => {
+    const locale = await getLocale()
+    const messages = await getMessages()
+    const dir = locale === 'he-IL' ? 'rtl' : 'ltr'
+
+    return (
+        <html
+            lang={locale}
+            dir={dir}
+            className={cn(
+                inter.variable,
+                notoSansHebrew.variable
+            )}
+        >
+        <body className={'font-sans antialiased bg-surface-page'}>
+        <DirectionProvider
+            dir={dir}
+            direction={dir}
+        >
+            <NextIntlClientProvider
+                locale={locale}
+                messages={messages}
+            >
+                <QueryProvider>
+                    <AuthProvider>
+                        {children}
+                    </AuthProvider>
+                </QueryProvider>
+            </NextIntlClientProvider>
+        </DirectionProvider>
+        <Toaster/>
+        <Analytics/>
         </body>
-    </html>
-)
+        </html>
+    )
+}
 
 export default RootLayout

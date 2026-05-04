@@ -1,0 +1,73 @@
+export const authLocales = {
+    common: {
+        emailLabel: 'auth.common.emailLabel',
+        emailPlaceholder: 'auth.common.emailPlaceholder',
+        passwordPlaceholder: 'auth.common.passwordPlaceholder',
+        orContinueWith: 'auth.common.orContinueWith',
+        googleButton: 'auth.common.googleButton',
+        continueWithGoogle: 'auth.common.continueWithGoogle'
+    },
+    login: {
+        title: 'auth.login.title',
+        description: 'auth.login.description',
+        emailLabel: 'auth.login.emailLabel',
+        emailPlaceholder: 'auth.login.emailPlaceholder',
+        passwordLabel: 'auth.login.passwordLabel',
+        forgotPasswordLink: 'auth.login.forgotPasswordLink',
+        loginButton: 'auth.login.loginButton',
+        loggingInButton: 'auth.login.loggingInButton',
+        orContinueWith: 'auth.login.orContinueWith',
+        googleButton: 'auth.login.googleButton',
+        signupText: 'auth.login.signupText',
+        signupLink: 'auth.login.signupLink',
+        hipaaText: 'auth.login.hipaaText'
+    },
+    signup: {
+        title: 'auth.signup.title',
+        description: 'auth.signup.description',
+        firstNameLabel: 'auth.signup.firstNameLabel',
+        firstNamePlaceholder: 'auth.signup.firstNamePlaceholder',
+        lastNameLabel: 'auth.signup.lastNameLabel',
+        lastNamePlaceholder: 'auth.signup.lastNamePlaceholder',
+        emailLabel: 'auth.signup.emailLabel',
+        emailPlaceholder: 'auth.signup.emailPlaceholder',
+        passwordLabel: 'auth.signup.passwordLabel',
+        passwordPlaceholder: 'auth.signup.passwordPlaceholder',
+        confirmPasswordLabel: 'auth.signup.confirmPasswordLabel',
+        confirmPasswordPlaceholder: 'auth.signup.confirmPasswordPlaceholder',
+        signupButton: 'auth.signup.signupButton',
+        signingUpButton: 'auth.signup.signingUpButton',
+        loginText: 'auth.signup.loginText',
+        loginLink: 'auth.signup.loginLink',
+        orContinueWith: 'auth.signup.orContinueWith',
+        googleButton: 'auth.signup.googleButton'
+    },
+    forgotPassword: {
+        title: 'auth.forgotPassword.title',
+        description: 'auth.forgotPassword.description',
+        emailLabel: 'auth.forgotPassword.emailLabel',
+        emailPlaceholder: 'auth.forgotPassword.emailPlaceholder',
+        submitButton: 'auth.forgotPassword.submitButton',
+        sendingButton: 'auth.forgotPassword.sendingButton',
+        backButton: 'auth.forgotPassword.backButton',
+        checkEmailTitle: 'auth.forgotPassword.checkEmailTitle',
+        checkEmailDesc: 'auth.forgotPassword.checkEmailDesc',
+        supportLink: 'auth.forgotPassword.supportLink',
+        supportText: 'auth.forgotPassword.supportText',
+        supportVerification: 'auth.forgotPassword.supportVerification'
+    },
+    resetPassword: {
+        title: 'auth.resetPassword.title',
+        description: 'auth.resetPassword.description',
+        passwordLabel: 'auth.resetPassword.passwordLabel',
+        confirmPasswordLabel: 'auth.resetPassword.confirmPasswordLabel',
+        passwordPlaceholder: 'auth.resetPassword.passwordPlaceholder',
+        minLengthText: 'auth.resetPassword.minLengthText',
+        specialCharText: 'auth.resetPassword.specialCharText',
+        submitButton: 'auth.resetPassword.submitButton',
+        resettingButton: 'auth.resetPassword.resettingButton',
+        backButton: 'auth.resetPassword.backButton',
+        troubleText: 'auth.resetPassword.troubleText',
+        supportLink: 'auth.resetPassword.supportLink'
+    }
+} as const
