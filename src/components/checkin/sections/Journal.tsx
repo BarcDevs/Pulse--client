@@ -1,3 +1,5 @@
+import { useTranslations } from 'next-intl'
+
 import { PenLine } from 'lucide-react'
 import type { ChangeEvent } from 'react'
 
@@ -11,8 +13,7 @@ import {
 } from '@/components/ui/card'
 import { Textarea } from '@/components/ui/textarea'
 
-import { checkInTexts } from '@/constants/componentTexts/checkIn'
-
+import { checkInLocales } from '@/locales/checkInLocales'
 import type { CheckInSchema } from '@/validations/forms/checkInSchema'
 
 type CheckInJournalProps = FormControlProps<CheckInSchema>
@@ -21,6 +22,7 @@ export const CheckInJournal = ({
     watch,
     setValueAction
 }: CheckInJournalProps) => {
+    const t = useTranslations()
     const notes = watch('notes') ?? ''
 
     const handleNotesChange = (e: ChangeEvent<HTMLTextAreaElement>) => setValueAction('notes', e.target.value)
@@ -31,13 +33,13 @@ export const CheckInJournal = ({
                 <div className={'flex items-center gap-2'}>
                     <PenLine className={'size-5 text-primary'}/>
                     <CardTitle className={'text-lg font-semibold'}>
-                        {checkInTexts.journal.title}
+                        {t(checkInLocales.journal.title)}
                     </CardTitle>
                 </div>
             </CardHeader>
             <CardContent>
                 <Textarea
-                    placeholder={checkInTexts.journal.placeholder}
+                    placeholder={t(checkInLocales.journal.placeholder)}
                     value={notes}
                     onChange={handleNotesChange}
                     className={'min-h-30 resize-none border-border bg-surface-card placeholder:text-muted-foreground'}

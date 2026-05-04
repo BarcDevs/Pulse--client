@@ -3,6 +3,7 @@
 import { ChangeEvent, useState } from 'react'
 
 import { usePathname } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 
 import { Search } from 'lucide-react'
 
@@ -17,16 +18,18 @@ import { HeaderTitle } from '@/components/layout/header/HeaderTitle'
 import { UserMenu } from '@/components/layout/header/UserMenu'
 import { FormInput } from '@/components/shared/inputs/FormInput'
 
-import { dashboardPageTexts } from '@/constants/componentTexts/dashboard'
-import { appLayoutTexts } from '@/constants/componentTexts/ui/layout'
 import { getHeaderConfig } from '@/constants/config/getHeaderConfig'
 
 import { FEATURES } from '@/config/features'
 
 import { useAuth } from '@/context/AuthContext'
 
+import { dashboardLocales } from '@/locales/dashboardLocales'
+import { globalLocales } from '@/locales/globalLocales'
+
 // todo: make AppHeader follow OCP rule
 export const AppHeader = () => {
+    const t = useTranslations()
     const [searchValue, setSearchValue] = useState('')
     const pathname = usePathname()
     const { user } = useAuth()
@@ -47,7 +50,7 @@ export const AppHeader = () => {
 
     const welcomeSubtitle =
         pathname === '/dashboard' && user
-            ? `${dashboardPageTexts.greeting} ${user.firstName}`
+            ? `${t(dashboardLocales.greeting)} ${user.firstName}`
             : subtitle
 
     const handleSearchChange = (
@@ -78,7 +81,7 @@ export const AppHeader = () => {
                         <Search className={'absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground'}/>
                         <FormInput
                             id={'headerSearch'}
-                            placeholder={appLayoutTexts.header.searchPlaceholder}
+                            placeholder={t(globalLocales.layout.header.searchPlaceholder)}
                             value={searchValue}
                             onChange={handleSearchChange}
                             type={'text'}

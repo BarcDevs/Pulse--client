@@ -1,10 +1,14 @@
+'use client'
+
+import { useTranslations } from 'next-intl'
+
 import {
     Tabs,
     TabsList,
     TabsTrigger
 } from '@/components/ui/tabs'
 
-import { chartTimePeriods } from '@/constants/componentTexts/progressCharts'
+import { progressLocales } from '@/locales/progressLocales'
 
 type ChartTabsProps = {
     defaultValue?: string
@@ -16,31 +20,35 @@ type ChartTabsProps = {
 export const ChartTabs = ({
     defaultValue = 'weekly',
     onValueChange
-}: ChartTabsProps) => (
-    <Tabs
-        defaultValue={defaultValue}
-        onValueChange={onValueChange}
-        className={'w-auto'}
-    >
-        <TabsList className={'h-8 bg-muted'}>
-            <TabsTrigger
-                value={'daily'}
-                className={'h-6 px-3 text-xs'}
-            >
-                {chartTimePeriods.daily}
-            </TabsTrigger>
-            <TabsTrigger
-                value={'weekly'}
-                className={'h-6 px-3 text-xs'}
-            >
-                {chartTimePeriods.weekly}
-            </TabsTrigger>
-            <TabsTrigger
-                value={'monthly'}
-                className={'h-6 px-3 text-xs'}
-            >
-                {chartTimePeriods.monthly}
-            </TabsTrigger>
-        </TabsList>
-    </Tabs>
-)
+}: ChartTabsProps) => {
+    const t = useTranslations()
+
+    return (
+        <Tabs
+            defaultValue={defaultValue}
+            onValueChange={onValueChange}
+            className={'w-auto'}
+        >
+            <TabsList className={'h-8 bg-muted'}>
+                <TabsTrigger
+                    value={'daily'}
+                    className={'h-6 px-3 text-xs'}
+                >
+                    {t(progressLocales.charts.timePeriods.daily)}
+                </TabsTrigger>
+                <TabsTrigger
+                    value={'weekly'}
+                    className={'h-6 px-3 text-xs'}
+                >
+                    {t(progressLocales.charts.timePeriods.weekly)}
+                </TabsTrigger>
+                <TabsTrigger
+                    value={'monthly'}
+                    className={'h-6 px-3 text-xs'}
+                >
+                    {t(progressLocales.charts.timePeriods.monthly)}
+                </TabsTrigger>
+            </TabsList>
+        </Tabs>
+    )
+}

@@ -1,12 +1,14 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
+
 import { Button } from '@/components/ui/button'
 
 import { isNetworkError } from '@/utils/error'
 
-import { inlineErrorTexts } from '@/constants/componentTexts/ui/errors'
-
 import { isDev } from '@/config'
+
+import { globalLocales } from '@/locales/globalLocales'
 
 type ErrorStateCardProps = {
     error: Error | null
@@ -15,14 +17,15 @@ type ErrorStateCardProps = {
 export const ErrorStateCard = ({
     error
 }: ErrorStateCardProps) => {
+    const t = useTranslations()
     const errorMessage = error?.message || ''
     const isNetErr = isNetworkError(error)
 
     const displayMessage = isDev
         ? errorMessage
         : isNetErr
-            ? inlineErrorTexts.network
-            : inlineErrorTexts.generic
+            ? t(globalLocales.errors.inline.network)
+            : t(globalLocales.errors.inline.generic)
 
     const handleRetry = () => {
         window.location.reload()
@@ -37,7 +40,7 @@ export const ErrorStateCard = ({
                 size={'sm'}
                 className={'text-destructive border-destructive/30 hover:bg-destructive/5'}
             >
-                {inlineErrorTexts.tryAgainBtn}
+                {t(globalLocales.errors.inline.tryAgainBtn)}
             </Button>
         </div>
     )

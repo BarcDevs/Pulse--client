@@ -5,8 +5,6 @@ import {
     Rocket
 } from 'lucide-react'
 
-import { progressPageTexts } from '@/constants/componentTexts/progress'
-
 export const progressMilestonesIconMap = {
     'First Step': Rocket,
     '7-Day Streak': Heart,
@@ -33,16 +31,44 @@ export const progressMilestonesStyleMap = {
     }
 }
 
-export const progressMilestones =
-    progressPageTexts.milestones.list.map((milestone) => ({
-        ...milestone,
-        icon:
-            progressMilestonesIconMap[
-                milestone.title as
-                    keyof typeof progressMilestonesIconMap
-                ],
-        ...progressMilestonesStyleMap[
-            milestone.title as
-                keyof typeof progressMilestonesStyleMap
-            ]
-    }))
+export const progressMilestonesLocaleMap = {
+    'First Step': 'progress.milestones.list.0.title',
+    '7-Day Streak': 'progress.milestones.list.1.title',
+    'Mind Master': 'progress.milestones.list.2.title',
+    '1 Month Active': 'progress.milestones.list.3.title'
+}
+
+export const progressMilestones = [
+    {
+        title: 'First Step',
+        titleKey: progressMilestonesLocaleMap['First Step'],
+        icon: progressMilestonesIconMap['First Step'],
+        ...progressMilestonesStyleMap['First Step'],
+        achieved: false,
+        description: 'progress.milestones.list.0.description'
+    },
+    {
+        title: '7-Day Streak',
+        titleKey: progressMilestonesLocaleMap['7-Day Streak'],
+        icon: progressMilestonesIconMap['7-Day Streak'],
+        ...progressMilestonesStyleMap['7-Day Streak'],
+        achieved: false,
+        description: 'progress.milestones.list.1.description'
+    },
+    {
+        title: 'Mind Master',
+        titleKey: progressMilestonesLocaleMap['Mind Master'],
+        icon: progressMilestonesIconMap['Mind Master'],
+        ...progressMilestonesStyleMap['Mind Master'],
+        achieved: false,
+        description: 'progress.milestones.list.2.description'
+    },
+    {
+        title: '1 Month Active',
+        titleKey: progressMilestonesLocaleMap['1 Month Active'],
+        icon: progressMilestonesIconMap['1 Month Active'],
+        ...progressMilestonesStyleMap['1 Month Active'],
+        achieved: false,
+        description: 'progress.milestones.list.3.description'
+    }
+]

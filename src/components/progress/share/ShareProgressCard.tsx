@@ -6,6 +6,8 @@ import {
     type Ref
 } from 'react'
 
+import { useTranslations } from 'next-intl'
+
 import {
     Area,
     AreaChart,
@@ -17,7 +19,7 @@ import {
 
 import type { CheckInStats } from '@/types/checkIn'
 
-import { progressPageTexts } from '@/constants/componentTexts/progress'
+import { progressLocales } from '@/locales/progressLocales'
 
 type ShareProgressCardProps = {
     stats: CheckInStats
@@ -39,6 +41,7 @@ export const ShareProgressCard =
             ShareProgressCardProps,
             ref: Ref<HTMLDivElement | null>
         ) => {
+            const t = useTranslations()
             const cardStyle: CSSProperties = {
                 width: '600px',
                 background: 'linear-gradient(135deg, #e8f4fd 0%, #d9f0ff 50%, #e6f5f2 100%)',
@@ -154,7 +157,7 @@ export const ShareProgressCard =
                         />
                         <div style={titleWrapperStyle}>
                             <h2 style={titleStyle}>
-                                {progressPageTexts.share.title}
+                                {t(progressLocales.share.title)}
                                 {userName && (
                                     <span style={{ fontSize: '12px' }}>
                                     {` • ${userName}`}
@@ -162,7 +165,7 @@ export const ShareProgressCard =
                                 )}
                             </h2>
                             <div style={streakPillStyle}>
-                                🔥 {stats.currentStreak} {progressPageTexts.share.streakUnit}
+                                🔥 {stats.currentStreak} {t(progressLocales.share.streakUnit)}
                             </div>
                         </div>
                     </div>
@@ -181,7 +184,7 @@ export const ShareProgressCard =
                                         fontSize: '14px'
                                     }}
                                 >
-                                    {progressPageTexts.share.noMoodData}
+                                    {t(progressLocales.share.noMoodData)}
                                 </div>
                             ) : (
                                 <ResponsiveContainer
@@ -258,7 +261,7 @@ export const ShareProgressCard =
                                 {stats.currentStreak}
                             </p>
                             <p style={statLabelStyle}>
-                                {progressPageTexts.share.currentStreakLabel}
+                                {t(progressLocales.share.currentStreakLabel)}
                             </p>
                         </div>
                         <div style={statCardStyle}>
@@ -266,7 +269,7 @@ export const ShareProgressCard =
                                 {stats.averageMoodScore.toFixed(1)}
                             </p>
                             <p style={statLabelStyle}>
-                                {progressPageTexts.share.averageMoodLabel}
+                                {t(progressLocales.share.averageMoodLabel)}
                             </p>
                         </div>
                         <div style={statCardStyle}>
@@ -274,17 +277,17 @@ export const ShareProgressCard =
                                 {milestonesCompleted ?? 0}
                             </p>
                             <p style={statLabelStyle}>
-                                {progressPageTexts.share.milestonesLabel}
+                                {t(progressLocales.share.milestonesLabel)}
                             </p>
                         </div>
                     </div>
 
                     <div style={footerStyle}>
                         <p style={taglineStyle}>
-                            {progressPageTexts.share.tagline}
+                            {t(progressLocales.share.tagline)}
                         </p>
                         <p style={ctaStyle}>
-                            {progressPageTexts.share.cta}
+                            {t(progressLocales.share.cta)}
                         </p>
                     </div>
                 </div>

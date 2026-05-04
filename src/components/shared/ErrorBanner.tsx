@@ -2,18 +2,17 @@
 
 import { useState } from 'react'
 
+import { useTranslations } from 'next-intl'
+
 import { X } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
 
 import { isNetworkError } from '@/utils/error'
 
-import {
-    inlineErrorTexts,
-    networkErrorPageTexts
-} from '@/constants/componentTexts/ui/errors'
-
 import { isDev } from '@/config'
+
+import { globalLocales } from '@/locales/globalLocales'
 
 type ErrorBannerProps = {
     error: Error | null
@@ -22,6 +21,7 @@ type ErrorBannerProps = {
 export const ErrorBanner = ({
     error
 }: ErrorBannerProps) => {
+    const t = useTranslations()
     const [dismissed, setDismissed] = useState(false)
 
     if (!error || dismissed) return null
@@ -30,11 +30,11 @@ export const ErrorBanner = ({
     const message = isDev
         ? error.message
         : isNetErr
-            ? networkErrorPageTexts.title
+            ? t(globalLocales.errors.networkErrorPage.title)
             : 'Something went wrong.'
     const description = isNetErr
-        ? inlineErrorTexts.network
-        : inlineErrorTexts.generic
+        ? t(globalLocales.errors.inline.network)
+        : t(globalLocales.errors.inline.generic)
 
     return (
         <div className={'bg-destructive/10 border-b border-destructive/20 px-4 py-3 text-destructive text-sm flex items-center justify-between'}>

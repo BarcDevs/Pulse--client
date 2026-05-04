@@ -2,8 +2,9 @@
 
 import { useState } from 'react'
 
-import { insightsPageTexts }
-    from '@/constants/componentTexts/insightsComponent'
+import { useTranslations } from 'next-intl'
+
+import { insightsLocales } from '@/locales/insightsLocales'
 
 import { BehavioralPatternsTabs } from './BehavioralPatternsTabs'
 import { CorrelationCard } from './CorrelationCard'
@@ -11,6 +12,7 @@ import { ObservationCard } from './ObservationCard'
 import { PredictionCard } from './PredictionCard'
 
 export const BehavioralPatterns = () => {
+    const t = useTranslations()
     const [activeTab, setActiveTab] =
         useState<'7days' | '30days'>('30days')
 
@@ -18,7 +20,7 @@ export const BehavioralPatterns = () => {
         <div className={'card-base'}>
             <div className={'flex-center-between mb-6'}>
                 <h3 className={'text-lg font-semibold text-foreground'}>
-                    {insightsPageTexts.behavioralPatterns.title}
+                    {t(insightsLocales.behavioralPatterns.title)}
                 </h3>
                 <BehavioralPatternsTabs
                     activeTab={activeTab}

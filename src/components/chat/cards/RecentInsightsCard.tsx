@@ -1,3 +1,5 @@
+import { useTranslations } from 'next-intl'
+
 import { Moon, TrendingUp } from 'lucide-react'
 
 import {
@@ -7,35 +9,39 @@ import {
     CardTitle
 } from '@/components/ui/card'
 
-import { chatTexts } from '@/constants/componentTexts/chat'
+import { chatLocales } from '@/locales/chatLocales'
 
 import { InsightItem } from './InsightItem'
 
-export const RecentInsightsCard = () => (
-    <Card className={'border-0 bg-surface-section shadow-none'}>
-        <CardHeader className={'pb-2'}>
-            <CardTitle className={'text-sm font-medium text-muted-foreground'}>
-                {chatTexts.sidebar.insightsTitle}
-            </CardTitle>
-            <p className={'text-xs text-muted-foreground'}>
-                {chatTexts.sidebar.insightsTimeframe}
-            </p>
-        </CardHeader>
-        <CardContent className={'space-y-4'}>
-            <InsightItem
-                icon={TrendingUp}
-                iconBg={'bg-amber-100'}
-                label={chatTexts.sidebar.emotionalTrendLabel}
-                title={chatTexts.sidebar.emotionalTrendTitle}
-                description={chatTexts.sidebar.emotionalTrendDescription}
-            />
-            <InsightItem
-                icon={Moon}
-                iconBg={'bg-blue-100'}
-                label={chatTexts.sidebar.sleepQualityLabel}
-                title={chatTexts.sidebar.sleepQualityTitle}
-                description={chatTexts.sidebar.sleepQualityDescription}
-            />
-        </CardContent>
-    </Card>
-)
+export const RecentInsightsCard = () => {
+    const t = useTranslations()
+
+    return (
+        <Card className={'border-0 bg-surface-section shadow-none'}>
+            <CardHeader className={'pb-2'}>
+                <CardTitle className={'text-sm font-medium text-muted-foreground'}>
+                    {t(chatLocales.sidebar.insightsTitle)}
+                </CardTitle>
+                <p className={'text-xs text-muted-foreground'}>
+                    {t(chatLocales.sidebar.insightsTimeframe)}
+                </p>
+            </CardHeader>
+            <CardContent className={'space-y-4'}>
+                <InsightItem
+                    icon={TrendingUp}
+                    iconBg={'bg-amber-100'}
+                    label={t(chatLocales.sidebar.emotionalTrendLabel)}
+                    title={t(chatLocales.sidebar.emotionalTrendTitle)}
+                    description={t(chatLocales.sidebar.emotionalTrendDescription)}
+                />
+                <InsightItem
+                    icon={Moon}
+                    iconBg={'bg-blue-100'}
+                    label={t(chatLocales.sidebar.sleepQualityLabel)}
+                    title={t(chatLocales.sidebar.sleepQualityTitle)}
+                    description={t(chatLocales.sidebar.sleepQualityDescription)}
+                />
+            </CardContent>
+        </Card>
+    )
+}

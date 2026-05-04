@@ -7,6 +7,8 @@ import {
     useState
 } from 'react'
 
+import { useTranslations } from 'next-intl'
+
 import type { FilterType } from '@/types/community'
 
 import { EmptyState } from '@/components/shared/EmptyState'
@@ -17,13 +19,17 @@ import { useForumPosts } from '@/hooks/queries/useForumPosts'
 
 import { cn } from '@/lib/utils'
 
-import { communityPageTexts } from '@/constants/componentTexts/community'
+import { communityLocales } from '@/locales/communityLocales'
 
 import { PostItem } from './postList/PostItem'
 
 const PAGE_SIZE = 20
-const FILTER_LABELS = communityPageTexts.posts.filterLabels
-const tabs = Object.keys(FILTER_LABELS) as FilterType[]
+const tabs = Object.keys({
+    newest: true,
+    popular: true,
+    hot: true,
+    unanswered: true
+}) as FilterType[]
 
 type Post = Parameters<typeof PostItem>[0]['post']
 
@@ -32,6 +38,7 @@ type PostListProps = {
 }
 
 export const PostList = ({ tag }: PostListProps) => {
+    const t = useTranslations()
     // todo: extract post fetch functionality into a hook
     const [activeFilter, setActiveFilter] = useState<FilterType>('newest')
     const [allPosts, setAllPosts] = useState<Post[]>([])
@@ -121,8 +128,8 @@ export const PostList = ({ tag }: PostListProps) => {
     }
 
     const emptyMessage = tag
-        ? communityPageTexts.posts.emptyWithFilter(tag)
-        : communityPageTexts.posts.empty
+        ? `${t(communityLocales.posts.emptyWithFilter).replace('{tag}', tag)}`
+        : t(communityLocales.posts.empty)
 
     return (
         <div className={'rounded-2xl bg-surface-card overflow-hidden'}>
@@ -141,7 +148,7 @@ export const PostList = ({ tag }: PostListProps) => {
                                 : 'text-muted-foreground hover:text-primary-light border-transparent'
                         )}
                     >
-                        {FILTER_LABELS[tab]}
+                        {t(communityLocales.posts.filterLabels[tab])}
                     </Button>
                 ))}
             </div>
@@ -149,7 +156,7 @@ export const PostList = ({ tag }: PostListProps) => {
             <div className={'divide-y divide-border'}>
                 {isLoading && allPosts.length === 0 ? (
                     <EmptyState
-                        message={communityPageTexts.posts.loading}
+                        message={t(communityLocales.posts.loading)}
                     />
                 ) : isError ? (
                     <div className={'p-6 flex--center'}>
@@ -170,7 +177,7 @@ export const PostList = ({ tag }: PostListProps) => {
                             <div ref={sentinelRef}>
                                 {isFetching && (
                                     <EmptyState
-                                        message={communityPageTexts.posts.loading}
+                                        message={t(communityLocales.posts.loading)}
                                     />
                                 )}
                             </div>

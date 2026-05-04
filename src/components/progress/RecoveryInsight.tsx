@@ -1,5 +1,7 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
+
 import { Sparkles } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
@@ -7,10 +9,10 @@ import { Button } from '@/components/ui/button'
 import { useLatestCheckIn }
     from '@/hooks/queries/useLatestCheckIn'
 
-import { progressPageTexts }
-    from '@/constants/componentTexts/progress'
+import { progressLocales } from '@/locales/progressLocales'
 
 export const RecoveryInsight = () => {
+    const t = useTranslations()
     const { latestCheckIn } = useLatestCheckIn()
 
     const insight = latestCheckIn?.insights?.[0]
@@ -18,7 +20,7 @@ export const RecoveryInsight = () => {
     const isEmpty = !insight
 
     const mainText = isEmpty
-        ? progressPageTexts.insight.emptyInsight
+        ? t(progressLocales.insight.emptyInsight)
         : insight.content
 
     const secondaryText = insight?.title
@@ -29,7 +31,7 @@ export const RecoveryInsight = () => {
                 <div className={'flex items-center gap-2'}>
                     <Sparkles className={'h-5 w-5'}/>
                     <span className={'text-sm font-medium'}>
-                        {progressPageTexts.insight.label}
+                        {t(progressLocales.insight.label)}
                     </span>
                 </div>
             </div>
@@ -49,13 +51,13 @@ export const RecoveryInsight = () => {
                     variant={'secondary'}
                     className={'bg-white text-primary hover:bg-white/90'}
                 >
-                    {progressPageTexts.insight.buttonPrimary}
+                    {t(progressLocales.insight.buttonPrimary)}
                 </Button>
                 <Button
                     variant={'ghost'}
                     className={'text-primary-foreground hover:bg-white/10'}
                 >
-                    {progressPageTexts.insight.buttonSecondary}
+                    {t(progressLocales.insight.buttonSecondary)}
                 </Button>
             </div>
         </div>

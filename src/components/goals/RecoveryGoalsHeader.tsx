@@ -1,5 +1,8 @@
-import  { recoveryGoalsPageTexts as pageTexts }
-    from '@/constants/componentTexts/recoveryGoals'
+'use client'
+
+import { useTranslations } from 'next-intl'
+
+import { goalsLocales } from '@/locales/goalsLocales'
 
 type RecoveryGoalsHeaderProps = {
     description: string
@@ -7,13 +10,17 @@ type RecoveryGoalsHeaderProps = {
 
 export const RecoveryGoalsHeader = ({
     description
-}: RecoveryGoalsHeaderProps) => (
-    <section className={'mb-12'}>
-        <h1 className={'text-4xl md:text-5xl font-extrabold text-on-surface tracking-tighter mb-4'}>
-            {pageTexts.header.title}
-        </h1>
-        <p className={'text-on-surface-variant text-lg max-w-2xl leading-relaxed'}>
-            {description}
-        </p>
-    </section>
-)
+}: RecoveryGoalsHeaderProps) => {
+    const t = useTranslations()
+
+    return (
+        <section className={'mb-12'}>
+            <h1 className={'text-4xl md:text-5xl font-extrabold text-on-surface tracking-tighter mb-4'}>
+                {t(goalsLocales.header.title)}
+            </h1>
+            <p className={'text-on-surface-variant text-lg max-w-2xl leading-relaxed'}>
+                {description}
+            </p>
+        </section>
+    )
+}

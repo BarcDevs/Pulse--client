@@ -41,7 +41,8 @@ export const getInsightColor = (
 
 export const getMilestoneCardConfig = (
     milestone: GoalMilestone,
-    pageTexts: any
+    t: (key: string) => string,
+    goalsLocales: any
 ): MilestoneCardConfig => {
     const isCompleted = milestone.status === MilestoneStatus.COMPLETED
     const isActive = milestone.status === MilestoneStatus.ACTIVE
@@ -49,13 +50,13 @@ export const getMilestoneCardConfig = (
 
     const getFormattedStatusLabel = (): string => {
         if (isCompleted)
-            return pageTexts.milestoneCardLabels.completedFormat.replace(
+            return t(goalsLocales.milestoneCardLabels.completedFormat).replace(
                 '{order}',
                 String(milestone.order)
             )
         if (isActive)
-            return pageTexts.milestoneStatusLabels.ACTIVE
-        return pageTexts.milestoneCardLabels.lockedFormat.replace(
+            return t(goalsLocales.milestoneStatusLabels.ACTIVE)
+        return t(goalsLocales.milestoneCardLabels.lockedFormat).replace(
             '{order}',
             String(milestone.order)
         )

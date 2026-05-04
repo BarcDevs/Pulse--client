@@ -5,15 +5,17 @@ import {
     useState
 } from 'react'
 
+import { useTranslations } from 'next-intl'
+
 import type { CheckInStats } from '@/types/checkIn'
 
-import { profilePageTexts } from '@/constants/componentTexts/profile'
-
 import { fetchCheckInStats } from '@/api/checkIn'
+import { profileLocales } from '@/locales/profileLocales'
 
 import { ProfileStatItem } from './ProfileStatItem'
 
 export const ProfileStats = () => {
+    const t = useTranslations()
     const [stats, setStats] = useState<CheckInStats | null>(null)
 
     useEffect(() => {
@@ -30,22 +32,22 @@ export const ProfileStats = () => {
     }, [])
 
     // TODO: Add health score to CheckInStats type
-    const days = stats?.total ?? profilePageTexts.stats.days.value
-    const milestones = stats?.milestonesAchieved ?? profilePageTexts.stats.milestones.value
+    const days = stats?.total ?? '142'
+    const milestones = stats?.milestonesAchieved ?? '28'
 
     return (
         <div className={'mt-6 grid w-full grid-cols-3 gap-4 border-t border-border pt-6'}>
             <ProfileStatItem
                 value={String(days)}
-                label={profilePageTexts.stats.days.label}
+                label={t(profileLocales.stats.days.label)}
             />
             <ProfileStatItem
                 value={String(milestones)}
-                label={profilePageTexts.stats.milestones.label}
+                label={t(profileLocales.stats.milestones.label)}
             />
             <ProfileStatItem
-                value={profilePageTexts.stats.healthScore.value}
-                label={profilePageTexts.stats.healthScore.label}
+                value={'8.4'}
+                label={t(profileLocales.stats.healthScore.label)}
             />
         </div>
     )

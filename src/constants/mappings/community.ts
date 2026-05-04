@@ -5,7 +5,7 @@ import {
     Users
 } from 'lucide-react'
 
-import { communityPageTexts } from '@/constants/componentTexts/community'
+import { COMMUNITY_CATEGORIES } from '@/mocks/communityCategories'
 
 export const communityCategoriesIconMap = {
     'Support Groups': Users,
@@ -23,7 +23,7 @@ export const communityCategoriesColorMap:
 }
 
 export const communityCategoriesWithIcons =
-    communityPageTexts.categories.list.map((cat) => ({
+    COMMUNITY_CATEGORIES.map((cat) => ({
         ...cat,
         icon:
             communityCategoriesIconMap[

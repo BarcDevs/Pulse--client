@@ -2,10 +2,12 @@
 
 import { useRef, useState } from 'react'
 
+import { useTranslations } from 'next-intl'
+
 import html2canvas from 'html2canvas'
 import { toast } from 'sonner'
 
-import { progressPageTexts } from '@/constants/componentTexts/progress'
+import { progressLocales } from '@/locales/progressLocales'
 
 type UseShareProgressReturn = {
     shareRef: React.MutableRefObject<HTMLDivElement | null>
@@ -16,6 +18,7 @@ type UseShareProgressReturn = {
 
 export const useShareProgress = ():
     UseShareProgressReturn => {
+    const t = useTranslations()
     const shareRef = useRef<HTMLDivElement | null>(null)
     const [isCapturing, setIsCapturing] = useState(false)
 
@@ -52,14 +55,14 @@ export const useShareProgress = ():
 
             const file = new File(
                 [blob],
-                progressPageTexts.share.filename,
+                t(progressLocales.share.filename),
                 { type: 'image/png' }
             )
 
             if (navigator.canShare?.({ files: [file] })) {
                 await navigator.share({ files: [file] })
                 toast.success(
-                    progressPageTexts.share.toastShare
+                    t(progressLocales.share.toastShare)
                 )
             } else if (navigator.clipboard?.write) {
                 const item = new ClipboardItem(
@@ -67,7 +70,7 @@ export const useShareProgress = ():
                 )
                 await navigator.clipboard.write([item])
                 toast.success(
-                    progressPageTexts.share.toastCopied
+                    t(progressLocales.share.toastCopied)
                 )
             } else {
                 throw new Error(
@@ -95,11 +98,11 @@ export const useShareProgress = ():
             const url = canvas.toDataURL('image/png')
             const link = document.createElement('a')
             link.href = url
-            link.download = progressPageTexts.share.filename
+            link.download = t(progressLocales.share.filename)
             document.body.appendChild(link)
             link.click()
             document.body.removeChild(link)
-            toast.success(progressPageTexts.share.toastDownloaded)
+            toast.success(t(progressLocales.share.toastDownloaded))
         } catch (error) {
             const message = error instanceof Error
                 ? error.message

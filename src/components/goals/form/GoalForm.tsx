@@ -1,6 +1,7 @@
 'use client'
 
 import { useRouter } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 
 import { Controller } from 'react-hook-form'
 
@@ -22,9 +23,9 @@ import { useGoalFormSubmit } from '@/hooks/forms/useGoalFormSubmit'
 
 import { formatByUserPreference } from '@/lib/time'
 
-import { recoveryGoalsPageTexts as pageTexts }
-    from '@/constants/componentTexts/recoveryGoals'
 import { ROUTES } from '@/constants/routes'
+
+import { goalsLocales } from '@/locales/goalsLocales'
 
 import { CategoryChipSelector } from './CategoryChipSelector'
 import { GoalFormActions } from './GoalFormActions'
@@ -40,6 +41,7 @@ export const GoalForm = ({
     onSuccessAction,
     onCloseAction
 }: GoalFormProps) => {
+    const t = useTranslations()
     const router = useRouter()
     const isUpdate = Boolean(goal)
     const {
@@ -80,12 +82,12 @@ export const GoalForm = ({
                     render={({ field, fieldState }) => (
                         <FormItem>
                             <FormLabel>
-                                {pageTexts.goalForm.fields.titleLabel}
+                                {t(goalsLocales.goalForm.fields.titleLabel)}
                             </FormLabel>
                             <FormControl>
                                 <FormInput
                                     id={'goal-title'}
-                                    placeholder={pageTexts.goalForm.fields.titlePlaceholder}
+                                    placeholder={t(goalsLocales.goalForm.fields.titlePlaceholder)}
                                     value={field.value}
                                     onChange={field.onChange}
                                     onBlur={field.onBlur}
@@ -106,11 +108,11 @@ export const GoalForm = ({
                     render={({ field }) => (
                         <FormItem>
                             <FormLabel>
-                                {pageTexts.goalForm.fields.descriptionLabel}
+                                {t(goalsLocales.goalForm.fields.descriptionLabel)}
                             </FormLabel>
                             <FormControl>
                                 <Textarea
-                                    placeholder={pageTexts.goalForm.fields.descriptionPlaceholder}
+                                    placeholder={t(goalsLocales.goalForm.fields.descriptionPlaceholder)}
                                     className={'resize-none bg-surface-container-low'}
                                     rows={3}
                                     {...field}
@@ -140,7 +142,7 @@ export const GoalForm = ({
                             return (
                                 <FormItem>
                                     <FormLabel>
-                                        {pageTexts.goalForm.fields.targetDateLabel}
+                                        {t(goalsLocales.goalForm.fields.targetDateLabel)}
                                     </FormLabel>
                                     <FormControl>
                                         <FormInput

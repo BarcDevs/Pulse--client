@@ -2,6 +2,8 @@
 
 import { useState } from 'react'
 
+import { useTranslations } from 'next-intl'
+
 import { GoogleLoginButton } from '@/components/auth/forms/GoogleLoginButton'
 import { LoginSecurityFooter } from '@/components/auth/sections/LoginSecurityFooter'
 import { AuthForm } from '@/components/form/AuthForm'
@@ -15,11 +17,11 @@ import {
 
 import { useAuthHandlers } from '@/hooks/useAuthHandlers'
 
-import { authTexts } from '@/constants/componentTexts/auth'
-
+import { authLocales } from '@/locales/authLocales'
 import type { LoginSchema } from '@/validations/forms/loginSchema'
 
 const LoginPage = () => {
+    const t = useTranslations()
     const { handleLogin } = useAuthHandlers()
     const [isLoading, setIsLoading] = useState(false)
 
@@ -35,10 +37,10 @@ const LoginPage = () => {
         <Card className={'w-full max-w-md border-0 shadow-lg'}>
             <CardHeader className={'text-center'}>
                 <CardTitle className={'text-2xl font-semibold'}>
-                    {authTexts.login.title}
+                    {t(authLocales.login.title)}
                 </CardTitle>
                 <CardDescription>
-                    {authTexts.login.description}
+                    {t(authLocales.login.description)}
                 </CardDescription>
             </CardHeader>
             <CardContent>

@@ -1,4 +1,4 @@
-import { chatTexts } from '@/constants/componentTexts/chat'
+import { chatLocales } from '@/locales/chatLocales'
 
 type ChatMessage = {
     id: string
@@ -8,30 +8,38 @@ type ChatMessage = {
     suggestions?: string[]
 }
 
+export const chatMessageLocales = {
+    openingMessage: chatLocales.messages.openingMessage,
+    exampleUserRestlessness: chatLocales.messages.exampleUserRestlessness,
+    aiResponse1: chatLocales.messages.aiResponse1,
+    suggestions: chatLocales.messages.suggestions,
+    aiResponse2: chatLocales.messages.aiResponse2
+}
+
 export const initialChatMessages: ChatMessage[] = [
     {
         id: '1',
         role: 'assistant',
-        content: chatTexts.messages.openingMessage,
+        content: chatMessageLocales.openingMessage,
         timestamp: '08:30 AM'
     },
     {
         id: '2',
         role: 'user',
-        content: chatTexts.messages.exampleUserRestlessness,
+        content: chatMessageLocales.exampleUserRestlessness,
         timestamp: '08:32 AM'
     },
     {
         id: '3',
         role: 'assistant',
-        content: chatTexts.messages.aiResponse1,
+        content: chatMessageLocales.aiResponse1,
         timestamp: '08:33 AM',
-        suggestions: chatTexts.messages.suggestions
+        suggestions: [chatMessageLocales.suggestions]
     },
     {
         id: '4',
         role: 'user',
-        content: chatTexts.messages.aiResponse2,
+        content: chatMessageLocales.aiResponse2,
         timestamp: '08:35 AM'
     }
 ]

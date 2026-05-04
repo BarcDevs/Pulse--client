@@ -1,6 +1,10 @@
+'use client'
+
+import { useTranslations } from 'next-intl'
+
 import { cn } from '@/lib/utils'
 
-import { chatTexts } from '@/constants/componentTexts/chat'
+import { chatLocales } from '@/locales/chatLocales'
 
 import { MessageSuggestions } from '../suggestions/MessageSuggestions'
 
@@ -16,36 +20,40 @@ export const MessageBubble = ({
     content,
     timestamp,
     suggestions
-}: MessageBubbleProps) => (
-    <div
-        className={cn(
-            'max-w-[80%] rounded-2xl px-4 py-3',
-            role === 'user'
-                ? 'bg-primary text-white'
-                : 'bg-surface-card text-foreground shadow-sm'
-        )}
-    >
-        <p className={'whitespace-pre-wrap text-sm leading-relaxed'}>
-            {content}
-        </p>
+}: MessageBubbleProps) => {
+    const t = useTranslations()
 
-        {suggestions
-            && <MessageSuggestions suggestions={suggestions}/>
-        }
-
-        <p
+    return (
+        <div
             className={cn(
-                'mt-2 text-xs',
+                'max-w-[80%] rounded-2xl px-4 py-3',
                 role === 'user'
-                    ? 'text-white/70'
-                    : 'text-muted-foreground'
+                    ? 'bg-primary text-white'
+                    : 'bg-surface-card text-foreground shadow-sm'
             )}
         >
-            {role === 'assistant'
-                ? chatTexts.messages.assistantLabel
-                : chatTexts.messages.youLabel}
-            {' - '}
-            {timestamp}
-        </p>
-    </div>
-)
+            <p className={'whitespace-pre-wrap text-sm leading-relaxed'}>
+                {content}
+            </p>
+
+            {suggestions
+                && <MessageSuggestions suggestions={suggestions}/>
+            }
+
+            <p
+                className={cn(
+                    'mt-2 text-xs',
+                    role === 'user'
+                        ? 'text-white/70'
+                        : 'text-muted-foreground'
+                )}
+            >
+                {role === 'assistant'
+                    ? t(chatLocales.messages.assistantLabel)
+                    : t(chatLocales.messages.youLabel)}
+                {' - '}
+                {timestamp}
+            </p>
+        </div>
+    )
+}

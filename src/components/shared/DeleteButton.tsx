@@ -2,13 +2,15 @@
 
 import { ComponentProps } from 'react'
 
+import { useTranslations } from 'next-intl'
+
 import { Trash2 } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
 
 import { cn } from '@/lib/utils'
 
-import { communityPageTexts } from '@/constants/componentTexts/community'
+import { communityLocales } from '@/locales/communityLocales'
 
 type DeleteButtonProps = Omit<
     ComponentProps<typeof Button>,
@@ -21,14 +23,17 @@ type DeleteButtonProps = Omit<
 
 export const DeleteButton = ({
     onDeleteAction,
-    confirmMessage = communityPageTexts.confirmations.deletePost,
+    confirmMessage,
     isLoading = false,
     variant = 'ghost',
     className,
     ...buttonProps
 }: DeleteButtonProps) => {
+    const t = useTranslations()
+    const defaultMessage = t(communityLocales.confirmations.deletePost)
+
     const handleClick = async () => {
-        const confirmed = confirm(confirmMessage)
+        const confirmed = confirm(confirmMessage ?? defaultMessage)
         if (confirmed)
             await onDeleteAction()
     }

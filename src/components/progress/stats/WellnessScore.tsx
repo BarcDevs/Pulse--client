@@ -1,5 +1,7 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
+
 import { useCheckInStats } from '@/hooks/queries/useCheckInStats'
 
 import {
@@ -7,11 +9,12 @@ import {
     getWellnessStatus
 } from '@/lib/stats/getTrendLabel'
 
-import { progressPageTexts } from '@/constants/componentTexts/progress'
+import { progressLocales } from '@/locales/progressLocales'
 
 import { WellnessScoreCard } from '../cards/WellnessScoreCard'
 
 export const WellnessScore = () => {
+    const t = useTranslations()
     const { data, isError } = useCheckInStats('weekly')
 
     const moodScore = isError
@@ -38,29 +41,25 @@ export const WellnessScore = () => {
             <div className={'flex-center-between mb-4'}>
                 <div>
                     <p className={'text-muted-foreground label-uppercase'}>
-                        {progressPageTexts
-                            .wellness.label}
+                        {t(progressLocales.wellness.label)}
                     </p>
                     <h3 className={'mt-1 text-xl font-semibold text-foreground'}>
                         {wellnessStatus}
                     </h3>
                 </div>
                 <span className={'text-xs text-muted-foreground'}>
-                    {progressPageTexts
-                        .wellness.timeframe}
+                    {t(progressLocales.wellness.timeframe)}
                 </span>
             </div>
 
             <div className={'grid grid-cols-2 gap-4'}>
                 <WellnessScoreCard
-                    label={progressPageTexts
-                        .wellness.mood}
+                    label={t(progressLocales.wellness.mood)}
                     score={moodScore}
                     trend={moodTrend}
                 />
                 <WellnessScoreCard
-                    label={progressPageTexts
-                        .wellness.pain}
+                    label={t(progressLocales.wellness.pain)}
                     score={painScore}
                     trend={painTrend}
                 />

@@ -1,6 +1,8 @@
+import { useTranslations } from 'next-intl'
+
 import { formatByUserPreference } from '@/lib/time'
 
-import { profilePageTexts } from '@/constants/componentTexts/profile'
+import { profileLocales } from '@/locales/profileLocales'
 
 type ProfileInfoProps = {
     firstName: string
@@ -15,6 +17,7 @@ export const ProfileInfo = ({
     createdAt,
     dateFormat
 }: ProfileInfoProps) => {
+    const t = useTranslations()
     const memberDate = formatByUserPreference(
         new Date(createdAt),
         false,
@@ -27,7 +30,7 @@ export const ProfileInfo = ({
                 {`${firstName} ${lastName}`}
             </h2>
             <p className={'text-sm text-muted-foreground'}>
-                {`${profilePageTexts.info.memberSince} ${memberDate}`}
+                {`${t(profileLocales.info.memberSince)} ${memberDate}`}
             </p>
         </div>
     )

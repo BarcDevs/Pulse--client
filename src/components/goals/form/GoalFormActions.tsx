@@ -1,12 +1,13 @@
 'use client'
 
 import { useRouter } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 
 import { Button } from '@/components/ui/button'
 
-import { recoveryGoalsPageTexts as pageTexts }
-    from '@/constants/componentTexts/recoveryGoals'
 import { ROUTES } from '@/constants/routes'
+
+import { goalsLocales } from '@/locales/goalsLocales'
 
 type GoalFormActionsProps = {
     isSubmitting: boolean
@@ -19,6 +20,7 @@ export const GoalFormActions = ({
     isUpdate,
     onCloseAction
 }: GoalFormActionsProps) => {
+    const t = useTranslations()
     const router = useRouter()
 
     const handleCancel = () => {
@@ -37,7 +39,7 @@ export const GoalFormActions = ({
                 onClick={handleCancel}
                 disabled={isSubmitting}
             >
-                {pageTexts.goalForm.buttons.cancel}
+                {t(goalsLocales.goalForm.buttons.cancel)}
             </Button>
 
             <Button
@@ -47,11 +49,11 @@ export const GoalFormActions = ({
             >
                 {isSubmitting
                     ? (isUpdate
-                        ? pageTexts.goalForm.buttons.updating
-                        : pageTexts.goalForm.buttons.creating)
+                        ? t(goalsLocales.goalForm.buttons.updating)
+                        : t(goalsLocales.goalForm.buttons.creating))
                     : (isUpdate
-                        ? pageTexts.goalForm.buttons.update
-                        : pageTexts.goalForm.buttons.create)}
+                        ? t(goalsLocales.goalForm.buttons.update)
+                        : t(goalsLocales.goalForm.buttons.create))}
             </Button>
         </div>
     )

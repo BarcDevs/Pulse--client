@@ -1,13 +1,14 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
+
 import { PlusCircle } from 'lucide-react'
 
 import { Goal } from '@/types/goals'
 
 import { EmptyState } from '@/components/shared/EmptyState'
 
-import  { recoveryGoalsPageTexts as pageTexts }
-    from '@/constants/componentTexts/recoveryGoals'
+import { goalsLocales } from '@/locales/goalsLocales'
 
 import { GoalCard } from './cards/GoalCard'
 
@@ -24,12 +25,13 @@ export const GoalsGrid = ({
     onDelete,
     onCreateAction
 }: GoalsGridProps) => {
+    const t = useTranslations()
     const isEmpty = goals.length === 0
 
     return (
         <>
             {isEmpty && (
-                <EmptyState message={pageTexts.emptyState.message}/>
+                <EmptyState message={t(goalsLocales.emptyState.message)}/>
             )}
 
             {!isEmpty && (
@@ -49,10 +51,10 @@ export const GoalsGrid = ({
                             <PlusCircle className={'w-6 h-6 text-outline'}/>
                         </div>
                         <p className={'font-headline font-bold text-on-surface-variant'}>
-                            {pageTexts.overview.addGoalPlaceholder}
+                            {t(goalsLocales.overview.addGoalPlaceholder)}
                         </p>
                         <p className={'text-xs text-outline mt-1'}>
-                            {pageTexts.overview.addGoalSubtitle}
+                            {t(goalsLocales.overview.addGoalSubtitle)}
                         </p>
                     </div>
                 </div>

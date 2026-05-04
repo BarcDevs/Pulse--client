@@ -1,10 +1,12 @@
+'use client'
+
+import { useTranslations } from 'next-intl'
+
 import { Button } from '@/components/ui/button'
 
 import { useForumTags } from '@/hooks/queries/useForumTags'
 
 import { cn } from '@/lib/utils'
-
-import { communityPageTexts } from '@/constants/componentTexts/community'
 
 const MAX_TRENDING_TOPICS = 5
 
@@ -17,6 +19,7 @@ export const TrendingTopicsCard = ({
     selectedTag,
     onTagSelect
 }: TrendingTopicsCardProps) => {
+    const t = useTranslations()
     const {
         data: tagsData,
         isLoading,
@@ -32,11 +35,11 @@ export const TrendingTopicsCard = ({
     return (
         <div className={'rounded-2xl bg-surface-card p-5'}>
             <h3 className={'mb-4 font-semibold text-foreground'}>
-                {communityPageTexts.trending.title}
+                {t('community.trending.title')}
             </h3>
             {isEmpty ? (
                 <div className={'text-sm text-muted-foreground'}>
-                    {communityPageTexts.trending.loading}
+                    {t('community.trending.loading')}
                 </div>
             ) : isError ? (
                 <div className={'text-sm text-muted-foreground'}>

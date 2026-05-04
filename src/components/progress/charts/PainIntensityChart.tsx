@@ -2,6 +2,8 @@
 
 import { useState } from 'react'
 
+import { useTranslations } from 'next-intl'
+
 import { TimePeriod } from '@/types/time'
 
 import { TrendAreaChart } from '@/components/shared/charts/TrendAreaChart'
@@ -17,12 +19,10 @@ import { useCheckInStats } from '@/hooks/queries/useCheckInStats'
 
 import { isCompleteWeek } from '@/lib/stats/isCompleteWeek'
 
-import {
-    chartNotifications,
-    trendChartConfigs
-} from '@/constants/componentTexts/progressCharts'
+import { progressLocales } from '@/locales/progressLocales'
 
 export const PainIntensityChart = () => {
+    const t = useTranslations()
     const [period, setPeriod] = useState<TimePeriod>('weekly')
 
     const {
@@ -39,31 +39,48 @@ export const PainIntensityChart = () => {
         value: string
     ) => setPeriod(value as TimePeriod)
 
+    const chartConfig = {
+        header: {
+            title: t(progressLocales.charts.painIntensityChart.title),
+            subtitle: t(progressLocales.charts.painIntensityChart.subtitle)
+        },
+        chart: {
+            dataKey: 'actual' as const
+        },
+        style: {
+            color: 'var(--secondary)',
+            gradientId: 'painGradient'
+        },
+        legend: {
+            label: t(progressLocales.charts.painIntensityChart.legendLabel)
+        }
+    }
+
     return (
         <Card className={'border-0 shadow-sm h-full'}>
             <CardHeader className={'pb-3'}>
                 <CardTitle className={'text-base font-semibold'}>
-                    {trendChartConfigs.pain.header.title}
+                    {chartConfig.header.title}
                 </CardTitle>
             </CardHeader>
             <CardContent>
                 {isError ? (
                     <div className={'h-60 flex items-center justify-center text-sm text-muted-foreground'}>
-                        Failed to load data
+                        {t(progressLocales.charts.notifications.loadError)}
                     </div>
                 ) : (
                     <div className={'relative'}>
                         <TrendAreaChart
-                            {...trendChartConfigs.pain}
+                            {...chartConfig}
                             chart={{
-                                ...trendChartConfigs.pain.chart,
+                                ...chartConfig.chart,
                                 data: chartData
                             }}
                             onPeriodChangeAction={handlePeriodChange}
                         />
                         {isIncompleteWeek && (
                             <DataNotification
-                                message={chartNotifications.painIncomplete}
+                                message={t(progressLocales.charts.notifications.painIncomplete)}
                             />
                         )}
                     </div>

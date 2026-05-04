@@ -1,12 +1,15 @@
 'use client'
 
-import { Button } from '@/components/ui/button'
+import { useTranslations } from 'next-intl'
 
-import { settingsPageTexts } from '@/constants/componentTexts/settings'
+import { Button } from '@/components/ui/button'
 
 import { useSettings } from '@/context/SettingsContext'
 
+import { settingsLocales } from '@/locales/settingsLocales'
+
 export const SettingsFooter = () => {
+    const t = useTranslations()
     const {
         hasChanges,
         isSaving,
@@ -23,15 +26,15 @@ export const SettingsFooter = () => {
                 disabled={isDisabled}
                 onClick={onDiscard}
             >
-                {settingsPageTexts.buttons.discardChanges}
+                {t(settingsLocales.buttons.discardChanges)}
             </Button>
             <Button
                 disabled={isDisabled}
                 onClick={onSave}
             >
                 {isSaving
-                    ? settingsPageTexts.buttons.savingPreferences
-                    : settingsPageTexts.buttons.savePreferences}
+                    ? t(settingsLocales.buttons.savingPreferences)
+                    : t(settingsLocales.buttons.savePreferences)}
             </Button>
         </div>
     )

@@ -1,6 +1,6 @@
 import { AuthFormType, FormConfig } from '@/types/forms'
 
-import { authTexts } from '@/constants/componentTexts/auth'
+import { authLocales } from '@/locales/authLocales'
 
 type AuthFormConfigs = Record<
     AuthFormType,
@@ -12,31 +12,31 @@ const authFormConfigs: AuthFormConfigs = {
         fields: {
             email: {
                 type: 'email',
-                label: authTexts.login.emailLabel,
-                placeholder: authTexts.login.emailPlaceholder,
+                label: authLocales.login.emailLabel,
+                placeholder: authLocales.login.emailPlaceholder,
                 required: true
             },
             password: {
                 type: 'password',
-                label: authTexts.login.passwordLabel,
+                label: authLocales.login.passwordLabel,
                 placeholder: '••••••••',
                 required: true
             },
             remember: {
                 type: 'checkbox',
-                label: 'Remember me',
+                label: 'auth.login.rememberMe',
                 required: false
             }
         },
         buttons: {
             primary: {
-                label: authTexts.login.loginButton,
-                loadingLabel: authTexts.login.loggingInButton
+                label: authLocales.login.loginButton,
+                loadingLabel: authLocales.login.loggingInButton
             }
         },
         links: [
             {
-                label: authTexts.login.forgotPasswordLink,
+                label: authLocales.login.forgotPasswordLink,
                 href: '/forgot-password'
             }
         ]
@@ -46,45 +46,45 @@ const authFormConfigs: AuthFormConfigs = {
         fields: {
             firstName: {
                 type: 'text',
-                label: authTexts.signup.firstNameLabel,
-                placeholder: authTexts.signup.firstNamePlaceholder,
+                label: authLocales.signup.firstNameLabel,
+                placeholder: authLocales.signup.firstNamePlaceholder,
                 required: true
             },
             lastName: {
                 type: 'text',
-                label: authTexts.signup.lastNameLabel,
-                placeholder: authTexts.signup.lastNamePlaceholder,
+                label: authLocales.signup.lastNameLabel,
+                placeholder: authLocales.signup.lastNamePlaceholder,
                 required: true
             },
             email: {
                 type: 'email',
-                label: authTexts.signup.emailLabel,
-                placeholder: authTexts.signup.emailPlaceholder,
+                label: authLocales.signup.emailLabel,
+                placeholder: authLocales.signup.emailPlaceholder,
                 required: true
             },
             password: {
                 type: 'password',
-                label: authTexts.signup.passwordLabel,
-                placeholder: authTexts.signup.passwordPlaceholder,
+                label: authLocales.signup.passwordLabel,
+                placeholder: authLocales.signup.passwordPlaceholder,
                 required: true,
-                description: 'Min 8 characters with letters and numbers'
+                description: 'auth.signup.passwordDescription'
             },
             confirmPassword: {
                 type: 'password',
-                label: authTexts.signup.confirmPasswordLabel,
-                placeholder: authTexts.signup.confirmPasswordPlaceholder,
+                label: authLocales.signup.confirmPasswordLabel,
+                placeholder: authLocales.signup.confirmPasswordPlaceholder,
                 required: true
             }
         },
         buttons: {
             primary: {
-                label: authTexts.signup.signupButton,
-                loadingLabel: authTexts.signup.signingUpButton
+                label: authLocales.signup.signupButton,
+                loadingLabel: authLocales.signup.signingUpButton
             }
         },
         links: [
             {
-                label: `${authTexts.signup.loginText} ${authTexts.signup.loginLink}`,
+                label: `${authLocales.signup.loginText} ${authLocales.signup.loginLink}`,
                 href: '/login'
             }
         ]
@@ -94,20 +94,20 @@ const authFormConfigs: AuthFormConfigs = {
         fields: {
             email: {
                 type: 'email',
-                label: authTexts.forgotPassword.emailLabel,
-                placeholder: authTexts.forgotPassword.emailPlaceholder,
+                label: authLocales.forgotPassword.emailLabel,
+                placeholder: authLocales.forgotPassword.emailPlaceholder,
                 required: true
             }
         },
         buttons: {
             primary: {
-                label: authTexts.forgotPassword.submitButton,
-                loadingLabel: authTexts.forgotPassword.sendingButton
+                label: authLocales.forgotPassword.submitButton,
+                loadingLabel: authLocales.forgotPassword.sendingButton
             }
         },
         links: [
             {
-                label: authTexts.forgotPassword.backButton,
+                label: authLocales.forgotPassword.backButton,
                 href: '/login'
             }
         ]
@@ -117,26 +117,26 @@ const authFormConfigs: AuthFormConfigs = {
         fields: {
             password: {
                 type: 'password',
-                label: authTexts.resetPassword.passwordLabel,
-                placeholder: authTexts.resetPassword.passwordPlaceholder,
+                label: authLocales.resetPassword.passwordLabel,
+                placeholder: authLocales.resetPassword.passwordPlaceholder,
                 required: true
             },
             confirmPassword: {
                 type: 'password',
-                label: authTexts.resetPassword.confirmPasswordLabel,
-                placeholder: authTexts.resetPassword.passwordPlaceholder,
+                label: authLocales.resetPassword.confirmPasswordLabel,
+                placeholder: authLocales.resetPassword.passwordPlaceholder,
                 required: true
             }
         },
         buttons: {
             primary: {
-                label: authTexts.resetPassword.submitButton,
-                loadingLabel: authTexts.resetPassword.resettingButton
+                label: authLocales.resetPassword.submitButton,
+                loadingLabel: authLocales.resetPassword.resettingButton
             }
         },
         links: [
             {
-                label: authTexts.resetPassword.backButton,
+                label: authLocales.resetPassword.backButton,
                 href: '/login'
             }
         ]

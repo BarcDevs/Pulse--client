@@ -1,13 +1,15 @@
 'use client'
 
 import { useRouter } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 
 import { Icon } from '@/components/shared/ui/Icon'
 import { Button } from '@/components/ui/button'
 
-import { networkErrorPageTexts } from '@/constants/componentTexts/ui/errors'
+import { globalLocales } from '@/locales/globalLocales'
 
 export const NetworkErrorActions = () => {
+    const t = useTranslations()
     const router = useRouter()
 
     const handleTryAgain = () =>
@@ -26,7 +28,7 @@ export const NetworkErrorActions = () => {
                     name={'error/refresh'}
                     size={20}
                 />
-                {networkErrorPageTexts.tryAgainBtn}
+                {t(globalLocales.errors.networkErrorPage.tryAgainBtn)}
             </Button>
             <Button
                 onClick={handleCheckStatus}
@@ -37,7 +39,7 @@ export const NetworkErrorActions = () => {
                     name={'error/help'}
                     size={20}
                 />
-                {networkErrorPageTexts.checkStatusBtn}
+                {t(globalLocales.errors.networkErrorPage.checkStatusBtn)}
             </Button>
         </div>
     )

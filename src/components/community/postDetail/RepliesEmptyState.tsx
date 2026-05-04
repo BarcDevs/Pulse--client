@@ -1,13 +1,19 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
+
 import { EmptyState } from '@/components/shared/EmptyState'
 
-import { communityPageTexts } from '@/constants/componentTexts/community'
+import { communityLocales } from '@/locales/communityLocales'
 
-export const RepliesEmptyState = () => (
-    <div className={'rounded-md bg-muted/50 border border-border'}>
-        <EmptyState
-            message={communityPageTexts.postDetail.noReplies}
-        />
-    </div>
-)
+export const RepliesEmptyState = () => {
+    const t = useTranslations()
+
+    return (
+        <div className={'rounded-md bg-muted/50 border border-border'}>
+            <EmptyState
+                message={t(communityLocales.postDetail.noReplies)}
+            />
+        </div>
+    )
+}

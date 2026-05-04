@@ -1,13 +1,17 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
+
 import { Icon } from '@/components/shared/ui/Icon'
 import { Button } from '@/components/ui/button'
 
 import { redirectToGoogleAuth } from '@/lib/auth'
 
-import { authTexts } from '@/constants/componentTexts/auth'
+import { authLocales } from '@/locales/authLocales'
 
 export const GoogleLoginButton = () => {
+    const t = useTranslations()
+
     const handleClick = async () => {
         await redirectToGoogleAuth()
     }
@@ -20,7 +24,7 @@ export const GoogleLoginButton = () => {
                 </div>
                 <div className={'relative flex justify-center text-xs uppercase'}>
                     <p className={'bg-background px-2 text-muted-foreground'}>
-                        {authTexts.common.orContinueWith}
+                        {t(authLocales.common.orContinueWith)}
                     </p>
                 </div>
             </div>
@@ -36,7 +40,7 @@ export const GoogleLoginButton = () => {
                     size={20}
                     className={'mr-2'}
                 />
-                {authTexts.common.continueWithGoogle}
+                {t(authLocales.common.continueWithGoogle)}
             </Button>
         </>
     )

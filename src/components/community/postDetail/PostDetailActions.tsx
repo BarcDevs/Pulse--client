@@ -1,6 +1,7 @@
 'use client'
 
 import { useRouter } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 
 import {
     MessageSquare,
@@ -15,10 +16,10 @@ import { DeleteMenu } from '@/components/shared/DeleteMenu'
 
 import { useForumPostMutations } from '@/hooks/mutations/useForumPostMutations'
 
-import { communityPageTexts } from '@/constants/componentTexts/community'
-
 import { useAuth } from '@/context/AuthContext'
 import { usePostDetail } from '@/context/PostDetailContext'
+
+import { communityLocales } from '@/locales/communityLocales'
 
 type PostDetailActionsProps = {
     postId: string
@@ -30,6 +31,7 @@ export const PostDetailActions = ({
     post
 }: PostDetailActionsProps) => {
     const router = useRouter()
+    const t = useTranslations()
     const { user } = useAuth()
     const { deletePost } = useForumPostMutations({
         postId
@@ -63,14 +65,14 @@ export const PostDetailActions = ({
             <div className={'flex items-center gap-2'}>
                 <PostActionButton
                     icon={ThumbsUp}
-                    text={communityPageTexts.postActions.solidarity}
+                    text={t(communityLocales.postActions.solidarity)}
                     onClick={() => {
                     }}
                 />
 
                 <PostActionButton
                     icon={MessageSquare}
-                    text={communityPageTexts.postActions.reply}
+                    text={t(communityLocales.postActions.reply)}
                     onClick={() => {
                         if (!isAuthenticated) {
                             return router.push('/login')
@@ -81,7 +83,7 @@ export const PostDetailActions = ({
 
                 <PostActionButton
                     icon={Share2}
-                    text={communityPageTexts.postActions.share}
+                    text={t(communityLocales.postActions.share)}
                     onClick={() => {
                     }}
                 />
@@ -89,7 +91,7 @@ export const PostDetailActions = ({
                 {isPostOwner && (
                     <DeleteMenu
                         onDeleteAction={handleDeletePost}
-                        confirmMessage={communityPageTexts.confirmations.deletePost}
+                        confirmMessage={t(communityLocales.confirmations.deletePost)}
                         isLoading={deletePost.isPending}
                         iconSize={18}
                     />

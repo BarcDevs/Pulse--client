@@ -1,6 +1,10 @@
-import { authTexts } from '@/constants/componentTexts/auth'
+'use client'
+
+import { useTranslations } from 'next-intl'
 
 import authFormConfig from '@/config/schema/authForm'
+
+import { authLocales } from '@/locales/authLocales'
 
 import { PasswordRequirementItem }
     from './PasswordRequirementItem'
@@ -12,6 +16,7 @@ type PasswordRequirementsListProps = {
 export const PasswordRequirementsList = ({
     password
 }: PasswordRequirementsListProps) => {
+    const t = useTranslations()
     const hasMinLength =
         password.length >= authFormConfig
             .password.minLength
@@ -22,11 +27,11 @@ export const PasswordRequirementsList = ({
         <div className={'flex items-center gap-6 text-sm'}>
             <PasswordRequirementItem
                 isMet={hasMinLength}
-                label={authTexts.resetPassword.minLengthText}
+                label={t(authLocales.resetPassword.minLengthText)}
             />
             <PasswordRequirementItem
                 isMet={hasSpecialChar}
-                label={authTexts.resetPassword.specialCharText}
+                label={t(authLocales.resetPassword.specialCharText)}
             />
         </div>
     )

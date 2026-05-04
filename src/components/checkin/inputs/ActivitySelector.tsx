@@ -2,6 +2,8 @@
 
 import { useState } from 'react'
 
+import { useTranslations } from 'next-intl'
+
 import { Trophy } from 'lucide-react'
 
 import type { FormControlProps } from '@/types/forms'
@@ -14,8 +16,9 @@ import {
     CardTitle
 } from '@/components/ui/card'
 
-import { checkInTexts } from '@/constants/componentTexts/checkIn'
+import { DEFAULT_ACTIVITIES } from '@/config/defaultActivities'
 
+import { checkInLocales } from '@/locales/checkInLocales'
 import type { CheckInSchema } from '@/validations/forms/checkInSchema'
 
 import { ActivityToggleButton } from './ActivityToggleButton'
@@ -29,6 +32,7 @@ export const CheckInActivities = ({
     setValueAction,
     suggestedActivities = []
 }: CheckInActivitiesProps) => {
+    const t = useTranslations()
     const [customActivity, setCustomActivity] = useState('')
     const selectedActivities = watch('activities') ?? []
 
@@ -38,8 +42,8 @@ export const CheckInActivities = ({
 
     const customActivities = selectedActivities.filter(
         (activity) =>
-            !checkInTexts.activities.default.includes(
-                activity
+            !DEFAULT_ACTIVITIES.includes(
+                activity as typeof DEFAULT_ACTIVITIES[number]
             )
     )
 
@@ -75,7 +79,7 @@ export const CheckInActivities = ({
                 <div className={'flex items-center gap-2'}>
                     <Trophy className={'size-5 text-warning'}/>
                     <CardTitle className={'text-lg font-semibold'}>
-                        {checkInTexts.activities.title}
+                        {t(checkInLocales.activities.title)}
                     </CardTitle>
                 </div>
             </CardHeader>
@@ -105,7 +109,7 @@ export const CheckInActivities = ({
                         All activities:
                     </p>
                     <div className={'flex--wrap gap-2'}>
-                        {checkInTexts.activities.default.map(
+                        {DEFAULT_ACTIVITIES.map(
                             (activity) => (
                                 <ActivityToggleButton
                                     key={activity}
@@ -128,7 +132,7 @@ export const CheckInActivities = ({
                         <div className={'flex items-center gap-2'}>
                             <FormInput
                                 id={'customActivity'}
-                                placeholder={checkInTexts.activities.placeholder}
+                                placeholder={t(checkInLocales.activities.placeholder)}
                                 value={customActivity}
                                 onChange={(e) => setCustomActivity(e.target.value)}
                                 onKeyDown={(e) => {

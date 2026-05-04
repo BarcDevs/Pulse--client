@@ -1,4 +1,8 @@
+'use client'
+
 import { useState } from 'react'
+
+import { useTranslations } from 'next-intl'
 
 import { Plus } from 'lucide-react'
 
@@ -13,8 +17,7 @@ import {
     PopoverTrigger
 } from '@/components/ui/popover'
 
-import { recoveryGoalsPageTexts as pageTexts }
-    from '@/constants/componentTexts/recoveryGoals'
+import { goalsLocales } from '@/locales/goalsLocales'
 
 type GoalsFilterProps = {
     selectedStatuses: GoalStatus[]
@@ -27,6 +30,7 @@ export const GoalsFilter = ({
     toggleStatus,
     onOpenCreateModal
 }: GoalsFilterProps) => {
+    const t = useTranslations()
     const [isFilterOpen, setIsFilterOpen] = useState(false)
 
     return (
@@ -59,7 +63,7 @@ export const GoalsFilter = ({
                                     htmlFor={`status-${status}`}
                                     className={'text-sm font-medium cursor-pointer flex-1'}
                                 >
-                                    {pageTexts.statusLabels[status]}
+                                    {t(goalsLocales.statusLabels[status])}
                                 </Label>
                             </div>
                         ))}
@@ -71,7 +75,7 @@ export const GoalsFilter = ({
                 className={'bg-linear-to-r from-primary-gradient-start to-primary-gradient-end text-primary-foreground shadow-lg shadow-blue-500/20'}
             >
                 <Plus className={'size-4 mr-2'}/>
-                {pageTexts.overview.newGoalButton}
+                {t(goalsLocales.overview.newGoalButton)}
             </Button>
         </div>
     )

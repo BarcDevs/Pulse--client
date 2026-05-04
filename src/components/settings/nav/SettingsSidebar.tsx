@@ -1,3 +1,5 @@
+import { useTranslations } from 'next-intl'
+
 import {
     Bell,
     Lock,
@@ -7,8 +9,7 @@ import {
 
 import type { SetState } from '@/types/react'
 
-import { settingsPageTexts }
-    from '@/constants/componentTexts/settings'
+import { SETTINGS_TABS_CONFIG } from '@/config/settingsTabs'
 
 import { SettingsSidebarFooter } from './SettingsSidebarFooter'
 import { SettingsTabButton } from './SettingsTabButton'
@@ -30,22 +31,26 @@ type IconMapKey = keyof typeof iconMap
 export const SettingsSidebar = ({
     activeTab,
     onTabChange
-}: SettingsSidebarProps) => (
-    <div className={'space-y-2'}>
-        {settingsPageTexts.tabs.map((tab) => {
-            const IconComponent = iconMap[tab.icon as IconMapKey]
+}: SettingsSidebarProps) => {
+    const t = useTranslations()
 
-            return (
-                <SettingsTabButton
-                    key={tab.id}
-                    icon={IconComponent}
-                    label={tab.label}
-                    isActive={activeTab === tab.id}
-                    onClick={() => onTabChange(tab.id)}
-                />
-            )
-        })}
+    return (
+        <div className={'space-y-2'}>
+            {SETTINGS_TABS_CONFIG.map((tab) => {
+                const IconComponent = iconMap[tab.icon as IconMapKey]
 
-        <SettingsSidebarFooter/>
-    </div>
-)
+                return (
+                    <SettingsTabButton
+                        key={tab.id}
+                        icon={IconComponent}
+                        label={t(tab.labelKey)}
+                        isActive={activeTab === tab.id}
+                        onClick={() => onTabChange(tab.id)}
+                    />
+                )
+            })}
+
+            <SettingsSidebarFooter/>
+        </div>
+    )
+}

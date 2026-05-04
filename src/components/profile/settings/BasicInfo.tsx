@@ -1,5 +1,7 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
+
 import { Pencil } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
@@ -12,39 +14,32 @@ import {
 
 import { useUser } from '@/hooks/ui/useUser'
 
-import { profilePageTexts } from '@/constants/componentTexts/profile'
+import { profileLocales } from '@/locales/profileLocales'
 
 export const ProfileBasicInfo = () => {
+    const t = useTranslations()
     const { user } = useUser()
 
     if (!user)
         return null
 
     // TODO: Add legal name, date of birth, and primary support contact to Profile type
-    // TODO: extract constant
     const infoFields = [
         {
-            label: profilePageTexts
-                .basicInfo.fields[0].label,
+            label: t(profileLocales.basicInfo.legalName),
             value: user.email
         },
         {
-            label: profilePageTexts
-                .basicInfo.fields[1].label,
-            value: profilePageTexts
-                .basicInfo.fields[1].value
+            label: t(profileLocales.basicInfo.emailAddress),
+            value: 'Alexander J. Rivera'
         },
         {
-            label: profilePageTexts
-                .basicInfo.fields[2].label,
-            value: profilePageTexts
-                .basicInfo.fields[2].value
+            label: t(profileLocales.basicInfo.dateOfBirth),
+            value: 'May 12, 1992'
         },
         {
-            label: profilePageTexts
-                .basicInfo.fields[3].label,
-            value: profilePageTexts
-                .basicInfo.fields[3].value
+            label: t(profileLocales.basicInfo.supportContact),
+            value: 'Dr. Sarah Chen (Clinician)'
         }
     ]
 
@@ -52,7 +47,7 @@ export const ProfileBasicInfo = () => {
         <Card className={'border-0 shadow-sm'}>
             <CardHeader className={'flex-row-center-between'}>
                 <CardTitle className={'text-lg font-semibold'}>
-                    {profilePageTexts.basicInfo.title}
+                    {t(profileLocales.basicInfo.title)}
                 </CardTitle>
                 <Button
                     variant={'ghost'}
@@ -60,7 +55,7 @@ export const ProfileBasicInfo = () => {
                     className={'gap-2 text-primary'}
                 >
                     <Pencil className={'size-4'}/>
-                    {profilePageTexts.basicInfo.edit}
+                    {t(profileLocales.basicInfo.edit)}
                 </Button>
             </CardHeader>
             <CardContent>

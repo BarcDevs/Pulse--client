@@ -1,6 +1,7 @@
 'use client'
 
 import { useRouter } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 
 import type {
     CheckIn,
@@ -11,10 +12,9 @@ import { Button } from '@/components/ui/button'
 
 import { useCheckInForm } from '@/hooks/forms/useCheckInForm'
 
-import { checkInTexts } from '@/constants/componentTexts/checkIn'
-
 import { handleCheckInSubmit } from '@/handlers/actions/checkIn'
 
+import { checkInLocales } from '@/locales/checkInLocales'
 import type { CheckInSchema } from '@/validations/forms/checkInSchema'
 
 import { CheckInActivities } from '../inputs/ActivitySelector'
@@ -30,6 +30,7 @@ export const CheckInForm = ({
     latestCheckIn = null,
     stats = null
 }: CheckInFormProps) => {
+    const t = useTranslations()
     const router = useRouter()
     const {
         form,
@@ -75,8 +76,8 @@ export const CheckInForm = ({
                     disabled={form.formState.isSubmitting}
                 >
                     {form.formState.isSubmitting
-                        ? checkInTexts.submittingButton
-                        : checkInTexts.submitButton}
+                        ? t(checkInLocales.submittingButton)
+                        : t(checkInLocales.submitButton)}
                 </Button>
             </div>
         </form>

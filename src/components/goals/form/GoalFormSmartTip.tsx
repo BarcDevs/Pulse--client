@@ -1,14 +1,19 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import {
+    useEffect,
+    useMemo,
+    useState
+} from 'react'
+
+import { useTranslations } from 'next-intl'
 
 import {
     CheckCircle2,
     Lightbulb
 } from 'lucide-react'
 
-import  { recoveryGoalsPageTexts as pageTexts }
-    from '@/constants/componentTexts/recoveryGoals'
+import { goalsLocales } from '@/locales/goalsLocales'
 
 type RandomData = {
     bundle: {
@@ -19,7 +24,41 @@ type RandomData = {
 }
 
 export const GoalFormSmartTip = () => {
-    const bundles = pageTexts.goalForm.smartTip.bundles
+    const t = useTranslations()
+    // smartTip.bundles is an array object, not a translation key string
+    const bundles = useMemo(() => [
+        {
+            body: t('goals.goalForm.smartTip.bundles.0.body'),
+            tips: [
+                t('goals.goalForm.smartTip.bundles.0.tips.0'),
+                t('goals.goalForm.smartTip.bundles.0.tips.1'),
+                t('goals.goalForm.smartTip.bundles.0.tips.2'),
+                t('goals.goalForm.smartTip.bundles.0.tips.3'),
+                t('goals.goalForm.smartTip.bundles.0.tips.4')
+            ]
+        },
+        {
+            body: t('goals.goalForm.smartTip.bundles.1.body'),
+            tips: [
+                t('goals.goalForm.smartTip.bundles.1.tips.0'),
+                t('goals.goalForm.smartTip.bundles.1.tips.1'),
+                t('goals.goalForm.smartTip.bundles.1.tips.2'),
+                t('goals.goalForm.smartTip.bundles.1.tips.3'),
+                t('goals.goalForm.smartTip.bundles.1.tips.4')
+            ]
+        },
+        {
+            body: t('goals.goalForm.smartTip.bundles.2.body'),
+            tips: [
+                t('goals.goalForm.smartTip.bundles.2.tips.0'),
+                t('goals.goalForm.smartTip.bundles.2.tips.1'),
+                t('goals.goalForm.smartTip.bundles.2.tips.2'),
+                t('goals.goalForm.smartTip.bundles.2.tips.3'),
+                t('goals.goalForm.smartTip.bundles.2.tips.4')
+            ]
+        }
+    ], [t])
+
     const [randomData, setRandomData] = useState<
         RandomData
     >(() => {
@@ -57,7 +96,7 @@ export const GoalFormSmartTip = () => {
                     className={'text-secondary'}
                 />
                 <h3 className={'font-headline font-bold text-on-surface'}>
-                    {pageTexts.goalForm.smartTip.title}
+                    {t(goalsLocales.goalForm.smartTip.title)}
                 </h3>
             </div>
 

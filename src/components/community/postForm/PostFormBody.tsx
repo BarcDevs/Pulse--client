@@ -1,6 +1,7 @@
 'use client'
 
 import dynamic from 'next/dynamic'
+import { useTranslations } from 'next-intl'
 
 import { UseFormReturn } from 'react-hook-form'
 
@@ -12,8 +13,9 @@ import {
     FormMessage
 } from '@/components/ui/form'
 
-import { communityPageTexts } from '@/constants/componentTexts/community'
 import { reactQuillSetup } from '@/constants/config/reactQuillSetup'
+
+import { communityLocales } from '@/locales/communityLocales'
 
 const ReactQuill = dynamic(
     async () => {
@@ -34,34 +36,38 @@ type PostFormBodyProps = {
 export const PostFormBody = ({
     form,
     isReply
-}: PostFormBodyProps) => (
-    <FormField
-        control={form.control}
-        name={'body'}
-        render={({ field }) => (
-            <FormItem>
-                {!isReply && (
-                    <FormLabel>
-                        {communityPageTexts.postForm.content}
-                    </FormLabel>
-                )}
-                <FormControl>
-                    <div className={'border border-input rounded-md bg-white'}>
-                        <ReactQuill
-                            theme={'snow'}
-                            value={field.value}
-                            onChange={field.onChange}
-                            modules={reactQuillSetup.modules}
-                            formats={reactQuillSetup.formats}
-                            placeholder={isReply
-                                ? communityPageTexts.postForm.bodyPlaceholderReply
-                                : communityPageTexts.postForm.bodyPlaceholderPost}
-                            className={'text-sm'}
-                        />
-                    </div>
-                </FormControl>
-                <FormMessage/>
-            </FormItem>
-        )}
-    />
-)
+}: PostFormBodyProps) => {
+    const t = useTranslations()
+
+    return (
+        <FormField
+            control={form.control}
+            name={'body'}
+            render={({ field }) => (
+                <FormItem>
+                    {!isReply && (
+                        <FormLabel>
+                            {t(communityLocales.postForm.content)}
+                        </FormLabel>
+                    )}
+                    <FormControl>
+                        <div className={'border border-input rounded-md bg-white'}>
+                            <ReactQuill
+                                theme={'snow'}
+                                value={field.value}
+                                onChange={field.onChange}
+                                modules={reactQuillSetup.modules}
+                                formats={reactQuillSetup.formats}
+                                placeholder={isReply
+                                    ? t(communityLocales.postForm.bodyPlaceholderReply)
+                                    : t(communityLocales.postForm.bodyPlaceholderPost)}
+                                className={'text-sm'}
+                            />
+                        </div>
+                    </FormControl>
+                    <FormMessage/>
+                </FormItem>
+            )}
+        />
+    )
+}

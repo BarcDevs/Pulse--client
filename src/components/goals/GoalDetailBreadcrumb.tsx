@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import { useTranslations } from 'next-intl'
 
 import { useQueryClient } from '@tanstack/react-query'
 
@@ -15,9 +16,10 @@ import {
     BreadcrumbSeparator
 } from '@/components/ui/breadcrumb'
 
-import { recoveryGoalsPageTexts } from '@/constants/componentTexts/recoveryGoals'
 import { recoveryGoalsQueryKeys } from '@/constants/queryKeys'
 import { ROUTES } from '@/constants/routes'
+
+import { goalsLocales } from '@/locales/goalsLocales'
 
 type GoalDetailBreadcrumbProps = {
     goalId: string
@@ -26,6 +28,7 @@ type GoalDetailBreadcrumbProps = {
 export const GoalDetailBreadcrumb = ({
     goalId
 }: GoalDetailBreadcrumbProps) => {
+    const t = useTranslations()
     const queryClient = useQueryClient()
     const goal = queryClient.getQueryData<Goal>(
         recoveryGoalsQueryKeys.goal(goalId)
@@ -37,7 +40,7 @@ export const GoalDetailBreadcrumb = ({
                 <BreadcrumbItem>
                     <BreadcrumbLink asChild>
                         <Link href={ROUTES.RECOVERY_GOALS}>
-                            {recoveryGoalsPageTexts.header.title}
+                            {t(goalsLocales.header.title)}
                         </Link>
                     </BreadcrumbLink>
                 </BreadcrumbItem>

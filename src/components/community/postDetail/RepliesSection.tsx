@@ -1,5 +1,7 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
+
 import { Reply } from '@/types/community'
 
 import { RepliesEmptyState } from '@/components/community/postDetail/RepliesEmptyState'
@@ -12,10 +14,10 @@ import { Skeleton } from '@/components/ui/skeleton'
 import { useForumPostMutations } from '@/hooks/mutations/useForumPostMutations'
 import { useForumReplies } from '@/hooks/queries/useForumReplies'
 
-import { communityPageTexts } from '@/constants/componentTexts/community'
-
 import { useAuth } from '@/context/AuthContext'
 import { usePostDetail } from '@/context/PostDetailContext'
+
+import { communityLocales } from '@/locales/communityLocales'
 
 type RepliesSectionProps = {
     postId: string
@@ -24,6 +26,7 @@ type RepliesSectionProps = {
 export const RepliesSection = ({
     postId
 }: RepliesSectionProps) => {
+    const t = useTranslations()
     const { user } = useAuth()
     const currentUserId = user?.id
     const isAuthenticated = !!user
@@ -45,7 +48,7 @@ export const RepliesSection = ({
         replyId: string
     ) => {
         const confirmed = confirm(
-            communityPageTexts.confirmations.deleteReply
+            t(communityLocales.confirmations.deleteReply)
         )
         if (!confirmed) return
         await deleteReply.mutateAsync(replyId)
@@ -58,11 +61,11 @@ export const RepliesSection = ({
             <div className={'flex items-center justify-between'}>
                 <h2 className={'text-lg font-semibold'}>
                     {isLoading
-                        ? communityPageTexts.postDetail.loading
+                        ? t(communityLocales.postDetail.loading)
                         : `${replies.length} ${
                             replies.length === 1
-                                ? communityPageTexts.postDetail.reply
-                                : communityPageTexts.postDetail.replies
+                                ? t(communityLocales.postDetail.reply)
+                                : t(communityLocales.postDetail.replies)
                         }`
                     }
                 </h2>

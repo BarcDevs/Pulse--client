@@ -1,8 +1,10 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
+
 import { Button } from '@/components/ui/button'
 
-import { communityPageTexts } from '@/constants/componentTexts/community'
+import { communityLocales } from '@/locales/communityLocales'
 
 type PostFormActionsProps = {
     isReply: boolean
@@ -14,24 +16,28 @@ export const PostFormActions = ({
     isReply,
     onCancelAction,
     isLoading
-}: PostFormActionsProps) => (
-    <div className={'flex gap-2 justify-end'}>
-        {onCancelAction && (
+}: PostFormActionsProps) => {
+    const t = useTranslations()
+
+    return (
+        <div className={'flex gap-2 justify-end'}>
+            {onCancelAction && (
+                <Button
+                    variant={'outline'}
+                    type={'button'}
+                    onClick={onCancelAction}
+                >
+                    {t(communityLocales.postForm.cancel)}
+                </Button>
+            )}
             <Button
-                variant={'outline'}
-                type={'button'}
-                onClick={onCancelAction}
+                type={'submit'}
+                disabled={isLoading}
             >
-                {communityPageTexts.postForm.cancel}
+                {isReply
+                    ? t(communityLocales.postForm.sendReply)
+                    : t(communityLocales.postForm.createPost)}
             </Button>
-        )}
-        <Button
-            type={'submit'}
-            disabled={isLoading}
-        >
-            {isReply
-                ? communityPageTexts.postForm.sendReply
-                : communityPageTexts.postForm.createPost}
-        </Button>
-    </div>
-)
+        </div>
+    )
+}

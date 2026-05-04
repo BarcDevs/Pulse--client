@@ -1,5 +1,7 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
+
 import { Sparkles } from 'lucide-react'
 
 import { CheckInInsight } from '@/types/checkIn'
@@ -12,10 +14,10 @@ import { useCheckIns } from '@/hooks/queries/useCheckIns'
 import { getInsightColor } from '@/lib/milestones'
 import { cn } from '@/lib/utils'
 
-import  { recoveryGoalsPageTexts as pageTexts }
-    from '@/constants/componentTexts/recoveryGoals'
+import { goalsLocales } from '@/locales/goalsLocales'
 
 export const GoalInsightsSection = () => {
+    const t = useTranslations()
     const {
         data: checkIns,
         isLoading: checkInsLoading,
@@ -37,13 +39,13 @@ export const GoalInsightsSection = () => {
             {!checkInsLoading && checkInsError && (
                 <div className={'bg-white p-6 rounded-xl shadow-sm border border-slate-100'}>
                     <p className={'text-sm text-on-surface-variant'}>
-                        {pageTexts.insights.failedToLoad}
+                        {t(goalsLocales.insights.failedToLoad)}
                     </p>
                 </div>
             )}
 
             {!checkInsLoading && !checkInsError && !hasInsights && (
-                <EmptyState message={pageTexts.insights.emptyState}/>
+                <EmptyState message={t(goalsLocales.insights.emptyState)}/>
             )}
 
             {!checkInsLoading && !checkInsError && hasInsights && (
@@ -51,7 +53,7 @@ export const GoalInsightsSection = () => {
                     <div className={'flex items-center gap-2 mb-4'}>
                         <Sparkles className={'w-5 h-5 text-primary'}/>
                         <h4 className={'text-lg font-headline font-bold'}>
-                            {pageTexts.insights.title}
+                            {t(goalsLocales.insights.title)}
                         </h4>
                     </div>
                     <div className={'space-y-4'}>

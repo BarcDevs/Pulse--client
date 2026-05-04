@@ -1,17 +1,26 @@
+import { useTranslations } from 'next-intl'
+
 import { cn } from '@/lib/utils'
 
-import { profilePageTexts } from '@/constants/componentTexts/profile'
 import { recoveryFocusAreasWithIcons }
     from '@/constants/mappings/profile'
 
-export const RecoveryIdentity = () => (
-    <div className={'card-base'}>
-        <h3 className={'text-lg font-semibold text-foreground mb-2'}>{profilePageTexts.recoveryIdentity.title}</h3>
-        <p className={'text-sm text-muted-foreground mb-6'}>{profilePageTexts.recoveryIdentity.subtitle}</p>
+import { profileLocales } from '@/locales/profileLocales'
 
-        <div className={'flex--wrap gap-3 mb-6'}>
-            {recoveryFocusAreasWithIcons
-                .map((area) => (
+export const RecoveryIdentity = () => {
+    const t = useTranslations()
+
+    return (
+        <div className={'card-base'}>
+            <h3 className={'text-lg font-semibold text-foreground mb-2'}>
+                {t(profileLocales.recoveryIdentity.title)}
+            </h3>
+            <p className={'text-sm text-muted-foreground mb-6'}>
+                {t(profileLocales.recoveryIdentity.subtitle)}
+            </p>
+
+            <div className={'flex--wrap gap-3 mb-6'}>
+                {recoveryFocusAreasWithIcons.map((area) => (
                     <div
                         key={area.label}
                         className={cn(
@@ -25,12 +34,13 @@ export const RecoveryIdentity = () => (
                         </span>
                     </div>
                 ))}
-        </div>
+            </div>
 
-        <div className={'bg-surface-section rounded-xl p-4'}>
-            <p className={'text-sm text-muted-foreground italic leading-relaxed'}>
-                &quot;{profilePageTexts.recoveryIdentity.quote}&quot;
-            </p>
+            <div className={'bg-surface-section rounded-xl p-4'}>
+                <p className={'text-sm text-muted-foreground italic leading-relaxed'}>
+                    &quot;{t(profileLocales.recoveryIdentity.quote)}&quot;
+                </p>
+            </div>
         </div>
-    </div>
-)
+    )
+}

@@ -1,5 +1,7 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
+
 import { ThumbsUp } from 'lucide-react'
 
 import { Reply } from '@/types/community'
@@ -12,7 +14,7 @@ import { cn, getUserFallback } from '@/lib/utils'
 
 import { sanitizeHtml } from '@/utils/sanitizeHtml'
 
-import { communityPageTexts } from '@/constants/componentTexts/community'
+import { communityLocales } from '@/locales/communityLocales'
 
 type ReplyCardProps = {
     reply: Reply
@@ -29,6 +31,7 @@ export const ReplyCard = ({
     onDeleteAction,
     isDeleting = false
 }: ReplyCardProps) => {
+    const t = useTranslations()
     const isOwner = currentUserId === reply.authorId
     const authorName = reply.author
         ? `${reply.author.firstName} ${reply.author.lastName}`
@@ -70,7 +73,7 @@ export const ReplyCard = ({
                     {isOwner && (
                         <DeleteMenu
                             onDeleteAction={onDeleteAction}
-                            confirmMessage={communityPageTexts.confirmations.deleteReply}
+                            confirmMessage={t(communityLocales.confirmations.deleteReply)}
                             isLoading={isDeleting}
                         />
                     )}

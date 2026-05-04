@@ -1,5 +1,7 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
+
 import { parseISO } from 'date-fns'
 
 import { GoalMilestone, MilestoneStatus } from '@/types/goals'
@@ -10,9 +12,7 @@ import { getMilestoneCardConfig } from '@/lib/milestones'
 import { formatByUserPreference } from '@/lib/time'
 import { cn } from '@/lib/utils'
 
-import {
-    recoveryGoalsPageTexts as pageTexts
-} from '@/constants/componentTexts/recoveryGoals'
+import { goalsLocales } from '@/locales/goalsLocales'
 
 type MilestoneCardRendererProps = {
     milestone: GoalMilestone
@@ -23,6 +23,7 @@ export const MilestoneCardRenderer = ({
     milestone,
     onCompleteAction
 }: MilestoneCardRendererProps) => {
+    const t = useTranslations()
     const isCompleted = milestone.status === MilestoneStatus.COMPLETED
     const isActive = milestone.status === MilestoneStatus.ACTIVE
 
@@ -35,7 +36,11 @@ export const MilestoneCardRenderer = ({
         statusBadgeClass,
         titleSize,
         contentLayout
-    } = getMilestoneCardConfig(milestone, pageTexts)
+    } = getMilestoneCardConfig(
+        milestone,
+        t,
+        goalsLocales
+    )
 
     return (
         <div className={cn(
@@ -71,7 +76,7 @@ export const MilestoneCardRenderer = ({
                         onClick={onCompleteAction}
                         size={'sm'}
                     >
-                        {pageTexts.detail.markCompletePhase}
+                        {t(goalsLocales.detail.markCompletePhase)}
                     </Button>
                 )}
 

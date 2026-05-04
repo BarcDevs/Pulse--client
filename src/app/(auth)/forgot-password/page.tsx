@@ -2,6 +2,8 @@
 
 import { useState } from 'react'
 
+import { useTranslations } from 'next-intl'
+
 import { EmailVerificationView } from '@/components/auth/views/EmailVerificationView'
 import { AuthForm } from '@/components/form/AuthForm'
 import { Logo } from '@/components/shared/brand/Logo'
@@ -13,11 +15,12 @@ import {
     CardTitle
 } from '@/components/ui/card'
 
-import { authTexts } from '@/constants/componentTexts/auth'
-
 import { timings } from '@/config/timings'
 
+import { authLocales } from '@/locales/authLocales'
+
 const ForgotPasswordPage = () => {
+    const t = useTranslations()
     const [email, setEmail] = useState('')
     const [isLoading, setIsLoading] = useState(false)
     const [isSubmitted, setIsSubmitted] = useState(false)
@@ -42,10 +45,10 @@ const ForgotPasswordPage = () => {
             <Card className={'border-0 shadow-lg'}>
                 <CardHeader>
                     <CardTitle className={'text-2xl font-semibold'}>
-                        {authTexts.forgotPassword.title}
+                        {t(authLocales.forgotPassword.title)}
                     </CardTitle>
                     <CardDescription>
-                        {authTexts.forgotPassword.description}
+                        {t(authLocales.forgotPassword.description)}
                     </CardDescription>
                 </CardHeader>
                 <CardContent>

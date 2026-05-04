@@ -1,5 +1,7 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
+
 import { Goal } from '@/types/goals'
 
 import {
@@ -8,8 +10,7 @@ import {
     DialogTitle
 } from '@/components/ui/dialog'
 
-import { recoveryGoalsPageTexts as pageTexts }
-    from '@/constants/componentTexts/recoveryGoals'
+import { goalsLocales } from '@/locales/goalsLocales'
 
 import { GoalForm } from './GoalForm'
 import { GoalFormHeader } from './GoalFormHeader'
@@ -27,11 +28,12 @@ export const GoalFormModal = ({
     mode,
     goal
 }: GoalFormModalProps) => {
+    const t = useTranslations()
     const shouldRenderForm = mode === 'create' || (mode === 'edit' && goal)
 
     const title = mode === 'create'
-        ? pageTexts.goalForm.createTitle
-        : pageTexts.goalForm.updateTitle
+        ? t(goalsLocales.goalForm.createTitle)
+        : t(goalsLocales.goalForm.updateTitle)
 
     return (
         <Dialog
@@ -45,7 +47,7 @@ export const GoalFormModal = ({
                 <GoalFormHeader
                     mode={mode}
                     title={title}
-                    subtitle={pageTexts.goalForm.subtitle}
+                    subtitle={t(goalsLocales.goalForm.subtitle)}
                 />
 
                 <div className={'px-8 pt-8 pb-8'}>

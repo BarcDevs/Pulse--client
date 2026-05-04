@@ -1,14 +1,11 @@
-import { chatTexts } from '@/constants/componentTexts/chat'
-import { checkInTexts } from '@/constants/componentTexts/checkIn'
-import { communityPageTexts } from '@/constants/componentTexts/community'
-import { dashboardPageTexts } from '@/constants/componentTexts/dashboard'
-import { progressPageTexts } from '@/constants/componentTexts/progress'
-import { recoveryGoalsPageTexts } from '@/constants/componentTexts/recoveryGoals'
-import { settingsPageTexts } from '@/constants/componentTexts/settings'
-import { appLayoutTexts } from '@/constants/componentTexts/ui/layout'
-import { PAGES } from '@/constants/componentTexts/ui/pageSubtitles'
-
 import { FEATURES } from '@/config/features'
+
+import { chatLocales } from '@/locales/chatLocales'
+import { checkInLocales } from '@/locales/checkInLocales'
+import { communityLocales } from '@/locales/communityLocales'
+import { dashboardLocales } from '@/locales/dashboardLocales'
+import { progressLocales } from '@/locales/progressLocales'
+import { settingsLocales } from '@/locales/settingsLocales'
 
 export type ActionConfig = {
     type: 'newPost' | 'export' | 'share'
@@ -37,65 +34,65 @@ export const headerPageConfigs: Record<
     HeaderPageConfig
 > = {
     dashboard: {
-        title: dashboardPageTexts.title
+        title: dashboardLocales.title
     },
     chat: {
-        title: chatTexts.pageTitle,
-        subtitle: chatTexts.pageSubtitle,
+        title: chatLocales.pageTitle,
+        subtitle: chatLocales.pageSubtitle,
         badge: {
-            label: chatTexts.badge,
+            label: chatLocales.badge,
             variant: 'secondary',
             icon: 'shield'
         }
     },
     community: {
-        title: PAGES.community.TITLE,
-        subtitle: PAGES.community.SUBTITLE,
+        title: 'community.title',
+        subtitle: 'community.subtitle',
         showSearch: true,
         actions: [
             {
                 type: 'newPost',
-                label: communityPageTexts.posts.newPostButton,
+                label: communityLocales.posts.newPostButton,
                 icon: 'plus'
             }
         ]
     },
     insights: {
-        title: PAGES.INSIGHTS.TITLE,
-        subtitle: PAGES.INSIGHTS.SUBTITLE,
+        title: 'insights.title',
+        subtitle: 'insights.subtitle',
         badge: {
-            label: PAGES.INSIGHTS.BADGE,
+            label: 'insights.badge',
             variant: 'live',
             icon: 'pulse'
         }
     },
     'recovery-goals': {
-        title: recoveryGoalsPageTexts.header.title
+        title: 'goals.title'
     },
     profile: {
-        title: PAGES.profile.TITLE,
-        subtitle: PAGES.profile.SUBTITLE
+        title: 'profile.title',
+        subtitle: 'profile.subtitle'
     },
     settings: {
-        title: settingsPageTexts.title,
-        subtitle: settingsPageTexts.subtitle
+        title: settingsLocales.title,
+        subtitle: settingsLocales.subtitle
     },
     'check-in': {
-        title: checkInTexts.pageTitle,
-        subtitle: checkInTexts.pageSubtitle
+        title: checkInLocales.pageTitle,
+        subtitle: checkInLocales.pageSubtitle
     },
     'daily-checkin': {
-        title: appLayoutTexts.headerItems.healthOverview
+        title: 'ui.healthOverview'
     },
     progress: {
-        title: progressPageTexts.title,
-        subtitle: progressPageTexts.subtitle,
+        title: progressLocales.title,
+        subtitle: progressLocales.subtitle,
         actions: [
             ...(FEATURES.exportPdf
                 ? [
                     {
                         type: 'export' as const,
-                        label: progressPageTexts.exportPdf,
+                        label: progressLocales.exportPdf,
                         variant: 'outline' as const,
                         icon: 'download' as const
                     }
@@ -105,7 +102,7 @@ export const headerPageConfigs: Record<
                 ? [
                     {
                         type: 'share' as const,
-                        label: progressPageTexts.shareJourney,
+                        label: progressLocales.shareJourney,
                         variant: 'outline' as const,
                         icon: 'share2' as const
                     }
@@ -114,6 +111,6 @@ export const headerPageConfigs: Record<
         ]
     },
     'profile/settings': {
-        title: settingsPageTexts.title
+        title: settingsLocales.title
     }
 }

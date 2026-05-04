@@ -1,6 +1,9 @@
-import Link from 'next/link'
+'use client'
 
-import { authTexts } from '@/constants/componentTexts/auth'
+import Link from 'next/link'
+import { useTranslations } from 'next-intl'
+
+import { authLocales } from '@/locales/authLocales'
 
 type LoginSecurityFooterProps = {
     showSignup?: boolean
@@ -8,18 +11,22 @@ type LoginSecurityFooterProps = {
 
 export const LoginSecurityFooter = ({
     showSignup = true
-}: LoginSecurityFooterProps) => (
-    <>
-        {showSignup && (
-            <p className={'text-center text-sm text-muted-foreground'}>
-                {`${authTexts.login.signupText} `}
-                <Link
-                    href={'/signup'}
-                    className={'font-medium text-foreground hover:underline'}
-                >
-                    {authTexts.login.signupLink}
-                </Link>
-            </p>
-        )}
-    </>
-)
+}: LoginSecurityFooterProps) => {
+    const t = useTranslations()
+
+    return (
+        <>
+            {showSignup && (
+                <p className={'text-center text-sm text-muted-foreground'}>
+                    {`${t(authLocales.login.signupText)} `}
+                    <Link
+                        href={'/signup'}
+                        className={'font-medium text-foreground hover:underline'}
+                    >
+                        {t(authLocales.login.signupLink)}
+                    </Link>
+                </p>
+            )}
+        </>
+    )
+}

@@ -1,7 +1,7 @@
 import type { CheckIn } from '@/types/checkIn'
 
-import { dashboardPageTexts }
-    from '@/constants/componentTexts/dashboard'
+import { dashboardLocales }
+    from '@/locales/dashboardLocales'
 
 export const getLatestInsights = (
     checkIns: CheckIn[] | undefined
@@ -10,5 +10,5 @@ export const getLatestInsights = (
         checkIns?.[0]?.insights?.[0]
 
     return latestInsight?.content
-        ?? dashboardPageTexts.noInsights
+        ?? dashboardLocales.noInsights
 }

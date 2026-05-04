@@ -1,5 +1,7 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
+
 import { Control } from 'react-hook-form'
 
 import { GoalCategory } from '@/types/goals'
@@ -16,9 +18,7 @@ import {
 import { getCategoryColor } from '@/lib/goals'
 import { cn } from '@/lib/utils'
 
-import { recoveryGoalsPageTexts as pageTexts }
-    from '@/constants/componentTexts/recoveryGoals'
-
+import { goalsLocales } from '@/locales/goalsLocales'
 import { GoalSchema }
     from '@/validations/forms/goalSchema'
 
@@ -28,15 +28,18 @@ type CategoryChipSelectorProps = {
 
 export const CategoryChipSelector = ({
     control
-}: CategoryChipSelectorProps) => (
-    <FormField
-        control={control}
-        name={'category'}
-        render={({ field, fieldState }) => (
-            <FormItem>
-                <FormLabel>
-                    {pageTexts.goalForm.fields.categoryLabel}
-                </FormLabel>
+}: CategoryChipSelectorProps) => {
+    const t = useTranslations()
+
+    return (
+        <FormField
+            control={control}
+            name={'category'}
+            render={({ field, fieldState }) => (
+                <FormItem>
+                    <FormLabel>
+                        {t(goalsLocales.goalForm.fields.categoryLabel)}
+                    </FormLabel>
                 <FormControl>
                     <div className={'flex gap-3'}>
                         {Object.values(GoalCategory).map(
@@ -57,7 +60,7 @@ export const CategoryChipSelector = ({
                                         )}
                                         variant={'ghost'}
                                     >
-                                        {pageTexts.categoryLabels[cat]}
+                                        {t(goalsLocales.categoryLabels[cat])}
                                     </Button>
                                 )
                             }
@@ -69,7 +72,8 @@ export const CategoryChipSelector = ({
                         {fieldState.error.message}
                     </FormMessage>
                 )}
-            </FormItem>
-        )}
-    />
-)
+                </FormItem>
+            )}
+        />
+    )
+}

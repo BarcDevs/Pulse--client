@@ -1,10 +1,12 @@
 'use client'
 
 import Link from 'next/link'
+import { useTranslations } from 'next-intl'
 
 import { cn } from '@/lib/utils'
 
-import { communityPageTexts } from '@/constants/componentTexts/community'
+import { communityLocales } from '@/locales/communityLocales'
+import { COMMUNITY_ACTIVITY_FEED } from '@/mocks/activityFeed'
 
 import { CommunityActivityItem } from './CommunityActivityItem'
 
@@ -15,10 +17,11 @@ type CommunityActivityProps = {
 export const CommunityActivity = ({
     fullHeight = false
 }: CommunityActivityProps) => {
+    const t = useTranslations()
     const recommendedCommunityPosts=
         fullHeight
-            ? communityPageTexts.activity.list.slice(0, 5)
-            : communityPageTexts.activity.list.slice(0, 3)
+            ? COMMUNITY_ACTIVITY_FEED.slice(0, 5)
+            : COMMUNITY_ACTIVITY_FEED.slice(0, 3)
 
     return (
         <div className={cn(
@@ -27,13 +30,13 @@ export const CommunityActivity = ({
         )}>
             <div className={'flex-center-between'}>
                 <h3 className={'text-sm font-semibold text-foreground'}>
-                    {communityPageTexts.activity.title}
+                    {t(communityLocales.activity.title)}
                 </h3>
                 <Link
                     href={'/community'}
                     className={'text-xs font-medium text-primary hover:underline'}
                 >
-                    {communityPageTexts.activity.viewAll}
+                    {t(communityLocales.activity.viewAll)}
                 </Link>
             </div>
 

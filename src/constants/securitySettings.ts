@@ -1,11 +1,11 @@
 import {
     AlertTriangle,
-    Lock, 
+    Lock,
     LucideIcon,
     Mail
 } from 'lucide-react'
 
-import { settingsPageTexts } from './componentTexts/settings'
+import { settingsLocales } from '@/locales/settingsLocales'
 
 type SecuritySettingItem = {
     id: string
@@ -33,19 +33,19 @@ export const securitySettings: SecuritySettingItem[] = [
     {
         id: 'email',
         iconComponent: Mail,
-        label: settingsPageTexts.security.email
+        label: settingsLocales.security.email
     },
     {
         id: 'password',
         iconComponent: Lock,
-        label: settingsPageTexts.security.password.label
+        label: settingsLocales.security.password.label
     },
     {
         id: 'deactivate',
         iconComponent: AlertTriangle,
-        label: settingsPageTexts.security.deactivate.label,
-        description: settingsPageTexts.security.deactivate.description,
+        label: settingsLocales.security.deactivate.label,
+        description: settingsLocales.security.deactivate.description,
         variant: 'destructive',
-        buttonText: settingsPageTexts.security.deactivate.buttonText
+        buttonText: settingsLocales.security.deactivate.buttonText
     }
 ]

@@ -1,11 +1,12 @@
+import { useTranslations } from 'next-intl'
+
 import type { SetState } from '@/types/react'
 
 import { Button } from '@/components/ui/button'
 
 import { cn } from '@/lib/utils'
 
-import { insightsPageTexts }
-    from '@/constants/componentTexts/insightsComponent'
+import { insightsLocales } from '@/locales/insightsLocales'
 
 type BehavioralPatternsTabsProps = {
     activeTab: '7days' | '30days'
@@ -16,6 +17,7 @@ export const BehavioralPatternsTabs = ({
     activeTab,
     onTabChangeAction
 }: BehavioralPatternsTabsProps) => {
+    const t = useTranslations()
     const handleSevenDaysClick = () =>
         onTabChangeAction('7days')
 
@@ -39,7 +41,7 @@ export const BehavioralPatternsTabs = ({
                         : 'text-muted-foreground hover:text-foreground'
                 )}
             >
-                {insightsPageTexts.behavioralPatterns.tabs.sevenDays}
+                {t(insightsLocales.behavioralPatterns.tabs.sevenDays)}
             </Button>
             <Button
                 onClick={handleThirtyDaysClick}
@@ -56,7 +58,7 @@ export const BehavioralPatternsTabs = ({
                         : 'text-muted-foreground hover:text-foreground'
                 )}
             >
-                {insightsPageTexts.behavioralPatterns.tabs.thirtyDays}
+                {t(insightsLocales.behavioralPatterns.tabs.thirtyDays)}
             </Button>
         </div>
     )

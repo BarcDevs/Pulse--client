@@ -1,15 +1,21 @@
+import { useTranslations } from 'next-intl'
+
 import { Quote } from 'lucide-react'
 
-import { chatTexts } from '@/constants/componentTexts/chat'
+import { chatLocales } from '@/locales/chatLocales'
 
-export const InsightQuoteCard = () => (
-    <div className={'rounded-xl bg-surface-section p-4'}>
-        <Quote className={'size-6 text-muted-foreground'}/>
-        <p className={'mt-2 text-sm italic text-foreground'}>
-            {`${chatTexts.sidebar.quote}`}
-        </p>
-        <p className={'mt-2 text-xs text-muted-foreground'}>
-            {`- ${chatTexts.sidebar.quoteAuthor}`}
-        </p>
-    </div>
-)
+export const InsightQuoteCard = () => {
+    const t = useTranslations()
+
+    return (
+        <div className={'rounded-xl bg-surface-section p-4'}>
+            <Quote className={'size-6 text-muted-foreground'}/>
+            <p className={'mt-2 text-sm italic text-foreground'}>
+                {`${t(chatLocales.sidebar.quote)}`}
+            </p>
+            <p className={'mt-2 text-xs text-muted-foreground'}>
+                {`- ${t(chatLocales.sidebar.quoteAuthor)}`}
+            </p>
+        </div>
+    )
+}

@@ -1,6 +1,7 @@
 'use client'
 
 import { useRouter } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 
 import { Goal } from '@/types/goals'
 
@@ -10,9 +11,9 @@ import { Badge } from '@/components/ui/badge'
 import { getCategoryColor } from '@/lib/goals'
 import { cn } from '@/lib/utils'
 
-import { recoveryGoalsPageTexts as pageTexts }
-    from '@/constants/componentTexts/recoveryGoals'
 import { ROUTES } from '@/constants/routes'
+
+import { goalsLocales } from '@/locales/goalsLocales'
 
 type GoalCardProps = {
     goal: Goal
@@ -25,6 +26,7 @@ export const GoalCard = ({
     onEditAction,
     onDeleteAction
 }: GoalCardProps) => {
+    const t = useTranslations()
     const router = useRouter()
 
     const progressPercent =
@@ -48,7 +50,7 @@ export const GoalCard = ({
                         'px-3 py-1 text-xs font-bold rounded-full uppercase tracking-widest'
                     )}
                 >
-                    {pageTexts.categoryLabels[goal.category]}
+                    {t(goalsLocales.categoryLabels[goal.category])}
                 </Badge>
                 <GoalActionsDropdown
                     onEditAction={() => onEditAction(goal.id)}
@@ -68,7 +70,7 @@ export const GoalCard = ({
             <div className={'space-y-2'}>
                 <div className={'flex justify-between text-xs font-bold uppercase tracking-wider text-slate-400'}>
                     <span>
-                        {pageTexts.goalCard.progressLabel}
+                        {t(goalsLocales.goalCard.progressLabel)}
                     </span>
                     <span>{progressPercent}%</span>
                 </div>

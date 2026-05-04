@@ -1,7 +1,10 @@
+'use client'
+
+import { useTranslations } from 'next-intl'
+
 import { Button } from '@/components/ui/button'
 
-import  { recoveryGoalsPageTexts as pageTexts }
-    from '@/constants/componentTexts/recoveryGoals'
+import { goalsLocales } from '@/locales/goalsLocales'
 
 type GoalActionButtonsProps = {
     onCompleteTodayAction?: () => void
@@ -9,13 +12,17 @@ type GoalActionButtonsProps = {
 
 export const GoalActionButtons = ({
     onCompleteTodayAction
-}: GoalActionButtonsProps) => (
-    <div className={'w-full'}>
-        <Button
-            onClick={onCompleteTodayAction}
-            className={'w-full bg-linear-to-r from-orange-400 to-pink-500 text-white font-semibold'}
-        >
-            {pageTexts.actions.completeToday}
-        </Button>
-    </div>
-)
+}: GoalActionButtonsProps) => {
+    const t = useTranslations()
+
+    return (
+        <div className={'w-full'}>
+            <Button
+                onClick={onCompleteTodayAction}
+                className={'w-full bg-linear-to-r from-orange-400 to-pink-500 text-white font-semibold'}
+            >
+                {t(goalsLocales.actions.completeToday)}
+            </Button>
+        </div>
+    )
+}

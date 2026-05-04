@@ -11,8 +11,12 @@ import {
     Sun
 } from 'lucide-react'
 
-import { profilePageTexts } from '@/constants/componentTexts/profile'
-import { profileDetail } from '@/constants/componentTexts/profileDetail'
+import {
+    PROFILE_ACTIVITIES,
+    PROFILE_SETTINGS,
+    RECOVERY_FOCUS_AREAS,
+    SYSTEM_PRIVACY_SETTINGS
+} from '@/mocks/profileMappings'
 
 type ActivityWithIcon = {
     title: string
@@ -71,7 +75,7 @@ export const profileSystemPrivacyIconMap = {
 }
 
 export const profileActivitiesWithIcons: ActivityWithIcon[] =
-    profilePageTexts.activities.list.map((activity) => ({
+    PROFILE_ACTIVITIES.map((activity) => ({
         ...activity,
         icon:
             profileActivitiesIconMap[
@@ -81,7 +85,7 @@ export const profileActivitiesWithIcons: ActivityWithIcon[] =
     }))
 
 export const recoveryFocusAreasWithIcons: RecoveryArea[] =
-    profilePageTexts.recoveryIdentity.focusAreas.map((area) => ({
+    RECOVERY_FOCUS_AREAS.map((area) => ({
         ...area,
         icon:
             profileRecoveryIdentityIconMap[
@@ -96,7 +100,7 @@ export const recoveryFocusAreasWithIcons: RecoveryArea[] =
     }))
 
 export const profileSettingsWithIcons: SettingWithIcon[] =
-    profilePageTexts.settings.list.map((setting) => ({
+    PROFILE_SETTINGS.map((setting) => ({
         ...setting,
         icon:
             profileSettingsIconMap[
@@ -106,7 +110,7 @@ export const profileSettingsWithIcons: SettingWithIcon[] =
     }))
 
 export const profileSystemPrivacySettingsWithIcons: PrivacySetting[] =
-    profileDetail.systemPrivacy.settings.map((setting) => ({
+    SYSTEM_PRIVACY_SETTINGS.map((setting) => ({
         ...setting,
         icon:
             profileSystemPrivacyIconMap[

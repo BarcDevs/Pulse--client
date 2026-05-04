@@ -1,5 +1,7 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
+
 import { GoalsFilter } from '@/components/goals/GoalsFilter'
 import { RecoveryGoalsSkeletons } from '@/components/goals/RecoveryGoalsSkeletons'
 import { ErrorDisplay } from '@/components/shared/ErrorDisplay'
@@ -9,8 +11,7 @@ import { useGoalFiltering } from '@/hooks/useGoalFiltering'
 import { useRecoveryGoalsData } from '@/hooks/useRecoveryGoalsData'
 import { useRecoveryGoalsModal } from '@/hooks/useRecoveryGoalsModal'
 
-import { recoveryGoalsPageTexts as pageTexts }
-    from '@/constants/componentTexts/recoveryGoals'
+import { goalsLocales } from '@/locales/goalsLocales'
 
 import { GoalFormModal } from './form/GoalFormModal'
 import { GoalInsightsSection } from './GoalInsightsSection'
@@ -18,6 +19,7 @@ import { GoalsGrid } from './GoalsGrid'
 import { GoalStatsSection } from './GoalStatsSection'
 
 export const RecoveryGoalsPageContent = () => {
+    const t = useTranslations()
     const {
         goals,
         isLoading,
@@ -51,10 +53,10 @@ export const RecoveryGoalsPageContent = () => {
                     {/*todo: reusable header component*/}
                     <div>
                         <h3 className={'text-3xl font-display font-bold tracking-tight text-on-surface'}>
-                            {pageTexts.overview.greeting}
+                            {t(goalsLocales.overview.greeting)}
                         </h3>
                         <p className={'text-on-surface-variant mt-1'}>
-                            {pageTexts.overview.subtitle}
+                            {t(goalsLocales.overview.subtitle)}
                         </p>
                     </div>
                     <GoalsFilter

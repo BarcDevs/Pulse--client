@@ -1,5 +1,7 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
+
 import { UseFormReturn } from 'react-hook-form'
 
 import {
@@ -18,9 +20,8 @@ import {
     SelectValue
 } from '@/components/ui/select'
 
-import { communityPageTexts } from '@/constants/componentTexts/community'
-
 import categories from '@/data/forum/categories'
+import { communityLocales } from '@/locales/communityLocales'
 
 type PostFormFieldsProps = {
     form: UseFormReturn<any>
@@ -28,60 +29,64 @@ type PostFormFieldsProps = {
 
 export const PostFormFields = ({
     form
-}: PostFormFieldsProps) => (
-    <>
-        <FormField
-            control={form.control}
-            name={'title'}
-            render={({ field }) => (
-                <FormItem>
-                    <FormLabel>
-                        {communityPageTexts.postForm.title}
-                    </FormLabel>
-                    <FormControl>
-                        <Input
-                            placeholder={communityPageTexts.postForm.titlePlaceholder}
-                            {...field}
-                        />
-                    </FormControl>
-                    <FormMessage/>
-                </FormItem>
-            )}
-        />
+}: PostFormFieldsProps) => {
+    const t = useTranslations()
 
-        <FormField
-            control={form.control}
-            name={'category'}
-            render={({ field }) => (
-                <FormItem>
-                    <FormLabel>
-                        {communityPageTexts.postForm.category}
-                    </FormLabel>
-                    <FormControl>
-                        <Select
-                            onValueChange={field.onChange}
-                            defaultValue={field.value}
-                        >
-                            <SelectTrigger>
-                                <SelectValue placeholder={communityPageTexts.postForm.categoryPlaceholder}/>
-                            </SelectTrigger>
-                            <SelectContent>
-                                {categories.map(
-                                    (cat) => (
-                                        <SelectItem
-                                            key={cat.key}
-                                            value={cat.key}
-                                        >
-                                            {cat.name}
-                                        </SelectItem>
-                                    )
-                                )}
-                            </SelectContent>
-                        </Select>
-                    </FormControl>
-                    <FormMessage/>
-                </FormItem>
-            )}
-        />
-    </>
-)
+    return (
+        <>
+            <FormField
+                control={form.control}
+                name={'title'}
+                render={({ field }) => (
+                    <FormItem>
+                        <FormLabel>
+                            {t(communityLocales.postForm.title)}
+                        </FormLabel>
+                        <FormControl>
+                            <Input
+                                placeholder={t(communityLocales.postForm.titlePlaceholder)}
+                                {...field}
+                            />
+                        </FormControl>
+                        <FormMessage/>
+                    </FormItem>
+                )}
+            />
+
+            <FormField
+                control={form.control}
+                name={'category'}
+                render={({ field }) => (
+                    <FormItem>
+                        <FormLabel>
+                            {t(communityLocales.postForm.category)}
+                        </FormLabel>
+                        <FormControl>
+                            <Select
+                                onValueChange={field.onChange}
+                                defaultValue={field.value}
+                            >
+                                <SelectTrigger>
+                                    <SelectValue placeholder={t(communityLocales.postForm.categoryPlaceholder)}/>
+                                </SelectTrigger>
+                                <SelectContent>
+                                    {categories.map(
+                                        (cat) => (
+                                            <SelectItem
+                                                key={cat.key}
+                                                value={cat.key}
+                                            >
+                                                {cat.name}
+                                            </SelectItem>
+                                        )
+                                    )}
+                                </SelectContent>
+                            </Select>
+                        </FormControl>
+                        <FormMessage/>
+                    </FormItem>
+                )}
+            />
+        </>
+    )
+}

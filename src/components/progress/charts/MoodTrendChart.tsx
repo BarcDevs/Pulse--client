@@ -2,6 +2,8 @@
 
 import { useState } from 'react'
 
+import { useTranslations } from 'next-intl'
+
 import { TimePeriod } from '@/types/time'
 
 import { TrendAreaChart } from '@/components/shared/charts/TrendAreaChart'
@@ -17,13 +19,11 @@ import { useCheckInStats } from '@/hooks/queries/useCheckInStats'
 
 import { isCompleteWeek } from '@/lib/stats/isCompleteWeek'
 
-import {
-    chartNotifications,
-    trendChartConfigs
-} from '@/constants/componentTexts/progressCharts'
+import { progressLocales } from '@/locales/progressLocales'
 
 // todo: merge pain and mood charts into one reusable entity
 export const MoodTrendChart = () => {
+    const t = useTranslations()
     const [period, setPeriod] = useState<TimePeriod>('weekly')
 
     const {
@@ -40,31 +40,50 @@ export const MoodTrendChart = () => {
         value: string
     ) => setPeriod(value as TimePeriod)
 
+    const chartConfig = {
+        header: {
+            title: t(progressLocales.charts.moodTrendChart.title),
+            subtitle: t(progressLocales.charts.moodTrendChart.subtitle)
+        },
+        chart: {
+            dataKey: 'actual' as const,
+            targetKey: 'target' as const
+        },
+        style: {
+            color: 'var(--primary)',
+            gradientId: 'moodGradient'
+        },
+        legend: {
+            label: t(progressLocales.charts.moodTrendChart.legendLabel),
+            targetLabel: t(progressLocales.charts.moodTrendChart.targetLabel)
+        }
+    }
+
     return (
         <Card className={'border-0 shadow-sm h-full'}>
             <CardHeader className={'pb-3'}>
                 <CardTitle className={'text-base font-semibold'}>
-                    {trendChartConfigs.mood.header.title}
+                    {chartConfig.header.title}
                 </CardTitle>
             </CardHeader>
             <CardContent>
                 {isError ? (
                     <div className={'h-60 flex items-center justify-center text-sm text-muted-foreground'}>
-                        Failed to load data
+                        {t(progressLocales.charts.notifications.loadError)}
                     </div>
                 ) : (
                     <div className={'relative'}>
                         <TrendAreaChart
-                            {...trendChartConfigs.mood}
+                            {...chartConfig}
                             chart={{
-                                ...trendChartConfigs.mood.chart,
+                                ...chartConfig.chart,
                                 data: chartData
                             }}
                             onPeriodChangeAction={handlePeriodChange}
                         />
                         {isIncompleteWeek && (
                             <DataNotification
-                                message={chartNotifications.moodIncomplete}
+                                message={t(progressLocales.charts.notifications.moodIncomplete)}
                             />
                         )}
                     </div>

@@ -1,12 +1,20 @@
-import { footer } from '@/constants/componentTexts/ui/footer'
+'use client'
+
+import { useTranslations } from 'next-intl'
+
+import { globalLocales } from '@/locales/globalLocales'
 
 import { Logo } from '../brand/Logo'
 
-export const FooterBrand = () => (
-    <div>
-        <Logo/>
-        <p className={'text-sm text-muted-foreground mt-4'}>
-            {footer.brandTagline}
-        </p>
-    </div>
-)
+export const FooterBrand = () => {
+    const t = useTranslations()
+
+    return (
+        <div>
+            <Logo/>
+            <p className={'text-sm text-muted-foreground mt-4'}>
+                {t(globalLocales.footer.brandTagline)}
+            </p>
+        </div>
+    )
+}

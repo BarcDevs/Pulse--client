@@ -1,5 +1,7 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
+
 import { Sparkles } from 'lucide-react'
 
 import { ClassName } from '@/types/react'
@@ -17,7 +19,7 @@ import { useCheckIns } from '@/hooks/queries/useCheckIns'
 import { getLatestInsights } from '@/lib/insights/getLatestInsights'
 import { cn } from '@/lib/utils'
 
-import { dashboardPageTexts } from '@/constants/componentTexts/dashboard'
+import { dashboardLocales } from '@/locales/dashboardLocales'
 
 type DashboardAIInsightProps = {
     className?: ClassName
@@ -26,6 +28,7 @@ type DashboardAIInsightProps = {
 export const DashboardAIInsight = ({
     className
 }: DashboardAIInsightProps) => {
+    const t = useTranslations()
     const {
         data: checkInsResponse,
         isLoading,
@@ -44,7 +47,7 @@ export const DashboardAIInsight = ({
                 <div className={'flex items-center gap-2'}>
                     <Sparkles className={'size-4 text-accent'}/>
                     <CardTitle className={'text-sm font-medium text-muted-foreground'}>
-                        {dashboardPageTexts.aiInsight.label}
+                        {t(dashboardLocales.aiInsight.label)}
                     </CardTitle>
                 </div>
             </CardHeader>

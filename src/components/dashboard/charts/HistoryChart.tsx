@@ -2,6 +2,8 @@
 
 import { useState } from 'react'
 
+import { useTranslations } from 'next-intl'
+
 import { DataNotification } from '@/components/shared/notifications/DataNotification'
 import {
     Card,
@@ -20,13 +22,14 @@ import { useDirection } from '@/hooks/useDirection'
 
 import { reverseChartData } from '@/utils/chart'
 
-import { dashboardPageTexts } from '@/constants/componentTexts/dashboard'
+import { dashboardLocales } from '@/locales/dashboardLocales'
 
 import { HistoryChartContent } from './HistoryChartContent'
 
 type Period = 'week' | 'month'
 
 export const DashboardHistoryChart = () => {
+    const t = useTranslations()
     const dir = useDirection()
     const [period, setPeriod] = useState<Period>(
         'week'
@@ -54,7 +57,7 @@ export const DashboardHistoryChart = () => {
         <Card className={'border-0 shadow-sm h-full'}>
             <CardHeader className={'flex flex-row items-center justify-between pb-6'}>
                 <CardTitle className={'text-lg font-semibold'}>
-                    {dashboardPageTexts.historyChart.title}
+                    {t(dashboardLocales.historyChart.title)}
                 </CardTitle>
                 <Tabs
                     value={period}
@@ -76,14 +79,14 @@ export const DashboardHistoryChart = () => {
                             className={'h-6 px-3 text-xs cursor-pointer'}
                             disabled={isIncompleteWeek}
                         >
-                            {dashboardPageTexts.historyChart.week}
+                            {t(dashboardLocales.historyChart.week)}
                         </TabsTrigger>
                         <TabsTrigger
                             value={'month'}
                             className={'h-6 px-3 text-xs cursor-pointer'}
                             disabled={isIncompleteWeek}
                         >
-                            {dashboardPageTexts.historyChart.month}
+                            {t(dashboardLocales.historyChart.month)}
                         </TabsTrigger>
                     </TabsList>
                 </Tabs>
@@ -115,7 +118,7 @@ export const DashboardHistoryChart = () => {
                         />
                         {isIncompleteWeek && (
                             <DataNotification
-                                message={dashboardPageTexts.historyChart.incompleteWeek}
+                                message={t(dashboardLocales.historyChart.incompleteWeek)}
                             />
                         )}
                     </div>

@@ -1,19 +1,23 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
+
 import { Shield } from 'lucide-react'
 
 import { toRelative } from '@/lib/time'
 import { cn } from '@/lib/utils'
 
-import { settingsPageTexts } from '@/constants/componentTexts/settings'
 import { securitySettings } from '@/constants/securitySettings'
 
 import { useAuth } from '@/context/AuthContext'
+
+import { settingsLocales } from '@/locales/settingsLocales'
 
 import { SecuritySettingItem as SecuritySettingItemComponent }
     from '../items/SecuritySettingItem'
 
 export const SecuritySettings = () => {
+    const t = useTranslations()
     const { user } = useAuth()
 
     return (
@@ -21,7 +25,7 @@ export const SecuritySettings = () => {
             <div className={'flex items-center gap-2 mb-6'}>
                 <Shield className={'h-5 w-5 text-primary'}/>
                 <h3 className={'text-lg font-semibold text-foreground'}>
-                    {settingsPageTexts.security.title}
+                    {t(settingsLocales.security.title)}
                 </h3>
             </div>
 

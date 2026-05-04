@@ -1,5 +1,7 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
+
 import type { ReactNode } from 'react'
 
 import { Button } from '@/components/ui/button'
@@ -13,8 +15,8 @@ import {
 
 import { useShareProgress } from '@/hooks/ui/useShareProgress'
 
-import { progressPageTexts } from '@/constants/componentTexts/progress'
-import { sharedTexts } from '@/constants/componentTexts/ui/sharedTexts'
+import { progressLocales } from '@/locales/progressLocales'
+import { progressLocales } from '@/locales/progressLocales'
 
 type ShareImageModalProps = {
     open: boolean
@@ -27,11 +29,12 @@ export const ShareProgressModal = ({
     onOpenChangeAction,
     children
 }: ShareImageModalProps) => {
-    const { 
-        shareRef, 
-        isCapturing, 
-        share, 
-        download 
+    const t = useTranslations()
+    const {
+        shareRef,
+        isCapturing,
+        share,
+        download
     } = useShareProgress()
 
     return (
@@ -42,10 +45,10 @@ export const ShareProgressModal = ({
             <DialogContent className={'max-w-2xl'}>
                 <DialogHeader>
                     <DialogTitle>
-                        {progressPageTexts.share.modalTitle}
+                        {t(progressLocales.share.modalTitle)}
                     </DialogTitle>
                     <DialogDescription>
-                        {progressPageTexts.share.modalDescription}
+                        {t(progressLocales.share.modalDescription)}
                     </DialogDescription>
                 </DialogHeader>
 

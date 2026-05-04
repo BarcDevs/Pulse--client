@@ -4,6 +4,7 @@ import { useState } from 'react'
 
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 
 import { PasswordRequirementsList } from '@/components/auth/password/PasswordRequirementsList'
 import { AuthForm } from '@/components/form/AuthForm'
@@ -16,11 +17,12 @@ import {
     CardTitle
 } from '@/components/ui/card'
 
-import { authTexts } from '@/constants/componentTexts/auth'
-
 import { timings } from '@/config/timings'
 
+import { authLocales } from '@/locales/authLocales'
+
 const ResetPasswordPage = () => {
+    const t = useTranslations()
     const router = useRouter()
     const [isLoading, setIsLoading] = useState(false)
     const [password, setPassword] = useState('')
@@ -41,10 +43,10 @@ const ResetPasswordPage = () => {
             <Card className={'border-0 shadow-lg'}>
                 <CardHeader>
                     <CardTitle className={'text-2xl font-semibold'}>
-                        {authTexts.resetPassword.title}
+                        {t(authLocales.resetPassword.title)}
                     </CardTitle>
                     <CardDescription>
-                        {authTexts.resetPassword.description}
+                        {t(authLocales.resetPassword.description)}
                     </CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -58,12 +60,12 @@ const ResetPasswordPage = () => {
                     <PasswordRequirementsList password={password}/>
 
                     <p className={'mt-6 text-center text-xs text-muted-foreground'}>
-                        {`${authTexts.resetPassword.troubleText} `}
+                        {`${t(authLocales.resetPassword.troubleText)} `}
                         <Link
                             href={'/support'}
                             className={'text-primary hover:underline'}
                         >
-                            {authTexts.resetPassword.supportLink}
+                            {t(authLocales.resetPassword.supportLink)}
                         </Link>
                     </p>
                 </CardContent>

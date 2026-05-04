@@ -1,12 +1,15 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
+
 import { Award } from 'lucide-react'
 
 import { useCheckInStats } from '@/hooks/queries/useCheckInStats'
 
-import { progressPageTexts } from '@/constants/componentTexts/progress'
+import { progressLocales } from '@/locales/progressLocales'
 
 export const MilestonesCard = () => {
+    const t = useTranslations()
     const { data, isError } = useCheckInStats('weekly')
 
     const milestonesAchieved = isError
@@ -18,24 +21,20 @@ export const MilestonesCard = () => {
             <div className={'flex-start-between'}>
                 <div>
                     <p className={'text-muted-foreground label-uppercase'}>
-                        {progressPageTexts.stats
-                            .milestones.label}
+                        {t(progressLocales.stats.milestones.label)}
                     </p>
                     <div className={'mt-2 flex items-baseline gap-2'}>
                         <span className={'text-4xl font-bold text-foreground'}>
                             {milestonesAchieved}
                         </span>
                         <span className={'text-lg text-muted-foreground'}>
-                            {progressPageTexts.stats
-                                .milestones.unit}
+                            {t(progressLocales.stats.milestones.unit)}
                         </span>
                     </div>
                     <p className={'mt-1 text-sm text-muted-foreground'}>
-                        {`${progressPageTexts.stats
-                            .milestones.nextPrefix} `}
+                        {`${t(progressLocales.stats.milestones.nextPrefix)} `}
                         <span className={'text-primary font-medium'}>
-                            {progressPageTexts.stats
-                                .milestones.nextValue}
+                            {t(progressLocales.stats.milestones.nextValue)}
                         </span>
                     </p>
                 </div>

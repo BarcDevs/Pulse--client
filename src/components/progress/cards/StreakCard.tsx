@@ -1,12 +1,15 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
+
 import { Calendar } from 'lucide-react'
 
 import { useCheckInStats } from '@/hooks/queries/useCheckInStats'
 
-import { progressPageTexts } from '@/constants/componentTexts/progress'
+import { progressLocales } from '@/locales/progressLocales'
 
 export const StreakCard = () => {
+    const t = useTranslations()
     const { data, isError } = useCheckInStats('weekly')
 
     const currentStreak = isError
@@ -21,21 +24,18 @@ export const StreakCard = () => {
             <div className={'flex-start-between'}>
                 <div>
                     <p className={'text-muted-foreground label-uppercase'}>
-                        {progressPageTexts.stats
-                            .streak.label}
+                        {t(progressLocales.stats.streak.label)}
                     </p>
                     <div className={'mt-2 flex items-baseline gap-2'}>
                         <span className={'text-4xl font-bold text-foreground'}>
                             {currentStreak}
                         </span>
                         <span className={'text-lg text-muted-foreground'}>
-                            {progressPageTexts.stats
-                                .streak.unit}
+                            {t(progressLocales.stats.streak.unit)}
                         </span>
                     </div>
                     <p className={'mt-1 text-sm text-muted-foreground'}>
-                        {`${progressPageTexts.stats
-                            .streak.bestPrefix} `}
+                        {`${t(progressLocales.stats.streak.bestPrefix)} `}
                         <span className={'text-secondary font-medium'}>
                             {longestStreak}
                         </span>
