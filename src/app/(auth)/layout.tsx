@@ -5,6 +5,8 @@ import { useTranslations } from 'next-intl'
 
 import { LayoutProps } from '@/types'
 
+import { LanguageSwitcher } from '@/components/shared/LanguageSwitcher'
+
 import { globalLocales } from '@/locales/globalLocales'
 
 const AuthLayout = ({ children }: LayoutProps) => {
@@ -34,6 +36,7 @@ const AuthLayout = ({ children }: LayoutProps) => {
                     >
                         {t(globalLocales.nav.about)}
                     </Link>
+                    <LanguageSwitcher/>
                 </nav>
             </header>
 

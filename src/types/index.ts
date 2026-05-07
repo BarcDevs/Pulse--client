@@ -11,7 +11,8 @@ export type LayoutProps = {
 export type Language = {
     name: string
     nativeName: string
-    code: string
+    code: string,
+    shortCode: string,
     dir: 'ltr' | 'rtl'
 }
 

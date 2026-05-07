@@ -17,6 +17,7 @@ import { HeaderNotificationButton }
 import { HeaderTitle } from '@/components/layout/header/HeaderTitle'
 import { UserMenu } from '@/components/layout/header/UserMenu'
 import { FormInput } from '@/components/shared/inputs/FormInput'
+import { LanguageSwitcher } from '@/components/shared/LanguageSwitcher'
 
 import { getHeaderConfig } from '@/constants/config/getHeaderConfig'
 
@@ -101,7 +102,10 @@ export const AppHeader = () => {
                 {FEATURES.notifications && (
                     <HeaderNotificationButton/>
                 )}
-                <UserMenu/>
+                <div className={'flex items-center'}>
+                    <LanguageSwitcher/>
+                    <UserMenu/>
+                </div>
             </div>
         </header>
     )
