@@ -5,6 +5,37 @@ HealEase — Recovery support platform for patients transitioning from hospital/
 This project is the client-side code for the HealEase app.
 Server is in ../healease--server.
 
+## Token Efficiency
+
+**Goal:** minimum tokens for correct result. Context is finite — protect it.
+
+### Model & delegation
+- Lighter tasks → haiku. Reserve sonnet/opus for reasoning-heavy work.
+- Sub-agents for: >3 search queries, slow/multi-call tasks, large file scans, anything that pollutes main context.
+- Brief sub-agents fully in one prompt — no back-and-forth. Cap report length (e.g. "under 200 words").
+
+### Tool selection (cheapest tool wins)
+- Search: `Grep`/`Glob` — never `find`/`grep`/`ls` via Bash.
+- Read: `Read` with `offset`+`limit` when target line known. Never re-read same file in session.
+- Edit: `Edit` over `Write`. `Write` only for new files or full rewrites.
+- Parallel: independent tool calls in one message. Sequential only when output feeds next call.
+
+### Reading discipline
+- Don't read full file to confirm small detail — `Grep` for it.
+- Don't read files already in context. Trust prior reads unless changed.
+- Skip exploratory reads when user gave exact path + line.
+
+### Output discipline
+- No preamble ("I'll now…"), no postamble ("I've completed…"). State result.
+- No restating user request. No summarizing diffs the user can see.
+- Code blocks only when user needs to copy/paste. Otherwise reference `file:line`.
+- Skip CoT narration in user-facing text — keep reasoning internal.
+
+### Avoid waste
+- No speculative refactors → wasted tokens + wasted diff review.
+- No "just in case" error handling → more code to read later.
+- No re-running typecheck/lint/test after trivial edits unless asked.
+
 ## Behavioral Guidelines
 
 **Tradeoff:** These guidelines bias toward caution over speed. For trivial tasks, use judgment.
