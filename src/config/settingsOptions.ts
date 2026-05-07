@@ -1,9 +1,4 @@
-export const DEFAULT_LANGUAGE = 'en'
-
-export const LANGUAGE_OPTIONS = [
-    { value: 'en', label: 'English' },
-    { value: 'he', label: 'עברית' }
-]
+export const DEFAULT_LANGUAGE = 'en-US'
 
 export const DEFAULT_VISIBILITY = 'onlyMe'
 
