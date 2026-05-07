@@ -11,7 +11,7 @@ Server is in ../healease--server.
 
 ### Model & delegation
 - Lighter tasks → haiku. Reserve sonnet/opus for reasoning-heavy work.
-- Sub-agents for: >3 search queries, slow/multi-call tasks, large file scans, anything that pollutes main context.
+- Sub-agents for: >3 search queries, slow/multi-call tasks, large file scans, anything that pollutes main context. **Don't delegate tasks <100 lines—sub-agent overhead costs more than direct work.**
 - Brief sub-agents fully in one prompt — no back-and-forth. Cap report length (e.g. "under 200 words").
 
 ### Tool selection (cheapest tool wins)
@@ -22,7 +22,8 @@ Server is in ../healease--server.
 
 ### Reading discipline
 - Don't read full file to confirm small detail — `Grep` for it.
-- Don't read files already in context. Trust prior reads unless changed.
+- Don't read files already in context. Trust prior reads unless changed. **Exception: After session compaction, re-read critical files (APIs, services, main components) even if unchanged—compaction clears context without warning.**
+- Files >200 lines: always use `Read` with `offset`+`limit`. Files <200 lines: full read safe.
 - Skip exploratory reads when user gave exact path + line.
 
 ### Output discipline
@@ -130,7 +131,7 @@ Use /commit skill when auto-commiting
 - Write clear commit messages (imperative, present tense)
 - Commit messages must accurately describe what was **implemented** not just what changed (e.g., "replace mock data with real API integration" not "fix imports")
 - Generate commit messages with the /caveman-commit skill
-- IMPORTANT: when told to commit, actually commit, not just run /caveman-commit, but actually commit with `git commit` (after asking permission)
+- **IMPORTANT: Never claim a commit succeeded without running actual `git commit` command. `/caveman-commit` is message drafting only—actual commit requires explicit `git commit` with user approval. State result only after command executes, not before.**
 - When committing after fixing issues found during review: include the original work scope in the message, not just the fix (e.g., "feat: replace mock data..." not "fix: correct import order")
 - Use branches for features/fixes
 - Use conventional commit format (feat, fix, docs, style, rfc, test, chore). breaking changes should have `!` after the type (e.g., `feat!: ...`)
