@@ -52,7 +52,7 @@ export const ProfileBasicInfo = () => {
                 <Button
                     variant={'ghost'}
                     size={'sm'}
-                    className={'gap-2 text-primary'}
+                    className={'justify-start gap-2 text-primary w-fit'}
                 >
                     <Pencil className={'size-4'}/>
                     {t(profileLocales.basicInfo.edit)}
