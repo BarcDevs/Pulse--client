@@ -1,6 +1,10 @@
+'use client'
+
 import {
     useState
 } from 'react'
+
+import { useTranslations } from 'next-intl'
 
 import {
     Eye,
@@ -27,13 +31,14 @@ export const PasswordInput = <T extends FieldValues>({
     field,
     config
 }: PasswordInputProps<T>) => {
+    const t = useTranslations()
     const [showPassword, setShowPassword] = useState(false)
 
     return (
         <>
             {config.label
                 && <FormLabel>
-                    {config.label}
+                    {t(config.label)}
                 </FormLabel>}
             <FormControl>
                 <div className={'relative'}>
@@ -41,7 +46,7 @@ export const PasswordInput = <T extends FieldValues>({
                         type={showPassword
                             ? 'text'
                             : 'password'}
-                        placeholder={config.placeholder}
+                        placeholder={config.placeholder ? t(config.placeholder) : ''}
                         disabled={config.disabled}
                         autoComplete={'current-password'}
                         className={'pr-10'}
@@ -63,7 +68,7 @@ export const PasswordInput = <T extends FieldValues>({
             </FormControl>
             {config.description && (
                 <FormDescription>
-                    {config.description}
+                    {t(config.description)}
                 </FormDescription>
             )}
         </>

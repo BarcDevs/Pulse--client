@@ -60,8 +60,7 @@ export const settingsLocales = {
         },
         language: {
             title: 'settings.preferences.language.title',
-            description: 'settings.preferences.language.description',
-            options: 'settings.preferences.language.options'
+            description: 'settings.preferences.language.description'
         }
     }
 } as const

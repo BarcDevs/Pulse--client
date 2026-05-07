@@ -4,6 +4,9 @@ import { chatLocales } from '@/locales/chatLocales'
 import { checkInLocales } from '@/locales/checkInLocales'
 import { communityLocales } from '@/locales/communityLocales'
 import { dashboardLocales } from '@/locales/dashboardLocales'
+import { globalLocales } from '@/locales/globalLocales'
+import { goalsLocales } from '@/locales/goalsLocales'
+import { insightsLocales } from '@/locales/insightsLocales'
 import { progressLocales } from '@/locales/progressLocales'
 import { settingsLocales } from '@/locales/settingsLocales'
 
@@ -46,32 +49,33 @@ export const headerPageConfigs: Record<
         }
     },
     community: {
-        title: 'community.title',
-        subtitle: 'community.subtitle',
+        title: globalLocales.pageSubtitles.community.title,
+        subtitle: globalLocales.pageSubtitles.community.subtitle,
         showSearch: true,
         actions: [
             {
                 type: 'newPost',
                 label: communityLocales.posts.newPostButton,
+                // todo: replace string-based icons with actual icons
                 icon: 'plus'
             }
         ]
     },
     insights: {
-        title: 'insights.title',
-        subtitle: 'insights.subtitle',
+        title: insightsLocales.title,
+        subtitle: insightsLocales.subtitle,
         badge: {
-            label: 'insights.badge',
+            label: globalLocales.pageSubtitles.insights.badge,
             variant: 'live',
             icon: 'pulse'
         }
     },
     'recovery-goals': {
-        title: 'goals.title'
+        title: goalsLocales.header.title
     },
     profile: {
-        title: 'profile.title',
-        subtitle: 'profile.subtitle'
+        title: globalLocales.pageSubtitles.profile.title,
+        subtitle: globalLocales.pageSubtitles.profile.subtitle
     },
     settings: {
         title: settingsLocales.title,
@@ -82,7 +86,7 @@ export const headerPageConfigs: Record<
         subtitle: checkInLocales.pageSubtitle
     },
     'daily-checkin': {
-        title: 'ui.healthOverview'
+        title: globalLocales.layout.headerItems.healthOverview
     },
     progress: {
         title: progressLocales.title,

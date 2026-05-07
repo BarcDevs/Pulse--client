@@ -3,6 +3,7 @@
 import { useEffect } from 'react'
 
 import Link from 'next/link'
+import { useTranslations } from 'next-intl'
 
 import { AuthFormType } from '@/types/forms'
 import { SetState } from '@/types/react'
@@ -29,6 +30,7 @@ export const AuthForm = ({
     isLoading = false,
     onPasswordChangeAction
 }: AuthFormProps) => {
+    const t = useTranslations()
     const { form, handleSubmit } = useAuthForm({
         formType,
         onSuccessAction
@@ -81,8 +83,8 @@ export const AuthForm = ({
                     className={'h-11 w-full'}
                 >
                     {isLoading
-                        ? config.buttons.primary.loadingLabel
-                        : config.buttons.primary.label
+                        ? t(config.buttons.primary.loadingLabel)
+                        : t(config.buttons.primary.label)
                     }
                 </Button>
 
@@ -95,7 +97,7 @@ export const AuthForm = ({
                             href={link.href}
                             className={'text-primary hover:underline'}
                         >
-                            {link.label}
+                            {t(link.label)}
                         </Link>
                     </div>
                 ))}

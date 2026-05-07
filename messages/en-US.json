@@ -22,6 +22,7 @@
       "signupText": "Don't have an account?",
       "signupLink": "Sign Up",
       "hipaaText": "SECURE HIPAA COMPLIANT CONNECTION"
+      "rememberMe": "Remember me"
     },
     "signup": {
       "title": "Create Your Account",
@@ -39,8 +40,9 @@
       "signupButton": "Create Account",
       "signingUpButton": "Creating account...",
       "loginText": "Already have an account?",
-      "loginLink": "Sign In",
-      "orContinueWith": "OR CONTINUE WITH",
+      "loginLink": "Sign in",
+      "passwordDescription": "At least 8 characters with one special character",
+      "orContinueWith": "Or continue in a way that feels comfortable",
       "googleButton": "Google"
     },
     "forgotPassword": {
@@ -123,8 +125,16 @@
     },
     "activities": {
       "title": "Activities",
-      "placeholder": "Add custom",
-      "default": ["Meditation", "Exercise", "Social time", "Reading", "Journaling", "Therapy", "Rest"]
+      "placeholder": "Add your own",
+      "default": [
+        "Meditation",
+        "Exercise",
+        "Social time",
+        "Reading",
+        "Journaling",
+        "Therapy",
+        "Rest"
+      ]
     },
     "journal": {
       "title": "Journal Entry",
@@ -498,7 +508,9 @@
       "averageMoodLabel": "Average Mood",
       "milestonesLabel": "Milestones Completed",
       "modalTitle": "Share Your Progress",
-      "modalDescription": "Preview and share your recovery progress with friends and family"
+      "modalDescription": "Preview and share your recovery progress with friends and family",
+      "download": "Download",
+      "share": "Share"
     },
     "insight": {
       "label": "AI RECOVERY INSIGHT",
@@ -884,11 +896,7 @@
       },
       "language": {
         "title": "Preferred Language",
-        "description": "The language used across the app interface",
-        "options": [
-          { "value": "en", "label": "English" },
-          { "value": "he", "label": "עברית" }
-        ]
+        "description": "The language used across the app interface"
       }
     }
   },
@@ -898,7 +906,14 @@
       "quickLinksTitle": "Quick Links",
       "legalTitle": "Legal",
       "socialTitle": "Follow Us",
-      "copyright": "© 2026 HealEase. All rights reserved."
+      "copyright": "© 2026 HealEase. All rights reserved.",
+      "support": "Support",
+      "privacy": "Privacy",
+      "terms": "Terms"
+    },
+    "nav": {
+      "help": "Help",
+      "about": "About"
     },
     "layout": {
       "header": {

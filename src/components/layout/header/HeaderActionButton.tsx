@@ -1,8 +1,11 @@
 'use client'
 
 import { useRouter } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 
 import { Button } from '@/components/ui/button'
+
+import { cn } from '@/lib/utils'
 
 import type { ActionConfig } from '@/constants/config/headerPageConfigs'
 import { ROUTES } from '@/constants/routes'
@@ -16,6 +19,7 @@ type HeaderActionButtonProps = {
 export const HeaderActionButton = ({
     action
 }: HeaderActionButtonProps) => {
+    const t = useTranslations()
     const router = useRouter()
     const isOutline = action.variant === 'outline'
     const isPrimaryAction = action.type === 'newPost'
@@ -35,16 +39,13 @@ export const HeaderActionButton = ({
         <Button
             onClick={handleClick}
             variant={isOutline ? 'outline' : 'default'}
-            className={
-                isPrimaryAction
-                    ? 'bg-primary hover:bg-primary/90 text-primary-foreground'
-                    : isOutline
-                        ? 'text-muted-foreground'
-                        : ''
-            }
+            className={cn(
+                isPrimaryAction && 'bg-primary hover:bg-primary/90 text-primary-foreground',
+                isOutline && !isPrimaryAction && 'text-muted-foreground'
+            )}
         >
             {headerIcon(action.icon)}
-            {action.label}
+            {t(action.label)}
         </Button>
     )
 }

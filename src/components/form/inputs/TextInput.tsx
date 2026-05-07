@@ -1,3 +1,7 @@
+'use client'
+
+import { useTranslations } from 'next-intl'
+
 import { FieldValues } from 'react-hook-form'
 
 import { FieldConfig } from '@/types/forms'
@@ -17,26 +21,30 @@ type TextInputProps<T extends FieldValues> = {
 export const TextInput = <T extends FieldValues>({
     field,
     config
-}: TextInputProps<T>) => (
-    <>
-        {config.label
-            && <FormLabel>
-                {config.label}
-            </FormLabel>
-        }
-        <FormControl>
-            <Input
-                type={'text'}
-                placeholder={config.placeholder}
-                maxLength={config.maxLength}
-                disabled={config.disabled}
-                {...field}
-            />
-        </FormControl>
-        {config.description && (
-            <FormDescription>
-                {config.description}
-            </FormDescription>
-        )}
-    </>
-)
+}: TextInputProps<T>) => {
+    const t = useTranslations()
+
+    return (
+        <>
+            {config.label
+                && <FormLabel>
+                    {t(config.label)}
+                </FormLabel>
+            }
+            <FormControl>
+                <Input
+                    type={'text'}
+                    placeholder={config.placeholder ? t(config.placeholder) : ''}
+                    maxLength={config.maxLength}
+                    disabled={config.disabled}
+                    {...field}
+                />
+            </FormControl>
+            {config.description && (
+                <FormDescription>
+                    {t(config.description)}
+                </FormDescription>
+            )}
+        </>
+    )
+}

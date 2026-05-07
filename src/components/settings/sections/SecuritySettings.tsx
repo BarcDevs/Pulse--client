@@ -47,7 +47,7 @@ export const SecuritySettings = () => {
                                     )}`
                                     : ''
                             case 'deactivate':
-                                return setting.description || ''
+                                return setting.description ? t(setting.description) : ''
                             default:
                                 return ''
                         }
@@ -62,10 +62,10 @@ export const SecuritySettings = () => {
                                     iconColor
                                 )}/>
                             }
-                            label={setting.label}
+                            label={t(setting.label)}
                             value={value}
                             variant={setting.variant}
-                            buttonText={setting.buttonText}
+                            buttonText={setting.buttonText ? t(setting.buttonText) : undefined}
                         />
                     )
                 })}

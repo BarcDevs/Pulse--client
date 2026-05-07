@@ -1,6 +1,12 @@
+'use client'
+
+import { useTranslations } from 'next-intl'
+
 import { Shield } from 'lucide-react'
 
 import { Badge } from '@/components/ui/badge'
+
+import { cn } from '@/lib/utils'
 
 type HeaderBadgeProps = {
     label: string
@@ -13,21 +19,21 @@ export const HeaderBadge = ({
     variant = 'default',
     icon
 }: HeaderBadgeProps) => {
-    const badgeClassName = variant === 'secondary'
-        ? 'bg-secondary-light text-secondary'
-        : variant === 'live'
-            ? 'bg-secondary/10 text-secondary'
-            : ''
+    const t = useTranslations()
 
     return (
-        <Badge className={`gap-2 ${badgeClassName}`}>
+        <Badge className={cn(
+            'gap-2',
+            variant === 'secondary' && 'bg-secondary-light text-secondary',
+            variant === 'live' && 'bg-secondary/10 text-secondary'
+        )}>
             {icon === 'shield' && (
                 <Shield className={'size-3'}/>
             )}
             {icon === 'pulse' && (
                 <span className={'h-2 w-2 rounded-full bg-secondary animate-pulse'}/>
             )}
-            {label}
+            {t(label)}
         </Badge>
     )
 }

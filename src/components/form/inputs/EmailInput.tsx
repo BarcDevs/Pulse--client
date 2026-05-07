@@ -1,3 +1,7 @@
+'use client'
+
+import { useTranslations } from 'next-intl'
+
 import { FieldValues } from 'react-hook-form'
 
 import { FieldConfig } from '@/types/forms'
@@ -14,28 +18,34 @@ type EmailInputProps<T extends FieldValues> = {
     config: FieldConfig
 }
 
-export const EmailInput = <T extends FieldValues> ({
+export const EmailInput = <T extends FieldValues>({
     field,
     config
-}: EmailInputProps<T>) => (
-    <>
-        {config.label
-            && <FormLabel>
-                {config.label}
-            </FormLabel>}
-        <FormControl>
-            <Input
-                type={'email'}
-                placeholder={config.placeholder}
-                disabled={config.disabled}
-                autoComplete={'email'}
-                {...field}
-            />
-        </FormControl>
-        {config.description && (
-            <FormDescription>
-                {config.description}
-            </FormDescription>
-        )}
-    </>
-)
+}: EmailInputProps<T>) => {
+    const t = useTranslations()
+
+    return (
+        <>
+            {config.label
+                && <FormLabel>
+                    {t(config.label)}
+                </FormLabel>}
+            <FormControl>
+                <Input
+                    type={'email'}
+                    placeholder={config.placeholder
+                        ? t(config.placeholder) : ''
+                }
+                    disabled={config.disabled}
+                    autoComplete={'email'}
+                    {...field}
+                />
+            </FormControl>
+            {config.description && (
+                <FormDescription>
+                    {t(config.description)}
+                </FormDescription>
+            )}
+        </>
+    )
+}
