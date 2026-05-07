@@ -5,8 +5,7 @@ import { useTranslations } from 'next-intl'
 import { DropdownSelector }
     from '@/components/shared/inputs/DropdownSelector'
 
-import { LANGUAGE_OPTIONS } from '@/config/settingsOptions'
-
+import languages from '@/data/languages'
 import { settingsLocales } from '@/locales/settingsLocales'
 
 type LanguageSelectorProps = {
@@ -24,7 +23,10 @@ export const LanguageSelector = ({
         <DropdownSelector
             value={language}
             options={Object.fromEntries(
-                LANGUAGE_OPTIONS.map(opt => [opt.value, opt.label])
+                Object.values(languages).map(lang => [
+                    lang.code,
+                    lang.nativeName
+                ])
             )}
             onChangeAction={onLanguageChangeAction}
             label={t(settingsLocales.preferences.language.title)}
