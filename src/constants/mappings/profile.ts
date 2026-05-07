@@ -49,15 +49,17 @@ export const profileActivitiesIconMap = {
 }
 
 export const profileRecoveryIdentityIconMap = {
-    'Pain Management': Activity,
-    'Mental Clarity': Brain,
-    'Mindfulness': Sparkles
+    'Physical Health': Activity,
+    'Mental Wellness': Brain,
+    'Sleep & Rest': Moon,
+    'Social Connection': Sparkles
 }
 
 export const profileRecoveryIdentityColorMap = {
-    'Pain Management': 'bg-destructive/10 text-destructive',
-    'Mental Clarity': 'bg-secondary/10 text-secondary',
-    'Mindfulness': 'bg-accent/10 text-accent'
+    'Physical Health': 'bg-destructive/10 text-destructive',
+    'Mental Wellness': 'bg-secondary/10 text-secondary',
+    'Sleep & Rest': 'bg-primary/10 text-primary',
+    'Social Connection': 'bg-accent/10 text-accent'
 }
 
 export const profileSettingsIconMap = {
