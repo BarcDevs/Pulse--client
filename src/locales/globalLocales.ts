@@ -23,7 +23,20 @@ export const globalLocales = {
         copyright: 'global.footer.copyright',
         support: 'global.footer.support',
         privacy: 'global.footer.privacy',
-        terms: 'global.footer.terms'
+        terms: 'global.footer.terms',
+        links: {
+            quick: {
+                dailyCheckIn: 'global.footer.links.quick.dailyCheckIn',
+                progress: 'global.footer.links.quick.progress',
+                communityForum: 'global.footer.links.quick.communityForum',
+                insights: 'global.footer.links.quick.insights'
+            },
+            legal: {
+                privacyPolicy: 'global.footer.links.legal.privacyPolicy',
+                termsOfService: 'global.footer.links.legal.termsOfService',
+                cookiePolicy: 'global.footer.links.legal.cookiePolicy'
+            }
+        }
     },
     layout: {
         header: {

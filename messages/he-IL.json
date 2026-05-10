@@ -935,14 +935,27 @@
   },
   "global": {
     "footer": {
-      "brandTagline": "תמיכה במסע ההחלמה שלך",
+      "brandTagline": "תומכים במסע ההחלמה שלך",
       "quickLinksTitle": "קישורים מהירים",
       "legalTitle": "משפטי",
       "socialTitle": "עקבו אחרינו",
       "copyright": "© 2026 HealEase. כל הזכויות שמורות.",
       "support": "תמיכה",
       "privacy": "פרטיות",
-      "terms": "תנאים"
+      "terms": "תנאי שימוש",
+      "links": {
+        "quick": {
+          "dailyCheckIn": "עדכון יומי",
+          "progress": "ההתקדמות שלי",
+          "communityForum": "פורום הקהילה",
+          "insights": "התובנות שלי"
+        },
+        "legal": {
+          "privacyPolicy": "מדיניות הפרטיות",
+          "termsOfService": "תנאי השירות",
+          "cookiePolicy": "מדיניות עוגיות"
+        }
+      }
     },
     "nav": {
       "help": "עזרה",

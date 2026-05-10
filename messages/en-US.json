@@ -935,14 +935,27 @@
   },
   "global": {
     "footer": {
-      "brandTagline": "Support for your recovery journey",
+      "brandTagline": "Supporting your recovery journey",
       "quickLinksTitle": "Quick Links",
       "legalTitle": "Legal",
       "socialTitle": "Follow Us",
       "copyright": "© 2026 HealEase. All rights reserved.",
       "support": "Support",
       "privacy": "Privacy",
-      "terms": "Terms"
+      "terms": "Terms",
+      "links": {
+        "quick": {
+          "dailyCheckIn": "Daily Check-In",
+          "progress": "My Progress",
+          "communityForum": "Community Forum",
+          "insights": "My Insights"
+        },
+        "legal": {
+          "privacyPolicy": "Privacy Policy",
+          "termsOfService": "Terms of Service",
+          "cookiePolicy": "Cookie Policy"
+        }
+      }
     },
     "nav": {
       "help": "Help",
