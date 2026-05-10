@@ -514,6 +514,13 @@
         "increasing": "עולה",
         "stable": "יציב/ה",
         "building": "בונה בהדרגה"
+      },
+      "status": {
+        "thriving": "משגשג ומשתפר",
+        "needsAttention": "דורש תשומת לב",
+        "moodImproving": "מצב הרוח משתפר",
+        "painRelieving": "הכאב מוקל",
+        "stableAndMaintaining": "יציב"
       }
     },
     "stats": {

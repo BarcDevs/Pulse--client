@@ -10,6 +10,7 @@ type WellnessScoreCardProps = {
     label: string
     score: number | string
     trend: TrendData
+    trendLabel: string
 }
 
 const getTrendIcon = (
@@ -28,7 +29,8 @@ const getTrendIcon = (
 export const WellnessScoreCard = ({
     label,
     score,
-    trend
+    trend,
+    trendLabel
 }: WellnessScoreCardProps) => (
     <div>
         <p className={'text-xs text-muted-foreground uppercase'}>
@@ -46,7 +48,7 @@ export const WellnessScoreCard = ({
         </div>
         <div className={`flex items-center gap-1 mt-1 text-sm ${trend.color}`}>
             {getTrendIcon(trend.icon)}
-            {trend.label}
+            {trendLabel}
         </div>
     </div>
 )

@@ -6,7 +6,7 @@ import { useCheckInStats } from '@/hooks/queries/useCheckInStats'
 
 import {
     getTrendData,
-    getWellnessStatus
+    getWellnessStatusKey
 } from '@/lib/stats/getTrendLabel'
 
 import { progressLocales } from '@/locales/progressLocales'
@@ -31,10 +31,15 @@ export const WellnessScore = () => {
         isError ? [] : data?.painTrend ?? [],
         'pain'
     )
-    const wellnessStatus = getWellnessStatus(
+    const moodTrendLabel = t(moodTrend.labelKey)
+    const painTrendLabel = t(painTrend.labelKey)
+    const wellnessStatusKey = getWellnessStatusKey(
         moodTrend,
         painTrend
     )
+    const wellnessStatus = wellnessStatusKey
+        ? t(wellnessStatusKey)
+        : `${moodTrendLabel} & ${painTrendLabel}`
 
     return (
         <div className={'card-base'}>
@@ -57,11 +62,13 @@ export const WellnessScore = () => {
                     label={t(progressLocales.wellness.mood)}
                     score={moodScore}
                     trend={moodTrend}
+                    trendLabel={moodTrendLabel}
                 />
                 <WellnessScoreCard
                     label={t(progressLocales.wellness.pain)}
                     score={painScore}
                     trend={painTrend}
+                    trendLabel={painTrendLabel}
                 />
             </div>
         </div>

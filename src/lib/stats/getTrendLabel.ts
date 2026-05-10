@@ -1,7 +1,11 @@
 import { TrendPoint } from '@/types/checkIn'
 
+import { progressLocales } from '@/locales/progressLocales'
+
+const { trends, status } = progressLocales.wellness
+
 export type TrendData = {
-    label: string
+    labelKey: string
     icon: 'up' | 'down' | 'flat'
     color: string
 }
@@ -12,15 +16,17 @@ export const getTrendData = (
     metricType: 'mood' | 'pain' = 'mood'
 ): TrendData => {
     if (trendData.length < 2)
-        return metricType === 'mood' ? {
-            label: 'Steady',
-            icon: 'flat',
-            color: 'text-muted-foreground'
-        } : {
-            label: 'No change',
-            icon: 'flat',
-            color: 'text-muted-foreground'
-        }
+        return metricType === 'mood'
+            ? {
+                labelKey: trends.steady,
+                icon: 'flat',
+                color: 'text-muted-foreground'
+            }
+            : {
+                labelKey: trends.stable,
+                icon: 'flat',
+                color: 'text-muted-foreground'
+            }
 
     const mid = Math.floor(trendData.length / 2)
     const firstHalf = trendData
@@ -35,72 +41,66 @@ export const getTrendData = (
     const threshold = 0.5
 
     if (metricType === 'mood') {
-        if (diff > threshold) {
+        if (diff > threshold)
             return {
-                label: 'Improving',
+                labelKey: trends.improving,
                 icon: 'up',
                 color: 'text-green-600'
             }
-        } else if (diff < -threshold) {
+        if (diff < -threshold)
             return {
-                label: 'Declining',
+                labelKey: trends.declining,
                 icon: 'down',
                 color: 'text-red-600'
             }
-        }
-
         return {
-            label: 'Steady',
+            labelKey: trends.steady,
             icon: 'flat',
             color: 'text-muted-foreground'
         }
     }
 
-    if (diff < -threshold) {
+    if (diff < -threshold)
         return {
-            label: 'Improving',
+            labelKey: trends.improving,
             icon: 'down',
             color: 'text-green-600'
         }
-    } else if (diff > threshold) {
+    if (diff > threshold)
         return {
-            label: 'Increasing',
+            labelKey: trends.increasing,
             icon: 'up',
             color: 'text-red-600'
         }
-    }
-
     return {
-        label: 'Stable',
+        labelKey: trends.stable,
         icon: 'flat',
         color: 'text-muted-foreground'
     }
 }
 
-export const getWellnessStatus = (
+export const getWellnessStatusKey = (
     moodTrend: TrendData,
     painTrend: TrendData
-): string => {
-    const moodLabel = moodTrend.label
-    const painLabel = painTrend.label
+): string | null => {
+    const mood = moodTrend.labelKey
+    const pain = painTrend.labelKey
 
-    if ((moodLabel === 'Improving') && (
-        painLabel === 'Improving'
-    )) return 'Thriving & Improving'
-
-    if ((moodLabel === 'Declining') && (
-        painLabel === 'Increasing'
-    )) return 'Needs Attention'
-
-    if (moodLabel === 'Improving')
-        return 'Mood Improving'
-
-    if (painLabel === 'Improving')
-        return 'Pain Relieving'
-
-    if ((moodLabel === 'Steady') && (
-        painLabel === 'Stable'
-    )) return 'Stable & Maintaining'
-
-    return `${moodLabel} & ${painLabel}`
+    if (
+        mood === trends.improving
+        && pain === trends.improving
+    ) return status.thriving
+    if (
+        mood === trends.declining
+        && pain === trends.increasing
+    ) return status.needsAttention
+    if (mood === trends.improving)
+        return status.moodImproving
+    if (pain === trends.improving)
+        return status.painRelieving
+    if (
+        mood === trends.steady
+        && pain === trends.stable
+    ) return status.stableAndMaintaining
+    return null
 }

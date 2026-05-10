@@ -20,6 +20,13 @@ export const progressLocales = {
             increasing: 'progress.wellness.trends.increasing',
             stable: 'progress.wellness.trends.stable',
             building: 'progress.wellness.trends.building'
+        },
+        status: {
+            thriving: 'progress.wellness.status.thriving',
+            needsAttention: 'progress.wellness.status.needsAttention',
+            moodImproving: 'progress.wellness.status.moodImproving',
+            painRelieving: 'progress.wellness.status.painRelieving',
+            stableAndMaintaining: 'progress.wellness.status.stableAndMaintaining'
         }
     },
     stats: {

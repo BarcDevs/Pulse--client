@@ -514,6 +514,13 @@
         "increasing": "Increasing",
         "stable": "Stable",
         "building": "Building gradually"
+      },
+      "status": {
+        "thriving": "Thriving & Improving",
+        "needsAttention": "Needs Attention",
+        "moodImproving": "Mood Improving",
+        "painRelieving": "Pain Relieving",
+        "stableAndMaintaining": "Stable & Maintaining"
       }
     },
     "stats": {
