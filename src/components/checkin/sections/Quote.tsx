@@ -1,17 +1,16 @@
 'use client'
 
-import { useState } from 'react'
-
-import { useTranslations } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
 
 import { Quote } from 'lucide-react'
 
+import { pickQuote } from '@/utils/checkIn'
+
 export const CheckInQuote = () => {
     const t = useTranslations('checkIn')
+    const locale = useLocale()
     const quotes = t.raw('quotes') as string[]
-    const [quote] = useState(
-        () => quotes[Math.floor(Math.random() * quotes.length)]
-    )
+    const quote = pickQuote(quotes, locale)
 
     return (
         <div className={'mt-10 rounded-2xl bg-primary-light p-8 text-center'}>

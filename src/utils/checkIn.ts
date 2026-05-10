@@ -8,7 +8,7 @@ const { maxSuggestedActivities } = defaults.checkIn
 
 type ActivityCounter = Map<
     string,
-    {label: string, count: number}
+    { label: string, count: number }
 >
 
 export const aggregateActivities =
@@ -41,6 +41,12 @@ export const aggregateActivities =
             .map(item => item.label)
     }
 
-export const getRandomQuote = (): string => {
-    return checkInLocales.quotes
+export const pickQuote = (
+    quotes: string[],
+    locale: string
+) => {
+    const seed = `${locale}-${new Date().toDateString()}`
+    const index = [...seed].reduce((acc, c) =>
+        acc + c.charCodeAt(0), 0) % quotes.length
+    return quotes[index]
 }
