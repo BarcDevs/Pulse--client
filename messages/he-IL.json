@@ -508,12 +508,12 @@
       "mood": "מצב רוח",
       "pain": "כאב",
       "trends": {
-        "improving": "משתפר/ת",
-        "declining": "דורש/ת תשומת לב",
-        "steady": "יציב/ה",
+        "improving": "משתפר",
+        "declining": "דורש תשומת לב",
+        "steady": "יציב",
         "increasing": "עולה",
-        "stable": "יציב/ה",
-        "building": "בונה בהדרגה"
+        "stable": "יציב",
+        "building": "נבנה בהדרגה"
       },
       "status": {
         "thriving": "משגשג ומשתפר",
