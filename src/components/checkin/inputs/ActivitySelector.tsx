@@ -35,6 +35,8 @@ export const CheckInActivities = ({
     const t = useTranslations()
     const [customActivity, setCustomActivity] = useState('')
     const selectedActivities = watch('activities') ?? []
+    const activityLabels =
+        t.raw('checkIn.activities.default') as Record<string, string>
 
     const handleActivitiesChange = (updated: string[]) => {
         setValueAction('activities', updated)
@@ -87,7 +89,7 @@ export const CheckInActivities = ({
                 {suggestedActivities.length > 0 && (
                     <div>
                         <p className={'mb-2 text-xs text-muted-foreground'}>
-                            Your top activities:
+                            {t(checkInLocales.activities.suggestedLabel)}
                         </p>
                         <div className={'flex--wrap gap-2'}>
                             {suggestedActivities.map(
@@ -95,6 +97,7 @@ export const CheckInActivities = ({
                                     <ActivityToggleButton
                                         key={activity}
                                         activity={activity}
+                                        label={activityLabels[activity] ?? activity}
                                         isSelected={selectedActivities.includes(activity)}
                                         onToggle={toggleActivity}
                                     />
@@ -106,7 +109,7 @@ export const CheckInActivities = ({
 
                 <div>
                     <p className={'mb-2 text-xs text-muted-foreground'}>
-                        All activities:
+                        {t(checkInLocales.activities.allLabel)}
                     </p>
                     <div className={'flex--wrap gap-2'}>
                         {DEFAULT_ACTIVITIES.map(
@@ -114,6 +117,7 @@ export const CheckInActivities = ({
                                 <ActivityToggleButton
                                     key={activity}
                                     activity={activity}
+                                    label={activityLabels[activity]}
                                     isSelected={selectedActivities.includes(activity)}
                                     onToggle={toggleActivity}
                                 />

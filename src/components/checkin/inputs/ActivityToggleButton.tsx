@@ -4,12 +4,14 @@ import { cn } from '@/lib/utils'
 
 type ActivityToggleButtonProps = {
     activity: string
+    label?: string
     isSelected: boolean
     onToggle: (activity: string) => void
 }
 
 export const ActivityToggleButton = ({
     activity,
+    label,
     isSelected,
     onToggle
 }: ActivityToggleButtonProps) => (
@@ -28,6 +30,6 @@ export const ActivityToggleButton = ({
     >
         {isSelected
             && <span className={'mr-1'}>+</span>}
-        {activity}
+        {label ?? activity}
     </Button>
 )

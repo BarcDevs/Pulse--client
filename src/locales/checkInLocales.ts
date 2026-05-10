@@ -18,7 +18,9 @@ export const checkInLocales = {
     activities: {
         title: 'checkIn.activities.title',
         placeholder: 'checkIn.activities.placeholder',
-        default: 'checkIn.activities.default'
+        default: 'checkIn.activities.default',
+        suggestedLabel: 'checkIn.activities.suggestedLabel',
+        allLabel: 'checkIn.activities.allLabel'
     },
     journal: {
         title: 'checkIn.journal.title',

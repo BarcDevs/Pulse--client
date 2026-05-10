@@ -128,15 +128,17 @@
     "activities": {
       "title": "Activities",
       "placeholder": "Add your own",
-      "default": [
-        "Meditation",
-        "Exercise",
-        "Social time",
-        "Reading",
-        "Journaling",
-        "Therapy",
-        "Rest"
-      ]
+      "suggestedLabel": "Your top activities",
+      "allLabel": "All activities",
+      "default": {
+        "Meditation": "Meditation",
+        "Exercise": "Exercise",
+        "Social time": "Social time",
+        "Reading": "Reading",
+        "Journaling": "Journaling",
+        "Therapy": "Therapy",
+        "Rest": "Rest"
+      }
     },
     "journal": {
       "title": "Journal",

@@ -127,16 +127,18 @@
     },
     "activities": {
       "title": "פעילויות",
-      "placeholder": "הוסף/י משלך",
-      "default": [
-        "מדיטציה",
-        "פעילות גופנית",
-        "זמן חברתי",
-        "קריאה",
-        "כתיבה ביומן",
-        "טיפול",
-        "מנוחה"
-      ]
+      "placeholder": "הוספת פעילות",
+      "suggestedLabel": "הפעילויות המובילות שלך",
+      "allLabel": "כל הפעילויות",
+      "default": {
+        "Meditation": "מדיטציה",
+        "Exercise": "פעילות גופנית",
+        "Social time": "זמן חברתי",
+        "Reading": "קריאה",
+        "Journaling": "כתיבה ביומן",
+        "Therapy": "טיפול",
+        "Rest": "מנוחה"
+      }
     },
     "journal": {
       "title": "יומן",
