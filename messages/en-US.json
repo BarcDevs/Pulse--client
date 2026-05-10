@@ -114,7 +114,6 @@
     "pageSubtitle": "Take a moment to pause, reflect, and notice how you’re doing today.",
     "submitButton": "Save check-in",
     "submittingButton": "Saving...",
-    "autosaveStatus": "Saved automatically at 09:42 AM",
     "mood": {
       "label": "Mood",
       "min": "Very low",

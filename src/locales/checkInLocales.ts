@@ -4,7 +4,6 @@ export const checkInLocales = {
     pageSubtitle: 'checkIn.pageSubtitle',
     submitButton: 'checkIn.submitButton',
     submittingButton: 'checkIn.submittingButton',
-    autosaveStatus: 'checkIn.autosaveStatus',
     mood: {
         label: 'checkIn.mood.label',
         min: 'checkIn.mood.min',
