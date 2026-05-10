@@ -11,46 +11,48 @@ import {
     Users
 } from 'lucide-react'
 
+import { globalLocales } from '@/locales/globalLocales'
+
 export type NavItem = {
     icon: typeof Home
-    label: string
+    labelKey: string
     href: string
 }
 
 export const mainNavItems: NavItem[] = [
     {
         icon: Home,
-        label: 'Dashboard',
+        labelKey: globalLocales.nav.sidebar.dashboard,
         href: '/dashboard'
     },
     {
         icon: CalendarCheck,
-        label: 'Daily Check-In',
+        labelKey: globalLocales.nav.sidebar.dailyCheckIn,
         href: '/daily-checkin'
     },
     {
         icon: BarChart3,
-        label: 'Progress',
+        labelKey: globalLocales.nav.sidebar.progress,
         href: '/progress'
     },
     {
         icon: Trophy,
-        label: 'Recovery Goals',
+        labelKey: globalLocales.nav.sidebar.recoveryGoals,
         href: '/recovery-goals'
     },
     {
         icon: Lightbulb,
-        label: 'Insights',
+        labelKey: globalLocales.nav.sidebar.insights,
         href: '/insights'
     },
     {
         icon: Users,
-        label: 'Community',
+        labelKey: globalLocales.nav.sidebar.community,
         href: '/community'
     },
     {
         icon: MessageCircle,
-        label: 'Chat',
+        labelKey: globalLocales.nav.sidebar.chat,
         href: '/chat'
     }
 ]
@@ -58,17 +60,17 @@ export const mainNavItems: NavItem[] = [
 export const userMenuItems: NavItem[] = [
     {
         icon: User,
-        label: 'Profile',
+        labelKey: globalLocales.nav.sidebar.profile,
         href: '/profile'
     },
     {
         icon: Settings,
-        label: 'Settings',
+        labelKey: globalLocales.nav.sidebar.settings,
         href: '/profile/settings'
     },
     {
         icon: LogOut,
-        label: 'Logout',
+        labelKey: globalLocales.nav.sidebar.logout,
         href: '/logout'
     }
 ]

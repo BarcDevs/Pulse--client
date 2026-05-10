@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 
 import { LucideIcon } from 'lucide-react'
 
@@ -11,7 +12,7 @@ import {
 
 type NavItem = {
     id: string
-    label: string
+    labelKey: string
     href: string
     icon: LucideIcon
 }
@@ -24,19 +25,22 @@ export const SidebarNavMenu = ({
     items
 }: SidebarNavMenuProps) => {
     const pathname = usePathname()
+    const t = useTranslations()
 
     return (
         <SidebarMenu>
             {items.map((item) => (
-                <SidebarMenuItem key={item.href}>
+                <SidebarMenuItem key={item.labelKey}>
                     <SidebarMenuButton
                         asChild
                         isActive={pathname === item.href}
-                        tooltip={item.label}
+                        tooltip={t(item.labelKey)}
                     >
                         <Link href={item.href}>
-                            <item.icon className={'size-5'} />
-                            <span>{item.label}</span>
+                            <item.icon className={'size-5'}/>
+                            <span>
+                                {t(item.labelKey)}
+                            </span>
                         </Link>
                     </SidebarMenuButton>
                 </SidebarMenuItem>

@@ -1,7 +1,19 @@
 export const globalLocales = {
     nav: {
         help: 'global.nav.help',
-        about: 'global.nav.about'
+        about: 'global.nav.about',
+        sidebar: {
+            dashboard: 'global.nav.sidebar.dashboard',
+            dailyCheckIn: 'global.nav.sidebar.dailyCheckIn',
+            progress: 'global.nav.sidebar.progress',
+            recoveryGoals: 'global.nav.sidebar.recoveryGoals',
+            insights: 'global.nav.sidebar.insights',
+            community: 'global.nav.sidebar.community',
+            chat: 'global.nav.sidebar.chat',
+            profile: 'global.nav.sidebar.profile',
+            settings: 'global.nav.sidebar.settings',
+            logout: 'global.nav.sidebar.logout'
+        }
     },
     footer: {
         brandTagline: 'global.footer.brandTagline',

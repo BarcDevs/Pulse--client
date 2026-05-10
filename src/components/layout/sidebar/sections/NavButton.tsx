@@ -1,6 +1,7 @@
 'use client'
 
 import { usePathname, useRouter } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 
 import { Button } from '@/components/ui/button'
 
@@ -17,6 +18,7 @@ export const NavButton = ({
 }: NavButtonProps) => {
     const pathname = usePathname()
     const router = useRouter()
+    const t = useTranslations()
 
     const isActive = pathname === item.href
         || pathname.startsWith(item.href + '/')
@@ -38,7 +40,7 @@ export const NavButton = ({
         >
             <Icon className={'size-5'}/>
             <span>
-                {item.label}
+                {t(item.labelKey)}
             </span>
         </Button>
     )

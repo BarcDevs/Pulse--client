@@ -919,7 +919,19 @@
     },
     "nav": {
       "help": "Help",
-      "about": "About"
+      "about": "About",
+      "sidebar": {
+        "dashboard": "Dashboard",
+        "dailyCheckIn": "Daily Check-In",
+        "progress": "Progress",
+        "recoveryGoals": "Recovery Goals",
+        "insights": "Insights",
+        "community": "Community",
+        "chat": "Chat",
+        "profile": "Profile",
+        "settings": "Settings",
+        "logout": "Log Out"
+      }
     },
     "layout": {
       "header": {

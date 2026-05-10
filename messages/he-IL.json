@@ -919,7 +919,19 @@
     },
     "nav": {
       "help": "עזרה",
-      "about": "אודות"
+      "about": "אודות",
+      "sidebar": {
+        "dashboard": "לוח בקרה",
+        "dailyCheckIn": "עדכון יומי",
+        "progress": "התקדמות",
+        "recoveryGoals": "מטרות החלמה",
+        "insights": "תובנות",
+        "community": "קהילה",
+        "chat": "צ'אט",
+        "profile": "פרופיל",
+        "settings": "הגדרות",
+        "logout": "התנתקות"
+      }
     },
     "layout": {
       "header": {

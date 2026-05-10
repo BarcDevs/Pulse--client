@@ -48,10 +48,13 @@ export const UserMenu = () => {
             >
                 <DropdownMenuSeparator/>
                 {userMenuItems
-                    .filter((item) => item.label !== 'Settings' || FEATURES.profilePreferences)
+                    .filter((item) =>
+                        item.href !== '/profile/settings'
+                        || FEATURES.profilePreferences
+                    )
                     .map((item) => (
                         <UserMenuItem
-                            key={item.label}
+                            key={item.labelKey}
                             item={item}
                         />
                     ))}

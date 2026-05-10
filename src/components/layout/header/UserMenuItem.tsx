@@ -1,4 +1,5 @@
 import { useRouter } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 
 import { Button } from '@/components/ui/button'
 import { DropdownMenuItem } from '@/components/ui/dropdown-menu'
@@ -16,7 +17,8 @@ export const UserMenuItem = ({
 }: UserMenuItemProps) => {
     const router = useRouter()
     const { logoutAsync } = useLogout()
-    const isLogout = item.label === 'Logout'
+    const t = useTranslations()
+    const isLogout = item.href === '/logout'
 
     const handleClick = isLogout
         ? () => logoutAsync()
@@ -33,7 +35,9 @@ export const UserMenuItem = ({
                 variant={'ghost'}
             >
                 <item.icon className={'mr-2 size-4 hover:text-accent-light'}/>
-                <span>{item.label}</span>
+                <span>
+                    {t(item.labelKey)}
+                </span>
             </Button>
         </DropdownMenuItem>
     )
