@@ -1,800 +1,814 @@
 {
   "auth": {
     "common": {
-      "emailLabel": "EMAIL ADDRESS",
+      "emailLabel": "כתובת אימייל",
       "emailPlaceholder": "name@example.com",
       "passwordPlaceholder": "••••••••",
-      "orContinueWith": "OR CONTINUE WITH",
-      "googleButton": "Google",
-      "continueWithGoogle": "Continue with Google"
+      "orContinueWith": "או המשך/י בדרך שמרגישה לך נוחה",
+      "googleButton": "גוגל",
+      "continueWithGoogle": "המשך/י עם גוגל"
     },
     "login": {
-      "title": "Welcome Back",
-      "description": "Please enter your details to access your sanctuary.",
-      "emailLabel": "EMAIL ADDRESS",
+      "title": "ברוך שובך",
+      "description": "התחבר/י כדי לחזור למרחב שלך ולהמשיך מהיכן שעצרת.",
+      "emailLabel": "כתובת אימייל",
       "emailPlaceholder": "name@example.com",
-      "passwordLabel": "PASSWORD",
-      "forgotPasswordLink": "Forgot Password?",
-      "loginButton": "Log In",
-      "loggingInButton": "Logging in...",
-      "orContinueWith": "OR CONTINUE WITH",
-      "googleButton": "Google",
-      "signupText": "Don't have an account?",
-      "signupLink": "Sign Up",
-      "hipaaText": "SECURE HIPAA COMPLIANT CONNECTION",
-      "rememberMe": "Remember me"
+      "passwordLabel": "סיסמה",
+      "forgotPasswordLink": "שכחת את הסיסמה?",
+      "loginButton": "כניסה",
+      "loggingInButton": "מתחבר/ת...",
+      "orContinueWith": "או המשך/י בדרך שמרגישה לך נוחה",
+      "googleButton": "גוגל",
+      "signupText": "פה בפעם הראשונה?",
+      "signupLink": "צור/י חשבון",
+      "hipaaText": "המידע שלך מוצפן ומאובטח",
+      "rememberMe": "שמור/י אותי מחובר/ת"
     },
     "signup": {
-      "title": "Create Your Account",
-      "description": "Join thousands of patients on their recovery journey. It takes less than a minute.",
-      "firstNameLabel": "FIRST NAME",
-      "firstNamePlaceholder": "John",
-      "lastNameLabel": "LAST NAME",
-      "lastNamePlaceholder": "Doe",
-      "emailLabel": "EMAIL ADDRESS",
+      "title": "צור/י את החשבון שלך",
+      "description": "הגדר/י את המרחב שלך והתחל/י לבנות שגרות בריאות יותר בקצב שלך.",
+      "firstNameLabel": "שם פרטי",
+      "firstNamePlaceholder": "ישראל",
+      "lastNameLabel": "שם משפחה",
+      "lastNamePlaceholder": "ישראלי",
+      "emailLabel": "כתובת אימייל",
       "emailPlaceholder": "name@example.com",
-      "passwordLabel": "PASSWORD",
+      "passwordLabel": "סיסמה",
       "passwordPlaceholder": "••••••••",
-      "confirmPasswordLabel": "CONFIRM PASSWORD",
+      "confirmPasswordLabel": "אימות סיסמה",
       "confirmPasswordPlaceholder": "••••••••",
-      "signupButton": "Create Account",
-      "signingUpButton": "Creating account...",
-      "loginText": "Already have an account?",
-      "loginLink": "Sign In",
-      "passwordDescription": "At least 8 characters with one special character",
-      "orContinueWith": "OR CONTINUE WITH",
-      "googleButton": "Google"
+      "signupButton": "צור/י חשבון",
+      "signingUpButton": "יוצר/ת את החשבון שלך...",
+      "loginText": "כבר יש לך חשבון?",
+      "loginLink": "כניסה",
+      "passwordDescription": "השתמש/י לפחות ב-8 תווים, כולל אות ומספר אחד",
+      "orContinueWith": "או המשך/י בדרך שמרגישה לך נוחה",
+      "googleButton": "גוגל"
     },
     "forgotPassword": {
-      "title": "Forgot password?",
-      "description": "Don't worry, it happens to the best of us. Enter the email address associated with your account and we'll send you a link to reset your password.",
-      "emailLabel": "EMAIL ADDRESS",
+      "title": "איפוס הסיסמה שלך",
+      "description": "שכחת את הסיסמה? קורה לכולם. הכנס/י את האימייל שלך ונשלח לך קישור לאיפוס מאובטח.",
+      "emailLabel": "כתובת אימייל",
       "emailPlaceholder": "name@example.com",
-      "submitButton": "Send Reset Link",
-      "sendingButton": "Sending...",
-      "backButton": "Back to Login",
-      "checkEmailTitle": "Check your email",
-      "checkEmailDesc": "We've sent a password reset link to",
-      "supportLink": "support team",
-      "supportText": "If you no longer have access to your email, please contact our",
-      "supportVerification": "for identity verification."
+      "submitButton": "שליחת קישור לאיפוס",
+      "sendingButton": "שולח/ת...",
+      "backButton": "חזרה לכניסה",
+      "checkEmailTitle": "בדוק/י את האימייל שלך",
+      "checkEmailDesc": "שלחנו קישור לאיפוס הסיסמה אל",
+      "supportLink": "צוות התמיכה",
+      "supportText": "אם אין לך גישה לאימייל שלך, אנא פנה/י אל",
+      "supportVerification": "לקבלת סיוע באימות זהות."
     },
     "resetPassword": {
-      "title": "Create New Password",
-      "description": "Choose a secure password to regain access to your recovery dashboard.",
-      "passwordLabel": "NEW PASSWORD",
-      "confirmPasswordLabel": "CONFIRM NEW PASSWORD",
+      "title": "צור/י סיסמה חדשה",
+      "description": "בחר/י סיסמה מאובטחת כדי לחזור בבטחה לחשבון שלך.",
+      "passwordLabel": "סיסמה חדשה",
+      "confirmPasswordLabel": "אימות הסיסמה החדשה",
       "passwordPlaceholder": "••••••••",
-      "minLengthText": "Min 8 characters",
-      "specialCharText": "One special symbol",
-      "submitButton": "Reset Password",
-      "resettingButton": "Resetting...",
-      "backButton": "Back to login",
-      "troubleText": "Having trouble?",
-      "supportLink": "Contact Health Support"
+      "minLengthText": "לפחות 8 תווים",
+      "specialCharText": "כולל תו מיוחד אחד",
+      "submitButton": "איפוס הסיסמה",
+      "resettingButton": "מאפס/ת סיסמה...",
+      "backButton": "חזרה לכניסה",
+      "troubleText": "צריך/ה עזרה?",
+      "supportLink": "יצירת קשר עם התמיכה"
     }
   },
   "chat": {
-    "inputPlaceholder": "Type your question or concern here...",
-    "pageTitle": "AI Chat",
-    "pageSubtitle": "Your supportive recovery companion",
-    "badge": "SAFE SPACE",
-    "suggestedForYou": "Suggested for You",
+    "inputPlaceholder": "שתף/י מה עובר עליך...",
+    "pageTitle": "צ'אט תמיכה",
+    "pageSubtitle": "מרחב להרהור, לשאלות ולתחושת תמיכה",
+    "badge": "פרטי ותומך",
+    "suggestedForYou": "אולי זה יועיל לך",
     "messages": {
-      "assistantLabel": "AI Chat",
-      "youLabel": "You",
-      "openingMessage": "Hello Alex, I'm here to support you today. How are you feeling?",
-      "exampleUserRestlessness": "I'm feeling a bit restless today...",
-      "aiResponse1": "I understand. Restlessness is a very common part of the recovery journey. It often means your body has energy that needs direction.",
-      "suggestions": ["Try grounding exercise", "Sleep environment tips"],
-      "aiResponse2": "Let's start with the grounding exercise. It's a proven technique that helps calm an active mind and ground you in the present moment."
+      "assistantLabel": "צ'אט תמיכה",
+      "youLabel": "את/ה",
+      "openingMessage": "היי אלכס. אני כאן איתך היום. איך את/ה מרגיש/ה ברגע זה?",
+      "exampleUserRestlessness": "הרגשתי קצת חסר/ת מנוחה היום...",
+      "aiResponse1": "זה יכול לקרות במהלך ההחלמה, במיוחד כשהמוח או הגוף מרגישים לא שקטים. לפעמים עוזר להאט קצת ולהתמקד במה שמרגיש ניתן לניהול ברגע זה.",
+      "suggestions": [
+        "נסה/י תרגיל הארקה",
+        "שפר/י את סביבת השינה שלך"
+      ],
+      "aiResponse2": "בוא נתחיל עם תרגיל קצר שיעזור לך להתמקד ברגע הנוכחי ולהרגיש קצת יותר יציב."
     },
     "sidebar": {
-      "nextMilestoneLabel": "NEXT MILESTONE",
-      "nextMilestoneTitle": "90 Days",
-      "nextMilestoneBadge": "87% Complete",
-      "insightsTitle": "Recent Insights",
-      "insightsTimeframe": "Last 7 days",
-      "emotionalTrendLabel": "Emotional Trend",
-      "emotionalTrendTitle": "Improved",
-      "emotionalTrendDescription": "You're maintaining a stable mood",
-      "sleepQualityLabel": "Sleep Quality",
-      "sleepQualityTitle": "Good",
-      "sleepQualityDescription": "6.5 hours average",
-      "quote": "\"Recovery is not a destination, it's a journey\"",
-      "quoteAuthor": "Recovery Community"
+      "nextMilestoneLabel": "אבן דרך הבאה",
+      "nextMilestoneTitle": "90 יום",
+      "nextMilestoneBadge": "87% הושלם",
+      "insightsTitle": "תובנות אחרונות",
+      "insightsTimeframe": "7 הימים האחרונים",
+      "emotionalTrendLabel": "מגמה רגשית",
+      "emotionalTrendTitle": "יציב יותר",
+      "emotionalTrendDescription": "מצב הרוח שלך היה מאוזן יותר לאחרונה",
+      "sleepQualityLabel": "איכות שינה",
+      "sleepQualityTitle": "משתפרת",
+      "sleepQualityDescription": "ממוצע של 6.5 שעות",
+      "quote": "צעדים קטנים ועקביים יכולים ליצור שינוי משמעותי לאורך זמן",
+      "quoteAuthor": "קהילת HealEase"
     }
   },
   "checkIn": {
-    "headerTitle": "Health Overview",
-    "pageTitle": "Daily Check-In",
-    "pageSubtitle": "Take a moment to center yourself and log your progress.",
-    "submitButton": "Submit Check-In",
-    "submittingButton": "Submitting...",
-    "autosaveStatus": "AUTOSAVED AT 09:42 AM",
+    "headerTitle": "המצב שלך כרגע",
+    "pageTitle": "עדכון יומי",
+    "pageSubtitle": "קח/י רגע לעצור, להרהר ולשים לב איך את/ה היום.",
+    "submitButton": "שמור/י עדכון יומי",
+    "submittingButton": "שומר/ת...",
     "mood": {
-      "label": "Mood",
-      "min": "Very Low",
-      "max": "Very High"
+      "label": "מצב רוח",
+      "min": "נמוך מאוד",
+      "max": "גבוה מאוד"
     },
     "pain": {
-      "label": "Pain Level",
-      "helper": "How physically comfortable do you feel today?",
-      "min": "No Pain",
-      "max": "Severe Pain"
+      "label": "רמת כאב",
+      "helper": "עד כמה את/ה מרגיש/ה נוח/ה פיזית ברגע זה?",
+      "min": "ללא כאב",
+      "max": "כאב חמור"
     },
     "activities": {
-      "title": "Activities",
-      "placeholder": "Add custom",
-      "default": ["Meditation", "Exercise", "Social time", "Reading", "Journaling", "Therapy", "Rest"]
+      "title": "פעילויות",
+      "placeholder": "הוסף/י משלך",
+      "default": [
+        "מדיטציה",
+        "פעילות גופנית",
+        "זמן חברתי",
+        "קריאה",
+        "כתיבה ביומן",
+        "טיפול",
+        "מנוחה"
+      ]
     },
     "journal": {
-      "title": "Journal Entry",
-      "placeholder": "How are you feeling today? What's on your mind?"
+      "title": "יומן",
+      "placeholder": "כתוב/י על איך היום מרגיש, מה היה קשה, או כל דבר אחר שעל הלב."
     },
     "quotes": [
-      "Every day is a new opportunity for growth.",
-      "Your healing journey is unique and valuable.",
-      "Progress, not perfection, is the goal.",
-      "One step forward is still moving in the right direction.",
-      "You are stronger than you think.",
-      "Small victories deserve to be celebrated.",
-      "Take it one day at a time.",
-      "Your effort today shapes your tomorrow.",
-      "Be gentle with yourself through this process.",
-      "Healing looks different for everyone."
+      "להגיע היום כבר משמעותי.",
+      "צעדים קטנים עדיין מקדמים אותך.",
+      "אין צורך להבין הכל היום.",
+      "עקביות חשובה יותר משלמות.",
+      "יש ימים קלים יותר ויש ימים כבדים יותר, וזה בסדר.",
+      "התקדמות יכולה לקרות בשקט לאורך זמן.",
+      "לקחת רגע להרהר הוא חלק מהדאגה לעצמך.",
+      "המאמץ שלך היום עדיין חשוב.",
+      "נסה/י לתת לעצמך את הסבלנות שהיית נותן/ת לאחרים.",
+      "ההחלמה יכולה להיראות שונה מיום ליום."
     ]
   },
   "community": {
     "categories": {
-      "browseTitle": "Browse Categories",
-      "viewAll": "View All",
+      "browseTitle": "קטגוריות",
+      "viewAll": "הצג/י הכל",
       "list": [
         {
           "id": 1,
-          "title": "Support Groups",
-          "description": "Find specialized peer-led sessions",
-          "count": "10 Active Groups"
+          "title": "קבוצות תמיכה",
+          "description": "התחבר/י עם אנשים שחולקים חוויות דומות",
+          "count": "10 קבוצות פעילות"
         },
         {
           "id": 2,
-          "title": "Success Stories",
-          "description": "Inspiration from milestones reached",
-          "count": "452 Stories"
+          "title": "סיפורי הצלחה",
+          "description": "חוויות אישיות, התקדמות ורגעים משמעותיים",
+          "count": "452 סיפורים"
         },
         {
           "id": 3,
-          "title": "Nutrition",
-          "description": "Fueling your body for recovery",
-          "count": "New Recipes"
+          "title": "תזונה",
+          "description": "תמכו בהחלמה שלכם באמצעות תזונה מאוזנת",
+          "count": "מתכונים חדשים"
         },
         {
           "id": 4,
-          "title": "Yoga & Movement",
-          "description": "Healing through somatic practice",
-          "count": "Live Today"
+          "title": "יוגה ותנועה",
+          "description": "תרגולי תנועה עדינים לגוף ולנפש",
+          "count": "שידור חי היום"
         }
       ]
     },
     "posts": {
       "filterLabels": {
-        "newest": "Newest",
-        "popular": "Popular",
-        "hot": "Hot",
-        "unanswered": "Unanswered"
+        "newest": "חדשים",
+        "popular": "פופולריים",
+        "hot": "טרנדיים",
+        "unanswered": "ללא מענה"
       },
-      "repliesLabel": "replies",
-      "postedBy": "Posted by",
-      "share": "Share",
-      "save": "Save",
-      "newPostButton": "New Post",
-      "loading": "Loading posts...",
-      "empty": "No posts yet. Be the first to share your journey and inspire others.",
-      "emptyWithFilter": "No posts found with tag. Try a different tag or browse all posts."
+      "repliesLabel": "תגובות",
+      "postedBy": "פורסם על ידי",
+      "share": "שיתוף",
+      "save": "שמירה",
+      "newPostButton": "צור/י פוסט",
+      "loading": "טוען פוסטים...",
+      "empty": "עדיין לא שותפו פוסטים. את/ה יכול/ה להתחיל את השיחה כשתרגיש/י מוכן/ה.",
+      "emptyWithFilter": "לא נמצאו פוסטים עם התגית הזו. נסה/י תגית אחרת או חזור/י לכל הדיונים."
     },
     "mentors": {
-      "title": "Recovery Mentors",
-      "chatButton": "Chat",
+      "title": "מנטורים תומכים",
+      "chatButton": "התחל/י שיחה",
       "list": [
         {
           "id": 1,
-          "name": "David Chen",
-          "role": "Certified Coach",
+          "name": "דוד צ'ן",
+          "role": "מאמן מוסמך",
           "avatar": "D",
           "online": true
         },
         {
           "id": 2,
-          "name": "Maria G.",
-          "role": "Wellness Guide",
+          "name": "מריה ג'.",
+          "role": "מדריכת בריאות",
           "avatar": "M",
           "online": false
         }
       ]
     },
     "sanctuary": {
-      "title": "Community Sanctuary",
-      "description": "HealEase is a safe, non-judgmental space. We prioritize empathy, privacy, and supportive dialogue.",
-      "rules": ["Be kind and be open", "No unsolicited medical advice", "Protect user anonymity"],
-      "readGuidelines": "Read Guidelines"
+      "title": "מרחב הקהילה",
+      "description": "HealEase בנויה לתמוך בשיחות מכבדות, פרטיות ותחושת בטיחות רגשית.",
+      "rules": [
+        "היו מכבדים ופתוחי לב",
+        "הימנע/י ממתן עצות רפואיות אלא אם כשיר/ה לכך",
+        "שמור/י על הפרטיות שלך ועל פרטיות האחרים"
+      ],
+      "readGuidelines": "קרא/י את ההנחיות"
     },
     "trending": {
-      "title": "Trending Topics",
-      "loading": "Loading topics..."
+      "title": "דיונים טרנדיים",
+      "loading": "טוען נושאים..."
     },
     "activity": {
-      "title": "Community",
-      "viewAll": "View All",
+      "title": "פעילות הקהילה",
+      "viewAll": "הצג/י הכל",
       "list": [
         {
           "id": 1,
-          "user": "Sarah",
-          "action": "shared a milestone",
-          "time": "30 min ago",
+          "user": "שרה",
+          "action": "שיתפה אבן דרך",
+          "time": "לפני 30 דקות",
           "avatar": "S"
         },
         {
           "id": 2,
-          "user": "James",
-          "action": "joined the Yoga group",
-          "time": "1 hour ago",
+          "user": "ג'יימס",
+          "action": "הצטרף לקבוצת היוגה",
+          "time": "לפני שעה",
           "avatar": "J"
         },
         {
           "id": 3,
-          "user": "Marcus",
-          "action": "posted a question",
-          "time": "2 hours ago",
+          "user": "מרקוס",
+          "action": "שיתף שאלה",
+          "time": "לפני שעתיים",
           "avatar": "M"
         },
         {
           "id": 4,
-          "user": "Elena",
-          "action": "replied to a post",
-          "time": "3 hours ago",
+          "user": "אלנה",
+          "action": "הגיבה לדיון",
+          "time": "לפני 3 שעות",
           "avatar": "E"
         },
         {
           "id": 5,
-          "user": "David",
-          "action": "started a new discussion",
-          "time": "4 hours ago",
+          "user": "דוד",
+          "action": "פתח דיון חדש",
+          "time": "לפני 4 שעות",
           "avatar": "D"
         }
       ]
     },
     "confirmations": {
-      "deletePost": "Are you sure you want to delete this post?",
-      "deleteReply": "Are you sure you want to delete this reply?"
+      "deletePost": "האם למחוק את הפוסט הזה?",
+      "deleteReply": "האם למחוק את התגובה הזו?"
     },
     "postDetail": {
-      "loading": "Loading replies...",
-      "replies": "Replies",
-      "reply": "Reply",
-      "noReplies": "No replies yet. Be the first to share your thoughts!",
-      "loginToReply": "Please log in to reply",
-      "loginButton": "Log In",
-      "notFoundTitle": "Post not found",
-      "notFoundDescription": "The post you are looking for does not exist or has been deleted.",
-      "backToCommunity": "Back to Community",
-      "repliesLoadError": "Failed to load replies",
-      "postLoadError": "Failed to load post. Please check your connection."
+      "loading": "טוען תגובות...",
+      "replies": "תגובות",
+      "reply": "תגובה",
+      "noReplies": "אין תגובות עדיין. את/ה יכול/ה לשתף את מחשבותיך כשתרגיש/י נוח/ה.",
+      "loginToReply": "יש להתחבר כדי להגיב",
+      "loginButton": "כניסה",
+      "notFoundTitle": "הפוסט לא נמצא",
+      "notFoundDescription": "הפוסט הזה אולי הוסר או שאינו זמין יותר.",
+      "backToCommunity": "חזרה לקהילה",
+      "repliesLoadError": "לא ניתן לטעון תגובות",
+      "postLoadError": "לא ניתן לטעון את הפוסט הזה כרגע. נסה/י שוב."
     },
     "postActions": {
-      "solidarity": "Solidarity",
-      "reply": "Reply",
-      "share": "Share"
+      "solidarity": "הצג/י תמיכה",
+      "reply": "תגובה",
+      "share": "שיתוף"
     },
     "postForm": {
-      "writeReply": "Write a Reply",
-      "createPost": "Create Post",
-      "content": "Content",
-      "cancel": "Cancel",
-      "sendReply": "Send Reply",
-      "title": "Title",
-      "titlePlaceholder": "Post title",
-      "category": "Category",
-      "categoryPlaceholder": "Select category",
-      "bodyPlaceholderReply": "Write your reply...",
-      "bodyPlaceholderPost": "Write your post..."
+      "writeReply": "כתוב/י תגובה",
+      "createPost": "צור/י פוסט",
+      "content": "תוכן",
+      "cancel": "ביטול",
+      "sendReply": "שלח/י תגובה",
+      "title": "כותרת",
+      "titlePlaceholder": "תן/י לפוסט שלך כותרת ברורה",
+      "category": "קטגוריה",
+      "categoryPlaceholder": "בחר/י קטגוריה",
+      "bodyPlaceholderReply": "כתוב/י את תגובתך...",
+      "bodyPlaceholderPost": "שתף/י מה עולה לך..."
     }
   },
   "dashboard": {
-    "title": "Dashboard",
-    "greeting": "Welcome back,",
+    "title": "לוח בקרה",
+    "greeting": "ברוך שובך,",
     "checkIn": {
-      "badge": "ACTION REQUIRED",
-      "title": "Ready for your Daily Check-In?",
-      "description": "Maintaining consistent tracking is the key to identifying patterns in your recovery journey.",
-      "button": "Start Check-In"
+      "badge": "הרהור יומי",
+      "title": "מוכן/ה לצ'ק-אין של היום?",
+      "description": "עדכונים יומיים קבועים יכולים לעזור לך להבין טוב יותר דפוסים בתחושות שלך לאורך זמן.",
+      "button": "התחל/י עדכון יומי"
     },
     "aiInsight": {
-      "label": "AI INSIGHT"
+      "label": "תובנה"
     },
-    "noInsights": "Insight not found. Please complete more check-ins to receive personalized insights.",
+    "noInsights": "השלם/י עוד כמה עדכונים יומיים כדי לפתוח תובנות ומגמות אישיות.",
     "community": {
-      "label": "Community",
-      "viewAll": "VIEW ALL"
+      "label": "קהילה",
+      "viewAll": "הצג/י הכל"
     },
     "todaysFocus": {
-      "label": "Today's Focus",
-      "badge": "RECOMMENDED FOR YOU",
-      "title": "5 mins mindfulness",
-      "description": "Lower cortisol levels and improve your mood for the next 4 hours."
+      "label": "מיקוד היום",
+      "badge": "מוצע עבורך",
+      "title": "5 דקות של מיינדפולנס",
+      "description": "הפסקה קצרה יכולה לעזור לך להאט, להתאפס ולהרגיש יותר מיוסד/ת."
     },
     "historyChart": {
-      "title": "Recovery Trend",
-      "week": "Week",
-      "month": "Month",
-      "incompleteWeek": "Build your recovery timeline. Every day tracked brings clarity to your journey"
+      "title": "מגמת ההחלמה שלך",
+      "week": "שבוע",
+      "month": "חודש",
+      "incompleteWeek": "כל עדכון יומי מוסיף עוד חלק לתמונה המלאה של ההתקדמות שלך."
     }
   },
   "insights": {
-    "title": "AI Insights",
-    "subtitle": "Smart observations about your recovery",
-    "aiActive": "AI ANALYSIS ACTIVE",
+    "title": "תובנות",
+    "subtitle": "דפוסים ותצפיות המבוססים על הפעילות האחרונה שלך",
+    "aiActive": "ניתוח פעיל",
     "criticalInsight": {
-      "label": "Critical Insight",
-      "title": "Your mood improves by 15% on days including mobility stretching.",
-      "description": "Our analysis shows a direct correlation between your 8 AM stretching routine and peak afternoon energy levels.",
-      "buttonPrimary": "Schedule Stretch",
-      "buttonSecondary": "View Data Correlation"
+      "label": "תובנה חשובה",
+      "title": "מצב הרוח שלך נוטה להשתפר בימים שכוללים מתיחות תנועה.",
+      "description": "הצ'ק-אינים האחרונים שלך מציעים קשר בין שגרת המתיחות הבוקרית שלך לרמות אנרגיה גבוהות יותר במהלך היום.",
+      "buttonPrimary": "תזמן/י מתיחות",
+      "buttonSecondary": "הצג/י פרטי דפוס"
     },
     "painAlert": {
-      "title": "Pain Trend Alert",
-      "description": "Slightly higher pain levels recorded today compared to your 7-day average. Your sleep quality was also 12% lower last night.",
-      "status": "Attention Required",
-      "action": "Update Journal"
+      "title": "נצפתה עלייה ברמות הכאב",
+      "description": "רמות הכאב שלך היו מעט גבוהות יותר היום בהשוואה לממוצע האחרון שלך. גם איכות השינה נראית נמוכה מהרגיל.",
+      "status": "דורש/ת תשומת לב",
+      "action": "עדכן/י את היומן"
     },
     "actionableStep": {
-      "title": "Actionable Step",
-      "description": "Try 10 minutes of restorative yoga today to manage pain and improve evening relaxation before your next sleep cycle.",
-      "button": "Start Session Now"
+      "title": "הצעד הבא המוצע",
+      "description": "יוגה עדינה למשך כמה דקות יכולה לעזור להפחית מתח ולתמוך בהרפיה לקראת הלילה.",
+      "button": "התחל/י שיעור"
     },
     "header": {
-      "badge": "CRITICAL INSIGHT",
-      "title": "Your mood improves by 15% on days including mobility stretching.",
-      "description": "Our analysis shows a direct correlation between your 8 AM stretching routine and peak afternoon energy levels.",
-      "buttonPrimary": "Schedule Stretch",
-      "buttonSecondary": "View Data Correlation"
+      "badge": "תובנה מודגשת",
+      "title": "מצב הרוח שלך נוטה להשתפר בימים שכוללים מתיחות תנועה.",
+      "description": "מגמות אחרונות מצביעות על כך ששגרת המתיחות הבוקרית שלך עשויה לתמוך באנרגיה טובה יותר ואיזון רגשי במהלך היום.",
+      "buttonPrimary": "תזמן/י מתיחות",
+      "buttonSecondary": "הצג/י פרטי דפוס"
     },
     "behavioralPatterns": {
-      "title": "Behavioral Patterns",
+      "title": "דפוסים התנהגותיים",
       "tabs": {
-        "sevenDays": "7 Days",
-        "thirtyDays": "30 Days"
+        "sevenDays": "7 ימים",
+        "thirtyDays": "30 יום"
       },
       "correlation": {
-        "label": "Correlation",
-        "title": "Social Interaction vs. Stress",
-        "description": "You report 23% lower stress levels on days when you participate in community group chats."
+        "label": "דפוס",
+        "title": "אינטראקציה חברתית ורמות לחץ",
+        "description": "את/ה נוטה לדווח על רמות לחץ נמוכות יותר בימים שבהם את/ה משתתף/ת בשיחות קהילה."
       },
       "observation": {
-        "label": "Observation",
-        "title": "Morning Routine Impact",
-        "description": "Completing a Daily Check-In before 9:00 AM leads to a 30% higher chance of reaching all daily recovery goals.",
+        "label": "תצפית",
+        "title": "עקביות שגרת הבוקר",
+        "description": "השלמת עדכון יומי מוקדם יותר ביום קשורה לעקביות גבוהה יותר בהשגת יעדי ההחלמה שלך.",
         "stat": "82%",
-        "statLabel": "Success rate when daily"
+        "statLabel": "שיעור הצלחה עם עדכונים יומיים קבועים"
       },
       "prediction": {
-        "label": "AI Prediction",
-        "title": "Projected Recovery Path",
-        "description": "If current adherence maintains, you are on track to increase your range of motion by 8% next week.",
-        "confidence": "High Confidence Analytics"
+        "label": "תחזית",
+        "title": "מגמת החלמה צפויה",
+        "description": "אם השגרה הנוכחית שלך תימשך, מגמות הניידות שלך עשויות להמשיך להשתפר בשבוע הבא.",
+        "confidence": "רמת ביטחון גבוהה"
       }
     },
     "summary": {
-      "title": "Weekly Trend Summary",
-      "description": "Comprehensive overview of your physiological and mental markers.",
-      "exportButton": "Export Report",
+      "title": "סיכום שבועי",
+      "description": "סקירה של מגמות רגשיות, פיזיות והתנהגותיות אחרונות.",
+      "exportButton": "ייצוא דוח",
       "stats": [
         {
-          "label": "VITALITY SCORE",
+          "label": "ציון חיוניות",
           "value": "78",
           "trend": "arrow_upward 3%",
-          "description": "Consistent upward trend",
+          "description": "מציג שיפור הדרגתי",
           "icon": "TrendingUp",
           "trendColor": "text-secondary"
         },
         {
-          "label": "ENGAGEMENT",
-          "value": "Low",
-          "trend": "priority_high Improve",
-          "description": "Below baseline in sharing",
+          "label": "מעורבות",
+          "value": "נמוכה",
+          "trend": "priority_high דורשת תשומת לב",
+          "description": "השתתפות נמוכה בהשוואה לפעילות הרגילה שלך",
           "icon": "Activity",
           "trendColor": "text-amber-500"
         },
         {
-          "label": "SLEEP QUALITY",
+          "label": "איכות שינה",
           "value": "8.2",
-          "trend": "/10 check_circle Stable",
-          "description": "Above the 75th percentile",
+          "trend": "/10 check_circle יציבה",
+          "description": "דפוסי השינה נשארים עקביים יחסית",
           "icon": "CheckCircle",
           "trendColor": "text-secondary"
         },
         {
-          "label": "MOOD STABILITY",
-          "value": "High",
-          "trend": "trending_up Positive",
-          "description": "Improving steadily",
+          "label": "יציבות מצב רוח",
+          "value": "גבוהה",
+          "trend": "trending_up משתפרת",
+          "description": "דפוסי מצב הרוח נראים מאוזנים יותר לאחרונה",
           "icon": "Sparkles",
           "trendColor": "text-secondary"
         }
       ]
     },
     "milestone": {
-      "title": "Milestone Reached!",
-      "description": "You've logged 10 consecutive days! Consistency is the foundation of lasting recovery.",
-      "label": "Gold Streak Level 1"
+      "title": "אבן דרך הושגה",
+      "description": "השלמת 10 ימים רצופים של עדכונים יומיים. עקביות כזו דורשת מאמץ.",
+      "label": "רצף של 10 ימים"
     }
   },
   "progress": {
-    "title": "Progress",
-    "subtitle": "Visualizing your recovery journey. Small steps lead to big milestones.",
-    "exportPdf": "Export PDF",
-    "shareJourney": "Share Journey",
+    "title": "התקדמות",
+    "subtitle": "מבט ברור יותר על הדפוסים, העקביות והצמיחה שלך לאורך זמן.",
+    "exportPdf": "ייצוא PDF",
+    "shareJourney": "שיתוף התקדמות",
     "milestones": {
-      "title": "Milestones & Achievements",
-      "seeAll": "See All 15",
+      "title": "אבני דרך והישגים",
+      "seeAll": "ראה/י את כל 15",
       "list": [
         {
-          "title": "First Step",
-          "description": "Completed first check-in",
+          "title": "הצעד הראשון",
+          "description": "השלמת את העדכון היומי הראשון שלך",
           "achieved": true
         },
         {
-          "title": "7-Day Streak",
-          "description": "Checked in for 7 days",
+          "title": "רצף של 7 ימים",
+          "description": "ביצעת עדכון יומי באופן עקבי במשך 7 ימים",
           "achieved": true
         },
         {
-          "title": "Mind Master",
-          "description": "30-Day Clarity",
+          "title": "בהירות מנטלית",
+          "description": "30 ימים של הרהור עקבי",
           "achieved": true
         },
         {
-          "title": "1 Month Active",
-          "description": "Coming soon",
+          "title": "חודש פעיל",
+          "description": "טרם הושג",
           "achieved": false
         }
       ]
     },
     "wellness": {
-      "label": "Weekly Wellness Average",
-      "timeframe": "Last week vs. this week",
-      "mood": "Mood",
-      "pain": "Pain",
+      "label": "סיכום הרווחה השבועי",
+      "timeframe": "השבוע שעבר לעומת השבוע הנוכחי",
+      "mood": "מצב רוח",
+      "pain": "כאב",
       "trends": {
-        "improving": "Improving",
-        "declining": "Declining",
-        "steady": "Steady",
-        "increasing": "Increasing",
-        "stable": "Stable",
-        "building": "Building your journey"
+        "improving": "משתפר/ת",
+        "declining": "דורש/ת תשומת לב",
+        "steady": "יציב/ה",
+        "increasing": "עולה",
+        "stable": "יציב/ה",
+        "building": "בונה בהדרגה"
       }
     },
     "stats": {
       "streak": {
-        "label": "Current Streak",
-        "unit": "days",
-        "bestPrefix": "Personal best:"
+        "label": "רצף נוכחי",
+        "unit": "ימים",
+        "bestPrefix": "שיא אישי:"
       },
       "milestones": {
-        "label": "Total Milestones",
-        "unit": "badges",
-        "nextPrefix": "Next:",
-        "nextValue": "Mind/Body Precision, 6 days"
+        "label": "אבני דרך שהושגו",
+        "unit": "תגים",
+        "nextPrefix": "הבא:",
+        "nextValue": "איזון גוף ונפש, נותרו 6 ימים"
       }
     },
     "share": {
-      "title": "My Recovery Progress",
-      "tagline": "Small steps. Real progress.",
-      "cta": "Track your recovery with HealEase",
+      "title": "ההתקדמות שלי",
+      "tagline": "צעדים קטנים עדיין חשובים.",
+      "cta": "עקוב/י אחר ההתקדמות שלך עם HealEase",
       "filename": "healease-progress.png",
-      "toastShare": "Shared successfully",
-      "toastCopied": "Image copied to clipboard",
-      "toastDownloaded": "Image saved",
-      "streakUnit": "day streak",
-      "noMoodData": "No mood data yet",
-      "currentStreakLabel": "Current Streak",
-      "averageMoodLabel": "Average Mood",
-      "milestonesLabel": "Milestones Completed",
-      "modalTitle": "Share Your Progress",
-      "modalDescription": "Preview and share your recovery progress with friends and family",
-      "download": "Download",
-      "share": "Share"
+      "toastShare": "שותף בהצלחה",
+      "toastCopied": "התמונה הועתקה",
+      "toastDownloaded": "התמונה נשמרה",
+      "streakUnit": "רצף ימים",
+      "noMoodData": "אין נתוני מצב רוח עדיין",
+      "currentStreakLabel": "רצף נוכחי",
+      "averageMoodLabel": "מצב רוח ממוצע",
+      "milestonesLabel": "אבני דרך שהושלמו",
+      "modalTitle": "שיתוף ההתקדמות שלך",
+      "modalDescription": "תצוגה מקדימה ושיתוף ההתקדמות האחרונה שלך עם אנשים שאתה/ת סומך/ת עליהם",
+      "download": "הורדה",
+      "share": "שיתוף"
     },
     "insight": {
-      "label": "AI RECOVERY INSIGHT",
-      "emptyInsight": "Complete your daily check-in to unlock personalized insights.",
-      "buttonPrimary": "Keep Going",
-      "buttonSecondary": "Acknowledge"
+      "label": "תובנת החלמה",
+      "emptyInsight": "השלם/י עוד עדכונים יומיים כדי לפתוח תובנות אישיות.",
+      "buttonPrimary": "המשך/י",
+      "buttonSecondary": "הבנתי"
     },
     "charts": {
       "moodChart": {
-        "title": "Mood Trend",
-        "subtitle": "Daily average mood score",
-        "legendLabel": "Actual Score",
-        "targetLabel": "Weekly Target"
+        "title": "מגמת מצב רוח",
+        "subtitle": "ציון מצב הרוח הממוצע היומי",
+        "legendLabel": "ציון מצב רוח",
+        "targetLabel": "יעד שבועי"
       },
       "painChart": {
-        "title": "Pain Intensity",
-        "subtitle": "Tracking physical symptoms over time",
-        "legendLabel": "Pain Level (lower is better)"
+        "title": "עוצמת כאב",
+        "subtitle": "מעקב אחר אי-נוחות פיזית לאורך זמן",
+        "legendLabel": "רמת כאב"
       },
       "moodTrendChart": {
-        "title": "Mood Trend",
-        "subtitle": "Daily average mood score",
-        "legendLabel": "Mood Score",
-        "targetLabel": "Weekly Target"
+        "title": "מגמת מצב רוח",
+        "subtitle": "ציון מצב הרוח הממוצע היומי",
+        "legendLabel": "ציון מצד רוח",
+        "targetLabel": "יעד שבועי"
       },
       "painIntensityChart": {
-        "title": "Pain Intensity",
-        "subtitle": "Tracking physical progression over time",
-        "legendLabel": "Pain Level (Joints)"
+        "title": "עוצמת כאב",
+        "subtitle": "מעקב אחר שינויים פיזיים לאורך זמן",
+        "legendLabel": "רמת כאב"
       },
       "timePeriods": {
-        "daily": "Daily",
-        "weekly": "Weekly",
-        "monthly": "Monthly"
+        "daily": "יומי",
+        "weekly": "שבועי",
+        "monthly": "חודשי"
       },
       "tabTriggers": {
-        "week": "Week",
-        "month": "Month"
+        "week": "שבוע",
+        "month": "חודש"
       },
       "notifications": {
-        "moodIncomplete": "Track your mood patterns to discover what brings you joy",
-        "painIncomplete": "Every day brings new insights into your recovery",
-        "loadError": "Failed to load data"
+        "moodIncomplete": "מעקב קבוע אחר מצב הרוח יכול לסייע לחשוף דפוסים משמעותיים לאורך זמן.",
+        "painIncomplete": "כל עדכון יומי מוסיף הקשר נוסף להתקדמות ההחלמה שלך.",
+        "loadError": "לא ניתן לטעון נתונים"
       }
     }
   },
   "profile": {
     "info": {
-      "memberSince": "Member since"
+      "memberSince": "חבר/ה מאז"
     },
-    "levelBadge": "LEVEL 4: RESILIENT",
+    "levelBadge": "רמה 4: עמיד/ה",
     "stats": {
       "days": {
         "value": "142",
-        "label": "DAYS"
+        "label": "ימים"
       },
       "milestones": {
         "value": "28",
-        "label": "MILESTONES"
+        "label": "אבני דרך"
       },
       "healthScore": {
         "value": "8.4",
-        "label": "HEALTH SCORE"
+        "label": "ציון בריאות"
       }
     },
     "recoveryIdentity": {
-      "title": "Recovery Identity",
-      "subtitle": "Core Focus Areas",
+      "title": "המיקוד שלך",
+      "subtitle": "תחומים שנמצאים במיקוד שלך כרגע",
       "focusAreas": [
-        { "label": "Pain Management" },
-        { "label": "Mental Clarity" },
-        { "label": "Mindfulness" }
+        { "label": "ניהול כאב" },
+        { "label": "בהירות מנטלית" },
+        { "label": "מיינדפולנס" }
       ],
-      "quote": "My goal is to regain physical mobility through consistent therapy while maintaining a calm, focused mindset during stressful transitions."
+      "quote": "המטרה שלי היא לשפר את הניידות הפיזית דרך עקביות תוך שמירה על יציבות מנטלית בזמנים מאתגרים."
     },
     "basicInfo": {
-      "title": "Basic Information",
-      "edit": "Edit",
+      "title": "מידע בסיסי",
+      "edit": "עריכה",
       "fields": [
-        { "label": "LEGAL NAME", "value": "Alexander J. Rivera" },
-        { "label": "EMAIL ADDRESS", "value": "a.rivera@example.com" },
-        { "label": "DATE OF BIRTH", "value": "May 12, 1992" },
-        { "label": "PRIMARY SUPPORT CONTACT", "value": "Dr. Sarah Chen (Clinician)" }
+        { "label": "שם מלא", "value": "Alexander J. Rivera" },
+        { "label": "כתובת אימייל", "value": "a.rivera@example.com" },
+        { "label": "תאריך לידה", "value": "12 במאי, 1992" },
+        { "label": "איש/ת קשר תמיכה ראשי/ת", "value": "ד\"ר שרה צ'ן (רופא/ה מטפל/ת)" }
       ]
     },
     "goals": {
-      "title": "Active Goals",
-      "viewRoadmap": "View Roadmap",
+      "title": "יעדים פעילים",
+      "viewRoadmap": "הצג/י מפת דרכים",
       "list": [
-        { "label": "PHYSIO THERAPY", "progress": 80 },
-        { "label": "DAILY MEDITATION", "progress": 65 },
-        { "label": "SLEEP HYGIENE", "progress": 40 }
+        { "label": "פיזיותרפיה", "progress": 80 },
+        { "label": "מדיטציה יומית", "progress": 65 },
+        { "label": "שגרת שינה", "progress": 40 }
       ]
     },
     "activities": {
-      "title": "Daily Activity Preferences",
+      "title": "העדפות פעילות יומית",
       "list": [
         {
-          "title": "Morning Routine",
-          "time": "Scheduled for 07:30 AM",
-          "tags": ["MEDITATION", "STRETCH"]
+          "title": "שגרת בוקר",
+          "time": "מתוכנן/ת לשעה 07:30",
+          "tags": ["מדיטציה", "מתיחות"]
         },
         {
-          "title": "Evening Reflection",
-          "time": "Scheduled for 09:00 PM",
-          "tags": ["JOURNALING", "GRATITUDE"]
+          "title": "הרהור ערב",
+          "time": "מתוכנן/ת לשעה 21:00",
+          "tags": ["כתיבה ביומן", "הכרת תודה"]
         }
       ]
     },
     "settings": {
-      "title": "System & Privacy",
+      "title": "מערכת ופרטיות",
       "list": [
         {
-          "title": "Security",
-          "description": "Last updated 10 days"
+          "title": "אבטחה",
+          "description": "עודכן לפני 10 ימים"
         },
         {
-          "title": "Notifications",
-          "description": "Push enabled"
+          "title": "התראות",
+          "description": "התראות פוש מופעלות"
         },
         {
-          "title": "Data Sharing",
-          "description": "Clinician view On"
+          "title": "שיתוף נתונים",
+          "description": "גישת רופא/ה מטפל/ת מופעלת"
         },
         {
-          "title": "Login History",
-          "description": "San Francisco, CA"
+          "title": "היסטוריית כניסות",
+          "description": "סן פרנסיסקו, קליפורניה"
         }
       ]
     },
     "dailyPreferences": {
-      "title": "Daily Activity Preferences",
+      "title": "העדפות פעילות יומית",
       "morningRoutine": {
-        "title": "Morning Routine",
-        "subtitle": "Scheduled for 07:30 AM",
-        "tags": ["Meditation", "Stretch"]
+        "title": "שגרת בוקר",
+        "subtitle": "מתוכנן/ת לשעה 07:30",
+        "tags": ["מדיטציה", "מתיחות"]
       },
       "eveningReflection": {
-        "title": "Evening Reflection",
-        "subtitle": "Scheduled for 09:00 PM",
-        "tags": ["Journaling", "Breathwork"]
+        "title": "הרהור ערב",
+        "subtitle": "מתוכנן/ת לשעה 21:00",
+        "tags": ["כתיבה ביומן", "נשימות"]
       }
     },
     "systemPrivacy": {
-      "title": "System & Privacy",
+      "title": "מערכת ופרטיות",
       "settings": [
         {
-          "title": "Security",
-          "subtitle": "Last updated 14 days"
+          "title": "אבטחה",
+          "subtitle": "עודכן לפני 14 ימים"
         },
         {
-          "title": "Notifications",
-          "subtitle": "Push enabled"
+          "title": "התראות",
+          "subtitle": "התראות פוש מופעלות"
         },
         {
-          "title": "Data Sharing",
-          "subtitle": "Clinician view On"
+          "title": "שיתוף נתונים",
+          "subtitle": "גישת רופא/ה מטפל/ת מופעלת"
         },
         {
-          "title": "Login History",
-          "subtitle": "San Francisco, CA"
+          "title": "היסטוריית כניסות",
+          "subtitle": "סן פרנסיסקו, קליפורניה"
         }
       ]
     }
   },
   "goals": {
     "header": {
-      "title": "Recovery Goals",
-      "description": "Recovery is not a linear journey. Focus on these small, meaningful steps that build the foundation for your long-term wellbeing."
+      "title": "יעדי החלמה",
+      "description": "ההחלמה יכולה להתקדם בקצבים שונים. התמקד/י בצעדים עקביים ומשמעותיים שתומכים ברווחה לטווח הארוך שלך."
     },
     "categoryLabels": {
-      "PHYSICAL": "Physical",
-      "MENTAL": "Mental",
-      "LIFESTYLE": "Lifestyle"
+      "PHYSICAL": "פיזי",
+      "MENTAL": "מנטלי",
+      "LIFESTYLE": "אורח חיים"
     },
     "statusLabels": {
-      "ACTIVE": "Active",
-      "COMPLETED": "Completed",
-      "PAUSED": "Paused",
-      "ABANDONED": "Abandoned"
+      "ACTIVE": "פעיל/ה",
+      "COMPLETED": "הושלם",
+      "PAUSED": "מושהה",
+      "ABANDONED": "הופסק"
     },
     "milestoneStatusLabels": {
-      "LOCKED": "Locked",
-      "ACTIVE": "Active Phase",
-      "COMPLETED": "Completed"
+      "LOCKED": "נעול",
+      "ACTIVE": "בתהליך",
+      "COMPLETED": "הושלם"
     },
     "milestoneCardLabels": {
-      "completedFormat": "Milestone {order} · Completed",
-      "lockedFormat": "Milestone {order} · Locked"
+      "completedFormat": "אבן דרך {order} · הושלמה",
+      "lockedFormat": "אבן דרך {order} · נעולה"
     },
     "overview": {
-      "greeting": "Keep moving forward.",
-      "subtitle": "Track your recovery goals and milestones.",
-      "newGoalButton": "New Goal",
-      "addGoalPlaceholder": "Add New Goal",
-      "addGoalSubtitle": "Build your path to recovery"
+      "greeting": "המשך/י בקצב שלך.",
+      "subtitle": "עקוב/י אחר היעדים, אבני הדרך והעקביות היומית שלך.",
+      "newGoalButton": "יעד חדש",
+      "addGoalPlaceholder": "הוספת יעד חדש",
+      "addGoalSubtitle": "צור/י יעד שמרגיש ריאלי ומשמעותי עבורך"
     },
     "mainCard": {
-      "badge": "ON TRACK",
-      "overall": "Overall Progress"
+      "badge": "התקדמות עקבית",
+      "overall": "התקדמות כוללת"
     },
     "statSummary": {
-      "title": "Goals Summary",
-      "description": "Progress breakdown by goal"
+      "title": "סיכום יעדים",
+      "description": "סקירה של ההתקדמות הנוכחית שלך"
     },
     "milestones": {
-      "title": "Your Milestones",
-      "subtitle": "Key focus areas",
-      "viewAll": "View All",
-      "markComplete": "Mark Complete",
-      "markIncomplete": "Mark Incomplete"
+      "title": "אבני דרך",
+      "subtitle": "צעדים קטנים יותר שתומכים ביעדים הגדולים שלך",
+      "viewAll": "הצג/י הכל",
+      "markComplete": "סמן/י כהושלם",
+      "markIncomplete": "סמן/י כלא הושלם"
     },
     "detail": {
-      "breadcrumbGoals": "Goals",
-      "markCompletePhase": "Complete Phase",
-      "markIncompletePhase": "Mark Incomplete"
+      "breadcrumbGoals": "יעדים",
+      "markCompletePhase": "השלמת שלב",
+      "markIncompletePhase": "סמן/י כלא הושלם"
     },
     "insights": {
-      "title": "AI Insights",
-      "weeklyViewTitle": "Weekly View",
-      "emptyState": "No insights yet. Complete more milestones to get personalized insights.",
-      "failedToLoad": "Failed to load insights. Please try again later."
+      "title": "תובנות",
+      "weeklyViewTitle": "תצוגה שבועית",
+      "emptyState": "השלם/י עוד אבני דרך כדי לפתוח תובנות אישיות.",
+      "failedToLoad": "לא ניתן לטעון תובנות כרגע. נסה/י שוב מאוחר יותר."
     },
     "actions": {
-      "completeToday": "Complete Today",
-      "editPlan": "Edit Plan"
+      "completeToday": "השלם/י היום",
+      "editPlan": "ערוך/י תוכנית"
     },
     "goalCard": {
-      "progressLabel": "Progress"
+      "progressLabel": "התקדמות"
     },
     "goalActions": {
-      "edit": "Edit",
-      "delete": "Delete"
+      "edit": "עריכה",
+      "delete": "מחיקה"
     },
     "goalStats": {
-      "activeMilestonesLabel": "Active Milestones"
+      "activeMilestonesLabel": "אבני דרך פעילות"
     },
     "emptyState": {
-      "message": "No recovery goals yet. Create one to get started."
+      "message": "עדיין לא יצרת יעדים. התחל/י במשהו קטן וניתן לניהול."
     },
     "goalForm": {
-      "createTitle": "Create New Goal",
-      "updateTitle": "Update Goal",
-      "subtitle": "Define a clear, achievable objective for your recovery journey. Small steps lead to lasting transformation.",
-      "backLabel": "Back to Goals",
+      "createTitle": "צור/י יעד חדש",
+      "updateTitle": "עדכן/י יעד",
+      "subtitle": "קבע/י יעד שמרגיש ברור, ריאלי ותומך בשלב שבו את/ה כרגע.",
+      "backLabel": "חזרה ליעדים",
       "fields": {
-        "titleLabel": "Goal Title",
-        "titlePlaceholder": "e.g., Daily Mindfulness",
-        "descriptionLabel": "Description (Optional)",
-        "descriptionPlaceholder": "Detail your plan or motivation...",
-        "categoryLabel": "Category",
-        "categoryPlaceholder": "Select category",
-        "targetDateLabel": "Target Date"
+        "titleLabel": "כותרת היעד",
+        "titlePlaceholder": "לדוגמה: מיינדפולנס יומי",
+        "descriptionLabel": "תיאור (אופציונלי)",
+        "descriptionPlaceholder": "הוסף/י הערות, מוטיבציה או פרטים שיעזרו לך להישאר עקבי/ת...",
+        "categoryLabel": "קטגוריה",
+        "categoryPlaceholder": "בחר/י קטגוריה",
+        "targetDateLabel": "תאריך יעד"
       },
       "buttons": {
-        "create": "Create Goal",
-        "update": "Update Goal",
-        "creating": "Creating...",
-        "updating": "Updating...",
-        "cancel": "Cancel"
+        "create": "צור/י יעד",
+        "update": "עדכן/י יעד",
+        "creating": "יוצר/ת...",
+        "updating": "מעדכן/ת...",
+        "cancel": "ביטול"
       },
       "smartTip": {
-        "title": "SMART Goals",
+        "title": "טיפים שימושיים ליעדים",
         "bundles": [
           {
-            "body": "Recovery goals are 40% more likely to be achieved when they are Specific, Measurable, and Timely.",
+            "body": "יעדים קטנים וספציפיים יותר לרוב קל יותר לשמור עליהם באופן עקבי לאורך זמן.",
             "tips": [
-              "Start small and scale up.",
-              "Connect goals to your core values.",
-              "Write down your goal — it doubles your chance of success.",
-              "Review your goal weekly to stay on track.",
-              "Break big goals into 3-5 milestones."
+              "התחל/י ביעדים שמרגישים ניתנים לניהול.",
+              "פרק/י יעדים גדולים לאבני דרך קטנות.",
+              "התמקד/י בעקביות ולא בשלמות.",
+              "בדוק/י את היעדים שלך באופן קבוע ועדכן/י לפי הצורך.",
+              "בחר/י יעדים שחשובים לך באמת."
             ]
           },
           {
-            "body": "The most successful recovery goals combine realistic expectations with genuine motivation grounded in your personal values.",
+            "body": "יעדים נוטים להרגיש ברי-קיימא יותר כשהם קשורים לערכים האישיים שלך ולשגרות היומיות שלך.",
             "tips": [
-              "Choose goals that matter to you, not just what sounds good.",
-              "Track progress daily to stay motivated.",
-              "Celebrate small wins along the way.",
-              "Adjust goals as your needs evolve.",
-              "Share your goals with someone you trust."
+              "בחר/י יעדים שתומכים בצרכים הנוכחיים שלך.",
+              "עקוב/י אחר התקדמות בדרך שמרגישה מוטיבציה, לא לחץ.",
+              "שים/י לב לשיפורים קטנים לאורך הדרך.",
+              "אפשר/י גמישות כשמגיעים ימים קשים.",
+              "שתף/י את היעדים שלך עם מישהו שאתה/ת סומך/ת עליו אם זה מרגיש תומך."
             ]
           },
           {
-            "body": "Setting goals gives you direction and purpose during recovery. Clear, actionable goals help maintain focus when motivation wavers.",
+            "body": "יעדים ברורים יכולים לספק מבנה וכיוון בתקופות שמרגישות לא ודאיות או מציפות.",
             "tips": [
-              "Keep goals visible where you see them daily.",
-              "Use specific, measurable language.",
-              "Set realistic timelines for achievement.",
-              "Build in flexibility for setbacks.",
-              "Link goals to your core values and identity."
+              "שמור/י את היעדים גלויים כתזכורת עדינה.",
+              "השתמש/י בניסוח ברור וספציפי.",
+              "קבע/י לוחות זמנים שמרגישים ריאליים.",
+              "התאם/י ציפיות ככל שהמצב שלך משתנה.",
+              "חבר/י מחדש את היעדים לסיבות הגדולות שמאחוריהם."
             ]
           }
         ]
@@ -802,232 +816,232 @@
     }
   },
   "settings": {
-    "title": "Settings",
-    "subtitle": "Customize your HealEase experience",
+    "title": "הגדרות",
+    "subtitle": "התאם/י את החוויה, הפרטיות וההעדפות שלך",
     "tabs": [
       {
         "id": "notifications",
-        "label": "Notifications",
+        "label": "התראות",
         "icon": "Bell"
       },
       {
         "id": "privacy",
-        "label": "Privacy",
+        "label": "פרטיות",
         "icon": "Lock"
       },
       {
         "id": "security",
-        "label": "Account & Security",
+        "label": "חשבון ואבטחה",
         "icon": "Shield"
       },
       {
         "id": "preferences",
-        "label": "App Preferences",
+        "label": "העדפות אפליקציה",
         "icon": "Palette"
       }
     ],
     "support": {
-      "label": "Support",
-      "helpCenter": "Help Center"
+      "label": "תמיכה",
+      "helpCenter": "מרכז עזרה"
     },
     "buttons": {
-      "discardChanges": "Discard Changes",
-      "savePreferences": "Save Preferences",
-      "savingPreferences": "Saving..."
+      "discardChanges": "בטל/י שינויים",
+      "savePreferences": "שמור/י העדפות",
+      "savingPreferences": "שומר/ת..."
     },
     "notifications": {
-      "title": "Notifications",
+      "title": "התראות",
       "dailyReminder": {
-        "label": "Daily Reminder",
-        "description": "Receive a gentle nudge for your recovery check-ins and meditations"
+        "label": "תזכורת יומית",
+        "description": "קבל/י תזכורות עדינות לצ'ק-אינים, שגרות ופעילויות החלמה"
       },
       "communityAlerts": {
-        "label": "Community Alerts",
-        "description": "Get notified when someone interacts with your posts or sends support"
+        "label": "התראות קהילה",
+        "description": "קבל/י הודעה כשמישהו מגיב לפוסטים או לאינטראקציות שלך"
       }
     },
     "privacy": {
-      "title": "Privacy Settings",
+      "title": "הגדרות פרטיות",
       "visibility": {
-        "title": "Profile Visibility",
-        "description": "Choose who can see your progress and badges",
+        "title": "נראות פרופיל",
+        "description": "בחר/י מי יכול לראות את הפרופיל וההתקדמות שלך",
         "options": [
-          { "value": "onlyMe", "label": "Only Me" },
-          { "value": "mentors", "label": "Mentors Only" },
-          { "value": "community", "label": "Community" }
+          { "value": "onlyMe", "label": "רק אני" },
+          { "value": "mentors", "label": "מנטורים בלבד" },
+          { "value": "community", "label": "קהילה" }
         ]
       },
       "dataSharing": {
-        "title": "Data Sharing",
-        "description": "Allow HealEase to use anonymized data for research"
+        "title": "שיתוף נתונים",
+        "description": "אפשר/י נתונים אנונימיים לסייע בשיפור מחקר ותובנות ההחלמה"
       },
       "anonymousParticipation": {
-        "label": "Anonymous Participation"
+        "label": "השתתפות אנונימית"
       }
     },
     "security": {
-      "title": "Account & Security",
-      "email": "Email Address",
+      "title": "חשבון ואבטחה",
+      "email": "כתובת אימייל",
       "password": {
-        "label": "Password",
-        "value": "Last changed 3 months ago"
+        "label": "סיסמה",
+        "value": "עודכנה לפני 3 חודשים"
       },
       "deactivate": {
-        "label": "Deactivate Account",
-        "description": "Permanently remove your recovery data",
-        "buttonText": "Deactivate"
+        "label": "ביטול חשבון",
+        "description": "הסר/י לצמיתות את החשבון ונתוני ההחלמה שלך",
+        "buttonText": "ביטול חשבון"
       }
     },
     "preferences": {
-      "title": "App Preferences",
+      "title": "העדפות אפליקציה",
       "theme": {
-        "title": "Theme Mode",
-        "description": "Select your visual preference",
-        "light": "Light",
-        "dark": "Dark"
+        "title": "מצב תצוגה",
+        "description": "בחר/י את המראה שמרגיש לך הכי נוח",
+        "light": "בהיר",
+        "dark": "כהה"
       },
       "language": {
-        "title": "Preferred Language",
-        "description": "The language used across the app interface"
+        "title": "שפה מועדפת",
+        "description": "בחר/י את השפה שבה תשתמש/י בכל רחבי האפליקציה"
       }
     }
   },
   "global": {
     "footer": {
-      "brandTagline": "Your recovery companion",
-      "quickLinksTitle": "Quick Links",
-      "legalTitle": "Legal",
-      "socialTitle": "Follow Us",
-      "copyright": "© 2026 HealEase. All rights reserved.",
-      "support": "Support",
-      "privacy": "Privacy",
-      "terms": "Terms"
+      "brandTagline": "תמיכה במסע ההחלמה שלך",
+      "quickLinksTitle": "קישורים מהירים",
+      "legalTitle": "משפטי",
+      "socialTitle": "עקבו אחרינו",
+      "copyright": "© 2026 HealEase. כל הזכויות שמורות.",
+      "support": "תמיכה",
+      "privacy": "פרטיות",
+      "terms": "תנאים"
     },
     "nav": {
-      "help": "Help",
-      "about": "About"
+      "help": "עזרה",
+      "about": "אודות"
     },
     "layout": {
       "header": {
-        "searchPlaceholder": "Search...",
-        "notificationsAria": "Notifications",
+        "searchPlaceholder": "חיפוש...",
+        "notificationsAria": "התראות",
         "avatarInitials": "AR",
         "avatarAlt": "Alex Rivera",
         "notificationBadgeCount": "3"
       },
       "headerItems": {
-        "healthOverview": "Health Overview",
-        "aiChat": "AI Chat",
-        "safeSpace": "Safe Space"
+        "healthOverview": "סקירת בריאות",
+        "aiChat": "צ'אט תמיכה",
+        "safeSpace": "מרחב בטוח"
       }
     },
     "pageSubtitles": {
       "community": {
-        "title": "Community",
-        "subtitle": "Connect with others on their recovery journey"
+        "title": "קהילה",
+        "subtitle": "התחבר/י עם אנשים שמבינים חלקים מהמסע שלך"
       },
       "insights": {
-        "title": "AI Insights",
-        "subtitle": "Smart observations about your recovery",
-        "badge": "AI Analysis Active"
+        "title": "תובנות",
+        "subtitle": "דפוסים ותצפיות המבוססים על ההתקדמות שלך",
+        "badge": "ניתוח פעיל"
       },
       "profile": {
-        "title": "Profile",
-        "subtitle": "Manage your recovery identity"
+        "title": "פרופיל",
+        "subtitle": "נהל/י את מרחב ההחלמה האישי שלך"
       }
     },
     "landing": {
       "brandName": "HealEase",
       "descriptions": {
-        "about": "HealEase helps patients transitioning from hospital and clinical care get structured support for their recovery. Daily check-ins help you track progress, AI-powered insights provide guidance, and the community forum connects you with others who understand the journey. Recovery is simpler, and lonelier, when you're doing it alone. HealEase makes it practical.",
-        "benefits": "Structured support for every stage of your recovery",
-        "hero": "Track your recovery with daily check-ins, get AI guidance, and connect with people who understand.",
-        "features": "Simple tools designed for recovery support"
+        "about": "HealEase תומכת באנשים שמנווטים בהחלמה לאחר טיפול רפואי, פציעה או אתגרי חיים משמעותיים. עדכונים יומיים יומיים עוזרים לזהות דפוסים, תובנות מבוססות AI מספקות הנחייה, ותמיכת הקהילה עוזרת לך להרגיש פחות לבד בתהליך.",
+        "benefits": "תמיכה שמותאמת לשלבים שונים של ההחלמה",
+        "hero": "עקוב/י אחר ההתקדמות שלך, בנה/י שגרות תומכות והתחבר/י עם אנשים שמבינים.",
+        "features": "כלים פשוטים שתוכננו לתמוך בהחלמה וברווחה"
       },
       "footer": {
-        "H3": "Recovery, Together.",
-        "desc": "Supporting your healing journey with community, technology, and care.",
-        "rights": "© 2026 HealEase. All rights reserved.",
-        "quickLinks": "Quick Links",
-        "legalLinks": "Legal"
+        "H3": "החלמה, יחד.",
+        "desc": "תמיכה בהחלמה דרך שגרה, מודעות וקהילה.",
+        "rights": "© 2026 HealEase. כל הזכויות שמורות.",
+        "quickLinks": "קישורים מהירים",
+        "legalLinks": "קישורים משפטיים"
       },
       "fields": {
-        "forgotPassword": "Forgot your password?",
-        "remember": "Remember Me"
+        "forgotPassword": "שכחת את הסיסמה?",
+        "remember": "זכור/י אותי"
       },
       "buttons": {
-        "exploreForum": "Explore Forum",
-        "joinNow": "Join Now",
-        "signIn": "Sign In",
-        "signUp": "Sign Up",
-        "login": "Login",
-        "logout": "Logout",
-        "verifyCode": "Verify Code",
-        "resetPassword": "Reset Password",
-        "backToLogin": "Back to Login",
-        "createPost": "Create Post",
-        "updatePost": "Update Post",
-        "deletePost": "Delete Post",
-        "newCheckIn": "New Check-in",
-        "updateCheckIn": "Update Check-in",
-        "saveCheckIn": "Save Check-in",
-        "tryAgain": "Try Again",
-        "showStackTrace": "Show stack trace",
-        "goBack": "Go Back",
-        "goHome": "Go Home",
-        "reloadPage": "Reload Page"
+        "exploreForum": "כניסה לקהילה",
+        "joinNow": "התחל/י עכשיו",
+        "signIn": "כניסה",
+        "signUp": "הרשמה",
+        "login": "התחברות",
+        "logout": "התנתקות",
+        "verifyCode": "אימות קוד",
+        "resetPassword": "איפוס סיסמה",
+        "backToLogin": "חזרה לכניסה",
+        "createPost": "צור/י פוסט",
+        "updatePost": "עדכן/י פוסט",
+        "deletePost": "מחק/י פוסט",
+        "newCheckIn": "עדכון יומי חדש",
+        "updateCheckIn": "עדכן/י עדכון יומי",
+        "saveCheckIn": "שמור/י עדכון יומי",
+        "tryAgain": "נסה/י שוב",
+        "showStackTrace": "הצג/י פרטים טכניים",
+        "goBack": "חזרה",
+        "goHome": "חזרה לדף הבית",
+        "reloadPage": "טען/י מחדש"
       },
       "toasts": {
-        "checkInSaved": "Check-in saved successfully!",
-        "checkInUpdated": "Check-in updated successfully!",
-        "checkInError": "Failed to save check-in. Please try again.",
-        "checkInDeleted": "Check-in deleted successfully!"
+        "checkInSaved": "העדכון היומי נשמר בהצלחה",
+        "checkInUpdated": "העדכון היומי עודכן בהצלחה",
+        "checkInError": "לא ניתן לשמור את העדכון היומי שלך כרגע. נסה/י שוב.",
+        "checkInDeleted": "העדכון היומי נמחק בהצלחה"
       }
     },
     "shared": {
-      "download": "Download",
-      "share": "Share"
+      "download": "הורדה",
+      "share": "שיתוף"
     },
     "errors": {
       "errorPageTexts": {
-        "badge": "Error 500",
-        "mainHeading": "Deep breaths.",
-        "subHeading": "We're adjusting things.",
-        "description": "Something went wrong on our end, but we're working on it. Your progress is safe-this is just a momentary pause in our system.",
-        "tryRefreshingBtn": "Try Refreshing",
-        "contactSupportBtn": "Contact Support",
-        "crisisNoticeStart": "If you're in immediate crisis, please call our 24/7 hotline at",
+        "badge": "שגיאה 500",
+        "mainHeading": "משהו הפריע לחוויה.",
+        "subHeading": "אנחנו עובדים על שיחזור הכל.",
+        "description": "משהו השתבש מצדנו. המידע וההתקדמות שלך עדיין בטוחים.",
+        "tryRefreshingBtn": "רענן/י דף",
+        "contactSupportBtn": "צור/י קשר עם התמיכה",
+        "crisisNoticeStart": "אם אתה/ת זקוק/ה לתמיכה מיידית, אנא פנה/י לשירותי חירום או תמיכה בנפשות מקומיים.",
         "hotlineNumber": "1-800-HEAL-NOW",
-        "journalSavedTitle": "Journal Saved",
-        "journalSavedDesc": "Your last entry was automatically synced 4 minutes ago.",
-        "systemHealthTitle": "System Health",
-        "systemHealthDesc": "Most services are operational. We're isolating this hiccup.",
-        "autoRecoveryTitle": "Auto-Recovery",
-        "autoRecoveryDesc": "Our team has been notified and is fixing this as you read this."
+        "journalSavedTitle": "היומן נשמר",
+        "journalSavedDesc": "רשומת היומן האחרונה שלך נשמרה בבטחה.",
+        "systemHealthTitle": "מצב המערכת",
+        "systemHealthDesc": "רוב המערכות פועלות כרגיל בעוד הבעיה נפתרת.",
+        "autoRecoveryTitle": "שחזור אוטומטי",
+        "autoRecoveryDesc": "הצוות שלנו קיבל הודעה ועובד באופן פעיל על תיקון."
       },
       "notFoundPageTexts": {
-        "badgeLabel": "COMPASS LOST",
-        "mainHeading": "This path seems to have wandered off...",
-        "description": "Recovery is a journey of many trails. Sometimes we take a turn that leads to a quiet clearing. Let's guide you back to your sanctuary.",
-        "returnDashboardBtn": "Return to Dashboard",
-        "previousPageBtn": "Previous Page",
-        "resourceCenterLabel": "Resource Center",
-        "dailyJournalLink": "Daily Journal",
-        "supportHubLabel": "Support Hub",
-        "groupMeetingsLink": "Group Meetings"
+        "badgeLabel": "דף לא נמצא",
+        "mainHeading": "העמוד הזה לא נמצא.",
+        "description": "ייתכן שהדף הועבר, הוסר, או שאינו זמין זמנית.",
+        "returnDashboardBtn": "חזרה ללוח הבקרה",
+        "previousPageBtn": "דף קודם",
+        "resourceCenterLabel": "משאבים",
+        "dailyJournalLink": "יומן יומי",
+        "supportHubLabel": "תמיכה",
+        "groupMeetingsLink": "קבוצות קהילה"
       },
       "networkErrorPageTexts": {
-        "title": "Connection Paused.",
-        "description": "Our sanctuary is currently offline for a moment of restoration. We're working quickly to bring it back for you.",
-        "tryAgainBtn": "Try Again",
-        "checkStatusBtn": "Check Status",
-        "supportMessage": "If you need immediate support, please reach out to our 24/7 care team at",
+        "title": "החיבור הופסק.",
+        "description": "אנחנו מתקשים להתחבר כרגע. אנא בדוק/י את החיבור שלך ונסה/י שוב.",
+        "tryAgainBtn": "נסה/י שוב",
+        "checkStatusBtn": "בדוק/י סטטוס",
+        "supportMessage": "אם אתה/ת זקוק/ה לתמיכה דחופה, אנא פנה/י לספק הבריאות המקומי שלך או לשירותי חירום.",
         "supportPhone": "1-800-HEAL-NOW"
       },
       "inlineErrorTexts": {
-        "generic": "Something went wrong on our end, but we're working on it. Your progress is safe-this is just a momentary pause in our system.",
-        "network": "Our sanctuary is currently offline for a moment of restoration. We're working quickly to bring it back for you.",
-        "tryAgainBtn": "Try Again"
+        "generic": "משהו השתבש, אך ההתקדמות והמידע שלך נשארים בטוחים.",
+        "network": "בעיות חיבור מונעות עדכונים כרגע. נסה/י שוב בקרוב.",
+        "tryAgainBtn": "נסה/י שוב"
       }
     }
   }
