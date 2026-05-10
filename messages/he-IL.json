@@ -341,6 +341,33 @@
       "week": "שבוע",
       "month": "חודש",
       "incompleteWeek": "כל עדכון יומי מוסיף עוד חלק לתמונה המלאה של ההתקדמות שלך."
+    },
+    "stats": {
+      "labels": {
+        "mood": "מצב רוח",
+        "pain": "רמת כאב",
+        "streak": "רצף",
+        "progress": "התקדמות"
+      },
+      "subValues": {
+        "days": " ימים"
+      },
+      "descriptions": {
+        "mood": {
+          "great": "מצוין",
+          "stable": "יציב",
+          "low": "נמוך"
+        },
+        "pain": {
+          "decreasing": "יורד",
+          "elevated": "מוגבר",
+          "high": "גבוה"
+        },
+        "streak": {
+          "newRecord": "שיא חדש!",
+          "personalBest": "שיא אישי {days}"
+        }
+      }
     }
   },
   "insights": {

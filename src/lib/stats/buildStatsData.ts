@@ -5,77 +5,97 @@ import {
     type StatLabel
 } from '@/constants/stats'
 
+import { dashboardLocales } from '@/locales/dashboardLocales'
+
 import { getStatDescription } from './getStatDescription'
 
+const { stats: statsLocales } = dashboardLocales
+
 type StatData = {
-    label: string
+    id: StatLabel
+    labelKey: string
     value: string | number
     subValue: string
-    description: string
+    subValueKey: string
+    descriptionKey: string
+    descriptionParams?:
+        Record<string, string | number | Date>
 }
 
 const STAT_CONFIG: Record<
     StatLabel,
     {
-        getValue: (
-            s: CheckInStats | undefined
-        ) => string | number
+        getValue: 
+            (s: CheckInStats | undefined) => string | number
         subValue: string
-        getDescription: (
-            s: CheckInStats | undefined
-        ) => string
+        subValueKey: string
+        getDescription: (s: CheckInStats | undefined) => {
+            key: string
+            params?: Record<string, string | number | Date>
+        }
     }
 > = {
     MOOD: {
         getValue: (s) =>
             s?.averageMoodScore?.toFixed(1) ?? '-',
         subValue: '/10',
-        getDescription: (s) => s ? (
-            getStatDescription(
+        subValueKey: '',
+        getDescription: (s) => s
+            ? getStatDescription(
                 'MOOD',
                 s.averageMoodScore
-            )
-        ) : ''
+            ) : { key: '' }
     },
     PAIN: {
         getValue: (s) =>
             s?.averagePainLevel?.toFixed(1) ?? '-',
         subValue: '/10',
-        getDescription: (s) => s ? (
-            getStatDescription(
+        subValueKey: '',
+        getDescription: (s) => s
+            ? getStatDescription(
                 'PAIN',
                 s.averagePainLevel
-            )
-        ) : ''
+            ) : { key: '' }
     },
     STREAK: {
         getValue: (s) => s?.currentStreak ?? 0,
-        subValue: ' days',
-        getDescription: (s) => s ? (
-            getStatDescription(
+        subValue: '',
+        subValueKey: statsLocales.subValues.days,
+        getDescription: (s) => s
+            ? getStatDescription(
                 'STREAK',
                 s.currentStreak,
                 s.longestStreak
-            )
-        ) : ''
+            ) : { key: '' }
     },
     PROGRESS: {
         getValue: () => '-',
         subValue: '',
-        getDescription: () => ''
+        subValueKey: '',
+        getDescription: () => ({ key: '' })
     }
+}
+
+const LABEL_KEY_MAP: Record<StatLabel, string> = {
+    MOOD: statsLocales.labels.mood,
+    PAIN: statsLocales.labels.pain,
+    STREAK: statsLocales.labels.streak,
+    PROGRESS: statsLocales.labels.progress
 }
 
 export const buildStatsData = (
     stats: CheckInStats | undefined
-): StatData[] => {
-    return STAT_LABELS.map((label) => {
-        const config = STAT_CONFIG[label]
+): StatData[] =>
+    STAT_LABELS.map((id) => {
+        const config = STAT_CONFIG[id]
+        const description = config.getDescription(stats)
         return {
-            label,
+            id,
+            labelKey: LABEL_KEY_MAP[id],
             value: config.getValue(stats),
             subValue: config.subValue,
-            description: config.getDescription(stats)
+            subValueKey: config.subValueKey,
+            descriptionKey: description.key,
+            descriptionParams: description.params
         }
     })
-}

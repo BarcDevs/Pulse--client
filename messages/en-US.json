@@ -341,6 +341,33 @@
       "week": "Week",
       "month": "Month",
       "incompleteWeek": "Each check-in helps create a clearer picture of your progress over time."
+    },
+    "stats": {
+      "labels": {
+        "mood": "Mood",
+        "pain": "Pain Level",
+        "streak": "Streak",
+        "progress": "Progress"
+      },
+      "subValues": {
+        "days": " days"
+      },
+      "descriptions": {
+        "mood": {
+          "great": "Great",
+          "stable": "Stable",
+          "low": "Low"
+        },
+        "pain": {
+          "decreasing": "Decreasing",
+          "elevated": "Elevated",
+          "high": "High"
+        },
+        "streak": {
+          "newRecord": "New record!",
+          "personalBest": "{days} best"
+        }
+      }
     }
   },
   "insights": {

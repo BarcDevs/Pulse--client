@@ -1,13 +1,15 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
+
 import { useCheckInStats } from '@/hooks/queries/useCheckInStats'
 
 import { buildStatsData } from '@/lib/stats/buildStatsData'
 import { cn } from '@/lib/utils'
 
-import {
+import { 
     dashboardStatsIconMap,
-    dashboardStatsStyleMap
+    dashboardStatsStyleMap 
 } from '@/constants/mappings/dashboard'
 
 import { StatCard } from './StatCard'
@@ -19,13 +21,14 @@ export const DashboardStatsCards = () => {
         isLoading,
         isError
     } = useCheckInStats()
-    const stats = statsResponse
-    const statsData = buildStatsData(stats)
+    const t = useTranslations()
+    const statsData = buildStatsData(statsResponse)
     const displayStats = isError
         ? statsData.map((stat) => ({
             ...stat,
             value: '-',
-            subValue: '-'
+            subValue: '',
+            subValueKey: ''
         }))
         : statsData
 
@@ -33,22 +36,24 @@ export const DashboardStatsCards = () => {
         <div className={'grid gap-4 sm:grid-cols-2 lg:grid-cols-4'}>
             {displayStats.map((stat) => {
                 if (isLoading)
-                    return <StatCardSkeleton key={stat.label}/>
+                    return <StatCardSkeleton key={stat.labelKey}/>
 
-                const style = dashboardStatsStyleMap[
-                    stat.label as keyof typeof dashboardStatsStyleMap
-                    ]
-                const Icon = dashboardStatsIconMap[
-                    stat.label as keyof typeof dashboardStatsIconMap
-                    ]
+                const style = dashboardStatsStyleMap[stat.id]
+                const Icon = dashboardStatsIconMap[stat.id]
 
                 return (
                     <StatCard
-                        key={stat.label}
-                        label={stat.label}
+                        key={stat.id}
+                        label={t(stat.labelKey)}
                         value={stat.value}
-                        subValue={stat.subValue}
-                        description={stat.description}
+                        subValue={stat.subValueKey 
+                            ? t(stat.subValueKey)
+                            : stat.subValue || undefined}
+                        description={stat.descriptionKey 
+                            ? t(
+                                stat.descriptionKey, 
+                                stat.descriptionParams
+                            ) : ''}
                         icon={<Icon className={cn(
                             'size-6',
                             style.iconColor

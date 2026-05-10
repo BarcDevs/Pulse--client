@@ -26,5 +26,32 @@ export const dashboardLocales = {
         week: 'dashboard.historyChart.week',
         month: 'dashboard.historyChart.month',
         incompleteWeek: 'dashboard.historyChart.incompleteWeek'
+    },
+    stats: {
+        labels: {
+            mood: 'dashboard.stats.labels.mood',
+            pain: 'dashboard.stats.labels.pain',
+            streak: 'dashboard.stats.labels.streak',
+            progress: 'dashboard.stats.labels.progress'
+        },
+        subValues: {
+            days: 'dashboard.stats.subValues.days'
+        },
+        descriptions: {
+            mood: {
+                great: 'dashboard.stats.descriptions.mood.great',
+                stable: 'dashboard.stats.descriptions.mood.stable',
+                low: 'dashboard.stats.descriptions.mood.low'
+            },
+            pain: {
+                decreasing: 'dashboard.stats.descriptions.pain.decreasing',
+                elevated: 'dashboard.stats.descriptions.pain.elevated',
+                high: 'dashboard.stats.descriptions.pain.high'
+            },
+            streak: {
+                newRecord: 'dashboard.stats.descriptions.streak.newRecord',
+                personalBest: 'dashboard.stats.descriptions.streak.personalBest'
+            }
+        }
     }
 } as const
