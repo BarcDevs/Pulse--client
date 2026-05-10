@@ -746,6 +746,7 @@
     "overview": {
       "greeting": "Keep moving at your own pace.",
       "subtitle": "Track your goals, milestones, and daily consistency.",
+      "filterButton": "Filter",
       "newGoalButton": "New Goal",
       "addGoalPlaceholder": "Add New Goal",
       "addGoalSubtitle": "Create a goal that feels realistic and meaningful to you"

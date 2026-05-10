@@ -26,6 +26,7 @@ export const goalsLocales = {
     overview: {
         greeting: 'goals.overview.greeting',
         subtitle: 'goals.overview.subtitle',
+        filterButton: 'goals.overview.filterButton',
         newGoalButton: 'goals.overview.newGoalButton',
         addGoalPlaceholder: 'goals.overview.addGoalPlaceholder',
         addGoalSubtitle: 'goals.overview.addGoalSubtitle'

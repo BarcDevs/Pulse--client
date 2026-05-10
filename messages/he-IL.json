@@ -729,7 +729,7 @@
       "LIFESTYLE": "אורח חיים"
     },
     "statusLabels": {
-      "ACTIVE": "פעיל/ה",
+      "ACTIVE": "פעיל",
       "COMPLETED": "הושלם",
       "PAUSED": "מושהה",
       "ABANDONED": "הופסק"
@@ -746,6 +746,7 @@
     "overview": {
       "greeting": "המשך/י בקצב שלך.",
       "subtitle": "עקוב/י אחר היעדים, אבני הדרך והעקביות היומית שלך.",
+      "filterButton": "סינון",
       "newGoalButton": "יעד חדש",
       "addGoalPlaceholder": "הוספת יעד חדש",
       "addGoalSubtitle": "צור/י יעד שמרגיש ריאלי ומשמעותי עבורך"

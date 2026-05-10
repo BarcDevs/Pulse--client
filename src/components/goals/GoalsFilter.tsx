@@ -41,7 +41,7 @@ export const GoalsFilter = ({
                         variant={'outline'}
                         size={'sm'}
                     >
-                        Filter
+                        {t(goalsLocales.overview.filterButton)}
                     </Button>
                 </PopoverTrigger>
                 <PopoverContent
