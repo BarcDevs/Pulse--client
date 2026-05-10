@@ -769,7 +769,12 @@
       "emptySubtitle": "Add milestones to track your progress toward this goal",
       "completedOn": "Completed on {date}",
       "addButton": "Add Milestone",
-      "addingButton": "Adding..."
+      "addingButton": "Adding...",
+      "formTitle": "Add a New Milestone",
+      "formTitleLabel": "Milestone Title",
+      "formTitlePlaceholder": "Describe your milestone",
+      "formDescriptionLabel": "Description (Optional)",
+      "formDescriptionPlaceholder": "Add more details about this milestone"
     },
     "detail": {
       "breadcrumbGoals": "Goals",

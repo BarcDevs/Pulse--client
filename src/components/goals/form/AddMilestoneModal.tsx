@@ -2,6 +2,8 @@
 
 import { useContext } from 'react'
 
+import { useTranslations } from 'next-intl'
+
 import { MilestoneInput } from '@/types/goals'
 
 import {
@@ -15,6 +17,8 @@ import {
     GoalMilestonesContext
 } from '@/context/GoalMilestonesContext'
 
+import { goalsLocales } from '@/locales/goalsLocales'
+
 import { MilestoneForm } from './MilestoneForm'
 
 type AddMilestoneModalProps = {
@@ -27,6 +31,7 @@ export const AddMilestoneModal = ({
     open,
     onOpenChange
 }: AddMilestoneModalProps) => {
+    const t = useTranslations()
     const milestonesCtx = useContext(
         GoalMilestonesContext
     )
@@ -48,7 +53,7 @@ export const AddMilestoneModal = ({
             <DialogContent>
                 <DialogHeader>
                     <DialogTitle>
-                        Add a New Milestone
+                        {t(goalsLocales.milestones.formTitle)}
                     </DialogTitle>
                 </DialogHeader>
                 <div className={'mt-6'}>

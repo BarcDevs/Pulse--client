@@ -769,7 +769,12 @@
       "emptySubtitle": "הוסף/י אבני דרך כדי לעקוב אחר ההתקדמות שלך לקראת היעד הזה",
       "completedOn": "הושלם בתאריך {date}",
       "addButton": "הוספת אבן דרך",
-      "addingButton": "מתווסף..."
+      "addingButton": "מתווסף...",
+      "formTitle": "הוספת אבן דרך חדשה",
+      "formTitleLabel": "שם אבן הדרך",
+      "formTitlePlaceholder": "תארי/תאר את אבן הדרך",
+      "formDescriptionLabel": "תיאור (אופציונלי)",
+      "formDescriptionPlaceholder": "הוסף/י פרטים נוספים על אבן הדרך הזו"
     },
     "detail": {
       "breadcrumbGoals": "יעדים",

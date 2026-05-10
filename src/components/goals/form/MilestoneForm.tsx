@@ -1,5 +1,7 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
+
 import { Controller } from 'react-hook-form'
 
 import { MilestoneInput } from '@/types/goals'
@@ -18,6 +20,8 @@ import { useMilestoneForm } from '@/hooks/forms/useMilestoneForm'
 
 import { milestoneFormSchema } from '@/config/schema/milestoneForm'
 
+import { goalsLocales } from '@/locales/goalsLocales'
+
 import { MilestoneFormActions } from './MilestoneFormActions'
 
 type MilestoneFormProps = {
@@ -31,6 +35,7 @@ export const MilestoneForm = ({
     isSubmitting = false,
     onCloseAction
 }: MilestoneFormProps) => {
+    const t = useTranslations()
     const { form, handleSubmit } = useMilestoneForm({
         onSubmit
     })
@@ -47,12 +52,12 @@ export const MilestoneForm = ({
                     render={({ field, fieldState }) => (
                         <FormItem>
                             <FormLabel>
-                                Milestone Title
+                                {t(goalsLocales.milestones.formTitleLabel)}
                             </FormLabel>
                             <FormControl>
                                 <FormInput
                                     id={'milestone-title'}
-                                    placeholder={'Describe your milestone'}
+                                    placeholder={t(goalsLocales.milestones.formTitlePlaceholder)}
                                     value={field.value}
                                     onChange={field.onChange}
                                     onBlur={field.onBlur}
@@ -77,12 +82,12 @@ export const MilestoneForm = ({
                     render={({ field, fieldState }) => (
                         <FormItem>
                             <FormLabel>
-                                Description (Optional)
+                                {t(goalsLocales.milestones.formDescriptionLabel)}
                             </FormLabel>
                             <FormControl>
                                 <Textarea
                                     id={'milestone-description'}
-                                    placeholder={'Add more details about this milestone'}
+                                    placeholder={t(goalsLocales.milestones.formDescriptionPlaceholder)}
                                     value={field.value}
                                     onChange={field.onChange}
                                     onBlur={field.onBlur}

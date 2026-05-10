@@ -50,7 +50,12 @@ export const goalsLocales = {
         emptySubtitle: 'goals.milestones.emptySubtitle',
         completedOn: 'goals.milestones.completedOn',
         addButton: 'goals.milestones.addButton',
-        addingButton: 'goals.milestones.addingButton'
+        addingButton: 'goals.milestones.addingButton',
+        formTitle: 'goals.milestones.formTitle',
+        formTitleLabel: 'goals.milestones.formTitleLabel',
+        formTitlePlaceholder: 'goals.milestones.formTitlePlaceholder',
+        formDescriptionLabel: 'goals.milestones.formDescriptionLabel',
+        formDescriptionPlaceholder: 'goals.milestones.formDescriptionPlaceholder'
     },
     detail: {
         breadcrumbGoals: 'goals.detail.breadcrumbGoals',
