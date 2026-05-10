@@ -35,8 +35,8 @@ export const ProgressMilestones = () => {
                         <MilestoneCard
                             key={milestone.title}
                             icon={milestone.icon}
-                            title={milestone.title}
-                            description={milestone.description}
+                            title={t(milestone.titleKey)}
+                            description={t(milestone.description)}
                             achieved={milestone.achieved}
                             iconBg={milestone.iconBg}
                             iconColor={milestone.iconColor}
