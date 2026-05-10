@@ -32,15 +32,16 @@ export const MilestoneCardRenderer = ({
         borderClass,
         opacityClass,
         padding,
-        statusLabel,
+        statusLabelKey,
+        statusLabelOrder,
         statusBadgeClass,
         titleSize,
         contentLayout
-    } = getMilestoneCardConfig(
-        milestone,
-        t,
-        goalsLocales
-    )
+    } = getMilestoneCardConfig(milestone, goalsLocales)
+
+    const statusLabel = t(statusLabelKey, {
+        order: statusLabelOrder
+    })
 
     return (
         <div className={cn(
@@ -54,7 +55,10 @@ export const MilestoneCardRenderer = ({
                 {statusLabel}
             </span>
             <div className={cn(contentLayout, 'gap-2')}>
-                <div className={cn(isActive && 'flex-1', 'flex--col gap-2')}>
+                <div className={cn(
+                    isActive && 'flex-1',
+                    'flex--col gap-2'
+                )}>
                     <h3 className={cn(
                         'font-bold font-headline',
                         titleSize
@@ -82,14 +86,12 @@ export const MilestoneCardRenderer = ({
 
                 {isCompleted && milestone.completedAt && (
                     <span className={'text-xs font-medium text-outline shrink-0'}>
-                        {`Completed on ${
-                            formatByUserPreference(
-                                parseISO(
-                                    milestone.completedAt
-                                ),
+                        {t(goalsLocales.milestones.completedOn, {
+                            date: formatByUserPreference(
+                                parseISO(milestone.completedAt),
                                 true
                             )
-                        }`}
+                        })}
                     </span>
                 )}
             </div>

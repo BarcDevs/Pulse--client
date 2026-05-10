@@ -20,6 +20,7 @@ export const goalsLocales = {
         COMPLETED: 'goals.milestoneStatusLabels.COMPLETED'
     },
     milestoneCardLabels: {
+        activeFormat: 'goals.milestoneCardLabels.activeFormat',
         completedFormat: 'goals.milestoneCardLabels.completedFormat',
         lockedFormat: 'goals.milestoneCardLabels.lockedFormat'
     },
@@ -44,12 +45,18 @@ export const goalsLocales = {
         subtitle: 'goals.milestones.subtitle',
         viewAll: 'goals.milestones.viewAll',
         markComplete: 'goals.milestones.markComplete',
-        markIncomplete: 'goals.milestones.markIncomplete'
+        markIncomplete: 'goals.milestones.markIncomplete',
+        empty: 'goals.milestones.empty',
+        emptySubtitle: 'goals.milestones.emptySubtitle',
+        completedOn: 'goals.milestones.completedOn',
+        addButton: 'goals.milestones.addButton',
+        addingButton: 'goals.milestones.addingButton'
     },
     detail: {
         breadcrumbGoals: 'goals.detail.breadcrumbGoals',
         markCompletePhase: 'goals.detail.markCompletePhase',
-        markIncompletePhase: 'goals.detail.markIncompletePhase'
+        targetDate: 'goals.detail.targetDate',
+        overallProgress: 'goals.detail.overallProgress'
     },
     insights: {
         title: 'goals.insights.title',

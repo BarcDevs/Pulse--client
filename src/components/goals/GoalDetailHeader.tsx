@@ -2,6 +2,8 @@
 
 import { useState } from 'react'
 
+import { useTranslations } from 'next-intl'
+
 import { format, parseISO } from 'date-fns'
 import { Plus } from 'lucide-react'
 
@@ -10,6 +12,8 @@ import { Goal, MilestoneStatus } from '@/types/goals'
 import { Button } from '@/components/ui/button'
 
 import { useGoalMilestones } from '@/hooks/context/useGoalMilestones'
+
+import { goalsLocales } from '@/locales/goalsLocales'
 
 import { AddMilestoneModal } from './form/AddMilestoneModal'
 import { GoalProgressRing } from './GoalProgressRing'
@@ -21,6 +25,7 @@ type GoalDetailHeaderProps = {
 export const GoalDetailHeader = ({
     goal
 }: GoalDetailHeaderProps) => {
+    const t = useTranslations()
     const [addMilestoneOpen, setAddMilestoneOpen] = useState(false)
     const { milestones } = useGoalMilestones()
 
@@ -50,7 +55,8 @@ export const GoalDetailHeader = ({
                         )}
                         {targetDateFormatted && (
                             <p className={'text-sm font-medium text-on-surface-variant'}>
-                                Target Date: <span className={'font-semibold text-on-surface'}>
+                                {`${t(goalsLocales.detail.targetDate)}: `}
+                                <span className={'font-semibold text-on-surface'}>
                                     {targetDateFormatted}
                                 </span>
                             </p>
@@ -59,14 +65,12 @@ export const GoalDetailHeader = ({
                     <div className={'flex flex-col items-end gap-4'}>
                         <Button
                             onClick={
-                                () => setAddMilestoneOpen(
-                                    true
-                                )
+                                () => setAddMilestoneOpen(true)
                             }
                             size={'sm'}
                         >
                             <Plus className={'w-4 h-4 mr-2'}/>
-                            Add Milestone
+                            {t(goalsLocales.milestones.addButton)}
                         </Button>
                         <div className={'bg-primary-foreground border border-outline/20 shadow-sm p-6 rounded-xl flex flex-col items-center justify-center shrink-0 min-w-45'}>
                             <div className={'relative w-24 h-24 mb-3'}>
@@ -81,7 +85,7 @@ export const GoalDetailHeader = ({
                                 </div>
                             </div>
                             <span className={'text-xs font-bold uppercase tracking-widest text-outline'}>
-                                Overall Progress
+                                {t(goalsLocales.detail.overallProgress)}
                             </span>
                         </div>
                     </div>

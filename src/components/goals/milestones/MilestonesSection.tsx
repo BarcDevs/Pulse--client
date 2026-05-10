@@ -1,10 +1,15 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
+
 import { useGoalMilestones } from '@/hooks/context/useGoalMilestones'
+
+import { goalsLocales } from '@/locales/goalsLocales'
 
 import { MilestoneCard } from '../cards/MilestoneCard'
 
 export const MilestonesSection = () => {
+    const t = useTranslations()
     const {
         milestones,
         completeMilestoneOptimistic
@@ -20,10 +25,10 @@ export const MilestonesSection = () => {
                 // todo: use reusable empty state
                 <div className={'py-12 px-6 bg-surface-container-lowest rounded-xl text-center'}>
                     <p className={'text-on-surface-variant text-lg'}>
-                        No milestones yet
+                        {t(goalsLocales.milestones.empty)}
                     </p>
                     <p className={'text-on-surface-variant text-sm mt-2'}>
-                        Add milestones to track your progress toward this goal
+                        {t(goalsLocales.milestones.emptySubtitle)}
                     </p>
                 </div>
             ) : (

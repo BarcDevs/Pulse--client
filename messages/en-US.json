@@ -740,6 +740,7 @@
       "COMPLETED": "Completed"
     },
     "milestoneCardLabels": {
+      "activeFormat": "Milestone {order} · In Progress",
       "completedFormat": "Milestone {order} · Completed",
       "lockedFormat": "Milestone {order} · Locked"
     },
@@ -764,12 +765,17 @@
       "subtitle": "Smaller steps that support your larger goals",
       "viewAll": "View All",
       "markComplete": "Mark Complete",
-      "markIncomplete": "Mark Incomplete"
+      "empty": "No milestones yet",
+      "emptySubtitle": "Add milestones to track your progress toward this goal",
+      "completedOn": "Completed on {date}",
+      "addButton": "Add Milestone",
+      "addingButton": "Adding..."
     },
     "detail": {
       "breadcrumbGoals": "Goals",
       "markCompletePhase": "Complete Phase",
-      "markIncompletePhase": "Mark Incomplete"
+      "targetDate": "Target Date",
+      "overallProgress": "Overall Progress"
     },
     "insights": {
       "title": "Insights",

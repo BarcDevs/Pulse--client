@@ -1,11 +1,15 @@
-import { GoalMilestone, MilestoneStatus } from '@/types/goals'
+import {
+    GoalMilestone,
+    MilestoneStatus
+} from '@/types/goals'
 
 export type MilestoneCardConfig = {
     bgClass: string
     borderClass: string
     opacityClass: string
     padding: string
-    statusLabel: string
+    statusLabelKey: string
+    statusLabelOrder: number
     statusBadgeClass: string
     titleSize: string
     contentLayout: string
@@ -41,25 +45,18 @@ export const getInsightColor = (
 
 export const getMilestoneCardConfig = (
     milestone: GoalMilestone,
-    t: (key: string) => string,
     goalsLocales: any
 ): MilestoneCardConfig => {
     const isCompleted = milestone.status === MilestoneStatus.COMPLETED
     const isActive = milestone.status === MilestoneStatus.ACTIVE
     const isLocked = milestone.status === MilestoneStatus.LOCKED
 
-    const getFormattedStatusLabel = (): string => {
+    const getStatusLabelKey = () => {
         if (isCompleted)
-            return t(goalsLocales.milestoneCardLabels.completedFormat).replace(
-                '{order}',
-                String(milestone.order)
-            )
+            return goalsLocales.milestoneCardLabels.completedFormat as string
         if (isActive)
-            return t(goalsLocales.milestoneStatusLabels.ACTIVE)
-        return t(goalsLocales.milestoneCardLabels.lockedFormat).replace(
-            '{order}',
-            String(milestone.order)
-        )
+            return goalsLocales.milestoneCardLabels.activeFormat as string
+        return goalsLocales.milestoneCardLabels.lockedFormat as string
     }
 
     return {
@@ -67,9 +64,10 @@ export const getMilestoneCardConfig = (
         borderClass: isActive ? 'border-l-4 border-primary' : '',
         opacityClass: isLocked ? 'opacity-50 grayscale' : '',
         padding: isActive ? 'p-5' : 'p-4',
-        statusLabel: getFormattedStatusLabel(),
+        statusLabelKey: getStatusLabelKey(),
+        statusLabelOrder: milestone.order,
         statusBadgeClass: isActive
-            ? 'inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-primary-fixed text-on-primary-fixed uppercase tracking-tighter'
+            ? 'inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-primary-fixed text-on-primary-fixed uppercase tracking-normal'
             : isCompleted
                 ? 'text-xs font-bold text-secondary uppercase tracking-widest block'
                 : 'text-xs font-bold text-outline uppercase tracking-widest block',

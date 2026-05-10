@@ -740,6 +740,7 @@
       "COMPLETED": "הושלם"
     },
     "milestoneCardLabels": {
+      "activeFormat": "אבן דרך {order} · בתהליך",
       "completedFormat": "אבן דרך {order} · הושלמה",
       "lockedFormat": "אבן דרך {order} · נעולה"
     },
@@ -764,12 +765,17 @@
       "subtitle": "צעדים קטנים יותר שתומכים ביעדים הגדולים שלך",
       "viewAll": "הצג/י הכל",
       "markComplete": "סמן/י כהושלם",
-      "markIncomplete": "סמן/י כלא הושלם"
+      "empty": "אין אבני דרך עדיין",
+      "emptySubtitle": "הוסף/י אבני דרך כדי לעקוב אחר ההתקדמות שלך לקראת היעד הזה",
+      "completedOn": "הושלם בתאריך {date}",
+      "addButton": "הוספת אבן דרך",
+      "addingButton": "מתווסף..."
     },
     "detail": {
       "breadcrumbGoals": "יעדים",
-      "markCompletePhase": "השלמת שלב",
-      "markIncompletePhase": "סמן/י כלא הושלם"
+      "markCompletePhase": "השלם שלב",
+      "targetDate": "תאריך יעד",
+      "overallProgress": "התקדמות כוללת"
     },
     "insights": {
       "title": "תובנות",
@@ -811,8 +817,8 @@
       "buttons": {
         "create": "צור/י יעד",
         "update": "עדכן/י יעד",
-        "creating": "יוצר/ת...",
-        "updating": "מעדכן/ת...",
+        "creating": "יוצר...",
+        "updating": "מעדכן...",
         "cancel": "ביטול"
       },
       "smartTip": {
