@@ -1,8 +1,7 @@
 export const communityLocales = {
     categories: {
         browseTitle: 'community.categories.browseTitle',
-        viewAll: 'community.categories.viewAll',
-        list: 'community.categories.list'
+        viewAll: 'community.categories.viewAll'
     },
     posts: {
         filterLabels: {
@@ -22,8 +21,7 @@ export const communityLocales = {
     },
     mentors: {
         title: 'community.mentors.title',
-        chatButton: 'community.mentors.chatButton',
-        list: 'community.mentors.list'
+        chatButton: 'community.mentors.chatButton'
     },
     sanctuary: {
         title: 'community.sanctuary.title',
@@ -37,8 +35,7 @@ export const communityLocales = {
     },
     activity: {
         title: 'community.activity.title',
-        viewAll: 'community.activity.viewAll',
-        list: 'community.activity.list'
+        viewAll: 'community.activity.viewAll'
     },
     confirmations: {
         deletePost: 'community.confirmations.deletePost',

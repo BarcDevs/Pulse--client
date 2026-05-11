@@ -31,6 +31,7 @@ export const progressMilestonesStyleMap = {
     }
 }
 
+// todo: remove all section
 export const progressMilestonesLocaleMap = {
     'First Step': 'progress.milestones.list.0.title',
     '7-Day Streak': 'progress.milestones.list.1.title',

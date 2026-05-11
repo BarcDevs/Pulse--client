@@ -160,33 +160,7 @@
   "community": {
     "categories": {
       "browseTitle": "קטגוריות",
-      "viewAll": "הצג/י הכל",
-      "list": [
-        {
-          "id": 1,
-          "title": "קבוצות תמיכה",
-          "description": "התחבר/י עם אנשים שחולקים חוויות דומות",
-          "count": "10 קבוצות פעילות"
-        },
-        {
-          "id": 2,
-          "title": "סיפורי הצלחה",
-          "description": "חוויות אישיות, התקדמות ורגעים משמעותיים",
-          "count": "452 סיפורים"
-        },
-        {
-          "id": 3,
-          "title": "תזונה",
-          "description": "תמכו בהחלמה שלכם באמצעות תזונה מאוזנת",
-          "count": "מתכונים חדשים"
-        },
-        {
-          "id": 4,
-          "title": "יוגה ותנועה",
-          "description": "תרגולי תנועה עדינים לגוף ולנפש",
-          "count": "שידור חי היום"
-        }
-      ]
+      "viewAll": "הצגת הכל"
     },
     "posts": {
       "filterLabels": {
@@ -206,23 +180,7 @@
     },
     "mentors": {
       "title": "מנטורים תומכים",
-      "chatButton": "התחל/י שיחה",
-      "list": [
-        {
-          "id": 1,
-          "name": "דוד צ'ן",
-          "role": "מאמן מוסמך",
-          "avatar": "D",
-          "online": true
-        },
-        {
-          "id": 2,
-          "name": "מריה ג'.",
-          "role": "מדריכת בריאות",
-          "avatar": "M",
-          "online": false
-        }
-      ]
+      "chatButton": "פתיחת שיחה"
     },
     "sanctuary": {
       "title": "מרחב הקהילה",
@@ -240,44 +198,7 @@
     },
     "activity": {
       "title": "פעילות הקהילה",
-      "viewAll": "הצג/י הכל",
-      "list": [
-        {
-          "id": 1,
-          "user": "שרה",
-          "action": "שיתפה אבן דרך",
-          "time": "לפני 30 דקות",
-          "avatar": "S"
-        },
-        {
-          "id": 2,
-          "user": "ג'יימס",
-          "action": "הצטרף לקבוצת היוגה",
-          "time": "לפני שעה",
-          "avatar": "J"
-        },
-        {
-          "id": 3,
-          "user": "מרקוס",
-          "action": "שיתף שאלה",
-          "time": "לפני שעתיים",
-          "avatar": "M"
-        },
-        {
-          "id": 4,
-          "user": "אלנה",
-          "action": "הגיבה לדיון",
-          "time": "לפני 3 שעות",
-          "avatar": "E"
-        },
-        {
-          "id": 5,
-          "user": "דוד",
-          "action": "פתח דיון חדש",
-          "time": "לפני 4 שעות",
-          "avatar": "D"
-        }
-      ]
+      "viewAll": "הצגת הכל"
     },
     "confirmations": {
       "deletePost": "האם למחוק את הפוסט הזה?",
@@ -477,30 +398,8 @@
     "exportPdf": "ייצוא PDF",
     "shareJourney": "שיתוף התקדמות",
     "milestones": {
-      "title": "אבני דרך והישגים",
-      "seeAll": "ראה/י את כל 15",
-      "list": [
-        {
-          "title": "הצעד הראשון",
-          "description": "השלמת את העדכון היומי הראשון שלך",
-          "achieved": true
-        },
-        {
-          "title": "רצף של 7 ימים",
-          "description": "ביצעת עדכון יומי באופן עקבי במשך 7 ימים",
-          "achieved": true
-        },
-        {
-          "title": "בהירות מנטלית",
-          "description": "30 ימים של הרהור עקבי",
-          "achieved": true
-        },
-        {
-          "title": "חודש פעיל",
-          "description": "טרם הושג",
-          "achieved": false
-        }
-      ]
+      "title": "צעדים משמעותיים והישגים",
+      "seeAll": "הצג/י את כל {count} הצעדים"
     },
     "wellness": {
       "label": "סיכום הרווחה השבועי",
@@ -632,35 +531,18 @@
       "title": "מידע בסיסי",
       "edit": "עריכה",
       "fields": [
-        { "label": "שם מלא", "value": "Alexander J. Rivera" },
-        { "label": "כתובת אימייל", "value": "a.rivera@example.com" },
-        { "label": "תאריך לידה", "value": "12 במאי, 1992" },
-        { "label": "איש/ת קשר תמיכה ראשי/ת", "value": "ד\"ר שרה צ'ן (רופא/ה מטפל/ת)" }
+        { "label": "שם מלא" },
+        { "label": "כתובת אימייל" },
+        { "label": "תאריך לידה" },
+        { "label": "איש קשר לתמיכה" }
       ]
     },
     "goals": {
       "title": "יעדים פעילים",
-      "viewRoadmap": "הצג/י מפת דרכים",
-      "list": [
-        { "label": "פיזיותרפיה", "progress": 80 },
-        { "label": "מדיטציה יומית", "progress": 65 },
-        { "label": "שגרת שינה", "progress": 40 }
-      ]
+      "viewRoadmap": "הצגת התוכנית"
     },
     "activities": {
-      "title": "העדפות פעילות יומית",
-      "list": [
-        {
-          "title": "שגרת בוקר",
-          "time": "מתוכנן/ת לשעה 07:30",
-          "tags": ["מדיטציה", "מתיחות"]
-        },
-        {
-          "title": "הרהור ערב",
-          "time": "מתוכנן/ת לשעה 21:00",
-          "tags": ["כתיבה ביומן", "הכרת תודה"]
-        }
-      ]
+      "title": "שגרות ופעילויות"
     },
     "settings": {
       "title": "מערכת ופרטיות",
@@ -997,10 +879,7 @@
     "layout": {
       "header": {
         "searchPlaceholder": "חיפוש...",
-        "notificationsAria": "התראות",
-        "avatarInitials": "AR",
-        "avatarAlt": "Alex Rivera",
-        "notificationBadgeCount": "3"
+        "notificationsAria": "התראות"
       },
       "headerItems": {
         "healthOverview": "סקירת בריאות",

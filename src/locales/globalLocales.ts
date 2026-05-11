@@ -41,10 +41,7 @@ export const globalLocales = {
     layout: {
         header: {
             searchPlaceholder: 'global.layout.header.searchPlaceholder',
-            notificationsAria: 'global.layout.header.notificationsAria',
-            avatarInitials: 'global.layout.header.avatarInitials',
-            avatarAlt: 'global.layout.header.avatarAlt',
-            notificationBadgeCount: 'global.layout.header.notificationBadgeCount'
+            notificationsAria: 'global.layout.header.notificationsAria'
         },
         headerItems: {
             healthOverview: 'global.layout.headerItems.healthOverview',

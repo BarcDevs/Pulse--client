@@ -30,12 +30,10 @@ export const profileLocales = {
     },
     goals: {
         title: 'profile.goals.title',
-        viewRoadmap: 'profile.goals.viewRoadmap',
-        list: 'profile.goals.list'
+        viewRoadmap: 'profile.goals.viewRoadmap'
     },
     activities: {
-        title: 'profile.activities.title',
-        list: 'profile.activities.list'
+        title: 'profile.activities.title'
     },
     settings: {
         title: 'profile.settings.title',

@@ -160,33 +160,7 @@
   "community": {
     "categories": {
       "browseTitle": "Explore categories",
-      "viewAll": "View all",
-      "list": [
-        {
-          "id": 1,
-          "title": "Support Groups",
-          "description": "Connect with people sharing similar experiences",
-          "count": "10 active groups"
-        },
-        {
-          "id": 2,
-          "title": "Success Stories",
-          "description": "Personal experiences, progress, and meaningful moments",
-          "count": "452 stories"
-        },
-        {
-          "id": 3,
-          "title": "Nutrition",
-          "description": "Support your recovery through balanced nutrition",
-          "count": "New recipes"
-        },
-        {
-          "id": 4,
-          "title": "Yoga & Movement",
-          "description": "Gentle movement practices for body and mind",
-          "count": "Live today"
-        }
-      ]
+      "viewAll": "View all"
     },
     "posts": {
       "filterLabels": {
@@ -206,23 +180,7 @@
     },
     "mentors": {
       "title": "Support Mentors",
-      "chatButton": "Start chat",
-      "list": [
-        {
-          "id": 1,
-          "name": "David Chen",
-          "role": "Certified Coach",
-          "avatar": "D",
-          "online": true
-        },
-        {
-          "id": 2,
-          "name": "Maria G.",
-          "role": "Wellness Guide",
-          "avatar": "M",
-          "online": false
-        }
-      ]
+      "chatButton": "Start chat"
     },
     "sanctuary": {
       "title": "Community space",
@@ -240,44 +198,7 @@
     },
     "activity": {
       "title": "Community activity",
-      "viewAll": "View all",
-      "list": [
-        {
-          "id": 1,
-          "user": "Sarah",
-          "action": "shared a milestone",
-          "time": "30 min ago",
-          "avatar": "S"
-        },
-        {
-          "id": 2,
-          "user": "James",
-          "action": "joined the Yoga group",
-          "time": "1 hour ago",
-          "avatar": "J"
-        },
-        {
-          "id": 3,
-          "user": "Marcus",
-          "action": "shared a question",
-          "time": "2 hours ago",
-          "avatar": "M"
-        },
-        {
-          "id": 4,
-          "user": "Elena",
-          "action": "replied to a discussion",
-          "time": "3 hours ago",
-          "avatar": "E"
-        },
-        {
-          "id": 5,
-          "user": "David",
-          "action": "started a new discussion",
-          "time": "4 hours ago",
-          "avatar": "D"
-        }
-      ]
+      "viewAll": "View all"
     },
     "confirmations": {
       "deletePost": "Are you sure you want to remove this post?",
@@ -478,29 +399,7 @@
     "shareJourney": "Share progress",
     "milestones": {
       "title": "Milestones & achievements",
-      "seeAll": "See all 15",
-      "list": [
-        {
-          "title": "First step",
-          "description": "Completed your first check-in",
-          "achieved": true
-        },
-        {
-          "title": "7 day streak",
-          "description": "Checked in consistently for 7 days",
-          "achieved": true
-        },
-        {
-          "title": "Mental clarity",
-          "description": "30 days of steady reflection",
-          "achieved": true
-        },
-        {
-          "title": "1 month active",
-          "description": "Not reached yet",
-          "achieved": false
-        }
-      ]
+      "seeAll": "See all {count} milestones"
     },
     "wellness": {
       "label": "Weekly wellness overview",
@@ -632,35 +531,18 @@
       "title": "Basic information",
       "edit": "Edit",
       "fields": [
-        { "label": "Full name", "value": "Alexander J. Rivera" },
-        { "label": "Email address", "value": "a.rivera@example.com" },
-        { "label": "Date of birth", "value": "May 12, 1992" },
-        { "label": "Primary support contact", "value": "Dr. Sarah Chen (Clinician)" }
+        { "label": "Full name" },
+        { "label": "Email address" },
+        { "label": "Date of birth" },
+        { "label": "Primary support contact" }
       ]
     },
     "goals": {
       "title": "Active goals",
-      "viewRoadmap": "View roadmap",
-      "list": [
-        { "label": "Physical therapy", "progress": 80 },
-        { "label": "Daily meditation", "progress": 65 },
-        { "label": "Sleep routine", "progress": 40 }
-      ]
+      "viewRoadmap": "View roadmap"
     },
     "activities": {
-      "title": "Daily activity preferences",
-      "list": [
-        {
-          "title": "Morning routine",
-          "time": "Scheduled for 07:30 AM",
-          "tags": ["Meditation", "Stretch"]
-        },
-        {
-          "title": "Evening reflection",
-          "time": "Scheduled for 09:00 PM",
-          "tags": ["Journaling", "Gratitude"]
-        }
-      ]
+      "title": "Daily activity preferences"
     },
     "settings": {
       "title": "System & privacy",
@@ -997,10 +879,7 @@
     "layout": {
       "header": {
         "searchPlaceholder": "Search...",
-        "notificationsAria": "Notifications",
-        "avatarInitials": "AR",
-        "avatarAlt": "Alex Rivera",
-        "notificationBadgeCount": "3"
+        "notificationsAria": "Notifications"
       },
       "headerItems": {
         "healthOverview": "Health Overview",

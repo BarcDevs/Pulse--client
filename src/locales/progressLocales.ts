@@ -5,8 +5,7 @@ export const progressLocales = {
     shareJourney: 'progress.shareJourney',
     milestones: {
         title: 'progress.milestones.title',
-        seeAll: 'progress.milestones.seeAll',
-        list: 'progress.milestones.list'
+        seeAll: 'progress.milestones.seeAll'
     },
     wellness: {
         label: 'progress.wellness.label',
