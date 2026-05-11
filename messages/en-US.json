@@ -351,35 +351,19 @@
       "stats": [
         {
           "label": "VITALITY SCORE",
-          "value": "78",
-          "trend": "arrow_upward 3%",
-          "description": "Showing gradual improvement",
-          "icon": "TrendingUp",
-          "trendColor": "text-secondary"
+          "description": "Showing gradual improvement"
         },
         {
           "label": "ENGAGEMENT",
-          "value": "Low",
-          "trend": "priority_high Needs attention",
-          "description": "Lower participation compared to your usual activity",
-          "icon": "Activity",
-          "trendColor": "text-amber-500"
+          "description": "Lower participation compared to your usual activity"
         },
         {
           "label": "SLEEP QUALITY",
-          "value": "8.2",
-          "trend": "/10 check_circle Stable",
-          "description": "Sleep patterns remain relatively consistent",
-          "icon": "CheckCircle",
-          "trendColor": "text-secondary"
+          "description": "Sleep patterns remain relatively consistent"
         },
         {
           "label": "MOOD STABILITY",
-          "value": "High",
-          "trend": "trending_up Improving",
-          "description": "Mood patterns appear more balanced recently",
-          "icon": "Sparkles",
-          "trendColor": "text-secondary"
+          "description": "Mood patterns appear more balanced recently"
         }
       ]
     },
@@ -518,8 +502,7 @@
         { "label": "Pain Management" },
         { "label": "Mental Clarity" },
         { "label": "Mindfulness" }
-      ],
-      "quote": "My goal is to improve physical mobility through consistency while staying mentally grounded during difficult transitions."
+      ]
     },
     "basicInfo": {
       "title": "Basic information",
@@ -558,8 +541,7 @@
           "description": "Clinician access enabled"
         },
         {
-          "title": "Login history",
-          "description": "San Francisco, CA"
+          "title": "Login history"
         }
       ]
     },
