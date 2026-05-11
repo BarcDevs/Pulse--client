@@ -84,7 +84,7 @@ const authFormConfigs: AuthFormConfigs = {
         },
         links: [
             {
-                label: `${authLocales.signup.loginText} ${authLocales.signup.loginLink}`,
+                label: authLocales.signup.loginLink,
                 href: '/login'
             }
         ]
