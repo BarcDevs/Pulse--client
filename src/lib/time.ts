@@ -49,7 +49,9 @@ export const formatByUserPreference = (
     if (!date || isNaN(date.getTime()))
         return 'Invalid Date'
 
-    let formatString = dateFormat ?? 'dd/MM/yyyy'
+    let formatString = (dateFormat ?? 'dd/MM/yyyy')
+        .replace(/(?<![hH])mm(?!m)/g, 'MM')
+
     if (short) {
         formatString = formatString
             .replace(', yyyy', '')
