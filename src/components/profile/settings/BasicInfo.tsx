@@ -62,7 +62,7 @@ export const ProfileBasicInfo = () => {
                 <div className={'grid gap-6 sm:grid-cols-2'}>
                     {infoFields.map((field) => (
                         <div key={field.label}>
-                            <p className={'label-uppercase text-muted-foreground rtl:normal-case rtl:tracking-normal rtl:font-semibold rtl:text-sm'}>
+                            <p className={'label-uppercase label-rtl text-muted-foreground'}>
                                 {field.label}
                             </p>
                             <p className={'mt-1 text-sm font-medium text-foreground'}>

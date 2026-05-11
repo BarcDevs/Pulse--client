@@ -33,7 +33,7 @@ export const StatCard = ({
                     {icon}
                 </div>
                 <div>
-                    <p className={'label-uppercase text-muted-foreground mb-1 rtl:normal-case rtl:tracking-normal rtl:font-semibold rtl:text-sm'}>
+                    <p className={'label-uppercase label-rtl text-muted-foreground mb-1'}>
                         {label}
                     </p>
                     <p className={'text-2xl font-bold text-foreground'}>

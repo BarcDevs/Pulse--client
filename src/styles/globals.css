@@ -488,6 +488,10 @@
     @apply text-xs font-medium uppercase tracking-wider;
 }
 
+@utility label-rtl {
+    @apply rtl:normal-case rtl:tracking-normal rtl:font-semibold rtl:text-sm;
+}
+
 @utility badge-base {
     @apply inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium;
 }
