@@ -13,7 +13,7 @@ Quick-reference guide. Find your scenario, read constraints + references only.
 - [SCENARIO 6: Adding a mutation hook](#scenario-6-adding-a-mutation-hook)
 - [SCENARIO 7: Adding an action handler](#scenario-7-adding-an-action-handler)
 - [SCENARIO 8: Adding validation schema](#scenario-8-adding-validation-schema)
-- [SCENARIO 9: Adding constants & text](#scenario-9-adding-constants--text)
+- [SCENARIO 9: Adding text with next-intl (i18n)](#scenario-9-adding-text-with-next-intl-i18n)
 - [GLOBAL CONSTRAINTS](#global-constraints)
 
 ---
@@ -29,7 +29,7 @@ Quick-reference guide. Find your scenario, read constraints + references only.
 - Content component: named export, `'use client'`
 - Handle four states sequentially: loading → error → empty → happy path
 - Loading: use shadcn `<Skeleton/>`
-- Text from constants only
+- Text via next-intl (see Scenario 9) — never hardcode strings
 - No JSX tree branching (use sequential `{isLoading && ...}` not ternary)
 
 ### References
@@ -79,6 +79,7 @@ hooks/queries/use[Feature].ts (edit mode only)
 - Form fields: use reusable `FormInputText`, `FormInputArea` from `@/components/shared/inputs/`
 - Form error: add root error field for form-level errors (not field errors)
 - Page files minimal: just pass `mode` + optional `id`
+- Text via next-intl (see Scenario 9) — never hardcode strings
 
 ### References
 - `src/components/goals/GoalFormPageContent.tsx`
@@ -182,21 +183,75 @@ hooks/queries/use[Feature].ts (edit mode only)
 
 ---
 
-## SCENARIO 9: Adding constants & text
+## SCENARIO 9: Adding text with next-intl (i18n)
 
-### File
-`src/constants/componentTexts/[feature].ts`
+### Files
+- Translation strings: `messages/en-US.json` **and** `messages/he-IL.json` (always update both)
+- Locale key file: `src/locales/[feature]Locales.ts`
+
+### Pattern
+
+```typescript
+// src/locales/goalsLocales.ts
+export const goalsLocales = {
+    overview: {
+        title: 'goals.overview.title',
+        filterButton: 'goals.overview.filterButton',
+    },
+    buttons: {
+        create: 'goals.buttons.create',
+        creating: 'goals.buttons.creating',
+    }
+} as const
+```
+
+```json
+// messages/en-US.json (partial)
+{
+    "goals": {
+        "overview": {
+            "title": "Recovery Goals",
+            "filterButton": "Filter"
+        },
+        "buttons": {
+            "create": "Create goal",
+            "creating": "Creating..."
+        }
+    }
+}
+```
+
+**Client component usage:**
+```typescript
+import { useTranslations } from 'next-intl'
+import { goalsLocales } from '@/locales/goalsLocales'
+
+const t = useTranslations()
+t(goalsLocales.overview.title)
+```
+
+**Server component usage:**
+```typescript
+import { getTranslations } from 'next-intl/server'
+
+const t = await getTranslations()
+```
 
 ### Constraints
-- One file per feature: `[featureName].ts`
-- Export: `const [feature]PageTexts = { ... }`
-- Nested object by section: `header`, `form`, `buttons`, etc.
-- Button text: always include both `action` + `action + 'ing'` (create/creating, update/updating, delete/deleting)
-- Never hardcode text in components
+- Always update **both** `en-US.json` and `he-IL.json`
+- Keys in locales file are dot-path strings matching JSON structure: `'feature.section.key'`
+- Locale file name: `[feature]Locales.ts` (camelCase feature name)
+- Export: `const [feature]Locales = { ... } as const`
+- Nested structure mirrors the JSON — group by page section or semantic group
+- Button text: always include both `action` + `action + 'ing'` forms (create/creating, update/updating, delete/deleting)
+- Never hardcode text strings in components — always go through `t(localeKey)`
+- Never use `src/constants/componentTexts/` — that pattern is dead
 
 ### References
-- `src/constants/componentTexts/recoveryGoals.ts`
-- `src/constants/componentTexts/settings.ts`
+- `src/locales/goalsLocales.ts`
+- `src/locales/settingsLocales.ts`
+- `messages/en-US.json`
+- `messages/he-IL.json`
 
 ---
 
