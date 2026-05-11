@@ -12,7 +12,7 @@ export const ProfileStatItem = ({
             {value}
         </p>
         <p className={'text-xs text-muted-foreground'}>
-            {label}f
+            {label}
         </p>
     </div>
 )
