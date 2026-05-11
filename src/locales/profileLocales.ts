@@ -26,7 +26,11 @@ export const profileLocales = {
     basicInfo: {
         title: 'profile.basicInfo.title',
         edit: 'profile.basicInfo.edit',
-        fields: 'profile.basicInfo.fields'
+        fields: 'profile.basicInfo.fields',
+        fullName: 'profile.basicInfo.fullName',
+        emailAddress: 'profile.basicInfo.emailAddress',
+        dateOfBirth: 'profile.basicInfo.dateOfBirth',
+        primarySupportContact: 'profile.basicInfo.primarySupportContact'
     },
     goals: {
         title: 'profile.goals.title',

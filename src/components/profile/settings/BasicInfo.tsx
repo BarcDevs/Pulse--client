@@ -23,22 +23,22 @@ export const ProfileBasicInfo = () => {
     if (!user)
         return null
 
-    // TODO: Add legal name, date of birth, and primary support contact to Profile type
+    // todo: remove mocks
     const infoFields = [
         {
-            label: 'LEGAL NAME',
-            value: user.email
-        },
-        {
-            label: 'EMAIL ADDRESS',
+            label: t(profileLocales.basicInfo.fullName),
             value: 'Alexander J. Rivera'
         },
         {
-            label: 'DATE OF BIRTH',
+            label: t(profileLocales.basicInfo.emailAddress),
+            value: user.email
+        },
+        {
+            label: t(profileLocales.basicInfo.dateOfBirth),
             value: 'May 12, 1992'
         },
         {
-            label: 'PRIMARY SUPPORT CONTACT',
+            label: t(profileLocales.basicInfo.primarySupportContact),
             value: 'Dr. Sarah Chen (Clinician)'
         }
     ]
@@ -62,7 +62,7 @@ export const ProfileBasicInfo = () => {
                 <div className={'grid gap-6 sm:grid-cols-2'}>
                     {infoFields.map((field) => (
                         <div key={field.label}>
-                            <p className={'label-uppercase text-muted-foreground'}>
+                            <p className={'label-uppercase text-muted-foreground rtl:normal-case rtl:tracking-normal rtl:font-semibold rtl:text-sm'}>
                                 {field.label}
                             </p>
                             <p className={'mt-1 text-sm font-medium text-foreground'}>

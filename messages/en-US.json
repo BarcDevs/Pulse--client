@@ -530,6 +530,10 @@
     "basicInfo": {
       "title": "Basic information",
       "edit": "Edit",
+      "fullName": "Full name",
+      "emailAddress": "Email address",
+      "dateOfBirth": "Date of birth",
+      "primarySupportContact": "Primary support contact",
       "fields": [
         { "label": "Full name" },
         { "label": "Email address" },

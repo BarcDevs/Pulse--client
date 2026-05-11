@@ -530,6 +530,10 @@
     "basicInfo": {
       "title": "מידע בסיסי",
       "edit": "עריכה",
+      "fullName": "שם מלא",
+      "emailAddress": "כתובת אימייל",
+      "dateOfBirth": "תאריך לידה",
+      "primarySupportContact": "איש קשר לתמיכה",
       "fields": [
         { "label": "שם מלא" },
         { "label": "כתובת אימייל" },
