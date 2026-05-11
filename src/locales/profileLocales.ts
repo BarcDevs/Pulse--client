@@ -5,23 +5,19 @@ export const profileLocales = {
     levelBadge: 'profile.levelBadge',
     stats: {
         days: {
-            value: 'profile.stats.days.value',
             label: 'profile.stats.days.label'
         },
         milestones: {
-            value: 'profile.stats.milestones.value',
             label: 'profile.stats.milestones.label'
         },
         healthScore: {
-            value: 'profile.stats.healthScore.value',
             label: 'profile.stats.healthScore.label'
         }
     },
     recoveryIdentity: {
         title: 'profile.recoveryIdentity.title',
         subtitle: 'profile.recoveryIdentity.subtitle',
-        focusAreas: 'profile.recoveryIdentity.focusAreas',
-        quote: 'profile.recoveryIdentity.quote'
+        focusAreas: 'profile.recoveryIdentity.focusAreas'
     },
     basicInfo: {
         title: 'profile.basicInfo.title',

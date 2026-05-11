@@ -55,8 +55,7 @@ export const insightsLocales = {
     summary: {
         title: 'insights.summary.title',
         description: 'insights.summary.description',
-        exportButton: 'insights.summary.exportButton',
-        stats: 'insights.summary.stats'
+        exportButton: 'insights.summary.exportButton'
     },
     milestone: {
         title: 'insights.milestone.title',
