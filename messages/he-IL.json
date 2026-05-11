@@ -86,6 +86,7 @@
       "openingMessage": "היי אלכס. אני כאן איתך היום. איך את/ה מרגיש/ה ברגע זה?",
       "exampleUserRestlessness": "הרגשתי קצת חסר/ת מנוחה היום...",
       "aiResponse1": "זה יכול לקרות במהלך ההחלמה, במיוחד כשהמוח או הגוף מרגישים לא שקטים. לפעמים עוזר להאט קצת ולהתמקד במה שמרגיש ניתן לניהול ברגע זה.",
+      "openingMessage": "היי {name}. אני כאן איתך היום. איך מרגיש לך כרגע?",
       "suggestions": [
         "נסה/י תרגיל הארקה",
         "שפר/י את סביבת השינה שלך"
@@ -106,6 +107,7 @@
       "sleepQualityDescription": "ממוצע של 6.5 שעות",
       "quote": "צעדים קטנים ועקביים יכולים ליצור שינוי משמעותי לאורך זמן",
       "quoteAuthor": "קהילת HealEase"
+      "nextMilestoneBadge": "{percent}% הושלמו",
     }
   },
   "checkIn": {
@@ -287,8 +289,8 @@
           "high": "גבוה"
         },
         "streak": {
-          "newRecord": "שיא חדש!",
-          "personalBest": "שיא אישי {days}"
+          "newRecord": "שיא חדש",
+          "personalBest": "שיא אישי: {days}"
         }
       }
     }
@@ -502,7 +504,7 @@
     "info": {
       "memberSince": "חבר/ה מאז"
     },
-    "levelBadge": "רמה 4: עמיד/ה",
+    "levelBadge": "רמה {level}: {title}",
     "stats": {
       "days": {
         "value": "142",
@@ -553,7 +555,7 @@
       "list": [
         {
           "title": "אבטחה",
-          "description": "עודכן לפני 10 ימים"
+          "description": "עודכן לפני {daysAgo} ימים"
         },
         {
           "title": "התראות",
@@ -564,8 +566,7 @@
           "description": "גישת רופא/ה מטפל/ת מופעלת"
         },
         {
-          "title": "היסטוריית כניסות",
-          "description": "סן פרנסיסקו, קליפורניה"
+          "title": "היסטוריית כניסות"
         }
       ]
     },
@@ -573,12 +574,12 @@
       "title": "העדפות פעילות יומית",
       "morningRoutine": {
         "title": "שגרת בוקר",
-        "subtitle": "מתוכנן/ת לשעה 07:30",
+        "subtitle": "מתוכנן לשעה {time}",
         "tags": ["מדיטציה", "מתיחות"]
       },
       "eveningReflection": {
         "title": "הרהור ערב",
-        "subtitle": "מתוכנן/ת לשעה 21:00",
+        "subtitle": "מתוכנן לשעה {time}",
         "tags": ["כתיבה ביומן", "נשימות"]
       }
     },
@@ -587,7 +588,7 @@
       "settings": [
         {
           "title": "אבטחה",
-          "subtitle": "עודכן לפני 14 ימים"
+          "subtitle": "עודכן לפני {daysAgo} ימים"
         },
         {
           "title": "התראות",
@@ -818,7 +819,7 @@
       "email": "כתובת אימייל",
       "password": {
         "label": "סיסמה",
-        "value": "עודכנה לפני 3 חודשים"
+        "value": "עודכנה לפני {timeAgo}"
       },
       "deactivate": {
         "label": "ביטול חשבון",

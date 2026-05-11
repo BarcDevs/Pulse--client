@@ -83,7 +83,7 @@
     "messages": {
       "assistantLabel": "Support Chat",
       "youLabel": "You",
-      "openingMessage": "Hi Alex. I’m here with you today. How are you feeling right now?",
+      "openingMessage": "Hi {name}. I’m here with you today. How are you feeling right now?",
       "exampleUserRestlessness": "I’ve been feeling a bit restless today...",
       "aiResponse1": "That can happen during recovery, especially when your mind or body feels unsettled. Sometimes it helps to slow things down and focus on what feels manageable right now.",
       "suggestions": [
@@ -94,16 +94,13 @@
     },
     "sidebar": {
       "nextMilestoneLabel": "Next milestone",
-      "nextMilestoneTitle": "90 days",
-      "nextMilestoneBadge": "87% completed",
+      "nextMilestoneTitle": "{days} days",
+      "nextMilestoneBadge": "{percent}% completed",
       "insightsTitle": "Recent insights",
       "insightsTimeframe": "Last 7 days",
       "emotionalTrendLabel": "Emotional trend",
       "emotionalTrendTitle": "More stable",
       "emotionalTrendDescription": "Your mood has been more balanced recently",
-      "sleepQualityLabel": "Sleep quality",
-      "sleepQualityTitle": "Improving",
-      "sleepQualityDescription": "Average of 6.5 hours",
       "quote": "Consistent small steps can create meaningful change over time",
       "quoteAuthor": "HealEase Community"
     }
@@ -502,18 +499,15 @@
     "info": {
       "memberSince": "Member since"
     },
-    "levelBadge": "Level 4: Resilient",
+    "levelBadge": "Level {level}: {title}",
     "stats": {
       "days": {
-        "value": "142",
         "label": "Days"
       },
       "milestones": {
-        "value": "28",
         "label": "Milestones"
       },
       "healthScore": {
-        "value": "8.4",
         "label": "Health score"
       }
     },
@@ -553,7 +547,7 @@
       "list": [
         {
           "title": "Security",
-          "description": "Updated 10 days ago"
+          "description": "Updated {daysAgo} days ago"
         },
         {
           "title": "Notifications",
@@ -573,12 +567,12 @@
       "title": "Daily activity preferences",
       "morningRoutine": {
         "title": "Morning routine",
-        "subtitle": "Scheduled for 07:30 AM",
+        "subtitle": "Scheduled for {time}",
         "tags": ["Meditation", "Stretch"]
       },
       "eveningReflection": {
         "title": "Evening reflection",
-        "subtitle": "Scheduled for 09:00 PM",
+        "subtitle": "Scheduled for {time}",
         "tags": ["Journaling", "Breathwork"]
       }
     },
@@ -587,7 +581,7 @@
       "settings": [
         {
           "title": "Security",
-          "subtitle": "Updated 14 days ago"
+          "subtitle": "Updated {daysAgo} days ago"
         },
         {
           "title": "Notifications",
@@ -598,8 +592,7 @@
           "subtitle": "Clinician access enabled"
         },
         {
-          "title": "Login history",
-          "subtitle": "San Francisco, CA"
+          "title": "Login history"
         }
       ]
     }
@@ -818,7 +811,7 @@
       "email": "Email Address",
       "password": {
         "label": "Password",
-        "value": "Last updated 3 months ago"
+        "value": "Last updated {timeAgo}"
       },
       "deactivate": {
         "label": "Deactivate Account",
