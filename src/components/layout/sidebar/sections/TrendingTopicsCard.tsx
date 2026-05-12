@@ -64,7 +64,7 @@ export const TrendingTopicsCard = ({
                                     : 'bg-surface-section text-muted-foreground hover:bg-primary hover:text-white'
                             )}
                         >
-                            {`#${topic.name}`}
+                            {topic.name}
                         </Button>
                     ))}
                 </div>
