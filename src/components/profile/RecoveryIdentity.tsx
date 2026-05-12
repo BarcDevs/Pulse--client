@@ -35,12 +35,6 @@ export const RecoveryIdentity = () => {
                     </div>
                 ))}
             </div>
-
-            <div className={'bg-surface-section rounded-xl p-4'}>
-                <p className={'text-sm text-muted-foreground italic leading-relaxed'}>
-                    &quot;{t(profileLocales.recoveryIdentity.quote)}&quot;
-                </p>
-            </div>
         </div>
     )
 }
