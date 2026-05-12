@@ -19,7 +19,7 @@ export const MentorItem = ({
     online
 }: MentorItemProps) => {
     const t = useTranslations()
-
+    // todo: use real data
     return (
         <div className={'flex items-center justify-between'}>
             <div className={'flex items-center gap-3'}>
