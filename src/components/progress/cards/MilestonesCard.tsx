@@ -39,7 +39,7 @@ export const MilestonesCard = () => {
                     </p>
                 </div>
                 <div className={'h-12 w-12 rounded-xl bg-purple-50 flex--center'}>
-                    <Award className={'h-6 w-6 text-accent'}/>
+                    <Award className={'h-6 w-6 text-purple'}/>
                 </div>
             </div>
         </div>

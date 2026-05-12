@@ -8,9 +8,9 @@ export const MilestoneCard = () => {
     const t = useTranslations()
 
     return (
-        <div className={'rounded-2xl bg-linear-to-br from-accent to-accent/80 p-6 text-accent-foreground h-full'}>
+        <div className={'rounded-2xl bg-linear-to-br from-purple to-purple/80 p-6 text-purple-foreground h-full'}>
             <div className={'flex items-center justify-between'}>
-                <Trophy className={'h-8 w-8 text-accent-foreground/80'}/>
+                <Trophy className={'h-8 w-8 text-purple-foreground/80'}/>
             </div>
 
             <h3 className={'mt-4 text-xl font-semibold'}>
