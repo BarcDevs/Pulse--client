@@ -50,7 +50,7 @@ export const AddMilestoneModal = ({
             open={open}
             onOpenChange={onOpenChange}
         >
-            <DialogContent>
+            <DialogContent showCloseButton={false}>
                 <DialogHeader>
                     <DialogTitle>
                         {t(goalsLocales.milestones.formTitle)}

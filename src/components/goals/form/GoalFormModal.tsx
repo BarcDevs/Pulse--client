@@ -40,9 +40,16 @@ export const GoalFormModal = ({
             open={isOpen}
             onOpenChange={onCloseAction}
         >
-            <DialogContent className={'max-w-xl overflow-hidden p-0'}>
+            <DialogContent
+                className={'max-w-xl overflow-hidden p-0'}
+                showCloseButton={false}
+            >
+                {/* todo: use locale */}
                 <DialogTitle className={'sr-only'}>
-                    {mode === 'create' ? 'Create New Goal' : 'Edit Goal'}
+                    {mode === 'create'
+                        ? 'Create New Goal'
+                        : 'Edit Goal'
+                    }
                 </DialogTitle>
                 <GoalFormHeader
                     mode={mode}
