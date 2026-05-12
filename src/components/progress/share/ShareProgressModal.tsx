@@ -41,7 +41,10 @@ export const ShareProgressModal = ({
             open={open}
             onOpenChange={onOpenChangeAction}
         >
-            <DialogContent className={'max-w-2xl'}>
+            <DialogContent
+                className={'max-w-2xl'}
+                showCloseButton={false}
+            >
                 <DialogHeader>
                     <DialogTitle>
                         {t(progressLocales.share.modalTitle)}
