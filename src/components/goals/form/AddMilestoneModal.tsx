@@ -23,13 +23,13 @@ import { MilestoneForm } from './MilestoneForm'
 
 type AddMilestoneModalProps = {
     open: boolean
-    onOpenChange: (open: boolean) => void
+    onOpenChangeAction: (open: boolean) => void
     goalId: string
 }
 
 export const AddMilestoneModal = ({
     open,
-    onOpenChange
+    onOpenChangeAction
 }: AddMilestoneModalProps) => {
     const t = useTranslations()
     const milestonesCtx = useContext(
@@ -39,7 +39,7 @@ export const AddMilestoneModal = ({
     const handleSubmit = async (
         data: MilestoneInput
     ) => {
-        onOpenChange(false)
+        onOpenChangeAction(false)
         await milestonesCtx
             ?.addMilestoneOptimistic(data)
             .catch(() => {})
@@ -48,7 +48,7 @@ export const AddMilestoneModal = ({
     return (
         <Dialog
             open={open}
-            onOpenChange={onOpenChange}
+            onOpenChange={onOpenChangeAction}
         >
             <DialogContent showCloseButton={false}>
                 <DialogHeader>
@@ -60,7 +60,7 @@ export const AddMilestoneModal = ({
                     <MilestoneForm
                         onSubmit={handleSubmit}
                         onCloseAction={
-                            () => onOpenChange(false)
+                            () => onOpenChangeAction(false)
                         }
                     />
                 </div>
