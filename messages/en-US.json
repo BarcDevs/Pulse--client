@@ -155,10 +155,6 @@
     ]
   },
   "community": {
-    "categories": {
-      "browseTitle": "Explore categories",
-      "viewAll": "View all"
-    },
     "posts": {
       "filterLabels": {
         "newest": "Newest",

@@ -8,7 +8,6 @@ import { PostHeader }
 type PostDetailCardProps = {
     post: Post | undefined
     sanitizedBody: string
-    categoryColor: string
     author: string
     timeAgo: string
 }
@@ -16,7 +15,6 @@ type PostDetailCardProps = {
 export const PostDetailCard = ({
     post,
     sanitizedBody,
-    categoryColor,
     author,
     timeAgo
 }: PostDetailCardProps) => {
@@ -27,7 +25,6 @@ export const PostDetailCard = ({
             <div className={'mb-4'}>
                 <PostHeader
                     category={post.category}
-                    categoryColor={categoryColor}
                     author={author}
                     timeAgo={timeAgo}
                 />

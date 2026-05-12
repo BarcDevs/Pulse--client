@@ -15,9 +15,6 @@ import { toRelative } from '@/lib/time'
 
 import { sanitizeHtml } from '@/utils/sanitizeHtml'
 
-import { communityCategoriesColorMap }
-    from '@/constants/mappings/community'
-
 import { usePostDetail } from '@/context/PostDetailContext'
 
 export const PostDetailContent = () => {
@@ -51,20 +48,15 @@ export const PostDetailContent = () => {
     }
 
     const sanitizedBody = post
-        ? sanitizeHtml(post.body)
-        : ''
-    const categoryColor = post
-        ? (communityCategoriesColorMap[post.category]
-            || 'bg-gray-50 text-gray-700')
-        : ''
+        ? sanitizeHtml(post.body) : ''
+
     const author = post
         ? (post.author
             ? `${post.author.firstName} ${post.author.lastName}`
-            : 'Unknown')
-        : ''
+            : 'Unknown') : ''
+
     const timeAgo = post
-        ? toRelative(new Date(post.createdAt))
-        : ''
+        ? toRelative(new Date(post.createdAt)) : ''
 
     return (
         <div className={'space-y-6'}>
@@ -72,7 +64,6 @@ export const PostDetailContent = () => {
                 <PostDetailCard
                     post={post}
                     sanitizedBody={sanitizedBody}
-                    categoryColor={categoryColor}
                     author={author}
                     timeAgo={timeAgo}
                 />
