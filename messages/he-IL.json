@@ -158,10 +158,6 @@
     ]
   },
   "community": {
-    "categories": {
-      "browseTitle": "קטגוריות",
-      "viewAll": "הצגת הכל"
-    },
     "posts": {
       "filterLabels": {
         "newest": "חדשים",

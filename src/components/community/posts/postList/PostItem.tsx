@@ -30,7 +30,6 @@ export const PostItem = ({ post }: PostItemProps) => (
                         <div className={'flex-1 min-w-0'}>
                             <PostHeader
                                 category={post.category}
-                                categoryColor={'bg-gray-100 text-gray-700'}
                                 author={getAuthorName(post)}
                                 timeAgo={toRelative(post.createdAt)}
                             />

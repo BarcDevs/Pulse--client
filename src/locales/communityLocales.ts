@@ -1,8 +1,4 @@
 export const communityLocales = {
-    categories: {
-        browseTitle: 'community.categories.browseTitle',
-        viewAll: 'community.categories.viewAll'
-    },
     posts: {
         filterLabels: {
             newest: 'community.posts.filterLabels.newest',
