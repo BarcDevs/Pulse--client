@@ -14,6 +14,7 @@ export const MentorsCard = () => {
             <h3 className={'mb-4 font-semibold text-foreground'}>
                 {t('community.mentors.title')}
             </h3>
+
             <div className={'space-y-3'}>
                 {COMMUNITY_MENTORS.map((mentor) => (
                     <MentorItem

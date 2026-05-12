@@ -17,6 +17,8 @@ export const FEATURES = {
     forumLinking: true,
     // Chat with AI assistant for recovery support
     chat: false,
+    // Community mentors
+    mentors: false,
     // Profile preferences - system privacy and notification settings
     profilePreferences: true,
     // Push/email notifications - notification delivery
