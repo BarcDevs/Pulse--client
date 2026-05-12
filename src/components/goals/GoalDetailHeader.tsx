@@ -93,7 +93,7 @@ export const GoalDetailHeader = ({
             </section>
             <AddMilestoneModal
                 open={addMilestoneOpen}
-                onOpenChange={setAddMilestoneOpen}
+                onOpenChangeAction={setAddMilestoneOpen}
                 goalId={goal.id}
             />
         </>
