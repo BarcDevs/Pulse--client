@@ -31,7 +31,7 @@ export const getCategoryColor = (category: GoalCategory) => {
         case GoalCategory.PHYSICAL:
             return 'bg-secondary-container text-on-secondary-container hover:bg-secondary-container/80 [&:hover]:text-on-secondary-container'
         case GoalCategory.MENTAL:
-            return 'bg-accent-light text-accent hover:bg-accent-light/80 [&:hover]:text-accent'
+            return 'bg-purple/10 text-purple hover:bg-purple/20 [&:hover]:text-purple'
         case GoalCategory.LIFESTYLE:
             return 'bg-primary-light text-primary hover:bg-primary-light/80 [&:hover]:text-primary'
     }

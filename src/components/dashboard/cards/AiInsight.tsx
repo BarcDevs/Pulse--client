@@ -45,7 +45,7 @@ export const DashboardAIInsight = ({
         )}>
             <CardHeader>
                 <div className={'flex items-center gap-2'}>
-                    <Sparkles className={'size-4 text-accent'}/>
+                    <Sparkles className={'size-4 text-purple'}/>
                     <CardTitle className={'text-sm font-medium text-muted-foreground'}>
                         {t(dashboardLocales.aiInsight.label)}
                     </CardTitle>

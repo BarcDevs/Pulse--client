@@ -33,9 +33,9 @@
     --secondary-foreground: #ffffff;
     --secondary-light: #e6f5f2;
 
-    /* Accent - Soft Purple for insights */
-    --accent: #7c4dff;
-    --accent-foreground: #ffffff;
+    /* Accent - hover/focus state background */
+    --accent: #f1f5f9;
+    --accent-foreground: #1a2b3c;
     --accent-light: #f3eeff;
 
     /* Muted/Neutral tones */
@@ -126,9 +126,9 @@
     --tertiary-container: #985db0;
     --on-primary-container: #fdfcff;
 
-    /* Insight - for AI features */
-    --insight: #7c4dff;
-    --insight-foreground: #ffffff;
+    /* Purple - accent color for insights, mental wellness, AI features */
+    --purple: #7c4dff;
+    --purple-foreground: #ffffff;
 
     --logo: #183e9f;
 }
@@ -146,8 +146,8 @@
     --secondary: #14b8a6;
     --secondary-foreground: #ffffff;
     --secondary-light: #134e4a;
-    --accent: #a78bfa;
-    --accent-foreground: #ffffff;
+    --accent: #1e293b;
+    --accent-foreground: #f1f5f9;
     --accent-light: #2e1065;
     --muted: #334155;
     --muted-foreground: #94a3b8;
@@ -217,9 +217,9 @@
     --surface-bright: #2d3133;
     --surface-container-highest: #494f57;
 
-    /* Dark mode insight */
-    --insight: #a78bfa;
-    --insight-foreground: #0f172a;
+    /* Dark mode purple */
+    --purple: #a78bfa;
+    --purple-foreground: #0f172a;
 }
 
 @theme inline {
@@ -311,8 +311,8 @@
     --color-surface-dim: var(--surface-dim);
     --color-on-secondary-fixed-variant: var(--on-secondary-fixed-variant);
     --color-on-primary-fixed-variant: var(--on-primary-fixed-variant);
-    --color-insight: var(--insight);
-    --color-insight-foreground: var(--insight-foreground);
+    --color-purple: var(--purple);
+    --color-purple-foreground: var(--purple-foreground);
     --color-primary-deep: var(--primary-deep);
     --color-chart-highlight: var(--chart-highlight);
 }
