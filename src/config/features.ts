@@ -22,7 +22,18 @@ export const FEATURES = {
     // Profile preferences - system privacy and notification settings
     profilePreferences: true,
     // Push/email notifications - notification delivery
-    notifications: false
+    notifications: false,
+    // Daily Activity Preferences section in profile
+    activityPreferences: false,
+    // Dark mode theme toggle
+    darkMode: false,
+    // User level/badge in profile (no API data yet)
+    profileLevel: false,
+    // Settings tabs — gated individually
+    settingsNotifications: false,
+    settingsPrivacy: false,
+    settingsSecurity: true,
+    settingsPreferences: true
 } as const
 
 export type FeatureFlags = typeof FEATURES

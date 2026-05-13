@@ -2,13 +2,14 @@ import {
     Activity,
     Bell,
     Brain,
+    Heart,
     History,
     type LucideIcon,
     Moon,
     Share2,
     Shield,
-    Sparkles,
-    Sun
+    Sun,
+    Users
 } from 'lucide-react'
 
 import {
@@ -48,18 +49,20 @@ export const profileActivitiesIconMap = {
     'Evening Reflection': Moon
 }
 
-export const profileRecoveryIdentityIconMap = {
-    'Physical Health': Activity,
-    'Mental Wellness': Brain,
-    'Sleep & Rest': Moon,
-    'Social Connection': Sparkles
+export const profileRecoveryIdentityIconMap: Record<string, LucideIcon> = {
+    PHYSICAL: Activity,
+    MENTAL: Brain,
+    LIFESTYLE: Moon,
+    WELLNESS: Heart,
+    SOCIAL: Users
 }
 
-export const profileRecoveryIdentityColorMap = {
-    'Physical Health': 'bg-destructive/10 text-destructive',
-    'Mental Wellness': 'bg-secondary/10 text-secondary',
-    'Sleep & Rest': 'bg-primary/10 text-primary',
-    'Social Connection': 'bg-accent/10 text-accent'
+export const profileRecoveryIdentityColorMap: Record<string, string> = {
+    PHYSICAL: 'bg-destructive/10 text-destructive',
+    MENTAL: 'bg-secondary/10 text-secondary',
+    LIFESTYLE: 'bg-primary/10 text-primary',
+    WELLNESS: 'bg-purple-light text-purple',
+    SOCIAL: 'bg-purple-light text-purple'
 }
 
 export const profileSettingsIconMap = {

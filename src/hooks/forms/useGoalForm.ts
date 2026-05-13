@@ -4,6 +4,8 @@ import { useForm } from 'react-hook-form'
 
 import { zodResolver } from '@hookform/resolvers/zod'
 
+import { wrapFormSubmit } from '@/lib/forms/handleFormSubmit'
+
 import {
     GoalSchema,
     goalSchema
@@ -39,22 +41,12 @@ export const useGoalForm = ({
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [defaultValues?.title, defaultValues?.category])
 
-    const handleSubmit = form.handleSubmit(
-        async (data) => {
-            try {
-                await onSubmit(data)
-                form.reset()
-            } catch (error) {
-                const message = error instanceof Error
-                    ? error.message
-                    : 'Submission failed'
-                form.setError('root', {
-                    type: 'manual',
-                    message
-                })
-            }
-        }
-    )
+    const handleSubmit = wrapFormSubmit(
+        form,
+        onSubmit,
+        {
+        resetOnSuccess: true
+    })
 
     return {
         form,

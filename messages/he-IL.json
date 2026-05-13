@@ -532,6 +532,15 @@
       "emailAddress": "כתובת אימייל",
       "dateOfBirth": "תאריך לידה",
       "primarySupportContact": "איש קשר לתמיכה",
+      "firstName": "שם פרטי",
+      "lastName": "שם משפחה",
+      "location": "מיקום",
+      "locationNotSet": "מיקום לא הוגדר",
+      "save": "שמור שינויים",
+      "saving": "שומר...",
+      "cancel": "ביטול",
+      "emailNote": "לא ניתן לשנות אימייל כאן.",
+      "emailNoteLink": "שינוי בהגדרות",
       "fields": [
         { "label": "שם מלא" },
         { "label": "כתובת אימייל" },
@@ -782,6 +791,7 @@
     },
     "notifications": {
       "title": "התראות",
+      "description": "שלוט/י כיצד ומתי HealEase יוצר/ת איתך קשר.",
       "dailyReminder": {
         "label": "תזכורת יומית",
         "description": "קבל/י תזכורות עדינות לצ'ק-אינים, שגרות ופעילויות החלמה"
@@ -789,10 +799,23 @@
       "communityAlerts": {
         "label": "התראות קהילה",
         "description": "קבל/י הודעה כשמישהו מגיב לפוסטים או לאינטראקציות שלך"
+      },
+      "pushNotifications": {
+        "label": "התראות Push",
+        "description": "קבל/י התראות במכשיר שלך"
+      },
+      "aiInsights": {
+        "label": "תובנות AI",
+        "description": "קבל/י הודעה כשתובנות AI חדשות מוכנות"
+      },
+      "milestoneAlerts": {
+        "label": "התראות אבני דרך",
+        "description": "חגגו כשתגיע/י לאבן דרך חדשה"
       }
     },
     "privacy": {
       "title": "הגדרות פרטיות",
+      "description": "הנתונים שלך, השליטה שלך.",
       "visibility": {
         "title": "נראות פרופיל",
         "description": "בחר/י מי יכול לראות את הפרופיל וההתקדמות שלך",
@@ -807,7 +830,12 @@
         "description": "אפשר/י נתונים אנונימיים לסייע בשיפור מחקר ותובנות ההחלמה"
       },
       "anonymousParticipation": {
-        "label": "השתתפות אנונימית"
+        "label": "השתתפות אנונימית",
+        "description": "הסתר/י את זהותך בדיונים בקהילה"
+      },
+      "activityVisible": {
+        "label": "פעילות גלויה למנטורים",
+        "description": "אפשר/י לצוות המטפל לצפות בהתקדמות שלך"
       }
     },
     "security": {
@@ -815,12 +843,26 @@
       "email": "כתובת אימייל",
       "password": {
         "label": "סיסמה",
-        "value": "עודכנה לפני {timeAgo}"
+        "value": "עודכנה לפני {timeAgo}",
+        "changeTitle": "שינוי סיסמה",
+        "currentPassword": "סיסמה נוכחית",
+        "newPassword": "סיסמה חדשה",
+        "confirmPassword": "אימות סיסמה חדשה",
+        "passwordMismatch": "הסיסמאות אינן תואמות",
+        "changeButton": "שנה סיסמה",
+        "changingButton": "משנה...",
+        "cancelButton": "ביטול"
       },
+      "emailComingSoon": "שינוי אימייל אינו זמין עדיין",
       "deactivate": {
         "label": "ביטול חשבון",
         "description": "הסר/י לצמיתות את החשבון ונתוני ההחלמה שלך",
-        "buttonText": "ביטול חשבון"
+        "buttonText": "מחיקת חשבון",
+        "confirmTitle": "מחיקת חשבון",
+        "confirmDescription": "החשבון יושהה ולא תוכל/י לגשת אליו. הנתונים נשמרים וניתן לשחזר את החשבון על ידי פנייה לתמיכה.",
+        "confirmButton": "כן, בטל חשבון",
+        "confirmingButton": "מבטל...",
+        "cancelButton": "ביטול"
       }
     },
     "preferences": {

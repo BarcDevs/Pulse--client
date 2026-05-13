@@ -8,6 +8,9 @@ import {
 import { useTranslations } from 'next-intl'
 
 import type { CheckInStats } from '@/types/checkIn'
+import { GoalStatus } from '@/types/goals'
+
+import { useGoals } from '@/hooks/queries/useGoals'
 
 import { fetchCheckInStats } from '@/api/checkIn'
 import { profileLocales } from '@/locales/profileLocales'
@@ -17,12 +20,13 @@ import { ProfileStatItem } from './ProfileStatItem'
 export const ProfileStats = () => {
     const t = useTranslations()
     const [stats, setStats] = useState<CheckInStats | null>(null)
+    const { data: goals } = useGoals()
 
     useEffect(() => {
         const getStats = async () => {
             try {
-                const stats = await fetchCheckInStats()
-                setStats(stats)
+                const data = await fetchCheckInStats()
+                setStats(data)
             } catch (err) {
                 console.error('Failed to fetch stats:', err)
             }
@@ -31,23 +35,24 @@ export const ProfileStats = () => {
         getStats()
     }, [])
 
-    // TODO: Add health score to CheckInStats type
-    const days = stats?.total ?? '142'
-    const milestones = stats?.milestonesAchieved ?? '28'
+    const streak = stats?.total ?? 0
+    const milestones = stats?.milestonesAchieved ?? 0
+    const activeGoals = goals?.filter((g) =>
+        g.status === GoalStatus.ACTIVE).length ?? 0
 
     return (
         <div className={'mt-6 grid w-full grid-cols-3 gap-4 border-t border-border pt-6'}>
             <ProfileStatItem
-                value={String(days)}
-                label={t(profileLocales.stats.days.label)}
+                value={String(streak)}
+                label={t(profileLocales.stats.streak)}
             />
             <ProfileStatItem
                 value={String(milestones)}
-                label={t(profileLocales.stats.milestones.label)}
+                label={t(profileLocales.stats.milestones)}
             />
             <ProfileStatItem
-                value={'8.4'}
-                label={t(profileLocales.stats.healthScore.label)}
+                value={String(activeGoals)}
+                label={t(profileLocales.stats.goals)}
             />
         </div>
     )

@@ -44,12 +44,10 @@ export const GoalCard = ({
             className={'bg-surface-container-lowest p-6 rounded-xl group hover:bg-blue-50/30 transition-colors shadow-sm cursor-pointer relative'}
         >
             <div className={'flex justify-between items-start mb-6'}>
-                <Badge
-                    className={cn(
-                        categoryColor,
-                        'px-3 py-1 text-xs font-bold rounded-full uppercase tracking-widest'
-                    )}
-                >
+                <Badge className={cn(
+                    categoryColor,
+                    'px-3 py-1 text-xs font-bold rounded-full uppercase tracking-widest'
+                )}>
                     {t(goalsLocales.categoryLabels[goal.category])}
                 </Badge>
                 <GoalActionsDropdown

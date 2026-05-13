@@ -4,6 +4,7 @@ type SettingToggleProps = {
     label: string
     description?: string
     checked: boolean
+    disabled?: boolean
     onChangeAction: (checked: boolean) => void
 }
 
@@ -11,6 +12,7 @@ export const SettingToggle = ({
     label,
     description,
     checked,
+    disabled,
     onChangeAction
 }: SettingToggleProps) => (
     <div className={'flex items-center justify-between'}>
@@ -26,6 +28,7 @@ export const SettingToggle = ({
         </div>
         <ControlSwitch
             checked={checked}
+            disabled={disabled}
             onCheckedChange={onChangeAction}
         />
     </div>

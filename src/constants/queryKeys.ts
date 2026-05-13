@@ -1,6 +1,6 @@
 export const authQueryKeys = {
     getMe: ['auth', 'me'] as const,
-    profile: ['profile'] as const
+    profile: ['auth', 'profile'] as const
 }
 
 export const checkInQueryKeys = {

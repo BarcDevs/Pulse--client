@@ -32,9 +32,8 @@
     --secondary-light: #e6f5f2;
 
     /* Accent - hover/focus state background */
-    --accent: #f1f5f9;
+    --accent: #ebf4fc;
     --accent-foreground: #1a2b3c;
-    --accent-light: #f3eeff;
 
     /* Muted/Neutral tones */
     --muted: #eef1f5;
@@ -126,6 +125,7 @@
 
     /* Purple - accent color for insights, mental wellness, AI features */
     --purple: #7c4dff;
+    --purple-light: #f3eeff;
     --purple-foreground: #ffffff;
 
     --logo: #183e9f;
@@ -146,7 +146,7 @@
     --secondary-light: #134e4a;
     --accent: #1e293b;
     --accent-foreground: #f1f5f9;
-    --accent-light: #2e1065;
+    --purple-light: #2e1065;
     --muted: #334155;
     --muted-foreground: #94a3b8;
     --surface-page: #0f172a;
@@ -239,7 +239,7 @@
     --color-muted-foreground: var(--muted-foreground);
     --color-accent: var(--accent);
     --color-accent-foreground: var(--accent-foreground);
-    --color-accent-light: var(--accent-light);
+    --color-purple-light: var(--purple-light);
     --color-destructive: var(--destructive);
     --color-destructive-foreground: var(--destructive-foreground);
     --color-warning: var(--warning);

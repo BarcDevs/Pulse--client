@@ -28,49 +28,55 @@ export const PrivacySettings = () => {
 
     return (
         <div className={'rounded-2xl bg-surface-card p-6'}>
-            <div className={'flex items-center gap-2 mb-6'}>
+            <div className={'flex items-center gap-2 mb-2'}>
                 <Lock className={'h-5 w-5 text-primary'}/>
                 <h3 className={'text-lg font-semibold text-foreground'}>
                     {t(settingsLocales.privacy.title)}
                 </h3>
             </div>
+            <p className={'text-sm text-muted-foreground mb-6'}>
+                {t(settingsLocales.privacy.description)}
+            </p>
 
-            <div className={'grid grid-cols-1 md:grid-cols-2 gap-6'}>
+            <div className={'space-y-6'}>
+                {/* TODO: share anonymized data toggle — no API backing yet */}
+                <SettingToggle
+                    label={t(settingsLocales.privacy.dataSharing.title)}
+                    description={t(settingsLocales.privacy.dataSharing.description)}
+                    checked={false}
+                    disabled
+                    onChangeAction={() => {}}
+                />
+
+                <SettingToggle
+                    label={t(settingsLocales.privacy.anonymousParticipation.label)}
+                    description={t(settingsLocales.privacy.anonymousParticipation.description)}
+                    checked={settings?.anonymousParticipation || false}
+                    onChangeAction={(value) =>
+                        onSettingChange('anonymousParticipation', value)
+                    }
+                />
+
+                {/* TODO: activity visible to mentors — map to profileVisibility or new field */}
+                <SettingToggle
+                    label={t(settingsLocales.privacy.activityVisible.label)}
+                    description={t(settingsLocales.privacy.activityVisible.description)}
+                    checked={false}
+                    disabled
+                    onChangeAction={() => {}}
+                />
+
                 <DropdownSelector
                     value={currentVisibility}
                     options={Object.fromEntries(
-                        VISIBILITY_OPTIONS.map(opt => [opt.value, opt.label])
+                        VISIBILITY_OPTIONS.map((opt) => [opt.value, opt.label])
                     )}
                     onChangeAction={(value) =>
-                        onSettingChange(
-                            'profileVisibility',
-                            value
-                        )
+                        onSettingChange('profileVisibility', value)
                     }
                     label={t(settingsLocales.privacy.visibility.title)}
                     description={t(settingsLocales.privacy.visibility.description)}
                 />
-
-                <div className={'p-4 rounded-xl bg-surface-section'}>
-                    <h4 className={'font-medium text-foreground mb-1'}>
-                        {t(settingsLocales.privacy.dataSharing.title)}
-                    </h4>
-                    <p className={'text-sm text-muted-foreground mb-3'}>
-                        {t(settingsLocales.privacy.dataSharing.description)}
-                    </p>
-                    <SettingToggle
-                        label={t(settingsLocales.privacy.anonymousParticipation.label)}
-                        checked={settings?.anonymousParticipation
-                            || false
-                        }
-                        onChangeAction={(value) =>
-                            onSettingChange(
-                                'anonymousParticipation',
-                                value
-                            )
-                        }
-                    />
-                </div>
             </div>
         </div>
     )

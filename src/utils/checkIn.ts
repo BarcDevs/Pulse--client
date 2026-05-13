@@ -2,8 +2,6 @@ import { CheckIn } from '@/types/checkIn'
 
 import { defaults } from '@/constants/defaults'
 
-import { checkInLocales } from '@/locales/checkInLocales'
-
 const { maxSuggestedActivities } = defaults.checkIn
 
 type ActivityCounter = Map<

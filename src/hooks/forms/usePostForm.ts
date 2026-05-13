@@ -2,6 +2,8 @@ import { useForm } from 'react-hook-form'
 
 import { zodResolver } from '@hookform/resolvers/zod'
 
+import { wrapFormSubmit } from '@/lib/forms/handleFormSubmit'
+
 import {
     PostFormSchema,
     postFormSchema
@@ -30,22 +32,9 @@ export const usePostForm = ({
         mode: 'onBlur'
     })
 
-    const handleSubmit = form.handleSubmit(
-        async (data) => {
-            try {
-                await onSubmit(data)
-                form.reset()
-            } catch (error) {
-                const message = error instanceof Error
-                    ? error.message
-                    : 'Submission failed'
-                form.setError('root', {
-                    type: 'manual',
-                    message
-                })
-            }
-        }
-    )
+    const handleSubmit = wrapFormSubmit(form, onSubmit, {
+        resetOnSuccess: true
+    })
 
     return {
         form,

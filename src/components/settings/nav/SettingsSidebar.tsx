@@ -14,7 +14,10 @@ import { SETTINGS_TABS_CONFIG } from '@/config/settingsTabs'
 import { SettingsSidebarFooter } from './SettingsSidebarFooter'
 import { SettingsTabButton } from './SettingsTabButton'
 
+type Tab = typeof SETTINGS_TABS_CONFIG[number]
+
 type SettingsSidebarProps = {
+    tabs: readonly Tab[]
     activeTab: string
     onTabChange: SetState<string>
 }
@@ -29,6 +32,7 @@ const iconMap = {
 type IconMapKey = keyof typeof iconMap
 
 export const SettingsSidebar = ({
+    tabs,
     activeTab,
     onTabChange
 }: SettingsSidebarProps) => {
@@ -36,7 +40,7 @@ export const SettingsSidebar = ({
 
     return (
         <div className={'space-y-2'}>
-            {SETTINGS_TABS_CONFIG.map((tab) => {
+            {tabs.map((tab) => {
                 const IconComponent = iconMap[tab.icon as IconMapKey]
 
                 return (

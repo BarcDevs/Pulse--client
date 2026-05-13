@@ -1,13 +1,19 @@
+'use client'
+
+import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 
-import { Button } from '@/components/ui/button'
+import { Button, buttonVariants } from '@/components/ui/button'
 
-import { profileSystemPrivacySettingsWithIcons } from '@/constants/mappings/profile'
+import { useLogout } from '@/hooks/mutations/useLogout'
+
+import { ROUTES } from '@/constants/routes'
 
 import { profileLocales } from '@/locales/profileLocales'
 
 export const SystemPrivacy = () => {
     const t = useTranslations()
+    const { logout, isPending } = useLogout()
 
     return (
         <div className={'card-base'}>
@@ -15,24 +21,22 @@ export const SystemPrivacy = () => {
                 {t(profileLocales.systemPrivacy.title)}
             </h3>
 
-            <div className={'grid grid-cols-2 lg:grid-cols-4 gap-4'}>
-                {profileSystemPrivacySettingsWithIcons.map((setting) => (
-                    <Button
-                        key={setting.title}
-                        variant={'ghost'}
-                        className={'flex flex-col items-center p-4 rounded-xl bg-surface-section hover:bg-surface-section/80 h-auto text-center'}
-                    >
-                        <div className={'h-12 w-12 rounded-xl bg-surface-card flex--center mb-3'}>
-                            <setting.icon className={'h-6 w-6 text-muted-foreground'}/>
-                        </div>
-                        <h4 className={'text-sm font-medium text-foreground'}>
-                            {setting.title}
-                        </h4>
-                        <p className={'text-xs text-muted-foreground mt-1'}>
-                            {setting.subtitle}
-                        </p>
-                    </Button>
-                ))}
+            <div className={'flex gap-3'}>
+                <Link
+                    href={ROUTES.PROFILE_SETTINGS}
+                    className={buttonVariants({ variant: 'outline' })}
+                >
+                    {t(profileLocales.systemPrivacy.manageSettings)}
+                </Link>
+
+                <Button
+                    variant={'outline'}
+                    className={'border-destructive text-destructive hover:bg-destructive/10 hover:text-destructive'}
+                    onClick={() => logout()}
+                    disabled={isPending}
+                >
+                    {t(profileLocales.systemPrivacy.signOut)}
+                </Button>
             </div>
         </div>
     )

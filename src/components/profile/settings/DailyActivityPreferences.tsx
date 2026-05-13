@@ -2,69 +2,69 @@
 
 import { useTranslations } from 'next-intl'
 
-import { Settings2 } from 'lucide-react'
-
-import { ActivityItem } from '@/components/shared/lists/ActivityItem'
 import { Button } from '@/components/ui/button'
 
+import { useActivityMutations } from '@/hooks/mutations/useActivityMutations'
+import { useProfileOptions } from '@/hooks/queries/useProfileOptions'
 import { useUser } from '@/hooks/ui/useUser'
 
-import { profileLocales } from '@/locales/profileLocales'
-import { DAILY_ACTIVITIES } from '@/mocks/profileActivities'
+import { cn } from '@/lib/utils'
 
-// TODO: Add time scheduling for activity preferences to Profile/ActivityPreference type
+import { profileLocales } from '@/locales/profileLocales'
+
 export const DailyActivityPreferences = () => {
     const t = useTranslations()
     const { user } = useUser()
+    const { options } = useProfileOptions()
+    const {
+        addActivities,
+        removeActivity,
+        isPending
+    } = useActivityMutations()
 
-    const activities =
-        user?.profile?.activityPreferences?.length
-            ? user.profile.activityPreferences
-                .map((activity) => {
-                    const match = DAILY_ACTIVITIES.find(
-                        (dailyActivity) =>
-                            dailyActivity.title === activity.name
-                    )
-                    if (match) {
-                        return {
-                            id: activity.id,
-                            title: activity.name,
-                            subtitle: activity.description,
-                            tags: [activity.category],
-                            icon: match.icon
-                        }
-                    }
-                    return null
-                }).filter(
-                    (activity) => activity !== null
-                )
-            : []
+    const selectedSlugs = new Set(
+        user?.profile?.activityPreferences?.
+        map((a) => a.slug) ?? []
+    )
+
+    const handleToggle = (slug: string) => {
+        if (selectedSlugs.has(slug)) {
+            removeActivity(slug)
+        } else {
+            addActivities([slug])
+        }
+    }
 
     return (
         <div className={'card-base'}>
-            <div className={'flex-center-between mb-6'}>
-                <h3 className={'text-lg font-semibold text-foreground'}>
-                    {t(profileLocales.dailyPreferences.title)}
-                </h3>
-                <Button
-                    variant={'ghost'}
-                    size={'sm'}
-                    className={'h-8 w-8 p-0 rounded-lg hover:bg-surface-section'}
-                >
-                    <Settings2 className={'h-5 w-5 text-muted-foreground'}/>
-                </Button>
-            </div>
+            <h3 className={'text-lg font-semibold text-foreground mb-2'}>
+                {t(profileLocales.dailyPreferences.title)}
+            </h3>
+            <p className={'text-sm text-muted-foreground mb-6'}>
+                {`Select activities you enjoy — we'll personalise your suggestions.`}
+            </p>
 
-            <div className={'space-y-4'}>
-                {activities.map((activity) => (
-                    <ActivityItem
-                        key={activity.id}
-                        icon={activity.icon}
-                        title={activity.title}
-                        subtitle={activity.subtitle}
-                        tags={activity.tags}
-                    />
-                ))}
+            <div className={'flex--wrap gap-3'}>
+                {options?.activityPreferences.map((activity) => {
+                    const isSelected = selectedSlugs.has(activity.slug)
+
+                    return (
+                        <Button
+                            key={activity.slug}
+                            variant={'outline'}
+                            disabled={isPending}
+                            onClick={() => handleToggle(activity.slug)}
+                            className={cn(
+                                'rounded-full',
+                                isSelected
+                                    ? 'bg-primary-light text-primary border-primary'
+                                    : 'bg-surface-card text-muted-foreground border-border hover:border-primary/50'
+                            )}
+                        >
+                            {activity.name}
+                        </Button>
+                    )
+                })}
             </div>
         </div>
     )

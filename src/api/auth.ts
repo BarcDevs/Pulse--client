@@ -8,14 +8,20 @@ import type { SignupSchema } from '@/validations/forms/signupSchema'
 export const login = async (
     credentials: LoginSchema
 ): Promise<AuthResponse> => {
-    const res = await api.post<Response<AuthResponse>>('/auth/login', credentials)
+    const res = await api.post<Response<AuthResponse>>(
+        '/auth/login',
+        credentials
+    )
     return res.data.data
 }
 
 export const signup = async (userData: Omit<
     SignupSchema, 'confirmPassword'
 >): Promise<AuthResponse> => {
-    const res = await api.post<Response<AuthResponse>>('/auth/signup', userData)
+    const res = await api.post<Response<AuthResponse>>(
+        '/auth/signup',
+        userData
+    )
     return res.data.data
 }
 
@@ -33,6 +39,8 @@ export const logout = async ():
 
 export const refresh = async ():
     Promise<{ _csrf: string }> => {
-    const res = await api.get<Response<{ _csrf: string }>>('/auth/refresh')
+    const res = await api.get<Response<{
+        _csrf: string
+    }>>('/auth/refresh')
     return res.data.data
 }
