@@ -83,7 +83,6 @@
     "messages": {
       "assistantLabel": "צ'אט תמיכה",
       "youLabel": "את/ה",
-      "openingMessage": "היי אלכס. אני כאן איתך היום. איך את/ה מרגיש/ה ברגע זה?",
       "exampleUserRestlessness": "הרגשתי קצת חסר/ת מנוחה היום...",
       "aiResponse1": "זה יכול לקרות במהלך ההחלמה, במיוחד כשהמוח או הגוף מרגישים לא שקטים. לפעמים עוזר להאט קצת ולהתמקד במה שמרגיש ניתן לניהול ברגע זה.",
       "openingMessage": "היי {name}. אני כאן איתך היום. איך מרגיש לך כרגע?",
@@ -96,7 +95,6 @@
     "sidebar": {
       "nextMilestoneLabel": "אבן דרך הבאה",
       "nextMilestoneTitle": "90 יום",
-      "nextMilestoneBadge": "87% הושלם",
       "insightsTitle": "תובנות אחרונות",
       "insightsTimeframe": "7 הימים האחרונים",
       "emotionalTrendLabel": "מגמה רגשית",
@@ -106,8 +104,8 @@
       "sleepQualityTitle": "משתפרת",
       "sleepQualityDescription": "ממוצע של 6.5 שעות",
       "quote": "צעדים קטנים ועקביים יכולים ליצור שינוי משמעותי לאורך זמן",
-      "quoteAuthor": "קהילת HealEase"
-      "nextMilestoneBadge": "{percent}% הושלמו",
+      "quoteAuthor": "קהילת HealEase",
+      "nextMilestoneBadge": "{percent}% הושלמו"
     }
   },
   "checkIn": {
