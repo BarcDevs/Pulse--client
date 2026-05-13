@@ -4,17 +4,13 @@ import { useTranslations } from 'next-intl'
 
 import { Palette } from 'lucide-react'
 
-import { DEFAULT_LANGUAGE } from '@/config/settingsOptions'
-
-import { useSettings } from '@/context/SettingsContext'
-
 import { settingsLocales } from '@/locales/settingsLocales'
 
-import { LanguageSelector } from '../selectors/LanguageSelector'
+import { DarkModeToggle } from './DarkModeToggle'
+import { LanguageSelector } from './LanguageSelector'
 
 export const AppPreferences = () => {
     const t = useTranslations()
-    const { settings, onSettingChange } = useSettings()
 
     return (
         <div className={'card-base'}>
@@ -26,19 +22,8 @@ export const AppPreferences = () => {
             </div>
 
             <div className={'space-y-6'}>
-                {/* todo: add theme toggle */}
-                {/*<ThemeSelector*/}
-                {/*    theme={(settings?.theme as any) || 'light'}*/}
-                {/*    onThemeChange={(value) =>*/}
-                {/*        onSettingChange('theme', value)*/}
-                {/*    }*/}
-                {/*/>*/}
-                <LanguageSelector
-                    language={settings?.language || DEFAULT_LANGUAGE}
-                    onLanguageChangeAction={(value) =>
-                        onSettingChange('language', value)
-                    }
-                />
+                <DarkModeToggle/>
+                <LanguageSelector/>
             </div>
         </div>
     )

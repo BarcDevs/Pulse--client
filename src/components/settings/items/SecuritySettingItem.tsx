@@ -12,6 +12,7 @@ type SecuritySettingItemProps = {
     value: string
     variant?: 'default' | 'destructive'
     buttonText?: string
+    onClickAction: () => void
 }
 
 export const SecuritySettingItem = ({
@@ -19,7 +20,8 @@ export const SecuritySettingItem = ({
     label,
     value,
     variant = 'default',
-    buttonText
+    buttonText,
+    onClickAction
 }: SecuritySettingItemProps) => {
     const styles = securitySettingStyles[variant]
     const isDestructive = variant === 'destructive'
@@ -41,10 +43,12 @@ export const SecuritySettingItem = ({
                 variant={isDestructive ? 'destructive' : 'ghost'}
                 size={'sm'}
                 className={styles.button}
+                onClick={onClickAction}
             >
-                {isDestructive ? buttonText : (
-                    <Edit2 className={'h-4 w-4 text-muted-foreground'}/>
-                )}
+                {isDestructive
+                    ? buttonText
+                    : <Edit2 className={'h-4 w-4 text-muted-foreground'}/>
+                }
             </Button>
         </div>
     )

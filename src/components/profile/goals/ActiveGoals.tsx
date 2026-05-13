@@ -1,13 +1,31 @@
+'use client'
+
+import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 
+import { GoalStatus } from '@/types/goals'
+
 import { GoalProgressBar } from '@/components/shared/bars/GoalProgressBar'
-import { Button } from '@/components/ui/button'
+import { EmptyState } from '@/components/shared/EmptyState'
+import { buttonVariants } from '@/components/ui/button'
+import { Skeleton } from '@/components/ui/skeleton'
+
+import { useGoals } from '@/hooks/queries/useGoals'
+
+import { cn } from '@/lib/utils'
+
+import { ROUTES } from '@/constants/routes'
 
 import { profileLocales } from '@/locales/profileLocales'
 
-// TODO: Add user's active goals with progress tracking to Profile type
 export const ActiveGoals = () => {
     const t = useTranslations()
+    const { data: goals, isLoading } = useGoals()
+
+    const activeGoals = goals
+        ?.filter((goal) => goal.status === GoalStatus.ACTIVE)
+        .sort((a, b) => (b.progress ?? 0) - (a.progress ?? 0))
+        .slice(0, 3)
 
     return (
         <div className={'rounded-2xl bg-primary p-6 text-primary-foreground'}>
@@ -16,27 +34,40 @@ export const ActiveGoals = () => {
             </h3>
 
             <div className={'space-y-4'}>
-                {/* TODO: Replace mock list with real goals from API */}
-                {[
-                    { label: 'PHYSIO THERAPY', progress: 80 },
-                    { label: 'DAILY MEDITATION', progress: 65 },
-                    { label: 'SLEEP HYGIENE', progress: 40 }
-                ].map((goal) => (
+                {isLoading && (
+                    <>
+                        <Skeleton className={'h-8 w-full bg-white/20'}/>
+                        <Skeleton className={'h-8 w-full bg-white/20'}/>
+                        <Skeleton className={'h-8 w-full bg-white/20'}/>
+                    </>
+                )}
+
+                {!isLoading && (!activeGoals || activeGoals.length === 0) && (
+                    <EmptyState
+                        message={t(profileLocales.goals.title)}
+                        className={'text-white/70'}
+                    />
+                )}
+
+                {!isLoading && activeGoals?.map((goal) => (
                     <GoalProgressBar
-                        key={goal.label}
-                        label={goal.label}
-                        progress={goal.progress}
+                        key={goal.id}
+                        label={goal.title}
+                        progress={Math.round((goal.progress ?? 0) * 100)}
                         variant={'white'}
                     />
                 ))}
             </div>
 
-            <Button
-                variant={'secondary'}
-                className={'w-full mt-6 bg-white/20 hover:bg-white/30 text-primary-foreground border-0'}
+            <Link
+                href={ROUTES.RECOVERY_GOALS}
+                className={cn(
+                    buttonVariants({ variant: 'secondary' }),
+                    'w-full mt-6 bg-white/20 hover:bg-white/30 text-primary-foreground border-0'
+                )}
             >
                 {t(profileLocales.goals.viewRoadmap)}
-            </Button>
+            </Link>
         </div>
     )
 }

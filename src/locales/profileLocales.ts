@@ -4,20 +4,15 @@ export const profileLocales = {
     },
     levelBadge: 'profile.levelBadge',
     stats: {
-        days: {
-            label: 'profile.stats.days.label'
-        },
-        milestones: {
-            label: 'profile.stats.milestones.label'
-        },
-        healthScore: {
-            label: 'profile.stats.healthScore.label'
-        }
+        streak: 'profile.stats.streak',
+        milestones: 'profile.stats.milestones',
+        goals: 'profile.stats.goals'
     },
     recoveryIdentity: {
         title: 'profile.recoveryIdentity.title',
         subtitle: 'profile.recoveryIdentity.subtitle',
-        focusAreas: 'profile.recoveryIdentity.focusAreas'
+        focusAreas: 'profile.recoveryIdentity.focusAreas',
+        empty: 'profile.recoveryIdentity.empty'
     },
     basicInfo: {
         title: 'profile.basicInfo.title',
@@ -26,7 +21,16 @@ export const profileLocales = {
         fullName: 'profile.basicInfo.fullName',
         emailAddress: 'profile.basicInfo.emailAddress',
         dateOfBirth: 'profile.basicInfo.dateOfBirth',
-        primarySupportContact: 'profile.basicInfo.primarySupportContact'
+        primarySupportContact: 'profile.basicInfo.primarySupportContact',
+        firstName: 'profile.basicInfo.firstName',
+        lastName: 'profile.basicInfo.lastName',
+        location: 'profile.basicInfo.location',
+        locationNotSet: 'profile.basicInfo.locationNotSet',
+        save: 'profile.basicInfo.save',
+        saving: 'profile.basicInfo.saving',
+        cancel: 'profile.basicInfo.cancel',
+        emailNote: 'profile.basicInfo.emailNote',
+        emailNoteLink: 'profile.basicInfo.emailNoteLink'
     },
     goals: {
         title: 'profile.goals.title',
@@ -54,6 +58,8 @@ export const profileLocales = {
     },
     systemPrivacy: {
         title: 'profile.systemPrivacy.title',
-        settings: 'profile.systemPrivacy.settings'
+        settings: 'profile.systemPrivacy.settings',
+        manageSettings: 'profile.systemPrivacy.manageSettings',
+        signOut: 'profile.systemPrivacy.signOut'
     }
 } as const

@@ -481,19 +481,14 @@
     },
     "levelBadge": "Level {level}: {title}",
     "stats": {
-      "days": {
-        "label": "Days"
-      },
-      "milestones": {
-        "label": "Milestones"
-      },
-      "healthScore": {
-        "label": "Health score"
-      }
+      "streak": "Current streak",
+      "milestones": "Milestones completed",
+      "goals": "Active goals"
     },
     "recoveryIdentity": {
       "title": "Your focus",
       "subtitle": "Areas you are currently prioritizing",
+      "empty": "No focus areas added yet",
       "focusAreas": [
         { "label": "Pain Management" },
         { "label": "Mental Clarity" },
@@ -507,6 +502,15 @@
       "emailAddress": "Email address",
       "dateOfBirth": "Date of birth",
       "primarySupportContact": "Primary support contact",
+      "firstName": "First name",
+      "lastName": "Last name",
+      "location": "Location",
+      "locationNotSet": "Location not set",
+      "save": "Save changes",
+      "saving": "Saving...",
+      "cancel": "Cancel",
+      "emailNote": "Email cannot be changed here.",
+      "emailNoteLink": "Change in settings",
       "fields": [
         { "label": "Full name" },
         { "label": "Email address" },
@@ -556,6 +560,8 @@
     },
     "systemPrivacy": {
       "title": "System & privacy",
+      "manageSettings": "Manage settings",
+      "signOut": "Sign out",
       "settings": [
         {
           "title": "Security",
@@ -756,6 +762,7 @@
     },
     "notifications": {
       "title": "Notifications",
+      "description": "Control how and when HealEase contacts you.",
       "dailyReminder": {
         "label": "Daily Reminder",
         "description": "Receive gentle reminders for check-ins, routines, and recovery activities"
@@ -763,10 +770,23 @@
       "communityAlerts": {
         "label": "Community Alerts",
         "description": "Get notified when someone responds to your posts or interactions"
+      },
+      "pushNotifications": {
+        "label": "Push Notifications",
+        "description": "Receive alerts on your device"
+      },
+      "aiInsights": {
+        "label": "AI Insights",
+        "description": "Be notified when new AI observations are ready"
+      },
+      "milestoneAlerts": {
+        "label": "Milestone Alerts",
+        "description": "Celebrate when you hit a new milestone"
       }
     },
     "privacy": {
       "title": "Privacy Settings",
+      "description": "Your data, your control.",
       "visibility": {
         "title": "Profile Visibility",
         "description": "Choose who can view your profile and progress",
@@ -781,7 +801,12 @@
         "description": "Allow anonymous data to help improve recovery research and insights"
       },
       "anonymousParticipation": {
-        "label": "Anonymous Participation"
+        "label": "Anonymous Participation",
+        "description": "Hide your identity in community discussions"
+      },
+      "activityVisible": {
+        "label": "Activity Visible to Mentors",
+        "description": "Allow your care team to view your progress"
       }
     },
     "security": {
@@ -789,12 +814,26 @@
       "email": "Email Address",
       "password": {
         "label": "Password",
-        "value": "Last updated {timeAgo}"
+        "value": "Last updated {timeAgo}",
+        "changeTitle": "Change Password",
+        "currentPassword": "Current password",
+        "newPassword": "New password",
+        "confirmPassword": "Confirm new password",
+        "passwordMismatch": "Passwords do not match",
+        "changeButton": "Change password",
+        "changingButton": "Changing...",
+        "cancelButton": "Cancel"
       },
+      "emailComingSoon": "Email change is not available yet",
       "deactivate": {
         "label": "Deactivate Account",
         "description": "Permanently remove your account and recovery data",
-        "buttonText": "Deactivate"
+        "buttonText": "Deactivate",
+        "confirmTitle": "Deactivate Account",
+        "confirmDescription": "Your account will be deactivated and you will lose access. Your data is kept and the account can be restored by contacting support.",
+        "confirmButton": "Yes, deactivate",
+        "confirmingButton": "Deactivating...",
+        "cancelButton": "Cancel"
       }
     },
     "preferences": {

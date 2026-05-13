@@ -1,20 +1,16 @@
 'use client'
 
-import {
-    useEffect,
-    useState
-} from 'react'
-
-import type { CheckInStats } from '@/types/checkIn'
+import { Camera } from 'lucide-react'
 
 import { UserAvatar } from '@/components/shared/UserAvatar'
+import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 
 import { useUser } from '@/hooks/ui/useUser'
 
 import { getUserFallback } from '@/lib/utils'
 
-import { fetchCheckInStats } from '@/api/checkIn'
+import { FEATURES } from '@/config/features'
 
 import { ProfileStats } from '../stats/ProfileStats'
 
@@ -23,20 +19,6 @@ import { ProfileLevel } from './ProfileLevel'
 
 export const ProfileCard = () => {
     const { user } = useUser()
-    const [stats, setStats] = useState<CheckInStats | null>(null)
-
-    useEffect(() => {
-        const getStats = async () => {
-            try {
-                const stats = await fetchCheckInStats()
-                setStats(stats)
-            } catch (err) {
-                console.error('Failed to fetch stats:', err)
-            }
-        }
-
-        getStats()
-    }, [])
 
     if (!user)
         return null
@@ -45,7 +27,9 @@ export const ProfileCard = () => {
         user.firstName,
         user.lastName
     )
-    const streak = stats?.currentStreak ?? 0
+
+    // TODO: level data not yet in Profile type — requires server changes
+    const level = 3
 
     return (
         <Card className={'border-0 shadow-sm'}>
@@ -59,9 +43,22 @@ export const ProfileCard = () => {
                             fallback: 'bg-primary text-2xl text-white'
                         }}
                     />
-                    <div className={'absolute -bottom-1 -right-1 flex size-8 items-center justify-center rounded-full border-2 border-white bg-secondary text-xs font-bold text-white'}>
-                        {streak}
-                    </div>
+
+                    {/* TODO: implement profile image upload */}
+                    <Button
+                        size={'icon'}
+                        variant={'ghost'}
+                        className={'absolute -bottom-1 -left-1 size-7 rounded-full border-2 border-white bg-muted text-muted-foreground hover:bg-muted/80'}
+                    >
+                        <Camera className={'size-3.5'}/>
+                    </Button>
+
+                    {FEATURES.profileLevel && (
+                        // todo: add a tooltip
+                        <div className={'absolute -bottom-1 -right-1 flex size-8 items-center justify-center rounded-full border-2 border-white bg-secondary text-xs font-bold text-white'}>
+                            {level}
+                        </div>
+                    )}
                 </div>
 
                 <ProfileInfo
@@ -71,7 +68,7 @@ export const ProfileCard = () => {
                     dateFormat={user.profile?.dateFormat ?? undefined}
                 />
 
-                <ProfileLevel/>
+                {FEATURES.profileLevel && <ProfileLevel/>}
 
                 <ProfileStats/>
             </CardContent>

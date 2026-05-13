@@ -22,8 +22,8 @@ export const progressMilestonesStyleMap = {
         iconColor: 'text-red-500'
     },
     'Mind Master': {
-        iconBg: 'bg-accent-light',
-        iconColor: 'text-accent'
+        iconBg: 'bg-purple-light',
+        iconColor: 'text-purple'
     },
     '1 Month Active': {
         iconBg: 'bg-gray-100',

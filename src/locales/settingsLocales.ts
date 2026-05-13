@@ -13,6 +13,7 @@ export const settingsLocales = {
     },
     notifications: {
         title: 'settings.notifications.title',
+        description: 'settings.notifications.description',
         dailyReminder: {
             label: 'settings.notifications.dailyReminder.label',
             description: 'settings.notifications.dailyReminder.description'
@@ -20,10 +21,23 @@ export const settingsLocales = {
         communityAlerts: {
             label: 'settings.notifications.communityAlerts.label',
             description: 'settings.notifications.communityAlerts.description'
+        },
+        pushNotifications: {
+            label: 'settings.notifications.pushNotifications.label',
+            description: 'settings.notifications.pushNotifications.description'
+        },
+        aiInsights: {
+            label: 'settings.notifications.aiInsights.label',
+            description: 'settings.notifications.aiInsights.description'
+        },
+        milestoneAlerts: {
+            label: 'settings.notifications.milestoneAlerts.label',
+            description: 'settings.notifications.milestoneAlerts.description'
         }
     },
     privacy: {
         title: 'settings.privacy.title',
+        description: 'settings.privacy.description',
         visibility: {
             title: 'settings.privacy.visibility.title',
             description: 'settings.privacy.visibility.description',
@@ -34,7 +48,12 @@ export const settingsLocales = {
             description: 'settings.privacy.dataSharing.description'
         },
         anonymousParticipation: {
-            label: 'settings.privacy.anonymousParticipation.label'
+            label: 'settings.privacy.anonymousParticipation.label',
+            description: 'settings.privacy.anonymousParticipation.description'
+        },
+        activityVisible: {
+            label: 'settings.privacy.activityVisible.label',
+            description: 'settings.privacy.activityVisible.description'
         }
     },
     security: {
@@ -42,12 +61,26 @@ export const settingsLocales = {
         email: 'settings.security.email',
         password: {
             label: 'settings.security.password.label',
-            value: 'settings.security.password.value'
+            value: 'settings.security.password.value',
+            changeTitle: 'settings.security.password.changeTitle',
+            currentPassword: 'settings.security.password.currentPassword',
+            newPassword: 'settings.security.password.newPassword',
+            confirmPassword: 'settings.security.password.confirmPassword',
+            passwordMismatch: 'settings.security.password.passwordMismatch',
+            changeButton: 'settings.security.password.changeButton',
+            changingButton: 'settings.security.password.changingButton',
+            cancelButton: 'settings.security.password.cancelButton'
         },
+        emailComingSoon: 'settings.security.emailComingSoon',
         deactivate: {
             label: 'settings.security.deactivate.label',
             description: 'settings.security.deactivate.description',
-            buttonText: 'settings.security.deactivate.buttonText'
+            buttonText: 'settings.security.deactivate.buttonText',
+            confirmTitle: 'settings.security.deactivate.confirmTitle',
+            confirmDescription: 'settings.security.deactivate.confirmDescription',
+            confirmButton: 'settings.security.deactivate.confirmButton',
+            confirmingButton: 'settings.security.deactivate.confirmingButton',
+            cancelButton: 'settings.security.deactivate.cancelButton'
         }
     },
     preferences: {

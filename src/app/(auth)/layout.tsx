@@ -13,7 +13,7 @@ const AuthLayout = ({ children }: LayoutProps) => {
     const t = useTranslations()
 
     return (
-        <div className={'flex min-h-screen flex-col bg-linear-to-br from-surface-page via-primary-light/30 to-accent-light/20'}>
+        <div className={'flex min-h-screen flex-col bg-linear-to-br from-surface-page via-primary-light/30 to-purple-light/20'}>
             <header className={'flex-center-between p-4 md:p-6'}>
                 <Link
                     href={'/'}
