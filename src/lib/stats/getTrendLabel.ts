@@ -1,3 +1,10 @@
+import {
+    type LucideIcon,
+    Minus,
+    TrendingDown,
+    TrendingUp
+} from 'lucide-react'
+
 import { TrendPoint } from '@/types/checkIn'
 
 import { progressLocales } from '@/locales/progressLocales'
@@ -6,7 +13,7 @@ const { trends, status } = progressLocales.wellness
 
 export type TrendData = {
     labelKey: string
-    icon: 'up' | 'down' | 'flat'
+    icon: LucideIcon
     color: string
 }
 
@@ -19,12 +26,12 @@ export const getTrendData = (
         return metricType === 'mood'
             ? {
                 labelKey: trends.steady,
-                icon: 'flat',
+                icon: Minus,
                 color: 'text-muted-foreground'
             }
             : {
                 labelKey: trends.stable,
-                icon: 'flat',
+                icon: Minus,
                 color: 'text-muted-foreground'
             }
 
@@ -44,18 +51,18 @@ export const getTrendData = (
         if (diff > threshold)
             return {
                 labelKey: trends.improving,
-                icon: 'up',
+                icon: TrendingUp,
                 color: 'text-green-600'
             }
         if (diff < -threshold)
             return {
                 labelKey: trends.declining,
-                icon: 'down',
+                icon: TrendingDown,
                 color: 'text-red-600'
             }
         return {
             labelKey: trends.steady,
-            icon: 'flat',
+            icon: Minus,
             color: 'text-muted-foreground'
         }
     }
@@ -63,18 +70,18 @@ export const getTrendData = (
     if (diff < -threshold)
         return {
             labelKey: trends.improving,
-            icon: 'down',
+            icon: TrendingDown,
             color: 'text-green-600'
         }
     if (diff > threshold)
         return {
             labelKey: trends.increasing,
-            icon: 'up',
+            icon: TrendingUp,
             color: 'text-red-600'
         }
     return {
         labelKey: trends.stable,
-        icon: 'flat',
+        icon: Minus,
         color: 'text-muted-foreground'
     }
 }

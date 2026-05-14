@@ -1,3 +1,11 @@
+import {
+    Activity,
+    Brain,
+    type LucideIcon,
+    Moon,
+    Sun
+} from 'lucide-react'
+
 export const PROFILE_ACTIVITIES = [
     {
         title: 'Morning Routine',
@@ -11,25 +19,31 @@ export const PROFILE_ACTIVITIES = [
     }
 ]
 
-export const RECOVERY_FOCUS_AREAS = [
+type RecoveryFocusArea = {
+    label: string
+    icon: LucideIcon
+    color: string
+}
+
+export const RECOVERY_FOCUS_AREAS: RecoveryFocusArea[] = [
     {
         label: 'Physical Health',
-        icon: 'Activity',
+        icon: Activity,
         color: 'text-green-600'
     },
     {
         label: 'Mental Wellness',
-        icon: 'Brain',
+        icon: Brain,
         color: 'text-purple-600'
     },
     {
         label: 'Sleep & Rest',
-        icon: 'Moon',
+        icon: Moon,
         color: 'text-blue-600'
     },
     {
         label: 'Social Connection',
-        icon: 'Sun',
+        icon: Sun,
         color: 'text-yellow-600'
     }
 ]

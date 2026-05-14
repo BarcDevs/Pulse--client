@@ -10,8 +10,6 @@ import { cn } from '@/lib/utils'
 import type { ActionConfig } from '@/constants/config/headerPageConfigs'
 import { ROUTES } from '@/constants/routes'
 
-import { headerIcon } from './headerIcon'
-
 type HeaderActionButtonProps = {
     action: ActionConfig
 }
@@ -44,7 +42,9 @@ export const HeaderActionButton = ({
                 isOutline && !isPrimaryAction && 'text-muted-foreground'
             )}
         >
-            {headerIcon(action.icon)}
+            {action.icon && (
+                <action.icon className={'mr-2 h-4 w-4'}/>
+            )}
             {t(action.label)}
         </Button>
     )

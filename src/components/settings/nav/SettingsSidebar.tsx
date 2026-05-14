@@ -1,11 +1,6 @@
-import { useTranslations } from 'next-intl'
+'use client'
 
-import {
-    Bell,
-    Lock,
-    Palette,
-    Shield
-} from 'lucide-react'
+import { useTranslations } from 'next-intl'
 
 import type { SetState } from '@/types/react'
 
@@ -19,15 +14,6 @@ type SettingsSidebarProps = {
     onTabChange: SetState<string>
 }
 
-const iconMap = {
-    Bell,
-    Lock,
-    Shield,
-    Palette
-}
-
-type IconMapKey = keyof typeof iconMap
-
 export const SettingsSidebar = ({
     activeTab,
     onTabChange
@@ -36,19 +22,15 @@ export const SettingsSidebar = ({
 
     return (
         <div className={'space-y-2'}>
-            {SETTINGS_TABS_CONFIG.map((tab) => {
-                const IconComponent = iconMap[tab.icon as IconMapKey]
-
-                return (
-                    <SettingsTabButton
-                        key={tab.id}
-                        icon={IconComponent}
-                        label={t(tab.labelKey)}
-                        isActive={activeTab === tab.id}
-                        onClick={() => onTabChange(tab.id)}
-                    />
-                )
-            })}
+            {SETTINGS_TABS_CONFIG.map((tab) => (
+                <SettingsTabButton
+                    key={tab.id}
+                    icon={tab.icon}
+                    label={t(tab.labelKey)}
+                    isActive={activeTab === tab.id}
+                    onClick={() => onTabChange(tab.id)}
+                />
+            ))}
 
             <SettingsSidebarFooter/>
         </div>
