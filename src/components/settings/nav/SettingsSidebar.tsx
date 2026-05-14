@@ -11,24 +11,26 @@ import { SettingsTabButton } from './SettingsTabButton'
 
 type SettingsSidebarProps = {
     activeTab: string
-    onTabChange: SetState<string>
+    onTabChangeAction: SetState<string>
 }
 
 export const SettingsSidebar = ({
     activeTab,
-    onTabChange
+    onTabChangeAction
 }: SettingsSidebarProps) => {
     const t = useTranslations()
 
     return (
         <div className={'space-y-2'}>
-            {SETTINGS_TABS_CONFIG.map((tab) => (
+            {SETTINGS_TABS_CONFIG
+                .filter((tab) => tab.active)
+                .map((tab) => (
                 <SettingsTabButton
                     key={tab.id}
                     icon={tab.icon}
                     label={t(tab.labelKey)}
                     isActive={activeTab === tab.id}
-                    onClick={() => onTabChange(tab.id)}
+                    onClick={() => onTabChangeAction(tab.id)}
                 />
             ))}
 

@@ -33,7 +33,7 @@ export const BasicInfoForm = ({
         defaultValues: {
             firstName: user?.firstName,
             lastName: user?.lastName,
-            location: user?.profile?.location
+            location: user?.profile?.location ?? undefined
         }
     })
 
