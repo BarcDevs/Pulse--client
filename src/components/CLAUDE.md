@@ -43,8 +43,8 @@
 - Colors: check `globals.css` @utility blocks first. Only add custom tw color if it doesn't exist. Never hardcode colors. Before adding new custom color, verify it's not already defined under different name
 - Always prefer custom brand colors over tw-native colors
 
-## shadcn/ui
-- Always use shadcn/ui components when available
-- Components in `src/components/ui/`
-- Use Form, FormField, FormItem for form inputs
-- `src/components/ui` is out of bound for edits, never edit shadcn/ui components directly
+### UI components — shadcn first
+- Always use shadcn/ui component if one exists (`Button`, `Input`, `Select`, `Badge`, `Card`, etc.)
+- ❌ Never use plain `<button>`, `<input>`, `<select>` when shadcn equivalent available
+- shadcn components live in `src/components/ui/` — read-only, never edit them
+- After shadcn, check `src/components/shared/` before creating new UI

@@ -257,6 +257,12 @@ const t = await getTranslations()
 
 ## GLOBAL CONSTRAINTS
 
+### UI components — shadcn first
+- Always use shadcn/ui component if one exists (`Button`, `Input`, `Select`, `Badge`, `Card`, etc.)
+- ❌ Never use plain `<button>`, `<input>`, `<select>` when shadcn equivalent available
+- shadcn components live in `src/components/ui/` — read-only, never edit them
+- After shadcn, check `src/components/shared/` before creating new UI
+
 ### Shared components — check before creating new ones
 | Component | Purpose | When |
 |-----------|---------|------|
@@ -295,4 +301,16 @@ const t = await getTranslations()
 
 ### Data fetching components
 - Components that fetch data: always render error state using existing error logic (`ErrorDisplay` or `ErrorStateCard`). Never skip error handling
+
+### Feature flags
+- Wrap flagged component from **outside** — never inside the component itself
+- ✓ `{flag && <MyComponent/>}` at call site
+- ❌ `if (!flag) return null` inside `MyComponent`
+
+### Navigation / links
+- Use `<Link href={...}>` for all navigation
+- `router.push(...)` only when programmatic navigation is required (e.g. after form submit, redirect on condition)
+- ❌ Never use `router.push` as a substitute for a plain link
+- Route paths: always from `src/constants/routes.ts` — never hardcode strings like `'/profile'`
+- API endpoints: always from `src/api/` endpoint constants — never hardcode URL strings
 
