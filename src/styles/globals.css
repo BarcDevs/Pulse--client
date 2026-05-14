@@ -25,6 +25,8 @@
     --primary-light: #e8f4fd;
     --primary-gradient-start: #005da7;
     --primary-gradient-end: #2976c7;
+    --primary-deep: #1e3a8a;
+    --chart-highlight: #7cf8dd;
 
     /* Secondary - Teal for positive states */
     --secondary: #006b5b;
@@ -311,6 +313,8 @@
     --color-on-primary-fixed-variant: var(--on-primary-fixed-variant);
     --color-insight: var(--insight);
     --color-insight-foreground: var(--insight-foreground);
+    --color-primary-deep: var(--primary-deep);
+    --color-chart-highlight: var(--chart-highlight);
 }
 
 @layer base {

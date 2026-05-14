@@ -15,10 +15,12 @@ import { FooterSocial } from './FooterSocial'
 
 type FooterProps = {
     className?: ClassName
+    showLinks?: boolean
 }
 
 export const Footer = ({
-    className
+    className,
+    showLinks = true
 }: FooterProps = {}) => {
     const t = useTranslations()
 
@@ -27,16 +29,23 @@ export const Footer = ({
             'bg-surface-section border-t border-border',
             className
         )}>
-            <div className="max-w-7xl mx-auto px-4 py-4 md:py-6">
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-                    <FooterBrand/>
-                    <FooterLinks/>
-                    <FooterLegal/>
-                    <FooterSocial/>
-                </div>
+            <div className={'mx-auto max-w-7xl px-4 py-4 md:py-6'}>
+                {showLinks ? (
+                    <div className={'mb-8 grid grid-cols-1 gap-8 md:grid-cols-4'}>
+                        <FooterBrand/>
+                        <FooterLinks/>
+                        <FooterLegal/>
+                        <FooterSocial/>
+                    </div>
+                ) : (
+                    <div className={'mb-4 flex items-center justify-between'}>
+                        <FooterBrand/>
+                        <FooterSocial/>
+                    </div>
+                )}
 
-                <div className="border-t border-border pt-4 text-center">
-                    <p className="text-sm text-muted-foreground">
+                <div className={'border-t border-border pt-4 text-center'}>
+                    <p className={'text-sm text-muted-foreground'}>
                         {t(globalLocales.footer.copyright)}
                     </p>
                 </div>
