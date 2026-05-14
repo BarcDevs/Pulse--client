@@ -1,3 +1,11 @@
+import {
+    Download,
+    type LucideIcon,
+    Plus,
+    Share2,
+    Shield
+} from 'lucide-react'
+
 import { FEATURES } from '@/config/features'
 
 import { chatLocales } from '@/locales/chatLocales'
@@ -14,14 +22,14 @@ export type ActionConfig = {
     type: 'newPost' | 'export' | 'share'
     label: string
     variant?: 'default' | 'outline'
-    // todo: replace plain text icon with proper LucideIcon
-    icon?: 'plus' | 'download' | 'share2'
+    icon?: LucideIcon
 }
 
 type BadgeConfig = {
     label: string
     variant?: 'default' | 'secondary' | 'live'
-    icon?: 'shield' | 'pulse'
+    icon?: LucideIcon
+    pulse?: boolean
 }
 
 type HeaderPageConfig = {
@@ -45,7 +53,7 @@ export const headerPageConfigs: Record<
         badge: {
             label: chatLocales.badge,
             variant: 'secondary',
-            icon: 'shield'
+            icon: Shield
         }
     },
     community: {
@@ -56,8 +64,7 @@ export const headerPageConfigs: Record<
             {
                 type: 'newPost',
                 label: communityLocales.posts.newPostButton,
-                // todo: replace string-based icons with actual icons
-                icon: 'plus'
+                icon: Plus
             }
         ]
     },
@@ -67,7 +74,7 @@ export const headerPageConfigs: Record<
         badge: {
             label: globalLocales.pageSubtitles.insights.badge,
             variant: 'live',
-            icon: 'pulse'
+            pulse: true
         }
     },
     'recovery-goals': {
@@ -98,7 +105,7 @@ export const headerPageConfigs: Record<
                         type: 'export' as const,
                         label: progressLocales.exportPdf,
                         variant: 'outline' as const,
-                        icon: 'download' as const
+                        icon: Download
                     }
                 ]
                 : []),
@@ -108,7 +115,7 @@ export const headerPageConfigs: Record<
                         type: 'share' as const,
                         label: progressLocales.shareJourney,
                         variant: 'outline' as const,
-                        icon: 'share2' as const
+                        icon: Share2
                     }
                 ]
                 : [])
