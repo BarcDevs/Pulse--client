@@ -36,9 +36,7 @@ export const progressLocales = {
         },
         milestones: {
             label: 'progress.stats.milestones.label',
-            unit: 'progress.stats.milestones.unit',
-            nextPrefix: 'progress.stats.milestones.nextPrefix',
-            nextValue: 'progress.stats.milestones.nextValue'
+            unit: 'progress.stats.milestones.unit'
         }
     },
     share: {

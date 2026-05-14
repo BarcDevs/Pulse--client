@@ -1,6 +1,7 @@
 import { useTranslations } from 'next-intl'
 
 import { insightsLocales } from '@/locales/insightsLocales'
+import { OBSERVATION_STAT_MOCK } from '@/mocks/insightsMockData'
 
 export const ObservationCard = () => {
     const t = useTranslations()
@@ -18,7 +19,7 @@ export const ObservationCard = () => {
             </p>
             <div className={'mt-4'}>
                 <div className={'text-3xl font-bold text-primary'}>
-                    {t(insightsLocales.behavioralPatterns.observation.stat)}
+                    {OBSERVATION_STAT_MOCK}
                 </div>
                 <p className={'text-xs text-muted-foreground'}>
                     {t(insightsLocales.behavioralPatterns.observation.statLabel)}

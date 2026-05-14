@@ -31,12 +31,6 @@ export const MilestonesCard = () => {
                             {t(progressLocales.stats.milestones.unit)}
                         </span>
                     </div>
-                    <p className={'mt-1 text-sm text-muted-foreground'}>
-                        {`${t(progressLocales.stats.milestones.nextPrefix)} `}
-                        <span className={'text-primary font-medium'}>
-                            {t(progressLocales.stats.milestones.nextValue)}
-                        </span>
-                    </p>
                 </div>
                 <div className={'h-12 w-12 rounded-xl bg-purple-50 flex--center'}>
                     <Award className={'h-6 w-6 text-purple'}/>

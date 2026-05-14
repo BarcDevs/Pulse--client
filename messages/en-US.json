@@ -330,7 +330,6 @@
         "label": "Observation",
         "title": "Morning routine consistency",
         "description": "Completing a daily check-in earlier in the day is associated with higher consistency in reaching your recovery goals.",
-        "stat": "82%",
         "statLabel": "Success rate with regular check-ins"
       },
       "prediction": {
@@ -362,11 +361,6 @@
           "description": "Mood patterns appear more balanced recently"
         }
       ]
-    },
-    "milestone": {
-      "title": "Milestone reached",
-      "description": "You’ve completed 10 consecutive days of check-ins. That kind of consistency takes effort.",
-      "label": "10 day streak"
     }
   },
   "progress": {
@@ -407,9 +401,7 @@
       },
       "milestones": {
         "label": "Milestones reached",
-        "unit": "badges",
-        "nextPrefix": "Next:",
-        "nextValue": "Mind and body balance, 6 days remaining"
+        "unit": "badges"
       }
     },
     "share": {

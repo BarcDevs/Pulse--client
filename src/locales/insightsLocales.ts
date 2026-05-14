@@ -42,7 +42,6 @@ export const insightsLocales = {
             label: 'insights.behavioralPatterns.observation.label',
             title: 'insights.behavioralPatterns.observation.title',
             description: 'insights.behavioralPatterns.observation.description',
-            stat: 'insights.behavioralPatterns.observation.stat',
             statLabel: 'insights.behavioralPatterns.observation.statLabel'
         },
         prediction: {
@@ -56,10 +55,5 @@ export const insightsLocales = {
         title: 'insights.summary.title',
         description: 'insights.summary.description',
         exportButton: 'insights.summary.exportButton'
-    },
-    milestone: {
-        title: 'insights.milestone.title',
-        description: 'insights.milestone.description',
-        label: 'insights.milestone.label'
     }
 } as const
