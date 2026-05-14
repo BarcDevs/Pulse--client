@@ -14,6 +14,7 @@ export type SettingsTab = {
     id: string
     labelKey: string
     icon: LucideIcon
+    active: boolean
 }
 
 export const SETTINGS_TABS_CONFIG: SettingsTab[] = [
