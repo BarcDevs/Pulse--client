@@ -1013,43 +1013,43 @@
   },
   "landing": {
     "nav": {
-      "howItWorks": "How it Works",
+      "howItWorks": "How It Works",
       "community": "Community",
       "about": "About"
     },
     "hero": {
-      "headline": "Recovery Refined.",
-      "headlineAccent": "Sanctuary Found.",
-      "subtitle": "Your recovery journey deserves more than just a tracker. Discover a supportive digital sanctuary designed to be your constant companion in wellness and healing.",
-      "startJourney": "Start Your Journey",
+      "headline": "Recovery, With Clarity.",
+      "headlineAccent": "Support That Stays With You.",
+      "subtitle": "HealEase helps you track recovery, understand patterns, and stay connected to meaningful support through every stage of the process.",
+      "startJourney": "Get Started",
       "exploreCommunity": "Explore Community",
-      "streakLabel": "Day Streak",
-      "moodLabel": "Mood Today"
+      "streakLabel": "Current Streak",
+      "moodLabel": "Today’s Mood"
     },
     "features": {
-      "sectionTitle": "Built for Your Peace of Mind",
-      "sectionDesc": "Every feature is crafted to reduce cognitive load and provide clear, actionable paths forward.",
-      "card1Title": "Smart Tracking",
-      "card1Desc": "Track mood, pain, and activities with ease through our intuitive, low-friction interface.",
-      "card2Title": "AI-Driven Insights",
-      "card2Desc": "Personalized patterns and recommendations tailored specifically to your unique recovery journey.",
+      "sectionTitle": "Designed to Support Recovery",
+      "sectionDesc": "Simple tools that help you stay consistent, reflect on progress, and feel supported without overwhelm.",
+      "card1Title": "Daily Tracking",
+      "card1Desc": "Log mood, pain levels, routines, and reflections through a calm and structured experience.",
+      "card2Title": "Personalized Insights",
+      "card2Desc": "Understand trends, habits, and recovery patterns with AI-powered guidance tailored to your progress.",
       "card3Title": "Supportive Community",
-      "card3Desc": "Connect with others who truly understand your path in a moderated, safe environment."
+      "card3Desc": "Connect with people who relate to your experience in a respectful and emotionally safe space."
     },
     "howItWorks": {
-      "sectionTitle": "How Your Healing Unfolds",
-      "step1Title": "Check-in",
-      "step1Desc": "Spend 30 seconds a day documenting your feelings and physical state using our calming interface.",
-      "step2Title": "Monitor",
-      "step2Desc": "Watch as HealEase transforms your data into beautiful, easy-to-understand visualizations.",
-      "step3Title": "Grow",
-      "step3Desc": "Receive personalized prompts and community support to help you reach your recovery milestones.",
-      "chartLabel": "Weekly Recovery Trend"
+      "sectionTitle": "How HealEase Supports You",
+      "step1Title": "Reflect",
+      "step1Desc": "Take a moment each day to check in with how you feel physically and emotionally.",
+      "step2Title": "Understand",
+      "step2Desc": "View clear insights and trends that help you better understand your recovery over time.",
+      "step3Title": "Move Forward",
+      "step3Desc": "Build supportive routines, track goals, and stay connected to encouragement when you need it.",
+      "chartLabel": "Recovery Trends"
     },
     "cta": {
-      "headline": "Join the Sanctuary Today",
-      "desc": "Begin your refined recovery experience. Start tracking, connecting, and find your calm with HealEase.",
-      "button": "Get Started for Free"
+      "headline": "Start Your Recovery Space",
+      "desc": "Track progress, build healthier routines, and stay connected to support that understands the process.",
+      "button": "Start for Free"
     }
   }
 }
