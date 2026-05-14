@@ -69,19 +69,16 @@ export const flushQueue = (
 }
 
 export const initiateLogout = async () => {
-    authState.isShuttingDown = true
     authState.isRefreshing = false
-    rejectAll(
-        new AxiosError('Session expired')
-    )
     clearCsrfToken()
 
     try {
-        const { logout } = await import(
-                '@/api/auth'
-            )
+        const { logout } = await import('@/api/auth')
         await logout()
-    } catch {/* Ignore errors during logout */}
+    } catch {/** Ignore errors during logout */}
+
+    authState.isShuttingDown = true
+    rejectAll(new AxiosError('Session expired'))
 
     if (typeof window !== 'undefined')
         window.location.href = '/login'

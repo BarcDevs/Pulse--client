@@ -7,6 +7,8 @@ import {
     useState
 } from 'react'
 
+import { usePathname } from 'next/navigation'
+
 import { useQueryClient } from '@tanstack/react-query'
 
 import type { LayoutProps } from '@/types'
@@ -16,11 +18,25 @@ import { ErrorBannerWrapper } from '@/components/shared/ErrorBannerWrapper'
 
 import { useGetMe } from '@/hooks/queries/useGetMe'
 
-import { isNetworkError } from '@/utils/error'
+import { initiateLogout } from '@/lib/auth'
+
+import {
+    isNetworkError,
+    isUnauthorizedError
+} from '@/utils/error'
 
 import { authQueryKeys } from '@/constants/queryKeys'
+import { ROUTES } from '@/constants/routes'
 
 import { AuthContext } from './AuthContext'
+
+const PUBLIC_ROUTES = [
+    ROUTES.HOME,
+    ROUTES.LOGIN,
+    ROUTES.SIGNUP,
+    ROUTES.VERIFY,
+    ROUTES.FORGOT_PASSWORD
+] as const
 
 export const AuthProvider = ({
     children
@@ -37,6 +53,7 @@ export const AuthProvider = ({
     const lastErrorRef = useRef<Error | null>(null)
 
     const queryClient = useQueryClient()
+    const pathname = usePathname()
 
     const setUser = useCallback(
         (newUser: User | null) => {
@@ -73,6 +90,16 @@ export const AuthProvider = ({
         },
         []
     )
+
+    useEffect(() => {
+        if (
+            error
+            && isUnauthorizedError(error)
+            && !PUBLIC_ROUTES.includes(pathname as typeof PUBLIC_ROUTES[number])
+        ) {
+            initiateLogout()
+        }
+    }, [error, pathname])
 
     useEffect(() => {
         const hasNetworkError = error && isNetworkError(error)

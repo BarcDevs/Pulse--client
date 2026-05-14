@@ -1,3 +1,10 @@
+export const isUnauthorizedError = (
+    error: Error | null
+): boolean => {
+    if (!error) return false
+    return (error as any).response?.status === 401
+}
+
 export const isNetworkError = (
     error: Error | null
 ): boolean => {

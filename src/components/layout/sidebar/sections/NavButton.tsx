@@ -5,6 +5,8 @@ import { useTranslations } from 'next-intl'
 
 import { Button } from '@/components/ui/button'
 
+import { useLogout } from '@/hooks/mutations/useLogout'
+
 import { cn } from '@/lib/utils'
 
 import { NavItem } from '@/constants/navigationItems'
@@ -19,13 +21,15 @@ export const NavButton = ({
     const pathname = usePathname()
     const router = useRouter()
     const t = useTranslations()
+    const { logout } = useLogout()
 
     const isActive = pathname === item.href
         || pathname.startsWith(item.href + '/')
     const Icon = item.icon
+    const isLogout = item.href === '/logout'
 
     const handleNavigation = () =>
-        router.push(item.href)
+        isLogout ? logout() : router.push(item.href)
 
     return (
         <Button

@@ -21,7 +21,7 @@ export const useLogout = () => {
         },
         onSuccess: async () => {
             queryClient.removeQueries()
-            await router.push('/login')
+            router.push('/')
         },
         onError: (error: Error) => {
             console.error('Logout error:', error)
