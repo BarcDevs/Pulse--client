@@ -2,11 +2,7 @@
 
 import { RecoveryGoalsPageContent } from '@/components/goals/RecoveryGoalsPageContent'
 
-import { FEATURES } from '@/config/features'
-
-const RecoveryGoalsPage = () => {
-    if (!FEATURES.recoveryGoals) return null
-    return <RecoveryGoalsPageContent/>
-}
+const RecoveryGoalsPage = () =>
+    <RecoveryGoalsPageContent/>
 
 export default RecoveryGoalsPage

@@ -30,7 +30,7 @@ export const ProgressPageContent = () => {
             .removeEventListener('healease:share-progress', handler)
     }, [])
 
-    return FEATURES.progressInsights ? (
+    return (
         <>
             <div className={'p-6 space-y-6'}>
                 <ProgressStatsCharts/>
@@ -55,5 +55,5 @@ export const ProgressPageContent = () => {
                 </ShareProgressModal>
             )}
         </>
-    ) : null
+    )
 }

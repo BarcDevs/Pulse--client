@@ -2,8 +2,6 @@
 
 import { useState } from 'react'
 
-import { FEATURES } from '@/config/features'
-
 import { initialChatMessages } from '@/mocks/chatMessages'
 
 import { ChatInput } from './inputs/Input'
@@ -33,7 +31,7 @@ export const ChatPageContent = () => {
         setInputValue('')
     }
 
-    return FEATURES.chat ? (
+    return (
         <div className={'flex h-[calc(100vh-4rem)]'}>
             <div className={'flex-1 flex flex-col'}>
                 <ChatMessages messages={messages}/>
@@ -46,5 +44,5 @@ export const ChatPageContent = () => {
 
             <ChatPanel/>
         </div>
-    ) : null
+    )
 }
