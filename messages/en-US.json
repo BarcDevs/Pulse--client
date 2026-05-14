@@ -975,5 +975,46 @@
         "tryAgainBtn": "Try Again"
       }
     }
+  },
+  "landing": {
+    "nav": {
+      "howItWorks": "How it Works",
+      "community": "Community",
+      "about": "About"
+    },
+    "hero": {
+      "headline": "Recovery Refined.",
+      "headlineAccent": "Sanctuary Found.",
+      "subtitle": "Your recovery journey deserves more than just a tracker. Discover a supportive digital sanctuary designed to be your constant companion in wellness and healing.",
+      "startJourney": "Start Your Journey",
+      "exploreCommunity": "Explore Community",
+      "streakLabel": "Day Streak",
+      "moodLabel": "Mood Today"
+    },
+    "features": {
+      "sectionTitle": "Built for Your Peace of Mind",
+      "sectionDesc": "Every feature is crafted to reduce cognitive load and provide clear, actionable paths forward.",
+      "card1Title": "Smart Tracking",
+      "card1Desc": "Track mood, pain, and activities with ease through our intuitive, low-friction interface.",
+      "card2Title": "AI-Driven Insights",
+      "card2Desc": "Personalized patterns and recommendations tailored specifically to your unique recovery journey.",
+      "card3Title": "Supportive Community",
+      "card3Desc": "Connect with others who truly understand your path in a moderated, safe environment."
+    },
+    "howItWorks": {
+      "sectionTitle": "How Your Healing Unfolds",
+      "step1Title": "Check-in",
+      "step1Desc": "Spend 30 seconds a day documenting your feelings and physical state using our calming interface.",
+      "step2Title": "Monitor",
+      "step2Desc": "Watch as HealEase transforms your data into beautiful, easy-to-understand visualizations.",
+      "step3Title": "Grow",
+      "step3Desc": "Receive personalized prompts and community support to help you reach your recovery milestones.",
+      "chartLabel": "Weekly Recovery Trend"
+    },
+    "cta": {
+      "headline": "Join the Sanctuary Today",
+      "desc": "Begin your refined recovery experience. Start tracking, connecting, and find your calm with HealEase.",
+      "button": "Get Started for Free"
+    }
   }
 }
