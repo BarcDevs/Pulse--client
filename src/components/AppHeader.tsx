@@ -42,17 +42,18 @@ export const AppHeader = () => {
     const goalId = isGoalDetail ? segments[1] : ''
 
     const {
-        title,
-        subtitle,
+        title: titleKey,
+        subtitle: subtitleKey,
         showSearch,
         actions,
         badge
     } = getHeaderConfig(pathname.slice(1))
 
-    const welcomeSubtitle =
-        pathname === '/dashboard' && user
-            ? `${t(dashboardLocales.greeting)} ${user.firstName}`
-            : subtitle
+    const title = t(titleKey)
+    const subtitle = pathname === '/dashboard' && user
+        ? t(dashboardLocales.greeting,
+            { name: user.firstName })
+        : subtitleKey ? t(subtitleKey) : undefined
 
     const handleSearchChange = (
         e: ChangeEvent<HTMLInputElement>
@@ -64,7 +65,7 @@ export const AppHeader = () => {
                 ? <GoalDetailBreadcrumb goalId={goalId}/>
                 : <HeaderTitle
                     title={title}
-                    subtitle={welcomeSubtitle}
+                    subtitle={subtitle}
                 />
             }
 

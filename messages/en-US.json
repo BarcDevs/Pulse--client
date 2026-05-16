@@ -215,7 +215,7 @@
   },
   "dashboard": {
     "title": "Dashboard",
-    "greeting": "Welcome back,",
+    "greeting": "Welcome back, {name}",
     "checkIn": {
       "badge": "Daily reflection",
       "title": "Ready for today’s check-in?",

@@ -208,7 +208,7 @@
   },
   "dashboard": {
     "title": "לוח הבקרה",
-    "greeting": "ברוך שובך,",
+    "greeting": "ברוך שובך, {name}",
     "checkIn": {
       "badge": "הרהור יומי",
       "title": "מוכן לעדכון היומי?",
