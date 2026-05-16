@@ -1,3 +1,10 @@
+export const getApiErrorMessage = (
+    error: unknown,
+    fallback: string
+): string =>
+    (error as any)?.response?.data?.message
+    ?? (error instanceof Error ? error.message : fallback)
+
 export const isUnauthorizedError = (
     error: Error | null
 ): boolean => {

@@ -22,13 +22,15 @@ type AuthFormProps = {
     onSuccessAction: SetState<any>
     isLoading?: boolean
     onPasswordChangeAction?: SetState<string>
+    error?: string | null
 }
 
 export const AuthForm = ({
     formType,
     onSuccessAction,
     isLoading = false,
-    onPasswordChangeAction
+    onPasswordChangeAction,
+    error
 }: AuthFormProps) => {
     const t = useTranslations()
     const { form, handleSubmit } = useAuthForm({
@@ -75,6 +77,12 @@ export const AuthForm = ({
                             config={fieldConfig}
                         />
                     )
+                )}
+
+                {error && (
+                    <p className={'text-sm text-destructive text-center'}>
+                        {error}
+                    </p>
                 )}
 
                 <Button

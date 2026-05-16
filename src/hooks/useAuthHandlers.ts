@@ -4,6 +4,8 @@ import { useRouter } from 'next/navigation'
 
 import { useQueryClient } from '@tanstack/react-query'
 
+import { getApiErrorMessage } from '@/utils/error'
+
 import { authQueryKeys } from '@/constants/queryKeys'
 
 import { useAuth } from '@/context/AuthContext'
@@ -23,7 +25,7 @@ export const useAuthHandlers = () => {
 
     const handleLogin = async (
         credentials: LoginSchema
-    ): Promise<boolean> => {
+    ): Promise<string | null> => {
         setIsLoading(true)
         try {
             await login(credentials)
@@ -32,18 +34,9 @@ export const useAuthHandlers = () => {
             })
             router.push('/dashboard')
 
-            return true
+            return null
         } catch (error: unknown) {
-            const message =
-                error instanceof Error
-                    ? error.message
-                    : 'Login failed'
-            console.error(
-                'Login error:',
-                message
-            )
-
-            return false
+            return getApiErrorMessage(error, 'Login failed')
         } finally {
             setIsLoading(false)
         }
@@ -54,7 +47,7 @@ export const useAuthHandlers = () => {
             SignupSchema,
             'confirmPassword'
         >
-    ): Promise<boolean> => {
+    ): Promise<string | null> => {
         setIsLoading(true)
         try {
             await signup(userData)
@@ -62,17 +55,9 @@ export const useAuthHandlers = () => {
                 queryKey: authQueryKeys.getMe
             })
             router.push('/dashboard')
-            return true
+            return null
         } catch (error: unknown) {
-            const message =
-                error instanceof Error
-                    ? error.message
-                    : 'Signup failed'
-            console.error(
-                'Signup error:',
-                message
-            )
-            return false
+            return getApiErrorMessage(error, 'Signup failed')
         } finally {
             setIsLoading(false)
         }

@@ -23,13 +23,16 @@ const SignupPage = () => {
     const t = useTranslations()
     const { handleSignup } = useAuthHandlers()
     const [isLoading, setIsLoading] = useState(false)
+    const [error, setError] = useState<string | null>(null)
 
     const handleSignupSuccess = async (
         userData: SignupSchema
     ) => {
         setIsLoading(true)
+        setError(null)
         const { ...dataWithoutConfirm } = userData
-        await handleSignup(dataWithoutConfirm)
+        const err = await handleSignup(dataWithoutConfirm)
+        setError(err)
         setIsLoading(false)
     }
 
@@ -48,6 +51,7 @@ const SignupPage = () => {
                     formType={'signup'}
                     onSuccessAction={handleSignupSuccess}
                     isLoading={isLoading}
+                    error={error}
                 />
 
                 <GoogleLoginButton/>

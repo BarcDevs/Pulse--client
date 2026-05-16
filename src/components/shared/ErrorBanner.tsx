@@ -8,7 +8,10 @@ import { X } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
 
-import { isNetworkError } from '@/utils/error'
+import {
+    getApiErrorMessage,
+    isNetworkError
+} from '@/utils/error'
 
 import { isDev } from '@/config'
 
@@ -28,7 +31,7 @@ export const ErrorBanner = ({
 
     const isNetErr = isNetworkError(error)
     const message = isDev
-        ? error.message
+        ? getApiErrorMessage(error, error.message)
         : isNetErr
             ? t(globalLocales.errors.networkErrorPage.title)
             : 'Something went wrong.'

@@ -24,12 +24,15 @@ const LoginPage = () => {
     const t = useTranslations()
     const { handleLogin } = useAuthHandlers()
     const [isLoading, setIsLoading] = useState(false)
+    const [error, setError] = useState<string | null>(null)
 
     const handleLoginSuccess = async (
         credentials: LoginSchema
     ) => {
         setIsLoading(true)
-        await handleLogin(credentials)
+        setError(null)
+        const err = await handleLogin(credentials)
+        setError(err)
         setIsLoading(false)
     }
 
@@ -48,6 +51,7 @@ const LoginPage = () => {
                     formType={'login'}
                     onSuccessAction={handleLoginSuccess}
                     isLoading={isLoading}
+                    error={error}
                 />
 
                 <GoogleLoginButton/>
