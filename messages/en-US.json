@@ -3,6 +3,8 @@
     "common": {
       "emailLabel": "Email address",
       "emailPlaceholder": "name@example.com",
+      "passwordLabel": "Password",
+      "backButton": "Back to login",
       "orContinueWith": "Or continue in a way that feels comfortable",
       "googleButton": "Google",
       "continueWithGoogle": "Continue with Google"
@@ -10,7 +12,6 @@
     "login": {
       "title": "Welcome back",
       "description": "Sign in to return to your space and continue where you left off.",
-      "passwordLabel": "Password",
       "forgotPasswordLink": "Forgot your password?",
       "loginButton": "Log in",
       "loggingInButton": "Logging you in...",
@@ -26,7 +27,6 @@
       "firstNamePlaceholder": "John",
       "lastNameLabel": "Last name",
       "lastNamePlaceholder": "Doe",
-      "passwordLabel": "Password",
       "confirmPasswordLabel": "Confirm password",
       "signupButton": "Create account",
       "signingUpButton": "Creating your account...",
@@ -39,7 +39,6 @@
       "description": "Forgot your password? It happens. Enter your email and we’ll send you a secure reset link.",
       "submitButton": "Send reset link",
       "sendingButton": "Sending...",
-      "backButton": "Back to login",
       "checkEmailTitle": "Check your email",
       "checkEmailDesc": "We sent a password reset link to",
       "supportLink": "support team",
@@ -55,7 +54,6 @@
       "specialCharText": "Include one special character",
       "submitButton": "Reset password",
       "resettingButton": "Resetting password...",
-      "backButton": "Back to login",
       "troubleText": "Need help?",
       "supportLink": "Contact support"
     }
@@ -826,7 +824,7 @@
       }
     }
   },
-  "common": {
+  "global": {
     "footer": {
       "brandTagline": "Supporting your recovery journey",
       "quickLinksTitle": "Quick Links",

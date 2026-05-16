@@ -3,6 +3,8 @@
     "common": {
       "emailLabel": "כתובת אימייל",
       "emailPlaceholder": "name@example.com",
+      "passwordLabel": "סיסמה",
+      "backButton": "חזרה לכניסה",
       "orContinueWith": "או להמשיך בדרך שנוחה לך",
       "googleButton": "Google",
       "continueWithGoogle": "המשך עם Google"
@@ -10,7 +12,6 @@
     "login": {
       "title": "ברוך הבא",
       "description": "התחבר כדי לחזור למרחב שלך ולהמשיך בקצב שלך.",
-      "passwordLabel": "סיסמה",
       "forgotPasswordLink": "שכחת את הסיסמה?",
       "loginButton": "כניסה",
       "loggingInButton": "מתחבר...",
@@ -26,7 +27,6 @@
       "firstNamePlaceholder": "ישראל",
       "lastNameLabel": "שם משפחה",
       "lastNamePlaceholder": "ישראלי",
-      "passwordLabel": "סיסמה",
       "confirmPasswordLabel": "אימות סיסמה",
       "signupButton": "יצירת חשבון",
       "signingUpButton": "יוצר את החשבון שלך...",
@@ -39,7 +39,6 @@
       "description": "שכחת את הסיסמה? זה קורה. אפשר להזין את כתובת האימייל ויישלח לך קישור לאיפוס הסיסמה.",
       "submitButton": "שליחת קישור",
       "sendingButton": "הקישור נשלח...",
-      "backButton": "חזרה לכניסה",
       "checkEmailTitle": "בדיקת האימייל",
       "checkEmailDesc": "קישור לאיפוס הסיסמה נשלח אל",
       "supportLink": "צוות התמיכה",
@@ -55,7 +54,6 @@
       "specialCharText": "כולל אות ומספר",
       "submitButton": "שמור את הסיסמה החדשה",
       "resettingButton": "מעדכן את הסיסמה...",
-      "backButton": "חזרה לכניסה",
       "troubleText": "צריך עזרה?",
       "supportLink": "פנייה לתמיכה"
     }
@@ -848,7 +846,7 @@
       }
     }
   },
-  "common": {
+  "global": {
     "footer": {
       "brandTagline": "תמיכה לאורך מסע ההחלמה שלך",
       "quickLinksTitle": "קישורים מהירים",

@@ -38,7 +38,7 @@ export const EmailVerificationView = ({
                     className={'mt-6 inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline'}
                 >
                     <ArrowLeft className={'size-4'}/>
-                    {t(authLocales.forgotPassword.backButton)}
+                    {t(authLocales.common.backButton)}
                 </Link>
             </CardContent>
         </Card>

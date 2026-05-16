@@ -109,7 +109,7 @@ const authFormConfigs: AuthFormConfigs = {
         },
         links: [
             {
-                label: authLocales.forgotPassword.backButton,
+                label: authLocales.common.backButton,
                 href: '/login'
             }
         ]
@@ -138,7 +138,7 @@ const authFormConfigs: AuthFormConfigs = {
         },
         links: [
             {
-                label: authLocales.resetPassword.backButton,
+                label: authLocales.common.backButton,
                 href: '/login'
             }
         ]
