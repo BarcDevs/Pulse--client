@@ -16,8 +16,8 @@ export type CheckInInsight = {
 export type MoodPainSeriesPoint = {
     date: string
     originalDate: string
-    mood: number
-    pain: number
+    mood: number | null
+    pain: number | null
 }
 
 export type CheckIn = {
@@ -43,7 +43,7 @@ export type CheckInInput = {
 
 export type TrendPoint = {
     date: string
-    actual: number
+    actual: number | null
     target?: number
 }
 

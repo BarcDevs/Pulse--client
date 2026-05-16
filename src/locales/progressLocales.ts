@@ -87,7 +87,6 @@ export const progressLocales = {
             legendLabel: 'progress.charts.painIntensityChart.legendLabel'
         },
         timePeriods: {
-            daily: 'progress.charts.timePeriods.daily',
             weekly: 'progress.charts.timePeriods.weekly',
             monthly: 'progress.charts.timePeriods.monthly'
         },
@@ -95,10 +94,10 @@ export const progressLocales = {
             week: 'progress.charts.tabTriggers.week',
             month: 'progress.charts.tabTriggers.month'
         },
-        notifications: {
-            moodIncomplete: 'progress.charts.notifications.moodIncomplete',
-            painIncomplete: 'progress.charts.notifications.painIncomplete',
-            loadError: 'progress.charts.notifications.loadError'
+        status: {
+            loadError: 'progress.charts.status.loadError',
+            loading: 'progress.charts.status.loading',
+            noCheckIn: 'progress.charts.status.noCheckIn'
         }
     }
 } as const

@@ -38,10 +38,10 @@ export const getTrendData = (
     const mid = Math.floor(trendData.length / 2)
     const firstHalf = trendData
         .slice(0, mid)
-        .reduce((sum, p) => sum + p.actual, 0) / mid
+        .reduce((sum, p) => sum + (p.actual ?? 0), 0) / mid
     const secondHalf = trendData
             .slice(mid)
-            .reduce((sum, p) => sum + p.actual, 0)
+            .reduce((sum, p) => sum + (p.actual ?? 0), 0)
         / (trendData.length - mid)
 
     const diff = secondHalf - firstHalf

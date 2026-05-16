@@ -2,8 +2,8 @@
 
 import { useTranslations } from 'next-intl'
 
-import { CheckInForm } from '@/components/checkIn/forms/CheckInForm'
-import { CheckInQuote } from '@/components/checkIn/sections/Quote'
+import { CheckInForm } from '@/components/checkin/forms/CheckInForm'
+import { CheckInQuote } from '@/components/checkin/sections/Quote'
 
 import { checkInLocales } from '@/locales/checkInLocales'
 

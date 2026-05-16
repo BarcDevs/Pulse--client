@@ -1,5 +1,3 @@
-import { format } from 'date-fns'
-
 import type {
     CheckIn,
     CheckInStats,
@@ -7,6 +5,10 @@ import type {
 } from '@/types/checkIn'
 import type { Response } from '@/types/responses'
 import type { TimePeriod } from '@/types/time'
+
+import { formatByUserPreference } from '@/lib/time'
+
+import { defaults } from '@/constants/defaults'
 
 import { api } from '@/api/index'
 import { ENDPOINTS } from '@/api/routes'
@@ -36,9 +38,10 @@ export const fetchCheckInHistory = async (
             const dateObj =
                 new Date(checkIn.checkInDate)
             return {
-                date: format(
+                date: formatByUserPreference(
                     dateObj,
-                    'd MMM'
+                    true,
+                    defaults.checkIn.dateFormat
                 ),
                 originalDate:
                     checkIn.checkInDate,

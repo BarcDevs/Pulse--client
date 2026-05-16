@@ -1,33 +1,33 @@
+import { ChartSeries } from './TrendChart'
+
 type ChartLegendProps = {
-    color: string
-    legendLabel: string
-    targetKey?: string
-    targetLabel?: string
+    series: Pick<
+        ChartSeries,
+        'color' | 'label' | 'dashed'
+    >[]
 }
 
 export const ChartLegend = ({
-    color,
-    legendLabel,
-    targetKey,
-    targetLabel = 'Weekly Target'
+    series
 }: ChartLegendProps) => (
-    <div className={'mt-4 flex items-center gap-6'}>
-        <div className={'flex items-center gap-2'}>
+    <div className={'flex items-center gap-6'}>
+        {series.map(s => (
             <div
-                className={'size-3 rounded-full'}
-                style={{ backgroundColor: color }}
-            />
-            <span className={'text-sm text-muted-foreground'}>
-                {legendLabel}
-            </span>
-        </div>
-        {targetKey && (
-            <div className={'flex items-center gap-2'}>
-                <div className={'h-0.5 w-4 border-t-2 border-dashed border-muted-foreground'}/>
+                key={s.label}
+                className={'flex items-center gap-2'}
+            >
+                {s.dashed ? (
+                    <div className={'h-0.5 w-4 border-t-2 border-dashed border-muted-foreground'}/>
+                ) : (
+                    <div
+                        className={'size-3 rounded-full'}
+                        style={{ backgroundColor: s.color }}
+                    />
+                )}
                 <span className={'text-sm text-muted-foreground'}>
-                    {targetLabel}
+                    {s.label}
                 </span>
             </div>
-        )}
+        ))}
     </div>
 )

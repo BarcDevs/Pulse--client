@@ -12,30 +12,22 @@ import { progressLocales } from '@/locales/progressLocales'
 
 type ChartTabsProps = {
     defaultValue?: string
-    onValueChange?: (
-        value: string
-    ) => void
+    onValueChangeAction?: (value: string) => void
 }
 
 export const ChartTabs = ({
     defaultValue = 'weekly',
-    onValueChange
+    onValueChangeAction
 }: ChartTabsProps) => {
     const t = useTranslations()
 
     return (
         <Tabs
             defaultValue={defaultValue}
-            onValueChange={onValueChange}
+            onValueChange={onValueChangeAction}
             className={'w-auto'}
         >
             <TabsList className={'h-8 bg-muted'}>
-                <TabsTrigger
-                    value={'daily'}
-                    className={'h-6 px-3 text-xs'}
-                >
-                    {t(progressLocales.charts.timePeriods.daily)}
-                </TabsTrigger>
                 <TabsTrigger
                     value={'weekly'}
                     className={'h-6 px-3 text-xs'}

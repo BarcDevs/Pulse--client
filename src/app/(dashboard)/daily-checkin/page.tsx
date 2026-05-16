@@ -1,4 +1,4 @@
-import { CheckInPageContent } from '@/components/checkIn/CheckInPageContent'
+import { CheckInPageContent } from '@/components/checkin/CheckInPageContent'
 
 const DailyCheckInPage = () => (
     <CheckInPageContent/>

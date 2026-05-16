@@ -1,6 +1,5 @@
-import { cn } from '@/lib/utils'
-
 import { TrendData } from '@/lib/stats/getTrendLabel'
+import { cn } from '@/lib/utils'
 
 type WellnessScoreCardProps = {
     label: string

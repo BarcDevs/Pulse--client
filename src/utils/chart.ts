@@ -1,4 +1,2 @@
-export const reverseChartData = (
-    data: unknown[]
-): unknown[] =>
+export const reverseChartData = <T>(data: T[]): T[] =>
     Array.from(data).reverse()

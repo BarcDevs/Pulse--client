@@ -255,8 +255,7 @@
     "historyChart": {
       "title": "Your recovery trend",
       "week": "Week",
-      "month": "Month",
-      "incompleteWeek": "Each check-in helps create a clearer picture of your progress over time."
+      "month": "Month"
     },
     "stats": {
       "labels": {
@@ -452,7 +451,6 @@
         "legendLabel": "Pain level"
       },
       "timePeriods": {
-        "daily": "Daily",
         "weekly": "Weekly",
         "monthly": "Monthly"
       },
@@ -460,10 +458,10 @@
         "week": "Week",
         "month": "Month"
       },
-      "notifications": {
-        "moodIncomplete": "Tracking your mood regularly can help reveal meaningful patterns over time.",
-        "painIncomplete": "Each check-in adds more context to your recovery progress.",
-        "loadError": "Unable to load data"
+      "status": {
+        "loadError": "Unable to load data",
+        "loading": "Loading...",
+        "noCheckIn": "No daily updates yet. Start checking in to see your progress here"
       }
     }
   },

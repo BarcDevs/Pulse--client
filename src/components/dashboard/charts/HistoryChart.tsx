@@ -4,7 +4,9 @@ import { useState } from 'react'
 
 import { useTranslations } from 'next-intl'
 
-import { DataNotification } from '@/components/shared/notifications/DataNotification'
+import { MoodPainSeriesPoint } from '@/types/checkIn'
+
+import { TrendChart } from '@/components/shared/charts/TrendChart'
 import {
     Card,
     CardContent,
@@ -17,41 +19,42 @@ import {
     TabsTrigger
 } from '@/components/ui/tabs'
 
-import { useCheckInHistory } from '@/hooks/queries/useCheckInHistory'
-import { useDirection } from '@/hooks/useDirection'
-
-import { reverseChartData } from '@/utils/chart'
+import { useCheckInChartData } from '@/hooks/queries/useCheckInChartData'
 
 import { dashboardLocales } from '@/locales/dashboardLocales'
-
-import { HistoryChartContent } from './HistoryChartContent'
-
-type Period = 'week' | 'month'
+import { progressLocales } from '@/locales/progressLocales'
 
 export const DashboardHistoryChart = () => {
     const t = useTranslations()
-    const dir = useDirection()
-    const [period, setPeriod] = useState<Period>(
-        'week'
-    )
-    const [hoveredIndex, setHoveredIndex] =
-        useState<number | null>(null)
-
-    const daysToShow = period === 'week' ? 7 : 30
-
+    const [period, setPeriod] = useState<'weekly' | 'monthly'>('weekly')
     const {
-        data: historyResponse,
+        chartData,
         isLoading,
-        isError
-    } = useCheckInHistory(daysToShow)
+        isError,
+        previousPoint
+    } = useCheckInChartData(period)
 
-    const chartData = historyResponse ?? []
-    const reorderedData = dir === 'ltr'
-        ? reverseChartData(chartData)
-        : chartData
-    const isIncompleteWeek = chartData.length > 0
-        && chartData.length < 7
-        && period === 'week'
+    const series = [
+        {
+            dataKey: 'mood',
+            color: 'var(--primary)',
+            label: t(dashboardLocales.stats.labels.mood),
+            gradientId: 'dashMoodGradient'
+        },
+        {
+            dataKey: 'pain',
+            color: 'var(--secondary)',
+            label: t(dashboardLocales.stats.labels.pain),
+            gradientId: 'dashPainGradient'
+        }
+    ]
+
+    const seriesPrevious = previousPoint
+        ? Object.fromEntries(series.map(s => [
+            s.dataKey,
+            previousPoint[s.dataKey as keyof MoodPainSeriesPoint] as number | null
+        ]))
+        : undefined
 
     return (
         <Card className={'border-0 shadow-sm h-full'}>
@@ -61,30 +64,19 @@ export const DashboardHistoryChart = () => {
                 </CardTitle>
                 <Tabs
                     value={period}
-                    onValueChange={(value) =>
-                        !isIncompleteWeek
-                        && setPeriod(value as Period)
-                    }
+                    onValueChange={(value) => setPeriod(value as 'weekly' | 'monthly')}
                     className={'w-auto'}
                 >
-                    <TabsList
-                        className={
-                            isIncompleteWeek
-                                ? 'h-8 bg-muted opacity-50 cursor-not-allowed'
-                                : 'h-8 bg-muted'
-                        }
-                    >
+                    <TabsList className={'h-8 bg-muted'}>
                         <TabsTrigger
-                            value={'week'}
+                            value={'weekly'}
                             className={'h-6 px-3 text-xs cursor-pointer'}
-                            disabled={isIncompleteWeek}
                         >
                             {t(dashboardLocales.historyChart.week)}
                         </TabsTrigger>
                         <TabsTrigger
-                            value={'month'}
+                            value={'monthly'}
                             className={'h-6 px-3 text-xs cursor-pointer'}
-                            disabled={isIncompleteWeek}
                         >
                             {t(dashboardLocales.historyChart.month)}
                         </TabsTrigger>
@@ -92,36 +84,23 @@ export const DashboardHistoryChart = () => {
                 </Tabs>
             </CardHeader>
             <CardContent>
-                {/* todo: add skeleton loader*/}
-                {isLoading ? (
+                {isLoading && (
                     <div className={'h-60 w-full flex items-center justify-center text-muted-foreground'}>
-                        Loading...
+                        {t(progressLocales.charts.status.loading)}
                     </div>
-                ) : isError ? (
+                )}
+                {isError && (
                     <div className={'h-60 flex items-center justify-center text-muted-foreground'}>
-                        Failed to load data
+                        {t(progressLocales.charts.status.loadError)}
                     </div>
-                ) : (
-                    <div className={'relative'}>
-                        <HistoryChartContent
-                            reorderedData={reorderedData}
-                            hoveredIndex={
-                                isIncompleteWeek
-                                    ? null
-                                    : hoveredIndex
-                            }
-                            setHoveredIndexAction={
-                                isIncompleteWeek
-                                    ? () => {}
-                                    : setHoveredIndex
-                            }
-                        />
-                        {isIncompleteWeek && (
-                            <DataNotification
-                                message={t(dashboardLocales.historyChart.incompleteWeek)}
-                            />
-                        )}
-                    </div>
+                )}
+                {!isLoading && !isError && (
+                    <TrendChart
+                        data={chartData}
+                        series={series}
+                        seriesPrevious={seriesPrevious}
+                        noDataLabel={t(progressLocales.charts.status.noCheckIn)}
+                    />
                 )}
             </CardContent>
         </Card>

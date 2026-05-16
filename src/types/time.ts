@@ -1,1 +1,1 @@
-export type TimePeriod = 'daily' | 'weekly' | 'monthly'
+export type TimePeriod = 'weekly' | 'monthly'

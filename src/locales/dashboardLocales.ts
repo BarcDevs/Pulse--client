@@ -24,8 +24,7 @@ export const dashboardLocales = {
     historyChart: {
         title: 'dashboard.historyChart.title',
         week: 'dashboard.historyChart.week',
-        month: 'dashboard.historyChart.month',
-        incompleteWeek: 'dashboard.historyChart.incompleteWeek'
+        month: 'dashboard.historyChart.month'
     },
     stats: {
         labels: {
