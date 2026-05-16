@@ -3,7 +3,6 @@
     "common": {
       "emailLabel": "כתובת אימייל",
       "emailPlaceholder": "name@example.com",
-      "passwordPlaceholder": "••••••••",
       "orContinueWith": "או להמשיך בדרך שנוחה לך",
       "googleButton": "Google",
       "continueWithGoogle": "המשך עם Google"
@@ -11,13 +10,10 @@
     "login": {
       "title": "ברוך הבא",
       "description": "התחבר כדי לחזור למרחב שלך ולהמשיך בקצב שלך.",
-      "emailLabel": "כתובת אימייל",
-      "emailPlaceholder": "name@example.com",
       "passwordLabel": "סיסמה",
       "forgotPasswordLink": "שכחת את הסיסמה?",
       "loginButton": "כניסה",
       "loggingInButton": "מתחבר...",
-      "orContinueWith": "או להמשיך בדרך שנוחה לך",
       "signupText": "פה בפעם הראשונה?",
       "signupLink": "יצירת חשבון",
       "hipaaText": "המידע שלך מוצפן ומאובטח",
@@ -30,24 +26,17 @@
       "firstNamePlaceholder": "ישראל",
       "lastNameLabel": "שם משפחה",
       "lastNamePlaceholder": "ישראלי",
-      "emailLabel": "כתובת אימייל",
-      "emailPlaceholder": "name@example.com",
       "passwordLabel": "סיסמה",
-      "passwordPlaceholder": "••••••••",
       "confirmPasswordLabel": "אימות סיסמה",
-      "confirmPasswordPlaceholder": "••••••••",
       "signupButton": "יצירת חשבון",
       "signingUpButton": "יוצר את החשבון שלך...",
       "loginText": "יש כבר חשבון?",
       "loginLink": "כניסה",
-      "passwordDescription": "לפחות 8 תווים, כולל אות אחת ומספר אחד",
-      "orContinueWith": "או להמשיך בדרך שנוחה לך"
+      "passwordDescription": "לפחות 8 תווים, כולל אות אחת ומספר אחד"
     },
     "forgotPassword": {
       "title": "איפוס סיסמה",
       "description": "שכחת את הסיסמה? זה קורה. אפשר להזין את כתובת האימייל ויישלח לך קישור לאיפוס הסיסמה.",
-      "emailLabel": "כתובת אימייל",
-      "emailPlaceholder": "name@example.com",
       "submitButton": "שליחת קישור",
       "sendingButton": "הקישור נשלח...",
       "backButton": "חזרה לכניסה",
@@ -62,7 +51,6 @@
       "description": "אפשר לבחור סיסמה חדשה כדי לחזור לחשבון בצורה מאובטחת.",
       "passwordLabel": "סיסמה חדשה",
       "confirmPasswordLabel": "אימות סיסמה",
-      "passwordPlaceholder": "••••••••",
       "minLengthText": "לפחות 8 תווים",
       "specialCharText": "כולל אות ומספר",
       "submitButton": "שמור את הסיסמה החדשה",
@@ -860,7 +848,7 @@
       }
     }
   },
-  "global": {
+  "common": {
     "footer": {
       "brandTagline": "תמיכה לאורך מסע ההחלמה שלך",
       "quickLinksTitle": "קישורים מהירים",

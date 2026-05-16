@@ -3,7 +3,6 @@
     "common": {
       "emailLabel": "Email address",
       "emailPlaceholder": "name@example.com",
-      "passwordPlaceholder": "••••••••",
       "orContinueWith": "Or continue in a way that feels comfortable",
       "googleButton": "Google",
       "continueWithGoogle": "Continue with Google"
@@ -11,14 +10,10 @@
     "login": {
       "title": "Welcome back",
       "description": "Sign in to return to your space and continue where you left off.",
-      "emailLabel": "Email address",
-      "emailPlaceholder": "name@example.com",
       "passwordLabel": "Password",
       "forgotPasswordLink": "Forgot your password?",
       "loginButton": "Log in",
       "loggingInButton": "Logging you in...",
-      "orContinueWith": "Or continue in a way that feels comfortable",
-      "googleButton": "Google",
       "signupText": "New here?",
       "signupLink": "Create an account",
       "hipaaText": "Your information is encrypted and securely protected",
@@ -31,25 +26,17 @@
       "firstNamePlaceholder": "John",
       "lastNameLabel": "Last name",
       "lastNamePlaceholder": "Doe",
-      "emailLabel": "Email address",
-      "emailPlaceholder": "name@example.com",
       "passwordLabel": "Password",
-      "passwordPlaceholder": "••••••••",
       "confirmPasswordLabel": "Confirm password",
-      "confirmPasswordPlaceholder": "••••••••",
       "signupButton": "Create account",
       "signingUpButton": "Creating your account...",
       "loginText": "Already have an account?",
       "loginLink": "Sign in",
-      "passwordDescription": "Use at least 8 characters, including one letter and one number",
-      "orContinueWith": "Or continue in a way that feels comfortable",
-      "googleButton": "Google"
+      "passwordDescription": "Use at least 8 characters, including one letter and one number"
     },
     "forgotPassword": {
       "title": "Reset your password",
       "description": "Forgot your password? It happens. Enter your email and we’ll send you a secure reset link.",
-      "emailLabel": "Email address",
-      "emailPlaceholder": "name@example.com",
       "submitButton": "Send reset link",
       "sendingButton": "Sending...",
       "backButton": "Back to login",
@@ -64,7 +51,6 @@
       "description": "Choose a secure password so you can safely return to your account.",
       "passwordLabel": "New password",
       "confirmPasswordLabel": "Confirm new password",
-      "passwordPlaceholder": "••••••••",
       "minLengthText": "At least 8 characters",
       "specialCharText": "Include one special character",
       "submitButton": "Reset password",
@@ -840,7 +826,7 @@
       }
     }
   },
-  "global": {
+  "common": {
     "footer": {
       "brandTagline": "Supporting your recovery journey",
       "quickLinksTitle": "Quick Links",

@@ -46,7 +46,7 @@ export const PasswordInput = <T extends FieldValues>({
                         type={showPassword
                             ? 'text'
                             : 'password'}
-                        placeholder={config.placeholder ? t(config.placeholder) : ''}
+                        placeholder={config.placeholder ?? ''}
                         disabled={config.disabled}
                         autoComplete={'current-password'}
                         className={'pr-10'}

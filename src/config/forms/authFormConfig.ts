@@ -12,13 +12,14 @@ const authFormConfigs: AuthFormConfigs = {
         fields: {
             email: {
                 type: 'email',
-                label: authLocales.login.emailLabel,
-                placeholder: authLocales.login.emailPlaceholder,
+                label: authLocales.common.emailLabel,
+                placeholder: authLocales.common.emailPlaceholder,
                 required: true
             },
             password: {
                 type: 'password',
-                label: authLocales.login.passwordLabel,
+                label: authLocales.common.passwordLabel,
+
                 placeholder: '••••••••',
                 required: true
             },
@@ -58,21 +59,22 @@ const authFormConfigs: AuthFormConfigs = {
             },
             email: {
                 type: 'email',
-                label: authLocales.signup.emailLabel,
-                placeholder: authLocales.signup.emailPlaceholder,
+                label: authLocales.common.emailLabel,
+                placeholder: authLocales.common.emailPlaceholder,
                 required: true
             },
             password: {
                 type: 'password',
-                label: authLocales.signup.passwordLabel,
-                placeholder: authLocales.signup.passwordPlaceholder,
+                label: authLocales.common.passwordLabel,
+
+                placeholder: '••••••••',
                 required: true,
                 description: 'auth.signup.passwordDescription'
             },
             confirmPassword: {
                 type: 'password',
                 label: authLocales.signup.confirmPasswordLabel,
-                placeholder: authLocales.signup.confirmPasswordPlaceholder,
+                placeholder: '••••••••',
                 required: true
             }
         },
@@ -94,8 +96,8 @@ const authFormConfigs: AuthFormConfigs = {
         fields: {
             email: {
                 type: 'email',
-                label: authLocales.forgotPassword.emailLabel,
-                placeholder: authLocales.forgotPassword.emailPlaceholder,
+                label: authLocales.common.emailLabel,
+                placeholder: authLocales.common.emailPlaceholder,
                 required: true
             }
         },
@@ -118,13 +120,13 @@ const authFormConfigs: AuthFormConfigs = {
             password: {
                 type: 'password',
                 label: authLocales.resetPassword.passwordLabel,
-                placeholder: authLocales.resetPassword.passwordPlaceholder,
+                placeholder: '••••••••',
                 required: true
             },
             confirmPassword: {
                 type: 'password',
                 label: authLocales.resetPassword.confirmPasswordLabel,
-                placeholder: authLocales.resetPassword.passwordPlaceholder,
+                placeholder: '••••••••',
                 required: true
             }
         },
