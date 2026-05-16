@@ -7,13 +7,14 @@ import { minuteInMs } from '@/constants/time'
 
 import { getMe as getMeApi } from '@/api/auth'
 
-export const useGetMe = () => {
+export const useGetMe = (enabled = true) => {
     const query = useQueryWithError<User>({
         queryKey: authQueryKeys.getMe,
         queryFn: async () => {
             const response = await getMeApi()
             return response.user
         },
+        enabled,
         staleTime: 30 * minuteInMs,
         gcTime: 15 * minuteInMs,
         retry: false

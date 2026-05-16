@@ -41,11 +41,16 @@ const PUBLIC_ROUTES = [
 export const AuthProvider = ({
     children
 }: LayoutProps) => {
+    const pathname = usePathname()
+    const isPublicRoute = PUBLIC_ROUTES.includes(
+        pathname as typeof PUBLIC_ROUTES[number]
+    )
+
     const {
         user,
         isLoading: queryLoading,
         error
-    } = useGetMe()
+    } = useGetMe(!isPublicRoute)
 
     const [mutationLoading, setMutationLoading] = useState(false)
     const [networkError, setNetworkError] =
@@ -53,7 +58,6 @@ export const AuthProvider = ({
     const lastErrorRef = useRef<Error | null>(null)
 
     const queryClient = useQueryClient()
-    const pathname = usePathname()
 
     const setUser = useCallback(
         (newUser: User | null) => {
