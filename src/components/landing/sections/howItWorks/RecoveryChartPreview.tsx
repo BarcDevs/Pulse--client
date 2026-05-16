@@ -4,12 +4,13 @@ import { useTranslations } from 'next-intl'
 
 import { cn } from '@/lib/utils'
 
+import { CHART_DAYS } from '@/constants/landing/chartDays'
+
 import { landingLocales } from '@/locales/landingLocales'
 
 import { ChartStat } from './ChartStat'
 
 const CHART_BARS = [6, 5, 7, 9, 6, 7, 8]
-const CHART_DAYS = ['M', 'T', 'W', 'T', 'F', 'S', 'S']
 const CHART_PEAK_INDEX = 3
 
 export const RecoveryChartPreview = () => {
@@ -28,7 +29,9 @@ export const RecoveryChartPreview = () => {
                         key={i}
                         className={cn(
                             'flex-1 rounded-t',
-                            i === CHART_PEAK_INDEX ? 'bg-primary' : 'bg-white/15'
+                            i === CHART_PEAK_INDEX
+                                ? 'bg-primary'
+                                : 'bg-white/15'
                         )}
                         style={{ height: `${(value / maxBar) * 100}%` }}
                     />
@@ -36,9 +39,9 @@ export const RecoveryChartPreview = () => {
             </div>
 
             <div className={'mb-5 flex justify-around'}>
-                {CHART_DAYS.map((day, i) => (
+                {CHART_DAYS.map(({ key, label }, i) => (
                     <span
-                        key={day}
+                        key={key}
                         className={cn(
                             'text-xs',
                             i === CHART_PEAK_INDEX
@@ -46,7 +49,7 @@ export const RecoveryChartPreview = () => {
                                 : 'text-white/35'
                         )}
                     >
-                        {day}
+                        {label}
                     </span>
                 ))}
             </div>
