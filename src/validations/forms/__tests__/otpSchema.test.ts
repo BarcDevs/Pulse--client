@@ -19,33 +19,6 @@ describe('otpSchema',
             })
 
         it(
-            'should validate a valid 6-character alphanumeric OTP',
-            () => {
-                const result = otpSchema.safeParse({
-                    otp: 'abc123'
-                })
-                expect(result.success).toBe(true)
-            })
-
-        it(
-            'should validate a valid 6-character all-letters OTP',
-            () => {
-                const result = otpSchema.safeParse({
-                    otp: 'abcdef'
-                })
-                expect(result.success).toBe(true)
-            })
-
-        it(
-            'should validate uppercase letters',
-            () => {
-                const result = otpSchema.safeParse({
-                    otp: 'ABCDEF'
-                })
-                expect(result.success).toBe(true)
-            })
-
-        it(
             'should reject empty OTP with correct message',
             () => {
                 const result = otpSchema.safeParse({
@@ -88,6 +61,24 @@ describe('otpSchema',
                         )
                     expect(longIssue).toBeDefined()
                 }
+            })
+
+        it(
+            'should reject alphanumeric OTP',
+            () => {
+                const result = otpSchema.safeParse({
+                    otp: 'abc123'
+                })
+                expect(result.success).toBe(false)
+            })
+
+        it(
+            'should reject OTP with letters only',
+            () => {
+                const result = otpSchema.safeParse({
+                    otp: 'abcdef'
+                })
+                expect(result.success).toBe(false)
             })
 
         it(
