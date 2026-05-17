@@ -12,6 +12,7 @@ type SecuritySettingItemProps = {
     value: string
     variant?: 'default' | 'destructive'
     buttonText?: string
+    flat?: boolean
     onClickAction: () => void
 }
 
@@ -21,13 +22,17 @@ export const SecuritySettingItem = ({
     value,
     variant = 'default',
     buttonText,
+    flat = false,
     onClickAction
 }: SecuritySettingItemProps) => {
     const styles = securitySettingStyles[variant]
     const isDestructive = variant === 'destructive'
+    const containerClass = flat
+        ? 'flex items-center justify-between p-4'
+        : styles.container
 
     return (
-        <div className={styles.container}>
+        <div className={containerClass}>
             <div className={'flex items-center gap-3'}>
                 {icon}
                 <div>

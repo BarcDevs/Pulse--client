@@ -52,7 +52,7 @@ export const EmailChangeStep = ({
     return (
         <Form {...form}>
             <form
-                className={'mt-3 space-y-3 rounded-xl bg-surface-section p-4'}
+                className={'space-y-3 border-t border-border p-4'}
                 onSubmit={handleSubmit}
             >
                 <DynamicFormField

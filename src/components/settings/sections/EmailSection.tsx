@@ -26,11 +26,12 @@ export const EmailSection = () => {
     }
 
     return (
-        <div>
+        <div className={expanded ? 'rounded-xl bg-surface-section' : ''}>
             <SecuritySettingItem
                 icon={<Mail className={'h-5 w-5 text-muted-foreground'}/>}
                 label={t(settingsLocales.security.email.label)}
                 value={user?.email || ''}
+                flat={expanded}
                 onClickAction={() => setExpanded((prev) => !prev)}
             />
             {expanded && step === 'email' && (

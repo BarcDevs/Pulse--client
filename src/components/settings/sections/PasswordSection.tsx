@@ -25,11 +25,12 @@ export const PasswordSection = () => {
         )}`
         : ''
     return (
-        <div>
+        <div className={expanded ? 'rounded-xl bg-surface-section' : ''}>
             <SecuritySettingItem
                 icon={<Lock className={'h-5 w-5 text-muted-foreground'}/>}
                 label={t(settingsLocales.security.password.label)}
                 value={passwordValue}
+                flat={expanded}
                 onClickAction={() => setExpanded((prev) => !prev)}
             />
             {expanded && (
