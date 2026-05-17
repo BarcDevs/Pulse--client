@@ -90,7 +90,7 @@ export const PasswordChangeStep = ({
                     <Button
                         type={'submit'}
                         size={'sm'}
-                        disabled={isPending || Object.keys(form.formState.errors).length > 0}
+                        disabled={isPending || !form.formState.isValid}
                     >
                         {isPending
                             ? t(settingsLocales.security.password.changingButton)

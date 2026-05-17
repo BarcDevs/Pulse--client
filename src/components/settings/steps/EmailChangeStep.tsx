@@ -74,7 +74,7 @@ export const EmailChangeStep = ({
                     <Button
                         type={'submit'}
                         size={'sm'}
-                        disabled={isPending}
+                        disabled={isPending || !form.formState.isValid}
                     >
                         {isPending
                             ? t(settingsLocales.security.email.sendingCodeButton)
