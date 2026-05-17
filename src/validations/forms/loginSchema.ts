@@ -1,21 +1,12 @@
 import * as z from 'zod'
 
-import config from '@/config/schema/authForm'
+import { passwordField } from './validators'
 
 export const loginSchema = z.object({
     email: z.string()
         .min(1, 'Email is required')
         .email('Invalid email'),
-    password: z.string()
-        .min(1, 'Password is required')
-        .min(
-            config.password.minLength,
-            `Password must be at least ${config.password.minLength} characters`
-        )
-        .regex(
-            config.password.format,
-            config.password.formatMessage
-        ),
+    password: passwordField('Password is required'),
     remember: z.boolean()
 })
 

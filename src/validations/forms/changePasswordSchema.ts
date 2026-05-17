@@ -1,30 +1,14 @@
 import * as z from 'zod'
 
-import config from '@/config/schema/authForm'
+import {
+    confirmPasswordField,
+    passwordField
+} from './validators'
 
 export const changePasswordSchema = z.object({
-    currentPassword: z.string()
-        .min(1, 'Current password is required')
-        .min(
-            config.password.minLength,
-            `Password must be at least ${config.password.minLength} characters`
-        )
-        .regex(
-            config.password.format,
-            config.password.formatMessage
-        ),
-    newPassword: z.string()
-        .min(1, 'New password is required')
-        .min(
-            config.password.minLength,
-            `Password must be at least ${config.password.minLength} characters`
-        )
-        .regex(
-            config.password.format,
-            config.password.formatMessage
-        ),
-    confirmPassword: z.string()
-        .min(1, 'Please confirm your password')
+    currentPassword: passwordField('Current password is required'),
+    newPassword: passwordField('New password is required'),
+    confirmPassword: confirmPasswordField('Please confirm your password')
 }).refine(
     (data) => data.newPassword === data.confirmPassword,
     {

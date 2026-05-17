@@ -1,6 +1,9 @@
 import * as z from 'zod'
 
-import config from '@/config/schema/authForm'
+import {
+    confirmPasswordField,
+    passwordField
+} from './validators'
 
 export const signupSchema = z.object({
     firstName: z.string()
@@ -10,18 +13,8 @@ export const signupSchema = z.object({
     email: z.string()
         .min(1, 'Email is required')
         .email('Invalid email'),
-    password: z.string()
-        .min(1, 'Password is required')
-        .min(
-            config.password.minLength,
-            `Password must be at least ${config.password.minLength} characters`
-        )
-        .regex(
-            config.password.format,
-            config.password.formatMessage
-        ),
-    confirmPassword: z.string()
-        .min(1, 'Confirm password is required')
+    password: passwordField('Password is required'),
+    confirmPassword: confirmPasswordField('Confirm password is required')
 }).superRefine(({ password, confirmPassword }, ctx) => {
     if (password !== confirmPassword) {
         ctx.addIssue({
