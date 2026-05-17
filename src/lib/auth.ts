@@ -19,7 +19,8 @@ export type QueuedRequest = {
 export const authState = {
     isRefreshing: false,
     isShuttingDown: false,
-    requestQueue: [] as QueuedRequest[]
+    requestQueue: [] as QueuedRequest[],
+    onRefreshSuccess: null as (() => void) | null
 }
 
 export const performRefresh = async ():

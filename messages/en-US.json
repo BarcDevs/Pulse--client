@@ -785,7 +785,19 @@
     },
     "security": {
       "title": "Account & Security",
-      "email": "Email Address",
+      "email": {
+        "label": "Email Address",
+        "newEmail": "New email address",
+        "currentPassword": "Current password",
+        "sendCodeButton": "Send verification code",
+        "sendingCodeButton": "Sending...",
+        "otpTitle": "Check your new email",
+        "otpDescription": "Enter the 6-digit code we sent to your new email address",
+        "verifyButton": "Verify",
+        "verifyingButton": "Verifying...",
+        "cancelButton": "Cancel",
+        "successToast": "Email updated successfully"
+      },
       "password": {
         "label": "Password",
         "value": "Last updated {timeAgo}",
@@ -798,7 +810,6 @@
         "changingButton": "Changing...",
         "cancelButton": "Cancel"
       },
-      "emailComingSoon": "Email change is not available yet",
       "deactivate": {
         "label": "Deactivate Account",
         "description": "Permanently remove your account and recovery data",

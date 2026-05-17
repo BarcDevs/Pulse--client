@@ -33,7 +33,7 @@ export const securitySettings: SecuritySettingItem[] = [
     {
         id: 'email',
         iconComponent: Mail,
-        label: settingsLocales.security.email
+        label: settingsLocales.security.email.label
     },
     {
         id: 'password',

@@ -10,7 +10,7 @@ import {
     Eye,
     EyeOff
 } from 'lucide-react'
-import { FieldValues } from 'react-hook-form'
+import type { FieldValues } from 'react-hook-form'
 
 import { FieldConfig } from '@/types/forms'
 
@@ -21,6 +21,8 @@ import {
     FormLabel
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
+
+import { cn } from '@/lib/utils'
 
 type PasswordInputProps<T extends FieldValues> = {
     field: T
@@ -43,13 +45,11 @@ export const PasswordInput = <T extends FieldValues>({
             <FormControl>
                 <div className={'relative'}>
                     <Input
-                        type={showPassword
-                            ? 'text'
-                            : 'password'}
+                        type={showPassword ? 'text' : 'password'}
                         placeholder={config.placeholder ?? ''}
                         disabled={config.disabled}
                         autoComplete={'current-password'}
-                        className={'pr-10'}
+                        className={cn('pr-10', config.className)}
                         {...field}
                     />
                     <Button
@@ -57,7 +57,7 @@ export const PasswordInput = <T extends FieldValues>({
                         variant={'ghost'}
                         size={'sm'}
                         onClick={() => setShowPassword(!showPassword)}
-                        className={'absolute right-1 top-1/2 h-8 w-8 -translate-y-1/2 p-0 text-muted-foreground hover:bg-transparent'}
+                        className={'absolute right-1 top-1/2 h-8 w-8 -translate-y-1/2 p-0 text-muted-foreground hover:bg-muted/50 hover:text-muted-foreground'}
                     >
                         {showPassword
                             ? <EyeOff className={'size-5'}/>

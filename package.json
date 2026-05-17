@@ -57,7 +57,7 @@
     "dompurify": "^3.3.3",
     "embla-carousel-react": "8.6.0",
     "html2canvas": "^1.4.1",
-    "input-otp": "1.4.2",
+    "input-otp": "^1.4.2",
     "lucide-react": "^0.564.0",
     "next": "16.2.3",
     "next-intl": "^4.11.0",

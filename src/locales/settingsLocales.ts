@@ -58,7 +58,19 @@ export const settingsLocales = {
     },
     security: {
         title: 'settings.security.title',
-        email: 'settings.security.email',
+        email: {
+            label: 'settings.security.email.label',
+            newEmail: 'settings.security.email.newEmail',
+            currentPassword: 'settings.security.email.currentPassword',
+            sendCodeButton: 'settings.security.email.sendCodeButton',
+            sendingCodeButton: 'settings.security.email.sendingCodeButton',
+            otpTitle: 'settings.security.email.otpTitle',
+            otpDescription: 'settings.security.email.otpDescription',
+            verifyButton: 'settings.security.email.verifyButton',
+            verifyingButton: 'settings.security.email.verifyingButton',
+            cancelButton: 'settings.security.email.cancelButton',
+            successToast: 'settings.security.email.successToast'
+        },
         password: {
             label: 'settings.security.password.label',
             value: 'settings.security.password.value',
@@ -71,7 +83,6 @@ export const settingsLocales = {
             changingButton: 'settings.security.password.changingButton',
             cancelButton: 'settings.security.password.cancelButton'
         },
-        emailComingSoon: 'settings.security.emailComingSoon',
         deactivate: {
             label: 'settings.security.deactivate.label',
             description: 'settings.security.deactivate.description',

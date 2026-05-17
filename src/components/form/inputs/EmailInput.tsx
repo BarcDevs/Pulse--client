@@ -13,12 +13,14 @@ import {
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 
+import { cn } from '@/lib/utils'
+
 type EmailInputProps<T extends FieldValues> = {
     field: T
     config: FieldConfig
 }
 
-export const EmailInput = <T extends FieldValues>({
+export const EmailInput = <T extends FieldValues> ({
     field,
     config
 }: EmailInputProps<T>) => {
@@ -33,11 +35,14 @@ export const EmailInput = <T extends FieldValues>({
             <FormControl>
                 <Input
                     type={'email'}
-                    placeholder={config.placeholder
-                        ? t(config.placeholder) : ''
-                }
+                    placeholder={
+                        config.placeholder
+                            ? t(config.placeholder)
+                            : ''
+                    }
                     disabled={config.disabled}
                     autoComplete={'email'}
+                    className={cn(config.className)}
                     {...field}
                 />
             </FormControl>

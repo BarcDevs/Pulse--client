@@ -807,7 +807,19 @@
     },
     "security": {
       "title": "חשבון ואבטחה",
-      "email": "כתובת אימייל",
+      "email": {
+        "label": "כתובת אימייל",
+        "newEmail": "כתובת אימייל חדשה",
+        "currentPassword": "סיסמה נוכחית",
+        "sendCodeButton": "שלח קוד אימות",
+        "sendingCodeButton": "שולח...",
+        "otpTitle": "בדוק את האימייל החדש שלך",
+        "otpDescription": "הזן את הקוד בן 6 הספרות ששלחנו לכתובת האימייל החדשה שלך",
+        "verifyButton": "אמת",
+        "verifyingButton": "מאמת...",
+        "cancelButton": "ביטול",
+        "successToast": "האימייל עודכן בהצלחה"
+      },
       "password": {
         "label": "סיסמה",
         "value": "עודכנה לפני {timeAgo}",
@@ -820,7 +832,6 @@
         "changingButton": "משנה...",
         "cancelButton": "ביטול"
       },
-      "emailComingSoon": "שינוי כתובת אימייל עדיין לא זמין",
       "deactivate": {
         "label": "הסר את החשבון",
         "description": "הסרה לצמיתות של החשבון ונתוני ההחלמה",
