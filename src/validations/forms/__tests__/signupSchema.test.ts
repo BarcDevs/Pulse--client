@@ -4,7 +4,11 @@ import {
     it
 } from 'vitest'
 
-import { signupSchema } from '@/validations/forms/signupSchema'
+import { createSignupSchema } from '@/validations/forms/signupSchema'
+
+import { mockLocales } from './mockLocales'
+
+const signupSchema = createSignupSchema(mockLocales)
 
 // ==================== signupSchema ====================
 describe(

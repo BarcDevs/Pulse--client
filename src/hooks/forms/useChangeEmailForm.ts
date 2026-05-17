@@ -1,3 +1,5 @@
+import { useTranslations } from 'next-intl'
+
 import { useForm } from 'react-hook-form'
 
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -6,7 +8,7 @@ import { wrapFormSubmit } from '@/lib/forms/handleFormSubmit'
 
 import {
     type ChangeEmailSchema,
-    changeEmailSchema
+    createChangeEmailSchema
 } from '@/validations/forms/changeEmailSchema'
 
 type UseChangeEmailFormProps = {
@@ -16,8 +18,9 @@ type UseChangeEmailFormProps = {
 export const useChangeEmailForm = ({
     onSubmit
 }: UseChangeEmailFormProps) => {
+    const t = useTranslations()
     const form = useForm<ChangeEmailSchema>({
-        resolver: zodResolver(changeEmailSchema),
+        resolver: zodResolver(createChangeEmailSchema(t)),
         defaultValues: {
             newEmail: '',
             password: ''

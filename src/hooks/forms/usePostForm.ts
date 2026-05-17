@@ -1,3 +1,5 @@
+import { useTranslations } from 'next-intl'
+
 import { useForm } from 'react-hook-form'
 
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -5,8 +7,8 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { wrapFormSubmit } from '@/lib/forms/handleFormSubmit'
 
 import {
-    PostFormSchema,
-    postFormSchema
+    createPostFormSchema,
+    type PostFormSchema
 } from '@/validations/forms/postFormSchema'
 
 type UsePostFormProps = {
@@ -20,8 +22,11 @@ export const usePostForm = ({
     onSubmit,
     defaultValues
 }: UsePostFormProps) => {
+    const t = useTranslations()
     const form = useForm<PostFormSchema>({
-        resolver: zodResolver(postFormSchema),
+        resolver: zodResolver(
+            createPostFormSchema(t)
+        ),
         defaultValues: {
             title: '',
             category: '',
@@ -32,9 +37,11 @@ export const usePostForm = ({
         mode: 'onBlur'
     })
 
-    const handleSubmit = wrapFormSubmit(form, onSubmit, {
-        resetOnSuccess: true
-    })
+    const handleSubmit = wrapFormSubmit(
+        form,
+        onSubmit,
+        { resetOnSuccess: true }
+    )
 
     return {
         form,

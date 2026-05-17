@@ -1,19 +1,24 @@
+import { useTranslations } from 'next-intl'
+
 import { useForm } from 'react-hook-form'
 
 import { zodResolver } from '@hookform/resolvers/zod'
 
 import { MilestoneInput } from '@/types/goals'
 
-import { milestoneSchema } from '@/validations/forms/goalSchema'
+import { createMilestoneSchema } from '@/validations/forms/goalSchema'
 
 export const useMilestoneForm = ({
     onSubmit
 }: {
-    onSubmit: (data: MilestoneInput) => Promise<void>
+    onSubmit: (
+        data: MilestoneInput
+    ) => Promise<void>
 }) => {
+    const t = useTranslations()
     const form = useForm<MilestoneInput>({
         resolver: zodResolver(
-            milestoneSchema
+            createMilestoneSchema(t)
         ),
         defaultValues: {
             title: '',

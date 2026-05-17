@@ -1,31 +1,43 @@
 import { z } from 'zod'
 
+import { TranslatorFn } from '@/types/i18n'
+
 import { basicInfoFormConfig } from '@/config/schema/basicInfoForm'
 
-export const basicInfoSchema = z.object({
-    firstName: z
-        .string()
-        .min(1, 'First name cannot be empty')
-        .max(
-            basicInfoFormConfig.name.max,
-            `First name must be at most ${basicInfoFormConfig.name.max} characters`
-        )
-        .optional(),
-    lastName: z
-        .string()
-        .min(1, 'Last name cannot be empty')
-        .max(
-            basicInfoFormConfig.name.max,
-            `Last name must be at most ${basicInfoFormConfig.name.max} characters`
-        )
-        .optional(),
-    location: z
-        .string()
-        .max(
-            basicInfoFormConfig.location.max,
-            `Location must be at most ${basicInfoFormConfig.location.max} characters`
-        )
-        .optional()
-})
+import { validationLocales } from '@/locales/validationLocales'
 
-export type BasicInfoSchema = z.infer<typeof basicInfoSchema>
+export const createBasicInfoSchema = (t: TranslatorFn) =>
+    z.object({
+        firstName: z.string()
+            .min(1, t(validationLocales.name.firstName.empty))
+            .max(
+                basicInfoFormConfig.name.max,
+                t(
+                    validationLocales.name.firstName.tooLong,
+                    { max: basicInfoFormConfig.name.max }
+                )
+            )
+            .optional(),
+        lastName: z.string()
+            .min(1, t(validationLocales.name.lastName.empty))
+            .max(
+                basicInfoFormConfig.name.max,
+                t(
+                    validationLocales.name.lastName.tooLong,
+                    { max: basicInfoFormConfig.name.max }
+                )
+            )
+            .optional(),
+        location: z.string()
+            .max(
+                basicInfoFormConfig.location.max,
+                t(
+                    validationLocales.name.location.tooLong,
+                    { max: basicInfoFormConfig.location.max }
+                )
+            )
+            .optional()
+    })
+
+export type BasicInfoSchema =
+    z.infer<ReturnType<typeof createBasicInfoSchema>>

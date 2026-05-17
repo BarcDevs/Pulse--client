@@ -8,8 +8,7 @@ export default {
     password: {
         minLength: 8,
         format: passwordPattern,
-        specialCharPattern: passwordSpecialCharPattern,
-        formatMessage: 'Password must be at least 8 characters and contain letters and numbers.'
+        specialCharPattern: passwordSpecialCharPattern
     },
     otp: {
         length: 6,

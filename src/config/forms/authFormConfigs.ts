@@ -1,5 +1,7 @@
-import { loginSchema } from '@/validations/forms/loginSchema'
-import { signupSchema } from '@/validations/forms/signupSchema'
+import { TranslatorFn } from '@/types/i18n'
+
+import { createLoginSchema } from '@/validations/forms/loginSchema'
+import { createSignupSchema } from '@/validations/forms/signupSchema'
 
 type AuthFormType =
     'login' |
@@ -7,13 +9,17 @@ type AuthFormType =
     'forgotPassword' |
     'resetPassword'
 
-export const authFormConfigs: Record<
-    AuthFormType, {
-    schema: any
-    defaultValues: Record<string, any>
-}> = {
+export const createAuthFormConfigs = (
+    t: TranslatorFn
+): Record<
+    AuthFormType,
+    {
+        schema: any
+        defaultValues: Record<string, any>
+    }
+> => ({
     login: {
-        schema: loginSchema,
+        schema: createLoginSchema(t),
         defaultValues: {
             email: '',
             password: '',
@@ -21,7 +27,7 @@ export const authFormConfigs: Record<
         }
     },
     signup: {
-        schema: signupSchema,
+        schema: createSignupSchema(t),
         defaultValues: {
             firstName: '',
             lastName: '',
@@ -31,16 +37,14 @@ export const authFormConfigs: Record<
         }
     },
     forgotPassword: {
-        schema: loginSchema,
-        defaultValues: {
-            email: ''
-        }
+        schema: createLoginSchema(t),
+        defaultValues: { email: '' }
     },
     resetPassword: {
-        schema: signupSchema,
+        schema: createSignupSchema(t),
         defaultValues: {
             password: '',
             confirmPassword: ''
         }
     }
-}
+})

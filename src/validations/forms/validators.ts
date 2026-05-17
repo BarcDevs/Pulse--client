@@ -1,17 +1,27 @@
 import * as z from 'zod'
 
+import { TranslatorFn } from '@/types/i18n'
+
 import config from '@/config/schema/authForm'
 
-export const passwordField = (requiredMessage: string) =>
+import { validationLocales } from '@/locales/validationLocales'
+
+export const passwordField = (
+    t: TranslatorFn,
+    requiredMessage: string
+) =>
     z.string()
         .min(1, requiredMessage)
         .min(
             config.password.minLength,
-            `Password must be at least ${config.password.minLength} characters`
+            t(
+                validationLocales.password.tooShort,
+                { min: config.password.minLength }
+            )
         )
         .regex(
             config.password.format,
-            config.password.formatMessage
+            t(validationLocales.password.format)
         )
 
 export const confirmPasswordField = (

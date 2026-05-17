@@ -4,7 +4,11 @@ import {
     it
 } from 'vitest'
 
-import { postSchema } from '@/validations/forms/postSchema'
+import { createPostSchema } from '@/validations/forms/postSchema'
+
+import { mockLocales } from './mockLocales'
+
+const postSchema = createPostSchema(mockLocales)
 
 // ==================== postSchema ====================
 describe(

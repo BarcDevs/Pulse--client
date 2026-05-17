@@ -1,3 +1,5 @@
+import { useTranslations } from 'next-intl'
+
 import { useForm } from 'react-hook-form'
 
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -6,7 +8,7 @@ import { wrapFormSubmit } from '@/lib/forms/handleFormSubmit'
 
 import {
     type ChangePasswordSchema,
-    changePasswordSchema
+    createChangePasswordSchema
 } from '@/validations/forms/changePasswordSchema'
 
 type UseChangePasswordFormProps = {
@@ -16,8 +18,9 @@ type UseChangePasswordFormProps = {
 export const useChangePasswordForm = ({
     onSubmit
 }: UseChangePasswordFormProps) => {
+    const t = useTranslations()
     const form = useForm<ChangePasswordSchema>({
-        resolver: zodResolver(changePasswordSchema),
+        resolver: zodResolver(createChangePasswordSchema(t)),
         defaultValues: {
             currentPassword: '',
             newPassword: '',

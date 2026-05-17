@@ -1,5 +1,7 @@
 import { useEffect } from 'react'
 
+import { useTranslations } from 'next-intl'
+
 import { useForm } from 'react-hook-form'
 
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -7,12 +9,14 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { wrapFormSubmit } from '@/lib/forms/handleFormSubmit'
 
 import {
-    GoalSchema,
-    goalSchema
+    createGoalSchema,
+    type GoalSchema
 } from '@/validations/forms/goalSchema'
 
 type UseGoalFormProps = {
-    onSubmit: (data: GoalSchema) => Promise<void>
+    onSubmit: (
+        data: GoalSchema
+    ) => Promise<void>
     defaultValues?: Partial<GoalSchema>
 }
 
@@ -20,13 +24,18 @@ export const useGoalForm = ({
     onSubmit,
     defaultValues
 }: UseGoalFormProps) => {
+    const t = useTranslations()
     const form = useForm<GoalSchema>({
-        resolver: zodResolver(goalSchema),
+        resolver: zodResolver(
+            createGoalSchema(t)
+        ),
         defaultValues: {
             title: defaultValues?.title || '',
-            description: defaultValues?.description || '',
+            description:
+                defaultValues?.description || '',
             category: defaultValues?.category,
-            targetDate: defaultValues?.targetDate || ''
+            targetDate:
+                defaultValues?.targetDate || ''
         },
         mode: 'onBlur'
     })
@@ -34,19 +43,23 @@ export const useGoalForm = ({
     useEffect(() => {
         form.reset({
             title: defaultValues?.title || '',
-            description: defaultValues?.description || '',
+            description:
+                defaultValues?.description || '',
             category: defaultValues?.category,
-            targetDate: defaultValues?.targetDate || ''
+            targetDate:
+                defaultValues?.targetDate || ''
         })
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [defaultValues?.title, defaultValues?.category])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [
+        defaultValues?.title,
+        defaultValues?.category
+    ])
 
     const handleSubmit = wrapFormSubmit(
         form,
         onSubmit,
-        {
-        resetOnSuccess: true
-    })
+        { resetOnSuccess: true }
+    )
 
     return {
         form,

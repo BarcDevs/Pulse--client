@@ -1,64 +1,74 @@
 import * as z from 'zod'
 
 import { GoalCategory } from '@/types/goals'
+import { TranslatorFn } from '@/types/i18n'
 
 import { goalFormSchema } from '@/config/schema/goalForm'
 import { milestoneFormSchema } from '@/config/schema/milestoneForm'
 
-export const goalSchema = z.object({
-    title: z
-        .string()
-        .min(
-            goalFormSchema.title.minLength,
-            'Goal title is required'
-        )
-        .max(
-            goalFormSchema.title.maxLength,
-            `Goal title must be ${goalFormSchema.title.maxLength} characters or less`
-        ),
-    description: z
-        .string()
-        .max(
-            goalFormSchema.description.maxLength,
-            `Description must be ${goalFormSchema.description.maxLength} characters or less`
-        )
-        .optional(),
-    category: z.nativeEnum(GoalCategory),
-    targetDate: z
-        .string()
-        .optional()
-        .refine(
-            (date) => {
-                if (!date) return true
-                return new Date(date) >= new Date(
-                    new Date().toDateString()
+import { validationLocales } from '@/locales/validationLocales'
+
+export const createGoalSchema = (t: TranslatorFn) =>
+    z.object({
+        title: z.string()
+            .min(
+                goalFormSchema.title.minLength,
+                t(validationLocales.goal.title.required)
+            )
+            .max(
+                goalFormSchema.title.maxLength,
+                t(
+                    validationLocales.goal.title.tooLong,
+                    { max: goalFormSchema.title.maxLength }
                 )
-            },
-            'Target date must be in the future'
-        )
-})
+            ),
+        description: z.string()
+            .max(
+                goalFormSchema.description.maxLength,
+                t(
+                    validationLocales.goal.description.tooLong,
+                    { max: goalFormSchema.description.maxLength }
+                )
+            )
+            .optional(),
+        category: z.nativeEnum(GoalCategory),
+        targetDate: z.string()
+            .optional()
+            .refine(
+                (date) => {
+                    if (!date) return true
+                    return new Date(date) >= new Date(new Date().toDateString())
+                },
+                t(validationLocales.goal.targetDate.future)
+            )
+    })
 
-export const milestoneSchema = z.object({
-    title: z
-        .string()
-        .min(
-            milestoneFormSchema.title.minLength,
-            'Milestone title is required'
-        )
-        .max(
-            milestoneFormSchema.title.maxLength,
-            `Milestone title must be ${milestoneFormSchema.title.maxLength} characters or less`
-        ),
-    description: z
-        .string()
-        .max(
-            milestoneFormSchema.description.maxLength,
-            `Description must be ${milestoneFormSchema.description.maxLength} characters or less`
-        )
-        .optional()
-})
+export const createMilestoneSchema = (t: TranslatorFn) =>
+    z.object({
+        title: z.string()
+            .min(
+                milestoneFormSchema.title.minLength,
+                t(validationLocales.milestone.title.required)
+            )
+            .max(
+                milestoneFormSchema.title.maxLength,
+                t(
+                    validationLocales.milestone.title.tooLong,
+                    { max: milestoneFormSchema.title.maxLength }
+                )
+            ),
+        description: z.string()
+            .max(
+                milestoneFormSchema.description.maxLength,
+                t(
+                    validationLocales.milestone.description.tooLong,
+                    { max: milestoneFormSchema.description.maxLength }
+                )
+            )
+            .optional()
+    })
 
-export type GoalSchema = z.infer<typeof goalSchema>
-export type MilestoneSchema = z.infer<
-    typeof milestoneSchema
->
+export type GoalSchema =
+    z.infer<ReturnType<typeof createGoalSchema>>
+export type MilestoneSchema =
+    z.infer<ReturnType<typeof createMilestoneSchema>>

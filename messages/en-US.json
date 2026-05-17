@@ -1066,5 +1066,106 @@
       "desc": "Track progress, build healthier routines, and stay connected to support that understands the process.",
       "button": "Start for Free"
     }
+  },
+  "validation": {
+    "email": {
+      "required": "Enter your email address",
+      "invalid": "Enter a valid email address"
+    },
+    "password": {
+      "required": "Enter your password",
+      "current": {
+        "required": "Enter your current password"
+      },
+      "new": {
+        "required": "Enter a new password"
+      },
+      "confirm": {
+        "required": "Confirm your password",
+        "please": "Please confirm your password"
+      },
+      "noMatch": "Passwords do not match",
+      "tooShort": "Password must contain at least {min} characters",
+      "format": "Password must contain at least 8 characters, including letters and numbers"
+    },
+    "otp": {
+      "required": "Enter the verification code",
+      "tooShort": "Verification code is too short",
+      "invalid": "Verification code is invalid"
+    },
+    "name": {
+      "firstName": {
+        "required": "Enter your first name",
+        "empty": "First name cannot be empty",
+        "tooLong": "First name must be {max} characters or fewer"
+      },
+      "lastName": {
+        "required": "Enter your last name",
+        "empty": "Last name cannot be empty",
+        "tooLong": "Last name must be {max} characters or fewer"
+      },
+      "location": {
+        "tooLong": "Location must be {max} characters or fewer"
+      }
+    },
+    "post": {
+      "category": {
+        "required": "Choose a category",
+        "invalid": "Selected category is invalid"
+      },
+      "title": {
+        "required": "Enter a title",
+        "tooShort": "Title is too short",
+        "tooLong": "Title is too long"
+      },
+      "content": {
+        "required": "Write something before posting",
+        "tooShort": "Content is too short",
+        "tooShortMin": "Content must contain at least {min} characters",
+        "tooLong": "Content must be under {max} characters"
+      },
+      "tag": {
+        "tooShort": "Tag is too short",
+        "tooLong": "Tag is too long",
+        "required": "Add at least one tag",
+        "tooMany": "You can add up to {max} tags"
+      }
+    },
+    "checkIn": {
+      "activity": {
+        "empty": "Activity cannot be empty",
+        "tooLong": "Activity must be under {max} characters",
+        "required": "Add at least one activity"
+      },
+      "notes": {
+        "tooLong": "Notes must be under {max} characters"
+      }
+    },
+    "goal": {
+      "title": {
+        "required": "Enter a goal title",
+        "tooLong": "Goal title must be {max} characters or fewer"
+      },
+      "description": {
+        "tooLong": "Description must be {max} characters or fewer"
+      },
+      "targetDate": {
+        "future": "Choose a future date"
+      }
+    },
+    "milestone": {
+      "title": {
+        "required": "Enter a milestone title",
+        "tooLong": "Milestone title must be {max} characters or fewer"
+      },
+      "description": {
+        "tooLong": "Description must be {max} characters or fewer"
+      }
+    },
+    "profile": {
+      "bio": {
+        "tooLong": "Bio must be {max} characters or fewer"
+      }
+    }
   }
 }

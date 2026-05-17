@@ -4,7 +4,11 @@ import {
     it
 } from 'vitest'
 
-import { otpSchema } from '@/validations/forms/otpSchema'
+import { createOtpSchema } from '@/validations/forms/otpSchema'
+
+import { mockLocales } from './mockLocales'
+
+const otpSchema = createOtpSchema(mockLocales)
 
 // ==================== otpSchema ====================
 describe('otpSchema',

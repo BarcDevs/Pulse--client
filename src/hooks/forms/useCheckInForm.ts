@@ -1,5 +1,7 @@
 import { useMemo } from 'react'
 
+import { useTranslations } from 'next-intl'
+
 import { useForm, useWatch } from 'react-hook-form'
 
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -11,8 +13,8 @@ import { isTodayCheckIn } from '@/lib/checkIn/loaderHelpers'
 import { checkInFormSchema } from '@/config/schema/checkInForm'
 
 import {
-    CheckInSchema,
-    checkInSchema
+    type CheckInSchema,
+    createCheckInSchema
 } from '@/validations/forms/checkInSchema'
 
 const {
@@ -29,8 +31,11 @@ export const useCheckInForm = ({
     latestCheckIn,
     stats
 }: UseCheckInFormProps) => {
+    const t = useTranslations()
     const isTodayCheckInExists =
-        latestCheckIn ? isTodayCheckIn(latestCheckIn) : false
+        latestCheckIn
+            ? isTodayCheckIn(latestCheckIn)
+            : false
 
     const topActivities = useMemo(
         () => stats?.topActivities ?? [],
@@ -38,20 +43,28 @@ export const useCheckInForm = ({
     )
 
     const form = useForm<CheckInSchema>({
-        resolver: zodResolver(checkInSchema),
+        resolver: zodResolver(
+            createCheckInSchema(t)
+        ),
         defaultValues:
             isTodayCheckInExists
-            && latestCheckIn ? {
-                moodScore: latestCheckIn.moodScore,
-                painLevel: latestCheckIn.painLevel,
-                activities: latestCheckIn.activities,
-                notes: latestCheckIn.notes ?? ''
-            } : {
-                moodScore: moodConfig.min,
-                painLevel: painConfig.min,
-                activities: [],
-                notes: ''
-            }
+            && latestCheckIn
+                ? {
+                    moodScore:
+                        latestCheckIn.moodScore,
+                    painLevel:
+                        latestCheckIn.painLevel,
+                    activities:
+                        latestCheckIn.activities,
+                    notes:
+                        latestCheckIn.notes ?? ''
+                }
+                : {
+                    moodScore: moodConfig.min,
+                    painLevel: painConfig.min,
+                    activities: [],
+                    notes: ''
+                }
     })
 
     const selectedActivities = useWatch({
@@ -62,15 +75,23 @@ export const useCheckInForm = ({
     const suggestedActivities = useMemo(
         () => topActivities.filter(
             activity =>
-                !selectedActivities?.includes(activity)
+                !selectedActivities?.includes(
+                    activity
+                )
         ),
         [topActivities, selectedActivities]
     )
 
-    const handleAddActivity = (activity: string) => {
+    const handleAddActivity = (
+        activity: string
+    ) => {
         const currentActivities =
             form.getValues('activities')
-        if (!currentActivities.includes(activity)) {
+        if (
+            !currentActivities.includes(
+                activity
+            )
+        ) {
             form.setValue(
                 'activities',
                 [...currentActivities, activity]
