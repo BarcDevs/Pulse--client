@@ -464,9 +464,15 @@
       "subtitle": "Areas you are currently prioritizing",
       "empty": "No focus areas added yet",
       "focusAreas": [
-        { "label": "Pain Management" },
-        { "label": "Mental Clarity" },
-        { "label": "Mindfulness" }
+        {
+          "label": "Pain Management"
+        },
+        {
+          "label": "Mental Clarity"
+        },
+        {
+          "label": "Mindfulness"
+        }
       ]
     },
     "basicInfo": {
@@ -486,10 +492,18 @@
       "emailNote": "Email cannot be changed here.",
       "emailNoteLink": "Change in settings",
       "fields": [
-        { "label": "Full name" },
-        { "label": "Email address" },
-        { "label": "Date of birth" },
-        { "label": "Primary support contact" }
+        {
+          "label": "Full name"
+        },
+        {
+          "label": "Email address"
+        },
+        {
+          "label": "Date of birth"
+        },
+        {
+          "label": "Primary support contact"
+        }
       ]
     },
     "goals": {
@@ -524,12 +538,18 @@
       "morningRoutine": {
         "title": "Morning routine",
         "subtitle": "Scheduled for {time}",
-        "tags": ["Meditation", "Stretch"]
+        "tags": [
+          "Meditation",
+          "Stretch"
+        ]
       },
       "eveningReflection": {
         "title": "Evening reflection",
         "subtitle": "Scheduled for {time}",
-        "tags": ["Journaling", "Breathwork"]
+        "tags": [
+          "Journaling",
+          "Breathwork"
+        ]
       }
     },
     "systemPrivacy": {
@@ -765,9 +785,18 @@
         "title": "Profile Visibility",
         "description": "Choose who can view your profile and progress",
         "options": [
-          { "value": "onlyMe", "label": "Only Me" },
-          { "value": "mentors", "label": "Mentors Only" },
-          { "value": "community", "label": "Community" }
+          {
+            "value": "onlyMe",
+            "label": "Only Me"
+          },
+          {
+            "value": "mentors",
+            "label": "Mentors Only"
+          },
+          {
+            "value": "community",
+            "label": "Community"
+          }
         ]
       },
       "dataSharing": {
@@ -792,11 +821,11 @@
         "sendCodeButton": "Send verification code",
         "sendingCodeButton": "Sending...",
         "otpTitle": "Check your new email",
-        "otpDescription": "Enter the 6-digit code we sent to your new email address",
+        "otpDescription": "Enter the 6-digit verification code sent to your new email address",
         "verifyButton": "Verify",
         "verifyingButton": "Verifying...",
         "cancelButton": "Cancel",
-        "successToast": "Email updated successfully"
+        "successToast": "Your email address has been updated"
       },
       "password": {
         "label": "Password",
@@ -806,10 +835,10 @@
         "newPassword": "New password",
         "confirmPassword": "Confirm new password",
         "passwordMismatch": "Passwords do not match",
-        "changeButton": "Change password",
-        "changingButton": "Changing...",
+        "changeButton": "Update password",
+        "changingButton": "Updating...",
         "cancelButton": "Cancel",
-        "successToast": "Password changed successfully"
+        "successToast": "Your password has been updated"
       },
       "deactivate": {
         "label": "Deactivate Account",

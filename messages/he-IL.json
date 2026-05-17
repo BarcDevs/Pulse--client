@@ -811,27 +811,27 @@
         "label": "כתובת אימייל",
         "newEmail": "כתובת אימייל חדשה",
         "currentPassword": "סיסמה נוכחית",
-        "sendCodeButton": "שלח קוד אימות",
+        "sendCodeButton": "שליחת קוד אימות",
         "sendingCodeButton": "שולח...",
         "otpTitle": "בדוק את האימייל החדש שלך",
-        "otpDescription": "הזן את הקוד בן 6 הספרות ששלחנו לכתובת האימייל החדשה שלך",
-        "verifyButton": "אמת",
+        "otpDescription": "הזן את קוד האימות בן 6 הספרות שנשלח לכתובת האימייל החדשה",
+        "verifyButton": "אימות",
         "verifyingButton": "מאמת...",
         "cancelButton": "ביטול",
-        "successToast": "האימייל עודכן בהצלחה"
+        "successToast": "כתובת האימייל עודכנה בהצלחה"
       },
       "password": {
         "label": "סיסמה",
-        "value": "עודכנה לפני {timeAgo}",
+        "value": "עודכנה לאחרונה {timeAgo}",
         "changeTitle": "שינוי סיסמה",
         "currentPassword": "סיסמה נוכחית",
         "newPassword": "סיסמה חדשה",
         "confirmPassword": "אימות סיסמה חדשה",
         "passwordMismatch": "הסיסמאות אינן תואמות",
-        "changeButton": "שינוי סיסמה",
-        "changingButton": "משנה...",
+        "changeButton": "עדכון סיסמה",
+        "changingButton": "מעדכן...",
         "cancelButton": "ביטול",
-        "successToast": "הסיסמה שונתה בהצלחה"
+        "successToast": "הסיסמה עודכנה בהצלחה"
       },
       "deactivate": {
         "label": "הסר את החשבון",
