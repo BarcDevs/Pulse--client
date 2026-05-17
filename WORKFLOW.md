@@ -205,8 +205,8 @@ export const goalsLocales = {
 } as const
 ```
 
-```json
 // messages/en-US.json (partial)
+```json
 {
     "goals": {
         "overview": {
