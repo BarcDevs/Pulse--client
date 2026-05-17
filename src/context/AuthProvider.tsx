@@ -18,7 +18,7 @@ import { ErrorBannerWrapper } from '@/components/shared/ErrorBannerWrapper'
 
 import { useGetMe } from '@/hooks/queries/useGetMe'
 
-import { initiateLogout } from '@/lib/auth'
+import { authState, initiateLogout } from '@/lib/auth'
 
 import {
     isNetworkError,
@@ -96,12 +96,21 @@ export const AuthProvider = ({
     )
 
     useEffect(() => {
+        authState.onRefreshSuccess = () => {
+            queryClient.invalidateQueries({
+                queryKey: authQueryKeys.getMe
+            })
+        }
+        return () => { authState.onRefreshSuccess = null }
+    }, [queryClient])
+
+    useEffect(() => {
         if (
             error
             && isUnauthorizedError(error)
             && !PUBLIC_ROUTES.includes(pathname as typeof PUBLIC_ROUTES[number])
         ) {
-            initiateLogout()
+            initiateLogout(pathname)
         }
     }, [error, pathname])
 

@@ -23,20 +23,23 @@ export const authState = {
     onRefreshSuccess: null as (() => void) | null
 }
 
-export const performRefresh = async ():
+export const callRefresh = async ():
     Promise<boolean> => {
     try {
-        const { refresh } = await import(
-            '@/api/auth'
-            )
-
+        const { refresh } = await import('@/api/auth')
         await refresh()
+        authState.onRefreshSuccess?.()
         return true
-    } catch (error: any) {
-        if (error.response?.status === 401)
-            await initiateLogout()
+    } catch {
         return false
     }
+}
+
+export const performRefresh = async ():
+    Promise<boolean> => {
+    const success = await callRefresh()
+    if (!success) await initiateLogout()
+    return success
 }
 
 export const rejectAll = (error: AxiosError) => {
@@ -69,7 +72,9 @@ export const flushQueue = (
     authState.requestQueue = []
 }
 
-export const initiateLogout = async () => {
+export const initiateLogout = async (
+    redirectPath?: string
+) => {
     authState.isRefreshing = false
     clearCsrfToken()
 
@@ -81,8 +86,12 @@ export const initiateLogout = async () => {
     authState.isShuttingDown = true
     rejectAll(new AxiosError('Session expired'))
 
-    if (typeof window !== 'undefined')
-        window.location.href = '/login'
+    if (typeof window !== 'undefined') {
+        const path = redirectPath
+            ?? window.location.pathname + window.location.search
+        window.location.href =
+            `/login?redirect=${encodeURIComponent(path)}`
+    }
 }
 
 export const redirectToGoogleAuth = async () => {

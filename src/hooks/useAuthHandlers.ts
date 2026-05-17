@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 import { useQueryClient } from '@tanstack/react-query'
 
 import { getApiErrorMessage } from '@/utils/error'
+import { getSafeRedirectUrl } from '@/utils/redirect'
 
 import { authQueryKeys } from '@/constants/queryKeys'
 
@@ -32,7 +33,15 @@ export const useAuthHandlers = () => {
             await queryClient.invalidateQueries({
                 queryKey: authQueryKeys.getMe
             })
-            router.push('/dashboard')
+            const params = new URLSearchParams(
+                window.location.search
+            )
+            router.push(
+                getSafeRedirectUrl(
+                    params.get('redirect'),
+                    '/dashboard'
+                )
+            )
 
             return null
         } catch (error: unknown) {

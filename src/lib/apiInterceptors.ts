@@ -7,7 +7,9 @@ import {
 
 import {
     authState,
+    callRefresh,
     flushQueue,
+    initiateLogout,
     performRefresh
 } from '@/lib/auth'
 import {
@@ -56,6 +58,19 @@ export const handleResponseSuccess = (
     return response
 }
 
+const UNAUTHENTICATED_ENDPOINTS = [
+    '/auth/login',
+    '/auth/signup',
+    '/auth/refresh',
+    '/auth/logout'
+]
+
+const isCsrfError = (error: AxiosError): boolean => {
+    const data = error.response?.data as any
+    const msg: string = data?.message || data?.error || ''
+    return msg.toLowerCase().includes('csrf')
+}
+
 export const handleResponseError = async (
     error: AxiosError,
     api: AxiosInstance
@@ -69,17 +84,26 @@ export const handleResponseError = async (
             _retry?: boolean
         }
 
-    const isUnauthorized = error.response
-        ?.status === 401
-    const isAuthEndpoint = originalRequest?.url
-        ?.startsWith('/auth/')
+    const isUnauthorized = error.response?.status === 401
+    const isUnauthEndpoint = UNAUTHENTICATED_ENDPOINTS.includes(
+        originalRequest?.url ?? ''
+    )
     const alreadyRetried = originalRequest?._retry
 
-    if (
-        isUnauthorized
-        && !isAuthEndpoint
-        && !alreadyRetried
-    ) {
+    if (isUnauthorized && !isUnauthEndpoint) {
+        if (isCsrfError(error) && !alreadyRetried) {
+            originalRequest._retry = true
+            const success = await callRefresh()
+            if (success) return api(originalRequest)
+            await initiateLogout()
+            return Promise.reject(error)
+        }
+
+        if (alreadyRetried) {
+            await initiateLogout()
+            return Promise.reject(error)
+        }
+
         originalRequest._retry = true
 
         return new Promise<any>(
@@ -96,17 +120,13 @@ export const handleResponseError = async (
                     performRefresh()
                         .then((success) => {
                             flushQueue(api, success)
-                            return success
                         })
                         .catch(() => {
                             flushQueue(
                                 api,
                                 false,
-                                new AxiosError(
-                                    'Refresh failed'
-                                )
+                                new AxiosError('Refresh failed')
                             )
-                            return false
                         })
                         .finally(() => {
                             authState.isRefreshing = false
