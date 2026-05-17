@@ -830,7 +830,8 @@
         "passwordMismatch": "הסיסמאות אינן תואמות",
         "changeButton": "שינוי סיסמה",
         "changingButton": "משנה...",
-        "cancelButton": "ביטול"
+        "cancelButton": "ביטול",
+        "successToast": "הסיסמה שונתה בהצלחה"
       },
       "deactivate": {
         "label": "הסר את החשבון",

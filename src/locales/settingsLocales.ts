@@ -81,7 +81,8 @@ export const settingsLocales = {
             passwordMismatch: 'settings.security.password.passwordMismatch',
             changeButton: 'settings.security.password.changeButton',
             changingButton: 'settings.security.password.changingButton',
-            cancelButton: 'settings.security.password.cancelButton'
+            cancelButton: 'settings.security.password.cancelButton',
+            successToast: 'settings.security.password.successToast'
         },
         deactivate: {
             label: 'settings.security.deactivate.label',

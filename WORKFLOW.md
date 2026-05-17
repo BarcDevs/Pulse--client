@@ -257,6 +257,11 @@ const t = await getTranslations()
 
 ## GLOBAL CONSTRAINTS
 
+### API contracts — check before implementing
+- Before building any feature tied to an API endpoint, read `../healease--server/docs/API.md`
+- Verify: request body shape, required vs optional fields, response shape, error codes
+- Never guess endpoint behavior — the doc is authoritative
+
 ### UI components — shadcn first
 - Always use shadcn/ui component if one exists (`Button`, `Input`, `Select`, `Badge`, `Card`, etc.)
 - ❌ Never use plain `<button>`, `<input>`, `<select>` when shadcn equivalent available

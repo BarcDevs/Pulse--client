@@ -808,7 +808,8 @@
         "passwordMismatch": "Passwords do not match",
         "changeButton": "Change password",
         "changingButton": "Changing...",
-        "cancelButton": "Cancel"
+        "cancelButton": "Cancel",
+        "successToast": "Password changed successfully"
       },
       "deactivate": {
         "label": "Deactivate Account",
