@@ -125,7 +125,7 @@ describe(
                 vi.mocked(refresh).mockRejectedValueOnce(
                     new Error('fail')
                 )
-                vi.mocked(logout).mockResolvedValueOnce(undefined)
+                vi.mocked(logout).mockResolvedValueOnce(null)
 
                 const result = await performRefresh()
 
@@ -139,7 +139,7 @@ describe(
     'initiateLogout',
     () => {
         beforeEach(() => {
-            vi.mocked(logout).mockResolvedValue(undefined)
+            vi.mocked(logout).mockResolvedValue(null)
         })
 
         it(
