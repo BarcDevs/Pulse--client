@@ -99,7 +99,7 @@ export const DashboardHistoryChart = () => {
                         data={chartData}
                         series={series}
                         seriesPrevious={seriesPrevious}
-                        noDataLabel={t(progressLocales.charts.status.noCheckIn)}
+                        noDataLabel={t(progressLocales.charts.status.noCheckInTooltip)}
                     />
                 )}
             </CardContent>

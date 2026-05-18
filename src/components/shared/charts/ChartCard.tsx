@@ -70,7 +70,7 @@ export const ChartCard = ({ title, series }: ChartCardProps) => {
                         data={chartData}
                         series={series}
                         seriesPrevious={seriesPrevious}
-                        noDataLabel={t(progressLocales.charts.status.noCheckIn)}
+                        noDataLabel={t(progressLocales.charts.status.noCheckInTooltip)}
                     />
                 )}
             </CardContent>

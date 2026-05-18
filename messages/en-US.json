@@ -446,7 +446,8 @@
       "status": {
         "loadError": "Unable to load data",
         "loading": "Loading...",
-        "noCheckIn": "No daily updates yet. Start checking in to see your progress here"
+        "noCheckIn": "No daily updates yet. Start checking in to see your progress here",
+        "noCheckInTooltip": "No daily update"
       }
     }
   },
