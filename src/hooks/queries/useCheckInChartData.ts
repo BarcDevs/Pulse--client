@@ -5,7 +5,6 @@ import { MoodPainSeriesPoint } from '@/types/checkIn'
 import { TimePeriod } from '@/types/time'
 
 import { useCheckInHistory } from '@/hooks/queries/useCheckInHistory'
-import { useDirection } from '@/hooks/useDirection'
 
 import { buildWeeklyAverages } from '@/lib/checkIn/buildWeeklyAverages'
 import { fillHistoryMonthNulls } from '@/lib/checkIn/fillHistoryMonthNulls'
@@ -20,9 +19,9 @@ const PERIOD_FETCH: Record<TimePeriod, number> = {
 }
 
 export const useCheckInChartData = (period: TimePeriod) => {
-    const dir = useDirection()
     const locale = useLocale()
-    const dateFnsLocale = locale === 'he-IL' ? he : undefined
+    const isRtl = locale === 'he-IL'
+    const dateFnsLocale = isRtl ? he : undefined
     const {
         data,
         isLoading,
@@ -44,14 +43,20 @@ export const useCheckInChartData = (period: TimePeriod) => {
     let previousPoint: MoodPainSeriesPoint | null = null
 
     if (period === 'weekly') {
-        const result = fillHistoryWeekNulls(rawData, dateFnsLocale)
+        const result = fillHistoryWeekNulls(
+            rawData,
+            dateFnsLocale
+        )
         filled = result.days
         previousPoint = result.previousPoint
     } else {
-        filled = buildWeeklyAverages(fillHistoryMonthNulls(rawData, dateFnsLocale))
+        filled = buildWeeklyAverages(
+            fillHistoryMonthNulls(rawData, dateFnsLocale)
+        )
     }
 
-    const chartData = dir === 'rtl' ? reverseChartData(filled) : filled
+    const chartData = isRtl
+        ? reverseChartData(filled) : filled
 
     return {
         chartData,
