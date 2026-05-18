@@ -47,7 +47,10 @@ const enrichWithBridges = (
         const prevVal = seriesPrevious?.[s.dataKey]
         // -1 = virtual anchor before window; null = no anchor yet
         let lastRealIdx: number | null =
-            (prevVal !== null && prevVal !== undefined) ? -1 : null
+            (
+                prevVal !== null
+                && prevVal !== undefined
+            ) ? -1 : null
         let inGap = false
         let bridgeIdx = 0
 
@@ -101,7 +104,10 @@ export const TrendChart = ({
     )
 
     const hoverData = useMemo(
-        () => enrichedData.map(d => ({ ...d, __hover: 0 })),
+        () => enrichedData.map(d => ({
+            ...d,
+            __hover: 0
+        })),
         [enrichedData]
     )
 
@@ -123,129 +129,152 @@ export const TrendChart = ({
         <div className={'flex flex-col gap-1'}>
             <div className={'h-40 w-full'}>
                 <ResponsiveContainer
-                width={'100%'}
-                height={'100%'}
-            >
-                <ComposedChart
-                    data={hoverData}
-                    margin={{
-                        top: 5,
-                        right: 5,
-                        left: 0,
-                        bottom: 0
-                }}
+                    width={'100%'}
+                    height={'100%'}
                 >
-                    <defs>
-                        {series.filter(s => !s.dashed).map(s => (
-                            <linearGradient
-                                key={s.gradientId}
-                                id={s.gradientId}
-                                x1={'0'}
-                                y1={'0'}
-                                x2={'0'}
-                                y2={'1'}
-                            >
-                                <stop
-                                    offset={'5%'}
-                                    stopColor={s.color}
-                                    stopOpacity={0.3}
-                                />
-                                <stop
-                                    offset={'95%'}
-                                    stopColor={s.color}
-                                    stopOpacity={0}
-                                />
-                            </linearGradient>
-                        ))}
-                    </defs>
-                    <XAxis
-                        dataKey={'date'}
-                        axisLine={false}
-                        tickLine={false}
-                        padding={{ left: 30, right: 10 }}
-                        tick={{
-                            fill: 'var(--muted-foreground)',
-                            fontSize: 12
+                    <ComposedChart
+                        data={hoverData}
+                        margin={{
+                            top: 5,
+                            right: 5,
+                            left: 0,
+                            bottom: 0
                         }}
-                    />
-                    <YAxis
-                        domain={[0, 10]}
-                        axisLine={false}
-                        tickLine={false}
-                        tick={{
-                            fill: 'var(--muted-foreground)',
-                            fontSize: 12
-                        }}
-                        width={30}
-                    />
-                    <Tooltip
-                        content={(props) => (
-                            <ChartTooltip
-                                {...props}
-                                series={series}
-                                noDataLabel={noDataLabel}
+                    >
+                        <defs>
+                            {series.filter(s => !s.dashed).map(s => (
+                                <linearGradient
+                                    key={s.gradientId}
+                                    id={s.gradientId}
+                                    x1={'0'}
+                                    y1={'0'}
+                                    x2={'0'}
+                                    y2={'1'}
+                                >
+                                    <stop
+                                        offset={'5%'}
+                                        stopColor={s.color}
+                                        stopOpacity={0.3}
+                                    />
+                                    <stop
+                                        offset={'95%'}
+                                        stopColor={s.color}
+                                        stopOpacity={0}
+                                    />
+                                </linearGradient>
+                            ))}
+                        </defs>
+                        <XAxis
+                            dataKey={'date'}
+                            axisLine={false}
+                            tickLine={false}
+                            padding={{ left: 30, right: 10 }}
+                            tick={{
+                                fill: 'var(--muted-foreground)',
+                                fontSize: 12
+                            }}
+                        />
+                        <YAxis
+                            domain={[0, 10]}
+                            axisLine={false}
+                            tickLine={false}
+                            tick={{
+                                fill: 'var(--muted-foreground)',
+                                fontSize: 12
+                            }}
+                            width={30}
+                        />
+                        <Tooltip
+                            content={(props) => (
+                                <ChartTooltip
+                                    {...props}
+                                    series={series}
+                                    noDataLabel={noDataLabel}
+                                />
+                            )}
+                        />
+                        {series.map(s => s.dashed ? (
+                            <Line
+                                key={s.dataKey}
+                                type={'monotone'}
+                                dataKey={s.dataKey}
+                                stroke={s.color}
+                                strokeDasharray={'5 5'}
+                                strokeWidth={1}
+                                dot={false}
+                                connectNulls={false}
                             />
-                        )}
-                    />
-                    {series.map(s => s.dashed ? (
+                        ) : (
+                            <Area
+                                key={s.dataKey}
+                                type={'monotone'}
+                                dataKey={s.dataKey}
+                                stroke={s.color}
+                                strokeWidth={2}
+                                fill={`url(#${s.gradientId})`}
+                                connectNulls={false}
+                                dot={(props: {
+                                    cx?: number
+                                    cy?: number
+                                    index?: number
+                                }) => {
+                                    const idx = props.index ?? -1
+                                    const hasValue = enrichedData[idx]?.[s.dataKey] != null
+                                    if (!hasValue || props.cx == null || props.cy == null) {
+                                        return <g key={`dot-${s.dataKey}-${idx}`}/>
+                                    }
+                                    const prevNull = enrichedData[idx - 1]?.[s.dataKey] == null
+                                    const nextNull = enrichedData[idx + 1]?.[s.dataKey] == null
+                                    const atStart = idx === 0
+                                    const atEnd = idx === enrichedData.length - 1
+                                    const isOrphan = prevNull && nextNull
+                                    const isEdge = (atStart && nextNull) || (atEnd && prevNull)
+                                    if (!isOrphan && !isEdge) {
+                                        return <g key={`dot-${s.dataKey}-${idx}`}/>
+                                    }
+                                    const isLast = idx === lastRealIndex[s.dataKey]
+                                    return (
+                                        <circle
+                                            key={`dot-${s.dataKey}-${idx}`}
+                                            cx={props.cx}
+                                            cy={props.cy}
+                                            r={isLast ? 4 : 3}
+                                            fill={s.color}
+                                            stroke={'white'}
+                                            strokeWidth={2}
+                                        />
+                                    )
+                                }}
+                            />
+                        ))}
                         <Line
-                            key={s.dataKey}
-                            type={'monotone'}
-                            dataKey={s.dataKey}
-                            stroke={s.color}
-                            strokeDasharray={'5 5'}
-                            strokeWidth={1}
-                            dot={false}
-                            connectNulls={false}
-                        />
-                    ) : (
-                        <Area
-                            key={s.dataKey}
-                            type={'monotone'}
-                            dataKey={s.dataKey}
-                            stroke={s.color}
-                            strokeWidth={2}
-                            fill={`url(#${s.gradientId})`}
-                            connectNulls={false}
-                            dot={(props: {
-                                cx?: number
-                                cy?: number
-                                index?: number
-                            }) =>
-                                props.index === lastRealIndex[s.dataKey] && props.cx != null && props.cy != null
-                                    ? <circle key={`dot-${s.dataKey}`} cx={props.cx} cy={props.cy} r={4} fill={s.color} stroke={'white'} strokeWidth={2} />
-                                    : <g key={`dot-${s.dataKey}-${props.index}`} />
-                            }
-                        />
-                    ))}
-                    <Line
-                        dataKey={'__hover'}
-                        stroke={'none'}
-                        dot={false}
-                        activeDot={false}
-                        legendType={'none'}
-                        isAnimationActive={false}
-                    />
-                    {bridgeKeys.map(b => (
-                        <Line
-                            key={b.key}
-                            type={'monotone'}
-                            dataKey={b.key}
-                            stroke={b.color}
-                            strokeDasharray={'4 4'}
-                            strokeWidth={2}
-                            strokeOpacity={0.4}
-                            connectNulls={true}
+                            dataKey={'__hover'}
+                            stroke={'none'}
                             dot={false}
                             activeDot={false}
                             legendType={'none'}
                             isAnimationActive={false}
                         />
-                    ))}
-                </ComposedChart>
-            </ResponsiveContainer>
+                        {bridgeKeys.map(b => (
+                            <Line
+                                key={b.key}
+                                type={'monotone'}
+                                dataKey={b.key}
+                                stroke={b.color}
+                                strokeDasharray={'4 4'}
+                                strokeWidth={2}
+                                strokeOpacity={0.4}
+                                connectNulls={true}
+                                dot={false}
+                                activeDot={false}
+                                legendType={'none'}
+                                isAnimationActive={false}
+                            />
+                        ))}
+                    </ComposedChart>
+                </ResponsiveContainer>
             </div>
-            <ChartLegend series={series} />
+            <ChartLegend series={series}/>
         </div>
     )
 }
