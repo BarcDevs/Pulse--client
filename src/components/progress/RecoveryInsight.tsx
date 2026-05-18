@@ -4,8 +4,6 @@ import { useTranslations } from 'next-intl'
 
 import { Sparkles } from 'lucide-react'
 
-import { Button } from '@/components/ui/button'
-
 import { useLatestCheckIn }
     from '@/hooks/queries/useLatestCheckIn'
 
@@ -46,20 +44,6 @@ export const RecoveryInsight = () => {
                 </p>
             )}
 
-            <div className={'mt-6 flex items-center gap-3'}>
-                <Button
-                    variant={'secondary'}
-                    className={'bg-white text-primary hover:bg-white/90'}
-                >
-                    {t(progressLocales.insight.buttonPrimary)}
-                </Button>
-                <Button
-                    variant={'ghost'}
-                    className={'text-primary-foreground hover:bg-white/10'}
-                >
-                    {t(progressLocales.insight.buttonSecondary)}
-                </Button>
-            </div>
         </div>
     )
 }
