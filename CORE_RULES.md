@@ -42,6 +42,10 @@ done with - Text blocks: Don't break unless really long (120–150 chars OK)
 - Don't use redundant braces or parentheses
 - Avoid single statement followed by return — inline: `if (x) return fn()` not `if (x) { fn(); return }`
 
+## JSX Logic
+- Never use IIFEs in JSX — compute values in variables before `return`
+- Closing `)` of a multi-line callback stays inline with the next chained method: `.map(...).find(Boolean)` not `.map(...)\n.find(Boolean)`
+
 ## Code Formatting
 - Line length: Target 40-50 characters maximum for code lines (strings can be longer if necessary). Break lines that exceed this threshold
 - Break long lines and function parameters onto multiple lines
