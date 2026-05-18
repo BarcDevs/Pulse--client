@@ -8,7 +8,7 @@ export const checkInFormSchema = {
         max: 10
     },
     activities: {
-        minCount: 1,
+        minCount: 0,
         minLength: 1,
         maxLength: 100
     },

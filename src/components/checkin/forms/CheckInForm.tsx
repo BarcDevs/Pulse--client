@@ -46,10 +46,17 @@ export const CheckInForm = ({
             router.push('/progress')
         } catch {
             form.setError('root', {
-                message: 'Failed to submit check-in. Please try again.'
+                message: t(checkInLocales.submitError)
             })
         }
     }
+
+    const { root, ...fieldErrors } = form.formState.errors
+    const errorMessage = Object.values(fieldErrors)
+        .map(e => Array.isArray(e)
+            ? e[0]?.message
+            : (e as { message?: string })?.message
+        ).find(Boolean) ?? root?.message
 
     return (
         <form
@@ -69,6 +76,11 @@ export const CheckInForm = ({
                 setValueAction={form.setValue}
                 suggestedActivities={suggestedActivities}
             />
+            {errorMessage && (
+                <p className={'text-center text-sm text-destructive'}>
+                    {errorMessage}
+                </p>
+            )}
             <div className={'flex justify-center pt-4'}>
                 <Button
                     type={'submit'}

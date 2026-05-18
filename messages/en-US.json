@@ -125,6 +125,7 @@
       "title": "Journal",
       "placeholder": "Write about how today feels, what’s been difficult, or anything else on your mind."
     },
+    "submitError": "We couldn't save your daily update right now. Please try again in a moment.",
     "quotes": [
       "Showing up today is already meaningful.",
       "Small steps still move you forward.",
