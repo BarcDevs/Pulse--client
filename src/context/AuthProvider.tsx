@@ -26,8 +26,8 @@ import {
 } from '@/utils/error'
 
 import { authQueryKeys } from '@/constants/queryKeys'
-import { minuteInMs } from '@/constants/time'
 import { ROUTES } from '@/constants/routes'
+import { minuteInMs } from '@/constants/time'
 
 import { AuthContext } from './AuthContext'
 
