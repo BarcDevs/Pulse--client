@@ -3,6 +3,7 @@ import {
     isBefore,
     subDays
 } from 'date-fns'
+import type { Locale } from 'date-fns'
 
 import { MoodPainSeriesPoint } from '@/types/checkIn'
 
@@ -10,11 +11,12 @@ import { formatByUserPreference } from '@/lib/time'
 
 import { defaults } from '@/constants/defaults'
 
-const fmt = (date: Date) =>
+const fmt = (date: Date, locale?: Locale) =>
     formatByUserPreference(
-        date, 
-        true, 
-        defaults.checkIn.dateFormat
+        date,
+        true,
+        defaults.checkIn.dateFormat,
+        locale
     )
 
 type FillWeekResult = {
@@ -23,10 +25,11 @@ type FillWeekResult = {
 }
 
 export const fillHistoryWeekNulls = (
-    data: MoodPainSeriesPoint[]
+    data: MoodPainSeriesPoint[],
+    locale?: Locale
 ): FillWeekResult => {
     const today = new Date()
-    const todayKey = fmt(today)
+    const todayKey = fmt(today, locale)
     const hasTodayData = data.some(p => p.date === todayKey)
     const end = hasTodayData ? today : subDays(today, 1)
     const start = subDays(end, 6)
@@ -44,7 +47,7 @@ export const fillHistoryWeekNulls = (
 
     return {
         days: days.map((day) => {
-            const key = fmt(day)
+            const key = fmt(day, locale)
             return dataByDate.get(key) ?? {
                 date: key,
                 originalDate: day.toISOString(),

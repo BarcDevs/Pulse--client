@@ -1,3 +1,5 @@
+import type { Locale } from 'date-fns'
+
 import type {
     CheckIn,
     CheckInStats,
@@ -26,7 +28,8 @@ export const fetchCheckIns = async (
 }
 
 export const fetchCheckInHistory = async (
-    days?: number
+    days?: number,
+    locale?: Locale
 ): Promise<MoodPainSeriesPoint[]> => {
     const params = days ? { limit: days } : {}
     const res = await api.get<Response<CheckIn[]>>(
@@ -41,7 +44,8 @@ export const fetchCheckInHistory = async (
                 date: formatByUserPreference(
                     dateObj,
                     true,
-                    defaults.checkIn.dateFormat
+                    defaults.checkIn.dateFormat,
+                    locale
                 ),
                 originalDate:
                     checkIn.checkInDate,

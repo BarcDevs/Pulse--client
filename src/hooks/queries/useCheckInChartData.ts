@@ -1,3 +1,6 @@
+import { he } from 'date-fns/locale'
+import { useLocale } from 'next-intl'
+
 import { MoodPainSeriesPoint } from '@/types/checkIn'
 import { TimePeriod } from '@/types/time'
 
@@ -18,11 +21,13 @@ const PERIOD_FETCH: Record<TimePeriod, number> = {
 
 export const useCheckInChartData = (period: TimePeriod) => {
     const dir = useDirection()
+    const locale = useLocale()
+    const dateFnsLocale = locale === 'he-IL' ? he : undefined
     const {
         data,
         isLoading,
         isError
-    } = useCheckInHistory(PERIOD_FETCH[period])
+    } = useCheckInHistory(PERIOD_FETCH[period], dateFnsLocale)
 
     if (isLoading || isError || !data) {
         return {
@@ -39,11 +44,11 @@ export const useCheckInChartData = (period: TimePeriod) => {
     let previousPoint: MoodPainSeriesPoint | null = null
 
     if (period === 'weekly') {
-        const result = fillHistoryWeekNulls(rawData)
+        const result = fillHistoryWeekNulls(rawData, dateFnsLocale)
         filled = result.days
         previousPoint = result.previousPoint
     } else {
-        filled = buildWeeklyAverages(fillHistoryMonthNulls(rawData))
+        filled = buildWeeklyAverages(fillHistoryMonthNulls(rawData, dateFnsLocale))
     }
 
     const chartData = dir === 'rtl' ? reverseChartData(filled) : filled

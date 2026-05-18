@@ -2,6 +2,7 @@ import {
     format,
     formatDistance
 } from 'date-fns'
+import type { Locale } from 'date-fns'
 
 /**
  * Converts the given date to a relative time format, e.g., "2 hours ago", "in 5 minutes", etc.
@@ -44,7 +45,8 @@ export const toShortNumber = (num: number): string => {
 export const formatByUserPreference = (
     date: Date,
     short: boolean = false,
-    dateFormat?: string
+    dateFormat?: string,
+    locale?: Locale
 ): string => {
     if (!date || isNaN(date.getTime()))
         return 'Invalid Date'
@@ -57,5 +59,5 @@ export const formatByUserPreference = (
             .replace(', yyyy', '')
             .replace('/yyyy', '')
     }
-    return format(date, formatString)
+    return format(date, formatString, locale ? { locale } : undefined)
 }
