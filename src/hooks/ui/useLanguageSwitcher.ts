@@ -7,9 +7,10 @@ import { useLocale } from 'next-intl'
 
 import { useUpdateProfileMutation }
     from '@/hooks/profile/useProfileMutations'
-import { useGetMe } from '@/hooks/queries/useGetMe'
 
 import { switchLocale } from '@/lib/language/switchLocale'
+
+import { useAuth } from '@/context/AuthContext'
 
 import languages from '@/data/languages'
 
@@ -17,7 +18,7 @@ export const useLanguageSwitcher = () => {
     const router = useRouter()
     const locale = useLocale()
     const [isPending, startTransition] = useTransition()
-    const { user } = useGetMe()
+    const { user } = useAuth()
     const { mutate: updateProfile } = useUpdateProfileMutation()
 
     const currentLanguage = Object.values(languages).find(
