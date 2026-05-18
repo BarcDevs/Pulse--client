@@ -1,5 +1,6 @@
-import { he } from 'date-fns/locale'
 import { useLocale } from 'next-intl'
+
+import { he } from 'date-fns/locale'
 
 import { MoodPainSeriesPoint } from '@/types/checkIn'
 import { TimePeriod } from '@/types/time'

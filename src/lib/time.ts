@@ -1,8 +1,8 @@
+import type { Locale } from 'date-fns'
 import {
     format,
     formatDistance
 } from 'date-fns'
-import type { Locale } from 'date-fns'
 
 /**
  * Converts the given date to a relative time format, e.g., "2 hours ago", "in 5 minutes", etc.
@@ -59,5 +59,9 @@ export const formatByUserPreference = (
             .replace(', yyyy', '')
             .replace('/yyyy', '')
     }
-    return format(date, formatString, locale ? { locale } : undefined)
+    return format(
+        date,
+        formatString,
+        locale ? { locale } : undefined
+    )
 }

@@ -1,8 +1,8 @@
+import type { Locale } from 'date-fns'
 import {
     eachDayOfInterval,
     subDays
 } from 'date-fns'
-import type { Locale } from 'date-fns'
 
 import { MoodPainSeriesPoint } from '@/types/checkIn'
 
