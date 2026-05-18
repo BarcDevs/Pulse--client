@@ -29,6 +29,7 @@ Centralised list of all in-code TODOs, grouped by domain.
 | 12 | `src/components/profile/settings/BasicInfoView.tsx` | 37–39 | Add `dateOfBirth`, `recoveryType`, `careProvider` once API supports them |
 | 13 | `src/components/profile/info/ProfileCard.tsx` | 31 | Level data not yet in `Profile` type — requires server changes |
 | 14 | `src/components/layout/sidebar/sections/MentorItem.tsx` | 22 | Replace mock mentor data with real data |
+| 15 | `src/mocks/progressMocks.ts` | 3 | Replace mock milestones with real milestones API when backend supports it |
 
 ---
 
@@ -40,7 +41,6 @@ Centralised list of all in-code TODOs, grouped by domain.
 | 16 | `src/lib/forms/handleFormSubmit.ts` | 9 | Wrap all form submits with this utility |
 | 17 | `src/components/community/posts/PostList.tsx` | 42 | Extract post fetch logic into a dedicated hook |
 | 18 | `src/components/progress/charts/MoodTrendChart.tsx` | 24 | Merge pain and mood charts into one reusable chart component |
-| 19 | `src/constants/progressMaps.ts` | 34 | Remove entire section (stale/unused) |
 
 ---
 

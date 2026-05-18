@@ -9,10 +9,8 @@ import {
     CardTitle
 } from '@/components/ui/card'
 
-import { progressMilestones }
-    from '@/constants/progressMaps'
-
 import { progressLocales } from '@/locales/progressLocales'
+import { PROGRESS_MILESTONES_MOCK } from '@/mocks/progressMocks'
 
 import { MilestoneCard } from './cards/MilestoneCard'
 
@@ -26,17 +24,19 @@ export const ProgressMilestones = () => {
                     {t(progressLocales.milestones.title)}
                 </CardTitle>
                 <span className={'text-sm text-muted-foreground'}>
-                    {t(progressLocales.milestones.seeAll)}
+                    {t(progressLocales.milestones.seeAll, {
+                        count: PROGRESS_MILESTONES_MOCK.length
+                    })}
                 </span>
             </CardHeader>
             <CardContent>
                 <div className={'grid gap-4 sm:grid-cols-2 lg:grid-cols-4'}>
-                    {progressMilestones.map((milestone) => (
+                    {PROGRESS_MILESTONES_MOCK.map((milestone) => (
                         <MilestoneCard
                             key={milestone.title}
                             icon={milestone.icon}
-                            title={t(milestone.titleKey)}
-                            description={t(milestone.description)}
+                            title={milestone.title}
+                            description={milestone.description}
                             achieved={milestone.achieved}
                             iconBg={milestone.iconBg}
                             iconColor={milestone.iconColor}
