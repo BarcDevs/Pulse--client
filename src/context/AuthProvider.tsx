@@ -26,6 +26,7 @@ import {
 } from '@/utils/error'
 
 import { authQueryKeys } from '@/constants/queryKeys'
+import { minuteInMs } from '@/constants/time'
 import { ROUTES } from '@/constants/routes'
 
 import { AuthContext } from './AuthContext'
@@ -49,7 +50,8 @@ export const AuthProvider = ({
     const {
         user,
         isLoading: queryLoading,
-        error
+        error,
+        refetch: refetchMe
     } = useGetMe(!isPublicRoute)
 
     const [mutationLoading, setMutationLoading] = useState(false)
@@ -103,6 +105,18 @@ export const AuthProvider = ({
         }
         return () => { authState.onRefreshSuccess = null }
     }, [queryClient])
+
+    useEffect(() => {
+        authState.onNetworkRecovery = () => setNetworkError(null)
+        return () => { authState.onNetworkRecovery = null }
+    }, [])
+
+    useEffect(() => {
+        if (error && isNetworkError(error)) {
+            const timer = setTimeout(refetchMe, 2 * minuteInMs)
+            return () => clearTimeout(timer)
+        }
+    }, [error, refetchMe])
 
     useEffect(() => {
         if (

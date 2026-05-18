@@ -27,15 +27,20 @@ export const useQueryWithNetworkError = <TData,>(
         if (query.error && isNetworkError(query.error)) {
             setNetworkError(query.error)
 
-            const timer = setTimeout(() => {
-                query.refetch()
-            }, RETRY_TIMEOUT_MS)
+            const timer = setTimeout(
+                query.refetch,
+                RETRY_TIMEOUT_MS
+            )
 
             return () => clearTimeout(timer)
-        } else if (!query.error) {
+        } else {
             setNetworkError(null)
         }
-    }, [query.error, setNetworkError, query])
+    }, [
+        query.error,
+        query.refetch,
+        setNetworkError
+    ])
 
     return query
 }

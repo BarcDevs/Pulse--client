@@ -4,7 +4,7 @@ import type { LayoutProps } from '@/types'
 
 import { ErrorBanner } from '@/components/shared/ErrorBanner'
 
-import { isUnauthorizedError } from '@/utils/error'
+import { isNetworkError, isUnauthorizedError } from '@/utils/error'
 
 import { useAuth } from '@/context/AuthContext'
 
@@ -13,7 +13,7 @@ export const ErrorBannerWrapper = ({
 }: LayoutProps) => {
     const { error, networkError } = useAuth()
     const bannerError = networkError
-        || (isUnauthorizedError(error) ? null : error)
+        || (error && !isUnauthorizedError(error) && !isNetworkError(error) ? error : null)
 
     return (
         <>

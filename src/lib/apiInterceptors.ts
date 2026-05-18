@@ -55,6 +55,7 @@ export const handleResponseSuccess = (
         || data?._csrf
     if (csrfToken)
         setCsrfToken(csrfToken)
+    authState.onNetworkRecovery?.()
     return response
 }
 

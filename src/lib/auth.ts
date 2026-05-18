@@ -20,7 +20,8 @@ export const authState = {
     isRefreshing: false,
     isShuttingDown: false,
     requestQueue: [] as QueuedRequest[],
-    onRefreshSuccess: null as (() => void) | null
+    onRefreshSuccess: null as (() => void) | null,
+    onNetworkRecovery: null as (() => void) | null
 }
 
 export const callRefresh = async ():
