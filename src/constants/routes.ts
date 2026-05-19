@@ -9,7 +9,8 @@ export const ROUTES = {
     FORUM: '/forum',
     FORUM_CREATE: '/forum/posts/create',
     PROFILE_SETTINGS: '/profile/settings',
-    RECOVERY_GOALS: '/recovery-goals'
+    RECOVERY_GOALS: '/recovery-goals',
+    CONTACT_SUPPORT: '/contact-support'
 } as const
 
 export const ROUTE_IDS = {
