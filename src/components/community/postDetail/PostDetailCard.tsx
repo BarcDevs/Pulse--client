@@ -21,7 +21,7 @@ export const PostDetailCard = ({
     if (!post) return null
 
     return (
-        <article className={'bg-white rounded-t-lg shadow-sm p-6 border border-b-0 border-border'}>
+        <article className={'bg-white rounded-lg shadow-sm p-6 border border-border'}>
             <div className={'mb-4'}>
                 <PostHeader
                     category={post.category}
