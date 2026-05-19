@@ -131,7 +131,8 @@ export const globalLocales = {
             systemHealthTitle: 'global.errors.errorPageTexts.systemHealthTitle',
             systemHealthDesc: 'global.errors.errorPageTexts.systemHealthDesc',
             autoRecoveryTitle: 'global.errors.errorPageTexts.autoRecoveryTitle',
-            autoRecoveryDesc: 'global.errors.errorPageTexts.autoRecoveryDesc'
+            autoRecoveryDesc: 'global.errors.errorPageTexts.autoRecoveryDesc',
+            getSupport: 'global.errors.errorPageTexts.getSupport'
         },
         notFoundPage: {
             badgeLabel: 'global.errors.notFoundPageTexts.badgeLabel',

@@ -354,7 +354,8 @@
     "shareJourney": "Share progress",
     "milestones": {
       "title": "Milestones & achievements",
-      "seeAll": "See all {count} milestones"
+      "seeAll": "View all goals",
+      "empty": "No active goals yet. You can add goals anytime from Goals & Milestones."
     },
     "wellness": {
       "label": "Weekly wellness overview",
@@ -1000,7 +1001,8 @@
         "systemHealthTitle": "System Status",
         "systemHealthDesc": "Most systems are running normally while this issue is being resolved.",
         "autoRecoveryTitle": "Automatic Recovery",
-        "autoRecoveryDesc": "Our team has been notified and is actively working on a fix."
+        "autoRecoveryDesc": "Our team has been notified and is actively working on a fix.",
+        "getSupport": "Find Support"
       },
       "notFoundPageTexts": {
         "badgeLabel": "Page Not Found",

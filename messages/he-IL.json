@@ -347,7 +347,8 @@
     "shareJourney": "שיתוף התקדמות",
     "milestones": {
       "title": "צעדים משמעותיים והישגים",
-      "seeAll": "כל {count} הצעדים"
+      "seeAll": "כל המטרות",
+      "empty": "עדיין אין יעדים פעילים. אפשר להוסיף יעדים דרך דף יעדי החלמה."
     },
     "wellness": {
       "label": "סיכום שבועי",
@@ -993,7 +994,8 @@
         "systemHealthTitle": "מצב המערכת",
         "systemHealthDesc": "רוב השירותים פועלים כרגיל בזמן שהתקלה מטופלת.",
         "autoRecoveryTitle": "שחזור אוטומטי",
-        "autoRecoveryDesc": "הצוות שלנו עודכן ופועל לפתרון הבעיה."
+        "autoRecoveryDesc": "הצוות שלנו עודכן ופועל לפתרון הבעיה.",
+        "getSupport": "פנייה לתמיכה"
       },
       "notFoundPageTexts": {
         "badgeLabel": "דף לא נמצא",

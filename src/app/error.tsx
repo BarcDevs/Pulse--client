@@ -1,13 +1,10 @@
 'use client'
 
+import { useEffect } from 'react'
+
 import { redirect } from 'next/navigation'
 
-import { Sidebar } from '@/components/layout/sidebar/Sidebar'
-import { ErrorActions } from '@/components/shared/error/ErrorActions'
-import { ErrorContent } from '@/components/shared/error/ErrorContent'
-import { ErrorDebug } from '@/components/shared/error/ErrorDebug'
-import { ErrorIllustration } from '@/components/shared/error/ErrorIllustration'
-import { ErrorInfoCards } from '@/components/shared/error/ErrorInfoCards'
+import { ErrorPageContent } from '@/components/shared/error/ErrorPageContent'
 
 type ErrorProps = {
     error: Error & { digest?: string }
@@ -28,20 +25,18 @@ const ErrorPage = ({
         || error?.message?.includes('NetworkError')
     )
 
+    useEffect(() => {
+        document.title = 'Something went wrong | HealEase'
+    }, [])
+
     if (isNetworkError)
         redirect('/network-error')
 
     return (
-        <div className={'flex'}>
-            <Sidebar isErrorPage={true}/>
-            <main className={'flex-1 flex--center min-h-screen px-4 py-8 md:py-16 max-w-3xl mx-auto w-full text-center bg-surface-bright'}>
-                <ErrorIllustration/>
-                <ErrorContent/>
-                <ErrorActions resetAction={reset}/>
-                <ErrorInfoCards/>
-                <ErrorDebug message={error?.message}/>
-            </main>
-        </div>
+        <ErrorPageContent
+            resetAction={reset}
+            message={error?.message}
+        />
     )
 }
 
