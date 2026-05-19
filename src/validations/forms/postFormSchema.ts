@@ -83,7 +83,6 @@ export const createPostFormSchema = (
                     .max(config.tags.maxLength, t(validationLocales.post.tag.tooLong))
                     .toUpperCase()
             )
-                .min(1, t(validationLocales.post.tag.required))
                 .max(
                     config.tags.max,
                     t(

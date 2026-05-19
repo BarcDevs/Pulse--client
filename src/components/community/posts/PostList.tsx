@@ -135,7 +135,8 @@ export const PostList = ({
     }
 
     const emptyMessage = tag
-        ? `${t(communityLocales.posts.emptyWithFilter).replace('{tag}', tag)}`
+        ? `${t(communityLocales.posts.emptyWithFilter)
+            .replace('{tag}', tag)}`
         : t(communityLocales.posts.empty)
 
     return (

@@ -31,6 +31,7 @@ export const PostFormFields = ({
     form
 }: PostFormFieldsProps) => {
     const t = useTranslations()
+    const tCategories = useTranslations('community.categories')
 
     return (
         <>
@@ -76,7 +77,7 @@ export const PostFormFields = ({
                                                 key={cat.key}
                                                 value={cat.key}
                                             >
-                                                {t(communityLocales.categories[cat.key as keyof typeof communityLocales.categories])}
+                                                {tCategories(cat.key)}
                                             </SelectItem>
                                         )
                                     )}
