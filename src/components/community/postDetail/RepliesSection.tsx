@@ -54,7 +54,7 @@ export const RepliesSection = ({
         await deleteReply.mutateAsync(replyId)
     }
 
-    const replies: Reply[] = repliesData?.replies ?? []
+    const replies: Reply[] = repliesData ?? []
 
     return (
         <section className={'space-y-4 pb-6'}>

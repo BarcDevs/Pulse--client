@@ -58,10 +58,8 @@ export const deletePost = async (
 
 export const fetchReplies = async (
     postId: string
-): Promise<{ replies: Reply[] }> => {
-    const res = await api.get<Response<{
-        replies: Reply[]
-    }>>(
+): Promise<Reply[]> => {
+    const res = await api.get<Response<Reply[]>>(
         ENDPOINTS.forum.replies(postId)
     )
     return res.data.data

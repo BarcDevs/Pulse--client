@@ -7,13 +7,9 @@ import { minuteInMs } from '@/constants/time'
 
 import { fetchReplies } from '@/api/forum'
 
-type RepliesResponse = {
-    replies: Reply[]
-}
-
 export const useForumReplies = (
     postId: string | null | undefined
-) => useQueryWithNetworkError<RepliesResponse>({
+) => useQueryWithNetworkError<Reply[]>({
     queryKey: postId
         ? forumQueryKeys.replies(postId)
         : [
