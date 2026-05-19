@@ -11,7 +11,7 @@ import {
 import { GuidelineItem } from '@/components/shared/content/GuidelineItem'
 import { Button } from '@/components/ui/button'
 
-import { COMMUNITY_SANCTUARY_RULES } from '@/mocks/communityData'
+import { communityLocales } from '@/locales/communityLocales'
 
 export const SanctuaryCard = () => {
     const t = useTranslations()
@@ -27,15 +27,15 @@ export const SanctuaryCard = () => {
             <div className={'space-y-2'}>
                 <GuidelineItem
                     icon={Shield}
-                    label={COMMUNITY_SANCTUARY_RULES[0]}
+                    label={t(communityLocales.sanctuary.rules.kind)}
                 />
                 <GuidelineItem
                     icon={Lock}
-                    label={COMMUNITY_SANCTUARY_RULES[1]}
+                    label={t(communityLocales.sanctuary.rules.noAdvice)}
                 />
                 <GuidelineItem
                     icon={UserX}
-                    label={COMMUNITY_SANCTUARY_RULES[2]}
+                    label={t(communityLocales.sanctuary.rules.privacy)}
                 />
             </div>
             <Button
@@ -43,7 +43,7 @@ export const SanctuaryCard = () => {
                 size={'sm'}
                 className={'mt-4 w-full'}
             >
-                {/* todo: add community guidelines */}
+                {/* todo: add real community guidelines */}
                 {t('community.sanctuary.readGuidelines')}
             </Button>
         </div>

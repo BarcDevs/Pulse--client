@@ -154,7 +154,8 @@
       "newPostButton": "Create post",
       "loading": "Loading posts...",
       "empty": "No posts have been shared yet. You can start the conversation when you feel ready.",
-      "emptyWithFilter": "No posts matched this tag. Try another filter or explore all discussions."
+      "emptyWithFilter": "No posts matched this filter. Try another one or explore all discussions.",
+      "likedLabel": "showed support"
     },
     "mentors": {
       "title": "Support Mentors",
@@ -163,11 +164,11 @@
     "sanctuary": {
       "title": "Community space",
       "description": "HealEase is built to support respectful conversations, privacy, and a sense of emotional safety.",
-      "rules": [
-        "Be respectful and open-minded",
-        "Avoid giving medical advice unless qualified",
-        "Protect your privacy and the privacy of others"
-      ],
+      "rules": {
+        "kind": "Lead with kindness and openness",
+        "noAdvice": "Avoid giving medical advice unless qualified",
+        "privacy": "Respect privacy and anonymity"
+      },
       "readGuidelines": "Read guidelines"
     },
     "trending": {
@@ -212,6 +213,37 @@
       "categoryPlaceholder": "Select a category",
       "bodyPlaceholderReply": "Write your reply...",
       "bodyPlaceholderPost": "Share what’s on your mind..."
+    },
+    "categories": {
+      "fractures": "Fractures",
+      "spinals": "Spinal Cord Injuries",
+      "brain": "Traumatic Brain Injuries",
+      "musculoskeletal": "Musculoskeletal Injuries",
+      "internal": "Internal Injuries",
+      "burn": "Burn Injuries",
+      "other-injuries": "Other Specific Injuries",
+      "physical": "Physical Therapy",
+      "occupational": "Occupational Therapy",
+      "speech": "Speech Therapy",
+      "mobility": "Mobility Aids and Devices",
+      "assistive": "Assistive Technologies",
+      "exercises": "Rehabilitation Exercises",
+      "milestones": "Recovery Milestones",
+      "coping": "Coping Strategies",
+      "emotional": "Emotional Support",
+      "stress": "Stress Management",
+      "anxiety": "Anxiety and Depression",
+      "mindfulness": "Mindfulness and Meditation",
+      "therapeutic": "Therapeutic Techniques",
+      "self-care": "Self-Care Practices",
+      "introduction": "Introduction and Community Guidelines",
+      "success": "Success Stories",
+      "personal": "Personal Experiences",
+      "q&a": "Q&A and Advice",
+      "support": "Support Groups",
+      "motivational": "Motivational Posts",
+      "discussion": "General Discussion",
+      "wellness": "Wellness"
     }
   },
   "dashboard": {

@@ -13,7 +13,8 @@ export const communityLocales = {
         newPostButton: 'community.posts.newPostButton',
         loading: 'community.posts.loading',
         empty: 'community.posts.empty',
-        emptyWithFilter: 'community.posts.emptyWithFilter'
+        emptyWithFilter: 'community.posts.emptyWithFilter',
+        likedLabel: 'community.posts.likedLabel'
     },
     mentors: {
         title: 'community.mentors.title',
@@ -22,7 +23,11 @@ export const communityLocales = {
     sanctuary: {
         title: 'community.sanctuary.title',
         description: 'community.sanctuary.description',
-        rules: 'community.sanctuary.rules',
+        rules: {
+            kind: 'community.sanctuary.rules.kind',
+            noAdvice: 'community.sanctuary.rules.noAdvice',
+            privacy: 'community.sanctuary.rules.privacy'
+        },
         readGuidelines: 'community.sanctuary.readGuidelines'
     },
     trending: {

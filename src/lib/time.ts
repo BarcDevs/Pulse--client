@@ -4,17 +4,11 @@ import {
     formatDistance
 } from 'date-fns'
 
-/**
- * Converts the given date to a relative time format, e.g., "2 hours ago", "in 5 minutes", etc.
- *
- * @param {Date} date - The date to convert to relative time format
- * @return {string} The date in relative time format
- */
-export const toRelative = (date: Date): string => {
-    return formatDistance(date, new Date(), {
-        addSuffix: true
+export const toRelative = (date: Date, locale?: Locale): string =>
+    formatDistance(date, new Date(), {
+        addSuffix: true,
+        locale
     })
-}
 
 /**
  * Converts a number to a short string representation with K, M, or B suffix.
