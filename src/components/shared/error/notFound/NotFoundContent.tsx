@@ -20,7 +20,7 @@ export const NotFoundContent = ({
     const t = useTranslations()
 
     return (
-        <div className={'text-center md:text-left order-2 md:order-1'}>
+        <div className={'text-center md:text-start order-2 md:order-1'}>
             <div className={'inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-fixed text-on-primary-fixed-variant text-xs font-semibold tracking-wider mb-6'}>
                 <Icon
                     name={'error/map'}
