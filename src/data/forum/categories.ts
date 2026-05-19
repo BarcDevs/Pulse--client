@@ -1,7 +1,17 @@
+export const CATEGORY_GROUP = {
+    InjuryTypes: 'Injury Types',
+    Rehabilitation: 'Rehabilitation',
+    MentalHealth: 'Mental Health',
+    PeerSupport: 'Peer Support'
+} as const
+
+export type CategoryGroup =
+    typeof CATEGORY_GROUP[keyof typeof CATEGORY_GROUP]
+
 type Category = {
     key: string
     name: string
-    group: string
+    group: CategoryGroup
 }
 
 const categories: Category[] = [
@@ -152,36 +162,4 @@ const toGrouped = (categories: Category[]) => Object.groupBy(categories, ({ grou
 export const groupedCategories = toGrouped(categories)
 export const getCategory = (key: string) => categories.find(category => category.key === key)
 export default categories
-
-// he: [
-//     { name: `שברים', group: 'סוגי פגיעה` },
-//     { name: `פגיעות בחוט השדרה', group: 'סוגי פגיעה` },
-//     { name: `פגיעות במוח טראומטיות', group: 'סוגי פגיעה` },
-//     { name: `פגיעות במערכת השיירה והשלד', group: 'סוגי פגיעה` },
-//     { name: `פגיעות פנימיות', group: 'סוגי פגיעה` },
-//     { name: `פציעות כיבים', group: 'סוגי פגיעה` },
-//     { name: `פציעות ספציפיות נוספות', group: 'סוגי פגיעה` },
-//     { name: `פיזיותרפיה', group: 'התאוששות` },
-//     { name: `טיפול בעיסוק', group: 'התאוששות` },
-//     { name: `טיפול בדיבור', group: 'התאוששות` },
-//     { name: `ציוד נייד ומכשירים', group: 'התאוששות` },
-//     { name: `טכנולוגיות סיוע', group: 'התאוששות` },
-//     { name: `תרגילי התאוששות', group: 'התאוששות` },
-//     { name: `שלבי התאוששות', group: 'התאוששות` },
-//     { name: `אסטרטגיות ניהול מצב רוח', group: 'בריאות נפשית` },
-//     { name: `תמיכה רגשית', group: 'בריאות נפשית` },
-//     { name: `ניהול מתח', group: 'בריאות נפשית` },
-//     { name: `חרדה ודיכאון', group: 'בריאות נפשית` },
-//     { name: `מיינדפולנס ומדיטציה', group: 'בריאות נפשית` },
-//     { name: `טכניקות טיפוליות', group: 'בריאות נפשית` },
-//     { name: `פרקטיקות פיזור רוח', group: 'בריאות נפשית` },
-//     { name: `הקדמה והנחיות קהילתיות', group: 'תמיכה מעמדית` },
-//     { name: `סיפורי הצלחה', group: 'תמיכה מעמדית` },
-//     { name: `חוויות אישיות', group: 'תמיכה מעמדית` },
-//     { name: `שאלות ותשובות וייעוץ', group: 'תמיכה מעמדית` },
-//     { name: `קבוצות תמיכה', group: 'תמיכה מעמדית` },
-//     { name: `פוסטים מחזקים', group: 'תמיכה מעמדית` },
-//     { name: `דיון כללי', group: 'תמיכה מעמדית` }
-// ]
-
 

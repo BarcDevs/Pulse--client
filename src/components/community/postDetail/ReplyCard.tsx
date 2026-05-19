@@ -9,6 +9,8 @@ import { Reply } from '@/types/community'
 import { DeleteMenu } from '@/components/shared/DeleteMenu'
 import { UserAvatar } from '@/components/shared/UserAvatar'
 
+import { useDateLocale } from '@/hooks/ui/useDateLocale'
+
 import { toRelative } from '@/lib/time'
 import { cn, getUserFallback } from '@/lib/utils'
 
@@ -33,16 +35,20 @@ export const ReplyCard = ({
 }: ReplyCardProps) => {
     const t = useTranslations()
     const isOwner = currentUserId === reply.authorId
-    const authorName = reply.author
-        ? `${reply.author.firstName} ${reply.author.lastName}`
+    const dateLocale = useDateLocale()
+    const authorUser = reply.author?.user
+    const authorName = authorUser
+        ? (authorUser.firstName && authorUser.lastName
+            ? `${authorUser.firstName} ${authorUser.lastName}`
+            : authorUser.username)
         : 'Unknown'
-    const timeAgo = toRelative(new Date(reply.createdAt))
+    const timeAgo = toRelative(new Date(reply.createdAt), dateLocale)
     const sanitizedBody = sanitizeHtml(reply.body)
 
     const { author } = reply
-    const initials = author && getUserFallback(
-        author.firstName,
-        author.lastName
+    const initials = authorUser && getUserFallback(
+        authorUser.firstName,
+        authorUser.lastName
     )
 
     return (
@@ -55,7 +61,7 @@ export const ReplyCard = ({
             {initials && (
                 <UserAvatar
                     initials={initials}
-                    imageSrc={author?.profile?.image ?? undefined}
+                    imageSrc={author?.image ?? undefined}
                 />
             )}
 

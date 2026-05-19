@@ -8,6 +8,7 @@
 - Avoid using re-export files
 
 ## Code Style
+- Never use string literals as object keys - define typed constants and use computed property names `[CONST.Key]: value`
 - Never use array index as key - use the current element as an index
 - Braces around values inside: Object literal braces, component props and import/export braces
 done with - Text blocks: Don't break unless really long (120–150 chars OK)

@@ -40,25 +40,6 @@ export const PostDetailCard = ({
                     __html: sanitizedBody
                 }}
             />
-
-            <div className={'flex flex-wrap gap-2 items-center'}>
-                {post.tags && post.tags.length > 0 && (
-                    <div className={'flex--wrap gap-2'}>
-                        {Array.isArray(post.tags)
-                            ? post.tags.map(
-                                (tag) => (
-                                    <span
-                                        key={tag.id}
-                                        className={'inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-secondary text-secondary-foreground'}
-                                    >
-                                        {tag.name}
-                                    </span>
-                                )
-                            ) : null
-                        }
-                    </div>
-                )}
-            </div>
         </article>
     )
 }

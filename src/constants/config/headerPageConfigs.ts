@@ -68,6 +68,9 @@ export const headerPageConfigs: Record<
             }
         ]
     },
+    'community/post': {
+        title: globalLocales.pageSubtitles.community.title
+    },
     insights: {
         title: insightsLocales.title,
         subtitle: insightsLocales.subtitle,

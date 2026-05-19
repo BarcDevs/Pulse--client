@@ -10,6 +10,7 @@ import { ErrorDisplay } from '@/components/shared/ErrorDisplay'
 import { Skeleton } from '@/components/ui/skeleton'
 
 import { useForumPost } from '@/hooks/queries/useForumPost'
+import { useDateLocale } from '@/hooks/ui/useDateLocale'
 
 import { toRelative } from '@/lib/time'
 
@@ -19,6 +20,7 @@ import { usePostDetail } from '@/context/PostDetailContext'
 
 export const PostDetailContent = () => {
     const { postId } = usePostDetail()
+    const dateLocale = useDateLocale()
     const {
         data: post,
         isLoading: isPostLoading,
@@ -52,11 +54,13 @@ export const PostDetailContent = () => {
 
     const author = post
         ? (post.author
-            ? `${post.author.firstName} ${post.author.lastName}`
+            ? (post.author.user.firstName && post.author.user.lastName
+                ? `${post.author.user.firstName} ${post.author.user.lastName}`
+                : post.author.user.username)
             : 'Unknown') : ''
 
     const timeAgo = post
-        ? toRelative(new Date(post.createdAt)) : ''
+        ? toRelative(new Date(post.createdAt), dateLocale) : ''
 
     return (
         <div className={'space-y-6'}>

@@ -18,7 +18,7 @@ export const PostActionButton = ({
     <Button
         variant={'ghost'}
         size={'sm'}
-        className={'h-auto gap-1.5 p-1.5 text-xs text-muted-foreground hover:text-primary-light'}
+        className={'h-auto gap-1.5 p-1.5 text-xs text-muted-foreground hover:text-primary'}
         onClick={onClick}
     >
         <Icon className={'h-4 w-4'}/>

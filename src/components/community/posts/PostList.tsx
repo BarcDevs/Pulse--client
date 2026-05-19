@@ -144,8 +144,8 @@ export const PostList = ({ tag }: PostListProps) => {
                         className={cn(
                             'px-6 py-4 text-sm font-medium rounded-none border-b-2',
                             activeFilter === tab
-                                ? 'text-primary-light border-primary'
-                                : 'text-muted-foreground hover:text-primary-light border-transparent'
+                                ? 'text-white border-primary'
+                                : 'text-muted-foreground hover:text-foreground border-transparent'
                         )}
                     >
                         {t(communityLocales.posts.filterLabels[tab])}
