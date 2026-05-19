@@ -27,7 +27,7 @@ export const reactQuillSetup = {
                 { 'indent': '-1' },
                 { 'indent': '+1' }
             ],
-            ['link', 'image'],
+            ['link'], // TODO: add 'image' once server-side image upload is implemented
             ['clean']
         ]
     },
@@ -42,7 +42,7 @@ export const reactQuillSetup = {
         'align',
         'list',
         'indent',
-        'link',
-        'image'
+        'link'
+        // TODO: add 'image' once server-side image upload is implemented
     ]
 }
