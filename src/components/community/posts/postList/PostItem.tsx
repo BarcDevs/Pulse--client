@@ -9,6 +9,8 @@ import { useDateLocale } from '@/hooks/ui/useDateLocale'
 
 import { toRelative } from '@/lib/time'
 
+import { stripHtml } from '@/utils/sanitizeHtml'
+
 import { communityLocales } from '@/locales/communityLocales'
 
 import { PostActions } from './PostActions'
@@ -46,7 +48,10 @@ export const PostItem = ({ post }: PostItemProps) => {
                                 <PostHeader
                                     category={post.category}
                                     author={getAuthorName(post)}
-                                    timeAgo={toRelative(post.createdAt, dateLocale)}
+                                    timeAgo={toRelative(
+                                        post.createdAt,
+                                        dateLocale
+                                    )}
                                 />
                             </div>
                             <span className={'text-xs text-muted-foreground whitespace-nowrap'}>
@@ -57,7 +62,7 @@ export const PostItem = ({ post }: PostItemProps) => {
                             {post.title}
                         </h3>
                         <p className={'text-sm text-muted-foreground line-clamp-2'}>
-                            {post.body}
+                            {stripHtml(post.body)}
                         </p>
                         <PostActions
                             replies={Array.isArray(post.replies)

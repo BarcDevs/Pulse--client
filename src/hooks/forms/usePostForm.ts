@@ -36,7 +36,7 @@ export const usePostForm = ({
             tags: [],
             ...defaultValues
         },
-        mode: 'onBlur'
+        mode: 'onChange'
     })
 
     const handleSubmit = wrapFormSubmit(
