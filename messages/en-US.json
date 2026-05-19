@@ -152,6 +152,7 @@
       "share": "Share",
       "save": "Save",
       "newPostButton": "Create post",
+      "searchPlaceholder": "Search conversations and discussions...",
       "loading": "Loading posts...",
       "empty": "No posts have been shared yet. You can start the conversation when you feel ready.",
       "emptyWithFilter": "No posts matched this filter. Try another one or explore all discussions.",

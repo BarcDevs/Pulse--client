@@ -7,39 +7,27 @@ import { PostFormHeader } from '@/components/community/postForm/PostFormHeader'
 import { Form } from '@/components/ui/form'
 
 import { usePostForm } from '@/hooks/forms/usePostForm'
-import { useForumPostMutations } from '@/hooks/mutations/useForumPostMutations'
-
-import { usePostDetail } from '@/context/PostDetailContext'
 
 import { PostFormSchema } from '@/validations/forms/postFormSchema'
 
 type PostFormProps = {
     isReply: boolean
-    postId: string
-    isOpen?: boolean
+    isOpen: boolean
+    isLoading: boolean
+    onSubmit: (data: PostFormSchema) => Promise<void>
     onCancelAction?: () => void
 }
 
 export const PostForm = ({
     isReply,
-    postId,
     isOpen,
+    isLoading,
+    onSubmit,
     onCancelAction
 }: PostFormProps) => {
-    const { createReply } = useForumPostMutations({
-        postId
-    })
-    const { setIsReplyFormOpen } = usePostDetail()
-
-    const handleReplySubmit = async (
-        data: PostFormSchema
-    ) => {
-        await createReply.mutateAsync(data)
-        setIsReplyFormOpen(false)
-    }
-
     const { form, handleSubmit } = usePostForm({
-        onSubmit: handleReplySubmit
+        onSubmit,
+        isReply
     })
 
     if (!isOpen) return null
@@ -56,8 +44,7 @@ export const PostForm = ({
                 className={'space-y-4'}
             >
                 <Form {...form}>
-                    {!isReply
-                        && <PostFormFields form={form}/>}
+                    {!isReply && <PostFormFields form={form}/>}
                     <PostFormBody
                         form={form}
                         isReply={isReply}
@@ -65,7 +52,8 @@ export const PostForm = ({
                     <PostFormActions
                         isReply={isReply}
                         onCancelAction={onCancelAction}
-                        isLoading={createReply.isPending}
+                        isLoading={isLoading}
+                    isDisabled={!form.formState.isValid}
                     />
                 </Form>
             </form>

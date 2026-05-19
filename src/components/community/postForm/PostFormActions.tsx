@@ -10,12 +10,14 @@ type PostFormActionsProps = {
     isReply: boolean
     onCancelAction?: () => void
     isLoading: boolean
+    isDisabled: boolean
 }
 
 export const PostFormActions = ({
     isReply,
     onCancelAction,
-    isLoading
+    isLoading,
+    isDisabled
 }: PostFormActionsProps) => {
     const t = useTranslations()
 
@@ -32,7 +34,7 @@ export const PostFormActions = ({
             )}
             <Button
                 type={'submit'}
-                disabled={isLoading}
+                disabled={isLoading || isDisabled}
             >
                 {isReply
                     ? t(communityLocales.postForm.sendReply)

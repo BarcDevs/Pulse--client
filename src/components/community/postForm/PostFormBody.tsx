@@ -13,6 +13,8 @@ import {
     FormMessage
 } from '@/components/ui/form'
 
+import { useDirection } from '@/hooks/useDirection'
+
 import { reactQuillSetup } from '@/constants/config/reactQuillSetup'
 
 import { communityLocales } from '@/locales/communityLocales'
@@ -38,6 +40,7 @@ export const PostFormBody = ({
     isReply
 }: PostFormBodyProps) => {
     const t = useTranslations()
+    const dir = useDirection()
 
     return (
         <FormField
@@ -51,11 +54,15 @@ export const PostFormBody = ({
                         </FormLabel>
                     )}
                     <FormControl>
-                        <div className={'border border-input rounded-md bg-white'}>
+                        <div
+                            dir={dir}
+                            className={'border border-input rounded-md bg-white'}
+                        >
                             <ReactQuill
                                 theme={'snow'}
                                 value={field.value}
                                 onChange={field.onChange}
+                                onBlur={field.onBlur}
                                 modules={reactQuillSetup.modules}
                                 formats={reactQuillSetup.formats}
                                 placeholder={isReply

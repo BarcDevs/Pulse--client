@@ -1,7 +1,6 @@
 import {
     Download,
     type LucideIcon,
-    Plus,
     Share2,
     Shield
 } from 'lucide-react'
@@ -10,7 +9,6 @@ import { FEATURES } from '@/config/features'
 
 import { chatLocales } from '@/locales/chatLocales'
 import { checkInLocales } from '@/locales/checkInLocales'
-import { communityLocales } from '@/locales/communityLocales'
 import { dashboardLocales } from '@/locales/dashboardLocales'
 import { globalLocales } from '@/locales/globalLocales'
 import { goalsLocales } from '@/locales/goalsLocales'
@@ -58,15 +56,7 @@ export const headerPageConfigs: Record<
     },
     community: {
         title: globalLocales.pageSubtitles.community.title,
-        subtitle: globalLocales.pageSubtitles.community.subtitle,
-        showSearch: true,
-        actions: [
-            {
-                type: 'newPost',
-                label: communityLocales.posts.newPostButton,
-                icon: Plus
-            }
-        ]
+        subtitle: globalLocales.pageSubtitles.community.subtitle
     },
     'community/post': {
         title: globalLocales.pageSubtitles.community.title
@@ -120,8 +110,7 @@ export const headerPageConfigs: Record<
                         variant: 'outline' as const,
                         icon: Share2
                     }
-                ]
-                : [])
+                ] : [])
         ]
     },
     'profile/settings': {

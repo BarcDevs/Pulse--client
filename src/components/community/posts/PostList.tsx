@@ -23,6 +23,7 @@ import { communityLocales } from '@/locales/communityLocales'
 
 import { PostItem } from './postList/PostItem'
 
+// todo - move to config
 const PAGE_SIZE = 20
 const tabs = Object.keys({
     newest: true,
@@ -35,12 +36,16 @@ type Post = Parameters<typeof PostItem>[0]['post']
 
 type PostListProps = {
     tag?: string | null
+    search?: string
 }
 
-export const PostList = ({ tag }: PostListProps) => {
+export const PostList = ({
+    tag, search
+}: PostListProps) => {
     const t = useTranslations()
     // todo: extract post fetch functionality into a hook
-    const [activeFilter, setActiveFilter] = useState<FilterType>('newest')
+    const [activeFilter, setActiveFilter] =
+        useState<FilterType>('newest')
     const [allPosts, setAllPosts] = useState<Post[]>([])
     const [page, setPage] = useState(1)
     const [hasMore, setHasMore] = useState(true)
@@ -52,11 +57,13 @@ export const PostList = ({ tag }: PostListProps) => {
         limit: PAGE_SIZE,
         page,
         filter: activeFilter,
-        ...(tag ? { tag } : {})
+        ...(tag ? { tag } : {}),
+        ...(search ? { search } : {})
     }), [
         page,
         tag,
-        activeFilter
+        activeFilter,
+        search
     ])
 
     const {

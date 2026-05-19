@@ -11,6 +11,7 @@ export const communityLocales = {
         share: 'community.posts.share',
         save: 'community.posts.save',
         newPostButton: 'community.posts.newPostButton',
+        searchPlaceholder: 'community.posts.searchPlaceholder',
         loading: 'community.posts.loading',
         empty: 'community.posts.empty',
         emptyWithFilter: 'community.posts.emptyWithFilter',

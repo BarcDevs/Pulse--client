@@ -18,6 +18,7 @@ import { useAuth } from '@/context/AuthContext'
 import { usePostDetail } from '@/context/PostDetailContext'
 
 import { communityLocales } from '@/locales/communityLocales'
+import { PostFormSchema } from '@/validations/forms/postFormSchema'
 
 type RepliesSectionProps = {
     postId: string
@@ -40,9 +41,10 @@ export const RepliesSection = ({
         isReplyFormOpen,
         setIsReplyFormOpen
     } = usePostDetail()
-    const { deleteReply } = useForumPostMutations({
-        postId
-    })
+    const {
+        deleteReply,
+        createReply
+    } = useForumPostMutations({ postId })
 
     const handleDeleteReply = async (
         replyId: string
@@ -52,6 +54,13 @@ export const RepliesSection = ({
         )
         if (!confirmed) return
         await deleteReply.mutateAsync(replyId)
+    }
+
+    const handleReplySubmit = async (
+        data: PostFormSchema
+    ) => {
+        await createReply.mutateAsync(data)
+        setIsReplyFormOpen(false)
     }
 
     const replies: Reply[] = repliesData ?? []
@@ -76,8 +85,9 @@ export const RepliesSection = ({
             {isAuthenticated && (
                 <PostForm
                     isReply={true}
-                    postId={postId}
                     isOpen={isReplyFormOpen}
+                    isLoading={createReply.isPending}
+                    onSubmit={handleReplySubmit}
                     onCancelAction={() => setIsReplyFormOpen(false)}
                 />
             )}

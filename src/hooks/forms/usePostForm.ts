@@ -16,20 +16,22 @@ type UsePostFormProps = {
         data: PostFormSchema
     ) => Promise<void>
     defaultValues?: Partial<PostFormSchema>
+    isReply?: boolean
 }
 
 export const usePostForm = ({
     onSubmit,
-    defaultValues
+    defaultValues,
+    isReply = false
 }: UsePostFormProps) => {
     const t = useTranslations()
     const form = useForm<PostFormSchema>({
         resolver: zodResolver(
-            createPostFormSchema(t)
+            createPostFormSchema(t, { isReply })
         ),
         defaultValues: {
             title: '',
-            category: '',
+            category: isReply ? '' : 'discussion',
             body: '',
             tags: [],
             ...defaultValues

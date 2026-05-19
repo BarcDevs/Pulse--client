@@ -15,7 +15,7 @@ describe(
     'postSchema',
     () => {
         const validPost = {
-            category: 'fractures',
+            category: 'recovery',
             title: 'A valid post title here',
             body: 'This is valid body content that is long enough for testing the schema.',
             tags: ['TAG']
@@ -45,16 +45,14 @@ describe(
             'should accept all valid category keys',
             () => {
                 const validKeys = [
-                    'fractures',
-                    'spinals',
-                    'brain',
-                    'musculoskeletal',
-                    'physical',
-                    'occupational',
-                    'coping',
-                    'emotional',
-                    'introduction',
-                    'success',
+                    'recovery',
+                    'therapy',
+                    'mental',
+                    'milestones',
+                    'lifestyle',
+                    'support',
+                    'questions',
+                    'stories',
                     'discussion'
                 ]
                 validKeys.forEach(key => {

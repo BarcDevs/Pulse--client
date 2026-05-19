@@ -64,9 +64,9 @@ export const PostFormFields = ({
                         <FormControl>
                             <Select
                                 onValueChange={field.onChange}
-                                defaultValue={field.value}
+                                value={field.value}
                             >
-                                <SelectTrigger>
+                                <SelectTrigger className={'cursor-pointer'}>
                                     <SelectValue placeholder={t(communityLocales.postForm.categoryPlaceholder)}/>
                                 </SelectTrigger>
                                 <SelectContent>
@@ -76,7 +76,7 @@ export const PostFormFields = ({
                                                 key={cat.key}
                                                 value={cat.key}
                                             >
-                                                {cat.name}
+                                                {t(communityLocales.categories[cat.key as keyof typeof communityLocales.categories])}
                                             </SelectItem>
                                         )
                                     )}
