@@ -4,7 +4,17 @@ import {
     formatDistance
 } from 'date-fns'
 
-export const toRelative = (date: Date, locale?: Locale): string =>
+/**
+ * Converts the given date to a relative time format, e.g., "2 hours ago", "in 5 minutes", etc.
+ *
+ * @param {Date} date - The date to convert to relative time format
+ * @param {Locale} locale - Optional date-fns locale for localized output
+ * @return {string} The date in relative time format
+ */
+export const toRelative = (
+    date: Date,
+    locale?: Locale
+): string =>
     formatDistance(date, new Date(), {
         addSuffix: true,
         locale
