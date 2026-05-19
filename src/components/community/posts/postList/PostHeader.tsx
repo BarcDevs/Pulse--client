@@ -12,10 +12,9 @@ import {
 import { communityLocales } from '@/locales/communityLocales'
 
 const GROUP_COLORS: Record<CategoryGroup, string> = {
-    [CATEGORY_GROUP.InjuryTypes]: 'bg-red-100 text-red-700',
-    [CATEGORY_GROUP.Rehabilitation]: 'bg-blue-100 text-blue-700',
-    [CATEGORY_GROUP.MentalHealth]: 'bg-purple-100 text-purple-700',
-    [CATEGORY_GROUP.PeerSupport]: 'bg-green-100 text-green-700'
+    [CATEGORY_GROUP.Recovery]: 'bg-green-100 text-green-700',
+    [CATEGORY_GROUP.Health]: 'bg-purple-100 text-purple-700',
+    [CATEGORY_GROUP.Community]: 'bg-blue-100 text-blue-700'
 }
 
 type PostHeaderProps = {

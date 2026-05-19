@@ -60,6 +60,17 @@ export const communityLocales = {
         reply: 'community.postActions.reply',
         share: 'community.postActions.share'
     },
+    categories: {
+        recovery: 'community.categories.recovery',
+        therapy: 'community.categories.therapy',
+        mental: 'community.categories.mental',
+        milestones: 'community.categories.milestones',
+        lifestyle: 'community.categories.lifestyle',
+        support: 'community.categories.support',
+        questions: 'community.categories.questions',
+        stories: 'community.categories.stories',
+        discussion: 'community.categories.discussion'
+    },
     postForm: {
         writeReply: 'community.postForm.writeReply',
         createPost: 'community.postForm.createPost',

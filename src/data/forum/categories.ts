@@ -1,8 +1,7 @@
 export const CATEGORY_GROUP = {
-    InjuryTypes: 'Injury Types',
-    Rehabilitation: 'Rehabilitation',
-    MentalHealth: 'Mental Health',
-    PeerSupport: 'Peer Support'
+    Recovery: 'Recovery',
+    Health: 'Health',
+    Community: 'Community'
 } as const
 
 export type CategoryGroup =
@@ -16,150 +15,58 @@ type Category = {
 
 const categories: Category[] = [
     {
-        key: 'fractures',
-        name: 'Fractures',
-        group: 'Injury Types'
+        key: 'recovery',
+        name: 'Recovery Journey',
+        group: 'Recovery'
     },
     {
-        key: 'spinals',
-        name: 'Spinal Cord Injuries',
-        group: 'Injury Types'
-    },
-    {
-        key: 'brain',
-        name: 'Traumatic Brain Injuries',
-        group: 'Injury Types'
-    },
-    {
-        key: 'musculoskeletal',
-        name: 'Musculoskeletal Injuries',
-        group: 'Injury Types'
-    },
-    {
-        key: 'internal',
-        name: 'Internal Injuries',
-        group: 'Injury Types'
-    },
-    {
-        key: 'burn',
-        name: 'Burn Injuries',
-        group: 'Injury Types'
-    },
-    {
-        key: 'other-injuries',
-        name: 'Other Specific Injuries',
-        group: 'Injury Types'
-    },
-    {
-        key: 'physical',
-        name: 'Physical Therapy',
-        group: 'Rehabilitation'
-    },
-    {
-        key: 'occupational',
-        name: 'Occupational Therapy',
-        group: 'Rehabilitation'
-    },
-    {
-        key: 'speech',
-        name: 'Speech Therapy',
-        group: 'Rehabilitation'
-    },
-    {
-        key: 'mobility',
-        name: 'Mobility Aids and Devices',
-        group: 'Rehabilitation'
-    },
-    {
-        key: 'assistive',
-        name: 'Assistive Technologies',
-        group: 'Rehabilitation'
-    },
-    {
-        key: 'exercises',
-        name: 'Rehabilitation Exercises',
-        group: 'Rehabilitation'
+        key: 'therapy',
+        name: 'Therapy & Physical Recovery',
+        group: 'Recovery'
     },
     {
         key: 'milestones',
-        name: 'Recovery Milestones',
-        group: 'Rehabilitation'
+        name: 'Goals & Progress',
+        group: 'Recovery'
     },
     {
-        key: 'coping',
-        name: 'Coping Strategies',
-        group: 'Mental Health'
+        key: 'mental',
+        name: 'Mental & Emotional Wellbeing',
+        group: 'Health'
     },
     {
-        key: 'emotional',
-        name: 'Emotional Support',
-        group: 'Mental Health'
-    },
-    {
-        key: 'stress',
-        name: 'Stress Management',
-        group: 'Mental Health'
-    },
-    {
-        key: 'anxiety',
-        name: 'Anxiety and Depression',
-        group: 'Mental Health'
-    },
-    {
-        key: 'mindfulness',
-        name: 'Mindfulness and Meditation',
-        group: 'Mental Health'
-    },
-    {
-        key: 'therapeutic',
-        name: 'Therapeutic Techniques',
-        group: 'Mental Health'
-    },
-    {
-        key: 'self-care',
-        name: 'Self-Care Practices',
-        group: 'Mental Health'
-    },
-    {
-        key: 'introduction',
-        name: 'Introduction and Community Guidelines',
-        group: 'Peer Support'
-    },
-    {
-        key: 'success',
-        name: 'Success Stories',
-        group: 'Peer Support'
-    },
-    {
-        key: 'personal',
-        name: 'Personal Experiences',
-        group: 'Peer Support'
-    },
-    {
-        key: 'q&a',
-        name: 'Q&A and Advice',
-        group: 'Peer Support'
+        key: 'lifestyle',
+        name: 'Lifestyle & Daily Wellness',
+        group: 'Health'
     },
     {
         key: 'support',
-        name: 'Support Groups',
-        group: 'Peer Support'
+        name: 'Community Support',
+        group: 'Community'
     },
     {
-        key: 'motivational',
-        name: 'Motivational Posts',
-        group: 'Peer Support'
+        key: 'questions',
+        name: 'Questions & Guidance',
+        group: 'Community'
+    },
+    {
+        key: 'stories',
+        name: 'Recovery Stories',
+        group: 'Community'
     },
     {
         key: 'discussion',
-        name: 'General Discussion',
-        group: 'Peer Support'
+        name: 'Open Discussion',
+        group: 'Community'
     }
 ]
 
-const toGrouped = (categories: Category[]) => Object.groupBy(categories, ({ group }) => group)
+const toGrouped = (
+    categories: Category[]
+) => Object.groupBy(categories, ({ group }) => group)
 
 export const groupedCategories = toGrouped(categories)
-export const getCategory = (key: string) => categories.find(category => category.key === key)
+export const getCategory = (
+    key: string
+) => categories.find(category => category.key === key)
 export default categories
-
