@@ -1086,27 +1086,27 @@
   },
   "validation": {
     "email": {
-      "required": "Enter your email address",
+      "required": "Enter your email so we can keep your account secure",
       "invalid": "Enter a valid email address"
     },
     "password": {
-      "required": "Enter your password",
+      "required": "Enter your password to continue",
       "current": {
         "required": "Enter your current password"
       },
       "new": {
-        "required": "Enter a new password"
+        "required": "Create a new password for your account"
       },
       "confirm": {
-        "required": "Confirm your password",
-        "please": "Please confirm your password"
+        "required": "Confirm your new password",
+        "please": "Please confirm your password before continuing"
       },
-      "noMatch": "Passwords do not match",
+      "noMatch": "The passwords do not match",
       "tooShort": "Password must contain at least {min} characters",
-      "format": "Password must contain at least 8 characters, including letters and numbers"
+      "format": "Use at least 8 characters, including letters and numbers"
     },
     "otp": {
-      "required": "Enter the verification code",
+      "required": "Enter the verification code we sent you",
       "tooShort": "Verification code is too short",
       "invalid": "Verification code is invalid"
     },
@@ -1127,61 +1127,61 @@
     },
     "post": {
       "category": {
-        "required": "Choose a category",
-        "invalid": "Selected category is invalid"
+        "required": "Choose a category for your post",
+        "invalid": "This category is not available"
       },
       "title": {
-        "required": "Enter a title",
-        "tooShort": "Title is too short",
-        "tooLong": "Title is too long"
+        "required": "Give your post a title so people know what it's about",
+        "tooShort": "Add a little more detail to your title",
+        "tooLong": "Shorten the title so it's easier to read"
       },
       "content": {
-        "required": "Write something before posting",
-        "tooShort": "Content is too short",
-        "tooShortMin": "Content must contain at least {min} characters",
-        "tooLong": "Content must be under {max} characters"
+        "required": "Write something before sharing your post",
+        "tooShort": "Add a bit more so others can better understand",
+        "tooShortMin": "Write at least {min} characters",
+        "tooLong": "Keep your post under {max} characters"
       },
       "tag": {
         "tooShort": "Tag is too short",
         "tooLong": "Tag is too long",
-        "required": "Add at least one tag",
+        "required": "Add at least one tag to help people find your post",
         "tooMany": "You can add up to {max} tags"
       }
     },
     "checkIn": {
       "activity": {
         "empty": "Activity cannot be empty",
-        "tooLong": "Activity must be under {max} characters",
-        "required": "Add at least one activity"
+        "tooLong": "Keep the activity under {max} characters",
+        "required": "Add at least one activity from your day"
       },
       "notes": {
-        "tooLong": "Notes must be under {max} characters"
+        "tooLong": "Keep your notes under {max} characters"
       }
     },
     "goal": {
       "title": {
-        "required": "Enter a goal title",
+        "required": "Give your goal a clear title",
         "tooLong": "Goal title must be {max} characters or fewer"
       },
       "description": {
-        "tooLong": "Description must be {max} characters or fewer"
+        "tooLong": "Keep the description under {max} characters"
       },
       "targetDate": {
-        "future": "Choose a future date"
+        "future": "Choose a future date for this goal"
       }
     },
     "milestone": {
       "title": {
-        "required": "Enter a milestone title",
-        "tooLong": "Milestone title must be {max} characters or fewer"
+        "required": "Name this step so it's easy to recognize later",
+        "tooLong": "Step title must be {max} characters or fewer"
       },
       "description": {
-        "tooLong": "Description must be {max} characters or fewer"
+        "tooLong": "Keep the description under {max} characters"
       }
     },
     "profile": {
       "bio": {
-        "tooLong": "Bio must be {max} characters or fewer"
+        "tooLong": "Keep your bio under {max} characters"
       }
     }
   }
