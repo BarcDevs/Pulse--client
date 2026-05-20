@@ -87,7 +87,7 @@ export const RepliesSection = ({
                     isReply={true}
                     isOpen={isReplyFormOpen}
                     isLoading={createReply.isPending}
-                    onSubmit={handleReplySubmit}
+                    onSubmitAction={handleReplySubmit}
                     onCancelAction={() => setIsReplyFormOpen(false)}
                 />
             )}

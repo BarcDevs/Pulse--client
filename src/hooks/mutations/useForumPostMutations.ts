@@ -1,4 +1,5 @@
 import {
+    QueryClient,
     useMutation,
     useQueryClient
 } from '@tanstack/react-query'
@@ -20,6 +21,15 @@ import { PostFormSchema } from '@/validations/forms/postFormSchema'
 
 type UseForumPostMutationsProps = {
     postId: string
+}
+
+const invalidateReplyRelated = (
+    queryClient: QueryClient,
+    postId: string
+) => {
+    queryClient.invalidateQueries({ queryKey: forumQueryKeys.replies(postId) })
+    queryClient.invalidateQueries({ queryKey: forumQueryKeys.post(postId) })
+    queryClient.invalidateQueries({ queryKey: forumQueryKeys.posts })
 }
 
 export const useForumPostMutations = ({
@@ -45,11 +55,7 @@ export const useForumPostMutations = ({
             }
             return createReply(postId, reply)
         },
-        onSuccess: () => {
-            queryClient.invalidateQueries({
-                queryKey: forumQueryKeys.replies(postId)
-            })
-        }
+        onSuccess: () => invalidateReplyRelated(queryClient, postId)
     })
 
     const updateReplyMutation = useMutation({
@@ -88,11 +94,7 @@ export const useForumPostMutations = ({
         mutationFn: (
             replyId: string
         ) => deleteReplyApi(postId, replyId),
-        onSuccess: () => {
-            queryClient.invalidateQueries({
-                queryKey: forumQueryKeys.replies(postId)
-            })
-        }
+        onSuccess: () => invalidateReplyRelated(queryClient, postId)
     })
 
     const updatePostMutation = useMutation({
@@ -107,6 +109,9 @@ export const useForumPostMutations = ({
         onSuccess: () => {
             queryClient.invalidateQueries({
                 queryKey: forumQueryKeys.post(postId)
+            })
+            queryClient.invalidateQueries({
+                queryKey: forumQueryKeys.posts
             })
         }
     })

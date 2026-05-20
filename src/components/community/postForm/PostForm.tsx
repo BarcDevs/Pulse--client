@@ -14,7 +14,7 @@ type PostFormProps = {
     isReply: boolean
     isOpen: boolean
     isLoading: boolean
-    onSubmit: (data: PostFormSchema) => Promise<void>
+    onSubmitAction: (data: PostFormSchema) => Promise<void>
     onCancelAction?: () => void
 }
 
@@ -22,11 +22,11 @@ export const PostForm = ({
     isReply,
     isOpen,
     isLoading,
-    onSubmit,
+    onSubmitAction,
     onCancelAction
 }: PostFormProps) => {
     const { form, handleSubmit } = usePostForm({
-        onSubmit,
+        onSubmit: onSubmitAction,
         isReply
     })
 
@@ -53,7 +53,7 @@ export const PostForm = ({
                         isReply={isReply}
                         onCancelAction={onCancelAction}
                         isLoading={isLoading}
-                    isDisabled={!form.formState.isValid}
+                        isDisabled={!form.formState.isValid}
                     />
                 </Form>
             </form>

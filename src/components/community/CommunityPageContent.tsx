@@ -41,7 +41,7 @@ export const CommunityPageContent = () => {
                         isReply={false}
                         isOpen={isNewPostOpen}
                         isLoading={createPost.isPending}
-                        onSubmit={handlePostSubmit}
+                        onSubmitAction={handlePostSubmit}
                         onCancelAction={() => setIsNewPostOpen(false)}
                     />
                     <PostList
