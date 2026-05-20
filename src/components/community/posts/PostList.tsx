@@ -28,7 +28,6 @@ const PAGE_SIZE = 20
 const tabs = Object.keys({
     newest: true,
     popular: true,
-    hot: true,
     unanswered: true
 }) as FilterType[]
 

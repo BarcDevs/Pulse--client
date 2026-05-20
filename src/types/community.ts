@@ -4,7 +4,7 @@ import {
     User
 } from '@/types/user'
 
-export type FilterType = 'newest' | 'popular' | 'hot' | 'unanswered'
+export type FilterType = 'newest' | 'popular' | 'unanswered'
 
 type Post_Base = {
     id: string

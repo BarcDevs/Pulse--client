@@ -3,7 +3,6 @@ export const communityLocales = {
         filterLabels: {
             newest: 'community.posts.filterLabels.newest',
             popular: 'community.posts.filterLabels.popular',
-            hot: 'community.posts.filterLabels.hot',
             unanswered: 'community.posts.filterLabels.unanswered'
         },
         repliesLabel: 'community.posts.repliesLabel',

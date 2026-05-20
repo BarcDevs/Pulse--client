@@ -144,7 +144,6 @@
       "filterLabels": {
         "newest": "Newest",
         "popular": "Popular",
-        "hot": "Trending",
         "unanswered": "Unanswered"
       },
       "repliesLabel": "replies",
