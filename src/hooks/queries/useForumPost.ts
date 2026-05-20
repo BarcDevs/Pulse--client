@@ -49,9 +49,15 @@ export const useForumPost = (
         },
         initialDataUpdatedAt: () => {
             if (!postId) return undefined
-            const result = findPostInCache(queryClient, postId)
+            const result = findPostInCache(
+                queryClient,
+                postId
+            )
             return result
-                ? queryClient.getQueryState(result.queryKey)
+                ? queryClient
+                    .getQueryState(
+                        result.queryKey
+                    )
                     ?.dataUpdatedAt
                 : undefined
         },

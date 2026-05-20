@@ -27,9 +27,17 @@ const invalidateReplyRelated = (
     queryClient: QueryClient,
     postId: string
 ) => {
-    queryClient.invalidateQueries({ queryKey: forumQueryKeys.replies(postId) })
-    queryClient.invalidateQueries({ queryKey: forumQueryKeys.post(postId) })
-    queryClient.invalidateQueries({ queryKey: forumQueryKeys.posts })
+    queryClient.invalidateQueries({
+        queryKey: forumQueryKeys.replies(
+            postId
+        )
+    })
+    queryClient.invalidateQueries({
+        queryKey: forumQueryKeys.post(postId)
+    })
+    queryClient.invalidateQueries({
+        queryKey: forumQueryKeys.posts
+    })
 }
 
 export const useForumPostMutations = ({

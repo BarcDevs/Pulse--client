@@ -1,5 +1,3 @@
-'use client'
-
 import { useTranslations } from 'next-intl'
 
 import type { Goal } from '@/types/goals'
@@ -23,7 +21,7 @@ export const ProgressGoalCard = ({
     const categoryColor = getCategoryColor(goal.category)
 
     return (
-        <div className={'flex flex-col rounded-xl p-5 bg-surface-section gap-3'}>
+        <div className={'flex flex-col gap-3 rounded-xl bg-surface-section p-5'}>
             <Badge
                 className={cn(
                     categoryColor,
@@ -41,7 +39,7 @@ export const ProgressGoalCard = ({
                         {t(goalsLocales.goalCard.progressLabel)}
                     </span>
                     <span className={'font-semibold'}>
-                        {progressPercent}%
+                        {`${progressPercent}%`}
                     </span>
                 </div>
                 <div className={'h-1.5 overflow-hidden rounded-full bg-outline-variant'}>

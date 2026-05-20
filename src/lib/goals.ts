@@ -16,7 +16,7 @@ export type GoalBadge =
 export const getProgressPercentage = (
     goal: Goal
 ): number => {
-    return Math.round((goal.progress ?? 0) * 100)
+    return Math.min(100, Math.round((goal.progress ?? 0) * 100))
 }
 
 export const getBadge = (percentage: number): GoalBadge => {

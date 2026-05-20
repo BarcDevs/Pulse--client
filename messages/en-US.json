@@ -367,7 +367,7 @@
     "shareJourney": "Share progress",
     "milestones": {
       "title": "Milestones & achievements",
-      "seeAll": "View all goals",
+      "seeAll": "See all {count} milestones",
       "empty": "No active goals yet. You can add goals anytime from Goals & Milestones."
     },
     "wellness": {

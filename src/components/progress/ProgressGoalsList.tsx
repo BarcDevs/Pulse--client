@@ -6,7 +6,9 @@ type ProgressGoalsListProps = {
     goals: Goal[]
 }
 
-export const ProgressGoalsList = ({ goals }: ProgressGoalsListProps) => (
+export const ProgressGoalsList = ({
+    goals
+}: ProgressGoalsListProps) => (
     <div className={'grid gap-4 sm:grid-cols-2 lg:grid-cols-4'}>
         {goals.map((goal) => (
             <ProgressGoalCard

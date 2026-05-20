@@ -8,5 +8,8 @@ export const defaults = {
         historyLimit: 30,
         maxSuggestedActivities: 5,
         dateFormat: 'MMM d'
+    },
+    progress: {
+        topGoalsCount: 4
     }
 }

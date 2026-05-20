@@ -14,6 +14,7 @@ import {
 
 import { useGoals } from '@/hooks/queries/useGoals'
 
+import { defaults } from '@/constants/defaults'
 import { ROUTES } from '@/constants/routes'
 
 import { progressLocales } from '@/locales/progressLocales'
@@ -21,16 +22,16 @@ import { progressLocales } from '@/locales/progressLocales'
 import { ProgressGoalsList } from './ProgressGoalsList'
 import { ProgressMilestonesSkeletons } from './ProgressMilestonesSkeletons'
 
-const TOP_GOALS_COUNT = 4
+const { topGoalsCount } = defaults.progress
 
 export const ProgressMilestones = () => {
     const t = useTranslations()
     const { data: goals, isLoading } = useGoals()
 
-    const topGoals = goals
-        ?.filter((g) => g.status === GoalStatus.ACTIVE)
+    const activeGoals = goals?.filter((g) => g.status === GoalStatus.ACTIVE) ?? []
+    const topGoals = [...activeGoals]
         .sort((a, b) => (b.progress ?? 0) - (a.progress ?? 0))
-        .slice(0, TOP_GOALS_COUNT)
+        .slice(0, topGoalsCount)
 
     return (
         <Card className={'mt-6 border-0 shadow-sm'}>
@@ -42,13 +43,15 @@ export const ProgressMilestones = () => {
                     href={ROUTES.RECOVERY_GOALS}
                     className={'text-sm text-muted-foreground transition-colors hover:text-foreground'}
                 >
-                    {t(progressLocales.milestones.seeAll)}
+                    {t(progressLocales.milestones.seeAll, {
+                        count: activeGoals.length
+                    })}
                 </Link>
             </CardHeader>
             <CardContent>
                 {isLoading ? (
-                    <ProgressMilestonesSkeletons count={TOP_GOALS_COUNT}/>
-                ) : topGoals?.length === 0 ? (
+                    <ProgressMilestonesSkeletons count={topGoalsCount}/>
+                ) : activeGoals.length === 0 ? (
                     <p className={'text-sm text-muted-foreground'}>
                         {t(progressLocales.milestones.empty)}
                     </p>
