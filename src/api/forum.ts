@@ -113,13 +113,29 @@ export const reportUnknownTag = (
     tag: string
 ): void => {
     // TODO: AI tag normalization — tracks unknown tags until implemented
-    api.post(ENDPOINTS.forum.tagsUnknown, { tag }).catch(() => {})
+    api.post(
+        ENDPOINTS.forum.tagsUnknown,
+        { tag }
+    ).catch(() => {})
 }
 
 export const fetchTags = async ():
     Promise<PartialTag[]> => {
     const res = await api.get<Response<PartialTag[]>>(
         ENDPOINTS.forum.tags
+    )
+    return res.data.data
+}
+
+type CategoryCount = {
+    category: string
+    count: number
+}
+
+export const fetchPostCategoryCounts = async ():
+    Promise<CategoryCount[]> => {
+    const res = await api.get<Response<CategoryCount[]>>(
+        ENDPOINTS.forum.postCategories
     )
     return res.data.data
 }

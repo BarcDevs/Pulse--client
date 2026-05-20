@@ -14,7 +14,11 @@ export const communityLocales = {
         loading: 'community.posts.loading',
         empty: 'community.posts.empty',
         emptyWithFilter: 'community.posts.emptyWithFilter',
-        likedLabel: 'community.posts.likedLabel'
+        likedLabel: 'community.posts.likedLabel',
+        allCategories: 'community.posts.allCategories',
+        filterByCategory: 'community.posts.filterByCategory',
+        tagFilter: 'community.posts.tagFilter',
+        clearTagFilter: 'community.posts.clearTagFilter'
     },
     mentors: {
         title: 'community.mentors.title',

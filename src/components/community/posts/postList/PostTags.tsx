@@ -9,34 +9,69 @@ import { cn } from '@/lib/utils'
 
 type PostTagsProps = {
     tags: Tag[] | PartialTag[]
-    onTagSelect?: (tag: string) => void
+    onTagSelectAction?: (
+        tag: string | null
+    ) => void
+    activeTag?: string | null
 }
 
 export const PostTags = ({
     tags,
-    onTagSelect
+    onTagSelectAction,
+    activeTag
 }: PostTagsProps) => (
-    <div className={'flex items-center gap-2 mt-3 flex-wrap'}>
-        {tags.map(tag => onTagSelect ? (
-            <Button
-                key={tag.id}
-                variant={'outline'}
-                onClick={() => onTagSelect(tag.name)}
-                className={cn(
-                    'h-auto px-2 py-0.5 text-xs font-normal text-muted-foreground',
-                    'rounded-full hover:bg-accent hover:text-accent-foreground'
-                )}
-            >
-                {tag.name}
-            </Button>
-        ) : (
-            <Badge
-                key={tag.id}
-                variant={'outline'}
-                className={'text-xs text-muted-foreground font-normal'}
-            >
-                {tag.name}
-            </Badge>
-        ))}
+    <div
+        className={
+            'flex items-center'
+            + ' gap-2 mt-3 flex-wrap'
+        }
+    >
+        {tags.map((tag) =>
+            onTagSelectAction ? (
+                <Button
+                    key={tag.id}
+                    variant={'outline'}
+                    onClick={() =>
+                        onTagSelectAction(
+                            tag.name
+                        )
+                    }
+                    className={cn(
+                        'h-auto px-2 py-0.5'
+                        + ' text-xs'
+                        + ' font-normal'
+                        + ' rounded-full',
+                        (
+                            activeTag
+                            === tag.name
+                        )
+                            ? (
+                                'bg-primary/10'
+                                + ' text-primary'
+                                + ' border-primary'
+                            )
+                            : (
+                                'text-muted-foreground'
+                                + ' hover:bg-accent'
+                                + ' hover:text-accent-foreground'
+                            )
+                    )}
+                >
+                    {tag.name}
+                </Button>
+            ) : (
+                <Badge
+                    key={tag.id}
+                    variant={'outline'}
+                    className={
+                        'text-xs'
+                        + ' text-muted-foreground'
+                        + ' font-normal'
+                    }
+                >
+                    {tag.name}
+                </Badge>
+            )
+        )}
     </div>
 )

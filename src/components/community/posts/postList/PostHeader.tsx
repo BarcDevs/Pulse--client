@@ -2,20 +2,8 @@
 
 import { useTranslations } from 'next-intl'
 
-import { cn } from '@/lib/utils'
-
-import {
-    CATEGORY_GROUP,
-    CategoryGroup,
-    getCategory
-} from '@/data/forum/categories'
+import { getCategory } from '@/data/forum/categories'
 import { communityLocales } from '@/locales/communityLocales'
-
-const GROUP_COLORS: Record<CategoryGroup, string> = {
-    [CATEGORY_GROUP.Recovery]: 'bg-green-100 text-green-700',
-    [CATEGORY_GROUP.Health]: 'bg-purple-100 text-purple-700',
-    [CATEGORY_GROUP.Community]: 'bg-blue-100 text-blue-700'
-}
 
 type PostHeaderProps = {
     category: string
@@ -32,22 +20,28 @@ export const PostHeader = ({
     const tCategories = useTranslations('community.categories')
 
     const cat = getCategory(category)
-    const colorClass = cat?.group
-        ? GROUP_COLORS[cat.group]
-        : 'bg-secondary text-secondary-foreground'
-    const categoryName = tCategories(category)
+    const color = cat?.color ?? {
+        bg: '#E2E8F0',
+        text: '#334155'
+    }
 
     return (
         <div className={'flex items-center gap-2 mb-2'}>
-            <span className={cn(
-                'inline-flex items-center justify-center text-center px-2 py-0.5 rounded-full text-xs font-medium',
-                colorClass
-            )}>
-                {categoryName}
+            <span
+                className={'inline-flex items-center justify-center text-center px-2 py-0.5 rounded-full text-xs font-medium'}
+                style={{
+                    backgroundColor: color.bg,
+                    color: color.text
+                }}
+            >
+                {tCategories(category)}
             </span>
             <span className={'text-xs text-muted-foreground'}>
-                {t(communityLocales.posts.postedBy)}
-                {` ${author} - ${timeAgo}`}
+                {`${t(communityLocales.posts.postedBy)} `}
+                <span className={'font-semibold text-foreground'}>
+                    {author}
+                </span>
+                {` - ${timeAgo}`}
             </span>
         </div>
     )

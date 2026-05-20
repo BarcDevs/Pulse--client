@@ -3,6 +3,8 @@
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 
+import { Heart } from 'lucide-react'
+
 import { Post } from '@/types/community'
 
 import { useDateLocale } from '@/hooks/ui/useDateLocale'
@@ -19,7 +21,10 @@ import { PostTags } from './PostTags'
 
 type PostItemProps = {
     post: Post
-    onTagSelect?: (tag: string) => void
+    onTagSelectAction?: (
+        tag: string | null
+    ) => void
+    activeTag?: string | null
 }
 
 const getAuthorName = (post: Post): string => {
@@ -38,45 +43,118 @@ const getAuthorName = (post: Post): string => {
 
 export const PostItem = ({
     post,
-    onTagSelect
+    onTagSelectAction,
+    activeTag
 }: PostItemProps) => {
     const t = useTranslations()
     const dateLocale = useDateLocale()
-    const tags = Array.isArray(post.tags) ? post.tags : []
-    const replies = Array.isArray(post.replies)
+    const tags = Array.isArray(post.tags)
+        ? post.tags
+        : []
+    const replies = Array.isArray(
+        post.replies
+    )
         ? post.replies.length
         : post._count?.replies ?? 0
 
     return (
-        <div className={'p-6 hover:bg-surface-section/50 transition-colors'}>
+        <div
+            className={
+                'p-6'
+                + ' hover:bg-surface-section/50'
+                + ' transition-colors'
+            }
+        >
             <Link
-                href={`/community/post/${post.id}`}
+                href={
+                    `/community/post/${post.id}`
+                }
                 className={'block'}
             >
-                <div className={'flex items-start justify-between gap-4 mb-2'}>
+                <div
+                    className={
+                        'flex items-start'
+                        + ' justify-between'
+                        + ' gap-4 mb-2'
+                    }
+                >
                     <PostHeader
-                        category={post.category}
-                        author={getAuthorName(post)}
-                        timeAgo={toRelative(post.createdAt, dateLocale)}
+                        category={
+                            post.category
+                        }
+                        author={getAuthorName(
+                            post
+                        )}
+                        timeAgo={toRelative(
+                            post.createdAt,
+                            dateLocale
+                        )}
                     />
-                    <span className={'text-xs text-muted-foreground whitespace-nowrap'}>
-                        {`${post.votes.upvotes} ${t(communityLocales.posts.likedLabel)}`}
+                    <span
+                        className={
+                            'flex items-center'
+                            + ' gap-1 text-xs'
+                            + ' whitespace-nowrap'
+                        }
+                    >
+                        <Heart
+                            className={
+                                'h-3 w-3'
+                                + ' text-rose-400'
+                            }
+                        />
+                        <span
+                            className={
+                                'font-semibold'
+                                + ' text-foreground'
+                            }
+                        >
+                            {post.votes.upvotes}
+                        </span>
+                        <span
+                            className={
+                                'text-muted-foreground'
+                            }
+                        >
+                            {t(
+                                communityLocales
+                                    .posts
+                                    .likedLabel
+                            )}
+                        </span>
                     </span>
                 </div>
-                <h3 className={'font-semibold text-foreground mb-2'}>
+                <h3
+                    className={
+                        'font-semibold'
+                        + ' text-foreground'
+                        + ' mb-2'
+                    }
+                >
                     {post.title}
                 </h3>
-                <p className={'text-sm text-muted-foreground line-clamp-2'}>
+                <p
+                    className={
+                        'text-sm'
+                        + ' text-muted-foreground'
+                        + ' line-clamp-2'
+                    }
+                >
                     {stripHtml(post.body)}
                 </p>
             </Link>
             {tags.length > 0 && (
                 <PostTags
                     tags={tags}
-                    onTagSelect={onTagSelect}
+                    onTagSelectAction={
+                        onTagSelectAction
+                    }
+                    activeTag={activeTag}
                 />
             )}
-            <PostActions replies={replies}/>
+            <PostActions
+                replies={replies}
+            />
         </div>
     )
 }
