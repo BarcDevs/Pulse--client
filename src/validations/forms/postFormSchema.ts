@@ -15,6 +15,10 @@ type PostFormSchemaOptions = {
     isReply?: boolean
 }
 
+const tagItemSchema = (t: TranslatorFn) => z.string()
+    .min(config.tags.minLength, t(validationLocales.post.tag.tooShort))
+    .max(config.tags.maxLength, t(validationLocales.post.tag.tooLong))
+
 export const createPostFormSchema = (
     t: TranslatorFn,
     { isReply = false }: PostFormSchemaOptions = {}
@@ -71,18 +75,12 @@ export const createPostFormSchema = (
             }
         }),
         tags: isReply
-            ? z.array(
-                z.string()
-                    .min(config.tags.minLength, t(validationLocales.post.tag.tooShort))
-                    .max(config.tags.maxLength, t(validationLocales.post.tag.tooLong))
-                    .toUpperCase()
-            ).optional()
-            : z.array(
-                z.string()
-                    .min(config.tags.minLength, t(validationLocales.post.tag.tooShort))
-                    .max(config.tags.maxLength, t(validationLocales.post.tag.tooLong))
-                    .toUpperCase()
-            )
+            ? z.array(tagItemSchema(t)).optional()
+            : z.array(tagItemSchema(t))
+                .min(
+                    config.tags.min,
+                    t(validationLocales.post.tag.required)
+                )
                 .max(
                     config.tags.max,
                     t(

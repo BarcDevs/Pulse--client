@@ -36,10 +36,13 @@ type Post = Parameters<typeof PostItem>[0]['post']
 type PostListProps = {
     tag?: string | null
     search?: string
+    onTagSelect?: (tag: string) => void
 }
 
 export const PostList = ({
-    tag, search
+    tag,
+    search,
+    onTagSelect
 }: PostListProps) => {
     const t = useTranslations()
     // todo: extract post fetch functionality into a hook
@@ -177,6 +180,7 @@ export const PostList = ({
                             <PostItem
                                 key={post.id}
                                 post={post}
+                                onTagSelect={onTagSelect}
                             />
                         ))}
                         {hasMore && (

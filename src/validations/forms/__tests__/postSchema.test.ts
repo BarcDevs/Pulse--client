@@ -216,11 +216,11 @@ describe(
             })
 
         it(
-            'should reject more than 3 tags',
+            'should reject more than 5 tags',
             () => {
                 const result = postSchema.safeParse({
                     ...validPost,
-                    tags: ['TAG1', 'TAG2', 'TAG3', 'TAG4']
+                    tags: ['TAG1', 'TAG2', 'TAG3', 'TAG4', 'TAG5', 'TAG6']
                 })
                 expect(result.success).toBe(false)
                 if ( !result.success ) {
@@ -245,11 +245,11 @@ describe(
             })
 
         it(
-            'should reject tags shorter than 3 characters',
+            'should reject tags shorter than 2 characters',
             () => {
                 const result = postSchema.safeParse({
                     ...validPost,
-                    tags: ['AB']
+                    tags: ['A']
                 })
                 expect(result.success).toBe(false)
                 if ( !result.success ) {
@@ -262,11 +262,11 @@ describe(
             })
 
         it(
-            'should reject tags longer than 15 characters',
+            'should reject tags longer than 20 characters',
             () => {
                 const result = postSchema.safeParse({
                     ...validPost,
-                    tags: ['A'.repeat(16)]
+                    tags: ['A'.repeat(21)]
                 })
                 expect(result.success).toBe(false)
                 if ( !result.success ) {
@@ -283,13 +283,13 @@ describe(
             () => {
                 const minResult = postSchema.safeParse({
                     ...validPost,
-                    tags: ['ABC']
+                    tags: ['AB']
                 })
                 expect(minResult.success).toBe(true)
 
                 const maxResult = postSchema.safeParse({
                     ...validPost,
-                    tags: ['A'.repeat(15)]
+                    tags: ['A'.repeat(20)]
                 })
                 expect(maxResult.success).toBe(true)
             })

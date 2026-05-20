@@ -212,7 +212,9 @@
       "category": "Category",
       "categoryPlaceholder": "Select a category",
       "bodyPlaceholderReply": "Write your reply...",
-      "bodyPlaceholderPost": "Share what’s on your mind..."
+      "bodyPlaceholderPost": "Share what’s on your mind...",
+      "tags": "Tags",
+      "tagsPlaceholder": "Search tags or add your own"
     },
     "categories": {
       "recovery": "Recovery Journey",

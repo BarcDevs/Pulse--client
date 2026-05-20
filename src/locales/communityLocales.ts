@@ -82,6 +82,8 @@ export const communityLocales = {
         category: 'community.postForm.category',
         categoryPlaceholder: 'community.postForm.categoryPlaceholder',
         bodyPlaceholderReply: 'community.postForm.bodyPlaceholderReply',
-        bodyPlaceholderPost: 'community.postForm.bodyPlaceholderPost'
+        bodyPlaceholderPost: 'community.postForm.bodyPlaceholderPost',
+        tags: 'community.postForm.tags',
+        tagsPlaceholder: 'community.postForm.tagsPlaceholder'
     }
 } as const

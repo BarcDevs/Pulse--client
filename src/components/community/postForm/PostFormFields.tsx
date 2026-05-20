@@ -4,6 +4,7 @@ import { useTranslations } from 'next-intl'
 
 import { UseFormReturn } from 'react-hook-form'
 
+import { TagInput } from '@/components/community/postForm/TagInput'
 import {
     FormControl,
     FormField,
@@ -22,9 +23,10 @@ import {
 
 import categories from '@/data/forum/categories'
 import { communityLocales } from '@/locales/communityLocales'
+import { type PostFormSchema } from '@/validations/forms/postFormSchema'
 
 type PostFormFieldsProps = {
-    form: UseFormReturn<any>
+    form: UseFormReturn<PostFormSchema>
 }
 
 export const PostFormFields = ({
@@ -83,6 +85,26 @@ export const PostFormFields = ({
                                     )}
                                 </SelectContent>
                             </Select>
+                        </FormControl>
+                        <FormMessage/>
+                    </FormItem>
+                )}
+            />
+
+            <FormField
+                control={form.control}
+                name={'tags'}
+                render={({ field }) => (
+                    <FormItem>
+                        <FormLabel>
+                            {t(communityLocales.postForm.tags)}
+                        </FormLabel>
+                        <FormControl>
+                            <TagInput
+                                value={field.value ?? []}
+                                onChangeAction={field.onChange}
+                                placeholder={t(communityLocales.postForm.tagsPlaceholder)}
+                            />
                         </FormControl>
                         <FormMessage/>
                     </FormItem>

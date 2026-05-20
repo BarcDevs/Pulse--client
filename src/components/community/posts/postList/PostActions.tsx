@@ -16,29 +16,24 @@ type PostActionsProps = {
     replies: number
 }
 
-export const PostActions = ({
-    replies
-}: PostActionsProps) => {
+export const PostActions = ({ replies }: PostActionsProps) => {
     const t = useTranslations()
 
     return (
         <div className={'flex items-center gap-4 mt-4'}>
             <PostActionButton
                 text={`${replies} ${t(communityLocales.posts.repliesLabel)}`}
-                onClick={() => {
-                }}
+                onClick={() => {}}
                 icon={MessageSquare}
             />
             <PostActionButton
                 text={t(communityLocales.posts.share)}
-                onClick={() => {
-                }}
+                onClick={() => {}}
                 icon={Share2}
             />
             <PostActionButton
                 text={t(communityLocales.posts.save)}
-                onClick={() => {
-                }}
+                onClick={() => {}}
                 icon={Bookmark}
             />
         </div>

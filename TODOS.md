@@ -12,6 +12,7 @@ Centralised list of all in-code TODOs, grouped by domain.
 | 2 | `src/lib/stats/getStatDescription.ts` | 10 | Replace hardcoded stat descriptions with AI-generated insights |
 | 3 | `src/components/chat/ChatPageContent.tsx` | 13 | Implement real AI chat API + error handling for chat failures |
 | 4 | `src/components/insights/InsightsPageContent.tsx` | 8 | Implement real data fetching + add error cards when APIs are ready |
+| 5 | `src/components/community/postForm/TagInput.tsx` | — | AI tag normalization: map typos/variations to canonical tags, surface candidates, auto-correct on high confidence. Triggered via `POST /forum/tags/unknown` data. |
 
 ---
 

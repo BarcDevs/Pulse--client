@@ -47,6 +47,7 @@ export const CommunityPageContent = () => {
                     <PostList
                         tag={selectedTag}
                         search={debouncedSearch}
+                        onTagSelect={setSelectedTag}
                     />
                 </div>
 

@@ -15,9 +15,11 @@ import { communityLocales } from '@/locales/communityLocales'
 
 import { PostActions } from './PostActions'
 import { PostHeader } from './PostHeader'
+import { PostTags } from './PostTags'
 
 type PostItemProps = {
     post: Post
+    onTagSelect?: (tag: string) => void
 }
 
 const getAuthorName = (post: Post): string => {
@@ -34,45 +36,47 @@ const getAuthorName = (post: Post): string => {
         : username
 }
 
-export const PostItem = ({ post }: PostItemProps) => {
+export const PostItem = ({
+    post,
+    onTagSelect
+}: PostItemProps) => {
     const t = useTranslations()
     const dateLocale = useDateLocale()
+    const tags = Array.isArray(post.tags) ? post.tags : []
+    const replies = Array.isArray(post.replies)
+        ? post.replies.length
+        : post._count?.replies ?? 0
 
     return (
-        <Link href={`/community/post/${post.id}`}>
-            <div className={'p-6 hover:bg-surface-section/50 transition-colors cursor-pointer'}>
-                <div className={'flex gap-4'}>
-                    <div className={'flex-1 min-w-0'}>
-                        <div className={'flex items-start justify-between gap-4 mb-2'}>
-                            <div className={'flex-1 min-w-0'}>
-                                <PostHeader
-                                    category={post.category}
-                                    author={getAuthorName(post)}
-                                    timeAgo={toRelative(
-                                        post.createdAt,
-                                        dateLocale
-                                    )}
-                                />
-                            </div>
-                            <span className={'text-xs text-muted-foreground whitespace-nowrap'}>
-                                {`${post.votes.upvotes} ${t(communityLocales.posts.likedLabel)}`}
-                            </span>
-                        </div>
-                        <h3 className={'font-semibold text-foreground mb-2'}>
-                            {post.title}
-                        </h3>
-                        <p className={'text-sm text-muted-foreground line-clamp-2'}>
-                            {stripHtml(post.body)}
-                        </p>
-                        <PostActions
-                            replies={Array.isArray(post.replies)
-                                ? post.replies.length
-                                : post._count?.replies ?? 0
-                            }
-                        />
-                    </div>
+        <div className={'p-6 hover:bg-surface-section/50 transition-colors'}>
+            <Link
+                href={`/community/post/${post.id}`}
+                className={'block'}
+            >
+                <div className={'flex items-start justify-between gap-4 mb-2'}>
+                    <PostHeader
+                        category={post.category}
+                        author={getAuthorName(post)}
+                        timeAgo={toRelative(post.createdAt, dateLocale)}
+                    />
+                    <span className={'text-xs text-muted-foreground whitespace-nowrap'}>
+                        {`${post.votes.upvotes} ${t(communityLocales.posts.likedLabel)}`}
+                    </span>
                 </div>
-            </div>
-        </Link>
+                <h3 className={'font-semibold text-foreground mb-2'}>
+                    {post.title}
+                </h3>
+                <p className={'text-sm text-muted-foreground line-clamp-2'}>
+                    {stripHtml(post.body)}
+                </p>
+            </Link>
+            {tags.length > 0 && (
+                <PostTags
+                    tags={tags}
+                    onTagSelect={onTagSelect}
+                />
+            )}
+            <PostActions replies={replies}/>
+        </div>
     )
 }

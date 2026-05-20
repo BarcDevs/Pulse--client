@@ -205,7 +205,9 @@
       "category": "קטגוריה",
       "categoryPlaceholder": "בחירת קטגוריה",
       "bodyPlaceholderReply": "אפשר לכתוב תגובה...",
-      "bodyPlaceholderPost": "אפשר לשתף מה עובר עליך..."
+      "bodyPlaceholderPost": "אפשר לשתף מה עובר עליך...",
+      "tags": "תגיות",
+      "tagsPlaceholder": "חפש תגיות או הוסף חדשות"
     },
     "categories": {
       "recovery": "מסע ההחלמה",
