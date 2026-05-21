@@ -126,7 +126,7 @@ Never: React.* types | Function declarations | Double quotes | import.meta.env o
 Never: Direct fetch/axios | Inline exports | Commented code | window.location for navigation
 Never: Multiple components per file | Code snippets | NEXT_PUBLIC_ prefix | Server directives
 
-Use /commit skill when auto-commiting
+Use /commit skill only when user explicitly invokes it — never trigger it automatically on "commit"
 
 ## Before Committing
 1. `npm run typecheck`
