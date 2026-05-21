@@ -65,19 +65,20 @@ export const communityLocales = {
         share: 'community.postActions.share'
     },
     categories: {
-        recovery: 'community.categories.recovery',
-        therapy: 'community.categories.therapy',
-        mental: 'community.categories.mental',
-        milestones: 'community.categories.milestones',
-        lifestyle: 'community.categories.lifestyle',
-        support: 'community.categories.support',
-        questions: 'community.categories.questions',
-        stories: 'community.categories.stories',
-        discussion: 'community.categories.discussion'
+        recovery: 'community.categories.names.recovery',
+        therapy: 'community.categories.names.therapy',
+        mental: 'community.categories.names.mental',
+        milestones: 'community.categories.names.milestones',
+        lifestyle: 'community.categories.names.lifestyle',
+        support: 'community.categories.names.support',
+        questions: 'community.categories.names.questions',
+        stories: 'community.categories.names.stories',
+        discussion: 'community.categories.names.discussion'
     },
     postForm: {
         writeReply: 'community.postForm.writeReply',
         createPost: 'community.postForm.createPost',
+        createPostSubtitle: 'community.postForm.createPostSubtitle',
         content: 'community.postForm.content',
         cancel: 'community.postForm.cancel',
         sendReply: 'community.postForm.sendReply',
@@ -88,6 +89,11 @@ export const communityLocales = {
         bodyPlaceholderReply: 'community.postForm.bodyPlaceholderReply',
         bodyPlaceholderPost: 'community.postForm.bodyPlaceholderPost',
         tags: 'community.postForm.tags',
-        tagsPlaceholder: 'community.postForm.tagsPlaceholder'
+        tagsPlaceholder: 'community.postForm.tagsPlaceholder',
+        tagsPlaceholderMore: 'community.postForm.tagsPlaceholderMore',
+        tagsHint: 'community.postForm.tagsHint',
+        tagSuggestions: 'community.postForm.tagSuggestions',
+        tagPopularTopics: 'community.postForm.tagPopularTopics',
+        categoryHint: 'community.postForm.categoryHint'
     }
 } as const

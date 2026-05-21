@@ -2,10 +2,10 @@
 
 import {
     KeyboardEvent,
-    useEffect,
-    useRef,
     useState
 } from 'react'
+
+import { useTranslations } from 'next-intl'
 
 import { X } from 'lucide-react'
 
@@ -17,32 +17,38 @@ import { useForumTags } from '@/hooks/queries/useForumTags'
 import config from '@/config/schema/postForm'
 
 import { reportUnknownTag } from '@/api/forum'
+import { communityLocales } from '@/locales/communityLocales'
 
 type TagInputProps = {
     value: string[]
     onChangeAction: (tags: string[]) => void
+    onBlurAction?: () => void
     placeholder?: string
+    error?: string
 }
 
 export const TagInput = ({
     value,
     onChangeAction,
-    placeholder
+    onBlurAction,
+    placeholder,
+    error
 }: TagInputProps) => {
     const [input, setInput] = useState('')
-    const [open, setOpen] = useState(false)
-    const containerRef = useRef<HTMLDivElement>(null)
-    const { data: availableTags = [] } = useForumTags()
+    const t = useTranslations()
+    const { data: availableTags = [] } = useForumTags({
+        filter: 'popular',
+        limit: 20
+    })
 
-    const query = input.toLowerCase()
-    const filtered = availableTags
+    const query = input.toLowerCase().trim()
+    const suggestions = availableTags
         .filter(tag => {
             const slug = tag.name.toLowerCase()
             const label = tag.description?.toLowerCase() ?? ''
-            return (slug.includes(query) || label.includes(query))
-                && !value.includes(slug)
+            return (!query || slug.includes(query) || label.includes(query)) && !value.includes(slug)
         })
-        .slice(0, 8)
+        .slice(0, 6)
 
     const addTag = (tag: string) => {
         const normalized = tag.toLowerCase().trim()
@@ -54,12 +60,11 @@ export const TagInput = ({
             || value.length >= config.tags.max
         ) return
         if (!availableTags.some(t => t.name.toLowerCase() === normalized)) {
-            // TODO: AI tag normalization — track unknown tags until implemented
             reportUnknownTag(normalized)
+            return
         }
         onChangeAction([...value, normalized])
         setInput('')
-        setOpen(false)
     }
 
     const removeTag = (tag: string) => onChangeAction(value.filter(t => t !== tag))
@@ -73,25 +78,21 @@ export const TagInput = ({
             removeTag(value[value.length - 1])
     }
 
-    useEffect(() => {
-        const onOutside = (e: MouseEvent) => {
-            if (!containerRef.current?.contains(e.target as Node)) setOpen(false)
-        }
-        document.addEventListener('mousedown', onOutside)
-        return () => document.removeEventListener('mousedown', onOutside)
-    }, [])
+    const showSuggestions = value.length < config.tags.max && suggestions.length > 0
+    const suggestionsLabel = query
+        ? t(communityLocales.postForm.tagSuggestions)
+        : t(communityLocales.postForm.tagPopularTopics)
 
     return (
-        <div
-            ref={containerRef}
-            className={'relative'}
-        >
-            <div className={'flex flex-wrap gap-1.5 p-2 border border-input rounded-md bg-background min-h-9'}>
+        <div className={'space-y-2'}>
+            <div
+                aria-invalid={!!error}
+                className={'tag-input-box flex flex-wrap gap-1.5 p-2 border border-input rounded-md bg-background min-h-9'}
+            >
                 {value.map(tag => (
                     <Badge
                         key={tag}
-                        variant={'secondary'}
-                        className={'gap-1 pr-1'}
+                        className={'gap-1 pr-1 bg-primary-light text-primary hover:bg-primary-light'}
                     >
                         {tag}
                         <Button
@@ -108,30 +109,37 @@ export const TagInput = ({
                 {value.length < config.tags.max && (
                     <input
                         value={input}
-                        onChange={e => {
-                            setInput(e.target.value)
-                            setOpen(true)
-                        }}
-                        onFocus={() => setOpen(true)}
+                        onChange={e => setInput(e.target.value)}
+                        onBlur={onBlurAction}
                         onKeyDown={handleKeyDown}
-                        placeholder={value.length === 0 ? placeholder : ''}
+                        placeholder={value.length === 0 ? placeholder : t(communityLocales.postForm.tagsPlaceholderMore)}
                         className={'flex-1 min-w-[6rem] outline-none text-sm bg-transparent'}
                     />
                 )}
             </div>
-            {open && filtered.length > 0 && (
-                <div className={'absolute z-10 top-full left-0 right-0 mt-1 bg-popover border border-border rounded-md shadow-md max-h-48 overflow-y-auto'}>
-                    {filtered.map(tag => (
-                        <Button
-                            key={tag.id}
-                            type={'button'}
-                            variant={'ghost'}
-                            onMouseDown={() => addTag(tag.name)}
-                            className={'w-full justify-start px-3 py-2 text-sm h-auto rounded-none'}
-                        >
-                            {tag.name}
-                        </Button>
-                    ))}
+            {error && (
+                <p className={'text-xs text-destructive'}>
+                    {error}
+                </p>
+            )}
+            {showSuggestions && (
+                <div>
+                    <p className={'text-xs text-muted-foreground mb-1.5'}>
+                        {suggestionsLabel}
+                    </p>
+                    <div className={'flex flex-wrap gap-1.5'}>
+                        {suggestions.map(tag => (
+                            <Button
+                                key={tag.id}
+                                type={'button'}
+                                variant={'outline'}
+                                onClick={() => addTag(tag.name)}
+                                className={'h-auto px-3 py-1 rounded-full text-xs text-muted-foreground hover:text-foreground hover:border-primary'}
+                            >
+                                {`+ ${tag.name}`}
+                            </Button>
+                        ))}
+                    </div>
                 </div>
             )}
         </div>

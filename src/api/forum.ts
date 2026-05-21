@@ -112,17 +112,24 @@ export const deleteReply = async (
 export const reportUnknownTag = (
     tag: string
 ): void => {
-    // TODO: AI tag normalization — tracks unknown tags until implemented
+    // TODO: AI tag normalization - tracks unknown tags until implemented
     api.post(
         ENDPOINTS.forum.tagsUnknown,
         { tag }
     ).catch(() => {})
 }
 
-export const fetchTags = async ():
-    Promise<PartialTag[]> => {
+type FetchTagsParams = {
+    filter?: 'popular'
+    limit?: number
+}
+
+export const fetchTags = async (
+    params?: FetchTagsParams
+): Promise<PartialTag[]> => {
     const res = await api.get<Response<PartialTag[]>>(
-        ENDPOINTS.forum.tags
+        ENDPOINTS.forum.tags,
+        { params }
     )
     return res.data.data
 }
@@ -132,9 +139,11 @@ type CategoryCount = {
     count: number
 }
 
-export const fetchPostCategoryCounts = async ():
-    Promise<CategoryCount[]> => {
-    const res = await api.get<Response<CategoryCount[]>>(
+export const fetchPostCategoryCounts = async (
+): Promise<CategoryCount[]> => {
+    const res = await api.get<
+        Response<CategoryCount[]>
+    >(
         ENDPOINTS.forum.postCategories
     )
     return res.data.data

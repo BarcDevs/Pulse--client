@@ -33,7 +33,7 @@ export const PostForm = ({
     if (!isOpen) return null
 
     return (
-        <div className={'border-t border-border bg-white p-4'}>
+        <div className={'rounded-2xl bg-surface-card p-6 shadow-md border border-primary'}>
             <PostFormHeader
                 isReply={isReply}
                 onCancelAction={onCancelAction}

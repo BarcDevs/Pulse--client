@@ -17,8 +17,7 @@ import {
     PopoverTrigger
 } from '@/components/ui/popover'
 
-import { useForumCategoryCounts }
-    from '@/hooks/queries/useForumCategoryCounts'
+import { useForumCategoryCounts } from '@/hooks/queries/useForumCategoryCounts'
 
 import { cn } from '@/lib/utils'
 
@@ -46,47 +45,22 @@ const CategoryOption = ({
         variant={'ghost'}
         onClick={onSelect}
         className={cn(
-            'w-full justify-start'
-            + ' gap-2.5 text-sm font-normal',
-            isSelected && (
-                'bg-primary/10'
-                + ' font-semibold text-primary'
-                + ' hover:bg-primary/15'
-                + ' hover:text-primary'
-            )
+            'w-full justify-start gap-2.5 text-sm font-normal',
+            isSelected && 'bg-primary/10 font-semibold text-primary hover:bg-primary/15 hover:text-primary'
         )}
     >
         {category
             ? <span
-                className={
-                    'h-2.5 w-2.5'
-                    + ' rounded-full flex-shrink-0'
-                }
-                style={{
-                    backgroundColor:
-                        category.color.text
-                }}
+                className={'h-2.5 w-2.5 rounded-full shrink-0'}
+                style={{ backgroundColor: category.color.text }}
             />
-            : <span
-                className={
-                    'h-2.5 w-2.5 rounded'
-                    + ' border'
-                    + ' border-muted-foreground'
-                    + ' flex-shrink-0'
-                }
-            />
+            : <span className={'h-2.5 w-2.5 rounded border border-muted-foreground shrink-0'}/>
         }
         <span className={'flex-1 text-left'}>
             {label}
         </span>
         {count !== null && (
-            <span
-                className={
-                    'text-xs'
-                    + ' text-muted-foreground'
-                    + ' tabular-nums'
-                }
-            >
+            <span className={'text-xs text-muted-foreground tabular-nums'}>
                 {count}
             </span>
         )}
@@ -98,9 +72,7 @@ const CategoryOption = ({
 
 type PostListCategoryFilterProps = {
     value: string | null
-    onChangeAction: (
-        category: string | null
-    ) => void
+    onChangeAction: (category: string | null) => void
 }
 
 export const PostListCategoryFilter = ({
@@ -108,26 +80,15 @@ export const PostListCategoryFilter = ({
     onChangeAction
 }: PostListCategoryFilterProps) => {
     const t = useTranslations()
-    const tCategories = useTranslations(
-        'community.categories'
-    )
+    const tCategoryNames = useTranslations('community.categories.names')
     const [open, setOpen] = useState(false)
-    const { data: counts } =
-        useForumCategoryCounts()
+    const { data: counts } = useForumCategoryCounts()
 
-    const selected = value
-        ? categories.find(c => c.key === value)
-        : null
-    const getCount = (key: string) => {
-        const found = counts?.find(
-            c => c.category === key
-        )
-        return found?.count ?? 0
-    }
+    const selected = value ? categories.find(c => c.key === value) : null
+    const getCount = (key: string) => counts
+        ?.find(c => c.category === key)?.count ?? 0
 
-    const handleSelect = (
-        key: string | null
-    ) => {
+    const handleSelect = (key: string | null) => {
         onChangeAction(key)
         setOpen(false)
     }
@@ -147,79 +108,38 @@ export const PostListCategoryFilter = ({
                     variant={'outline'}
                     size={'sm'}
                     className={cn(
-                        'gap-1.5 text-sm'
-                        + ' font-semibold',
-                        selected && (
-                            'border-primary'
-                            + ' text-primary'
-                        )
+                        'gap-1.5 text-sm font-semibold',
+                        selected && 'border-primary text-primary'
                     )}
                 >
-                    <SlidersHorizontal
-                        className={'h-3.5 w-3.5'}
-                    />
+                    <SlidersHorizontal className={'h-3.5 w-3.5'}/>
                     {selected
-                        ? tCategories(
-                            selected.key
-                        )
-                        : t(
-                            communityLocales
-                                .posts
-                                .allCategories
-                        )}
-                    <ChevronDown
-                        className={'h-3.5 w-3.5'}
-                    />
+                        ? tCategoryNames(selected.key)
+                        : t(communityLocales.posts.allCategories)}
+                    <ChevronDown className={'h-3.5 w-3.5'}/>
                 </Button>
             </PopoverTrigger>
             <PopoverContent
                 align={'end'}
                 className={'w-72 p-1.5'}
             >
-                <p
-                    className={
-                        'px-2.5 py-1.5'
-                        + ' text-xs font-bold'
-                        + ' text-muted-foreground'
-                        + ' uppercase tracking-wide'
-                    }
-                >
-                    {t(
-                        communityLocales
-                            .posts
-                            .filterByCategory
-                    )}
+                <p className={'px-2.5 py-1.5 text-xs font-bold text-muted-foreground uppercase tracking-wide'}>
+                    {t(communityLocales.posts.filterByCategory)}
                 </p>
                 {allKeys.map(key => {
-                    const category = key
-                        ? (
-                            categories.find(
-                                c => c.key === key
-                            ) ?? null
-                        )
-                        : null
-                    const count = key
-                        ? getCount(key)
-                        : null
+                    const category = key ? (categories.find(c => c.key === key) ?? null) : null
+                    const count = key ? getCount(key) : null
                     const label = key
-                        ? tCategories(key)
-                        : t(
-                            communityLocales
-                                .posts
-                                .allCategories
-                        )
+                        ? tCategoryNames(key)
+                        : t(communityLocales.posts.allCategories)
                     return (
                         <CategoryOption
                             key={key ?? 'all'}
                             category={category}
-                            isSelected={
-                                value === key
-                            }
+                            isSelected={value === key}
                             count={count}
                             label={label}
-                            onSelect={() =>
-                                handleSelect(key)
-                            }
+                            onSelect={() => handleSelect(key)}
                         />
                     )
                 })}

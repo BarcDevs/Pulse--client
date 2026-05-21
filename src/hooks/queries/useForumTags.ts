@@ -7,12 +7,19 @@ import { minuteInMs } from '@/constants/time'
 
 import { fetchTags } from '@/api/forum'
 
-export const useForumTags = (options?: {
+type UseForumTagsOptions = {
+    filter?: 'popular'
+    limit?: number
     enabled?: boolean
-}) => useQueryWithNetworkError<PartialTag[]>({
-    queryKey: forumQueryKeys.tags,
-    queryFn: () => fetchTags(),
-    staleTime: 5 * minuteInMs,
-    enabled: options?.enabled !== false,
-    retry: false
-})
+}
+
+export const useForumTags = (options?: UseForumTagsOptions) => {
+    const { filter, limit, enabled } = options ?? {}
+    return useQueryWithNetworkError<PartialTag[]>({
+        queryKey: [...forumQueryKeys.tags, filter, limit],
+        queryFn: () => fetchTags({ filter, limit }),
+        staleTime: 5 * minuteInMs,
+        enabled: enabled !== false,
+        retry: false
+    })
+}

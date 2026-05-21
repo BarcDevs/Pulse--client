@@ -17,7 +17,7 @@ export const PostHeader = ({
     timeAgo
 }: PostHeaderProps) => {
     const t = useTranslations()
-    const tCategories = useTranslations('community.categories')
+    const tCategoryNames = useTranslations('community.categories.names')
 
     const cat = getCategory(category)
     const color = cat?.color ?? {
@@ -34,7 +34,7 @@ export const PostHeader = ({
                     color: color.text
                 }}
             >
-                {tCategories(category)}
+                {tCategoryNames(category)}
             </span>
             <span className={'text-xs text-muted-foreground'}>
                 {`${t(communityLocales.posts.postedBy)} `}

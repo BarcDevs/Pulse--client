@@ -11,14 +11,13 @@
 - Never use string literals as object keys - define typed constants and use computed property names `[CONST.Key]: value`
 - Never use array index as key - use the current element as an index
 - Braces around values inside: Object literal braces, component props and import/export braces
-done with - Text blocks: Don't break unless really long (120–150 chars OK)
+- Text blocks: Don't break unless really long (120–150 chars OK)
 - Text: never use `—` character. only the simple hyphen `-` for all text, including classnames and config keys. This avoids encoding issues and ensures consistency across all contexts (JSX, CSS, config, etc.)
 - Use unified imports for module that has many imports
 - Short conditional blocks - never use `{`
 - Don't break single imports to multiple lines unless very long (50+ chars)
 - Never break line around single imports - if import is too long, break before the `from` keyword
 - Don't make line-breaking too strict
-- **NO redundant spaces**: No extra spaces before `/>` in JSX, no multiple spaces between tokens, no trailing spaces
 
 ## Language & Format
 - Quotes: Single quotes (') for all strings, imports, JSX props, backtick allowed for template strings

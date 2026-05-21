@@ -21,11 +21,16 @@ export const PostFormHeader = ({
 
     return (
         <div className={'flex items-start justify-between gap-4 mb-4'}>
-            <h3 className={'text-sm font-semibold'}>
-                {isReply
-                    ? t(communityLocales.postForm.writeReply)
-                    : t(communityLocales.postForm.createPost)}
-            </h3>
+            <div>
+                <h3 className={'text-base font-semibold'}>
+                    {isReply ? t(communityLocales.postForm.writeReply) : t(communityLocales.postForm.createPost)}
+                </h3>
+                {!isReply && (
+                    <p className={'text-xs text-muted-foreground mt-0.5'}>
+                        {t(communityLocales.postForm.createPostSubtitle)}
+                    </p>
+                )}
+            </div>
             {onCancelAction && (
                 <Button
                     onClick={onCancelAction}

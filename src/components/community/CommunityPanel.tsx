@@ -18,7 +18,7 @@ export const CommunityPanel = ({
         <SanctuaryCard/>
         <TrendingTopicsCard
             selectedTag={selectedTag}
-            onTagSelect={onTagSelect}
+            onTagSelectAction={onTagSelect}
         />
     </div>
 )

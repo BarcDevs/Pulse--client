@@ -207,29 +207,48 @@
     },
     "postForm": {
       "writeReply": "Write a reply",
-      "createPost": "Create a post",
+      "createPost": "Share with the community",
+      "createPostSubtitle": "Your post will be visible to the HealEase community. Keep the space supportive and avoid medical advice.",
       "content": "Content",
       "cancel": "Cancel",
       "sendReply": "Send reply",
       "title": "Title",
       "titlePlaceholder": "Give your post a clear title",
       "category": "Category",
-      "categoryPlaceholder": "Select a category",
-      "bodyPlaceholderReply": "Write your reply...",
-      "bodyPlaceholderPost": "Share what’s on your mind...",
+      "categoryPlaceholder": "Choose a category",
+      "bodyPlaceholderReply": "Write your reply here...",
+      "bodyPlaceholderPost": "Share what’s on your mind, ask a question, or offer support to others...",
       "tags": "Tags",
-      "tagsPlaceholder": "Search tags or add your own"
+      "tagsPlaceholder": "Add a topic like recovery, anxiety, sleep...",
+      "tagsPlaceholderMore": "Add another topic...",
+      "tagsHint": "Add 1–5 topics to help others find your post",
+      "tagSuggestions": "Suggested topics",
+      "tagPopularTopics": "Popular topics",
+      "categoryHint": "What kind of conversation would you like to start?"
     },
     "categories": {
-      "recovery": "Recovery Journey",
-      "therapy": "Therapy & Physical Recovery",
-      "mental": "Mental & Emotional Wellbeing",
-      "milestones": "Goals & Progress",
-      "lifestyle": "Lifestyle & Daily Wellness",
-      "support": "Community Support",
-      "questions": "Questions & Guidance",
-      "stories": "Recovery Stories",
-      "discussion": "Open Discussion"
+      "names": {
+        "recovery": "Recovery Journey",
+        "therapy": "Therapy & Physical Recovery",
+        "mental": "Mental & Emotional Wellbeing",
+        "milestones": "Goals & Progress",
+        "lifestyle": "Lifestyle & Daily Wellness",
+        "support": "Community Support",
+        "questions": "Questions & Guidance",
+        "stories": "Recovery Stories",
+        "discussion": "Open Discussion"
+      },
+      "descriptions": {
+        "recovery": "Milestones, setbacks, progress stories",
+        "therapy": "Physical therapy, exercises, sessions",
+        "mental": "Mood, stress, motivation, mindset",
+        "milestones": "Recovery goals and milestones",
+        "lifestyle": "Sleep, nutrition, routines",
+        "support": "Encouragement and peer connection",
+        "questions": "Ask the community for input",
+        "stories": "Share your full experience",
+        "discussion": "Anything else recovery-related"
+      }
     }
   },
   "dashboard": {
@@ -1147,8 +1166,8 @@
         "tooLong": "Keep your post under {max} characters"
       },
       "tag": {
-        "tooShort": "Tag is too short",
-        "tooLong": "Tag is too long",
+        "tooShort": "Tags should contain at least {min} characters",
+        "tooLong": "Keep tags under {max} characters",
         "required": "Add at least one tag to help people find your post",
         "tooMany": "You can add up to {max} tags"
       }

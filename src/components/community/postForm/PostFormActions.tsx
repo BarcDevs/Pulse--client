@@ -24,7 +24,7 @@ export const PostFormActions = ({
     const t = useTranslations()
 
     return (
-        <div className={'flex gap-2 justify-end'}>
+        <div className={'flex gap-2 justify-end pt-3.5 border-t border-border'}>
             {onCancelAction && (
                 <Button
                     variant={'outline'}

@@ -15,6 +15,8 @@ import {
 
 import { useDirection } from '@/hooks/useDirection'
 
+import { cn } from '@/lib/utils'
+
 import { reactQuillSetup } from '@/constants/config/reactQuillSetup'
 
 import { communityLocales } from '@/locales/communityLocales'
@@ -46,7 +48,7 @@ export const PostFormBody = ({
         <FormField
             control={form.control}
             name={'body'}
-            render={({ field }) => (
+            render={({ field, fieldState }) => (
                 <FormItem>
                     {!isReply && (
                         <FormLabel>
@@ -56,7 +58,10 @@ export const PostFormBody = ({
                     <FormControl>
                         <div
                             dir={dir}
-                            className={'border border-input rounded-md bg-white'}
+                            className={cn(
+                                'border border-input rounded-md bg-primary-foreground',
+                                fieldState.error && 'quill-error'
+                            )}
                         >
                             <ReactQuill
                                 theme={'snow'}

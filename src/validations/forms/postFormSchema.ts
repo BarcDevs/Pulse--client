@@ -16,8 +16,8 @@ type PostFormSchemaOptions = {
 }
 
 const tagItemSchema = (t: TranslatorFn) => z.string()
-    .min(config.tags.minLength, t(validationLocales.post.tag.tooShort))
-    .max(config.tags.maxLength, t(validationLocales.post.tag.tooLong))
+    .min(config.tags.minLength, t(validationLocales.post.tag.tooShort, { min: config.tags.minLength }))
+    .max(config.tags.maxLength, t(validationLocales.post.tag.tooLong, { max: config.tags.maxLength }))
 
 export const createPostFormSchema = (
     t: TranslatorFn,

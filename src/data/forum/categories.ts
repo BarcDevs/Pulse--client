@@ -14,7 +14,6 @@ type CategoryColor = {
 
 type Category = {
     key: string
-    name: string
     group: CategoryGroup
     color: CategoryColor
 }
@@ -22,7 +21,6 @@ type Category = {
 const categories: Category[] = [
     {
         key: 'recovery',
-        name: 'Recovery Journey',
         group: 'Recovery',
         color: {
             bg: '#F3E8FF',
@@ -31,7 +29,6 @@ const categories: Category[] = [
     },
     {
         key: 'therapy',
-        name: 'Therapy & Physical Recovery',
         group: 'Recovery',
         color: {
             bg: '#D1FAE5',
@@ -40,7 +37,6 @@ const categories: Category[] = [
     },
     {
         key: 'milestones',
-        name: 'Goals & Progress',
         group: 'Recovery',
         color: {
             bg: '#FEF3C7',
@@ -49,7 +45,6 @@ const categories: Category[] = [
     },
     {
         key: 'mental',
-        name: 'Mental & Emotional Wellbeing',
         group: 'Health',
         color: {
             bg: '#FCE7F3',
@@ -58,7 +53,6 @@ const categories: Category[] = [
     },
     {
         key: 'lifestyle',
-        name: 'Lifestyle & Daily Wellness',
         group: 'Health',
         color: {
             bg: '#E0F2FE',
@@ -67,7 +61,6 @@ const categories: Category[] = [
     },
     {
         key: 'support',
-        name: 'Community Support',
         group: 'Community',
         color: {
             bg: '#DBEAFE',
@@ -76,7 +69,6 @@ const categories: Category[] = [
     },
     {
         key: 'questions',
-        name: 'Questions & Guidance',
         group: 'Community',
         color: {
             bg: '#FFE4E6',
@@ -85,7 +77,6 @@ const categories: Category[] = [
     },
     {
         key: 'stories',
-        name: 'Recovery Stories',
         group: 'Community',
         color: {
             bg: '#EDE9FE',
@@ -94,7 +85,6 @@ const categories: Category[] = [
     },
     {
         key: 'discussion',
-        name: 'Open Discussion',
         group: 'Community',
         color: {
             bg: '#E2E8F0',
