@@ -8,8 +8,8 @@ import { RepliesEmptyState }
     from '@/components/community/postDetail/RepliesEmptyState'
 import { RepliesList }
     from '@/components/community/postDetail/RepliesList'
-import { ReplyFormCTA }
-    from '@/components/community/postDetail/ReplyFormCTA'
+import { ReplyInputSection }
+    from '@/components/community/postDetail/ReplyInputSection'
 import { UnauthenticatedReplyPrompt }
     from '@/components/community/postDetail/UnauthenticatedReplyPrompt'
 import { PostForm } from '@/components/community/postForm/PostForm'
@@ -81,7 +81,7 @@ export const RepliesSection = ({
             {isError && <ErrorDisplay error={error}/>}
 
             {isAuthenticated && !isReplyFormOpen && (
-                <ReplyFormCTA
+                <ReplyInputSection
                     onOpenAction={() => setIsReplyFormOpen(true)}
                 />
             )}

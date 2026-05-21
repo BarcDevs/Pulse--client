@@ -13,11 +13,13 @@ import { useAuth } from '@/context/AuthContext'
 
 import { communityLocales } from '@/locales/communityLocales'
 
-type ReplyFormCTAProps = {
+type ReplyInputSectionProps = {
     onOpenAction: () => void
 }
 
-export const ReplyFormCTA = ({ onOpenAction }: ReplyFormCTAProps) => {
+export const ReplyInputSection = ({
+    onOpenAction
+}: ReplyInputSectionProps) => {
     const t = useTranslations()
     const { user } = useAuth()
     const initials = user
@@ -35,8 +37,8 @@ export const ReplyFormCTA = ({ onOpenAction }: ReplyFormCTAProps) => {
             <span className={'flex-1 text-sm text-muted-foreground'}>
                 {t(communityLocales.postDetail.writeReplyPlaceholder)}
             </span>
-            <span className={'inline-flex items-center gap-1.5 shrink-0 text-sm'}>
-                <MessageSquare className={'h-4 w-4'}/>
+            <span className={'inline-flex items-center gap-1.5 shrink-0 px-3.5 py-1.5 rounded-lg bg-gradient-to-r from-[var(--primary-gradient-start)] to-[var(--primary-gradient-end)] text-white text-sm font-semibold'}>
+                <MessageSquare className={'h-3.5 w-3.5'}/>
                 {t(communityLocales.postActions.reply)}
             </span>
         </Button>
