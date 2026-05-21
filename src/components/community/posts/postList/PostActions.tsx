@@ -10,14 +10,21 @@ import {
 
 import { PostActionButton } from '@/components/community/posts/postList/PostActionButton'
 
+import { useSharePost } from '@/hooks/ui/useSharePost'
+
 import { communityLocales } from '@/locales/communityLocales'
 
 type PostActionsProps = {
+    postId: string
     replies: number
 }
 
-export const PostActions = ({ replies }: PostActionsProps) => {
+export const PostActions = ({
+    postId,
+    replies
+}: PostActionsProps) => {
     const t = useTranslations()
+    const sharePost = useSharePost(postId)
 
     return (
         <div className={'flex items-center gap-4 mt-4'}>
@@ -28,7 +35,7 @@ export const PostActions = ({ replies }: PostActionsProps) => {
             />
             <PostActionButton
                 text={t(communityLocales.posts.share)}
-                onClick={() => {}}
+                onClick={sharePost}
                 icon={Share2}
             />
             <PostActionButton

@@ -204,7 +204,8 @@
     "postActions": {
       "solidarity": "Show support",
       "reply": "Reply",
-      "share": "Share"
+      "share": "Share",
+      "linkCopied": "Link copied to clipboard!"
     },
     "postForm": {
       "writeReply": "Write a reply",

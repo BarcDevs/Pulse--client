@@ -63,7 +63,8 @@ export const communityLocales = {
     postActions: {
         solidarity: 'community.postActions.solidarity',
         reply: 'community.postActions.reply',
-        share: 'community.postActions.share'
+        share: 'community.postActions.share',
+        linkCopied: 'community.postActions.linkCopied'
     },
     categories: {
         recovery: 'community.categories.names.recovery',

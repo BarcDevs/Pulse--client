@@ -8,7 +8,6 @@ import {
     Heart,
     Share2
 } from 'lucide-react'
-
 import { Post } from '@/types/community'
 
 import { PostActionButton }
@@ -20,6 +19,7 @@ import { useForumPostMutations } from '@/hooks/mutations/useForumPostMutations'
 import { useAuth } from '@/context/AuthContext'
 
 import { communityLocales } from '@/locales/communityLocales'
+import { useSharePost } from '@/hooks/ui/useSharePost'
 
 type PostDetailActionsProps = {
     postId: string
@@ -34,6 +34,7 @@ export const PostDetailActions = ({
     const t = useTranslations()
     const { user } = useAuth()
     const { deletePost } = useForumPostMutations({ postId })
+    const sharePost = useSharePost(postId)
 
     const isPostOwner = post
         ? user?.id === post.authorId
@@ -56,7 +57,7 @@ export const PostDetailActions = ({
                 <PostActionButton
                     icon={Share2}
                     text={t(communityLocales.postActions.share)}
-                    onClick={() => {}}
+                    onClick={sharePost}
                 />
                 <PostActionButton
                     icon={Bookmark}

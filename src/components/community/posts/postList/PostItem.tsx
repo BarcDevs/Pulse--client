@@ -153,6 +153,7 @@ export const PostItem = ({
                 />
             )}
             <PostActions
+                postId={post.id}
                 replies={replies}
             />
         </div>

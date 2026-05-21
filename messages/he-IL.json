@@ -197,7 +197,8 @@
     "postActions": {
       "solidarity": "תמיכה",
       "reply": "תגובה",
-      "share": "שיתוף"
+      "share": "שיתוף",
+      "linkCopied": "הקישור הועתק ללוח!"
     },
     "postForm": {
       "writeReply": "כתיבת תגובה",
