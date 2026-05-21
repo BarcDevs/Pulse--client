@@ -14,6 +14,8 @@ import { Button } from '@/components/ui/button'
 
 import { useForumTags } from '@/hooks/queries/useForumTags'
 
+import { getTagName } from '@/utils/tag'
+
 import config from '@/config/schema/postForm'
 
 import { reportUnknownTag } from '@/api/forum'
@@ -143,7 +145,7 @@ export const TagInput = ({
                                 onClick={() => addTag(tag.slug)}
                                 className={'h-auto px-3 py-1 rounded-full text-xs text-muted-foreground hover:text-foreground hover:border-primary'}
                             >
-                                {`+ ${tag.label?.[lang] ?? tag.slug}`}
+                                {`+ ${getTagName(tag, lang)}`}
                             </Button>
                         ))}
                     </div>

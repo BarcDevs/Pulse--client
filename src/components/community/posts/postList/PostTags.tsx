@@ -7,13 +7,15 @@ import type { PartialTag, Tag } from '@/types/community'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 
+import { useForumTags } from '@/hooks/queries/useForumTags'
+
 import { cn } from '@/lib/utils'
+
+import { getTagName } from '@/utils/tag'
 
 type PostTagsProps = {
     tags: Tag[] | PartialTag[]
-    onTagSelectAction?: (
-        tag: string | null
-    ) => void
+    onTagSelectAction?: (tag: string | null) => void
     activeTag?: string | null
 }
 
@@ -24,11 +26,17 @@ export const PostTags = ({
 }: PostTagsProps) => {
     const locale = useLocale()
     const lang = locale.split('-')[0] as 'en' | 'he'
+    const { data: fullTags = [] } = useForumTags()
+
+    const tagMap = new Map(fullTags.map(ft => [ft.slug, ft]))
 
     return (
         <div className={'flex items-center gap-2 mt-3 flex-wrap'}>
-            {tags.map((tag) =>
-                onTagSelectAction ? (
+            {tags.map((tag) => {
+                const enriched = tagMap.get(tag.slug) ?? tag
+                const name = getTagName(enriched, lang)
+
+                return onTagSelectAction ? (
                     <Button
                         key={tag.id}
                         variant={'outline'}
@@ -39,7 +47,7 @@ export const PostTags = ({
                                 : 'text-muted-foreground hover:bg-accent hover:text-accent-foreground'
                         )}
                     >
-                        {tag.label?.[lang] ?? tag.slug}
+                        {name}
                     </Button>
                 ) : (
                     <Badge
@@ -47,10 +55,10 @@ export const PostTags = ({
                         variant={'outline'}
                         className={'text-xs text-muted-foreground font-normal'}
                     >
-                        {tag.label?.[lang] ?? tag.slug}
+                        {name}
                     </Badge>
                 )
-            )}
+            })}
         </div>
     )
 }

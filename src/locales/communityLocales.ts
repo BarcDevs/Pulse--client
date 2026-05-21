@@ -57,7 +57,8 @@ export const communityLocales = {
         notFoundDescription: 'community.postDetail.notFoundDescription',
         backToCommunity: 'community.postDetail.backToCommunity',
         repliesLoadError: 'community.postDetail.repliesLoadError',
-        postLoadError: 'community.postDetail.postLoadError'
+        postLoadError: 'community.postDetail.postLoadError',
+        writeReplyPlaceholder: 'community.postDetail.writeReplyPlaceholder'
     },
     postActions: {
         solidarity: 'community.postActions.solidarity',

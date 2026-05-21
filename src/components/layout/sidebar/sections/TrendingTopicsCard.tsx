@@ -8,6 +8,8 @@ import { useForumTags } from '@/hooks/queries/useForumTags'
 
 import { cn } from '@/lib/utils'
 
+import { getTagName } from '@/utils/tag'
+
 const MAX_TRENDING_TOPICS = 5
 
 type TrendingTopicsCardProps = {
@@ -61,11 +63,11 @@ export const TrendingTopicsCard = ({
                                 selectedTag === topic.slug
                                     ? 'bg-primary text-primary-foreground'
                                     : 'bg-surface-section text-muted-foreground',
-                                selectedTag !== topic.slug
-                                && 'hover:bg-primary hover:text-primary-foreground'
+                                selectedTag !== topic.slug &&
+                                    'hover:bg-primary hover:text-primary-foreground'
                             )}
                         >
-                            {topic.label?.[lang] ?? topic.slug}
+                            {getTagName(topic, lang)}
                         </Button>
                     ))}
                 </div>

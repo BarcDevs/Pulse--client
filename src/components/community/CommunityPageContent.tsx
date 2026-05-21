@@ -2,6 +2,8 @@
 
 import { useState } from 'react'
 
+import { useSearchParams } from 'next/navigation'
+
 import { PostForm } from '@/components/community/postForm/PostForm'
 
 import { useCreatePostMutation } from '@/hooks/mutations/useCreatePostMutation'
@@ -14,7 +16,10 @@ import { CommunityPanel } from './CommunityPanel'
 import { CommunitySearchBar } from './CommunitySearchBar'
 
 export const CommunityPageContent = () => {
-    const [selectedTag, setSelectedTag] = useState<string | null>(null)
+    const searchParams = useSearchParams()
+    const [selectedTag, setSelectedTag] = useState<string | null>(
+        searchParams.get('tag')
+    )
     const [isNewPostOpen, setIsNewPostOpen] = useState(false)
     const [search, setSearch] = useState('')
     const debouncedSearch = useDebounce(search)

@@ -30,7 +30,8 @@
 - Use hooks at top of component
 - Extract reusable logic and helper functions to separate files
 - Don't break lines in a middle of a string
-- COMPLETELY IGNORE classnames line-breaking
+- COMPLETELY IGNORE classnames line-breaking — this means: no `cn()` wrapping, no `+` splitting, no reformatting — touch nothing in a `className` value
+- 50-char line limit does NOT apply to `className` strings
 - Avoid redundant linebreaks in lines shorter that the threshold (50-60 chars)
 - If you need to specify a certain part of a component with a comment, that probably means that part should be extracted into a separate component
 

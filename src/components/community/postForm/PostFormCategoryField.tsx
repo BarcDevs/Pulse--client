@@ -64,8 +64,7 @@ export const PostFormCategoryField = ({
                                     type={'button'}
                                     variant={'outline'}
                                     className={cn(
-                                        'w-full h-auto py-2.5 px-3'
-                                        + ' justify-between text-start font-normal',
+                                        'w-full h-auto py-2.5 px-3 justify-between text-start font-normal',
                                         !selectedCat && 'text-muted-foreground'
                                     )}
                                 >
@@ -105,8 +104,7 @@ export const PostFormCategoryField = ({
                                             variant={'ghost'}
                                             onClick={() => { field.onChange(cat.key); setOpen(false) }}
                                             className={cn(
-                                                'w-full h-auto flex items-start'
-                                                + ' justify-between gap-2.5 px-3 py-2.5 text-start',
+                                                'w-full h-auto flex items-start justify-between gap-2.5 px-3 py-2.5 text-start',
                                                 isSelected && 'bg-primary/10'
                                             )}
                                         >

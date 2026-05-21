@@ -1,11 +1,20 @@
 'use client'
 
-import { isAxiosError } from 'axios'
+import Link from 'next/link'
+import { useRouter } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 
-import { PostDetailActions } from '@/components/community/postDetail/PostDetailActions'
-import { PostDetailCard } from '@/components/community/postDetail/PostDetailCard'
-import { PostNotFound } from '@/components/community/postDetail/PostNotFound'
-import { RepliesSection } from '@/components/community/postDetail/RepliesSection'
+import { isAxiosError } from 'axios'
+import { ArrowLeft } from 'lucide-react'
+
+import { PostDetailActions }
+    from '@/components/community/postDetail/PostDetailActions'
+import { PostDetailCard }
+    from '@/components/community/postDetail/PostDetailCard'
+import { PostNotFound }
+    from '@/components/community/postDetail/PostNotFound'
+import { RepliesSection }
+    from '@/components/community/postDetail/RepliesSection'
 import { ErrorDisplay } from '@/components/shared/ErrorDisplay'
 import { Skeleton } from '@/components/ui/skeleton'
 
@@ -18,8 +27,12 @@ import { sanitizeHtml } from '@/utils/sanitizeHtml'
 
 import { usePostDetail } from '@/context/PostDetailContext'
 
+import { communityLocales } from '@/locales/communityLocales'
+
 export const PostDetailContent = () => {
     const { postId } = usePostDetail()
+    const router = useRouter()
+    const t = useTranslations()
     const dateLocale = useDateLocale()
     const {
         data: post,
@@ -31,9 +44,9 @@ export const PostDetailContent = () => {
     if (isPostLoading) {
         return (
             <div className={'space-y-6'}>
-                <Skeleton className={'h-48 rounded-lg'}/>
-                <Skeleton className={'h-32 rounded-lg'}/>
-                <Skeleton className={'h-96 rounded-lg'}/>
+                <Skeleton className={'h-48 rounded-2xl'}/>
+                <Skeleton className={'h-32 rounded-2xl'}/>
+                <Skeleton className={'h-96 rounded-2xl'}/>
             </div>
         )
     }
@@ -43,14 +56,11 @@ export const PostDetailContent = () => {
             isAxiosError(postError)
             && postError.response?.status === 404
 
-        if (isNotFound)
-            return <PostNotFound/>
-
+        if (isNotFound) return <PostNotFound/>
         return <ErrorDisplay error={postError}/>
     }
 
-    const sanitizedBody = post
-        ? sanitizeHtml(post.body) : ''
+    const sanitizedBody = post ? sanitizeHtml(post.body) : ''
 
     const author = post
         ? (post.author
@@ -62,23 +72,35 @@ export const PostDetailContent = () => {
     const timeAgo = post
         ? toRelative(new Date(post.createdAt), dateLocale) : ''
 
+    const handleTagSelect = (tag: string | null) => {
+        router.push(tag ? `/community?tag=${encodeURIComponent(tag)}` : '/community')
+    }
+
     return (
         <div className={'space-y-6'}>
-            <div>
+            <Link
+                href={'/community'}
+                className={'inline-flex items-center gap-1.5 text-sm text-primary hover:text-primary/80 transition-colors'}
+            >
+                <ArrowLeft className={'h-4 w-4'}/>
+                {t(communityLocales.postDetail.backToCommunity)}
+            </Link>
+
+            <div className={'rounded-2xl bg-surface-card shadow-sm overflow-hidden'}>
                 <PostDetailCard
                     post={post}
                     sanitizedBody={sanitizedBody}
                     author={author}
                     timeAgo={timeAgo}
+                    onTagSelectAction={handleTagSelect}
                 />
                 <PostDetailActions
                     postId={postId}
                     post={post}
                 />
             </div>
-            <div className={'px-6'}>
-                <RepliesSection postId={postId}/>
-            </div>
+
+            <RepliesSection postId={postId}/>
         </div>
     )
 }

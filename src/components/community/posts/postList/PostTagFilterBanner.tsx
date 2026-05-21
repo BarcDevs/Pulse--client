@@ -1,10 +1,14 @@
 'use client'
 
-import { useTranslations } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
 
 import { X } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
+
+import { useForumTags } from '@/hooks/queries/useForumTags'
+
+import { getTagName } from '@/utils/tag'
 
 import { communityLocales } from '@/locales/communityLocales'
 
@@ -18,6 +22,13 @@ export const PostTagFilterBanner = ({
     onClear
 }: PostTagFilterBannerProps) => {
     const t = useTranslations()
+    const locale = useLocale()
+    const lang = locale.split('-')[0] as 'en' | 'he'
+    const { data: fullTags = [] } = useForumTags()
+    const fullTag = fullTags.find(ft => ft.slug === tag)
+    const displayName = fullTag
+        ? getTagName(fullTag, lang)
+        : tag
 
     return (
         <div className={'flex items-center gap-2 px-5 py-2.5 border-b border-border bg-surface-section/30'}>
@@ -25,7 +36,7 @@ export const PostTagFilterBanner = ({
                 {t(communityLocales.posts.tagFilter)}
             </span>
             <span className={'inline-flex items-center gap-1 pl-3 pr-1 py-1 rounded-full bg-primary-foreground text-primary border border-border text-sm font-semibold'}>
-                {tag}
+                {displayName}
                 <Button
                     variant={'ghost'}
                     size={'icon'}

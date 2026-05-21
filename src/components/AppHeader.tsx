@@ -7,6 +7,10 @@ import { useTranslations } from 'next-intl'
 
 import { Search } from 'lucide-react'
 
+import { useQueryClient } from '@tanstack/react-query'
+
+import type { Post } from '@/types/community'
+
 import { GoalDetailBreadcrumb }
     from '@/components/goals/GoalDetailBreadcrumb'
 import { HeaderActionButton }
@@ -20,6 +24,7 @@ import { FormInput } from '@/components/shared/inputs/FormInput'
 import { LanguageSwitcher } from '@/components/shared/LanguageSwitcher'
 
 import { getHeaderConfig } from '@/constants/config/getHeaderConfig'
+import { forumQueryKeys } from '@/constants/queryKeys'
 
 import { FEATURES } from '@/config/features'
 
@@ -34,12 +39,17 @@ export const AppHeader = () => {
     const [searchValue, setSearchValue] = useState('')
     const pathname = usePathname()
     const { user } = useAuth()
+    const queryClient = useQueryClient()
 
     const segments = pathname.split('/').filter(Boolean)
     const isGoalDetail =
         segments[0] === 'recovery-goals'
         && segments.length === 2
     const goalId = isGoalDetail ? segments[1] : ''
+    const isPostDetail =
+        segments[0] === 'community'
+        && segments[1] === 'post'
+        && segments.length === 3
 
     const {
         title: titleKey,
@@ -50,10 +60,15 @@ export const AppHeader = () => {
     } = getHeaderConfig(pathname.slice(1))
 
     const title = t(titleKey)
-    const subtitle = pathname === '/dashboard' && user
-        ? t(dashboardLocales.greeting,
-            { name: user.firstName })
-        : subtitleKey ? t(subtitleKey) : undefined
+
+    const postTitle = isPostDetail
+        ? queryClient.getQueryData<Post>(forumQueryKeys.post(segments[2]))?.title
+        : undefined
+
+    const subtitle = postTitle
+        ?? (pathname === '/dashboard' && user
+            ? t(dashboardLocales.greeting, { name: user.firstName })
+            : subtitleKey ? t(subtitleKey) : undefined)
 
     const handleSearchChange = (
         e: ChangeEvent<HTMLInputElement>
@@ -93,9 +108,9 @@ export const AppHeader = () => {
                     </div>
                 )}
 
-                {actions?.map((action, idx) => (
+                {actions?.map((action) => (
                     <HeaderActionButton
-                        key={`${action.type}-${idx}`}
+                        key={action.type}
                         action={action}
                     />
                 ))}

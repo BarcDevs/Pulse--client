@@ -18,6 +18,7 @@ import { Input } from '@/components/ui/input'
 import { cn } from '@/lib/utils'
 
 import config from '@/config/schema/postForm'
+
 import { communityLocales } from '@/locales/communityLocales'
 import { type PostFormSchema } from '@/validations/forms/postFormSchema'
 

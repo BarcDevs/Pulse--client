@@ -4,9 +4,14 @@ import { useTranslations } from 'next-intl'
 
 import { Reply } from '@/types/community'
 
-import { RepliesEmptyState } from '@/components/community/postDetail/RepliesEmptyState'
-import { RepliesList } from '@/components/community/postDetail/RepliesList'
-import { UnauthenticatedReplyPrompt } from '@/components/community/postDetail/UnauthenticatedReplyPrompt'
+import { RepliesEmptyState }
+    from '@/components/community/postDetail/RepliesEmptyState'
+import { RepliesList }
+    from '@/components/community/postDetail/RepliesList'
+import { ReplyFormCTA }
+    from '@/components/community/postDetail/ReplyFormCTA'
+import { UnauthenticatedReplyPrompt }
+    from '@/components/community/postDetail/UnauthenticatedReplyPrompt'
 import { PostForm } from '@/components/community/postForm/PostForm'
 import { ErrorDisplay } from '@/components/shared/ErrorDisplay'
 import { Skeleton } from '@/components/ui/skeleton'
@@ -29,7 +34,6 @@ export const RepliesSection = ({
 }: RepliesSectionProps) => {
     const t = useTranslations()
     const { user } = useAuth()
-    const currentUserId = user?.id
     const isAuthenticated = !!user
     const {
         data: repliesData,
@@ -46,9 +50,7 @@ export const RepliesSection = ({
         createReply
     } = useForumPostMutations({ postId })
 
-    const handleDeleteReply = async (
-        replyId: string
-    ) => {
+    const handleDeleteReply = async (replyId: string) => {
         const confirmed = confirm(
             t(communityLocales.confirmations.deleteReply)
         )
@@ -56,31 +58,33 @@ export const RepliesSection = ({
         await deleteReply.mutateAsync(replyId)
     }
 
-    const handleReplySubmit = async (
-        data: PostFormSchema
-    ) => {
+    const handleReplySubmit = async (data: PostFormSchema) => {
         await createReply.mutateAsync(data)
         setIsReplyFormOpen(false)
     }
 
     const replies: Reply[] = repliesData ?? []
+    const replyCount = isLoading
+        ? t(communityLocales.postDetail.loading)
+        : `${replies.length} ${
+            replies.length === 1
+                ? t(communityLocales.postDetail.reply)
+                : t(communityLocales.postDetail.replies)
+        }`
 
     return (
-        <section className={'space-y-4 pb-6'}>
-            <div className={'flex items-center justify-between'}>
-                <h2 className={'text-lg font-semibold'}>
-                    {isLoading
-                        ? t(communityLocales.postDetail.loading)
-                        : `${replies.length} ${
-                            replies.length === 1
-                                ? t(communityLocales.postDetail.reply)
-                                : t(communityLocales.postDetail.replies)
-                        }`
-                    }
-                </h2>
-            </div>
+        <div className={'rounded-2xl bg-surface-card shadow-sm p-6 space-y-4'}>
+            <h2 className={'text-lg font-semibold'}>
+                {replyCount}
+            </h2>
 
             {isError && <ErrorDisplay error={error}/>}
+
+            {isAuthenticated && !isReplyFormOpen && (
+                <ReplyFormCTA
+                    onOpenAction={() => setIsReplyFormOpen(true)}
+                />
+            )}
 
             {isAuthenticated && (
                 <PostForm
@@ -98,10 +102,10 @@ export const RepliesSection = ({
 
             {isLoading && (
                 <div className={'space-y-4'}>
-                    {Array.from({ length: 2 }).map(
-                        (_, i) => (
+                    {['reply-skeleton-1', 'reply-skeleton-2'].map(
+                        (id) => (
                             <Skeleton
-                                key={i}
+                                key={id}
                                 className={'h-24 rounded-lg'}
                             />
                         )
@@ -109,22 +113,21 @@ export const RepliesSection = ({
                 </div>
             )}
 
-            {
-                !isLoading
+            {!isLoading
                 && !isError
                 && replies.length === 0
                 && !isReplyFormOpen && (
-                    <RepliesEmptyState/>
-                )}
+                <RepliesEmptyState/>
+            )}
 
             {!isLoading && replies.length > 0 && (
                 <RepliesList
                     replies={replies}
-                    currentUserId={currentUserId}
+                    currentUserId={user?.id}
                     onDeleteReply={handleDeleteReply}
                     isDeleting={deleteReply.isPending}
                 />
             )}
-        </section>
+        </div>
     )
 }

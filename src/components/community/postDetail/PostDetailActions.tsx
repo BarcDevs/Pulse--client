@@ -4,20 +4,20 @@ import { useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 
 import {
-    MessageSquare,
-    Share2,
-    ThumbsUp
+    Bookmark,
+    Heart,
+    Share2
 } from 'lucide-react'
 
 import { Post } from '@/types/community'
 
-import { PostActionButton } from '@/components/community/posts/postList/PostActionButton'
+import { PostActionButton }
+    from '@/components/community/posts/postList/PostActionButton'
 import { DeleteMenu } from '@/components/shared/DeleteMenu'
 
 import { useForumPostMutations } from '@/hooks/mutations/useForumPostMutations'
 
 import { useAuth } from '@/context/AuthContext'
-import { usePostDetail } from '@/context/PostDetailContext'
 
 import { communityLocales } from '@/locales/communityLocales'
 
@@ -33,19 +33,11 @@ export const PostDetailActions = ({
     const router = useRouter()
     const t = useTranslations()
     const { user } = useAuth()
-    const { deletePost } = useForumPostMutations({
-        postId
-    })
-    const {
-        isReplyFormOpen,
-        setIsReplyFormOpen
-    } = usePostDetail()
+    const { deletePost } = useForumPostMutations({ postId })
 
-    const currentUserId = user?.id
     const isPostOwner = post
-        ? currentUserId === post.authorId
+        ? user?.id === post.authorId
         : false
-    const isAuthenticated = !!currentUserId
 
     const handleDeletePost = async () => {
         await deletePost.mutateAsync()
@@ -53,50 +45,33 @@ export const PostDetailActions = ({
     }
 
     return (
-        <div className={'flex items-center justify-between py-4 px-6 border-b border-border'}>
-            <div className={'flex items-center gap-3'}>
-                <span className={'flex items-center gap-1 text-sm text-muted-foreground'}>
-                    <ThumbsUp className={'h-4 w-4'}/>
-                    {`${post?.votes.upvotes ?? 0}`}
-                </span>
-            </div>
-
-            {/* todo: make upvotes click as upvote button */}
-            <div className={'flex items-center gap-2'}>
+        <div className={'flex items-center justify-between px-7 py-4 border-t border-border'}>
+            <div className={'flex items-center gap-1'}>
                 <PostActionButton
-                    icon={ThumbsUp}
+                    icon={Heart}
                     text={t(communityLocales.postActions.solidarity)}
-                    onClick={() => {
-                    }}
+                    count={post?.votes.upvotes ?? 0}
+                    onClick={() => {}}
                 />
-
-                <PostActionButton
-                    icon={MessageSquare}
-                    text={t(communityLocales.postActions.reply)}
-                    onClick={() => {
-                        if (!isAuthenticated) {
-                            return router.push('/login')
-                        }
-                        setIsReplyFormOpen(!isReplyFormOpen)
-                    }}
-                />
-
                 <PostActionButton
                     icon={Share2}
                     text={t(communityLocales.postActions.share)}
-                    onClick={() => {
-                    }}
+                    onClick={() => {}}
                 />
-
-                {isPostOwner && (
-                    <DeleteMenu
-                        onDeleteAction={handleDeletePost}
-                        confirmMessage={t(communityLocales.confirmations.deletePost)}
-                        isLoading={deletePost.isPending}
-                        iconSize={18}
-                    />
-                )}
+                <PostActionButton
+                    icon={Bookmark}
+                    text={t(communityLocales.posts.save)}
+                    onClick={() => {}}
+                />
             </div>
+            {isPostOwner && (
+                <DeleteMenu
+                    onDeleteAction={handleDeletePost}
+                    confirmMessage={t(communityLocales.confirmations.deletePost)}
+                    isLoading={deletePost.isPending}
+                    iconSize={18}
+                />
+            )}
         </div>
     )
 }
