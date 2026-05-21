@@ -17,6 +17,9 @@
 - Never use redundant trailing space after component - ` />` ❌
 - Never break line in single-prop components
 - Never concatenate text with JSX fragments: `{text}{' '}` ❌ → use template strings instead: {`${text} `} ✓
+- **NO redundant spaces**: No extra spaces before `/>` in JSX, no multiple spaces between tokens, no trailing spaces
+- Always use `key` prop on lists to avoid unnecessary re-renders
+- Always leave a newline between component body and return statement
 
 ## Imports
 - Don't use `React.*` types — import directly from react
@@ -32,7 +35,8 @@
 - If you need to specify a certain part of a component with a comment, that probably means that part should be extracted into a separate component
 
 ## Classnames & Links
-- Classnames: always use `cn()` from `@/lib/utils`. Never use template strings in classnames: `cn('base', condition && 'conditional')` ✓ not `` `base ${condition ? 'x' : 'y'}` `` ❌
+- Classnames: always use `cn()` from `@/lib/utils` for dynamic strings. Never use template strings in classnames: `cn('base', condition && 'conditional')` ✓ not `` `base ${condition ? 'x' : 'y'}` `` ❌
+- Never use `cn()` nor break with `+` static classnames
 - Navigation: use `<Link>` from `next/link` (not native `<a>` tag). Exception: download links may use `<a>`
 
 ## Code blocks wrapped in conditions
