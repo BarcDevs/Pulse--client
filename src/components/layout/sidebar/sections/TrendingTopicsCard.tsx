@@ -1,6 +1,6 @@
 'use client'
 
-import { useTranslations } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
 
 import { Button } from '@/components/ui/button'
 
@@ -20,6 +20,8 @@ export const TrendingTopicsCard = ({
     onTagSelectAction
 }: TrendingTopicsCardProps) => {
     const t = useTranslations()
+    const locale = useLocale()
+    const lang = locale.split('-')[0] as 'en' | 'he'
     const {
         data: tagsData,
         isLoading,
@@ -50,20 +52,20 @@ export const TrendingTopicsCard = ({
                         <Button
                             key={topic.id}
                             onClick={() => onTagSelectAction(
-                                selectedTag === topic.name ? null : topic.name
+                                selectedTag === topic.slug ? null : topic.slug
                             )}
                             variant={'ghost'}
                             size={'sm'}
                             className={cn(
                                 'rounded-full text-sm transition-colors',
-                                selectedTag === topic.name
+                                selectedTag === topic.slug
                                     ? 'bg-primary text-primary-foreground'
                                     : 'bg-surface-section text-muted-foreground',
-                                selectedTag !== topic.name
+                                selectedTag !== topic.slug
                                 && 'hover:bg-primary hover:text-primary-foreground'
                             )}
                         >
-                            {topic.name}
+                            {topic.label?.[lang] ?? topic.slug}
                         </Button>
                     ))}
                 </div>

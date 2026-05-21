@@ -34,10 +34,15 @@ export type Votes = {
     upvotedBy: string[]
 }
 
+export type TagLabel = {
+    en: string
+    he: string
+}
+
 export type PartialTag = {
     id: string
-    name: string
-    description?: string
+    slug: string
+    label?: TagLabel
     createdAt?: Date
     _count?: {
         posts?: number
@@ -47,8 +52,8 @@ export type PartialTag = {
 
 export type Tag = {
     id: string
-    name: string
-    description?: string
+    slug: string
+    label?: TagLabel
     posts: Post[]
     followers: User[]
     createdAt: Date

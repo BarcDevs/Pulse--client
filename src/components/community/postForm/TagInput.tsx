@@ -5,7 +5,7 @@ import {
     useState
 } from 'react'
 
-import { useTranslations } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
 
 import { X } from 'lucide-react'
 
@@ -36,6 +36,8 @@ export const TagInput = ({
 }: TagInputProps) => {
     const [input, setInput] = useState('')
     const t = useTranslations()
+    const locale = useLocale()
+    const lang = locale.split('-')[0] as 'en' | 'he'
     const { data: availableTags = [] } = useForumTags({
         filter: 'popular',
         limit: 20
@@ -43,15 +45,16 @@ export const TagInput = ({
 
     const query = input.toLowerCase().trim()
     const suggestions = availableTags
-        .filter(tag => {
-            const slug = tag.name.toLowerCase()
-            const label = tag.description?.toLowerCase() ?? ''
-            return (!query || slug.includes(query) || label.includes(query)) && !value.includes(slug)
-        })
+        .filter(tag =>
+            (!query || tag.slug.includes(query) 
+                || tag.label?.[lang]?.toLowerCase()
+                    .includes(query))
+            && !value.includes(tag.slug)
+        )
         .slice(0, 6)
 
-    const addTag = (tag: string) => {
-        const normalized = tag.toLowerCase().trim()
+    const addTag = (slug: string) => {
+        const normalized = slug.toLowerCase().trim()
         if (
             !normalized
             || normalized.length < config.tags.minLength
@@ -59,7 +62,8 @@ export const TagInput = ({
             || value.includes(normalized)
             || value.length >= config.tags.max
         ) return
-        if (!availableTags.some(t => t.name.toLowerCase() === normalized)) {
+        if (!availableTags
+            .some(t => t.slug === normalized)) {
             reportUnknownTag(normalized)
             return
         }
@@ -67,10 +71,12 @@ export const TagInput = ({
         setInput('')
     }
 
-    const removeTag = (tag: string) => onChangeAction(value.filter(t => t !== tag))
+    const removeTag = (tag: string) => 
+        onChangeAction(value.filter(t => t !== tag))
 
     const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
-        if ((e.key === 'Enter' || e.key === ',') && input.trim()) {
+        if ((e.key === 'Enter' || e.key === ',') 
+            && input.trim()) {
             e.preventDefault()
             addTag(input.trim())
         }
@@ -78,7 +84,8 @@ export const TagInput = ({
             removeTag(value[value.length - 1])
     }
 
-    const showSuggestions = value.length < config.tags.max && suggestions.length > 0
+    const showSuggestions = value.length 
+        < config.tags.max && suggestions.length > 0
     const suggestionsLabel = query
         ? t(communityLocales.postForm.tagSuggestions)
         : t(communityLocales.postForm.tagPopularTopics)
@@ -113,7 +120,7 @@ export const TagInput = ({
                         onBlur={onBlurAction}
                         onKeyDown={handleKeyDown}
                         placeholder={value.length === 0 ? placeholder : t(communityLocales.postForm.tagsPlaceholderMore)}
-                        className={'flex-1 min-w-[6rem] outline-none text-sm bg-transparent'}
+                        className={'flex-1 min-w-24 outline-none text-sm bg-transparent'}
                     />
                 )}
             </div>
@@ -133,10 +140,10 @@ export const TagInput = ({
                                 key={tag.id}
                                 type={'button'}
                                 variant={'outline'}
-                                onClick={() => addTag(tag.name)}
+                                onClick={() => addTag(tag.slug)}
                                 className={'h-auto px-3 py-1 rounded-full text-xs text-muted-foreground hover:text-foreground hover:border-primary'}
                             >
-                                {`+ ${tag.name}`}
+                                {`+ ${tag.label?.[lang] ?? tag.slug}`}
                             </Button>
                         ))}
                     </div>
