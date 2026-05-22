@@ -58,7 +58,7 @@ export const createPostFormSchema = (
                 return z.NEVER
             }
 
-            if (stripped.length < config.body.minLength) {
+            if (!isReply && stripped.length < config.body.minLength) {
                 ctx.addIssue({
                     code: z.ZodIssueCode.custom,
                     message: t(
