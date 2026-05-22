@@ -12,7 +12,8 @@ export const reactQuillSetup = {
                 'italic',
                 'underline',
                 'strike',
-                'blockquote'
+                'blockquote',
+                { 'script': 'super' }
             ],
             [
                 { 'color': [] },
@@ -44,6 +45,7 @@ export const reactQuillSetup = {
         'list',
         'indent',
         'blockquote',
+        'script',
         'link'
         // TODO: add 'image' once server-side image upload is implemented
     ]
