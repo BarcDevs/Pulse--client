@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 
 type PostActionButtonProps = {
-    text: string
+    text?: string
     onClick: () => void
     icon: LucideIcon
     count?: number

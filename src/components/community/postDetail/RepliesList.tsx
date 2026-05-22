@@ -6,15 +6,17 @@ import { ReplyCard } from '@/components/community/postDetail/ReplyCard'
 
 type RepliesListProps = {
     replies: Reply[]
+    postId: string
     currentUserId?: string
-    onDeleteReply: (replyId: string) => Promise<void>
+    onDeleteReplyAction: (replyId: string) => Promise<void>
     isDeleting: boolean
 }
 
 export const RepliesList = ({
     replies,
+    postId,
     currentUserId,
-    onDeleteReply,
+    onDeleteReplyAction,
     isDeleting
 }: RepliesListProps) => (
     <div className={'space-y-3'}>
@@ -23,8 +25,9 @@ export const RepliesList = ({
                 <ReplyCard
                     key={reply.id}
                     reply={reply}
+                    postId={postId}
                     currentUserId={currentUserId}
-                    onDeleteAction={() => onDeleteReply(reply.id)}
+                    onDeleteAction={() => onDeleteReplyAction(reply.id)}
                     isDeleting={isDeleting}
                 />
             )

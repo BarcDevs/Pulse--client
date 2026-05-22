@@ -18,7 +18,8 @@ const findPostInCache = (
         queryKey: forumQueryKeys.posts
     })
     for (const [queryKey, posts] of cached) {
-        const post = posts?.find(p => p.id === postId)
+        const post = Array.isArray(posts)
+            ? posts.find(p => p.id === postId) : undefined
         if (post) return { post, queryKey }
     }
     return null
