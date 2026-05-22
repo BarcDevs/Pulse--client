@@ -8,6 +8,7 @@ import {
     Heart,
     Share2
 } from 'lucide-react'
+
 import { Post } from '@/types/community'
 
 import { PostActionButton }
@@ -15,11 +16,12 @@ import { PostActionButton }
 import { DeleteMenu } from '@/components/shared/DeleteMenu'
 
 import { useForumPostMutations } from '@/hooks/mutations/useForumPostMutations'
+import { usePostInteractions } from '@/hooks/mutations/usePostInteractions'
+import { useSharePost } from '@/hooks/ui/useSharePost'
 
 import { useAuth } from '@/context/AuthContext'
 
 import { communityLocales } from '@/locales/communityLocales'
-import { useSharePost } from '@/hooks/ui/useSharePost'
 
 type PostDetailActionsProps = {
     postId: string
@@ -35,6 +37,16 @@ export const PostDetailActions = ({
     const { user } = useAuth()
     const { deletePost } = useForumPostMutations({ postId })
     const sharePost = useSharePost(postId)
+    const {
+        liked,
+        likeCount,
+        saved,
+        toggleLike,
+        toggleSave
+    } = usePostInteractions({
+        postId,
+        initialLikes: post?._count?.likes ?? 0
+    })
 
     const isPostOwner = post
         ? user?.id === post.authorId
@@ -50,9 +62,11 @@ export const PostDetailActions = ({
             <div className={'flex items-center gap-1'}>
                 <PostActionButton
                     icon={Heart}
-                    text={t(communityLocales.postActions.solidarity)}
-                    count={post?.votes.upvotes ?? 0}
-                    onClick={() => {}}
+                    text={liked ? t(communityLocales.postActions.solidarityActive) : t(communityLocales.postActions.solidarity)}
+                    count={likeCount}
+                    isActive={liked}
+                    activeClassName={'bg-rose-100 text-rose-600 hover:bg-rose-100 hover:text-rose-600 rounded-full px-3'}
+                    onClick={toggleLike}
                 />
                 <PostActionButton
                     icon={Share2}
@@ -61,8 +75,9 @@ export const PostDetailActions = ({
                 />
                 <PostActionButton
                     icon={Bookmark}
-                    text={t(communityLocales.posts.save)}
-                    onClick={() => {}}
+                    text={saved ? t(communityLocales.posts.saved) : t(communityLocales.posts.save)}
+                    isActive={saved}
+                    onClick={toggleSave}
                 />
             </div>
             {isPostOwner && (

@@ -9,6 +9,7 @@ export const communityLocales = {
         postedBy: 'community.posts.postedBy',
         share: 'community.posts.share',
         save: 'community.posts.save',
+        saved: 'community.posts.saved',
         newPostButton: 'community.posts.newPostButton',
         searchPlaceholder: 'community.posts.searchPlaceholder',
         loading: 'community.posts.loading',
@@ -62,6 +63,7 @@ export const communityLocales = {
     },
     postActions: {
         solidarity: 'community.postActions.solidarity',
+        solidarityActive: 'community.postActions.solidarityActive',
         reply: 'community.postActions.reply',
         share: 'community.postActions.share',
         linkCopied: 'community.postActions.linkCopied'

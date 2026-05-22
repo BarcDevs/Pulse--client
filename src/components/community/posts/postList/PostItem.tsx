@@ -109,7 +109,7 @@ export const PostItem = ({
                                 + ' text-foreground'
                             }
                         >
-                            {post.votes.upvotes}
+                            {post._count?.likes ?? 0}
                         </span>
                         <span
                             className={

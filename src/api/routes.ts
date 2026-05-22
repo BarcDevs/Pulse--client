@@ -8,7 +8,10 @@ export const ENDPOINTS = {
     },
     forum: {
         posts: '/forum/posts',
+        savedPosts: '/forum/posts/saved',
         post: (postId: string) => `/forum/posts/${postId}`,
+        likePost: (postId: string) => `/forum/posts/${postId}/like`,
+        savePost: (postId: string) => `/forum/posts/${postId}/save`,
         replies: (postId: string) =>
             `/forum/posts/${postId}/replies`,
         reply: (

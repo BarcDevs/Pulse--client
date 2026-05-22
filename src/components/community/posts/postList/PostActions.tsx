@@ -10,6 +10,7 @@ import {
 
 import { PostActionButton } from '@/components/community/posts/postList/PostActionButton'
 
+import { usePostInteractions } from '@/hooks/mutations/usePostInteractions'
 import { useSharePost } from '@/hooks/ui/useSharePost'
 
 import { communityLocales } from '@/locales/communityLocales'
@@ -25,6 +26,10 @@ export const PostActions = ({
 }: PostActionsProps) => {
     const t = useTranslations()
     const sharePost = useSharePost(postId)
+    const {
+        saved,
+        toggleSave
+    } = usePostInteractions({ postId })
 
     return (
         <div className={'flex items-center gap-4 mt-4'}>
@@ -39,8 +44,9 @@ export const PostActions = ({
                 icon={Share2}
             />
             <PostActionButton
-                text={t(communityLocales.posts.save)}
-                onClick={() => {}}
+                text={saved ? t(communityLocales.posts.saved) : t(communityLocales.posts.save)}
+                isActive={saved}
+                onClick={toggleSave}
                 icon={Bookmark}
             />
         </div>

@@ -95,7 +95,7 @@ export const ReplyCard = ({
                 <div className={'flex items-center gap-3 mt-2'}>
                     <span className={'flex items-center gap-1 text-xs text-muted-foreground'}>
                         <ThumbsUp className={'h-3 w-3'}/>
-                        {`${reply.votes.upvotes}`}
+                        {reply._count?.likes ?? 0}
                     </span>
                 </div>
             </div>

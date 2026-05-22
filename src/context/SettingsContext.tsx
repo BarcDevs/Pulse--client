@@ -21,6 +21,7 @@ type SettingValue =
     | boolean
     | HealthInterest[]
     | ActivityPreference[]
+    | string[]
 
 type SettingsContextType = {
     settings: Partial<Profile>

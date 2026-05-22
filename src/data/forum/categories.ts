@@ -84,6 +84,14 @@ const categories: Category[] = [
         }
     },
     {
+        key: 'wellness',
+        group: 'Health',
+        color: {
+            bg: '#CCFBF1',
+            text: '#0f766e'
+        }
+    },
+    {
         key: 'discussion',
         group: 'Community',
         color: {

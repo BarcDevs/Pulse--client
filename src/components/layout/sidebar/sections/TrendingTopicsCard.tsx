@@ -63,8 +63,8 @@ export const TrendingTopicsCard = ({
                                 selectedTag === topic.slug
                                     ? 'bg-primary text-primary-foreground'
                                     : 'bg-surface-section text-muted-foreground',
-                                selectedTag !== topic.slug &&
-                                    'hover:bg-primary hover:text-primary-foreground'
+                                selectedTag !== topic.slug
+                                    && 'hover:bg-primary hover:text-primary-foreground'
                             )}
                         >
                             {getTagName(topic, lang)}

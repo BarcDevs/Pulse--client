@@ -109,6 +109,35 @@ export const deleteReply = async (
 }
 
 
+export const likePost = async (
+    postId: string
+): Promise<{ liked: boolean, likes: number }> => {
+    const res = await api.post<Response<{
+        liked: boolean
+        likes: number
+    }>>(ENDPOINTS.forum.likePost(postId))
+    return res.data.data
+}
+
+export const savePost = async (
+    postId: string
+): Promise<{ saved: boolean }> => {
+    const res = await api.post<Response<{
+        saved: boolean
+    }>>(ENDPOINTS.forum.savePost(postId))
+    return res.data.data
+}
+
+export const fetchSavedPosts = async (
+    query?: { limit?: number, page?: number }
+): Promise<Post[]> => {
+    const res = await api.get<Response<Post[]>>(
+        ENDPOINTS.forum.savedPosts,
+        { params: query }
+    )
+    return res.data.data
+}
+
 export const reportUnknownTag = (
     tag: string
 ): void => {

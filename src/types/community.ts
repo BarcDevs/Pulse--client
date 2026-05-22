@@ -12,8 +12,10 @@ type Post_Base = {
     createdAt: Date
     updatedAt: Date | null
     authorId: string
-    votes: Votes
     author?: PartialUser
+    _count?: {
+        likes?: number
+    }
 }
 
 export type Post = Prettify<{
@@ -24,15 +26,11 @@ export type Post = Prettify<{
     category: string
     _count?: {
         replies?: number
+        likes?: number
     }
 } & Post_Base>
 
 export type Reply = Prettify<Post_Base>
-
-export type Votes = {
-    upvotes: number
-    upvotedBy: string[]
-}
 
 export type TagLabel = {
     en: string

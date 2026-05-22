@@ -150,6 +150,7 @@
       "postedBy": "Posted by",
       "share": "Share",
       "save": "Save",
+      "saved": "Saved",
       "newPostButton": "Create post",
       "searchPlaceholder": "Search conversations and discussions...",
       "loading": "Loading posts...",
@@ -203,6 +204,7 @@
     },
     "postActions": {
       "solidarity": "Show support",
+      "solidarityActive": "Showed support",
       "reply": "Reply",
       "share": "Share",
       "linkCopied": "Link copied to clipboard!"
@@ -238,6 +240,7 @@
         "support": "Community Support",
         "questions": "Questions & Guidance",
         "stories": "Recovery Stories",
+        "wellness": "Wellness & Routines",
         "discussion": "Open Discussion"
       },
       "descriptions": {
@@ -249,6 +252,7 @@
         "support": "Encouragement and peer connection",
         "questions": "Ask the community for input",
         "stories": "Share your full experience",
+        "wellness": "Mindfulness, healthy routines, and emotional wellbeing",
         "discussion": "Anything else recovery-related"
       }
     }

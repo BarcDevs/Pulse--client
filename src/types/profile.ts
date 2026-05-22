@@ -56,6 +56,9 @@ export type Profile = {
     anonymousParticipation: boolean
     healthInterests: HealthInterest[]
     activityPreferences: ActivityPreference[]
+    likedPostIds: string[]
+    likedReplyIds: string[]
+    savedPostIds: string[]
     createdAt: string
     updatedAt: string
 }
