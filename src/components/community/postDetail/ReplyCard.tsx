@@ -2,13 +2,16 @@
 
 import { useTranslations } from 'next-intl'
 
-import { ThumbsUp } from 'lucide-react'
+import { Heart } from 'lucide-react'
 
 import { Reply } from '@/types/community'
 
+import { PostActionButton }
+    from '@/components/community/posts/postList/PostActionButton'
 import { DeleteMenu } from '@/components/shared/DeleteMenu'
 import { UserAvatar } from '@/components/shared/UserAvatar'
 
+import { useReplyInteractions } from '@/hooks/mutations/useReplyInteractions'
 import { useDateLocale } from '@/hooks/ui/useDateLocale'
 
 import { toRelative } from '@/lib/time'
@@ -20,6 +23,7 @@ import { communityLocales } from '@/locales/communityLocales'
 
 type ReplyCardProps = {
     reply: Reply
+    postId: string
     currentUserId?: string
     isNested?: boolean
     onDeleteAction: () => Promise<void>
@@ -28,6 +32,7 @@ type ReplyCardProps = {
 
 export const ReplyCard = ({
     reply,
+    postId,
     currentUserId,
     isNested = false,
     onDeleteAction,
@@ -35,6 +40,15 @@ export const ReplyCard = ({
 }: ReplyCardProps) => {
     const t = useTranslations()
     const isOwner = currentUserId === reply.authorId
+    const {
+        liked,
+        likeCount,
+        toggleLike
+    } = useReplyInteractions({
+        postId,
+        replyId: reply.id,
+        initialLikes: reply._count?.likes ?? 0
+    })
     const dateLocale = useDateLocale()
     const authorUser = reply.author?.user
     const authorName = authorUser
@@ -92,11 +106,14 @@ export const ReplyCard = ({
                     }}
                 />
 
-                <div className={'flex items-center gap-3 mt-2'}>
-                    <span className={'flex items-center gap-1 text-xs text-muted-foreground'}>
-                        <ThumbsUp className={'h-3 w-3'}/>
-                        {reply._count?.likes ?? 0}
-                    </span>
+                <div className={'flex items-center gap-1 mt-2'}>
+                    <PostActionButton
+                        icon={Heart}
+                        count={likeCount}
+                        isActive={liked}
+                        activeClassName={'text-rose-600 hover:text-rose-600'}
+                        onClick={toggleLike}
+                    />
                 </div>
             </div>
         </div>

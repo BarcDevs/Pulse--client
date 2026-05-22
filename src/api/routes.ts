@@ -18,6 +18,10 @@ export const ENDPOINTS = {
             postId: string,
             replyId: string
         ) => `/forum/posts/${postId}/replies/${replyId}`,
+        likeReply: (
+            postId: string,
+            replyId: string
+        ) => `/forum/posts/${postId}/replies/${replyId}/like`,
         tags: '/forum/tags',
         tagsUnknown: '/forum/tags/unknown',
         postCategories: '/forum/posts/categories'

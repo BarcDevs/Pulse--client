@@ -119,6 +119,17 @@ export const likePost = async (
     return res.data.data
 }
 
+export const likeReply = async (
+    postId: string,
+    replyId: string
+): Promise<{ liked: boolean, likes: number }> => {
+    const res = await api.post<Response<{
+        liked: boolean
+        likes: number
+    }>>(ENDPOINTS.forum.likeReply(postId, replyId))
+    return res.data.data
+}
+
 export const savePost = async (
     postId: string
 ): Promise<{ saved: boolean }> => {

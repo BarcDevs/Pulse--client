@@ -123,8 +123,9 @@ export const RepliesSection = ({
             {!isLoading && replies.length > 0 && (
                 <RepliesList
                     replies={replies}
+                    postId={postId}
                     currentUserId={user?.id}
-                    onDeleteReply={handleDeleteReply}
+                    onDeleteReplyAction={handleDeleteReply}
                     isDeleting={deleteReply.isPending}
                 />
             )}

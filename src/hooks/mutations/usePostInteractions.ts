@@ -1,18 +1,15 @@
 'use client'
 
-import {
-    useEffect,
-    useState
-} from 'react'
+import { useState } from 'react'
 
 import { useMutation } from '@tanstack/react-query'
+
+import { useProfile } from '@/hooks/queries/useProfile'
 
 import {
     likePost as likePostApi,
     savePost as savePostApi
 } from '@/api/forum'
-
-import { useProfile } from '@/hooks/queries/useProfile'
 
 type UsePostInteractionsProps = {
     postId: string
@@ -25,20 +22,20 @@ export const usePostInteractions = ({
 }: UsePostInteractionsProps) => {
     const { profile } = useProfile()
 
-    const [liked, setLiked] = useState(false)
-    const [likeCount, setLikeCount] = useState(initialLikes)
-    const [saved, setSaved] = useState(false)
+    const profileLiked = profile?.likedPostIds.includes(postId) ?? false
+    const profileSaved = profile?.savedPostIds.includes(postId) ?? false
 
-    useEffect(() => {
-        if (!profile) return
-        setLiked(profile.likedPostIds.includes(postId))
-        setSaved(profile.savedPostIds.includes(postId))
-    }, [profile, postId])
+    const [localLiked, setLocalLiked] = useState<boolean | null>(null)
+    const [localSaved, setLocalSaved] = useState<boolean | null>(null)
+    const [likeCount, setLikeCount] = useState(initialLikes)
+
+    const liked = localLiked ?? profileLiked
+    const saved = localSaved ?? profileSaved
 
     const likeMutation = useMutation({
         mutationFn: () => likePostApi(postId),
         onSuccess: (data) => {
-            setLiked(data.liked)
+            setLocalLiked(data.liked)
             setLikeCount(data.likes)
         }
     })
@@ -46,7 +43,7 @@ export const usePostInteractions = ({
     const saveMutation = useMutation({
         mutationFn: () => savePostApi(postId),
         onSuccess: (data) => {
-            setSaved(data.saved)
+            setLocalSaved(data.saved)
         }
     })
 
