@@ -6,51 +6,10 @@
 
 ## Pattern
 
-```typescript
-// src/locales/goalsLocales.ts
-export const goalsLocales = {
-    overview: {
-        title: 'goals.overview.title',
-        filterButton: 'goals.overview.filterButton',
-    },
-    buttons: {
-        create: 'goals.buttons.create',
-        creating: 'goals.buttons.creating',
-    }
-} as const
-```
-
-```json
-// messages/en-US.json (partial)
-{
-    "goals": {
-        "overview": {
-            "title": "Recovery Goals",
-            "filterButton": "Filter"
-        },
-        "buttons": {
-            "create": "Create goal",
-            "creating": "Creating..."
-        }
-    }
-}
-```
-
-**Client component usage:**
-```typescript
-import { useTranslations } from 'next-intl'
-import { goalsLocales } from '@/locales/goalsLocales'
-
-const t = useTranslations()
-t(goalsLocales.overview.title)
-```
-
-**Server component usage:**
-```typescript
-import { getTranslations } from 'next-intl/server'
-
-const t = await getTranslations()
-```
+1. Create locale key file in `src/locales/[feature]Locales.ts` — export `const [feature]Locales` with nested dot-path strings
+2. Add matching keys to `messages/en-US.json` AND `messages/he-IL.json` with translations
+3. Client: `useTranslations()` → `t(featureLocales.section.key)`
+4. Server: `getTranslations()` → `t(featureLocales.section.key)`
 
 ## Constraints
 - Always update **both** `en-US.json` and `he-IL.json`
