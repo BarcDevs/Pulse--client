@@ -1,4 +1,12 @@
 {
+  "common": {
+    "fields": {
+      "firstName": "First name",
+      "lastName": "Last name",
+      "email": "Email address",
+      "location": "Location"
+    }
+  },
   "auth": {
     "common": {
       "emailLabel": "Email address",
@@ -23,9 +31,7 @@
     "signup": {
       "title": "Create your account",
       "description": "Set up your space and begin building healthier routines at your own pace.",
-      "firstNameLabel": "First name",
       "firstNamePlaceholder": "John",
-      "lastNameLabel": "Last name",
       "lastNamePlaceholder": "Doe",
       "confirmPasswordLabel": "Confirm password",
       "signupButton": "Create account",
@@ -511,9 +517,6 @@
       "emailAddress": "Email address",
       "dateOfBirth": "Date of birth",
       "primarySupportContact": "Primary support contact",
-      "firstName": "First name",
-      "lastName": "Last name",
-      "location": "Location",
       "locationNotSet": "Location not set",
       "save": "Save changes",
       "saving": "Saving...",

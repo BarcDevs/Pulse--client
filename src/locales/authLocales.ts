@@ -21,9 +21,9 @@ export const authLocales = {
     signup: {
         title: 'auth.signup.title',
         description: 'auth.signup.description',
-        firstNameLabel: 'auth.signup.firstNameLabel',
+        firstNameLabel: 'common.fields.firstName',
         firstNamePlaceholder: 'auth.signup.firstNamePlaceholder',
-        lastNameLabel: 'auth.signup.lastNameLabel',
+        lastNameLabel: 'common.fields.lastName',
         lastNamePlaceholder: 'auth.signup.lastNamePlaceholder',
         confirmPasswordLabel: 'auth.signup.confirmPasswordLabel',
         signupButton: 'auth.signup.signupButton',

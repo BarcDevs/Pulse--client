@@ -1,4 +1,12 @@
 {
+  "common": {
+    "fields": {
+      "firstName": "שם פרטי",
+      "lastName": "שם משפחה",
+      "email": "כתובת אימייל",
+      "location": "מיקום"
+    }
+  },
   "auth": {
     "common": {
       "emailLabel": "כתובת אימייל",
@@ -23,9 +31,7 @@
     "signup": {
       "title": "יצירת חשבון",
       "description": "אפשר להתחיל לבנות שגרות והרגלים שתומכים בהתקדמות שלך לאורך זמן.",
-      "firstNameLabel": "שם פרטי",
       "firstNamePlaceholder": "ישראל",
-      "lastNameLabel": "שם משפחה",
       "lastNamePlaceholder": "ישראלי",
       "confirmPasswordLabel": "אימות סיסמה",
       "signupButton": "יצירת חשבון",
@@ -504,9 +510,6 @@
       "emailAddress": "כתובת אימייל",
       "dateOfBirth": "תאריך לידה",
       "primarySupportContact": "איש קשר לתמיכה",
-      "firstName": "שם פרטי",
-      "lastName": "שם משפחה",
-      "location": "מיקום",
       "locationNotSet": "מיקום לא הוגדר",
       "save": "שמור שינויים",
       "saving": "שומר...",
