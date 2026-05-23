@@ -42,9 +42,10 @@ dist-ssr
 qodana.yaml
 nul
 
-# Claude
+# Claude and Codex
 review
 .claude
+.codex
 healease-refined-ui-example
 designs
 docs/plans
