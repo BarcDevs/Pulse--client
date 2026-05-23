@@ -151,10 +151,10 @@ export const fetchSavedPosts = async (
 export const reportUnknownTag = (
     tag: string
 ): void => {
-    // TODO: AI tag normalization - tracks unknown tags until implemented
+    // TODO: AI tag normalization - tracks unknown tags until implemented (scaling)
     api.post(
         ENDPOINTS.forum.tagsUnknown,
-        { tag }
+        { tagName: tag }
     ).catch(() => {})
 }
 
