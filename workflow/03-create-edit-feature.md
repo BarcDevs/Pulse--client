@@ -21,9 +21,23 @@ hooks/queries/use[Feature].ts (edit mode only)
 - Page files minimal: just pass `mode` + optional `id`
 - Text via next-intl (see [Scenario 9](./09-i18n-text.md)) — never hardcode strings
 
+## State Management Pattern
+
+For features with shared state across dashboard (like Goals), use Context + optimistic updates:
+
+- **No Context needed**: Form-only flows with `useQuery` + `useMutation` + redirect on success
+- **Use Context**: List/dashboard views that need shared state + instant feedback (add/edit/delete)
+
+When using Context:
+- Define `[Feature]Context` with `use[Feature]` hook
+- Mutations call Context handler methods (e.g., `addGoal(data)`)
+- Form component gets data via `use[Feature]()` hook
+- See [Scenario 6](./06-mutation-hook.md) for optimistic update pattern
+
 ## References
 - `src/components/goals/GoalFormPageContent.tsx`
 - `src/components/goals/GoalForm.tsx`
 - `src/components/goals/GoalFormFields.tsx`
 - `src/app/(dashboard)/recovery-goals/create/page.tsx`
 - `src/app/(dashboard)/recovery-goals/[goalId]/edit/page.tsx`
+- `src/context/GoalsContext.tsx` (Context + optimistic updates example)

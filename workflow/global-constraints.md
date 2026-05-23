@@ -61,3 +61,9 @@
 - ❌ Never use `router.push` as a substitute for a plain link
 - Route paths: always from `src/constants/routes.ts` — never hardcode strings like `'/profile'`
 - API endpoints: always from `src/api/` endpoint constants — never hardcode URL strings
+
+## Optimistic Updates (CUD Operations)
+- Use for create/update/delete ops needing instant UI feedback
+- Context + `useOptimistic` + `useTransition` + `withOptimisticToast` pattern
+- Define action types with `OptimisticActionMap<T>` from `@/types/react`
+- ❌ Don't use for simple form-only flows — redirect after mutation instead
