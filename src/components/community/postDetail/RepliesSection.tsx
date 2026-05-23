@@ -45,15 +45,9 @@ export const RepliesSection = ({
         deleteReply
     } = useForumRepliesContext()
 
-    const handleDeleteReply = async (replyId: string) => {
-        const confirmed = confirm(
-            t(communityLocales.confirmations.deleteReply)
-        )
-        if (!confirmed) return
-        await deleteReply(replyId)
-    }
-
-    const handleReplySubmit = (data: PostFormSchema): Promise<void> => {
+    const handleReplySubmit = (
+        data: PostFormSchema
+    ): Promise<void> => {
         void addReply(data)
         setIsReplyFormOpen(false)
         return Promise.resolve()
@@ -120,7 +114,7 @@ export const RepliesSection = ({
                     replies={replies}
                     postId={postId}
                     currentUserId={user?.id}
-                    onDeleteReplyAction={handleDeleteReply}
+                    onDeleteReplyAction={deleteReply}
                     isDeleting={isPending}
                 />
             )}

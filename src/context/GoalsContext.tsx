@@ -45,12 +45,13 @@ type GoalsContextType = {
     isLoading: boolean
     isError: boolean
     error: Error | null
-    addGoal: (data: GoalSchema) => void
+    isPending: boolean
+    addGoal: (data: GoalSchema) => Promise<void>
     updateGoal: (
         goalId: string,
         data: Partial<GoalSchema>
-    ) => void
-    deleteGoal: (goalId: string) => void
+    ) => Promise<void>
+    deleteGoal: (goalId: string) => Promise<void>
 }
 
 export const GoalsContext =
@@ -71,7 +72,7 @@ const GoalsStateProvider = ({
     isError,
     error
 }: GoalsStateProviderProps) => {
-    const [, startTransition] = useTransition()
+    const [isPending, startTransition] = useTransition()
     const t = useTranslations()
     const {
         createGoal,
@@ -101,7 +102,9 @@ const GoalsStateProvider = ({
         }
     )
 
-    const handleAddGoal = (data: GoalSchema) => {
+    const handleAddGoal = async (
+        data: GoalSchema
+    ): Promise<void> => {
         startTransition(async () => {
             tempIdRef.current += 1
             const tempId = `temp-goal-${tempIdRef.current}`
@@ -137,10 +140,10 @@ const GoalsStateProvider = ({
         })
     }
 
-    const handleUpdateGoal = (
+    const handleUpdateGoal = async (
         goalId: string,
         data: Partial<GoalSchema>
-    ) => {
+    ): Promise<void> => {
         startTransition(async () => {
             addOptimistic({
                 type: 'update',
@@ -166,7 +169,9 @@ const GoalsStateProvider = ({
         })
     }
 
-    const handleDeleteGoal = (goalId: string) => {
+    const handleDeleteGoal = async (
+        goalId: string
+    ): Promise<void> => {
         startTransition(async () => {
             addOptimistic({
                 type: 'delete',
@@ -187,6 +192,7 @@ const GoalsStateProvider = ({
         isLoading,
         isError,
         error,
+        isPending,
         addGoal: handleAddGoal,
         updateGoal: handleUpdateGoal,
         deleteGoal: handleDeleteGoal

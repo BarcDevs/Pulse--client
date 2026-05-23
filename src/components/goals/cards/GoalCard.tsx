@@ -18,13 +18,15 @@ import { goalsLocales } from '@/locales/goalsLocales'
 type GoalCardProps = {
     goal: Goal
     onEditAction: (goalId: string) => void
-    onDeleteAction: (goalId: string) => void
+    onDeleteAction: (goalId: string) => Promise<void>
+    isDeleting?: boolean
 }
 
 export const GoalCard = ({
     goal,
     onEditAction,
-    onDeleteAction
+    onDeleteAction,
+    isDeleting = false
 }: GoalCardProps) => {
     const t = useTranslations()
     const router = useRouter()
@@ -53,6 +55,7 @@ export const GoalCard = ({
                 <GoalActionsDropdown
                     onEditAction={() => onEditAction(goal.id)}
                     onDeleteAction={() => onDeleteAction(goal.id)}
+                    isDeleting={isDeleting}
                 />
             </div>
 

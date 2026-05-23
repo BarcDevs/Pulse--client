@@ -4,6 +4,7 @@ import { useTranslations } from 'next-intl'
 
 import { MoreVertical } from 'lucide-react'
 
+import { DeleteButton } from '@/components/shared/DeleteButton'
 import { Button } from '@/components/ui/button'
 import {
     DropdownMenu,
@@ -16,12 +17,14 @@ import { goalsLocales } from '@/locales/goalsLocales'
 
 type GoalActionsDropdownProps = {
     onEditAction: () => void
-    onDeleteAction: () => void
+    onDeleteAction: () => Promise<void>
+    isDeleting?: boolean
 }
 
 export const GoalActionsDropdown = ({
     onEditAction,
-    onDeleteAction
+    onDeleteAction,
+    isDeleting = false
 }: GoalActionsDropdownProps) => {
     const t = useTranslations()
 
@@ -33,6 +36,7 @@ export const GoalActionsDropdown = ({
                     size={'sm'}
                     onClick={(e) => e.stopPropagation()}
                     className={'opacity-0 group-hover:opacity-100 h-8 w-8 p-0'}
+                    disabled={isDeleting}
                 >
                     <MoreVertical className={'w-4 h-4 text-slate-400'}/>
                 </Button>
@@ -46,15 +50,13 @@ export const GoalActionsDropdown = ({
                 >
                     {t(goalsLocales.goalActions.edit)}
                 </DropdownMenuItem>
-                <DropdownMenuItem
-                    onClick={(e) => {
-                        e.stopPropagation()
-                        onDeleteAction()
-                    }}
-                    className={'text-destructive'}
-                >
-                    {t(goalsLocales.goalActions.delete)}
-                </DropdownMenuItem>
+                <DeleteButton
+                    onDeleteAction={onDeleteAction}
+                    confirmMessage={t(goalsLocales.goalActions.deleteConfirm)}
+                    isLoading={isDeleting}
+                    size={'sm'}
+                    variant={'ghost'}
+                />
             </DropdownMenuContent>
         </DropdownMenu>
     )

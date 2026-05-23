@@ -6,7 +6,6 @@ import { GoalsFilter } from '@/components/goals/GoalsFilter'
 import { RecoveryGoalsSkeletons } from '@/components/goals/RecoveryGoalsSkeletons'
 import { ErrorDisplay } from '@/components/shared/ErrorDisplay'
 
-import { useConfirmDelete } from '@/hooks/useConfirmDelete'
 import { useGoalFiltering } from '@/hooks/useGoalFiltering'
 import { useRecoveryGoalsModal } from '@/hooks/useRecoveryGoalsModal'
 
@@ -25,7 +24,9 @@ export const RecoveryGoalsPageContent = () => {
         goals,
         isLoading,
         isError,
-        error
+        error,
+        deleteGoal,
+        isPending
     } = useGoalsContext()
 
     const {
@@ -43,7 +44,6 @@ export const RecoveryGoalsPageContent = () => {
         filteredGoals
     } = useGoalFiltering(goals)
 
-    const { handleConfirmDelete } = useConfirmDelete()
     const editingGoal =
         filteredGoals.find((g) => g.id === editingGoalId)
 
@@ -79,8 +79,9 @@ export const RecoveryGoalsPageContent = () => {
                         <div className={'lg:col-span-8'}>
                             <GoalsGrid
                                 goals={filteredGoals}
-                                onEdit={onOpenEditModal}
-                                onDelete={handleConfirmDelete}
+                                onEditAction={onOpenEditModal}
+                                onDeleteAction={deleteGoal}
+                                isDeleting={isPending}
                                 onCreateAction={onOpenCreateModal}
                             />
                         </div>

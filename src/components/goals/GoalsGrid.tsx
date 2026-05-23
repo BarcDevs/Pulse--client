@@ -14,15 +14,17 @@ import { GoalCard } from './cards/GoalCard'
 
 type GoalsGridProps = {
     goals: Goal[]
-    onEdit: (goalId: string) => void
-    onDelete: (goalId: string) => void
+    onEditAction: (goalId: string) => void
+    onDeleteAction: (goalId: string) => Promise<void>
+    isDeleting?: boolean
     onCreateAction?: () => void
 }
 
 export const GoalsGrid = ({
     goals,
-    onEdit,
-    onDelete,
+    onEditAction,
+    onDeleteAction,
+    isDeleting = false,
     onCreateAction
 }: GoalsGridProps) => {
     const t = useTranslations()
@@ -40,8 +42,9 @@ export const GoalsGrid = ({
                         <GoalCard
                             key={goal.id}
                             goal={goal}
-                            onEditAction={onEdit}
-                            onDeleteAction={onDelete}
+                            onEditAction={onEditAction}
+                            onDeleteAction={onDeleteAction}
+                            isDeleting={isDeleting}
                         />
                     ))}
                     <div
