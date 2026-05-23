@@ -8,6 +8,8 @@ import { Goal } from '@/types/goals'
 
 import { EmptyState } from '@/components/shared/EmptyState'
 
+import { sortGoalsByStatus } from '@/lib/goals'
+
 import { goalsLocales } from '@/locales/goalsLocales'
 
 import { GoalCard } from './cards/GoalCard'
@@ -28,7 +30,8 @@ export const GoalsGrid = ({
     onCreateAction
 }: GoalsGridProps) => {
     const t = useTranslations()
-    const isEmpty = goals.length === 0
+    const sortedGoals = sortGoalsByStatus(goals)
+    const isEmpty = sortedGoals.length === 0
 
     return (
         <>
@@ -38,7 +41,7 @@ export const GoalsGrid = ({
 
             {!isEmpty && (
                 <div className={'grid gap-6 grid-cols-1 md:grid-cols-2'}>
-                    {goals.map((goal) => (
+                    {sortedGoals.map((goal) => (
                         <GoalCard
                             key={goal.id}
                             goal={goal}

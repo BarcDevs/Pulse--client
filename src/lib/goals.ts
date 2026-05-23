@@ -1,6 +1,7 @@
 import {
     Goal,
-    GoalCategory
+    GoalCategory,
+    GoalStatus
 } from '@/types/goals'
 
 export const GOAL_BADGES = {
@@ -12,6 +13,48 @@ export const GOAL_BADGES = {
 
 export type GoalBadge =
     typeof GOAL_BADGES[keyof typeof GOAL_BADGES]
+
+export const GOAL_STATUS_ORDER = [
+    GoalStatus.ACTIVE,
+    GoalStatus.PAUSED,
+    GoalStatus.COMPLETED,
+    GoalStatus.ABANDONED
+] as const
+
+export const getGoalStatusOrder = (
+    status: GoalStatus
+): number => {
+    const index = GOAL_STATUS_ORDER.indexOf(status)
+
+    return index === -1 ? GOAL_STATUS_ORDER.length : index
+}
+
+export const sortGoalStatuses = (
+    statuses: GoalStatus[]
+): GoalStatus[] =>
+    [...statuses].sort(
+        (a, b) => getGoalStatusOrder(a) - getGoalStatusOrder(b)
+    )
+
+export const sortGoalsByStatus = (
+    goals: Goal[]
+): Goal[] =>
+    [...goals].sort((a, b) => {
+        const statusOrderDifference =
+            getGoalStatusOrder(a.status)
+            - getGoalStatusOrder(b.status)
+
+        if (statusOrderDifference !== 0)
+            return statusOrderDifference
+
+        const progressDifference =
+            (b.progress ?? 0) - (a.progress ?? 0)
+
+        if (progressDifference !== 0)
+            return progressDifference
+
+        return a.title.localeCompare(b.title)
+    })
 
 export const getProgressPercentage = (
     goal: Goal

@@ -21,6 +21,8 @@ import { OptimisticActionMap } from '@/types/react'
 import { useGoalMutations } from '@/hooks/mutations/useGoalMutations'
 import { useGoals } from '@/hooks/queries/useGoals'
 
+import { sortGoalsByStatus } from '@/lib/goals'
+
 import { withOptimisticToast } from '@/utils/optimisticToast'
 
 import { globalLocales } from '@/locales/globalLocales'
@@ -188,7 +190,7 @@ const GoalsStateProvider = ({
     }
 
     const value: GoalsContextType = {
-        goals: optimisticGoals,
+        goals: sortGoalsByStatus(optimisticGoals),
         isLoading,
         isError,
         error,
