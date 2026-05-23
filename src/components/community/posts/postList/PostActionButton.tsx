@@ -30,7 +30,11 @@ export const PostActionButton = ({
         )}
         onClick={onClick}
     >
-        <Icon className={cn('h-4 w-4', isActive && 'fill-current')}/>
+        <Icon className={cn(
+            'h-4 w-4',
+            isActive && 'fill-current'
+        )}
+        />
         {count !== undefined && (
             <span>
                 {count}

@@ -36,9 +36,8 @@ describe(
                     tags: ['lowercase']
                 })
                 expect(result.success).toBe(true)
-                if ( result.success ) {
-                    expect(result.data.tags[ 0 ]).toBe('LOWERCASE')
-                }
+                if (result.success)
+                    expect(result.data.tags[0]).toBe('LOWERCASE')
             })
 
         it(
@@ -82,11 +81,10 @@ describe(
                     category: 'nonexistent'
                 })
                 expect(result.success).toBe(false)
-                if ( !result.success ) {
+                if (!result.success) {
                     const categoryIssue =
                         result.error.issues.find(
-                            i => i.message
-                                === 'Category is invalid'
+                            (i) => i.message === 'Category is invalid'
                         )
                     expect(categoryIssue).toBeDefined()
                 }
@@ -110,11 +108,10 @@ describe(
                     title: 'Hi'
                 })
                 expect(result.success).toBe(false)
-                if ( !result.success ) {
+                if (!result.success) {
                     const titleIssue =
                         result.error.issues.find(
-                            i => i.message
-                                === 'Title is too short'
+                            i => i.message === 'Title is too short'
                         )
                     expect(titleIssue).toBeDefined()
                 }
@@ -128,11 +125,10 @@ describe(
                     title: 'A'.repeat(101)
                 })
                 expect(result.success).toBe(false)
-                if ( !result.success ) {
+                if (!result.success) {
                     const titleIssue =
                         result.error.issues.find(
-                            i => i.message
-                                === 'Title is too long'
+                            i => i.message === 'Title is too long'
                         )
                     expect(titleIssue).toBeDefined()
                 }
@@ -172,7 +168,7 @@ describe(
                     body: 'Short body'
                 })
                 expect(result.success).toBe(false)
-                if ( !result.success ) {
+                if (!result.success) {
                     const bodyIssue =
                         result.error.issues.find(
                             i => i.message
@@ -190,7 +186,7 @@ describe(
                     body: 'A'.repeat(301)
                 })
                 expect(result.success).toBe(false)
-                if ( !result.success ) {
+                if (!result.success) {
                     const bodyIssue =
                         result.error.issues.find(
                             i => i.message.includes(
@@ -209,8 +205,8 @@ describe(
                     tags: []
                 })
                 expect(result.success).toBe(false)
-                if ( !result.success ) {
-                    expect(result.error.issues[ 0 ].message)
+                if (!result.success) {
+                    expect(result.error.issues[0].message)
                         .toBe('At least one tag is required')
                 }
             })
@@ -223,7 +219,7 @@ describe(
                     tags: ['TAG1', 'TAG2', 'TAG3', 'TAG4', 'TAG5', 'TAG6']
                 })
                 expect(result.success).toBe(false)
-                if ( !result.success ) {
+                if (!result.success) {
                     const tagIssue =
                         result.error.issues.find(
                             i => i.message.includes(
@@ -252,7 +248,7 @@ describe(
                     tags: ['A']
                 })
                 expect(result.success).toBe(false)
-                if ( !result.success ) {
+                if (!result.success) {
                     const tagIssue =
                         result.error.issues.find(
                             i => i.message === 'Tag is too short'
@@ -269,7 +265,7 @@ describe(
                     tags: ['A'.repeat(21)]
                 })
                 expect(result.success).toBe(false)
-                if ( !result.success ) {
+                if (!result.success) {
                     const tagIssue =
                         result.error.issues.find(
                             i => i.message === 'Tag is too long'

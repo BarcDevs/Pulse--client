@@ -99,5 +99,15 @@ export const communityLocales = {
         tagSuggestions: 'community.postForm.tagSuggestions',
         tagPopularTopics: 'community.postForm.tagPopularTopics',
         categoryHint: 'community.postForm.categoryHint'
+    },
+    toasts: {
+        replyPosted: 'community.toasts.replyPosted',
+        replyUpdated: 'community.toasts.replyUpdated',
+        replyDeleted: 'community.toasts.replyDeleted',
+        postPublished: 'community.toasts.postPublished',
+        replyPostFailed: 'community.toasts.replyPostFailed',
+        replyUpdateFailed: 'community.toasts.replyUpdateFailed',
+        replyDeleteFailed: 'community.toasts.replyDeleteFailed',
+        postPublishFailed: 'community.toasts.postPublishFailed'
     }
 } as const

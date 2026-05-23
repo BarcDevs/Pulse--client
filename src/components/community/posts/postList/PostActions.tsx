@@ -31,6 +31,10 @@ export const PostActions = ({
         toggleSave
     } = usePostInteractions({ postId })
 
+    const saveText = saved
+        ? t(communityLocales.posts.saved)
+        : t(communityLocales.posts.save)
+
     return (
         <div className={'flex items-center gap-4 mt-4'}>
             <PostActionButton
@@ -44,7 +48,7 @@ export const PostActions = ({
                 icon={Share2}
             />
             <PostActionButton
-                text={saved ? t(communityLocales.posts.saved) : t(communityLocales.posts.save)}
+                text={saveText}
                 isActive={saved}
                 onClick={toggleSave}
                 icon={Bookmark}

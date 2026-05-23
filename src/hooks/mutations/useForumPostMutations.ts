@@ -59,7 +59,11 @@ export const useForumPostMutations = ({
             }
             return createReply(postId, reply)
         },
-        onSuccess: () => invalidateReplyRelated(queryClient, postId)
+        onSuccess: () =>
+            invalidateReplyRelated(
+                queryClient,
+                postId
+            )
     })
 
     const updateReplyMutation = useMutation({
@@ -85,7 +89,8 @@ export const useForumPostMutations = ({
         },
         onSuccess: () => {
             queryClient.invalidateQueries({
-                queryKey: forumQueryKeys.replies(postId)
+                queryKey: forumQueryKeys
+                    .replies(postId)
             })
         }
     })
@@ -94,21 +99,25 @@ export const useForumPostMutations = ({
         mutationFn: (
             replyId: string
         ) => deleteReplyApi(postId, replyId),
-        onSuccess: () => invalidateReplyRelated(queryClient, postId)
+        onSuccess: () =>
+            invalidateReplyRelated(
+                queryClient,
+                postId
+            )
     })
 
     const updatePostMutation = useMutation({
-        mutationFn: (
-            data: PostFormSchema
-        ) => updatePost(postId, {
-            category: data.category || '',
-            title: data.title || '',
-            body: data.body,
-            tags: data.tags || []
-        }),
+        mutationFn: (data: PostFormSchema) =>
+            updatePost(postId, {
+                category: data.category || '',
+                title: data.title || '',
+                body: data.body,
+                tags: data.tags || []
+            }),
         onSuccess: () => {
             queryClient.invalidateQueries({
-                queryKey: forumQueryKeys.post(postId)
+                queryKey: forumQueryKeys
+                    .post(postId)
             })
             queryClient.invalidateQueries({
                 queryKey: forumQueryKeys.posts

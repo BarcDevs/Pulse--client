@@ -4,6 +4,7 @@ export const checkInLocales = {
     pageSubtitle: 'checkIn.pageSubtitle',
     submitButton: 'checkIn.submitButton',
     submittingButton: 'checkIn.submittingButton',
+    submittedFeedback: 'checkIn.submittedFeedback',
     mood: {
         label: 'checkIn.mood.label',
         min: 'checkIn.mood.min',
@@ -27,5 +28,6 @@ export const checkInLocales = {
         placeholder: 'checkIn.journal.placeholder'
     },
     quotes: 'checkIn.quotes',
-    submitError: 'checkIn.submitError'
+    submitError: 'checkIn.submitError',
+    submitPendingMessage: 'checkIn.submitPendingMessage'
 } as const

@@ -49,8 +49,10 @@ export const SettingsProvider = ({
 }: SettingsProviderProps) => {
     const { data: profile, isLoading } =
         useProfileQuery()
-    const { mutate: saveSettings, isPending: isSaving } =
-        useSaveSettings()
+    const {
+        mutate: saveSettings,
+        isPending: isSaving
+    } = useSaveSettings()
 
     const [pendingChanges, setPendingChanges] =
         useState<Partial<Profile>>({})
@@ -98,10 +100,12 @@ export const SettingsProvider = ({
     }
 
     const value: SettingsContextType = {
-        settings: (profile ? {
-            ...profile,
-            ...pendingChanges
-        } : pendingChanges),
+        settings: profile
+            ? {
+                ...profile,
+                ...pendingChanges
+            }
+            : pendingChanges,
         isLoading,
         isSaving,
         hasChanges,

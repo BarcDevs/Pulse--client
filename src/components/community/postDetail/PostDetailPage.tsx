@@ -2,6 +2,7 @@
 
 import { PostDetailContent } from '@/components/community/postDetail/PostDetailContent'
 
+import { ForumRepliesProvider } from '@/context/ForumRepliesContext'
 import { PostDetailProvider } from '@/context/PostDetailContext'
 
 type PostDetailPageProps = {
@@ -12,6 +13,8 @@ export const PostDetailPage = ({
     postId
 }: PostDetailPageProps) => (
     <PostDetailProvider postId={postId}>
-        <PostDetailContent/>
+        <ForumRepliesProvider postId={postId}>
+            <PostDetailContent/>
+        </ForumRepliesProvider>
     </PostDetailProvider>
 )

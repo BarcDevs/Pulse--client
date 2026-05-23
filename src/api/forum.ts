@@ -68,10 +68,8 @@ export const fetchReplies = async (
 export const createReply = async (
     postId: string,
     reply: Reply
-): Promise<{ reply: Reply }> => {
-    const res = await api.post<Response<{
-        reply: Reply
-    }>>(
+): Promise<Reply> => {
+    const res = await api.post<Response<Reply>>(
         ENDPOINTS.forum.replies(postId),
         { ...reply }
     )
@@ -82,10 +80,8 @@ export const updateReply = async (
     postId: string,
     replyId: string,
     reply: Reply
-): Promise<{ reply: Reply }> => {
-    const res = await api.put<Response<{
-        reply: Reply
-    }>>(
+): Promise<Reply> => {
+    const res = await api.put<Response<Reply>>(
         ENDPOINTS.forum.reply(
             postId,
             replyId
@@ -108,10 +104,11 @@ export const deleteReply = async (
     return undefined
 }
 
-
 export const likePost = async (
     postId: string
-): Promise<{ liked: boolean, likes: number }> => {
+): Promise<
+    { liked: boolean, likes: number }
+> => {
     const res = await api.post<Response<{
         liked: boolean
         likes: number
@@ -122,7 +119,9 @@ export const likePost = async (
 export const likeReply = async (
     postId: string,
     replyId: string
-): Promise<{ liked: boolean, likes: number }> => {
+): Promise<
+    { liked: boolean, likes: number }
+> => {
     const res = await api.post<Response<{
         liked: boolean
         likes: number

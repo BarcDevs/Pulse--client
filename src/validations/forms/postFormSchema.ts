@@ -7,9 +7,13 @@ import config from '@/config/schema/postForm'
 import categories from '@/data/forum/categories'
 import { validationLocales } from '@/locales/validationLocales'
 
-const stripHtmlTags = (
-    html: string
-) => html.replace(/<[^>]*>/g, '').trim()
+const stripHtmlTags = (html: string) =>
+    html.replace(/<[^>]*>/g, '')
+        .replace(/&nbsp;/g, ' ')
+        .replace(/&amp;/g, '&')
+        .replace(/&lt;/g, '<')
+        .replace(/&gt;/g, '>')
+        .trim()
 
 type PostFormSchemaOptions = {
     isReply?: boolean
@@ -54,7 +58,7 @@ export const createPostFormSchema = (
                 return z.NEVER
             }
 
-            if (stripped.length < config.body.minLength) {
+            if (!isReply && stripped.length < config.body.minLength) {
                 ctx.addIssue({
                     code: z.ZodIssueCode.custom,
                     message: t(

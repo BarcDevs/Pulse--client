@@ -10,7 +10,8 @@ export const ROUTES = {
     FORUM_CREATE: '/forum/posts/create',
     PROFILE_SETTINGS: '/profile/settings',
     RECOVERY_GOALS: '/recovery-goals',
-    CONTACT_SUPPORT: '/contact-support'
+    CONTACT_SUPPORT: '/contact-support',
+    PROGRESS: '/progress'
 } as const
 
 export const ROUTE_IDS = {

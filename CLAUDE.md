@@ -61,6 +61,8 @@ Before implementing:
 - If multiple interpretations exist, present them - don't pick silently.
 - If a simpler approach exists, say so. Push back when warranted.
 - If something is unclear, stop. Name what's confusing. Ask.
+- Do not make any changes until you have 95% confidence in what you need to build. Ask me follow-up
+  questions until you reach that confidence.
 
 ## 2. Simplicity First
 

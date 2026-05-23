@@ -57,12 +57,24 @@ export const PostDetailActions = ({
         router.push('/community')
     }
 
+    const solidarityText = liked
+        ? t(communityLocales
+            .postActions
+            .solidarityActive)
+        : t(communityLocales
+            .postActions
+            .solidarity)
+
+    const saveText = saved
+        ? t(communityLocales.posts.saved)
+        : t(communityLocales.posts.save)
+
     return (
         <div className={'flex items-center justify-between px-7 py-4 border-t border-border'}>
             <div className={'flex items-center gap-1'}>
                 <PostActionButton
                     icon={Heart}
-                    text={liked ? t(communityLocales.postActions.solidarityActive) : t(communityLocales.postActions.solidarity)}
+                    text={solidarityText}
                     count={likeCount}
                     isActive={liked}
                     activeClassName={'bg-rose-100 text-rose-600 hover:bg-rose-100 hover:text-rose-600 rounded-full px-3'}
@@ -75,7 +87,7 @@ export const PostDetailActions = ({
                 />
                 <PostActionButton
                     icon={Bookmark}
-                    text={saved ? t(communityLocales.posts.saved) : t(communityLocales.posts.save)}
+                    text={saveText}
                     isActive={saved}
                     onClick={toggleSave}
                 />

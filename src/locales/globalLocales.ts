@@ -114,7 +114,8 @@ export const globalLocales = {
     },
     shared: {
         download: 'global.shared.download',
-        share: 'global.shared.share'
+        share: 'global.shared.share',
+        retry: 'global.shared.retry'
     },
     errors: {
         errorPage: {
