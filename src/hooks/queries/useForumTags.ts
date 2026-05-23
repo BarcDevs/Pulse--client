@@ -13,11 +13,24 @@ type UseForumTagsOptions = {
     enabled?: boolean
 }
 
-export const useForumTags = (options?: UseForumTagsOptions) => {
-    const { filter, limit, enabled } = options ?? {}
-    return useQueryWithNetworkError<PartialTag[]>({
-        queryKey: [...forumQueryKeys.tags, filter, limit],
-        queryFn: () => fetchTags({ filter, limit }),
+export const useForumTags = (
+    options?: UseForumTagsOptions
+) => {
+    const {
+        filter,
+        limit,
+        enabled
+    } = options ?? {}
+    return useQueryWithNetworkError<
+        PartialTag[]
+    >({
+        queryKey: [
+            ...forumQueryKeys.tags,
+            filter,
+            limit
+        ],
+        queryFn: () =>
+            fetchTags({ filter, limit }),
         staleTime: 5 * minuteInMs,
         enabled: enabled !== false,
         retry: false

@@ -1,14 +1,25 @@
 'use client'
 
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 
 import { useSearchParams } from 'next/navigation'
+import { useTranslations } from 'next-intl'
+
+import { toast } from 'sonner'
+
+import { Post } from '@/types/community'
 
 import { PostForm } from '@/components/community/postForm/PostForm'
 
 import { useCreatePostMutation } from '@/hooks/mutations/useCreatePostMutation'
 import { useDebounce } from '@/hooks/useDebounce'
 
+import { secondInMs } from '@/constants/time'
+
+import { useAuth } from '@/context/AuthContext'
+
+import { communityLocales } from '@/locales/communityLocales'
+import { globalLocales } from '@/locales/globalLocales'
 import { PostFormSchema } from '@/validations/forms/postFormSchema'
 
 import { PostList } from './posts/PostList'
@@ -16,20 +27,63 @@ import { CommunityPanel } from './CommunityPanel'
 import { CommunitySearchBar } from './CommunitySearchBar'
 
 export const CommunityPageContent = () => {
+    const t = useTranslations()
     const searchParams = useSearchParams()
+    const { user } = useAuth()
     const [selectedTag, setSelectedTag] = useState<string | null>(
         searchParams.get('tag')
     )
     const [isNewPostOpen, setIsNewPostOpen] = useState(false)
     const [search, setSearch] = useState('')
+    const [pendingPosts, setPendingPosts] = useState<Post[]>([])
+    const tempCountRef = useRef(0)
     const debouncedSearch = useDebounce(search)
     const createPost = useCreatePostMutation()
 
-    const handlePostSubmit = async (
-        data: PostFormSchema
-    ) => {
-        await createPost.mutateAsync(data)
+    const handlePostSubmit = async (data: PostFormSchema) => {
+        tempCountRef.current += 1
+        const tempPost: Post = {
+            id: `temp-post-${tempCountRef.current}`,
+            title: data.title ?? '',
+            body: data.body,
+            category: data.category ?? '',
+            tags: [],
+            replies: [],
+            views: 0,
+            createdAt: new Date(),
+            updatedAt: null,
+            authorId: user?.id ?? ''
+        }
+        setPendingPosts((prev) => [tempPost, ...prev])
         setIsNewPostOpen(false)
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+
+        try {
+            const realPost = await createPost.mutateAsync(data)
+            setPendingPosts((prev) =>
+                prev.map((p) => p.id === tempPost.id ? realPost : p)
+            )
+            toast.success(
+                t(communityLocales.toasts.postPublished),
+                { duration: 2.5 * secondInMs }
+            )
+        } catch {
+            setPendingPosts((prev) =>
+                prev.filter((p) => p.id !== tempPost.id)
+            )
+            toast.error(
+                t(communityLocales.toasts.postPublishFailed),
+                {
+                    action: {
+                        label: t(globalLocales.shared.retry),
+                        onClick: () => void handlePostSubmit(
+                            data
+                        )
+                    },
+                    duration: 5 * secondInMs
+                }
+            )
+        }
     }
 
     return (
@@ -53,6 +107,7 @@ export const CommunityPageContent = () => {
                         tag={selectedTag}
                         search={debouncedSearch}
                         onTagSelectAction={setSelectedTag}
+                        prependPosts={pendingPosts}
                     />
                 </div>
 

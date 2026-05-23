@@ -9,7 +9,10 @@ import {
 
 import { useTranslations } from 'next-intl'
 
-import type { FilterType } from '@/types/community'
+import type {
+    FilterType,
+    Post as PostType
+} from '@/types/community'
 
 import { EmptyState } from '@/components/shared/EmptyState'
 import { ErrorDisplay } from '@/components/shared/ErrorDisplay'
@@ -35,18 +38,20 @@ const tabs = Object.keys({
 
 type Post = (
     Parameters<typeof PostItem>[0]
-)['post']
+    )['post']
 
 type PostListProps = {
     tag?: string | null
     search?: string
     onTagSelectAction?: (tag: string | null) => void
+    prependPosts?: PostType[]
 }
 
 export const PostList = ({
     tag,
     search,
-    onTagSelectAction
+    onTagSelectAction,
+    prependPosts
 }: PostListProps) => {
     const t = useTranslations()
     // todo: extract post fetch functionality into a hook
@@ -54,19 +59,12 @@ export const PostList = ({
         useState<FilterType>('newest')
     const [category, setCategory] =
         useState<string | null>(null)
-    const [allPosts, setAllPosts] =
-        useState<Post[]>([])
+    const [allPosts, setAllPosts] = useState<Post[]>([])
     const [page, setPage] = useState(1)
-    const [hasMore, setHasMore] =
-        useState(true)
-    const sentinelRef = useRef<
-        HTMLDivElement
-    >(null)
-    const prevQueryRef =
-        useRef<string>('')
-    const lastFetchedIdRef = useRef<
-        string | null
-    >(null)
+    const [hasMore, setHasMore] = useState(true)
+    const sentinelRef = useRef<HTMLDivElement>(null)
+    const prevQueryRef = useRef<string>('')
+    const lastFetchedIdRef = useRef<string | null>(null)
 
     const query = useMemo(
         () => ({
@@ -80,9 +78,7 @@ export const PostList = ({
                     : {}
             ),
             ...(
-                search
-                    ? { search }
-                    : {}
+                search ? { search } : {}
             )
         }),
         [
@@ -106,9 +102,7 @@ export const PostList = ({
         const queryStr =
             JSON.stringify(query)
         const posts = data ?? []
-        const lastPostId =
-            posts[posts.length - 1]?.id
-            ?? null
+        const lastPostId = posts[posts.length - 1]?.id ?? null
 
         if (
             queryStr
@@ -151,15 +145,11 @@ export const PostList = ({
             new IntersectionObserver(
                 (entries) => {
                     if (
-                        entries[0]
-                            .isIntersecting
+                        entries[0].isIntersecting
                         && hasMore
                         && !isFetching
                     ) {
-                        setPage(
-                            (prev) =>
-                                prev + 1
-                        )
+                        setPage((prev) => prev + 1)
                     }
                 },
                 { threshold: 0.1 }
@@ -188,75 +178,37 @@ export const PostList = ({
     const emptyMessage = (
         tag || category
     )
-        ? t(
-            communityLocales.posts
-                .emptyWithFilter
-        )
-        : t(
-            communityLocales.posts.empty
-        )
+        ? t(communityLocales.posts.emptyWithFilter)
+        : t(communityLocales.posts.empty)
 
     return (
-        <div
-            className={
-                'rounded-2xl'
-                + ' bg-surface-card'
-                + ' overflow-hidden'
-            }
-        >
-            <div
-                className={
-                    'flex flex-wrap items-center'
-                    + ' border-b border-border'
-                }
-            >
+        <div className={'rounded-2xl bg-surface-card overflow-hidden'}>
+            <div className={'flex flex-wrap items-center border-b border-border'}>
                 <div className={'flex flex-1'}>
                     {tabs.map((tab) => (
                         <Button
                             key={tab}
-                            onClick={() =>
-                                handleFilterChange(
-                                    tab
-                                )
-                            }
+                            onClick={() => handleFilterChange(tab)}
                             variant={
                                 activeFilter === tab
                                     ? 'default'
                                     : 'ghost'
                             }
                             className={cn(
-                                'px-4 py-3'
-                                + ' text-xs'
-                                + ' font-medium'
-                                + ' rounded-none'
-                                + ' border-b-2',
-                                (
-                                    activeFilter
-                                    === tab
-                                )
-                                    ? 'text-white'
-                                    + ' border-primary'
-                                    : 'text-muted-foreground'
-                                    + ' hover:text-foreground'
-                                    + ' border-transparent'
+                                'px-4 py-3 text-xs font-medium rounded-none border-b-2',
+                                activeFilter === tab
+                                    ? 'text-white border-primary'
+                                    : 'text-muted-foreground hover:text-foreground border-transparent'
                             )}
                         >
-                            {t(
-                                communityLocales
-                                    .posts
-                                    .filterLabels[
-                                    tab
-                                ]
-                            )}
+                            {t(communityLocales.posts.filterLabels[tab])}
                         </Button>
                     ))}
                 </div>
                 <div className={'px-2 py-1.5 shrink-0'}>
                     <PostListCategoryFilter
                         value={category}
-                        onChangeAction={
-                            setCategory
-                        }
+                        onChangeAction={setCategory}
                     />
                 </div>
             </div>
@@ -270,34 +222,24 @@ export const PostList = ({
                 />
             )}
 
-            <div
-                className={
-                    'divide-y divide-border'
-                }
-            >
+            <div className={'divide-y divide-border'}>
+                {prependPosts?.map((post) => (
+                    <PostItem
+                        key={post.id}
+                        post={post}
+                        onTagSelectAction={onTagSelectAction}
+                        activeTag={tag}
+                    />
+                ))}
                 {isLoading
                 && allPosts.length === 0 ? (
-                    <EmptyState
-                        message={t(
-                            communityLocales
-                                .posts
-                                .loading
-                        )}
-                    />
+                    <EmptyState message={t(communityLocales.posts.loading)}/>
                 ) : isError ? (
-                    <div
-                        className={
-                            'p-6 flex--center'
-                        }
-                    >
-                        <ErrorDisplay
-                            error={error}
-                        />
+                    <div className={'p-6 flex--center'}>
+                        <ErrorDisplay error={error}/>
                     </div>
                 ) : allPosts.length === 0 ? (
-                    <EmptyState
-                        message={emptyMessage}
-                    />
+                    <EmptyState message={emptyMessage}/>
                 ) : (
                     <>
                         {allPosts.map(
@@ -313,17 +255,11 @@ export const PostList = ({
                             )
                         )}
                         {hasMore && (
-                            <div
-                                ref={
-                                    sentinelRef
-                                }
-                            >
+                            <div ref={sentinelRef}>
                                 {isFetching && (
                                     <EmptyState
                                         message={t(
-                                            communityLocales
-                                                .posts
-                                                .loading
+                                            communityLocales.posts.loading
                                         )}
                                     />
                                 )}

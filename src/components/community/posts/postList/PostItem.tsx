@@ -58,97 +58,38 @@ export const PostItem = ({
         : post._count?.replies ?? 0
 
     return (
-        <div
-            className={
-                'p-6'
-                + ' hover:bg-surface-section/50'
-                + ' transition-colors'
-            }
-        >
+        <div className={'p-6 hover:bg-surface-section/50 transition-colors'}>
             <Link
-                href={
-                    `/community/post/${post.id}`
-                }
+                href={`/community/post/${post.id}`}
                 className={'block'}
             >
-                <div
-                    className={
-                        'flex items-start'
-                        + ' justify-between'
-                        + ' gap-4 mb-2'
-                    }
-                >
+                <div className={'flex items-start justify-between gap-4 mb-2'}>
                     <PostHeader
-                        category={
-                            post.category
-                        }
-                        author={getAuthorName(
-                            post
-                        )}
-                        timeAgo={toRelative(
-                            post.createdAt,
-                            dateLocale
-                        )}
+                        category={post.category}
+                        author={getAuthorName(post)}
+                        timeAgo={toRelative(post.createdAt, dateLocale)}
                     />
-                    <span
-                        className={
-                            'flex items-center'
-                            + ' gap-1 text-xs'
-                            + ' whitespace-nowrap'
-                        }
-                    >
-                        <Heart
-                            className={
-                                'h-3 w-3'
-                                + ' text-rose-400'
-                            }
-                        />
-                        <span
-                            className={
-                                'font-semibold'
-                                + ' text-foreground'
-                            }
-                        >
+                    <span className={'flex items-center gap-1 text-xs whitespace-nowrap'}>
+                        <Heart className={'h-3 w-3 text-rose-400'}/>
+                        <span className={'font-semibold text-foreground'}>
                             {post._count?.likes ?? 0}
                         </span>
-                        <span
-                            className={
-                                'text-muted-foreground'
-                            }
-                        >
-                            {t(
-                                communityLocales
-                                    .posts
-                                    .likedLabel
-                            )}
+                        <span className={'text-muted-foreground'}>
+                            {t(communityLocales.posts.likedLabel)}
                         </span>
                     </span>
                 </div>
-                <h3
-                    className={
-                        'font-semibold'
-                        + ' text-foreground'
-                        + ' mb-2'
-                    }
-                >
+                <h3 className={'font-semibold text-foreground mb-2'}>
                     {post.title}
                 </h3>
-                <p
-                    className={
-                        'text-sm'
-                        + ' text-muted-foreground'
-                        + ' line-clamp-2'
-                    }
-                >
+                <p className={'text-sm text-muted-foreground line-clamp-2'}>
                     {stripHtml(post.body)}
                 </p>
             </Link>
             {tags.length > 0 && (
                 <PostTags
                     tags={tags}
-                    onTagSelectAction={
-                        onTagSelectAction
-                    }
+                    onTagSelectAction={onTagSelectAction}
                     activeTag={activeTag}
                 />
             )}

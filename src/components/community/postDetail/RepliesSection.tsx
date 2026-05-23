@@ -2,8 +2,6 @@
 
 import { useTranslations } from 'next-intl'
 
-import { Reply } from '@/types/community'
-
 import { RepliesEmptyState }
     from '@/components/community/postDetail/RepliesEmptyState'
 import { RepliesList }
@@ -16,10 +14,8 @@ import { PostForm } from '@/components/community/postForm/PostForm'
 import { ErrorDisplay } from '@/components/shared/ErrorDisplay'
 import { Skeleton } from '@/components/ui/skeleton'
 
-import { useForumPostMutations } from '@/hooks/mutations/useForumPostMutations'
-import { useForumReplies } from '@/hooks/queries/useForumReplies'
-
 import { useAuth } from '@/context/AuthContext'
+import { useForumRepliesContext } from '@/context/ForumRepliesContext'
 import { usePostDetail } from '@/context/PostDetailContext'
 
 import { communityLocales } from '@/locales/communityLocales'
@@ -36,34 +32,33 @@ export const RepliesSection = ({
     const { user } = useAuth()
     const isAuthenticated = !!user
     const {
-        data: repliesData,
-        isLoading,
-        isError,
-        error
-    } = useForumReplies(postId)
-    const {
         isReplyFormOpen,
         setIsReplyFormOpen
     } = usePostDetail()
     const {
-        deleteReply,
-        createReply
-    } = useForumPostMutations({ postId })
+        replies,
+        isLoading,
+        isError,
+        error,
+        isPending,
+        addReply,
+        deleteReply
+    } = useForumRepliesContext()
 
     const handleDeleteReply = async (replyId: string) => {
         const confirmed = confirm(
             t(communityLocales.confirmations.deleteReply)
         )
         if (!confirmed) return
-        await deleteReply.mutateAsync(replyId)
+        await deleteReply(replyId)
     }
 
-    const handleReplySubmit = async (data: PostFormSchema) => {
-        await createReply.mutateAsync(data)
+    const handleReplySubmit = (data: PostFormSchema): Promise<void> => {
+        void addReply(data)
         setIsReplyFormOpen(false)
+        return Promise.resolve()
     }
 
-    const replies: Reply[] = repliesData ?? []
     const replyCount = isLoading
         ? t(communityLocales.postDetail.loading)
         : `${replies.length} ${
@@ -90,7 +85,7 @@ export const RepliesSection = ({
                 <PostForm
                     isReply={true}
                     isOpen={isReplyFormOpen}
-                    isLoading={createReply.isPending}
+                    isLoading={isPending}
                     onSubmitAction={handleReplySubmit}
                     onCancelAction={() => setIsReplyFormOpen(false)}
                 />
@@ -126,7 +121,7 @@ export const RepliesSection = ({
                     postId={postId}
                     currentUserId={user?.id}
                     onDeleteReplyAction={handleDeleteReply}
-                    isDeleting={deleteReply.isPending}
+                    isDeleting={isPending}
                 />
             )}
         </div>
