@@ -15,6 +15,7 @@ import {
     MilestoneInput,
     MilestoneStatus
 } from '@/types/goals'
+import { OptimisticActionMap } from '@/types/react'
 
 import { useGoalMutations } from '@/hooks/mutations/useGoalMutations'
 
@@ -35,6 +36,15 @@ type GoalMilestonesProviderProps = {
     initialMilestones: GoalMilestone[]
 }
 
+type MilestoneOptimisticAction = OptimisticActionMap<{
+    add: { data: MilestoneInput }
+    complete: { milestoneId: string }
+    replace: {
+        tempId: string
+        realMilestone: GoalMilestone
+    }
+}>
+
 export const GoalMilestonesProvider = ({
     children,
     goalId,
@@ -48,24 +58,9 @@ export const GoalMilestonesProvider = ({
 
     const tempIdCounterRef = useRef(0)
 
-    type OptimisticAction =
-        | {
-            type: 'add'
-            data: MilestoneInput
-        }
-        | {
-            type: 'complete'
-            milestoneId: string
-        }
-        | {
-            type: 'replace'
-            tempId: string
-            realMilestone: GoalMilestone
-        }
-
     const [optimisticMilestones, addOptimisticMilestone] = useOptimistic(
         initialMilestones,
-        (state, action: OptimisticAction) => {
+        (state, action: MilestoneOptimisticAction) => {
             if (action.type === 'add') {
                 tempIdCounterRef.current += 1
                 const tempId = `temp-${goalId}-${tempIdCounterRef.current}`

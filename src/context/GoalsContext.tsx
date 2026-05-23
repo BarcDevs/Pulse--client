@@ -16,6 +16,7 @@ import {
     GoalCategory,
     GoalStatus
 } from '@/types/goals'
+import { OptimisticActionMap } from '@/types/react'
 
 import { useGoalMutations } from '@/hooks/mutations/useGoalMutations'
 import { useGoals } from '@/hooks/queries/useGoals'
@@ -26,23 +27,18 @@ import { globalLocales } from '@/locales/globalLocales'
 import { goalsLocales } from '@/locales/goalsLocales'
 import { GoalSchema } from '@/validations/forms/goalSchema'
 
-// todo - make reusable OptimisticAction type
-type OptimisticAction =
-    | {
-    type: 'add'
-    goal: Goal
-} | {
-    type: 'replace'
-    tempId: string
-    goal: Goal
-} | {
-    type: 'update'
-    goalId: string
-    partial: Partial<Goal>
-} | {
-    type: 'delete'
-    goalId: string
-}
+type OptimisticAction = OptimisticActionMap<{
+    add: { goal: Goal }
+    replace: {
+        tempId: string
+        goal: Goal
+    }
+    update: {
+        goalId: string
+        partial: Partial<Goal>
+    }
+    delete: { goalId: string }
+}>
 
 type GoalsContextType = {
     goals: Goal[]
