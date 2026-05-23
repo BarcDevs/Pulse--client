@@ -78,7 +78,8 @@ export const goalsLocales = {
     },
     goalActions: {
         edit: 'goals.goalActions.edit',
-        delete: 'goals.goalActions.delete'
+        delete: 'goals.goalActions.delete',
+        deleteConfirm: 'goals.goalActions.deleteConfirm'
     },
     goalStats: {
         activeMilestonesLabel: 'goals.goalStats.activeMilestonesLabel'

@@ -8,8 +8,9 @@ import { ErrorDisplay } from '@/components/shared/ErrorDisplay'
 
 import { useConfirmDelete } from '@/hooks/useConfirmDelete'
 import { useGoalFiltering } from '@/hooks/useGoalFiltering'
-import { useRecoveryGoalsData } from '@/hooks/useRecoveryGoalsData'
 import { useRecoveryGoalsModal } from '@/hooks/useRecoveryGoalsModal'
+
+import { useGoalsContext } from '@/context/GoalsContext'
 
 import { goalsLocales } from '@/locales/goalsLocales'
 
@@ -25,7 +26,7 @@ export const RecoveryGoalsPageContent = () => {
         isLoading,
         isError,
         error
-    } = useRecoveryGoalsData()
+    } = useGoalsContext()
 
     const {
         isModalOpen,
@@ -43,14 +44,13 @@ export const RecoveryGoalsPageContent = () => {
     } = useGoalFiltering(goals)
 
     const { handleConfirmDelete } = useConfirmDelete()
-
-    const editingGoal = filteredGoals.find((g) => g.id === editingGoalId)
+    const editingGoal =
+        filteredGoals.find((g) => g.id === editingGoalId)
 
     return (
         <>
             <div className={'p-8 md:p-12 max-w-7xl mx-auto w-full'}>
                 <div className={'flex justify-between items-end mb-8'}>
-                    {/*todo: reusable header component*/}
                     <div>
                         <h3 className={'text-3xl font-display font-bold tracking-tight text-on-surface'}>
                             {t(goalsLocales.overview.greeting)}

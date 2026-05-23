@@ -712,7 +712,8 @@
     },
     "goalActions": {
       "edit": "Edit",
-      "delete": "Delete"
+      "delete": "Delete",
+      "deleteConfirm": "Remove this goal? This action can't be undone."
     },
     "goalStats": {
       "activeMilestonesLabel": "Active Milestones"

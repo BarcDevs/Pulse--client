@@ -1,6 +1,6 @@
 import { Goal } from '@/types/goals'
 
-import { useGoalMutations } from '@/hooks/mutations/useGoalMutations'
+import { useGoalsContext } from '@/context/GoalsContext'
 
 import { GoalSchema } from '@/validations/forms/goalSchema'
 
@@ -13,30 +13,20 @@ export const useGoalFormSubmit = ({
     goal,
     onSuccessAction
 }: UseGoalFormSubmitProps) => {
-    const { createGoal, updateGoal } = useGoalMutations()
-
+    const { addGoal, updateGoal } = useGoalsContext()
     const isUpdate = Boolean(goal)
-    const isSubmitting =
-        createGoal.isPending
-        || updateGoal.isPending
 
-    const handleSubmit = async (data: GoalSchema) => {
+    const handleSubmit = (
+        data: GoalSchema
+    ): Promise<void> => {
         if (isUpdate && goal) {
-            await updateGoal.mutateAsync({
-                goalId: goal.id,
-                data
-            })
+            updateGoal(goal.id, data)
         } else {
-            await createGoal.mutateAsync(data)
+            addGoal(data)
         }
-
-        if (onSuccessAction) {
-            onSuccessAction()
-        }
+        onSuccessAction?.()
+        return Promise.resolve()
     }
 
-    return {
-        handleSubmit,
-        isSubmitting
-    }
+    return { handleSubmit }
 }

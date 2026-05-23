@@ -705,7 +705,8 @@
     },
     "goalActions": {
       "edit": "עריכה",
-      "delete": "מחיקה"
+      "delete": "מחיקה",
+      "deleteConfirm": "להסיר את היעד הזה? אי אפשר לשחזר אותו לאחר מכן."
     },
     "goalStats": {
       "activeMilestonesLabel": "שלבים פעילים"

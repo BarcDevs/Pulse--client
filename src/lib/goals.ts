@@ -26,7 +26,9 @@ export const getBadge = (percentage: number): GoalBadge => {
     return GOAL_BADGES.COMPLETE
 }
 
-export const getCategoryColor = (category: GoalCategory) => {
+export const getCategoryColor = (
+    category: GoalCategory
+) => {
     switch (category) {
         case GoalCategory.PHYSICAL:
             return 'bg-secondary-container text-on-secondary-container hover:bg-secondary-container/80 [&:hover]:text-on-secondary-container'

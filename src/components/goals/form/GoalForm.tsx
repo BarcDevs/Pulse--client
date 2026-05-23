@@ -44,10 +44,7 @@ export const GoalForm = ({
     const t = useTranslations()
     const router = useRouter()
     const isUpdate = Boolean(goal)
-    const {
-        handleSubmit,
-        isSubmitting
-    } = useGoalFormSubmit({
+    const { handleSubmit } = useGoalFormSubmit({
         goal,
         onSuccessAction: () => {
             if (onSuccessAction) {
@@ -87,7 +84,12 @@ export const GoalForm = ({
                             <FormControl>
                                 <FormInput
                                     id={'goal-title'}
-                                    placeholder={t(goalsLocales.goalForm.fields.titlePlaceholder)}
+                                    placeholder={t(
+                                        goalsLocales
+                                            .goalForm
+                                            .fields
+                                            .titlePlaceholder
+                                    )}
                                     value={field.value}
                                     onChange={field.onChange}
                                     onBlur={field.onBlur}
@@ -112,7 +114,12 @@ export const GoalForm = ({
                             </FormLabel>
                             <FormControl>
                                 <Textarea
-                                    placeholder={t(goalsLocales.goalForm.fields.descriptionPlaceholder)}
+                                    placeholder={t(
+                                        goalsLocales
+                                            .goalForm
+                                            .fields
+                                            .descriptionPlaceholder
+                                    )}
                                     className={'resize-none bg-surface-container-low'}
                                     rows={3}
                                     {...field}
@@ -142,7 +149,12 @@ export const GoalForm = ({
                             return (
                                 <FormItem>
                                     <FormLabel>
-                                        {t(goalsLocales.goalForm.fields.targetDateLabel)}
+                                        {t(
+                                            goalsLocales
+                                                .goalForm
+                                                .fields
+                                                .targetDateLabel
+                                        )}
                                     </FormLabel>
                                     <FormControl>
                                         <FormInput
@@ -168,7 +180,6 @@ export const GoalForm = ({
                 </div>
 
                 <GoalFormActions
-                    isSubmitting={isSubmitting}
                     isUpdate={isUpdate}
                     onCloseAction={onCloseAction}
                 />

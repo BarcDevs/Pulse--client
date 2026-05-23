@@ -30,10 +30,13 @@ export const DeleteButton = ({
     ...buttonProps
 }: DeleteButtonProps) => {
     const t = useTranslations()
-    const defaultMessage = t(communityLocales.confirmations.deletePost)
+    const defaultMessage =
+        t(communityLocales.confirmations.deletePost)
 
     const handleClick = async () => {
-        const confirmed = confirm(confirmMessage ?? defaultMessage)
+        const confirmed = confirm(
+            confirmMessage ?? defaultMessage
+        )
         if (confirmed)
             await onDeleteAction()
     }

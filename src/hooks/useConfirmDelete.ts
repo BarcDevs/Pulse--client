@@ -1,20 +1,18 @@
-import { useGoalMutations } from '@/hooks/mutations/useGoalMutations'
+import { useTranslations } from 'next-intl'
+
+import { useGoalsContext } from '@/context/GoalsContext'
+
+import { goalsLocales } from '@/locales/goalsLocales'
 
 export const useConfirmDelete = () => {
-    const { deleteGoal } = useGoalMutations()
+    const t = useTranslations()
+    const { deleteGoal } = useGoalsContext()
 
-    const handleConfirmDelete = async (goalId: string) => {
-        const confirmed = confirm(
-            'Delete this goal? This action cannot be undone.'
-        )
-
-        if (confirmed) {
-            try {
-                await deleteGoal.mutateAsync(goalId)
-            } catch (err) {
-                console.error('Failed to delete goal:', err)
-            }
-        }
+    const handleConfirmDelete = (goalId: string) => {
+        const confirmed =
+            confirm(t(goalsLocales.goalActions.deleteConfirm))
+        if (confirmed)
+            deleteGoal(goalId)
     }
 
     return { handleConfirmDelete }
