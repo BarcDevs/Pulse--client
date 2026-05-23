@@ -100,7 +100,6 @@
     "pageTitle": "Daily check-in",
     "pageSubtitle": "Take a moment to pause, reflect, and notice how you’re doing today.",
     "submitButton": "Save check-in",
-    "submittingButton": "Saving...",
     "submittedFeedback": "Check-in saved! Taking you to your progress...",
     "mood": {
       "label": "Mood",
@@ -704,8 +703,6 @@
       "buttons": {
         "create": "Create Goal",
         "update": "Update Goal",
-        "creating": "Creating...",
-        "updating": "Updating...",
         "cancel": "Cancel"
       },
       "smartTip": {

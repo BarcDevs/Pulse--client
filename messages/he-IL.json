@@ -93,7 +93,6 @@
     "pageTitle": "עדכון יומי",
     "pageSubtitle": "רגע לעצור, להקשיב לעצמך ולשים לב איך עובר עליך היום.",
     "submitButton": "שמור עדכון יומי",
-    "submittingButton": "שומר את העדכון...",
     "submittedFeedback": "העדכון נשמר! מעביר אותך לדף ההתקדמות...",
     "mood": {
       "label": "מצב רוח",
@@ -697,8 +696,6 @@
       "buttons": {
         "create": "צור יעד",
         "update": "עדכן יעד",
-        "creating": "יוצר...",
-        "updating": "מעדכן...",
         "cancel": "ביטול"
       },
       "smartTip": {

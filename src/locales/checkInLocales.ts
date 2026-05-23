@@ -3,7 +3,6 @@ export const checkInLocales = {
     pageTitle: 'checkIn.pageTitle',
     pageSubtitle: 'checkIn.pageSubtitle',
     submitButton: 'checkIn.submitButton',
-    submittingButton: 'checkIn.submittingButton',
     submittedFeedback: 'checkIn.submittedFeedback',
     mood: {
         label: 'checkIn.mood.label',

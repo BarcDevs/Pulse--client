@@ -104,8 +104,6 @@ export const goalsLocales = {
         buttons: {
             create: 'goals.goalForm.buttons.create',
             update: 'goals.goalForm.buttons.update',
-            creating: 'goals.goalForm.buttons.creating',
-            updating: 'goals.goalForm.buttons.updating',
             cancel: 'goals.goalForm.buttons.cancel'
         },
         smartTip: {
