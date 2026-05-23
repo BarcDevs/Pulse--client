@@ -111,5 +111,13 @@ export const goalsLocales = {
             title: 'goals.goalForm.smartTip.title',
             bundles: 'goals.goalForm.smartTip.bundles'
         }
+    },
+    toasts: {
+        created: 'goals.toasts.created',
+        updated: 'goals.toasts.updated',
+        deleted: 'goals.toasts.deleted',
+        createFailed: 'goals.toasts.createFailed',
+        updateFailed: 'goals.toasts.updateFailed',
+        deleteFailed: 'goals.toasts.deleteFailed'
     }
 } as const

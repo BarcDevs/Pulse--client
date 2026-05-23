@@ -95,6 +95,7 @@
     "pageSubtitle": "Take a moment to pause, reflect, and notice how you’re doing today.",
     "submitButton": "Save check-in",
     "submittingButton": "Saving...",
+    "submittedFeedback": "Check-in saved! Taking you to your progress...",
     "mood": {
       "label": "Mood",
       "min": "Very low",
@@ -255,6 +256,16 @@
         "wellness": "Mindfulness, healthy routines, and emotional wellbeing",
         "discussion": "Anything else recovery-related"
       }
+    },
+    "toasts": {
+      "replyPosted": "Your reply has been posted",
+      "replyUpdated": "Your reply has been updated",
+      "replyDeleted": "Your reply has been removed",
+      "postPublished": "Your post is now live",
+      "replyPostFailed": "We couldn't post your reply right now",
+      "replyUpdateFailed": "We couldn't update your reply right now",
+      "replyDeleteFailed": "We couldn't remove your reply right now",
+      "postPublishFailed": "We couldn't publish your post right now"
     }
   },
   "dashboard": {
@@ -764,6 +775,14 @@
           }
         ]
       }
+    },
+    "toasts": {
+      "created": "Your goal has been created",
+      "updated": "Your goal has been updated",
+      "deleted": "Your goal has been removed",
+      "createFailed": "We couldn't create your goal right now",
+      "updateFailed": "We couldn't update your goal right now",
+      "deleteFailed": "We couldn't remove your goal right now"
     }
   },
   "settings": {
@@ -1019,15 +1038,16 @@
         "reloadPage": "Reload Page"
       },
       "toasts": {
-        "checkInSaved": "Check-in saved successfully",
-        "checkInUpdated": "Check-in updated successfully",
-        "checkInError": "Unable to save your check-in right now. Please try again.",
-        "checkInDeleted": "Check-in deleted successfully"
+        "checkInSaved": "Your daily update has been saved",
+        "checkInUpdated": "Your daily update has been updated",
+        "checkInError": "We couldn't save your daily update right now. Please try again.",
+        "checkInDeleted": "Your daily update has been removed"
       }
     },
     "shared": {
       "download": "Download",
-      "share": "Share"
+      "share": "Share",
+      "retry": "Retry"
     },
     "errors": {
       "errorPageTexts": {

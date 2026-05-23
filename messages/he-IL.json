@@ -88,6 +88,7 @@
     "pageSubtitle": "רגע לעצור, להקשיב לעצמך ולשים לב איך עובר עליך היום.",
     "submitButton": "שמור עדכון יומי",
     "submittingButton": "שומר את העדכון...",
+    "submittedFeedback": "העדכון נשמר! מעביר אותך לדף ההתקדמות...",
     "mood": {
       "label": "מצב רוח",
       "min": "נמוך מאוד",
@@ -248,6 +249,16 @@
         "wellness": "מיינדפולנס, שגרות בריאות ורווחה רגשית",
         "discussion": "שיחות כלליות סביב תהליך ההחלמה"
       }
+    },
+    "toasts": {
+      "replyPosted": "התגובה פורסמה",
+      "replyUpdated": "התגובה עודכנה",
+      "replyDeleted": "התגובה הוסרה",
+      "postPublished": "הפוסט פורסם",
+      "replyPostFailed": "לא הצלחנו לפרסם את התגובה כרגע",
+      "replyUpdateFailed": "לא הצלחנו לעדכן את התגובה כרגע",
+      "replyDeleteFailed": "לא הצלחנו להסיר את התגובה כרגע",
+      "postPublishFailed": "לא הצלחנו לפרסם את הפוסט כרגע"
     }
   },
   "dashboard": {
@@ -757,6 +768,14 @@
           }
         ]
       }
+    },
+    "toasts": {
+      "created": "היעד נוצר",
+      "updated": "היעד עודכן",
+      "deleted": "היעד הוסר",
+      "createFailed": "לא הצלחנו ליצור את היעד כרגע",
+      "updateFailed": "לא הצלחנו לעדכן את היעד כרגע",
+      "deleteFailed": "לא הצלחנו להסיר את היעד כרגע"
     }
   },
   "settings": {
@@ -1020,7 +1039,8 @@
     },
     "shared": {
       "download": "הורדה",
-      "share": "שיתוף"
+      "share": "שיתוף",
+      "retry": "נסה שוב"
     },
     "errors": {
       "errorPageTexts": {
