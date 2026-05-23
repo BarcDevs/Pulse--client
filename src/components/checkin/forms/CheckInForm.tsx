@@ -38,7 +38,10 @@ export const CheckInForm = ({
         stats
     })
 
-    const { root, ...fieldErrors } = form.formState.errors
+    const {
+        root,
+        ...fieldErrors
+    } = form.formState.errors
     const errorMessage = Object.values(fieldErrors)
         .map(e => Array.isArray(e)
             ? e[0]?.message
