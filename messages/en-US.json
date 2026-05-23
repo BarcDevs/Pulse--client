@@ -381,25 +381,7 @@
     "summary": {
       "title": "Weekly summary",
       "description": "An overview of recent emotional, physical, and behavioral trends.",
-      "exportButton": "Export report",
-      "stats": [
-        {
-          "label": "VITALITY SCORE",
-          "description": "Showing gradual improvement"
-        },
-        {
-          "label": "ENGAGEMENT",
-          "description": "Lower participation compared to your usual activity"
-        },
-        {
-          "label": "SLEEP QUALITY",
-          "description": "Sleep patterns remain relatively consistent"
-        },
-        {
-          "label": "MOOD STABILITY",
-          "description": "Mood patterns appear more balanced recently"
-        }
-      ]
+      "exportButton": "Export report"
     }
   },
   "progress": {
@@ -520,18 +502,7 @@
     "recoveryIdentity": {
       "title": "Your focus",
       "subtitle": "Areas you are currently prioritizing",
-      "empty": "No focus areas added yet",
-      "focusAreas": [
-        {
-          "label": "Pain Management"
-        },
-        {
-          "label": "Mental Clarity"
-        },
-        {
-          "label": "Mindfulness"
-        }
-      ]
+      "empty": "No focus areas added yet"
     },
     "basicInfo": {
       "title": "Basic information",
@@ -549,20 +520,12 @@
       "cancel": "Cancel",
       "emailNote": "Email cannot be changed here.",
       "emailNoteLink": "Change in settings",
-      "fields": [
-        {
-          "label": "Full name"
-        },
-        {
-          "label": "Email address"
-        },
-        {
-          "label": "Date of birth"
-        },
-        {
-          "label": "Primary support contact"
-        }
-      ]
+      "fields": {
+        "fullName": "Full name",
+        "emailAddress": "Email address",
+        "dateOfBirth": "Date of birth",
+        "primarySupportContact": "Primary support contact"
+      }
     },
     "goals": {
       "title": "Active goals",
