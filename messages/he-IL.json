@@ -550,23 +550,7 @@
       ]
     },
     "dailyPreferences": {
-      "title": "שגרות יומיות",
-      "morningRoutine": {
-        "title": "שגרת בוקר",
-        "subtitle": "מתוכנן לשעה {time}",
-        "tags": [
-          "מדיטציה",
-          "מתיחות"
-        ]
-      },
-      "eveningReflection": {
-        "title": "הרהור ערב",
-        "subtitle": "מתוכנן לשעה {time}",
-        "tags": [
-          "כתיבה ביומן",
-          "נשימות"
-        ]
-      }
+      "title": "שגרות יומיות"
     },
     "systemPrivacy": {
       "title": "פרטיות והעדפות",

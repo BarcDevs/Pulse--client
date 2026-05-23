@@ -557,23 +557,7 @@
       ]
     },
     "dailyPreferences": {
-      "title": "Daily activity preferences",
-      "morningRoutine": {
-        "title": "Morning routine",
-        "subtitle": "Scheduled for {time}",
-        "tags": [
-          "Meditation",
-          "Stretch"
-        ]
-      },
-      "eveningReflection": {
-        "title": "Evening reflection",
-        "subtitle": "Scheduled for {time}",
-        "tags": [
-          "Journaling",
-          "Breathwork"
-        ]
-      }
+      "title": "Daily activity preferences"
     },
     "systemPrivacy": {
       "title": "System & privacy",
