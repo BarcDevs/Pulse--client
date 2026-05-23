@@ -28,5 +28,6 @@ export const checkInLocales = {
         placeholder: 'checkIn.journal.placeholder'
     },
     quotes: 'checkIn.quotes',
-    submitError: 'checkIn.submitError'
+    submitError: 'checkIn.submitError',
+    submitPendingMessage: 'checkIn.submitPendingMessage'
 } as const

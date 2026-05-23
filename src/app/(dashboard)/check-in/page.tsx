@@ -5,10 +5,13 @@ import { useTranslations } from 'next-intl'
 import { CheckInForm } from '@/components/checkIn/forms/CheckInForm'
 import { CheckInQuote } from '@/components/checkIn/sections/Quote'
 
+import { useCheckIn } from '@/context/CheckInContext'
+
 import { checkInLocales } from '@/locales/checkInLocales'
 
 const CheckInPage = () => {
     const t = useTranslations()
+    const { isSubmitted } = useCheckIn()
 
     return (
         <div className={'flex-1 p-4 md:p-6'}>
@@ -24,7 +27,14 @@ const CheckInPage = () => {
                     </p>
                 </div>
 
-                <CheckInForm/>
+                {isSubmitted
+                    ? (
+                        <p className={'text-center text-muted-foreground'}>
+                            {t(checkInLocales.submittedFeedback)}
+                        </p>
+                    )
+                    : <CheckInForm/>
+                }
             </div>
         </div>
     )

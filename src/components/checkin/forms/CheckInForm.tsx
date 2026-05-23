@@ -1,6 +1,5 @@
 'use client'
 
-import { useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 
 import type {
@@ -12,10 +11,9 @@ import { Button } from '@/components/ui/button'
 
 import { useCheckInForm } from '@/hooks/forms/useCheckInForm'
 
-import { handleCheckInSubmit } from '@/handlers/actions/checkIn'
+import { useCheckIn } from '@/context/CheckInContext'
 
 import { checkInLocales } from '@/locales/checkInLocales'
-import type { CheckInSchema } from '@/validations/forms/checkInSchema'
 
 import { CheckInActivities } from '../inputs/ActivitySelector'
 import { CheckInSliders } from '../inputs/Sliders'
@@ -31,7 +29,7 @@ export const CheckInForm = ({
     stats = null
 }: CheckInFormProps) => {
     const t = useTranslations()
-    const router = useRouter()
+    const { submitCheckIn } = useCheckIn()
     const {
         form,
         suggestedActivities
@@ -39,17 +37,6 @@ export const CheckInForm = ({
         latestCheckIn,
         stats
     })
-
-    const onSubmit = async (data: CheckInSchema) => {
-        try {
-            await handleCheckInSubmit(data)
-            router.push('/progress')
-        } catch {
-            form.setError('root', {
-                message: t(checkInLocales.submitError)
-            })
-        }
-    }
 
     const { root, ...fieldErrors } = form.formState.errors
     const errorMessage = Object.values(fieldErrors)
@@ -60,7 +47,7 @@ export const CheckInForm = ({
 
     return (
         <form
-            onSubmit={form.handleSubmit(onSubmit)}
+            onSubmit={form.handleSubmit(submitCheckIn)}
             className={'space-y-6'}
         >
             <CheckInSliders
@@ -85,11 +72,8 @@ export const CheckInForm = ({
                 <Button
                     type={'submit'}
                     size={'lg'}
-                    disabled={form.formState.isSubmitting}
                 >
-                    {form.formState.isSubmitting
-                        ? t(checkInLocales.submittingButton)
-                        : t(checkInLocales.submitButton)}
+                    {t(checkInLocales.submitButton)}
                 </Button>
             </div>
         </form>
