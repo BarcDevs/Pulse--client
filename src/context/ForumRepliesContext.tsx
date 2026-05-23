@@ -10,14 +10,12 @@ import {
 
 import { useTranslations } from 'next-intl'
 
-import { toast } from 'sonner'
-
 import { Reply } from '@/types/community'
 
 import { useForumPostMutations } from '@/hooks/mutations/useForumPostMutations'
 import { useForumReplies } from '@/hooks/queries/useForumReplies'
 
-import { secondInMs } from '@/constants/time'
+import { withOptimisticToast } from '@/utils/optimisticToast'
 
 import { useAuth } from '@/context/AuthContext'
 
@@ -96,28 +94,22 @@ const ForumRepliesStateProvider = ({
         }
         setReplies((prev) => [tempReply, ...prev])
 
-        return createReply.mutateAsync(data)
-            .then((reply) => {
+        return withOptimisticToast({
+            action: createReply.mutateAsync(data).then((reply) => {
                 setReplies((prev) => prev.map((r) =>
                     r.id === tempId
                         ? { ...reply, author: tempReply.author }
                         : r
                 ))
-                toast.success(
-                    t(communityLocales.toasts.replyPosted),
-                    { duration: 2.5 * secondInMs }
-                )
-            })
-            .catch(() => {
-                setReplies((prev) => prev.filter((r) => r.id !== tempId))
-                toast.error(t(communityLocales.toasts.replyPostFailed), {
-                    action: {
-                        label: t(globalLocales.shared.retry),
-                        onClick: () => void handleAddReply(data)
-                    },
-                    duration: 5 * secondInMs
-                })
-            })
+            }),
+            successMsg: t(communityLocales.toasts.replyPosted),
+            errorMsg: t(communityLocales.toasts.replyPostFailed),
+            retryLabel: t(globalLocales.shared.retry),
+            onRetry: () => void handleAddReply(data),
+            onError: () => setReplies((prev) =>
+                prev.filter((r) => r.id !== tempId)
+            )
+        })
     }
 
     const handleUpdateReply = (
@@ -129,46 +121,28 @@ const ForumRepliesStateProvider = ({
             r.id === replyId ? { ...r, body: data.body } : r
         ))
 
-        return updateReply.mutateAsync({ replyId, data })
-            .then(() => {
-                toast.success(
-                    t(communityLocales.toasts.replyUpdated),
-                    { duration: 2.5 * secondInMs }
-                )
-            })
-            .catch(() => {
-                setReplies(snapshot)
-                toast.error(t(communityLocales.toasts.replyUpdateFailed), {
-                    action: {
-                        label: t(globalLocales.shared.retry),
-                        onClick: () => void handleUpdateReply(replyId, data)
-                    },
-                    duration: 5 * secondInMs
-                })
-            })
+        return withOptimisticToast({
+            action: updateReply.mutateAsync({ replyId, data }),
+            successMsg: t(communityLocales.toasts.replyUpdated),
+            errorMsg: t(communityLocales.toasts.replyUpdateFailed),
+            retryLabel: t(globalLocales.shared.retry),
+            onRetry: () => void handleUpdateReply(replyId, data),
+            onError: () => setReplies(snapshot)
+        })
     }
 
     const handleDeleteReply = (replyId: string): Promise<void> => {
         const snapshot = replies
         setReplies((prev) => prev.filter((r) => r.id !== replyId))
 
-        return deleteReply.mutateAsync(replyId)
-            .then(() => {
-                toast.success(
-                    t(communityLocales.toasts.replyDeleted),
-                    { duration: 2.5 * secondInMs }
-                )
-            })
-            .catch(() => {
-                setReplies(snapshot)
-                toast.error(t(communityLocales.toasts.replyDeleteFailed), {
-                    action: {
-                        label: t(globalLocales.shared.retry),
-                        onClick: () => void handleDeleteReply(replyId)
-                    },
-                    duration: 5 * secondInMs
-                })
-            })
+        return withOptimisticToast({
+            action: deleteReply.mutateAsync(replyId),
+            successMsg: t(communityLocales.toasts.replyDeleted),
+            errorMsg: t(communityLocales.toasts.replyDeleteFailed),
+            retryLabel: t(globalLocales.shared.retry),
+            onRetry: () => void handleDeleteReply(replyId),
+            onError: () => setReplies(snapshot)
+        })
     }
 
     const value: ForumRepliesContextType = {

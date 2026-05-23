@@ -7,11 +7,9 @@ import {
     useQueryClient
 } from '@tanstack/react-query'
 
-import type { Profile } from '@/types/profile'
-
 import { useProfile } from '@/hooks/queries/useProfile'
 
-import { authQueryKeys } from '@/constants/queryKeys'
+import { profileToggleCallbacks } from '@/utils/mutationHelpers'
 
 import { likeReply as likeReplyApi } from '@/api/forum'
 
@@ -34,47 +32,24 @@ export const useReplyInteractions = ({
     const [likeCount, setLikeCount] = useState(initialLikes)
     const originalCountRef = useRef(initialLikes)
 
+    const likeCallbacks = profileToggleCallbacks(
+        queryClient,
+        'likedReplyIds',
+        replyId
+    )
+
     const likeMutation = useMutation({
         mutationFn: () => likeReplyApi(postId, replyId),
-        onMutate: async () => {
-            await queryClient.cancelQueries({
-                queryKey: authQueryKeys.profile
-            })
-            const snapshot = queryClient.getQueryData<Profile>(
-                authQueryKeys.profile
-            )
-            queryClient.setQueryData<Profile>(
-                authQueryKeys.profile,
-                (old) => {
-                    if (!old) return old
-                    const isLiked = old.likedReplyIds.includes(replyId)
-                    return {
-                        ...old,
-                        likedReplyIds: isLiked
-                            ? old.likedReplyIds.filter((id) => id !== replyId)
-                            : [...old.likedReplyIds, replyId]
-                    }
-                }
-            )
-            return { snapshot }
-        },
+        onMutate: likeCallbacks.onMutate,
         onSuccess: (data) => {
             setLikeCount(data.likes)
         },
-        onError: (_, __, context) => {
-            if (context?.snapshot) {
-                queryClient.setQueryData(
-                    authQueryKeys.profile,
-                    context.snapshot
-                )
-            }
+        onError: (err, vars, context) => {
+            // eslint-disable-next-line custom-rules/enforce-function-call-breaking
+            likeCallbacks.onError(err, vars, context)
             setLikeCount(originalCountRef.current)
         },
-        onSettled: () => {
-            void queryClient.invalidateQueries({
-                queryKey: authQueryKeys.profile
-            })
-        }
+        onSettled: likeCallbacks.onSettled
     })
 
     const toggleLike = () => {

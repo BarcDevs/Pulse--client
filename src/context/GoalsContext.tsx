@@ -11,8 +11,6 @@ import {
 
 import { useTranslations } from 'next-intl'
 
-import { toast } from 'sonner'
-
 import {
     Goal,
     GoalCategory,
@@ -22,21 +20,29 @@ import {
 import { useGoalMutations } from '@/hooks/mutations/useGoalMutations'
 import { useGoals } from '@/hooks/queries/useGoals'
 
-import { secondInMs } from '@/constants/time'
+import { withOptimisticToast } from '@/utils/optimisticToast'
 
 import { globalLocales } from '@/locales/globalLocales'
 import { goalsLocales } from '@/locales/goalsLocales'
 import { GoalSchema } from '@/validations/forms/goalSchema'
 
+// todo - make reusable OptimisticAction type
 type OptimisticAction =
-    | { type: 'add'; goal: Goal }
-    | { type: 'replace'
-        tempId: string
-        goal: Goal }
-    | { type: 'update'
-        goalId: string
-        partial: Partial<Goal> }
-    | { type: 'delete'; goalId: string }
+    | {
+    type: 'add'
+    goal: Goal
+} | {
+    type: 'replace'
+    tempId: string
+    goal: Goal
+} | {
+    type: 'update'
+    goalId: string
+    partial: Partial<Goal>
+} | {
+    type: 'delete'
+    goalId: string
+}
 
 type GoalsContextType = {
     goals: Goal[]
@@ -51,7 +57,8 @@ type GoalsContextType = {
     deleteGoal: (goalId: string) => void
 }
 
-export const GoalsContext = createContext<GoalsContextType | null>(null)
+export const GoalsContext =
+    createContext<GoalsContextType | null>(null)
 
 type GoalsStateProviderProps = {
     children: ReactNode
@@ -114,78 +121,68 @@ const GoalsStateProvider = ({
                 createdAt: new Date().toISOString(),
                 updatedAt: new Date().toISOString()
             }
-            addOptimistic({ type: 'add', goal: tempGoal })
-            try {
-                const realGoal = await createGoal.mutateAsync(data)
-                addOptimistic({
-                    type: 'replace',
-                    tempId,
-                    goal: realGoal
-                })
-                toast.success(
-                    t(goalsLocales.toasts.created),
-                    { duration: 2.5 * secondInMs }
-                )
-            } catch {
-                toast.error(t(goalsLocales.toasts.createFailed), {
-                    action: {
-                        label: t(globalLocales.shared.retry),
-                        onClick: () => handleAddGoal(data)
-                    },
-                    duration: 5 * secondInMs
-                })
-            }
+            addOptimistic({
+                type: 'add',
+                goal: tempGoal
+            })
+            await withOptimisticToast({
+                action: createGoal.mutateAsync(data).then((realGoal) => {
+                    addOptimistic({
+                        type: 'replace',
+                        tempId,
+                        goal: realGoal
+                    })
+                }),
+                successMsg: t(goalsLocales.toasts.created),
+                errorMsg: t(goalsLocales.toasts.createFailed),
+                retryLabel: t(globalLocales.shared.retry),
+                onRetry: () => handleAddGoal(data)
+            })
         })
     }
 
-    const handleUpdateGoal = (goalId: string, data: Partial<GoalSchema>) => {
+    const handleUpdateGoal = (
+        goalId: string,
+        data: Partial<GoalSchema>
+    ) => {
         startTransition(async () => {
             addOptimistic({
                 type: 'update',
                 goalId,
                 partial: data
             })
-            try {
-                const realGoal = await updateGoal.mutateAsync({ goalId, data })
-                addOptimistic({
-                    type: 'update',
+            await withOptimisticToast({
+                action: updateGoal.mutateAsync({
                     goalId,
-                    partial: realGoal
-                })
-                toast.success(
-                    t(goalsLocales.toasts.updated),
-                    { duration: 2.5 * secondInMs }
-                )
-            } catch {
-                toast.error(t(goalsLocales.toasts.updateFailed), {
-                    action: {
-                        label: t(globalLocales.shared.retry),
-                        onClick: () => handleUpdateGoal(goalId, data)
-                    },
-                    duration: 5 * secondInMs
-                })
-            }
+                    data
+                }).then((realGoal) => {
+                    addOptimistic({
+                        type: 'update',
+                        goalId,
+                        partial: realGoal
+                    })
+                }),
+                successMsg: t(goalsLocales.toasts.updated),
+                errorMsg: t(goalsLocales.toasts.updateFailed),
+                retryLabel: t(globalLocales.shared.retry),
+                onRetry: () => handleUpdateGoal(goalId, data)
+            })
         })
     }
 
     const handleDeleteGoal = (goalId: string) => {
         startTransition(async () => {
-            addOptimistic({ type: 'delete', goalId })
-            try {
-                await deleteGoal.mutateAsync(goalId)
-                toast.success(
-                    t(goalsLocales.toasts.deleted),
-                    { duration: 2.5 * secondInMs }
-                )
-            } catch {
-                toast.error(t(goalsLocales.toasts.deleteFailed), {
-                    action: {
-                        label: t(globalLocales.shared.retry),
-                        onClick: () => handleDeleteGoal(goalId)
-                    },
-                    duration: 5 * secondInMs
-                })
-            }
+            addOptimistic({
+                type: 'delete',
+                goalId
+            })
+            await withOptimisticToast({
+                action: deleteGoal.mutateAsync(goalId),
+                successMsg: t(goalsLocales.toasts.deleted),
+                errorMsg: t(goalsLocales.toasts.deleteFailed),
+                retryLabel: t(globalLocales.shared.retry),
+                onRetry: () => handleDeleteGoal(goalId)
+            })
         })
     }
 
@@ -210,7 +207,9 @@ type GoalsProviderProps = {
     children: ReactNode
 }
 
-export const GoalsProvider = ({ children }: GoalsProviderProps) => {
+export const GoalsProvider = ({
+    children
+}: GoalsProviderProps) => {
     const {
         data,
         isLoading,
