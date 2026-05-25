@@ -59,17 +59,20 @@ export const TagInput = ({
         const normalized = slug.toLowerCase().trim()
         if (
             !normalized
-            || normalized.length < config.tags.minLength
-            || normalized.length > config.tags.maxLength
             || value.includes(normalized)
             || value.length >= config.tags.max
         ) return
-        if (!availableTags
-            .some(t => t.slug === normalized)) {
+        const match = availableTags.find(t =>
+            t.slug === normalized
+            || t.label?.[lang]?.toLowerCase() === normalized
+            || t.label?.en?.toLowerCase() === normalized
+        )
+        if (!match) {
             reportUnknownTag(normalized)
             return
         }
-        onChangeAction([...value, normalized])
+        if (value.includes(match.slug)) return
+        onChangeAction([...value, match.slug])
         setInput('')
     }
 
@@ -98,12 +101,17 @@ export const TagInput = ({
                 aria-invalid={!!error}
                 className={'tag-input-box flex flex-wrap gap-1.5 p-2 border border-input rounded-md bg-background min-h-9'}
             >
-                {value.map(tag => (
+                {value.map(tag => {
+                    const found = availableTags
+                        .find(t => t.slug === tag)
+                    const displayName = found
+                        ? getTagName(found, lang) : tag
+                    return (
                     <Badge
                         key={tag}
                         className={'gap-1 pr-1 bg-primary-light text-primary hover:bg-primary-light'}
                     >
-                        {tag}
+                        {displayName}
                         <Button
                             type={'button'}
                             variant={'ghost'}
@@ -114,14 +122,17 @@ export const TagInput = ({
                             <X className={'h-3 w-3'}/>
                         </Button>
                     </Badge>
-                ))}
+                    )
+                })}
                 {value.length < config.tags.max && (
                     <input
                         value={input}
                         onChange={e => setInput(e.target.value)}
                         onBlur={onBlurAction}
                         onKeyDown={handleKeyDown}
-                        placeholder={value.length === 0 ? placeholder : t(communityLocales.postForm.tagsPlaceholderMore)}
+                        placeholder={value.length === 0
+                            ? placeholder
+                            : t(communityLocales.postForm.tagsPlaceholderMore)}
                         className={'flex-1 min-w-24 outline-none text-sm bg-transparent'}
                     />
                 )}
