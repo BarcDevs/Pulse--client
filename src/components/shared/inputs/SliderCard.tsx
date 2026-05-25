@@ -60,6 +60,7 @@ export const SliderCard = ({
             <Slider
                 value={[value]}
                 onValueChange={(values) => onChange(values[0])}
+                min={checkInFormSchema.moodScore.min}
                 max={checkInFormSchema.moodScore.max}
                 step={1}
                 className={'w-full'}
