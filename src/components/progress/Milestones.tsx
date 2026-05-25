@@ -39,14 +39,16 @@ export const ProgressMilestones = () => {
                 <CardTitle className={'text-lg font-semibold'}>
                     {t(progressLocales.milestones.title)}
                 </CardTitle>
-                <Link
-                    href={ROUTES.RECOVERY_GOALS}
-                    className={'text-sm text-muted-foreground transition-colors hover:text-foreground'}
-                >
-                    {t(progressLocales.milestones.seeAll, {
-                        count: activeGoals.length
-                    })}
-                </Link>
+                {activeGoals.length > topGoalsCount && (
+                    <Link
+                        href={ROUTES.RECOVERY_GOALS}
+                        className={'text-sm text-muted-foreground transition-colors hover:text-foreground'}
+                    >
+                        {t(progressLocales.milestones.seeAll, {
+                            count: activeGoals.length
+                        })}
+                    </Link>
+                )}
             </CardHeader>
             <CardContent>
                 {isLoading ? (
