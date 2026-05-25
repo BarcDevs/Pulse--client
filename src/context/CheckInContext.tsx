@@ -131,8 +131,8 @@ export const CheckInProvider = ({
 
     const submitCheckIn = (data: CheckInSchema) => {
         const statsKey = [...checkInQueryKeys.stats, 'weekly'] as const
-        const historyKey14 = [...checkInQueryKeys.all, 'history', 14, locale] as const
-        const historyKey35 = [...checkInQueryKeys.all, 'history', 35, locale] as const
+        const historyKey14 = [...checkInQueryKeys.all, 'history', 14, dateFnsLocale?.code] as const
+        const historyKey35 = [...checkInQueryKeys.all, 'history', 35, dateFnsLocale?.code] as const
 
         const now = new Date()
         const newPoint: MoodPainSeriesPoint = {
