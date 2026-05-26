@@ -21,4 +21,5 @@ export const ROUTE_IDS = {
     FORGOT_PASSWORD: '/(auth)/forgot-password'
 } as const
 
+
 export type RouteKey = keyof typeof ROUTES
