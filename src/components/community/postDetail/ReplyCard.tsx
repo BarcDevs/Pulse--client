@@ -74,9 +74,11 @@ export const ReplyCard = ({
         authorUser.lastName
     )
 
-    const handleUpdate = async (data: PostFormSchema): Promise<void> => {
-        await onUpdateAction(reply.id, data)
+    const handleUpdate = (
+        data: PostFormSchema
+    ): Promise<void> => {
         setIsEditing(false)
+        return onUpdateAction(reply.id, data)
     }
 
     return (
