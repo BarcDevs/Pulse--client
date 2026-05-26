@@ -144,7 +144,7 @@ export const PostDetailContent = () => {
                 {t(communityLocales.postDetail.backToCommunity)}
             </Link>
 
-            <div className={'rounded-2xl bg-surface-card shadow-sm overflow-hidden'}>
+            <div className={'relative rounded-2xl bg-surface-card shadow-sm overflow-hidden'}>
                 {isEditingPost && post ? (
                     <PostForm
                         isReply={false}

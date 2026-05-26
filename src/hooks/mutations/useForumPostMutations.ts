@@ -55,7 +55,7 @@ export const useForumPostMutations = ({
                 body: data.body,
                 createdAt: new Date(),
                 updatedAt: null,
-                authorId: user?.id || ''
+                authorId: user?.profile?.id || ''
             }
             return createReply(postId, reply)
         },
@@ -79,7 +79,7 @@ export const useForumPostMutations = ({
                 body: data.body,
                 createdAt: new Date(),
                 updatedAt: new Date(),
-                authorId: user?.id || ''
+                authorId: user?.profile?.id || ''
             }
             return updateReply(
                 postId,

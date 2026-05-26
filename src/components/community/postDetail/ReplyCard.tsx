@@ -116,6 +116,7 @@ export const ReplyCard = ({
                             isLoading={isDeleting}
                             editLabel={t(communityLocales.postActions.editReply)}
                             deleteLabel={t(communityLocales.postActions.deleteReply)}
+                            cancelLabel={t(communityLocales.postForm.cancel)}
                             confirmTitle={t(communityLocales.confirmations.deleteReplyTitle)}
                             confirmDescription={t(communityLocales.confirmations.deleteReplyDescription)}
                         />

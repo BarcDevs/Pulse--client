@@ -112,7 +112,7 @@ export const RepliesSection = ({
                 <RepliesList
                     replies={replies}
                     postId={postId}
-                    currentUserId={user?.id}
+                    currentUserId={user?.profile?.id}
                     onDeleteReplyAction={deleteReply}
                     onUpdateReplyAction={updateReply}
                     isDeleting={isPending}

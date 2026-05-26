@@ -51,7 +51,7 @@ export const PostDetailActions = ({
     })
 
     const isPostOwner = post
-        ? user?.id === post.authorId
+        ? user?.profile?.id === post.authorId
         : false
 
     const handleDeletePost = async () => {
@@ -68,38 +68,39 @@ export const PostDetailActions = ({
         : t(communityLocales.posts.save)
 
     return (
-        <div className={'flex items-center justify-between px-7 py-4 border-t border-border'}>
-            <div className={'flex items-center gap-1'}>
-                <PostActionButton
-                    icon={Heart}
-                    text={solidarityText}
-                    count={likeCount}
-                    isActive={liked}
-                    activeClassName={'bg-rose-100 text-rose-600 hover:bg-rose-100 hover:text-rose-600 rounded-full px-3'}
-                    onClick={toggleLike}
-                />
-                <PostActionButton
-                    icon={Share2}
-                    text={t(communityLocales.postActions.share)}
-                    onClick={sharePost}
-                />
-                <PostActionButton
-                    icon={Bookmark}
-                    text={saveText}
-                    isActive={saved}
-                    onClick={toggleSave}
-                />
-            </div>
+        <div className={'flex items-center gap-1 px-7 py-4 border-t border-border'}>
+            <PostActionButton
+                icon={Heart}
+                text={solidarityText}
+                count={likeCount}
+                isActive={liked}
+                activeClassName={'bg-rose-100 text-rose-600 hover:bg-rose-100 hover:text-rose-600 rounded-full px-3'}
+                onClick={toggleLike}
+            />
+            <PostActionButton
+                icon={Share2}
+                text={t(communityLocales.postActions.share)}
+                onClick={sharePost}
+            />
+            <PostActionButton
+                icon={Bookmark}
+                text={saveText}
+                isActive={saved}
+                onClick={toggleSave}
+            />
             {isPostOwner && (
-                <ActionsMenu
-                    onEditAction={() => setIsEditingPost(true)}
-                    onDeleteAction={handleDeletePost}
-                    isLoading={deletePost.isPending}
-                    editLabel={t(communityLocales.postActions.editPost)}
-                    deleteLabel={t(communityLocales.postActions.deletePost)}
-                    confirmTitle={t(communityLocales.confirmations.deletePostTitle)}
-                    confirmDescription={t(communityLocales.confirmations.deletePostDescription)}
-                />
+                <div className={'absolute top-3 right-3'}>
+                    <ActionsMenu
+                        onEditAction={() => setIsEditingPost(true)}
+                        onDeleteAction={handleDeletePost}
+                        isLoading={deletePost.isPending}
+                        editLabel={t(communityLocales.postActions.editPost)}
+                        deleteLabel={t(communityLocales.postActions.deletePost)}
+                        cancelLabel={t(communityLocales.postForm.cancel)}
+                        confirmTitle={t(communityLocales.confirmations.deletePostTitle)}
+                        confirmDescription={t(communityLocales.confirmations.deletePostDescription)}
+                    />
+                </div>
             )}
         </div>
     )

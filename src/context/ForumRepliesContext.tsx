@@ -80,9 +80,9 @@ const ForumRepliesStateProvider = ({
             body: data.body,
             createdAt: new Date(),
             updatedAt: null,
-            authorId: user?.id ?? '',
+            authorId: user?.profile?.id ?? '',
             author: user ? {
-                id: user.id,
+                id: user.profile?.id ?? '',
                 image: null,
                 user: {
                     id: user.id,
