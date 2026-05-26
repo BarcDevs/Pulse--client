@@ -10,7 +10,7 @@ import {
     GoalStatus
 } from '@/types/goals'
 
-import { ActionsMenu, type AdditionalAction } from '@/components/shared/ActionsMenu'
+import { ActionsMenu } from '@/components/shared/ActionsMenu'
 import { Badge } from '@/components/ui/badge'
 
 import { getCategoryColor } from '@/lib/goals'
