@@ -1,6 +1,6 @@
 {
   "name": "heal-ease",
-  "version": "0.NaN.1",
+  "version": "0.9.5",
   "type": "module",
   "private": true,
   "scripts": {
