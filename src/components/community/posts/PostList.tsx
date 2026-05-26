@@ -27,6 +27,7 @@ import { communityLocales } from '@/locales/communityLocales'
 import { PostItem } from './postList/PostItem'
 import { PostTagFilterBanner } from './postList/PostTagFilterBanner'
 import { PostListCategoryFilter } from './PostListCategoryFilter'
+import { PostListSkeletons } from './PostListSkeletons'
 
 // todo - move to config
 const PAGE_SIZE = 20
@@ -67,20 +68,20 @@ export const PostList = ({
     const lastFetchedIdRef = useRef<string | null>(null)
 
     const query = useMemo(
-        () => ({
-            limit: PAGE_SIZE,
-            page,
-            filter: activeFilter,
-            ...(tag ? { tag } : {}),
-            ...(
-                category
-                    ? { category }
-                    : {}
-            ),
-            ...(
-                search ? { search } : {}
-            )
-        }),
+        () => {
+            const q: Record<
+                string,
+                string | number
+            > = {
+                limit: PAGE_SIZE,
+                page,
+                filter: activeFilter
+            }
+            if (tag) q.tag = tag
+            if (category) q.category = category
+            if (search) q.search = search
+            return q
+        },
         [
             page,
             tag,
@@ -233,7 +234,7 @@ export const PostList = ({
                 ))}
                 {isLoading
                 && allPosts.length === 0 ? (
-                    <EmptyState message={t(communityLocales.posts.loading)}/>
+                    <PostListSkeletons/>
                 ) : isError ? (
                     <div className={'p-6 flex--center'}>
                         <ErrorDisplay error={error}/>
@@ -257,11 +258,7 @@ export const PostList = ({
                         {hasMore && (
                             <div ref={sentinelRef}>
                                 {isFetching && (
-                                    <EmptyState
-                                        message={t(
-                                            communityLocales.posts.loading
-                                        )}
-                                    />
+                                    <PostListSkeletons count={2}/>
                                 )}
                             </div>
                         )}

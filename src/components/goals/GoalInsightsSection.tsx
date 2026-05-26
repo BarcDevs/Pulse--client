@@ -7,7 +7,6 @@ import { Sparkles } from 'lucide-react'
 import { CheckInInsight } from '@/types/checkIn'
 
 import { EmptyState } from '@/components/shared/EmptyState'
-import { Skeleton } from '@/components/ui/skeleton'
 
 import { useCheckIns } from '@/hooks/queries/useCheckIns'
 
@@ -15,6 +14,10 @@ import { getInsightColor } from '@/lib/milestones'
 import { cn } from '@/lib/utils'
 
 import { goalsLocales } from '@/locales/goalsLocales'
+
+import {
+    GoalInsightsSectionSkeleton
+} from './GoalInsightsSectionSkeleton'
 
 export const GoalInsightsSection = () => {
     const t = useTranslations()
@@ -31,9 +34,7 @@ export const GoalInsightsSection = () => {
     return (
         <>
             {checkInsLoading && (
-                <div className={'bg-white p-6 rounded-xl shadow-sm border border-slate-100'}>
-                    <Skeleton className={'h-32'}/>
-                </div>
+                <GoalInsightsSectionSkeleton/>
             )}
 
             {!checkInsLoading && checkInsError && (

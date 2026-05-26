@@ -18,6 +18,7 @@ import { useCheckInChartData } from '@/hooks/queries/useCheckInChartData'
 
 import { progressLocales } from '@/locales/progressLocales'
 
+import { ChartCardSkeleton } from './ChartCardSkeleton'
 import { ChartTabs } from './ChartTabs'
 import { ChartSeries, TrendChart } from './TrendChart'
 
@@ -55,11 +56,7 @@ export const ChartCard = ({ title, series }: ChartCardProps) => {
                 />
             </CardHeader>
             <CardContent className={'px-4 pb-3 pt-2'}>
-                {isLoading && (
-                    <div className={'h-60 flex items-center justify-center text-sm text-muted-foreground'}>
-                        {t(progressLocales.charts.status.loading)}
-                    </div>
-                )}
+                {isLoading && <ChartCardSkeleton/>}
                 {isError && (
                     <div className={'h-60 flex items-center justify-center text-sm text-muted-foreground'}>
                         {t(progressLocales.charts.status.loadError)}

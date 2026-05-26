@@ -7,16 +7,22 @@ import { useTranslations } from 'next-intl'
 import { isAxiosError } from 'axios'
 import { ArrowLeft } from 'lucide-react'
 
-import { PostDetailActions }
-    from '@/components/community/postDetail/PostDetailActions'
-import { PostDetailCard }
-    from '@/components/community/postDetail/PostDetailCard'
-import { PostNotFound }
-    from '@/components/community/postDetail/PostNotFound'
-import { RepliesSection }
-    from '@/components/community/postDetail/RepliesSection'
+import {
+    PostDetailActions
+} from '@/components/community/postDetail/PostDetailActions'
+import {
+    PostDetailCard
+} from '@/components/community/postDetail/PostDetailCard'
+import {
+    PostDetailSkeletons
+} from '@/components/community/postDetail/PostDetailSkeletons'
+import {
+    PostNotFound
+} from '@/components/community/postDetail/PostNotFound'
+import {
+    RepliesSection
+} from '@/components/community/postDetail/RepliesSection'
 import { ErrorDisplay } from '@/components/shared/ErrorDisplay'
-import { Skeleton } from '@/components/ui/skeleton'
 
 import { useForumPost } from '@/hooks/queries/useForumPost'
 import { useDateLocale } from '@/hooks/ui/useDateLocale'
@@ -41,15 +47,7 @@ export const PostDetailContent = () => {
         error: postError
     } = useForumPost(postId)
 
-    if (isPostLoading) {
-        return (
-            <div className={'space-y-6'}>
-                <Skeleton className={'h-48 rounded-2xl'}/>
-                <Skeleton className={'h-32 rounded-2xl'}/>
-                <Skeleton className={'h-96 rounded-2xl'}/>
-            </div>
-        )
-    }
+    if (isPostLoading) return <PostDetailSkeletons/>
 
     if (isPostError) {
         const isNotFound =
@@ -72,8 +70,13 @@ export const PostDetailContent = () => {
     const timeAgo = post
         ? toRelative(new Date(post.createdAt), dateLocale) : ''
 
-    const handleTagSelect = (tag: string | null) => {
-        router.push(tag ? `/community?tag=${encodeURIComponent(tag)}` : '/community')
+    const handleTagSelect = (
+        tag: string | null
+    ) => {
+        const url = tag
+            ? `/community?tag=${encodeURIComponent(tag)}`
+            : '/community'
+        router.push(url)
     }
 
     return (

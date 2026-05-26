@@ -97,7 +97,6 @@ export const progressLocales = {
         },
         status: {
             loadError: 'progress.charts.status.loadError',
-            loading: 'progress.charts.status.loading',
             noCheckIn: 'progress.charts.status.noCheckIn',
             noCheckInTooltip: 'progress.charts.status.noCheckInTooltip'
         }

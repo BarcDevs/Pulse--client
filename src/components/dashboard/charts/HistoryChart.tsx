@@ -24,6 +24,8 @@ import { useCheckInChartData } from '@/hooks/queries/useCheckInChartData'
 import { dashboardLocales } from '@/locales/dashboardLocales'
 import { progressLocales } from '@/locales/progressLocales'
 
+import { HistoryChartSkeleton } from './HistoryChartSkeleton'
+
 export const DashboardHistoryChart = () => {
     const t = useTranslations()
     const [period, setPeriod] = useState<'weekly' | 'monthly'>('weekly')
@@ -84,11 +86,7 @@ export const DashboardHistoryChart = () => {
                 </Tabs>
             </CardHeader>
             <CardContent>
-                {isLoading && (
-                    <div className={'h-60 w-full flex items-center justify-center text-muted-foreground'}>
-                        {t(progressLocales.charts.status.loading)}
-                    </div>
-                )}
+                {isLoading && <HistoryChartSkeleton/>}
                 {isError && (
                     <div className={'h-60 flex items-center justify-center text-muted-foreground'}>
                         {t(progressLocales.charts.status.loadError)}
