@@ -148,6 +148,7 @@
   },
   "community": {
     "posts": {
+      "edited": "(edited)",
       "filterLabels": {
         "newest": "Newest",
         "popular": "Popular",
@@ -191,7 +192,11 @@
     },
     "confirmations": {
       "deletePost": "Are you sure you want to remove this post?",
-      "deleteReply": "Are you sure you want to remove this reply?"
+      "deleteReply": "Are you sure you want to remove this reply?",
+      "deletePostTitle": "Delete this post?",
+      "deletePostDescription": "This will permanently remove your post and all of its replies. This action cannot be undone.",
+      "deleteReplyTitle": "Delete this reply?",
+      "deleteReplyDescription": "This will permanently remove your reply. This action cannot be undone."
     },
     "postDetail": {
       "replies": "Replies",
@@ -211,7 +216,11 @@
       "solidarityActive": "Showed support",
       "reply": "Reply",
       "share": "Share",
-      "linkCopied": "Link copied to clipboard!"
+      "linkCopied": "Link copied to clipboard!",
+      "editPost": "Edit post",
+      "deletePost": "Delete post",
+      "editReply": "Edit reply",
+      "deleteReply": "Delete reply"
     },
     "postForm": {
       "writeReply": "Write a reply",
@@ -219,6 +228,7 @@
       "createPostSubtitle": "Your post will be visible to the HealEase community. Keep the space supportive and avoid medical advice.",
       "content": "Content",
       "cancel": "Cancel",
+      "saveChanges": "Save changes",
       "sendReply": "Send reply",
       "title": "Title",
       "titlePlaceholder": "Give your post a clear title",
@@ -265,10 +275,12 @@
       "replyUpdated": "Your reply has been updated",
       "replyDeleted": "Your reply has been removed",
       "postPublished": "Your post is now live",
+      "postUpdated": "Your post has been updated",
       "replyPostFailed": "We couldn't post your reply right now",
       "replyUpdateFailed": "We couldn't update your reply right now",
       "replyDeleteFailed": "We couldn't remove your reply right now",
-      "postPublishFailed": "We couldn't publish your post right now"
+      "postPublishFailed": "We couldn't publish your post right now",
+      "postUpdateFailed": "We couldn't update your post right now"
     }
   },
   "dashboard": {

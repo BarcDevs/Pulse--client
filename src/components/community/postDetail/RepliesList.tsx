@@ -4,11 +4,17 @@ import { Reply } from '@/types/community'
 
 import { ReplyCard } from '@/components/community/postDetail/ReplyCard'
 
+import { PostFormSchema } from '@/validations/forms/postFormSchema'
+
 type RepliesListProps = {
     replies: Reply[]
     postId: string
     currentUserId?: string
     onDeleteReplyAction: (replyId: string) => Promise<void>
+    onUpdateReplyAction: (
+        replyId: string,
+        data: PostFormSchema
+    ) => Promise<void>
     isDeleting: boolean
 }
 
@@ -17,6 +23,7 @@ export const RepliesList = ({
     postId,
     currentUserId,
     onDeleteReplyAction,
+    onUpdateReplyAction,
     isDeleting
 }: RepliesListProps) => (
     <div className={'space-y-3'}>
@@ -28,6 +35,7 @@ export const RepliesList = ({
                     postId={postId}
                     currentUserId={currentUserId}
                     onDeleteAction={() => onDeleteReplyAction(reply.id)}
+                    onUpdateAction={onUpdateReplyAction}
                     isDeleting={isDeleting}
                 />
             )

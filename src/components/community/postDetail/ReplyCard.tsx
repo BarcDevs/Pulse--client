@@ -1,14 +1,18 @@
 'use client'
 
+import { useState } from 'react'
+
 import { useTranslations } from 'next-intl'
 
 import { Heart } from 'lucide-react'
 
 import { Reply } from '@/types/community'
 
+import { PostForm }
+    from '@/components/community/postForm/PostForm'
 import { PostActionButton }
     from '@/components/community/posts/postList/PostActionButton'
-import { DeleteMenu } from '@/components/shared/DeleteMenu'
+import { ActionsMenu } from '@/components/shared/ActionsMenu'
 import { UserAvatar } from '@/components/shared/UserAvatar'
 
 import { useReplyInteractions } from '@/hooks/mutations/useReplyInteractions'
@@ -20,6 +24,7 @@ import { cn, getUserFallback } from '@/lib/utils'
 import { sanitizeHtml } from '@/utils/sanitizeHtml'
 
 import { communityLocales } from '@/locales/communityLocales'
+import { PostFormSchema } from '@/validations/forms/postFormSchema'
 
 type ReplyCardProps = {
     reply: Reply
@@ -27,6 +32,7 @@ type ReplyCardProps = {
     currentUserId?: string
     isNested?: boolean
     onDeleteAction: () => Promise<void>
+    onUpdateAction: (replyId: string, data: PostFormSchema) => Promise<void>
     isDeleting?: boolean
 }
 
@@ -36,9 +42,11 @@ export const ReplyCard = ({
     currentUserId,
     isNested = false,
     onDeleteAction,
+    onUpdateAction,
     isDeleting = false
 }: ReplyCardProps) => {
     const t = useTranslations()
+    const [isEditing, setIsEditing] = useState(false)
     const isOwner = currentUserId === reply.authorId
     const {
         liked,
@@ -58,12 +66,18 @@ export const ReplyCard = ({
         : 'Unknown'
     const timeAgo = toRelative(new Date(reply.createdAt), dateLocale)
     const sanitizedBody = sanitizeHtml(reply.body)
+    const isEdited = reply.updatedAt !== null
 
     const { author } = reply
     const initials = authorUser && getUserFallback(
         authorUser.firstName,
         authorUser.lastName
     )
+
+    const handleUpdate = async (data: PostFormSchema): Promise<void> => {
+        await onUpdateAction(reply.id, data)
+        setIsEditing(false)
+    }
 
     return (
         <div className={cn(
@@ -87,34 +101,58 @@ export const ReplyCard = ({
                         </span>
                         <span className={'text-xs text-muted-foreground whitespace-nowrap'}>
                             {timeAgo}
+                            {isEdited && (
+                                <span className={'italic ml-1'}>
+                                    {t(communityLocales.posts.edited)}
+                                </span>
+                            )}
                         </span>
                     </div>
 
-                    {isOwner && (
-                        <DeleteMenu
+                    {isOwner && !isEditing && (
+                        <ActionsMenu
+                            onEditAction={() => setIsEditing(true)}
                             onDeleteAction={onDeleteAction}
-                            confirmMessage={t(communityLocales.confirmations.deleteReply)}
                             isLoading={isDeleting}
+                            editLabel={t(communityLocales.postActions.editReply)}
+                            deleteLabel={t(communityLocales.postActions.deleteReply)}
+                            confirmTitle={t(communityLocales.confirmations.deleteReplyTitle)}
+                            confirmDescription={t(communityLocales.confirmations.deleteReplyDescription)}
                         />
                     )}
                 </div>
 
-                <div
-                    className={'prose prose-sm max-w-none text-sm'}
-                    dangerouslySetInnerHTML={{
-                        __html: sanitizedBody
-                    }}
-                />
-
-                <div className={'flex items-center gap-1 mt-2'}>
-                    <PostActionButton
-                        icon={Heart}
-                        count={likeCount}
-                        isActive={liked}
-                        activeClassName={'text-rose-600 hover:text-rose-600'}
-                        onClick={toggleLike}
+                {isEditing ? (
+                    <PostForm
+                        isReply={true}
+                        isOpen={true}
+                        isLoading={isDeleting}
+                        onSubmitAction={handleUpdate}
+                        onCancelAction={() => setIsEditing(false)}
+                        defaultValues={{ body: reply.body }}
+                        submitLabel={t(communityLocales.postForm.saveChanges)}
+                        hideHeader={true}
                     />
-                </div>
+                ) : (
+                    <div
+                        className={'prose prose-sm max-w-none text-sm'}
+                        dangerouslySetInnerHTML={{
+                            __html: sanitizedBody
+                        }}
+                    />
+                )}
+
+                {!isEditing && (
+                    <div className={'flex items-center gap-1 mt-2'}>
+                        <PostActionButton
+                            icon={Heart}
+                            count={likeCount}
+                            isActive={liked}
+                            activeClassName={'text-rose-600 hover:text-rose-600'}
+                            onClick={toggleLike}
+                        />
+                    </div>
+                )}
             </div>
         </div>
     )

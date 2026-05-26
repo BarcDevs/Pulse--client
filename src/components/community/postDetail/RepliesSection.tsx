@@ -49,6 +49,7 @@ export const RepliesSection = ({
         error,
         isPending,
         addReply,
+        updateReply,
         deleteReply
     } = useForumRepliesContext()
 
@@ -113,6 +114,7 @@ export const RepliesSection = ({
                     postId={postId}
                     currentUserId={user?.id}
                     onDeleteReplyAction={deleteReply}
+                    onUpdateReplyAction={updateReply}
                     isDeleting={isPending}
                 />
             )}

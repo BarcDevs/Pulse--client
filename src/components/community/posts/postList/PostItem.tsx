@@ -68,6 +68,7 @@ export const PostItem = ({
                         category={post.category}
                         author={getAuthorName(post)}
                         timeAgo={toRelative(post.createdAt, dateLocale)}
+                        isEdited={post.updatedAt !== null}
                     />
                     <span className={'flex items-center gap-1 text-xs whitespace-nowrap'}>
                         <Heart className={'h-3 w-3 text-rose-400'}/>

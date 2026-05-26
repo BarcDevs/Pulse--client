@@ -32,6 +32,7 @@ export const PostDetailCard = ({
                 category={post.category}
                 author={author}
                 timeAgo={timeAgo}
+                isEdited={post.updatedAt !== null}
             />
             <h1 className={'text-2xl font-bold text-foreground mt-2 mb-4'}>
                 {post.title}

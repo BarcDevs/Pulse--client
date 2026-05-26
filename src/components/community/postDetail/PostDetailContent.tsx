@@ -7,39 +7,53 @@ import { useTranslations } from 'next-intl'
 import { isAxiosError } from 'axios'
 import { ArrowLeft } from 'lucide-react'
 
-import {
-    PostDetailActions
-} from '@/components/community/postDetail/PostDetailActions'
-import {
-    PostDetailCard
-} from '@/components/community/postDetail/PostDetailCard'
-import {
-    PostDetailSkeletons
-} from '@/components/community/postDetail/PostDetailSkeletons'
-import {
-    PostNotFound
-} from '@/components/community/postDetail/PostNotFound'
-import {
-    RepliesSection
-} from '@/components/community/postDetail/RepliesSection'
+import { useQueryClient } from '@tanstack/react-query'
+
+import { Post } from '@/types/community'
+
+import { PostDetailActions }
+    from '@/components/community/postDetail/PostDetailActions'
+import { PostDetailCard }
+    from '@/components/community/postDetail/PostDetailCard'
+import { PostDetailSkeletons }
+    from '@/components/community/postDetail/PostDetailSkeletons'
+import { PostNotFound }
+    from '@/components/community/postDetail/PostNotFound'
+import { RepliesSection }
+    from '@/components/community/postDetail/RepliesSection'
+import { PostForm }
+    from '@/components/community/postForm/PostForm'
 import { ErrorDisplay } from '@/components/shared/ErrorDisplay'
 
+import { useForumPostMutations }
+    from '@/hooks/mutations/useForumPostMutations'
 import { useForumPost } from '@/hooks/queries/useForumPost'
 import { useDateLocale } from '@/hooks/ui/useDateLocale'
 
 import { toRelative } from '@/lib/time'
 
+import { withOptimisticToast } from '@/utils/optimisticToast'
 import { sanitizeHtml } from '@/utils/sanitizeHtml'
+
+import { forumQueryKeys } from '@/constants/queryKeys'
 
 import { usePostDetail } from '@/context/PostDetailContext'
 
 import { communityLocales } from '@/locales/communityLocales'
+import { globalLocales } from '@/locales/globalLocales'
+import { PostFormSchema } from '@/validations/forms/postFormSchema'
 
 export const PostDetailContent = () => {
-    const { postId } = usePostDetail()
+    const {
+        postId,
+        isEditingPost,
+        setIsEditingPost
+    } = usePostDetail()
     const router = useRouter()
     const t = useTranslations()
     const dateLocale = useDateLocale()
+    const queryClient = useQueryClient()
+    const { updatePost } = useForumPostMutations({ postId })
     const {
         data: post,
         isLoading: isPostLoading,
@@ -79,6 +93,47 @@ export const PostDetailContent = () => {
         router.push(url)
     }
 
+    const handleUpdatePost = (data: PostFormSchema): Promise<void> => {
+        const snapshot = queryClient.getQueryData<Post>(
+            forumQueryKeys.post(postId)
+        )
+        queryClient.setQueryData(
+            forumQueryKeys.post(postId),
+            (old: Post | undefined) => {
+                if (!old) return old
+                return {
+                    ...old,
+                    title: data.title ?? old.title,
+                    body: data.body,
+                    category: data.category ?? old.category,
+                    tags: (data.tags ?? []).map(
+                        (slug) => ({ id: slug, slug })
+                    ),
+                    updatedAt: new Date()
+                }
+            }
+        )
+        setIsEditingPost(false)
+
+        return withOptimisticToast({
+            action: updatePost.mutateAsync(data),
+            successMsg: t(communityLocales.toasts.postUpdated),
+            errorMsg: t(communityLocales.toasts.postUpdateFailed),
+            retryLabel: t(globalLocales.shared.retry),
+            onRetry: () => void handleUpdatePost(data),
+            onError: () => {
+                queryClient.setQueryData(
+                    forumQueryKeys.post(postId),
+                    snapshot
+                )
+            }
+        })
+    }
+
+    const tagDefaultValues = post && Array.isArray(post.tags)
+        ? post.tags.map((tag) => tag.slug)
+        : []
+
     return (
         <div className={'space-y-6'}>
             <Link
@@ -90,17 +145,37 @@ export const PostDetailContent = () => {
             </Link>
 
             <div className={'rounded-2xl bg-surface-card shadow-sm overflow-hidden'}>
-                <PostDetailCard
-                    post={post}
-                    sanitizedBody={sanitizedBody}
-                    author={author}
-                    timeAgo={timeAgo}
-                    onTagSelectAction={handleTagSelect}
-                />
-                <PostDetailActions
-                    postId={postId}
-                    post={post}
-                />
+                {isEditingPost && post ? (
+                    <PostForm
+                        isReply={false}
+                        isOpen={true}
+                        isLoading={updatePost.isPending}
+                        onSubmitAction={handleUpdatePost}
+                        onCancelAction={() => setIsEditingPost(false)}
+                        defaultValues={{
+                            title: post.title,
+                            category: post.category,
+                            body: post.body,
+                            tags: tagDefaultValues
+                        }}
+                        submitLabel={t(communityLocales.postForm.saveChanges)}
+                        hideHeader={true}
+                    />
+                ) : (
+                    <>
+                        <PostDetailCard
+                            post={post}
+                            sanitizedBody={sanitizedBody}
+                            author={author}
+                            timeAgo={timeAgo}
+                            onTagSelectAction={handleTagSelect}
+                        />
+                        <PostDetailActions
+                            postId={postId}
+                            post={post}
+                        />
+                    </>
+                )}
             </div>
 
             <RepliesSection postId={postId}/>

@@ -16,6 +16,9 @@ type PostFormProps = {
     isLoading: boolean
     onSubmitAction: (data: PostFormSchema) => Promise<void>
     onCancelAction?: () => void
+    defaultValues?: Partial<PostFormSchema>
+    submitLabel?: string
+    hideHeader?: boolean
 }
 
 export const PostForm = ({
@@ -23,21 +26,27 @@ export const PostForm = ({
     isOpen,
     isLoading,
     onSubmitAction,
-    onCancelAction
+    onCancelAction,
+    defaultValues,
+    submitLabel,
+    hideHeader = false
 }: PostFormProps) => {
     const { form, handleSubmit } = usePostForm({
         onSubmit: onSubmitAction,
-        isReply
+        isReply,
+        defaultValues
     })
 
     if (!isOpen) return null
 
     return (
         <div className={'rounded-2xl bg-surface-card p-6 shadow-md border border-primary'}>
-            <PostFormHeader
-                isReply={isReply}
-                onCancelAction={onCancelAction}
-            />
+            {!hideHeader && (
+                <PostFormHeader
+                    isReply={isReply}
+                    onCancelAction={onCancelAction}
+                />
+            )}
 
             <form
                 onSubmit={handleSubmit}
@@ -54,6 +63,7 @@ export const PostForm = ({
                         onCancelAction={onCancelAction}
                         isLoading={isLoading}
                         isDisabled={!form.formState.isValid}
+                        submitLabel={submitLabel}
                     />
                 </Form>
             </form>
