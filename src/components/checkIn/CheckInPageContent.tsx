@@ -14,7 +14,6 @@ import {
 
 import { CheckInForm } from './forms/CheckInForm'
 import { CheckInQuote } from './sections/Quote'
-import { CheckInPageSkeletons } from './CheckInPageSkeletons'
 
 export const CheckInPageContent = () => {
     const [latestCheckIn, setLatestCheckIn] =
@@ -35,7 +34,7 @@ export const CheckInPageContent = () => {
                 setStats(statsRes)
             } catch (error) {
                 console.error(
-                    'Failed to load check-in data',
+                    'Failed to load check-in data:',
                     error
                 )
             } finally {
@@ -46,7 +45,14 @@ export const CheckInPageContent = () => {
         loadData()
     }, [])
 
-    if (isLoading) return <CheckInPageSkeletons/>
+    if (isLoading) {
+        // todo: add proper skeleton
+        return (
+            <div className={'space-y-6 p-6'}>
+                <div className={'h-20 animate-pulse rounded bg-muted'}/>
+            </div>
+        )
+    }
 
     return (
         <div className={'space-y-6 p-6'}>
