@@ -18,6 +18,7 @@ import { ChartTooltip } from './ChartTooltip'
 export type ChartSeries = {
     dataKey: string
     color: string
+    fillColor?: string
     label: string
     gradientId: string
     dashed?: boolean
@@ -153,12 +154,12 @@ export const TrendChart = ({
                                 >
                                     <stop
                                         offset={'5%'}
-                                        stopColor={s.color}
-                                        stopOpacity={0.3}
+                                        stopColor={s.fillColor ?? s.color}
+                                        stopOpacity={0.9}
                                     />
                                     <stop
                                         offset={'95%'}
-                                        stopColor={s.color}
+                                        stopColor={s.fillColor ?? s.color}
                                         stopOpacity={0}
                                     />
                                 </linearGradient>

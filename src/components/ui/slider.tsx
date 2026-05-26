@@ -9,11 +9,15 @@ import {cn} from '@/lib/utils'
 function Slider ({
     className,
     defaultValue,
+    style,
     value,
     min = 0,
     max = 100,
+    color,
     ...props
-}: React.ComponentProps<typeof SliderPrimitive.Root>) {
+}: React.ComponentProps<typeof SliderPrimitive.Root> & {
+    color?: string
+}) {
     const _values = React.useMemo(
         () =>
             Array.isArray(value) ?
@@ -35,6 +39,10 @@ function Slider ({
                 'relative flex w-full touch-none items-center select-none data-disabled:opacity-50 data-[orientation=vertical]:h-full data-[orientation=vertical]:min-h-44 data-[orientation=vertical]:w-auto data-[orientation=vertical]:flex-col',
                 className
             )}
+            style={{
+                ['--slider-color' as string]: color ?? 'var(--primary)',
+                ...style
+            }}
             {...props}
         >
             <SliderPrimitive.Track
@@ -46,7 +54,7 @@ function Slider ({
                 <SliderPrimitive.Range
                     data-slot="slider-range"
                     className={cn(
-                        'absolute bg-primary data-[orientation=horizontal]:h-full data-[orientation=vertical]:w-full'
+                        'absolute bg-[var(--slider-color)] data-[orientation=horizontal]:h-full data-[orientation=vertical]:w-full'
                     )}
                 />
             </SliderPrimitive.Track>
@@ -54,7 +62,10 @@ function Slider ({
                 <SliderPrimitive.Thumb
                     data-slot="slider-thumb"
                     key={index}
-                    className="block size-4 shrink-0 rounded-full border border-primary bg-white shadow-sm ring-ring/50 transition-[color,box-shadow] hover:ring-4 focus-visible:ring-4 focus-visible:outline-hidden disabled:pointer-events-none disabled:opacity-50"
+                    className="block size-4 shrink-0 rounded-full border bg-white shadow-sm ring-ring/50 transition-[color,box-shadow] hover:ring-4 focus-visible:ring-4 focus-visible:outline-hidden disabled:pointer-events-none disabled:opacity-50"
+                    style={{
+                        borderColor: 'var(--slider-color)'
+                    }}
                 />
             ))}
         </SliderPrimitive.Root>

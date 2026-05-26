@@ -15,7 +15,8 @@ type SliderCardProps = {
     maxLabel: string
     value: number
     onChange: (value: number) => void
-    colorVar?: string
+    color: string
+    tintColor: string
 }
 
 export const SliderCard = ({
@@ -25,7 +26,8 @@ export const SliderCard = ({
     maxLabel,
     value,
     onChange,
-    colorVar = 'primary'
+    color,
+    tintColor
 }: SliderCardProps) => (
     <Card className={'border-0 shadow-sm'}>
         <CardContent className={'pt-6'}>
@@ -34,13 +36,13 @@ export const SliderCard = ({
                     <div
                         className={'flex size-10 items-center justify-center rounded-full'}
                         style={{
-                            backgroundColor: `var(--${colorVar}-light)`
+                            backgroundColor: `color-mix(in srgb, ${tintColor}, white 40%)`
                         }}
                     >
                         <Icon
                             className={'size-5'}
                             style={{
-                                color: `var(--${colorVar})`
+                                color
                             }}
                         />
                     </div>
@@ -51,7 +53,7 @@ export const SliderCard = ({
                 <span
                     className={'text-sm font-semibold'}
                     style={{
-                        color: `var(--${colorVar})`
+                        color
                     }}
                 >
                     {value}
@@ -64,6 +66,7 @@ export const SliderCard = ({
                 max={checkInFormSchema.moodScore.max}
                 step={1}
                 className={'w-full'}
+                color={color}
             />
             <div className={'mt-3 flex justify-between text-xs text-muted-foreground'}>
                 <span>{minLabel}</span>

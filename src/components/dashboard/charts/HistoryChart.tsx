@@ -21,6 +21,8 @@ import {
 
 import { useCheckInChartData } from '@/hooks/queries/useCheckInChartData'
 
+import { wellnessColors } from '@/lib/wellnessColors'
+
 import { dashboardLocales } from '@/locales/dashboardLocales'
 import { progressLocales } from '@/locales/progressLocales'
 
@@ -39,13 +41,15 @@ export const DashboardHistoryChart = () => {
     const series = [
         {
             dataKey: 'mood',
-            color: 'var(--primary)',
+            color: wellnessColors.mood.primary,
+            fillColor: wellnessColors.mood.fill,
             label: t(dashboardLocales.stats.labels.mood),
             gradientId: 'dashMoodGradient'
         },
         {
             dataKey: 'pain',
-            color: 'var(--secondary)',
+            color: wellnessColors.pain.primary,
+            fillColor: wellnessColors.pain.fill,
             label: t(dashboardLocales.stats.labels.pain),
             gradientId: 'dashPainGradient'
         }
