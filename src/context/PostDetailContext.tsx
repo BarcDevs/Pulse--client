@@ -11,6 +11,8 @@ type PostDetailContextType = {
     postId: string
     isReplyFormOpen: boolean
     setIsReplyFormOpen: (open: boolean) => void
+    isEditingPost: boolean
+    setIsEditingPost: (editing: boolean) => void
 }
 
 const PostDetailContext = createContext<
@@ -29,11 +31,16 @@ export const PostDetailProvider = ({
     const [
         isReplyFormOpen, setIsReplyFormOpen
     ] = useState(false)
+    const [
+        isEditingPost, setIsEditingPost
+    ] = useState(false)
 
     const value: PostDetailContextType = {
         postId,
         isReplyFormOpen,
-        setIsReplyFormOpen
+        setIsReplyFormOpen,
+        isEditingPost,
+        setIsEditingPost
     }
 
     return (

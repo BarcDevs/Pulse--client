@@ -9,12 +9,14 @@ type PostHeaderProps = {
     category: string
     author: string
     timeAgo: string
+    isEdited?: boolean
 }
 
 export const PostHeader = ({
     category,
     author,
-    timeAgo
+    timeAgo,
+    isEdited = false
 }: PostHeaderProps) => {
     const t = useTranslations()
     const tCategoryNames = useTranslations('community.categories.names')
@@ -42,6 +44,11 @@ export const PostHeader = ({
                     {author}
                 </span>
                 {` - ${timeAgo}`}
+                {isEdited && (
+                    <span className={'italic ml-1'}>
+                        {t(communityLocales.posts.edited)}
+                    </span>
+                )}
             </span>
         </div>
     )

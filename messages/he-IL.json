@@ -141,6 +141,7 @@
   },
   "community": {
     "posts": {
+      "edited": "(נערך)",
       "filterLabels": {
         "newest": "חדשים",
         "popular": "פופולריים",
@@ -184,7 +185,11 @@
     },
     "confirmations": {
       "deletePost": "למחוק את הפוסט הזה?",
-      "deleteReply": "למחוק את התגובה הזו?"
+      "deleteReply": "למחוק את התגובה הזו?",
+      "deletePostTitle": "למחוק את הפוסט?",
+      "deletePostDescription": "הפוסט וכל תגובותיו יוסרו לצמיתות. פעולה זו אינה הפיכה.",
+      "deleteReplyTitle": "למחוק את התגובה?",
+      "deleteReplyDescription": "התגובה תוסר לצמיתות. פעולה זו אינה הפיכה."
     },
     "postDetail": {
       "replies": "תגובות",
@@ -204,7 +209,11 @@
       "solidarityActive": "תומך",
       "reply": "תגובה",
       "share": "שיתוף",
-      "linkCopied": "הקישור הועתק ללוח!"
+      "linkCopied": "הקישור הועתק ללוח!",
+      "editPost": "עריכת פוסט",
+      "deletePost": "מחיקת פוסט",
+      "editReply": "עריכת תגובה",
+      "deleteReply": "מחיקת תגובה"
     },
     "postForm": {
       "writeReply": "כתיבת תגובה",
@@ -212,6 +221,7 @@
       "createPostSubtitle": "בחר קטגוריה ומספר תגיות כדי שהפוסט יגיע לאנשים הנכונים.",
       "content": "תוכן",
       "cancel": "ביטול",
+      "saveChanges": "שמירת שינויים",
       "sendReply": "שלח תגובה",
       "title": "כותרת",
       "titlePlaceholder": "כותרת קצרה וברורה לפוסט",
@@ -258,10 +268,12 @@
       "replyUpdated": "התגובה עודכנה",
       "replyDeleted": "התגובה הוסרה",
       "postPublished": "הפוסט פורסם",
+      "postUpdated": "הפוסט עודכן בהצלחה",
       "replyPostFailed": "לא הצלחנו לפרסם את התגובה כרגע",
       "replyUpdateFailed": "לא הצלחנו לעדכן את התגובה כרגע",
       "replyDeleteFailed": "לא הצלחנו להסיר את התגובה כרגע",
-      "postPublishFailed": "לא הצלחנו לפרסם את הפוסט כרגע"
+      "postPublishFailed": "לא הצלחנו לפרסם את הפוסט כרגע",
+      "postUpdateFailed": "לא הצלחנו לעדכן את הפוסט כרגע"
     }
   },
   "dashboard": {

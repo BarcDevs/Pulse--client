@@ -1,5 +1,6 @@
 export const communityLocales = {
     posts: {
+        edited: 'community.posts.edited',
         filterLabels: {
             newest: 'community.posts.filterLabels.newest',
             popular: 'community.posts.filterLabels.popular',
@@ -43,7 +44,11 @@ export const communityLocales = {
     },
     confirmations: {
         deletePost: 'community.confirmations.deletePost',
-        deleteReply: 'community.confirmations.deleteReply'
+        deleteReply: 'community.confirmations.deleteReply',
+        deletePostTitle: 'community.confirmations.deletePostTitle',
+        deletePostDescription: 'community.confirmations.deletePostDescription',
+        deleteReplyTitle: 'community.confirmations.deleteReplyTitle',
+        deleteReplyDescription: 'community.confirmations.deleteReplyDescription'
     },
     postDetail: {
         replies: 'community.postDetail.replies',
@@ -63,7 +68,11 @@ export const communityLocales = {
         solidarityActive: 'community.postActions.solidarityActive',
         reply: 'community.postActions.reply',
         share: 'community.postActions.share',
-        linkCopied: 'community.postActions.linkCopied'
+        linkCopied: 'community.postActions.linkCopied',
+        editPost: 'community.postActions.editPost',
+        deletePost: 'community.postActions.deletePost',
+        editReply: 'community.postActions.editReply',
+        deleteReply: 'community.postActions.deleteReply'
     },
     categories: {
         recovery: 'community.categories.names.recovery',
@@ -82,6 +91,7 @@ export const communityLocales = {
         createPostSubtitle: 'community.postForm.createPostSubtitle',
         content: 'community.postForm.content',
         cancel: 'community.postForm.cancel',
+        saveChanges: 'community.postForm.saveChanges',
         sendReply: 'community.postForm.sendReply',
         title: 'community.postForm.title',
         titlePlaceholder: 'community.postForm.titlePlaceholder',
@@ -102,9 +112,11 @@ export const communityLocales = {
         replyUpdated: 'community.toasts.replyUpdated',
         replyDeleted: 'community.toasts.replyDeleted',
         postPublished: 'community.toasts.postPublished',
+        postUpdated: 'community.toasts.postUpdated',
         replyPostFailed: 'community.toasts.replyPostFailed',
         replyUpdateFailed: 'community.toasts.replyUpdateFailed',
         replyDeleteFailed: 'community.toasts.replyDeleteFailed',
-        postPublishFailed: 'community.toasts.postPublishFailed'
+        postPublishFailed: 'community.toasts.postPublishFailed',
+        postUpdateFailed: 'community.toasts.postUpdateFailed'
     }
 } as const

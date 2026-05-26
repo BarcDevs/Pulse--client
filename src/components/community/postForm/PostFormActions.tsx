@@ -13,13 +13,15 @@ type PostFormActionsProps = {
     onCancelAction?: () => void
     isLoading: boolean
     isDisabled: boolean
+    submitLabel?: string
 }
 
 export const PostFormActions = ({
     isReply,
     onCancelAction,
     isLoading,
-    isDisabled
+    isDisabled,
+    submitLabel
 }: PostFormActionsProps) => {
     const t = useTranslations()
 
@@ -44,9 +46,9 @@ export const PostFormActions = ({
                         size={14}
                     />
                 )}
-                {isReply
+                {submitLabel ?? (isReply
                     ? t(communityLocales.postForm.sendReply)
-                    : t(communityLocales.postForm.createPost)}
+                    : t(communityLocales.postForm.createPost))}
             </Button>
         </div>
     )

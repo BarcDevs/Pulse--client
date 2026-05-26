@@ -13,13 +13,14 @@ import { Post } from '@/types/community'
 
 import { PostActionButton }
     from '@/components/community/posts/postList/PostActionButton'
-import { DeleteMenu } from '@/components/shared/DeleteMenu'
+import { ActionsMenu } from '@/components/shared/ActionsMenu'
 
 import { useForumPostMutations } from '@/hooks/mutations/useForumPostMutations'
 import { usePostInteractions } from '@/hooks/mutations/usePostInteractions'
 import { useSharePost } from '@/hooks/ui/useSharePost'
 
 import { useAuth } from '@/context/AuthContext'
+import { usePostDetail } from '@/context/PostDetailContext'
 
 import { communityLocales } from '@/locales/communityLocales'
 
@@ -35,6 +36,7 @@ export const PostDetailActions = ({
     const router = useRouter()
     const t = useTranslations()
     const { user } = useAuth()
+    const { setIsEditingPost } = usePostDetail()
     const { deletePost } = useForumPostMutations({ postId })
     const sharePost = useSharePost(postId)
     const {
@@ -58,12 +60,8 @@ export const PostDetailActions = ({
     }
 
     const solidarityText = liked
-        ? t(communityLocales
-            .postActions
-            .solidarityActive)
-        : t(communityLocales
-            .postActions
-            .solidarity)
+        ? t(communityLocales.postActions.solidarityActive)
+        : t(communityLocales.postActions.solidarity)
 
     const saveText = saved
         ? t(communityLocales.posts.saved)
@@ -93,11 +91,14 @@ export const PostDetailActions = ({
                 />
             </div>
             {isPostOwner && (
-                <DeleteMenu
+                <ActionsMenu
+                    onEditAction={() => setIsEditingPost(true)}
                     onDeleteAction={handleDeletePost}
-                    confirmMessage={t(communityLocales.confirmations.deletePost)}
                     isLoading={deletePost.isPending}
-                    iconSize={18}
+                    editLabel={t(communityLocales.postActions.editPost)}
+                    deleteLabel={t(communityLocales.postActions.deletePost)}
+                    confirmTitle={t(communityLocales.confirmations.deletePostTitle)}
+                    confirmDescription={t(communityLocales.confirmations.deletePostDescription)}
                 />
             )}
         </div>
