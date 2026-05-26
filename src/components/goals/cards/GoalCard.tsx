@@ -8,7 +8,7 @@ import {
     GoalStatus
 } from '@/types/goals'
 
-import { GoalActionsDropdown } from '@/components/shared/dropdowns/GoalActionsDropdown'
+import { ActionsMenu } from '@/components/shared/ActionsMenu'
 import { Badge } from '@/components/ui/badge'
 
 import { getCategoryColor } from '@/lib/goals'
@@ -46,9 +46,8 @@ export const GoalCard = ({
 
     return (
         <div
-            onClick={handleCardClick}
             className={cn(
-                'p-6 rounded-xl group transition-colors shadow-sm cursor-pointer relative',
+                'p-6 rounded-xl group transition-colors shadow-sm relative',
                 isPaused
                     ? 'bg-amber-50/80 ring-1 ring-amber-200 hover:bg-amber-50'
                     : 'bg-surface-container-lowest hover:bg-blue-50/30'
@@ -72,54 +71,65 @@ export const GoalCard = ({
                         </Badge>
                     )}
                 </div>
-                <GoalActionsDropdown
+                <ActionsMenu
                     onEditAction={() => onEditAction(goal.id)}
                     onDeleteAction={() => onDeleteAction(goal.id)}
-                    isDeleting={isDeleting}
+                    isLoading={isDeleting}
+                    editLabel={t(goalsLocales.goalActions.edit)}
+                    deleteLabel={t(goalsLocales.goalActions.delete)}
+                    cancelLabel={t(goalsLocales.goalForm.buttons.cancel)}
+                    confirmTitle={t(goalsLocales.goalActions.delete)}
+                    confirmDescription={t(goalsLocales.goalActions.deleteConfirm)}
                 />
             </div>
 
-            <h4 className={'text-xl font-headline font-bold mb-2'}>
-                {goal.title}
-            </h4>
-            {goal.description && (
-                <p className={cn(
-                    'text-sm leading-relaxed mb-6',
-                    isPaused
-                        ? 'text-amber-900/75'
-                        : 'text-on-surface-variant'
-                )}>
-                    {goal.description}
-                </p>
-            )}
+            <button
+                type={'button'}
+                onClick={handleCardClick}
+                className={'block w-full text-left rounded-lg focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring'}
+            >
+                <h4 className={'text-xl font-headline font-bold mb-2'}>
+                    {goal.title}
+                </h4>
+                {goal.description && (
+                    <p className={cn(
+                        'text-sm leading-relaxed mb-6',
+                        isPaused
+                            ? 'text-amber-900/75'
+                            : 'text-on-surface-variant'
+                    )}>
+                        {goal.description}
+                    </p>
+                )}
 
-            <div className={'space-y-2'}>
-                <div className={cn(
-                    'flex justify-between text-xs font-bold uppercase tracking-wider',
-                    isPaused
-                        ? 'text-amber-900/60'
-                        : 'text-slate-400'
-                )}>
-                    <span>
-                        {t(goalsLocales.goalCard.progressLabel)}
-                    </span>
-                    <span>{progressPercent}%</span>
+                <div className={'space-y-2'}>
+                    <div className={cn(
+                        'flex justify-between text-xs font-bold uppercase tracking-wider',
+                        isPaused
+                            ? 'text-amber-900/60'
+                            : 'text-slate-400'
+                    )}>
+                        <span>
+                            {t(goalsLocales.goalCard.progressLabel)}
+                        </span>
+                        <span>{progressPercent}%</span>
+                    </div>
+                    <div className={cn(
+                        'h-2 rounded-full overflow-hidden',
+                        isPaused
+                            ? 'bg-amber-200/70'
+                            : 'bg-outline-variant'
+                    )}>
+                        <div
+                            className={cn(
+                                'h-full w-full rounded-full transition-all',
+                                isPaused ? 'bg-amber-500' : 'bg-primary'
+                            )}
+                            style={{ width: `${progressPercent}%` }}
+                        />
+                    </div>
                 </div>
-                <div className={cn(
-                    'h-2 rounded-full overflow-hidden',
-                    isPaused
-                        ? 'bg-amber-200/70'
-                        : 'bg-outline-variant'
-                )}>
-                    <div
-                        className={cn(
-                            'h-full w-full rounded-full transition-all',
-                            isPaused ? 'bg-amber-500' : 'bg-primary'
-                        )}
-                        style={{ width: `${progressPercent}%` }}
-                    />
-                </div>
-            </div>
+            </button>
         </div>
     )
 }

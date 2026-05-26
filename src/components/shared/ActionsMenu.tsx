@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { MouseEvent, useState } from 'react'
 
 import {
     MoreHorizontal,
@@ -48,6 +48,12 @@ export const ActionsMenu = ({
 }: ActionsMenuProps) => {
     const [open, setOpen] = useState(false)
 
+    const stopPropagation = (
+        event: MouseEvent<HTMLElement>
+    ) => {
+        event.stopPropagation()
+    }
+
     const handleDelete = async () => {
         try {
             await onDeleteAction()
@@ -65,18 +71,27 @@ export const ActionsMenu = ({
                         size={'sm'}
                         disabled={isLoading}
                         className={'h-8 w-8 p-0'}
+                        onClick={stopPropagation}
                     >
                         <MoreHorizontal size={iconSize}/>
                     </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align={'end'}>
-                    <DropdownMenuItem onClick={onEditAction}>
+                    <DropdownMenuItem
+                        onClick={(event) => {
+                            stopPropagation(event)
+                            onEditAction()
+                        }}
+                    >
                         <Pencil size={14}/>
                         {editLabel}
                     </DropdownMenuItem>
                     <DropdownMenuItem
                         className={'text-destructive focus:text-destructive'}
-                        onClick={() => setOpen(true)}
+                        onClick={(event) => {
+                            stopPropagation(event)
+                            setOpen(true)
+                        }}
                     >
                         <Trash2
                             size={14}
@@ -91,7 +106,10 @@ export const ActionsMenu = ({
                 open={open}
                 onOpenChange={setOpen}
             >
-                <DialogContent showCloseButton={false}>
+                <DialogContent
+                    showCloseButton={false}
+                    className={'max-w-sm'}
+                >
                     <DialogHeader>
                         <div className={'flex items-center justify-center w-12 h-12 rounded-full bg-red-100 mx-auto mb-2'}>
                             <Trash2
@@ -109,14 +127,20 @@ export const ActionsMenu = ({
                     <div className={'flex justify-center gap-2 mt-2'}>
                         <Button
                             variant={'outline'}
-                            onClick={() => setOpen(false)}
+                            onClick={(event) => {
+                                stopPropagation(event)
+                                setOpen(false)
+                            }}
                         >
                             {cancelLabel}
                         </Button>
                         <Button
                             variant={'destructive'}
                             disabled={isLoading}
-                            onClick={handleDelete}
+                            onClick={(event) => {
+                                stopPropagation(event)
+                                void handleDelete()
+                            }}
                         >
                             {deleteLabel}
                         </Button>
