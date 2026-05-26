@@ -1,58 +1,23 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useQueryClient } from '@tanstack/react-query'
 
 import type {
     CheckIn,
     CheckInStats
 } from '@/types/checkIn'
 
-import {
-    fetchCheckIns,
-    fetchCheckInStats
-} from '@/api/checkIn'
+import { checkInQueryKeys } from '@/constants/queryKeys'
 
 import { CheckInForm } from './forms/CheckInForm'
 import { CheckInQuote } from './sections/Quote'
 
 export const CheckInPageContent = () => {
-    const [latestCheckIn, setLatestCheckIn] =
-        useState<CheckIn | null>(null)
-    const [stats, setStats] =
-        useState<CheckInStats | null>(null)
-    const [isLoading, setIsLoading] = useState(true)
-
-    useEffect(() => {
-        const loadData = async () => {
-            try {
-                const [checkInsRes, statsRes] =
-                    await Promise.all([
-                        fetchCheckIns(1),
-                        fetchCheckInStats()
-                    ])
-                setLatestCheckIn(checkInsRes[0] ?? null)
-                setStats(statsRes)
-            } catch (error) {
-                console.error(
-                    'Failed to load check-in data:',
-                    error
-                )
-            } finally {
-                setIsLoading(false)
-            }
-        }
-
-        loadData()
-    }, [])
-
-    if (isLoading) {
-        // todo: add proper skeleton
-        return (
-            <div className={'space-y-6 p-6'}>
-                <div className={'h-20 animate-pulse rounded bg-muted'}/>
-            </div>
-        )
-    }
+    const queryClient = useQueryClient()
+    const latestCheckIn =
+        queryClient.getQueryData<CheckIn[]>(checkInQueryKeys.all)?.[0] ?? null
+    const stats =
+        queryClient.getQueryData<CheckInStats>(checkInQueryKeys.stats) ?? null
 
     return (
         <div className={'space-y-6 p-6'}>

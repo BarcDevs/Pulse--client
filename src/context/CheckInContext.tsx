@@ -131,8 +131,8 @@ export const CheckInProvider = ({
 
     const submitCheckIn = (data: CheckInSchema) => {
         const statsKey = [...checkInQueryKeys.stats, 'weekly'] as const
-        const historyKey14 = [...checkInQueryKeys.all, 'history', 14, locale] as const
-        const historyKey35 = [...checkInQueryKeys.all, 'history', 35, locale] as const
+        const historyKey14 = [...checkInQueryKeys.all, 'history', 14, dateFnsLocale?.code] as const
+        const historyKey35 = [...checkInQueryKeys.all, 'history', 35, dateFnsLocale?.code] as const
 
         const now = new Date()
         const newPoint: MoodPainSeriesPoint = {
@@ -158,10 +158,16 @@ export const CheckInProvider = ({
                 )
             let rolledBack = false
 
+            const upsertHistory = (
+                history: MoodPainSeriesPoint[]
+            ) => history.some(p => p.date === newPoint.date)
+                ? history.map(p => p.date === newPoint.date ? newPoint : p)
+                : [newPoint, ...history]
+
             if (curHistory) {
                 queryClient.setQueryData(
                     historyKey14,
-                    [newPoint, ...curHistory]
+                    upsertHistory(curHistory)
                 )
             } else {
                 void queryClient.prefetchQuery({
@@ -179,23 +185,30 @@ export const CheckInProvider = ({
                     if (fetched) {
                         queryClient.setQueryData(
                             historyKey14,
-                            [newPoint, ...fetched]
+                            upsertHistory(fetched)
                         )
                     }
                 })
             }
 
             if (curStats) {
-                queryClient.setQueryData<CheckInStats>(statsKey, buildOptimisticStats(curStats, data))
+                queryClient.setQueryData<CheckInStats>(
+                    statsKey,
+                    buildOptimisticStats(curStats, data)
+                )
             } else {
                 void queryClient.prefetchQuery({
                     queryKey: statsKey,
                     queryFn: () => fetchCheckInStats('weekly')
                 }).then(() => {
                     if (rolledBack) return
-                    const fetched = queryClient.getQueryData<CheckInStats>(statsKey)
+                    const fetched =
+                        queryClient.getQueryData<CheckInStats>(statsKey)
                     if (fetched) {
-                        queryClient.setQueryData<CheckInStats>(statsKey, buildOptimisticStats(fetched, data))
+                        queryClient.setQueryData<CheckInStats>(
+                            statsKey,
+                            buildOptimisticStats(fetched, data)
+                        )
                     }
                 })
             }
@@ -210,7 +223,10 @@ export const CheckInProvider = ({
         if (!queryClient.getQueryData(historyKey35)) {
             void queryClient.prefetchQuery({
                 queryKey: historyKey35,
-                queryFn: () => fetchCheckInHistory(35, dateFnsLocale)
+                queryFn: () => fetchCheckInHistory(
+                    35,
+                    dateFnsLocale
+                )
             })
         }
 
