@@ -12,7 +12,6 @@ export const communityLocales = {
         saved: 'community.posts.saved',
         newPostButton: 'community.posts.newPostButton',
         searchPlaceholder: 'community.posts.searchPlaceholder',
-        loading: 'community.posts.loading',
         empty: 'community.posts.empty',
         emptyWithFilter: 'community.posts.emptyWithFilter',
         likedLabel: 'community.posts.likedLabel',
@@ -36,8 +35,7 @@ export const communityLocales = {
         readGuidelines: 'community.sanctuary.readGuidelines'
     },
     trending: {
-        title: 'community.trending.title',
-        loading: 'community.trending.loading'
+        title: 'community.trending.title'
     },
     activity: {
         title: 'community.activity.title',
@@ -48,7 +46,6 @@ export const communityLocales = {
         deleteReply: 'community.confirmations.deleteReply'
     },
     postDetail: {
-        loading: 'community.postDetail.loading',
         replies: 'community.postDetail.replies',
         reply: 'community.postDetail.reply',
         noReplies: 'community.postDetail.noReplies',

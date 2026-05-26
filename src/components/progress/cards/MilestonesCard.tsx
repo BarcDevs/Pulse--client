@@ -8,9 +8,17 @@ import { useCheckInStats } from '@/hooks/queries/useCheckInStats'
 
 import { progressLocales } from '@/locales/progressLocales'
 
+import { MilestonesCardSkeleton } from './MilestonesCardSkeleton'
+
 export const MilestonesCard = () => {
     const t = useTranslations()
-    const { data, isError } = useCheckInStats('weekly')
+    const {
+        data,
+        isLoading,
+        isError
+    } = useCheckInStats('weekly')
+
+    if (isLoading) return <MilestonesCardSkeleton/>
 
     const milestonesAchieved = isError
         ? '-'

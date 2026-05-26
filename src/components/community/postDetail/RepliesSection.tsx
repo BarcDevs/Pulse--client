@@ -2,14 +2,21 @@
 
 import { useTranslations } from 'next-intl'
 
-import { RepliesEmptyState }
-    from '@/components/community/postDetail/RepliesEmptyState'
-import { RepliesList }
-    from '@/components/community/postDetail/RepliesList'
-import { ReplyInputSection }
-    from '@/components/community/postDetail/ReplyInputSection'
-import { UnauthenticatedReplyPrompt }
-    from '@/components/community/postDetail/UnauthenticatedReplyPrompt'
+import {
+    RepliesEmptyState
+} from '@/components/community/postDetail/RepliesEmptyState'
+import {
+    RepliesList
+} from '@/components/community/postDetail/RepliesList'
+import {
+    RepliesSectionSkeletons
+} from '@/components/community/postDetail/RepliesSectionSkeletons'
+import {
+    ReplyInputSection
+} from '@/components/community/postDetail/ReplyInputSection'
+import {
+    UnauthenticatedReplyPrompt
+} from '@/components/community/postDetail/UnauthenticatedReplyPrompt'
 import { PostForm } from '@/components/community/postForm/PostForm'
 import { ErrorDisplay } from '@/components/shared/ErrorDisplay'
 import { Skeleton } from '@/components/ui/skeleton'
@@ -53,19 +60,21 @@ export const RepliesSection = ({
         return Promise.resolve()
     }
 
-    const replyCount = isLoading
-        ? t(communityLocales.postDetail.loading)
-        : `${replies.length} ${
-            replies.length === 1
-                ? t(communityLocales.postDetail.reply)
-                : t(communityLocales.postDetail.replies)
-        }`
+    const replyLabel = replies.length === 1
+        ? t(communityLocales.postDetail.reply)
+        : t(communityLocales.postDetail.replies)
+    const replyCount = `${replies.length} ${replyLabel}`
 
     return (
         <div className={'rounded-2xl bg-surface-card shadow-sm p-6 space-y-4'}>
-            <h2 className={'text-lg font-semibold'}>
-                {replyCount}
-            </h2>
+            {isLoading
+                ? <Skeleton className={'h-6 w-28'}/>
+                : (
+                    <h2 className={'text-lg font-semibold'}>
+                        {replyCount}
+                    </h2>
+                )
+            }
 
             {isError && <ErrorDisplay error={error}/>}
 
@@ -89,18 +98,7 @@ export const RepliesSection = ({
                 <UnauthenticatedReplyPrompt/>
             )}
 
-            {isLoading && (
-                <div className={'space-y-4'}>
-                    {['reply-skeleton-1', 'reply-skeleton-2'].map(
-                        (id) => (
-                            <Skeleton
-                                key={id}
-                                className={'h-24 rounded-lg'}
-                            />
-                        )
-                    )}
-                </div>
-            )}
+            {isLoading && <RepliesSectionSkeletons/>}
 
             {!isLoading
                 && !isError

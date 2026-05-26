@@ -8,7 +8,6 @@ import { GoalStatus } from '@/types/goals'
 import { GoalProgressBar } from '@/components/shared/bars/GoalProgressBar'
 import { EmptyState } from '@/components/shared/EmptyState'
 import { buttonVariants } from '@/components/ui/button'
-import { Skeleton } from '@/components/ui/skeleton'
 
 import { useGoals } from '@/hooks/queries/useGoals'
 
@@ -18,13 +17,19 @@ import { ROUTES } from '@/constants/routes'
 
 import { profileLocales } from '@/locales/profileLocales'
 
+import { ActiveGoalsSkeleton } from './ActiveGoalsSkeleton'
+
 export const ActiveGoals = () => {
     const t = useTranslations()
     const { data: goals, isLoading } = useGoals()
 
     const activeGoals = goals
-        ?.filter((goal) => goal.status === GoalStatus.ACTIVE)
-        .sort((a, b) => (b.progress ?? 0) - (a.progress ?? 0))
+        ?.filter(
+            (goal) => goal.status === GoalStatus.ACTIVE
+        )
+        .sort(
+            (a, b) => (b.progress ?? 0) - (a.progress ?? 0)
+        )
         .slice(0, 3)
 
     return (
@@ -35,11 +40,7 @@ export const ActiveGoals = () => {
 
             <div className={'space-y-4'}>
                 {isLoading && (
-                    <>
-                        <Skeleton className={'h-8 w-full bg-white/20'}/>
-                        <Skeleton className={'h-8 w-full bg-white/20'}/>
-                        <Skeleton className={'h-8 w-full bg-white/20'}/>
-                    </>
+                    <ActiveGoalsSkeleton/>
                 )}
 
                 {!isLoading && (!activeGoals || activeGoals.length === 0) && (
@@ -62,8 +63,12 @@ export const ActiveGoals = () => {
             <Link
                 href={ROUTES.RECOVERY_GOALS}
                 className={cn(
-                    buttonVariants({ variant: 'secondary' }),
-                    'w-full mt-6 bg-white/20 hover:bg-white/30 text-primary-foreground border-0'
+                    buttonVariants({
+                        variant: 'secondary'
+                    }),
+                    'w-full mt-6 bg-white/20',
+                    'hover:bg-white/30 text-primary-foreground',
+                    'border-0'
                 )}
             >
                 {t(profileLocales.goals.viewRoadmap)}
