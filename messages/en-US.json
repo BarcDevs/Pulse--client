@@ -437,7 +437,7 @@
       },
       "milestones": {
         "label": "Milestones reached",
-        "unit": "badges"
+        "unit": "milestones"
       }
     },
     "share": {
