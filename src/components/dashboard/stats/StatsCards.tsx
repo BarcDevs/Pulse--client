@@ -3,6 +3,7 @@
 import { useTranslations } from 'next-intl'
 
 import { useCheckInStats } from '@/hooks/queries/useCheckInStats'
+import { useRecoveryGoalsStats } from '@/hooks/queries/useRecoveryGoalsStats'
 
 import { buildStatsData } from '@/lib/stats/buildStatsData'
 import { cn } from '@/lib/utils'
@@ -18,11 +19,18 @@ import { StatCardSkeleton } from './StatCardSkeleton'
 export const DashboardStatsCards = () => {
     const {
         data: statsResponse,
-        isLoading,
-        isError
+        isLoading: isCheckInStatsLoading,
+        isError: isCheckInStatsError
     } = useCheckInStats()
+    const {
+        data: goalsStats,
+        isLoading: isGoalsStatsLoading,
+        isError: isGoalsStatsError
+    } = useRecoveryGoalsStats()
     const t = useTranslations()
-    const statsData = buildStatsData(statsResponse)
+    const statsData = buildStatsData(statsResponse, goalsStats)
+    const isLoading = isCheckInStatsLoading || isGoalsStatsLoading
+    const isError = isCheckInStatsError || isGoalsStatsError
     const displayStats = isError
         ? statsData.map((stat) => ({
             ...stat,

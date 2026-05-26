@@ -316,7 +316,7 @@
         "mood": "Mood",
         "pain": "Pain Level",
         "streak": "Streak",
-        "progress": "Progress"
+        "milestonesCompleted": "Milestones Completed"
       },
       "subValues": {
         "days": " days"

@@ -2,14 +2,14 @@ import {
     Activity,
     Flame,
     Smile,
-    TrendingUp
+    Trophy
 } from 'lucide-react'
 
 export const dashboardStatsIconMap = {
     MOOD: Smile,
     PAIN: Activity,
     STREAK: Flame,
-    PROGRESS: TrendingUp
+    MILESTONES_COMPLETED: Trophy
 }
 
 export const dashboardStatsStyleMap = {
@@ -28,7 +28,7 @@ export const dashboardStatsStyleMap = {
         iconBg: 'bg-amber-50',
         descriptionColor: undefined
     },
-    PROGRESS: {
+    MILESTONES_COMPLETED: {
         iconColor: 'text-secondary',
         iconBg: 'bg-secondary-light',
         descriptionColor: undefined

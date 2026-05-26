@@ -309,7 +309,7 @@
         "mood": "מצב רוח",
         "pain": "רמת כאב",
         "streak": "רצף",
-        "progress": "התקדמות"
+        "milestonesCompleted": "צעדים שהושלמו"
       },
       "subValues": {
         "days": " ימים"
