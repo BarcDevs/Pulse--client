@@ -20,6 +20,7 @@ type GoalsGridProps = {
     onDeleteAction: (goalId: string) => Promise<void>
     isDeleting?: boolean
     onCreateAction?: () => void
+    onActivateAction?: (goalId: string) => Promise<void>
 }
 
 export const GoalsGrid = ({
@@ -27,7 +28,8 @@ export const GoalsGrid = ({
     onEditAction,
     onDeleteAction,
     isDeleting = false,
-    onCreateAction
+    onCreateAction,
+    onActivateAction
 }: GoalsGridProps) => {
     const t = useTranslations()
     const sortedGoals = sortGoalsByStatus(goals)
@@ -48,6 +50,7 @@ export const GoalsGrid = ({
                             onEditAction={onEditAction}
                             onDeleteAction={onDeleteAction}
                             isDeleting={isDeleting}
+                            onActivateAction={onActivateAction}
                         />
                     ))}
                     <div

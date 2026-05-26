@@ -79,7 +79,8 @@ export const goalsLocales = {
     goalActions: {
         edit: 'goals.goalActions.edit',
         delete: 'goals.goalActions.delete',
-        deleteConfirm: 'goals.goalActions.deleteConfirm'
+        deleteConfirm: 'goals.goalActions.deleteConfirm',
+        activate: 'goals.goalActions.activate'
     },
     goalStats: {
         activeMilestonesLabel: 'goals.goalStats.activeMilestonesLabel'
@@ -117,6 +118,8 @@ export const goalsLocales = {
         deleted: 'goals.toasts.deleted',
         createFailed: 'goals.toasts.createFailed',
         updateFailed: 'goals.toasts.updateFailed',
-        deleteFailed: 'goals.toasts.deleteFailed'
+        deleteFailed: 'goals.toasts.deleteFailed',
+        activated: 'goals.toasts.activated',
+        activateFailed: 'goals.toasts.activateFailed'
     }
 } as const

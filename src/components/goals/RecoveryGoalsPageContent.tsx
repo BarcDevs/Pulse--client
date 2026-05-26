@@ -26,6 +26,7 @@ export const RecoveryGoalsPageContent = () => {
         isError,
         error,
         deleteGoal,
+        activateGoal,
         isPending
     } = useGoalsContext()
 
@@ -83,6 +84,7 @@ export const RecoveryGoalsPageContent = () => {
                                 onDeleteAction={deleteGoal}
                                 isDeleting={isPending}
                                 onCreateAction={onOpenCreateModal}
+                                onActivateAction={activateGoal}
                             />
                         </div>
 

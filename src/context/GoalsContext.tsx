@@ -54,6 +54,7 @@ type GoalsContextType = {
         data: Partial<GoalSchema>
     ) => Promise<void>
     deleteGoal: (goalId: string) => Promise<void>
+    activateGoal: (goalId: string) => Promise<void>
 }
 
 export const GoalsContext =
@@ -79,6 +80,7 @@ const GoalsStateProvider = ({
     const {
         createGoal,
         updateGoal,
+        activateGoal,
         deleteGoal
     } = useGoalMutations()
 
@@ -189,6 +191,31 @@ const GoalsStateProvider = ({
         })
     }
 
+    const handleActivateGoal = async (
+        goalId: string
+    ): Promise<void> => {
+        startTransition(async () => {
+            addOptimistic({
+                type: 'update',
+                goalId,
+                partial: { status: GoalStatus.ACTIVE }
+            })
+            await withOptimisticToast({
+                action: activateGoal.mutateAsync(goalId).then((realGoal) => {
+                    addOptimistic({
+                        type: 'update',
+                        goalId,
+                        partial: realGoal
+                    })
+                }),
+                successMsg: t(goalsLocales.toasts.activated),
+                errorMsg: t(goalsLocales.toasts.activateFailed),
+                retryLabel: t(globalLocales.shared.retry),
+                onRetry: () => handleActivateGoal(goalId)
+            })
+        })
+    }
+
     const value: GoalsContextType = {
         goals: sortGoalsByStatus(optimisticGoals),
         isLoading,
@@ -197,7 +224,8 @@ const GoalsStateProvider = ({
         isPending,
         addGoal: handleAddGoal,
         updateGoal: handleUpdateGoal,
-        deleteGoal: handleDeleteGoal
+        deleteGoal: handleDeleteGoal,
+        activateGoal: handleActivateGoal
     }
 
     return (

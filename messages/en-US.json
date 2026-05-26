@@ -670,7 +670,8 @@
     "goalActions": {
       "edit": "Edit",
       "delete": "Delete",
-      "deleteConfirm": "Remove this goal? This action can't be undone."
+      "deleteConfirm": "Remove this goal? This action can't be undone.",
+      "activate": "Activate"
     },
     "goalStats": {
       "activeMilestonesLabel": "Active Milestones"
@@ -739,7 +740,9 @@
       "deleted": "Your goal has been removed",
       "createFailed": "We couldn't create your goal right now",
       "updateFailed": "We couldn't update your goal right now",
-      "deleteFailed": "We couldn't remove your goal right now"
+      "deleteFailed": "We couldn't remove your goal right now",
+      "activated": "Your goal has been activated",
+      "activateFailed": "We couldn't activate your goal right now"
     }
   },
   "settings": {

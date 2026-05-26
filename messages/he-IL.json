@@ -663,7 +663,8 @@
     "goalActions": {
       "edit": "עריכה",
       "delete": "מחיקה",
-      "deleteConfirm": "להסיר את היעד הזה? אי אפשר לשחזר אותו לאחר מכן."
+      "deleteConfirm": "להסיר את היעד הזה? אי אפשר לשחזר אותו לאחר מכן.",
+      "activate": "הפעלה"
     },
     "goalStats": {
       "activeMilestonesLabel": "שלבים פעילים"
@@ -732,7 +733,9 @@
       "deleted": "היעד הוסר",
       "createFailed": "לא הצלחנו ליצור את היעד כרגע",
       "updateFailed": "לא הצלחנו לעדכן את היעד כרגע",
-      "deleteFailed": "לא הצלחנו להסיר את היעד כרגע"
+      "deleteFailed": "לא הצלחנו להסיר את היעד כרגע",
+      "activated": "היעד הופעל",
+      "activateFailed": "לא הצלחנו להפעיל את היעד כרגע"
     }
   },
   "settings": {

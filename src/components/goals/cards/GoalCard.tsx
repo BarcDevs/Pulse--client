@@ -3,12 +3,14 @@
 import { useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 
+import { Play } from 'lucide-react'
+
 import {
     Goal,
     GoalStatus
 } from '@/types/goals'
 
-import { ActionsMenu } from '@/components/shared/ActionsMenu'
+import { ActionsMenu, type AdditionalAction } from '@/components/shared/ActionsMenu'
 import { Badge } from '@/components/ui/badge'
 
 import { getCategoryColor } from '@/lib/goals'
@@ -23,13 +25,15 @@ type GoalCardProps = {
     onEditAction: (goalId: string) => void
     onDeleteAction: (goalId: string) => Promise<void>
     isDeleting?: boolean
+    onActivateAction?: (goalId: string) => Promise<void>
 }
 
 export const GoalCard = ({
     goal,
     onEditAction,
     onDeleteAction,
-    isDeleting = false
+    isDeleting = false,
+    onActivateAction
 }: GoalCardProps) => {
     const t = useTranslations()
     const router = useRouter()
@@ -43,6 +47,15 @@ export const GoalCard = ({
     const handleCardClick = () => {
         router.push(`${ROUTES.RECOVERY_GOALS}/${goal.id}`)
     }
+
+    const additionalActions = isPaused && onActivateAction ? [
+        {
+            id: 'activate',
+            label: t(goalsLocales.goalActions.activate),
+            icon: Play,
+            action: () => onActivateAction(goal.id)
+        }
+    ] : []
 
     return (
         <div
@@ -80,6 +93,7 @@ export const GoalCard = ({
                     cancelLabel={t(goalsLocales.goalForm.buttons.cancel)}
                     confirmTitle={t(goalsLocales.goalActions.delete)}
                     confirmDescription={t(goalsLocales.goalActions.deleteConfirm)}
+                    additionalActions={additionalActions}
                 />
             </div>
 

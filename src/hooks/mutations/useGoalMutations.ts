@@ -8,6 +8,7 @@ import {
     MilestoneInput,
     MilestonePatchInput
 } from '@/types/goals'
+import { GoalStatus } from '@/types/goals'
 
 import { recoveryGoalsQueryKeys } from '@/constants/queryKeys'
 
@@ -65,6 +66,19 @@ export const useGoalMutations = () => {
                 queryKey: recoveryGoalsQueryKeys.goal(
                     goalId
                 )
+            })
+        }
+    })
+
+    const activateGoalMutation = useMutation({
+        mutationFn: (goalId: string) =>
+            updateGoal(goalId, { status: GoalStatus.ACTIVE }),
+        onSuccess: (_, goalId) => {
+            queryClient.invalidateQueries({
+                queryKey: recoveryGoalsQueryKeys.all
+            })
+            queryClient.invalidateQueries({
+                queryKey: recoveryGoalsQueryKeys.goal(goalId)
             })
         }
     })
@@ -169,6 +183,7 @@ export const useGoalMutations = () => {
     return {
         createGoal: createGoalMutation,
         updateGoal: updateGoalMutation,
+        activateGoal: activateGoalMutation,
         deleteGoal: deleteGoalMutation,
         createMilestone: createMilestoneMutation,
         updateMilestone: updateMilestoneMutation,

@@ -61,7 +61,7 @@ export const createGoal = async (
 
 export const updateGoal = async (
     goalId: string,
-    data: Partial<GoalInput>
+    data: Partial<GoalInput> | { status: GoalStatus }
 ): Promise<Goal> => {
     const res = await api.patch<{
         data: Goal
