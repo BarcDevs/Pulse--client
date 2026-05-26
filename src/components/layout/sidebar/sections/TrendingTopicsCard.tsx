@@ -10,6 +10,8 @@ import { cn } from '@/lib/utils'
 
 import { getTagName } from '@/utils/tag'
 
+import { TrendingTopicsSkeletons } from './TrendingTopicsSkeletons'
+
 const MAX_TRENDING_TOPICS = 5
 
 type TrendingTopicsCardProps = {
@@ -41,35 +43,49 @@ export const TrendingTopicsCard = ({
                 {t('community.trending.title')}
             </h3>
             {isEmpty ? (
-                <div className={'text-sm text-muted-foreground'}>
-                    {t('community.trending.loading')}
-                </div>
+                <TrendingTopicsSkeletons/>
             ) : isError ? (
                 <div className={'text-sm text-muted-foreground'}>
                     Failed to load topics
                 </div>
             ) : (
                 <div className={'flex flex-wrap gap-2'}>
-                    {topicsList.map(topic => (
-                        <Button
-                            key={topic.id}
-                            onClick={() => onTagSelectAction(
-                                selectedTag === topic.slug ? null : topic.slug
-                            )}
-                            variant={'ghost'}
-                            size={'sm'}
-                            className={cn(
-                                'rounded-full text-sm transition-colors',
-                                selectedTag === topic.slug
-                                    ? 'bg-primary text-primary-foreground'
-                                    : 'bg-surface-section text-muted-foreground',
-                                selectedTag !== topic.slug
-                                    && 'hover:bg-primary hover:text-primary-foreground'
-                            )}
-                        >
-                            {getTagName(topic, lang)}
-                        </Button>
-                    ))}
+                    {topicsList.map(topic => {
+                        const isSelected = (
+                            selectedTag === topic.slug
+                        )
+                        const onSelect = () => (
+                            onTagSelectAction(
+                                isSelected
+                                    ? null
+                                    : topic.slug
+                            )
+                        )
+                        return (
+                            <Button
+                                key={topic.id}
+                                onClick={onSelect}
+                                variant={'ghost'}
+                                size={'sm'}
+                                className={cn(
+                                    'rounded-full text-sm',
+                                    'transition-colors',
+                                    isSelected
+                                        ? 'bg-primary'
+                                        : 'bg-surface-section',
+                                    isSelected
+                                        ? 'text-primary-foreground'
+                                        : 'text-muted-foreground',
+                                    !isSelected
+                                    && 'hover:bg-primary',
+                                    !isSelected
+                                    && 'hover:text-primary-foreground'
+                                )}
+                            >
+                                {getTagName(topic, lang)}
+                            </Button>
+                        )
+                    })}
                 </div>
             )}
         </div>

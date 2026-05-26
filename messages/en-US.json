@@ -160,7 +160,6 @@
       "saved": "Saved",
       "newPostButton": "Create post",
       "searchPlaceholder": "Search conversations and discussions...",
-      "loading": "Loading posts...",
       "empty": "No posts have been shared yet. You can start the conversation when you feel ready.",
       "emptyWithFilter": "No posts matched this filter. Try another one or explore all discussions.",
       "likedLabel": "showed support",
@@ -184,8 +183,7 @@
       "readGuidelines": "Read guidelines"
     },
     "trending": {
-      "title": "Trending discussions",
-      "loading": "Loading topics..."
+      "title": "Trending discussions"
     },
     "activity": {
       "title": "Community activity",
@@ -196,7 +194,6 @@
       "deleteReply": "Are you sure you want to remove this reply?"
     },
     "postDetail": {
-      "loading": "Loading replies...",
       "replies": "Replies",
       "reply": "Reply",
       "noReplies": "No replies yet. You can share your thoughts whenever you feel comfortable.",
@@ -488,7 +485,6 @@
       },
       "status": {
         "loadError": "Unable to load data",
-        "loading": "Loading...",
         "noCheckIn": "No daily updates yet. Start checking in to see your progress here",
         "noCheckInTooltip": "No daily update"
       }

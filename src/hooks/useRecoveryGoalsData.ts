@@ -3,7 +3,10 @@ import { Goal, MilestoneStatus } from '@/types/goals'
 import { useGoalMutations } from '@/hooks/mutations/useGoalMutations'
 import { useGoals } from '@/hooks/queries/useGoals'
 
-import { getProgressPercentage } from '@/lib/goals'
+import {
+    getProgressPercentage,
+    sortGoalsByStatus
+} from '@/lib/goals'
 
 type UseRecoveryGoalsDataReturn = {
     goals: Goal[]
@@ -31,7 +34,7 @@ export const useRecoveryGoalsData =
         } = useGoals()
         const { updateMilestone } = useGoalMutations()
 
-        const goals = goalsResponse || []
+        const goals = sortGoalsByStatus(goalsResponse || [])
         const activeGoal = goals[0]
         const overallPercentage = activeGoal
             ? getProgressPercentage(activeGoal)

@@ -61,8 +61,8 @@ export const RecoveryGoalsPageContent = () => {
                     </div>
                     <GoalsFilter
                         selectedStatuses={selectedStatuses}
-                        toggleStatus={toggleStatus}
-                        onOpenCreateModal={onOpenCreateModal}
+                        toggleStatusAction={toggleStatus}
+                        onOpenCreateModalAction={onOpenCreateModal}
                     />
                 </div>
 

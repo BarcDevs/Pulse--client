@@ -23,10 +23,9 @@ export const PasswordRequirementItem = ({
             {isMet && <Check className={'size-3'}/>}
         </div>
         <span
-            className={
-                isMet
-                    ? 'text-secondary'
-                    : 'text-muted-foreground'
+            className={isMet
+                ? 'text-secondary'
+                : 'text-muted-foreground'
             }
         >
             {label}

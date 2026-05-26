@@ -17,25 +17,30 @@ import {
     PopoverTrigger
 } from '@/components/ui/popover'
 
+import { GOAL_STATUS_ORDER } from '@/lib/goals'
+
 import { goalsLocales } from '@/locales/goalsLocales'
 
 type GoalsFilterProps = {
     selectedStatuses: GoalStatus[]
-    toggleStatus: (status: GoalStatus) => void
-    onOpenCreateModal: () => void
+    toggleStatusAction: (status: GoalStatus) => void
+    onOpenCreateModalAction: () => void
 }
 
 export const GoalsFilter = ({
     selectedStatuses,
-    toggleStatus,
-    onOpenCreateModal
+    toggleStatusAction,
+    onOpenCreateModalAction
 }: GoalsFilterProps) => {
     const t = useTranslations()
     const [isFilterOpen, setIsFilterOpen] = useState(false)
 
     return (
         <div className={'flex gap-3'}>
-            <Popover open={isFilterOpen} onOpenChange={setIsFilterOpen}>
+            <Popover
+                open={isFilterOpen}
+                onOpenChange={setIsFilterOpen}
+            >
                 <PopoverTrigger asChild>
                     <Button
                         variant={'outline'}
@@ -49,7 +54,7 @@ export const GoalsFilter = ({
                     className={'w-56 p-4'}
                 >
                     <div className={'space-y-3'}>
-                        {Object.values(GoalStatus).map((status) => (
+                        {GOAL_STATUS_ORDER.map((status) => (
                             <div
                                 key={status}
                                 className={'flex items-center gap-3'}
@@ -57,7 +62,7 @@ export const GoalsFilter = ({
                                 <Checkbox
                                     id={`status-${status}`}
                                     checked={selectedStatuses.includes(status)}
-                                    onCheckedChange={() => toggleStatus(status)}
+                                    onCheckedChange={() => toggleStatusAction(status)}
                                 />
                                 <Label
                                     htmlFor={`status-${status}`}
@@ -71,7 +76,7 @@ export const GoalsFilter = ({
                 </PopoverContent>
             </Popover>
             <Button
-                onClick={onOpenCreateModal}
+                onClick={onOpenCreateModalAction}
                 className={'bg-linear-to-r from-primary-gradient-start to-primary-gradient-end text-primary-foreground shadow-lg shadow-blue-500/20'}
             >
                 <Plus className={'size-4 mr-2'}/>

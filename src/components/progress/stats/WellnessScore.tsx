@@ -13,9 +13,17 @@ import { progressLocales } from '@/locales/progressLocales'
 
 import { WellnessScoreCard } from '../cards/WellnessScoreCard'
 
+import { WellnessScoreSkeleton } from './WellnessScoreSkeleton'
+
 export const WellnessScore = () => {
     const t = useTranslations()
-    const { data, isError } = useCheckInStats('weekly')
+    const {
+        data,
+        isLoading,
+        isError
+    } = useCheckInStats('weekly')
+
+    if (isLoading) return <WellnessScoreSkeleton/>
 
     const moodScore = isError
         ? '-'

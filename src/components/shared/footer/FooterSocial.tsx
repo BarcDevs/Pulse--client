@@ -24,9 +24,7 @@ export const FooterSocial = () => {
                         href={link.href}
                         target={'_blank'}
                         rel={'noopener noreferrer'}
-                        className={
-                            'inline-flex transition-transform hover:scale-110 active:scale-95'
-                        }
+                        className={'inline-flex transition-transform hover:scale-110 active:scale-95'}
                         aria-label={link.title}
                     >
                         <Icon

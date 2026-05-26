@@ -1,18 +1,20 @@
+import { Skeleton } from '@/components/ui/skeleton'
+
 type ProgressMilestonesSkeletonsProps = {
-    count: number
+    count?: number
 }
 
 const ProgressGoalCardSkeleton = () => (
-    <div className={'flex animate-pulse flex-col gap-3 rounded-xl bg-surface-section p-5'}>
-        <div className={'h-5 w-20 rounded-full bg-muted'}/>
-        <div className={'h-4 w-full rounded bg-muted'}/>
-        <div className={'h-4 w-3/4 rounded bg-muted'}/>
+    <div className={'flex flex-col gap-3 rounded-xl bg-surface-section p-5'}>
+        <Skeleton className={'h-5 w-20 rounded-full'}/>
+        <Skeleton className={'h-4 w-full'}/>
+        <Skeleton className={'h-4 w-3/4'}/>
         <div className={'mt-auto space-y-1.5'}>
             <div className={'flex justify-between'}>
-                <div className={'h-3 w-16 rounded bg-muted'}/>
-                <div className={'h-3 w-8 rounded bg-muted'}/>
+                <Skeleton className={'h-3 w-16'}/>
+                <Skeleton className={'h-3 w-8'}/>
             </div>
-            <div className={'h-1.5 rounded-full bg-muted'}/>
+            <Skeleton className={'h-1.5 w-full rounded-full'}/>
         </div>
     </div>
 )
@@ -22,7 +24,7 @@ export const ProgressMilestonesSkeletons = ({
 }: ProgressMilestonesSkeletonsProps) => (
     <div className={'grid gap-4 sm:grid-cols-2 lg:grid-cols-4'}>
         {Array.from({ length: count }, (_, i) => (
-            <ProgressGoalCardSkeleton key={i}/>
+            <ProgressGoalCardSkeleton key={`milestone-${i}`}/>
         ))}
     </div>
 )

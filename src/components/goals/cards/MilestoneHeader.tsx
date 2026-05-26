@@ -19,19 +19,18 @@ export const MilestoneHeader = ({
         </div>
 
         <div
-            className={
-                cn(
-                    'flex-shrink-0',
-                    isCompleted
-                        ? 'text-emerald-500'
-                        : 'text-amber-500'
-                )
+            className={cn(
+                'shrink-0',
+                isCompleted
+                    ? 'text-emerald-500'
+                    : 'text-amber-500'
+            )
             }
         >
             {isCompleted ? (
-                <Check className={'h-5 w-5'} />
+                <Check className={'h-5 w-5'}/>
             ) : (
-                <Clock className={'h-5 w-5'} />
+                <Clock className={'h-5 w-5'}/>
             )}
         </div>
     </div>

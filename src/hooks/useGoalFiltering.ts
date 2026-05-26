@@ -2,13 +2,21 @@ import { useMemo, useState } from 'react'
 
 import { Goal, GoalStatus } from '@/types/goals'
 
+import {
+    GOAL_STATUS_ORDER,
+    sortGoalsByStatus,
+    sortGoalStatuses
+} from '@/lib/goals'
+
 export const useGoalFiltering = (goals: Goal[]) => {
     const [selectedStatuses, setSelectedStatuses] =
-        useState<GoalStatus[]>(Object.values(GoalStatus))
+        useState<GoalStatus[]>([...GOAL_STATUS_ORDER])
 
     const filteredGoals = useMemo(() =>
-        goals.filter((goal) =>
-            selectedStatuses.includes(goal.status)
+        sortGoalsByStatus(
+            goals.filter((goal) =>
+                selectedStatuses.includes(goal.status)
+            )
         ),
     [goals, selectedStatuses])
 
@@ -16,7 +24,7 @@ export const useGoalFiltering = (goals: Goal[]) => {
         setSelectedStatuses((prev) =>
             prev.includes(status)
                 ? prev.filter((s) => s !== status)
-                : [...prev, status]
+                : sortGoalStatuses([...prev, status])
         )
     }
 
