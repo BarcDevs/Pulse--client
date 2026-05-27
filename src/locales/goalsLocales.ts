@@ -80,7 +80,12 @@ export const goalsLocales = {
         edit: 'goals.goalActions.edit',
         delete: 'goals.goalActions.delete',
         deleteConfirm: 'goals.goalActions.deleteConfirm',
-        activate: 'goals.goalActions.activate'
+        activate: 'goals.goalActions.activate',
+        pause: 'goals.goalActions.pause',
+        abandon: 'goals.goalActions.abandon',
+        abandonConfirm: 'goals.goalActions.abandonConfirm',
+        reopen: 'goals.goalActions.reopen',
+        restore: 'goals.goalActions.restore'
     },
     goalStats: {
         activeMilestonesLabel: 'goals.goalStats.activeMilestonesLabel'
@@ -120,6 +125,14 @@ export const goalsLocales = {
         updateFailed: 'goals.toasts.updateFailed',
         deleteFailed: 'goals.toasts.deleteFailed',
         activated: 'goals.toasts.activated',
-        activateFailed: 'goals.toasts.activateFailed'
+        activateFailed: 'goals.toasts.activateFailed',
+        paused: 'goals.toasts.paused',
+        pauseFailed: 'goals.toasts.pauseFailed',
+        abandoned: 'goals.toasts.abandoned',
+        abandonFailed: 'goals.toasts.abandonFailed',
+        reopened: 'goals.toasts.reopened',
+        reopenFailed: 'goals.toasts.reopenFailed',
+        restored: 'goals.toasts.restored',
+        restoreFailed: 'goals.toasts.restoreFailed'
     }
 } as const

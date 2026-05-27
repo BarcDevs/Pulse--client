@@ -3,9 +3,10 @@ import { useTranslations } from 'next-intl'
 
 import { Button } from '@/components/ui/button'
 import { DropdownMenuItem } from '@/components/ui/dropdown-menu'
-import { cn } from '@/lib/utils'
 
 import { useLogout } from '@/hooks/mutations/useLogout'
+
+import { cn } from '@/lib/utils'
 
 import { userMenuItems } from '@/constants/navigationItems'
 

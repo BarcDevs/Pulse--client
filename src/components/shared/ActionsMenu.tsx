@@ -63,6 +63,9 @@ export const ActionsMenu = ({
     const [open, setOpen] = useState(false)
     const [confirmingActionId, setConfirmingActionId] = useState<string | null>(null)
 
+    const confirmingAction = additionalActions.find((a) => a.id === confirmingActionId)
+    const ConfirmIcon = confirmingAction?.icon ?? Trash2
+
     const stopPropagation = (
         event: MouseEvent<HTMLElement>
     ) => {
@@ -105,6 +108,15 @@ export const ActionsMenu = ({
                     </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align={'end'}>
+                    <DropdownMenuItem
+                        onClick={(event) => {
+                            stopPropagation(event)
+                            onEditAction()
+                        }}
+                    >
+                        <Pencil size={14}/>
+                        {editLabel}
+                    </DropdownMenuItem>
                     {additionalActions.map((action) => (
                         <DropdownMenuItem
                             key={action.id}
@@ -119,19 +131,13 @@ export const ActionsMenu = ({
                                 }
                             }}
                         >
-                            <action.icon size={14}/>
+                            <action.icon
+                                size={14}
+                                className={action.destructive ? 'text-destructive' : ''}
+                            />
                             {action.label}
                         </DropdownMenuItem>
                     ))}
-                    <DropdownMenuItem
-                        onClick={(event) => {
-                            stopPropagation(event)
-                            onEditAction()
-                        }}
-                    >
-                        <Pencil size={14}/>
-                        {editLabel}
-                    </DropdownMenuItem>
                     <DropdownMenuItem
                         className={'text-destructive focus:text-destructive'}
                         onClick={(event) => {
@@ -163,7 +169,7 @@ export const ActionsMenu = ({
                 >
                     <DialogHeader>
                         <div className={'flex items-center justify-center w-12 h-12 rounded-full bg-red-100 mx-auto mb-2'}>
-                            <Trash2
+                            <ConfirmIcon
                                 className={'text-destructive'}
                                 size={20}
                             />

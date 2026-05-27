@@ -55,6 +55,10 @@ type GoalsContextType = {
     ) => Promise<void>
     deleteGoal: (goalId: string) => Promise<void>
     activateGoal: (goalId: string) => Promise<void>
+    pauseGoal: (goalId: string) => Promise<void>
+    abandonGoal: (goalId: string) => Promise<void>
+    reopenGoal: (goalId: string) => Promise<void>
+    restoreGoal: (goalId: string) => Promise<void>
 }
 
 export const GoalsContext =
@@ -81,6 +85,10 @@ const GoalsStateProvider = ({
         createGoal,
         updateGoal,
         activateGoal,
+        pauseGoal,
+        abandonGoal,
+        reopenGoal,
+        restoreGoal,
         deleteGoal
     } = useGoalMutations()
 
@@ -216,6 +224,106 @@ const GoalsStateProvider = ({
         })
     }
 
+    const handlePauseGoal = async (
+        goalId: string
+    ): Promise<void> => {
+        startTransition(async () => {
+            addOptimistic({
+                type: 'update',
+                goalId,
+                partial: { status: GoalStatus.PAUSED }
+            })
+            await withOptimisticToast({
+                action: pauseGoal.mutateAsync(goalId).then((realGoal) => {
+                    addOptimistic({
+                        type: 'update',
+                        goalId,
+                        partial: realGoal
+                    })
+                }),
+                successMsg: t(goalsLocales.toasts.paused),
+                errorMsg: t(goalsLocales.toasts.pauseFailed),
+                retryLabel: t(globalLocales.shared.retry),
+                onRetry: () => handlePauseGoal(goalId)
+            })
+        })
+    }
+
+    const handleAbandonGoal = async (
+        goalId: string
+    ): Promise<void> => {
+        startTransition(async () => {
+            addOptimistic({
+                type: 'update',
+                goalId,
+                partial: { status: GoalStatus.ABANDONED }
+            })
+            await withOptimisticToast({
+                action: abandonGoal.mutateAsync(goalId).then((realGoal) => {
+                    addOptimistic({
+                        type: 'update',
+                        goalId,
+                        partial: realGoal
+                    })
+                }),
+                successMsg: t(goalsLocales.toasts.abandoned),
+                errorMsg: t(goalsLocales.toasts.abandonFailed),
+                retryLabel: t(globalLocales.shared.retry),
+                onRetry: () => handleAbandonGoal(goalId)
+            })
+        })
+    }
+
+    const handleReopenGoal = async (
+        goalId: string
+    ): Promise<void> => {
+        startTransition(async () => {
+            addOptimistic({
+                type: 'update',
+                goalId,
+                partial: { status: GoalStatus.ACTIVE }
+            })
+            await withOptimisticToast({
+                action: reopenGoal.mutateAsync(goalId).then((realGoal) => {
+                    addOptimistic({
+                        type: 'update',
+                        goalId,
+                        partial: realGoal
+                    })
+                }),
+                successMsg: t(goalsLocales.toasts.reopened),
+                errorMsg: t(goalsLocales.toasts.reopenFailed),
+                retryLabel: t(globalLocales.shared.retry),
+                onRetry: () => handleReopenGoal(goalId)
+            })
+        })
+    }
+
+    const handleRestoreGoal = async (
+        goalId: string
+    ): Promise<void> => {
+        startTransition(async () => {
+            addOptimistic({
+                type: 'update',
+                goalId,
+                partial: { status: GoalStatus.ACTIVE }
+            })
+            await withOptimisticToast({
+                action: restoreGoal.mutateAsync(goalId).then((realGoal) => {
+                    addOptimistic({
+                        type: 'update',
+                        goalId,
+                        partial: realGoal
+                    })
+                }),
+                successMsg: t(goalsLocales.toasts.restored),
+                errorMsg: t(goalsLocales.toasts.restoreFailed),
+                retryLabel: t(globalLocales.shared.retry),
+                onRetry: () => handleRestoreGoal(goalId)
+            })
+        })
+    }
+
     const value: GoalsContextType = {
         goals: sortGoalsByStatus(optimisticGoals),
         isLoading,
@@ -225,7 +333,11 @@ const GoalsStateProvider = ({
         addGoal: handleAddGoal,
         updateGoal: handleUpdateGoal,
         deleteGoal: handleDeleteGoal,
-        activateGoal: handleActivateGoal
+        activateGoal: handleActivateGoal,
+        pauseGoal: handlePauseGoal,
+        abandonGoal: handleAbandonGoal,
+        reopenGoal: handleReopenGoal,
+        restoreGoal: handleRestoreGoal
     }
 
     return (

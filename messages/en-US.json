@@ -669,9 +669,14 @@
     },
     "goalActions": {
       "edit": "Edit",
-      "delete": "Delete",
-      "deleteConfirm": "Remove this goal? This action can't be undone.",
-      "activate": "Activate"
+      "delete": "Remove",
+      "deleteConfirm": "Remove this goal? This can't be undone.",
+      "activate": "Resume",
+      "pause": "Pause",
+      "abandon": "Stop goal",
+      "abandonConfirm": "Stop working on this goal? You can return to it anytime.",
+      "reopen": "Reopen",
+      "restore": "Restore"
     },
     "goalStats": {
       "activeMilestonesLabel": "Active Milestones"
@@ -742,7 +747,15 @@
       "updateFailed": "We couldn't update your goal right now",
       "deleteFailed": "We couldn't remove your goal right now",
       "activated": "Your goal has been activated",
-      "activateFailed": "We couldn't activate your goal right now"
+      "activateFailed": "We couldn't resume your goal right now",
+      "paused": "Your goal has been paused",
+      "pauseFailed": "We couldn't pause your goal right now",
+      "abandoned": "You've stopped this goal for now",
+      "abandonFailed": "We couldn't update this goal right now",
+      "reopened": "Your goal is active again",
+      "reopenFailed": "We couldn't reopen your goal right now",
+      "restored": "Your goal has been restored",
+      "restoreFailed": "We couldn't restore your goal right now"
     }
   },
   "settings": {

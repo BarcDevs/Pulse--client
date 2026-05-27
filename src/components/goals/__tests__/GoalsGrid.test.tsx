@@ -42,6 +42,30 @@ vi.mock(
     })
 )
 
+vi.mock(
+    '@/components/goals/GoalStatusSection',
+    () => ({
+        GoalStatusSection: ({
+            goals
+        }: {
+            goals: Goal[]
+            status: GoalStatus
+            onEditAction: (id: string) => void
+        }) => (
+            <>
+                {goals.map((g) => (
+                    <div
+                        key={g.id}
+                        data-testid={'goal-card'}
+                    >
+                        {g.id}
+                    </div>
+                ))}
+            </>
+        )
+    })
+)
+
 const createGoal = (
     overrides: Partial<Goal>
 ): Goal => ({
@@ -69,16 +93,10 @@ describe(
                     <GoalsGrid
                         goals={[
                             createGoal({
-                                id: 'completed-low',
-                                title: 'Completed Low',
-                                status: GoalStatus.COMPLETED,
-                                progress: 0.1
-                            }),
-                            createGoal({
-                                id: 'paused-high',
-                                title: 'Paused High',
-                                status: GoalStatus.PAUSED,
-                                progress: 0.8
+                                id: 'active-high',
+                                title: 'Active High',
+                                status: GoalStatus.ACTIVE,
+                                progress: 0.9
                             }),
                             createGoal({
                                 id: 'active-low',
@@ -87,10 +105,16 @@ describe(
                                 progress: 0.2
                             }),
                             createGoal({
-                                id: 'active-high',
-                                title: 'Active High',
-                                status: GoalStatus.ACTIVE,
-                                progress: 0.9
+                                id: 'paused-high',
+                                title: 'Paused High',
+                                status: GoalStatus.PAUSED,
+                                progress: 0.8
+                            }),
+                            createGoal({
+                                id: 'completed-low',
+                                title: 'Completed Low',
+                                status: GoalStatus.COMPLETED,
+                                progress: 0.1
                             }),
                             createGoal({
                                 id: 'abandoned-high',
@@ -100,7 +124,6 @@ describe(
                             })
                         ]}
                         onEditAction={vi.fn()}
-                        onDeleteAction={vi.fn(async () => undefined)}
                     />
                 )
 

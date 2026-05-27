@@ -3,7 +3,13 @@
 import { useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 
-import { Play } from 'lucide-react'
+import {
+    Ban,
+    Pause,
+    Play,
+    RotateCcw,
+    Undo2
+} from 'lucide-react'
 
 import {
     Goal,
@@ -18,26 +24,35 @@ import { cn } from '@/lib/utils'
 
 import { ROUTES } from '@/constants/routes'
 
+import { useGoalsContext } from '@/context/GoalsContext'
+
 import { goalsLocales } from '@/locales/goalsLocales'
 
 type GoalCardProps = {
     goal: Goal
     onEditAction: (goalId: string) => void
-    onDeleteAction: (goalId: string) => Promise<void>
-    isDeleting?: boolean
-    onActivateAction?: (goalId: string) => Promise<void>
 }
 
 export const GoalCard = ({
     goal,
-    onEditAction,
-    onDeleteAction,
-    isDeleting = false,
-    onActivateAction
+    onEditAction
 }: GoalCardProps) => {
     const t = useTranslations()
     const router = useRouter()
+    const {
+        deleteGoal,
+        activateGoal,
+        pauseGoal,
+        abandonGoal,
+        reopenGoal,
+        restoreGoal,
+        isPending
+    } = useGoalsContext()
+
+    const isActive = goal.status === GoalStatus.ACTIVE
     const isPaused = goal.status === GoalStatus.PAUSED
+    const isCompleted = goal.status === GoalStatus.COMPLETED
+    const isAbandoned = goal.status === GoalStatus.ABANDONED
 
     const progressPercent =
         Math.round((goal.progress ?? 0) * 100)
@@ -48,14 +63,52 @@ export const GoalCard = ({
         router.push(`${ROUTES.RECOVERY_GOALS}/${goal.id}`)
     }
 
-    const additionalActions = isPaused && onActivateAction ? [
-        {
-            id: 'activate',
-            label: t(goalsLocales.goalActions.activate),
-            icon: Play,
-            action: () => onActivateAction(goal.id)
-        }
-    ] : []
+    const additionalActions = [
+        ...(isActive ? [
+            {
+                id: 'pause',
+                label: t(goalsLocales.goalActions.pause),
+                icon: Pause,
+                action: () => pauseGoal(goal.id)
+            }
+        ] : []),
+        ...(isPaused ? [
+            {
+                id: 'activate',
+                label: t(goalsLocales.goalActions.activate),
+                icon: Play,
+                action: () => activateGoal(goal.id)
+            }
+        ] : []),
+        ...((isActive || isPaused) ? [
+            {
+                id: 'abandon',
+                label: t(goalsLocales.goalActions.abandon),
+                icon: Ban,
+                action: () => abandonGoal(goal.id),
+                destructive: true,
+                requiresConfirmation: true,
+                confirmTitle: t(goalsLocales.goalActions.abandon),
+                confirmDescription: t(goalsLocales.goalActions.abandonConfirm)
+            }
+        ] : []),
+        ...(isCompleted ? [
+            {
+                id: 'reopen',
+                label: t(goalsLocales.goalActions.reopen),
+                icon: RotateCcw,
+                action: () => reopenGoal(goal.id)
+            }
+        ] : []),
+        ...(isAbandoned ? [
+            {
+                id: 'restore',
+                label: t(goalsLocales.goalActions.restore),
+                icon: Undo2,
+                action: () => restoreGoal(goal.id)
+            }
+        ] : [])
+    ]
 
     return (
         <div
@@ -86,8 +139,8 @@ export const GoalCard = ({
                 </div>
                 <ActionsMenu
                     onEditAction={() => onEditAction(goal.id)}
-                    onDeleteAction={() => onDeleteAction(goal.id)}
-                    isLoading={isDeleting}
+                    onDeleteAction={() => deleteGoal(goal.id)}
+                    isLoading={isPending}
                     editLabel={t(goalsLocales.goalActions.edit)}
                     deleteLabel={t(goalsLocales.goalActions.delete)}
                     cancelLabel={t(goalsLocales.goalForm.buttons.cancel)}

@@ -24,10 +24,7 @@ export const RecoveryGoalsPageContent = () => {
         goals,
         isLoading,
         isError,
-        error,
-        deleteGoal,
-        activateGoal,
-        isPending
+        error
     } = useGoalsContext()
 
     const {
@@ -81,10 +78,7 @@ export const RecoveryGoalsPageContent = () => {
                             <GoalsGrid
                                 goals={filteredGoals}
                                 onEditAction={onOpenEditModal}
-                                onDeleteAction={deleteGoal}
-                                isDeleting={isPending}
                                 onCreateAction={onOpenCreateModal}
-                                onActivateAction={activateGoal}
                             />
                         </div>
 

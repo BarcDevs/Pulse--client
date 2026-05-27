@@ -662,9 +662,14 @@
     },
     "goalActions": {
       "edit": "עריכה",
-      "delete": "מחיקה",
+      "delete": "הסרה",
       "deleteConfirm": "להסיר את היעד הזה? אי אפשר לשחזר אותו לאחר מכן.",
-      "activate": "הפעלה"
+      "activate": "חידוש",
+      "pause": "השהיה",
+      "abandon": "הפסקת יעד",
+      "abandonConfirm": "להפסיק לעבוד על היעד הזה? תמיד אפשר לחזור אליו בהמשך.",
+      "reopen": "פתיחה מחדש",
+      "restore": "שחזור"
     },
     "goalStats": {
       "activeMilestonesLabel": "שלבים פעילים"
@@ -735,7 +740,15 @@
       "updateFailed": "לא הצלחנו לעדכן את היעד כרגע",
       "deleteFailed": "לא הצלחנו להסיר את היעד כרגע",
       "activated": "היעד הופעל",
-      "activateFailed": "לא הצלחנו להפעיל את היעד כרגע"
+      "activateFailed": "לא הצלחנו לחדש את היעד כרגע",
+      "paused": "היעד הושהה",
+      "pauseFailed": "לא הצלחנו להשהות את היעד כרגע",
+      "abandoned": "היעד הופסק לעת עתה",
+      "abandonFailed": "לא הצלחנו לעדכן את היעד כרגע",
+      "reopened": "היעד פעיל שוב",
+      "reopenFailed": "לא הצלחנו לפתוח מחדש את היעד כרגע",
+      "restored": "היעד שוחזר",
+      "restoreFailed": "לא הצלחנו לשחזר את היעד כרגע"
     }
   },
   "settings": {
