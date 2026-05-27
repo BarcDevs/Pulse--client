@@ -31,7 +31,7 @@ export const dashboardLocales = {
             mood: 'dashboard.stats.labels.mood',
             pain: 'dashboard.stats.labels.pain',
             streak: 'dashboard.stats.labels.streak',
-            progress: 'dashboard.stats.labels.progress'
+            milestonesCompleted: 'dashboard.stats.labels.milestonesCompleted'
         },
         subValues: {
             days: 'dashboard.stats.subValues.days'

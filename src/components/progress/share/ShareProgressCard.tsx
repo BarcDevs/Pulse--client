@@ -19,6 +19,8 @@ import {
 
 import type { CheckInStats } from '@/types/checkIn'
 
+import { wellnessColors } from '@/lib/wellnessColors'
+
 import { progressLocales } from '@/locales/progressLocales'
 
 type ShareProgressCardProps = {
@@ -202,12 +204,12 @@ export const ShareProgressCard =
                                             >
                                                 <stop
                                                     offset={'5%'}
-                                                    stopColor={'#4a90e2'}
-                                                    stopOpacity={0.3}
+                                                    stopColor={wellnessColors.mood.fill}
+                                                    stopOpacity={0.9}
                                                 />
                                                 <stop
                                                     offset={'95%'}
-                                                    stopColor={'#4a90e2'}
+                                                    stopColor={wellnessColors.mood.fill}
                                                     stopOpacity={0}
                                                 />
                                             </linearGradient>
@@ -234,7 +236,7 @@ export const ShareProgressCard =
                                         <Area
                                             type={'monotone'}
                                             dataKey={'actual'}
-                                            stroke={'#4a90e2'}
+                                            stroke={wellnessColors.mood.primary}
                                             strokeWidth={2}
                                             fill={'url(#moodGradient)'}
                                         />

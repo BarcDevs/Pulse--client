@@ -2,9 +2,9 @@
 
 import { useTranslations } from 'next-intl'
 
-import { Award } from 'lucide-react'
+import { Target } from 'lucide-react'
 
-import { useCheckInStats } from '@/hooks/queries/useCheckInStats'
+import { useRecoveryGoalsStats } from '@/hooks/queries/useRecoveryGoalsStats'
 
 import { progressLocales } from '@/locales/progressLocales'
 
@@ -16,13 +16,13 @@ export const MilestonesCard = () => {
         data,
         isLoading,
         isError
-    } = useCheckInStats('weekly')
+    } = useRecoveryGoalsStats()
 
     if (isLoading) return <MilestonesCardSkeleton/>
 
     const milestonesAchieved = isError
         ? '-'
-        : data?.milestonesAchieved ?? 0
+        : data?.milestones.completed ?? 0
 
     return (
         <div className={'card-base'}>
@@ -41,7 +41,7 @@ export const MilestonesCard = () => {
                     </div>
                 </div>
                 <div className={'h-12 w-12 rounded-xl bg-purple-50 flex--center'}>
-                    <Award className={'h-6 w-6 text-purple'}/>
+                    <Target className={'h-6 w-6 text-purple'}/>
                 </div>
             </div>
         </div>

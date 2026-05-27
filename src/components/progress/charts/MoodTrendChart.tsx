@@ -4,6 +4,8 @@ import { useTranslations } from 'next-intl'
 
 import { ChartCard } from '@/components/shared/charts/ChartCard'
 
+import { wellnessColors } from '@/lib/wellnessColors'
+
 import { progressLocales } from '@/locales/progressLocales'
 
 export const MoodTrendChart = () => {
@@ -14,7 +16,8 @@ export const MoodTrendChart = () => {
             title={t(progressLocales.charts.moodTrendChart.title)}
             series={[{
                 dataKey: 'mood',
-                color: 'var(--primary)',
+                color: wellnessColors.mood.primary,
+                fillColor: wellnessColors.mood.fill,
                 label: t(progressLocales.charts.moodTrendChart.legendLabel),
                 gradientId: 'moodGradient'
             }]}

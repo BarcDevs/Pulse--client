@@ -2,69 +2,68 @@
 
 import { useTranslations } from 'next-intl'
 
-import { PlusCircle } from 'lucide-react'
-
-import { Goal } from '@/types/goals'
+import { Goal, GoalStatus } from '@/types/goals'
 
 import { EmptyState } from '@/components/shared/EmptyState'
-
-import { sortGoalsByStatus } from '@/lib/goals'
+import { Accordion } from '@/components/ui/accordion'
 
 import { goalsLocales } from '@/locales/goalsLocales'
 
-import { GoalCard } from './cards/GoalCard'
+import { GoalStatusSection } from './GoalStatusSection'
+
+const STATUS_ORDER = [
+    GoalStatus.ACTIVE,
+    GoalStatus.PAUSED,
+    GoalStatus.COMPLETED,
+    GoalStatus.ABANDONED
+] as const
 
 type GoalsGridProps = {
     goals: Goal[]
     onEditAction: (goalId: string) => void
-    onDeleteAction: (goalId: string) => Promise<void>
-    isDeleting?: boolean
     onCreateAction?: () => void
 }
 
 export const GoalsGrid = ({
     goals,
     onEditAction,
-    onDeleteAction,
-    isDeleting = false,
     onCreateAction
 }: GoalsGridProps) => {
     const t = useTranslations()
-    const sortedGoals = sortGoalsByStatus(goals)
-    const isEmpty = sortedGoals.length === 0
+
+    if (goals.length === 0) {
+        return (
+            <EmptyState message={t(goalsLocales.emptyState.message)}/>
+        )
+    }
+
+    const goalsByStatus = STATUS_ORDER.reduce<Record<GoalStatus, Goal[]>>(
+        (acc, status) => {
+            acc[status] = goals.filter((g) => g.status === status)
+            return acc
+        },
+        {} as Record<GoalStatus, Goal[]>
+    )
+
+    const visibleSections = STATUS_ORDER.filter(
+        (status) => goalsByStatus[status].length > 0 || status === GoalStatus.ACTIVE
+    )
 
     return (
-        <>
-            {isEmpty && (
-                <EmptyState message={t(goalsLocales.emptyState.message)}/>
-            )}
-
-            {!isEmpty && (
-                <div className={'grid gap-6 grid-cols-1 md:grid-cols-2'}>
-                    {sortedGoals.map((goal) => (
-                        <GoalCard
-                            key={goal.id}
-                            goal={goal}
-                            onEditAction={onEditAction}
-                            onDeleteAction={onDeleteAction}
-                            isDeleting={isDeleting}
-                        />
-                    ))}
-                    <div
-                        onClick={onCreateAction}
-                        className={'border-2 border-dashed border-outline-variant bg-transparent p-6 rounded-xl flex flex-col items-center justify-center text-center cursor-pointer hover:bg-white/50 transition-colors group'}>
-                        <div className={'w-12 h-12 rounded-full bg-surface-container-low flex items-center justify-center mb-4 group-hover:scale-110 transition-transform'}>
-                            <PlusCircle className={'w-6 h-6 text-outline'}/>
-                        </div>
-                        <p className={'font-headline font-bold text-on-surface-variant'}>
-                            {t(goalsLocales.overview.addGoalPlaceholder)}
-                        </p>
-                        <p className={'text-xs text-outline mt-1'}>
-                            {t(goalsLocales.overview.addGoalSubtitle)}
-                        </p>
-                    </div>
-                </div>
-            )}
-        </>
+        <Accordion
+            type={'multiple'}
+            defaultValue={[GoalStatus.ACTIVE]}
+            className={'space-y-3'}
+        >
+            {visibleSections.map((status) => (
+                <GoalStatusSection
+                    key={status}
+                    status={status}
+                    goals={goalsByStatus[status]}
+                    onEditAction={onEditAction}
+                    onCreateAction={onCreateAction}
+                />
+            ))}
+        </Accordion>
     )
 }

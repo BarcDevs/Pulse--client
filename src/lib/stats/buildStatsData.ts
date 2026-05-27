@@ -1,4 +1,5 @@
 import type { CheckInStats } from '@/types/checkIn'
+import type { RecoveryGoalsStats } from '@/types/goals'
 
 import {
     STAT_LABELS,
@@ -26,7 +27,10 @@ const STAT_CONFIG: Record<
     StatLabel,
     {
         getValue: 
-            (s: CheckInStats | undefined) => string | number
+            (
+                s: CheckInStats | undefined,
+                goalsStats?: RecoveryGoalsStats
+            ) => string | number
         subValue: string
         subValueKey: string
         getDescription: (s: CheckInStats | undefined) => {
@@ -68,8 +72,9 @@ const STAT_CONFIG: Record<
                 s.longestStreak
             ) : { key: '' }
     },
-    PROGRESS: {
-        getValue: () => '-',
+    MILESTONES_COMPLETED: {
+        getValue: (_, goalsStats) =>
+            goalsStats?.milestones.completed ?? 0,
         subValue: '',
         subValueKey: '',
         getDescription: () => ({ key: '' })
@@ -80,11 +85,12 @@ const LABEL_KEY_MAP: Record<StatLabel, string> = {
     MOOD: statsLocales.labels.mood,
     PAIN: statsLocales.labels.pain,
     STREAK: statsLocales.labels.streak,
-    PROGRESS: statsLocales.labels.progress
+    MILESTONES_COMPLETED: statsLocales.labels.milestonesCompleted
 }
 
 export const buildStatsData = (
-    stats: CheckInStats | undefined
+    stats: CheckInStats | undefined,
+    goalsStats?: RecoveryGoalsStats
 ): StatData[] =>
     STAT_LABELS.map((id) => {
         const config = STAT_CONFIG[id]
@@ -92,7 +98,7 @@ export const buildStatsData = (
         return {
             id,
             labelKey: LABEL_KEY_MAP[id],
-            value: config.getValue(stats),
+            value: config.getValue(stats, goalsStats),
             subValue: config.subValue,
             subValueKey: config.subValueKey,
             descriptionKey: description.key,

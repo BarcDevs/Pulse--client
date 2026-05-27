@@ -6,6 +6,8 @@ import { DropdownMenuItem } from '@/components/ui/dropdown-menu'
 
 import { useLogout } from '@/hooks/mutations/useLogout'
 
+import { cn } from '@/lib/utils'
+
 import { userMenuItems } from '@/constants/navigationItems'
 
 type UserMenuItemProps = {
@@ -28,13 +30,24 @@ export const UserMenuItem = ({
         <DropdownMenuItem
             key={item.href}
             asChild
+            variant={isLogout ? 'destructive' : 'default'}
         >
             <Button
                 onClick={handleClick}
-                className={'w-full flex justify-start px-2 py-1.5 text-sm cursor-pointer hover:bg-surface-section transition-colors'}
+                className={cn(
+                    'w-full flex justify-start px-2 py-1.5 text-sm cursor-pointer hover:bg-surface-section transition-colors',
+                    isLogout && 'text-destructive hover:text-destructive'
+                )}
                 variant={'ghost'}
             >
-                <item.icon className={'mr-2 size-4 hover:text-accent-light'}/>
+                <item.icon
+                    className={cn(
+                        'mr-2 size-4',
+                        isLogout
+                            ? 'text-destructive'
+                            : 'hover:text-accent-light'
+                    )}
+                />
                 <span>
                     {t(item.labelKey)}
                 </span>

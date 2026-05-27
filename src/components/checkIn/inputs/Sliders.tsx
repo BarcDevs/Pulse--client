@@ -6,6 +6,8 @@ import type { FormControlProps } from '@/types/forms'
 
 import { SliderCard } from '@/components/shared/inputs/SliderCard'
 
+import { wellnessColors } from '@/lib/wellnessColors'
+
 import { checkInLocales } from '@/locales/checkInLocales'
 import type { CheckInSchema } from '@/validations/forms/checkInSchema'
 
@@ -34,7 +36,8 @@ export const CheckInSliders = ({
                 maxLabel={t(checkInLocales.mood.max)}
                 value={mood}
                 onChange={handleMoodChange}
-                colorVar={'primary'}
+                color={wellnessColors.mood.primary}
+                tintColor={wellnessColors.mood.fill}
             />
             <SliderCard
                 icon={Activity}
@@ -43,7 +46,8 @@ export const CheckInSliders = ({
                 maxLabel={t(checkInLocales.pain.max)}
                 value={pain}
                 onChange={handlePainChange}
-                colorVar={'secondary'}
+                color={wellnessColors.pain.primary}
+                tintColor={wellnessColors.pain.fill}
             />
         </div>
     )

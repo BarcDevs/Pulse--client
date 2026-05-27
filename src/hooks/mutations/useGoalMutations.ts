@@ -5,6 +5,7 @@ import {
 
 import {
     GoalInput,
+    GoalStatus,
     MilestoneInput,
     MilestonePatchInput
 } from '@/types/goals'
@@ -65,6 +66,58 @@ export const useGoalMutations = () => {
                 queryKey: recoveryGoalsQueryKeys.goal(
                     goalId
                 )
+            })
+        }
+    })
+
+    const activateGoalMutation = useMutation({
+        mutationFn: (goalId: string) =>
+            updateGoal(goalId, { status: GoalStatus.ACTIVE }),
+        onSuccess: (_, goalId) => {
+            queryClient.invalidateQueries({
+                queryKey: recoveryGoalsQueryKeys.all
+            })
+            queryClient.invalidateQueries({
+                queryKey: recoveryGoalsQueryKeys.goal(goalId)
+            })
+        }
+    })
+
+    const pauseGoalMutation = useMutation({
+        mutationFn: (goalId: string) =>
+            updateGoal(goalId, { status: GoalStatus.PAUSED }),
+        onSuccess: (_, goalId) => {
+            queryClient.invalidateQueries({
+                queryKey: recoveryGoalsQueryKeys.all
+            })
+            queryClient.invalidateQueries({
+                queryKey: recoveryGoalsQueryKeys.goal(goalId)
+            })
+        }
+    })
+
+    const abandonGoalMutation = useMutation({
+        mutationFn: (goalId: string) =>
+            updateGoal(goalId, { status: GoalStatus.ABANDONED }),
+        onSuccess: (_, goalId) => {
+            queryClient.invalidateQueries({
+                queryKey: recoveryGoalsQueryKeys.all
+            })
+            queryClient.invalidateQueries({
+                queryKey: recoveryGoalsQueryKeys.goal(goalId)
+            })
+        }
+    })
+
+    const setGoalActiveMutation = useMutation({
+        mutationFn: (goalId: string) =>
+            updateGoal(goalId, { status: GoalStatus.ACTIVE }),
+        onSuccess: (_, goalId) => {
+            queryClient.invalidateQueries({
+                queryKey: recoveryGoalsQueryKeys.all
+            })
+            queryClient.invalidateQueries({
+                queryKey: recoveryGoalsQueryKeys.goal(goalId)
             })
         }
     })
@@ -169,6 +222,11 @@ export const useGoalMutations = () => {
     return {
         createGoal: createGoalMutation,
         updateGoal: updateGoalMutation,
+        activateGoal: activateGoalMutation,
+        pauseGoal: pauseGoalMutation,
+        abandonGoal: abandonGoalMutation,
+        reopenGoal: setGoalActiveMutation,
+        restoreGoal: setGoalActiveMutation,
         deleteGoal: deleteGoalMutation,
         createMilestone: createMilestoneMutation,
         updateMilestone: updateMilestoneMutation,
