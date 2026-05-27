@@ -17,6 +17,8 @@ vi.mock(
         }
     } ))
 
+import type { GoalInput } from '@/types/goals'
+
 import { api } from '@/api'
 import {
     completeMilestone,
@@ -30,7 +32,6 @@ import {
     updateGoal,
     updateMilestone
 } from '@/api/goals'
-import type { GoalInput } from '@/types/goals'
 
 const mockGoal = {
     id: 'g-1', profileId: 'p-1', title: 'Walk daily',

@@ -19,11 +19,10 @@ vi.mock('@/api/checkIn', () => ({
 }))
 
 import {
-    handleCheckInSubmit,
     handleCheckInCreate,
-    handleCheckInUpdate,
-    handleCheckInSave
-} from '@/handlers/actions/checkIn'
+    handleCheckInSave,
+    handleCheckInSubmit,
+    handleCheckInUpdate } from '@/handlers/actions/checkIn'
 
 // ==================== checkIn actions ====================
 describe(
