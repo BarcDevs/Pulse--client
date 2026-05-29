@@ -686,7 +686,7 @@
     },
     "goalForm": {
       "createTitle": "Create New Goal",
-      "updateTitle": "Update Goal",
+      "updateTitle": "Edit Goal",
       "subtitle": "Set a goal that feels clear, realistic, and supportive of where you are right now.",
       "backLabel": "Back to Goals",
       "fields": {
@@ -700,7 +700,7 @@
       },
       "buttons": {
         "create": "Create Goal",
-        "update": "Update Goal",
+        "update": "Edit Goal",
         "cancel": "Cancel"
       },
       "smartTip": {
@@ -756,6 +756,26 @@
       "reopenFailed": "We couldn't reopen your goal right now",
       "restored": "Your goal has been restored",
       "restoreFailed": "We couldn't restore your goal right now"
+    },
+    "cardFooter": {
+      "completedAllMilestones": "All {total} milestones completed",
+      "completedDate": "Completed on {date}",
+      "pausedSince": "Paused since {date}",
+      "milestonesProgress": "{completedCount} of {total} milestones completed · continue anytime",
+      "resumeAnytime": "Continue anytime",
+      "stoppedOn": "Stopped on {date}",
+      "reachedMilestone": "Reached milestone {milestone} of {total}"
+    },
+    "activeFooter": {
+      "nextMilestone": "Current milestone: {milestone}",
+      "phaseProgress": "Phase {current} of {total}",
+      "progress": "Progress"
+    },
+    "badges": {
+      "notStarted": "Not started",
+      "inProgress": "In progress",
+      "onTrack": "On track",
+      "complete": "Completed"
     }
   },
   "settings": {

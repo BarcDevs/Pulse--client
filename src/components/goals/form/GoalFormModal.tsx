@@ -29,7 +29,8 @@ export const GoalFormModal = ({
     goal
 }: GoalFormModalProps) => {
     const t = useTranslations()
-    const shouldRenderForm = mode === 'create' || (mode === 'edit' && goal)
+    const shouldRenderForm = mode === 'create'
+        || (mode === 'edit' && goal)
 
     const title = mode === 'create'
         ? t(goalsLocales.goalForm.createTitle)
@@ -44,12 +45,8 @@ export const GoalFormModal = ({
                 className={'max-w-xl overflow-hidden p-0'}
                 showCloseButton={false}
             >
-                {/* todo: use locale */}
                 <DialogTitle className={'sr-only'}>
-                    {mode === 'create'
-                        ? 'Create New Goal'
-                        : 'Edit Goal'
-                    }
+                    {title}
                 </DialogTitle>
                 <GoalFormHeader
                     mode={mode}

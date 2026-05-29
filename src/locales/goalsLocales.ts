@@ -93,6 +93,27 @@ export const goalsLocales = {
     emptyState: {
         message: 'goals.emptyState.message'
     },
+    cardFooter: {
+        completedAllMilestones: 'goals.cardFooter.completedAllMilestones',
+        completedDate: 'goals.cardFooter.completedDate',
+        pausedSince: 'goals.cardFooter.pausedSince',
+        milestonesProgress: 'goals.cardFooter.milestonesProgress',
+        resumeAnytime: 'goals.cardFooter.resumeAnytime',
+        stoppedOn: 'goals.cardFooter.stoppedOn',
+        reachedMilestone: 'goals.cardFooter.reachedMilestone',
+        beforeStopping: 'goals.cardFooter.beforeStopping'
+    },
+    activeFooter: {
+        nextMilestone: 'goals.activeFooter.nextMilestone',
+        phaseProgress: 'goals.activeFooter.phaseProgress',
+        progress: 'goals.activeFooter.progress'
+    },
+    badges: {
+        notStarted: 'goals.badges.notStarted',
+        inProgress: 'goals.badges.inProgress',
+        onTrack: 'goals.badges.onTrack',
+        complete: 'goals.badges.complete'
+    },
     goalForm: {
         createTitle: 'goals.goalForm.createTitle',
         updateTitle: 'goals.goalForm.updateTitle',
