@@ -14,20 +14,20 @@ import {
     Users
 } from 'lucide-react'
 
-import { Badge } from '@/components/ui/badge'
 import {
     Card,
     CardContent,
-    CardHeader,
-    CardTitle
+    CardHeader
 } from '@/components/ui/card'
-import { Skeleton } from '@/components/ui/skeleton'
 
 import { useCheckInStats } from '@/hooks/queries/useCheckInStats'
 
 import { DEFAULT_ACTIVITIES } from '@/config/defaultActivities'
 
+import { checkInLocales } from '@/locales/checkInLocales'
 import { dashboardLocales } from '@/locales/dashboardLocales'
+
+import { TodaysFocusSkeletons } from './TodaysFocusSkeletons'
 
 type DefaultActivity = typeof DEFAULT_ACTIVITIES[number]
 
@@ -48,57 +48,51 @@ export const DashboardTodaysFocus = () => {
     const rawActivity = stats?.topActivities?.[0]
     const matchedActivity = DEFAULT_ACTIVITIES.find(
         (a) => a.toLowerCase() === rawActivity?.toLowerCase()
-    ) ?? 'Meditation'
+    ) ?? DEFAULT_ACTIVITIES[0]
 
-    const activityLabels = t.raw('checkIn.activities.default') as Record<string, string>
+    const activityLabels = t
+        .raw(checkInLocales.activities.default) as Record<string, string>
     const activityLabel = activityLabels[matchedActivity] ?? matchedActivity
 
     const Icon = ACTIVITY_ICONS[matchedActivity] ?? Brain
     const isPersonalized = !!rawActivity
     // TODO(MVP): replace with AI-generated reflective insight — deterministic backend signals + lightweight AI phrasing
-    const description = isPersonalized
-        ? t(dashboardLocales.todaysFocus.supportiveDescription, {
-            activity: activityLabel
-        }) : t(dashboardLocales.todaysFocus.description)
 
     return (
         <Card className={'border-0 shadow-sm'}>
-            <CardHeader className={'pb-3'}>
-                <div className={'flex items-center justify-between'}>
-                    <CardTitle className={'text-base font-medium text-muted-foreground'}>
-                        {t(dashboardLocales.todaysFocus.label)}
-                    </CardTitle>
-                    <Badge
-                        variant={'secondary'}
-                        className={'bg-primary-light text-primary'}
-                    >
-                        {t(dashboardLocales.todaysFocus.badge)}
-                    </Badge>
+            <CardHeader className={'pb-2'}>
+                <div className={'flex items-start justify-between gap-3'}>
+                    <div>
+                        <h4 className={'text-base font-semibold text-foreground leading-snug'}>
+                            {t(dashboardLocales.todaysFocus.title)}
+                        </h4>
+                        <p className={'mt-0.5 text-xs font-medium tracking-widest text-muted-foreground uppercase'}>
+                            {t(dashboardLocales.todaysFocus.label)}
+                        </p>
+                    </div>
+                    <div className={'flex--center size-10 shrink-0 rounded-xl bg-primary-light'}>
+                        <Icon className={'size-5 text-primary'}/>
+                    </div>
                 </div>
             </CardHeader>
             <CardContent>
-                <div className={'flex items-center gap-4'}>
-                    <div className={'flex--center size-12 shrink-0 rounded-xl bg-primary-light'}>
-                        <Icon className={'size-6 text-primary'}/>
-                    </div>
-                    <div className={'flex-1'}>
-                        {isLoading ? (
-                            <>
-                                <Skeleton className={'h-7 w-40 mb-2'}/>
-                                <Skeleton className={'h-4 w-64'}/>
-                            </>
-                        ) : (
-                            <>
-                                <h3 className={'text-xl font-semibold text-foreground'}>
-                                    {activityLabel}
-                                </h3>
-                                <p className={'mt-1 text-sm text-muted-foreground'}>
-                                    {description}
-                                </p>
-                            </>
+                {isLoading ? (
+                    <TodaysFocusSkeletons/>
+                ) : (
+                    <>
+                        <p className={'text-xl font-bold text-foreground leading-snug'}>
+                            {isPersonalized
+                                ? t(dashboardLocales.todaysFocus.observation, { activity: activityLabel })
+                                : t(dashboardLocales.todaysFocus.description)
+                            }
+                        </p>
+                        {isPersonalized && (
+                            <p className={'mt-3 text-sm text-muted-foreground'}>
+                                {t(dashboardLocales.todaysFocus.supportCopy)}
+                            </p>
                         )}
-                    </div>
-                </div>
+                    </>
+                )}
             </CardContent>
         </Card>
     )

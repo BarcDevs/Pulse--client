@@ -19,10 +19,11 @@ export const dashboardLocales = {
         viewAll: 'dashboard.community.viewAll'
     },
     todaysFocus: {
+        title: 'dashboard.todaysFocus.title',
         label: 'dashboard.todaysFocus.label',
-        badge: 'dashboard.todaysFocus.badge',
         description: 'dashboard.todaysFocus.description',
-        supportiveDescription: 'dashboard.todaysFocus.supportiveDescription'
+        observation: 'dashboard.todaysFocus.observation',
+        supportCopy: 'dashboard.todaysFocus.supportCopy'
     },
     historyChart: {
         title: 'dashboard.historyChart.title',

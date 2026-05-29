@@ -305,10 +305,11 @@
       "viewAll": "View all"
     },
     "todaysFocus": {
-      "label": "Something worth noticing",
-      "badge": "This week",
-      "description": "Regular check-ins can help reveal patterns over time.",
-      "supportiveDescription": "{activity} appeared consistently in your check-ins this week. Familiar routines can help create a sense of steadiness, even during uneven periods."
+      "title": "A Small Moment for Yourself",
+      "label": "Something we noticed",
+      "description": "Check in regularly to see your personal patterns here.",
+      "observation": "You've been consistently making time for {activity} lately.",
+      "supportCopy": "No need to keep a streak, it just felt worth noticing."
     },
     "historyChart": {
       "title": "Your recovery trend",
