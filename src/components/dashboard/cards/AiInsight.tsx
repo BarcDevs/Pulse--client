@@ -1,5 +1,7 @@
 'use client'
 
+import { useState } from 'react'
+
 import { useTranslations } from 'next-intl'
 
 import { Sparkles } from 'lucide-react'
@@ -29,6 +31,7 @@ export const DashboardAIInsight = ({
     className
 }: DashboardAIInsightProps) => {
     const t = useTranslations()
+    const [isExpanded, setIsExpanded] = useState(false)
     const {
         data: checkInsResponse,
         isLoading,
@@ -51,17 +54,31 @@ export const DashboardAIInsight = ({
                     </CardTitle>
                 </div>
             </CardHeader>
-            <CardContent>
+            <CardContent className={'space-y-3'}>
                 {isLoading ? (
                     <Skeleton className={'h-12 w-full'}/>
                 ) : isError ? (
                     <p className={'text-sm text-muted-foreground'}>
-                        Failed to load insights
+                        {t(dashboardLocales.aiInsight.failedToLoad)}
                     </p>
                 ) : (
-                    <blockquote className={'border-l-2 border-primary pl-4 italic text-foreground'}>
-                        {insightText}
-                    </blockquote>
+                    <>
+                        <blockquote className={cn(
+                            'border-l-2 border-primary pl-4 italic text-foreground',
+                            !isExpanded && 'line-clamp-3'
+                        )}>
+                            {insightText}
+                        </blockquote>
+                        <button
+                            onClick={() => setIsExpanded(!isExpanded)}
+                            className={'text-sm text-primary hover:underline cursor-pointer'}
+                        >
+                            {t(isExpanded
+                                ? dashboardLocales.aiInsight.seeLess
+                                : dashboardLocales.aiInsight.seeMore
+                            )}
+                        </button>
+                    </>
                 )}
             </CardContent>
         </Card>
