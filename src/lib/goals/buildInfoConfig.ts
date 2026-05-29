@@ -10,7 +10,6 @@ import {
     GoalStatus,
     GoalStatusToken
 } from '@/types/goals'
-
 import { TranslatorFn } from '@/types/i18n'
 
 import { cn } from '@/lib/utils'
