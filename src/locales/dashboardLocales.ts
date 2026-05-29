@@ -18,12 +18,12 @@ export const dashboardLocales = {
         label: 'dashboard.community.label',
         viewAll: 'dashboard.community.viewAll'
     },
-    todaysFocus: {
-        title: 'dashboard.todaysFocus.title',
-        label: 'dashboard.todaysFocus.label',
-        description: 'dashboard.todaysFocus.description',
-        observation: 'dashboard.todaysFocus.observation',
-        supportCopy: 'dashboard.todaysFocus.supportCopy'
+    dailyReflection: {
+        title: 'dashboard.dailyReflection.title',
+        label: 'dashboard.dailyReflection.label',
+        description: 'dashboard.dailyReflection.description',
+        observation: 'dashboard.dailyReflection.observation',
+        supportCopy: 'dashboard.dailyReflection.supportCopy'
     },
     historyChart: {
         title: 'dashboard.historyChart.title',

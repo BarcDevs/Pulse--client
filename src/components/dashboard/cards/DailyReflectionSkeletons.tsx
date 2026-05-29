@@ -1,6 +1,6 @@
 import { Skeleton } from '@/components/ui/skeleton'
 
-export const TodaysFocusSkeletons = () => (
+export const DailyReflectionSkeletons = () => (
     <>
         <Skeleton className={'h-7 w-3/4 mb-3'}/>
         <Skeleton className={'h-7 w-1/2 mb-6'}/>

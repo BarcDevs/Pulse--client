@@ -27,7 +27,7 @@ import { DEFAULT_ACTIVITIES } from '@/config/defaultActivities'
 import { checkInLocales } from '@/locales/checkInLocales'
 import { dashboardLocales } from '@/locales/dashboardLocales'
 
-import { TodaysFocusSkeletons } from './TodaysFocusSkeletons'
+import { DailyReflectionSkeletons } from './DailyReflectionSkeletons'
 
 type DefaultActivity = typeof DEFAULT_ACTIVITIES[number]
 
@@ -41,7 +41,7 @@ const ACTIVITY_ICONS: Record<DefaultActivity, ElementType> = {
     Rest: Moon
 }
 
-export const DashboardTodaysFocus = () => {
+export const DashboardDailyReflection = () => {
     const t = useTranslations()
     const { data: stats, isLoading } = useCheckInStats('weekly')
 
@@ -64,10 +64,10 @@ export const DashboardTodaysFocus = () => {
                 <div className={'flex items-start justify-between gap-3'}>
                     <div>
                         <h4 className={'text-base font-semibold text-foreground leading-snug'}>
-                            {t(dashboardLocales.todaysFocus.title)}
+                            {t(dashboardLocales.dailyReflection.title)}
                         </h4>
                         <p className={'mt-0.5 text-xs font-medium tracking-widest text-muted-foreground uppercase'}>
-                            {t(dashboardLocales.todaysFocus.label)}
+                            {t(dashboardLocales.dailyReflection.label)}
                         </p>
                     </div>
                     <div className={'flex--center size-10 shrink-0 rounded-xl bg-primary-light'}>
@@ -77,18 +77,18 @@ export const DashboardTodaysFocus = () => {
             </CardHeader>
             <CardContent>
                 {isLoading ? (
-                    <TodaysFocusSkeletons/>
+                    <DailyReflectionSkeletons/>
                 ) : (
                     <>
                         <p className={'text-xl font-bold text-foreground leading-snug'}>
                             {isPersonalized
-                                ? t(dashboardLocales.todaysFocus.observation, { activity: activityLabel })
-                                : t(dashboardLocales.todaysFocus.description)
+                                ? t(dashboardLocales.dailyReflection.observation, { activity: activityLabel })
+                                : t(dashboardLocales.dailyReflection.description)
                             }
                         </p>
                         {isPersonalized && (
                             <p className={'mt-3 text-sm text-muted-foreground'}>
-                                {t(dashboardLocales.todaysFocus.supportCopy)}
+                                {t(dashboardLocales.dailyReflection.supportCopy)}
                             </p>
                         )}
                     </>

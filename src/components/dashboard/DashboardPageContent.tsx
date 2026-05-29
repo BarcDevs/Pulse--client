@@ -6,7 +6,7 @@ import { FEATURES } from '@/config/features'
 
 import { DashboardAIInsight } from './cards/AiInsight'
 import { DashboardCheckInCard } from './cards/CheckInCard'
-import { DashboardTodaysFocus } from './cards/TodaysFocus'
+import { DashboardDailyReflection } from './cards/DailyReflection'
 import { DashboardStatsCards } from './stats/StatsCards'
 import { DashboardChartSidebar } from './DashboardChartSidebar'
 
@@ -24,7 +24,7 @@ export const DashboardPageContent = () => {
                         <DashboardAIInsight className={'pt-6 px-10 pb-10 h-full'}/>
                     )}
                 </div>
-                <DashboardTodaysFocus/>
+                <DashboardDailyReflection/>
             </div>
 
             <DashboardStatsCards/>
