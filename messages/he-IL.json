@@ -749,6 +749,26 @@
       "reopenFailed": "לא הצלחנו לפתוח מחדש את היעד כרגע",
       "restored": "היעד שוחזר",
       "restoreFailed": "לא הצלחנו לשחזר את היעד כרגע"
+    },
+    "cardFooter": {
+      "completedAllMilestones": "כל {total} הצעדים הושלמו",
+      "completedDate": "הושלם בתאריך {date}",
+      "pausedSince": "מושהה מאז {date}",
+      "milestonesProgress": "{completedCount} מתוך {total} צעדים הושלמו · אפשר להמשיך בכל שלב",
+      "resumeAnytime": "אפשר להמשיך בכל שלב",
+      "stoppedOn": "הופסק בתאריך {date}",
+      "reachedMilestone": "הושג שלב {milestone} מתוך {total}"
+    },
+    "activeFooter": {
+      "nextMilestone": "השלב הנוכחי: {milestone}",
+      "phaseProgress": "שלב {current} מתוך {total}",
+      "progress": "התקדמות"
+    },
+    "badges": {
+      "notStarted": "טרם התחיל",
+      "inProgress": "בתהליך",
+      "onTrack": "מתקדם כמתוכנן",
+      "complete": "הושלם"
     }
   },
   "settings": {
