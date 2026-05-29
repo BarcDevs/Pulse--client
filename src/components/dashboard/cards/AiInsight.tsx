@@ -64,7 +64,7 @@ export const DashboardAIInsight = ({
                 ) : (
                     <>
                         <blockquote className={cn(
-                            'border-l-2 border-primary pl-4 italic text-foreground',
+                            'border-l-2 border-primary pl-4 italic text-foreground text-sm',
                             !isExpanded && 'line-clamp-3'
                         )}>
                             {insightText}
