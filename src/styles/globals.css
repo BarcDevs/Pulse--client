@@ -135,6 +135,23 @@
     --insight-foreground: #ffffff;
 
     --logo: #183e9f;
+
+    /* Goal Status Colors */
+    --active-goal: #005da7;
+    --active-goal-bg: #eaf3ff;
+    --active-goal-soft: #c6dcf3;
+
+    --paused-goal: #a35e0a;
+    --paused-goal-bg: #fff5e6;
+    --paused-goal-soft: #fbe1bb;
+
+    --completed-goal: #006b5b;
+    --completed-goal-bg: #e8faf2;
+    --completed-goal-soft: #bce8d6;
+
+    --abandoned-goal: #5b616b;
+    --abandoned-goal-bg: #f3f4f6;
+    --abandoned-goal-soft: #dee1e6;
 }
 
 .dark {
@@ -224,6 +241,23 @@
     /* Dark mode insight */
     --insight: #a78bfa;
     --insight-foreground: #0f172a;
+
+    /* Goal Status Colors — dark mode */
+    --active-goal: #5ba3d9;
+    --active-goal-bg: #0d1f35;
+    --active-goal-soft: #1a3252;
+
+    --paused-goal: #e09a40;
+    --paused-goal-bg: #2d1f0a;
+    --paused-goal-soft: #3d2a10;
+
+    --completed-goal: #4dc4a8;
+    --completed-goal-bg: #0a2d24;
+    --completed-goal-soft: #143d30;
+
+    --abandoned-goal: #9aa0aa;
+    --abandoned-goal-bg: #1e2227;
+    --abandoned-goal-soft: #282d34;
 }
 
 @theme inline {
@@ -317,6 +351,19 @@
     --color-on-primary-fixed-variant: var(--on-primary-fixed-variant);
     --color-insight: var(--insight);
     --color-insight-foreground: var(--insight-foreground);
+
+    --color-active-goal: var(--active-goal);
+    --color-active-goal-bg: var(--active-goal-bg);
+    --color-active-goal-soft: var(--active-goal-soft);
+    --color-paused-goal: var(--paused-goal);
+    --color-paused-goal-bg: var(--paused-goal-bg);
+    --color-paused-goal-soft: var(--paused-goal-soft);
+    --color-completed-goal: var(--completed-goal);
+    --color-completed-goal-bg: var(--completed-goal-bg);
+    --color-completed-goal-soft: var(--completed-goal-soft);
+    --color-abandoned-goal: var(--abandoned-goal);
+    --color-abandoned-goal-bg: var(--abandoned-goal-bg);
+    --color-abandoned-goal-soft: var(--abandoned-goal-soft);
 }
 
 @layer base {

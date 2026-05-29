@@ -23,7 +23,8 @@ export const fetchGoals = async ():
         status: (goal.status as string)
             .toUpperCase() as GoalStatus,
         category: (goal.category as string)
-            .toUpperCase() as GoalCategory
+            .toUpperCase() as GoalCategory,
+        milestonesCount: goal.milestonesCount ?? 0
     }))
 }
 

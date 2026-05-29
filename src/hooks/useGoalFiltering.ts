@@ -2,11 +2,9 @@ import { useMemo, useState } from 'react'
 
 import { Goal, GoalStatus } from '@/types/goals'
 
-import {
-    GOAL_STATUS_ORDER,
-    sortGoalsByStatus,
-    sortGoalStatuses
-} from '@/lib/goals'
+import { sortGoalsByStatus } from '@/lib/goals/sortGoalsByStatus'
+import { sortGoalStatuses } from '@/lib/goals/sortGoalStatuses'
+import { GOAL_STATUS_ORDER } from '@/lib/goals/statusOrder'
 
 export const useGoalFiltering = (goals: Goal[]) => {
     const [selectedStatuses, setSelectedStatuses] =

@@ -10,11 +10,9 @@ import {
     GoalStatus
 } from '@/types/goals'
 
-import {
-    GOAL_STATUS_ORDER,
-    sortGoalsByStatus,
-    sortGoalStatuses
-} from '@/lib/goals'
+import { sortGoalsByStatus } from '@/lib/goals/sortGoalsByStatus'
+import { sortGoalStatuses } from '@/lib/goals/sortGoalStatuses'
+import { GOAL_STATUS_ORDER } from '@/lib/goals/statusOrder'
 
 const createGoal = (
     overrides: Partial<Goal>

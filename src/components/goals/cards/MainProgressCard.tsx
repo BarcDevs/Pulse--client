@@ -1,6 +1,6 @@
 import { useRecoveryGoalsData } from '@/hooks/useRecoveryGoalsData'
 
-import { getBadge } from '@/lib/goals'
+import { getBadge } from '@/lib/goals/getBadge'
 
 import { EditGoalButton } from '../EditGoalButton'
 import { GoalDetailsSection } from '../GoalDetailsSection'

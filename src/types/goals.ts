@@ -27,6 +27,8 @@ export type Goal = {
     targetDate?: string | null
     isPrimary: boolean
     milestones?: GoalMilestone[]
+    milestonesCount?: number
+    nextMilestone?: string
     progress?: number
     createdAt: string
     updatedAt: string
@@ -94,4 +96,17 @@ export type RecoveryGoalsStats = {
         active: number
         paused: number
     }
+}
+
+export type GoalStatusToken = {
+    cardBg: string
+    cardBorder: string
+    stripeGradient: string
+    ribbonCn: string
+    dotCn: string
+    countBadgeCn: string
+    footerBg: string
+    accentText: string
+    progressFill: string
+    progressTrack: string
 }
