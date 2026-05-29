@@ -128,7 +128,7 @@ export const PostListCategoryFilter = ({
                 </p>
                 {allKeys.map(key => {
                     const category = key ? (categories.find(c => c.key === key) ?? null) : null
-                    const count = key ? getCount(key) : (counts?.find(c => c.category === 'all')?.count ?? null)
+                    const count = key ? getCount(key) : getCount('all')
                     const label = key
                         ? tCategoryNames(key)
                         : t(communityLocales.posts.allCategories)

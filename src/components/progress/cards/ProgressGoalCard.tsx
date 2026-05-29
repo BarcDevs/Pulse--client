@@ -4,7 +4,8 @@ import type { Goal } from '@/types/goals'
 
 import { Badge } from '@/components/ui/badge'
 
-import { getCategoryColor, getProgressPercentage } from '@/lib/goals'
+import { getCategoryColor } from '@/lib/goals/getCategoryColor'
+import { getProgressPercentage } from '@/lib/goals/getProgressPercentage'
 import { cn } from '@/lib/utils'
 
 import { goalsLocales } from '@/locales/goalsLocales'

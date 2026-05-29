@@ -5,7 +5,7 @@
 - Write clean, maintainable, readable code
 - Keep one concern per file (SRP)
 - For every function that you want to create make sure it is not already exists
-- Avoid using re-export files
+- Avoid using re-export files and barrel indexes
 
 ## Code Style
 - Never use string literals as object keys - define typed constants and use computed property names `[CONST.Key]: value`
@@ -18,6 +18,7 @@
 - Don't break single imports to multiple lines unless very long (50+ chars)
 - Never break line around single imports - if import is too long, break before the `from` keyword
 - Don't make line-breaking too strict
+- Always provide informative filenames and variable names
 
 ## Language & Format
 - Quotes: Single quotes (') for all strings, imports, JSX props, backtick allowed for template strings

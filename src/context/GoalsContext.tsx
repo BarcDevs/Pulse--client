@@ -21,7 +21,7 @@ import { OptimisticActionMap } from '@/types/react'
 import { useGoalMutations } from '@/hooks/mutations/useGoalMutations'
 import { useGoals } from '@/hooks/queries/useGoals'
 
-import { sortGoalsByStatus } from '@/lib/goals'
+import { sortGoalsByStatus } from '@/lib/goals/sortGoalsByStatus'
 
 import { withOptimisticToast } from '@/utils/optimisticToast'
 

@@ -17,7 +17,7 @@ import {
     PopoverTrigger
 } from '@/components/ui/popover'
 
-import { GOAL_STATUS_ORDER } from '@/lib/goals'
+import { GOAL_STATUS_ORDER } from '@/lib/goals/statusOrder'
 
 import { goalsLocales } from '@/locales/goalsLocales'
 

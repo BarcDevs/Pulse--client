@@ -15,7 +15,7 @@ import {
     FormMessage
 } from '@/components/ui/form'
 
-import { getCategoryColor } from '@/lib/goals'
+import { getCategoryColor } from '@/lib/goals/getCategoryColor'
 import { cn } from '@/lib/utils'
 
 import { goalsLocales } from '@/locales/goalsLocales'

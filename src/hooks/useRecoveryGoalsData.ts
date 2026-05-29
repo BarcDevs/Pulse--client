@@ -1,12 +1,12 @@
 import { Goal, MilestoneStatus } from '@/types/goals'
 
-import { useGoalMutations } from '@/hooks/mutations/useGoalMutations'
+import { useGoalMutations }
+    from '@/hooks/mutations/useGoalMutations'
 import { useGoals } from '@/hooks/queries/useGoals'
 
-import {
-    getProgressPercentage,
-    sortGoalsByStatus
-} from '@/lib/goals'
+import { getProgressPercentage }
+    from '@/lib/goals/getProgressPercentage'
+import { sortGoalsByStatus } from '@/lib/goals/sortGoalsByStatus'
 
 type UseRecoveryGoalsDataReturn = {
     goals: Goal[]
