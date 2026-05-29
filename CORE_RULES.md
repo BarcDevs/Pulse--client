@@ -5,7 +5,7 @@
 - Write clean, maintainable, readable code
 - Keep one concern per file (SRP)
 - For every function that you want to create make sure it is not already exists
-- Avoid using re-export files
+- Avoid using re-export files and barrel indexes
 
 ## Code Style
 - Never use string literals as object keys - define typed constants and use computed property names `[CONST.Key]: value`
