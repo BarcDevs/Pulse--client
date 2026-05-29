@@ -21,8 +21,8 @@ export const dashboardLocales = {
     todaysFocus: {
         label: 'dashboard.todaysFocus.label',
         badge: 'dashboard.todaysFocus.badge',
-        title: 'dashboard.todaysFocus.title',
-        description: 'dashboard.todaysFocus.description'
+        description: 'dashboard.todaysFocus.description',
+        supportiveDescription: 'dashboard.todaysFocus.supportiveDescription'
     },
     historyChart: {
         title: 'dashboard.historyChart.title',

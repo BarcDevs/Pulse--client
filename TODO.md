@@ -10,8 +10,39 @@ Replace hardcoded mock data with real API integration for pages with enabled fea
 
 | # | File | Feature | Mock Data | Note |
 |---|------|---------|-----------|------|
-| 1 | `src/components/dashboard/community/CommunityActivity.tsx` | forumLinking | `COMMUNITY_ACTIVITY_FEED` | Community activity feed mock — integrate with real forum posts API |
-| 2 | `src/components/dashboard/cards/TodaysFocus.tsx` | motivationFeedback | "5 minutes of mindfulness" (hardcoded in messages/en-US.json:306) | Replace hardcoded suggested activity with real API data from activity suggestions endpoint |
+| ~~1~~ | ~~`src/components/dashboard/community/CommunityActivity.tsx`~~ | ~~forumLinking~~ | ~~`COMMUNITY_ACTIVITY_FEED`~~ | ~~Community activity feed mock — integrate with real forum posts API~~ |
+| ~~2~~ | ~~`src/components/dashboard/cards/TodaysFocus.tsx`~~ | ~~motivationFeedback~~ | ~~"5 minutes of mindfulness" (hardcoded in messages/en-US.json:306)~~ | ~~Replace hardcoded suggested activity with real API data from activity suggestions endpoint~~ |
+
+---
+
+## AI / Reflective Insights
+
+The `TodaysFocus` card currently shows a static hardcoded description. This is temporary.
+
+**MVP goal:** Replace with a small AI-generated reflective insight card derived from:
+- Deterministic backend signals (top activities, mood trend, streak, check-in frequency)
+- Lightweight AI phrasing (short, calm, observational)
+
+Card must stay: **small · passive · reflective · observational · calm**
+
+No recommendations, no "you should", no pseudo-coaching.
+The card reflects the user back to themselves — it does not instruct them.
+
+| # | File | Note |
+|---|------|------|
+| 1 | `src/components/dashboard/cards/TodaysFocus.tsx` | Replace static `supportiveDescription` with AI-generated reflective insight from backend. Backend derives insight from check-in signals; client renders as-is. |
+
+**Scaling-deferred — do NOT build until data maturity + trust calibration:**
+
+Behavioral intelligence systems require medical/legal caution, behavioral tuning, repetition management, and data maturity. Deferred entirely to scaling phase:
+- Recommendation engines
+- Predictive suggestions
+- Adaptive wellness coaching
+- Intervention systems
+- Proactive AI guidance
+- Emotional diagnosis
+- Personalized recovery plans
+- Conversational coaching loops
 
 ---
 

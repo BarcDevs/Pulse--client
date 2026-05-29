@@ -305,10 +305,10 @@
       "viewAll": "View all"
     },
     "todaysFocus": {
-      "label": "Today’s focus",
-      "badge": "Suggested for you",
-      "title": "5 minutes of mindfulness",
-      "description": "A short pause can help you slow down, reset, and feel more grounded."
+      "label": "Something worth noticing",
+      "badge": "This week",
+      "description": "Regular check-ins can help reveal patterns over time.",
+      "supportiveDescription": "{activity} appeared consistently in your check-ins this week. Familiar routines can help create a sense of steadiness, even during uneven periods."
     },
     "historyChart": {
       "title": "Your recovery trend",
