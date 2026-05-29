@@ -6,7 +6,11 @@ import {
     vi
 } from 'vitest'
 
-import { getApiErrorMessage, isNetworkError, isUnauthorizedError } from '@/utils/error'
+import {
+    getApiErrorMessage,
+    isNetworkError,
+    isUnauthorizedError
+} from '@/utils/error'
 
 // ==================== error utils ====================
 describe(

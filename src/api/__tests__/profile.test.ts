@@ -28,10 +28,26 @@ import {
     updateProfile
 } from '@/api/profile'
 
-const mockProfile = { id: 'p-1', userId: 'u-1', bio: 'test', avatarUrl: null }
-const mockProfileOptions = { interests: [], activities: [] }
-const mockInterest = { id: 'i-1', slug: 'cardio', label: 'Cardio' }
-const mockActivity = { id: 'a-1', slug: 'walking', label: 'Walking' }
+const mockProfile = {
+    id: 'p-1',
+    userId: 'u-1',
+    bio: 'test',
+    avatarUrl: null
+}
+const mockProfileOptions = {
+    interests: [],
+    activities: []
+}
+const mockInterest = {
+    id: 'i-1',
+    slug: 'cardio',
+    label: 'Cardio'
+}
+const mockActivity = {
+    id: 'a-1',
+    slug: 'walking',
+    label: 'Walking'
+}
 
 // ==================== profile API ====================
 describe(

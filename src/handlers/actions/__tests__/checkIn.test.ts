@@ -6,7 +6,11 @@ import {
     vi
 } from 'vitest'
 
-const { mockSubmitCheckIn, mockCreateCheckIn, mockPatchCheckIn } = vi.hoisted(() => ({
+const {
+    mockSubmitCheckIn,
+    mockCreateCheckIn,
+    mockPatchCheckIn
+} = vi.hoisted(() => ({
     mockSubmitCheckIn: vi.fn(),
     mockCreateCheckIn: vi.fn(),
     mockPatchCheckIn: vi.fn()
@@ -22,7 +26,8 @@ import {
     handleCheckInCreate,
     handleCheckInSave,
     handleCheckInSubmit,
-    handleCheckInUpdate } from '@/handlers/actions/checkIn'
+    handleCheckInUpdate
+} from '@/handlers/actions/checkIn'
 
 // ==================== checkIn actions ====================
 describe(
@@ -39,7 +44,11 @@ describe(
             updatedAt: '2024-01-01T00:00:00Z'
         }
 
-        const mockData = { moodScore: 7, painLevel: 3, activities: ['walking'] }
+        const mockData = {
+            moodScore: 7,
+            painLevel: 3,
+            activities: ['walking']
+        }
 
         beforeEach(() => {
             vi.clearAllMocks()

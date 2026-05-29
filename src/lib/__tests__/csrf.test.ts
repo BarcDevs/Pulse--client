@@ -5,7 +5,11 @@ import {
     it
 } from 'vitest'
 
-import { clearCsrfToken, getCsrfToken, setCsrfToken } from '@/lib/csrf'
+import {
+    clearCsrfToken,
+    getCsrfToken,
+    setCsrfToken
+} from '@/lib/csrf'
 
 // ==================== csrf ====================
 describe(

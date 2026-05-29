@@ -34,14 +34,24 @@ import {
 } from '@/api/goals'
 
 const mockGoal = {
-    id: 'g-1', profileId: 'p-1', title: 'Walk daily',
-    description: null, category: 'PHYSICAL', status: 'ACTIVE',
-    isPrimary: true, createdAt: '2024-01-01T00:00:00Z', updatedAt: '2024-01-01T00:00:00Z'
+    id: 'g-1',
+    profileId: 'p-1',
+    title: 'Walk daily',
+    description: null,
+    category: 'PHYSICAL',
+    status: 'ACTIVE',
+    isPrimary: true,
+    createdAt: '2024-01-01T00:00:00Z',
+    updatedAt: '2024-01-01T00:00:00Z'
 }
 const mockMilestone = {
-    id: 'm-1', goalId: 'g-1', title: 'First week',
-    status: 'ACTIVE', order: 1,
-    createdAt: '2024-01-01T00:00:00Z', updatedAt: '2024-01-01T00:00:00Z'
+    id: 'm-1',
+    goalId: 'g-1',
+    title: 'First week',
+    status: 'ACTIVE',
+    order: 1,
+    createdAt: '2024-01-01T00:00:00Z',
+    updatedAt: '2024-01-01T00:00:00Z'
 }
 
 // ==================== goals API ====================
@@ -72,7 +82,11 @@ describe(
                 it(
                     'should uppercase status and category on returned goals',
                     async () => {
-                        const rawGoal = { ...mockGoal, status: 'active', category: 'physical' }
+                        const rawGoal = {
+                            ...mockGoal,
+                            status: 'active',
+                            category: 'physical'
+                        }
                         vi.mocked(api.get)
                             .mockResolvedValueOnce({
                                 data: { data: [rawGoal] }
@@ -132,7 +146,11 @@ describe(
                 it(
                     'should POST to /recovery-goals with data',
                     async () => {
-                        const input = { title: 'Walk daily', category: 'PHYSICAL', isPrimary: false } as GoalInput
+                        const input = {
+                            title: 'Walk daily',
+                            category: 'PHYSICAL',
+                            isPrimary: false
+                        } as GoalInput
                         vi.mocked(api.post)
                             .mockResolvedValueOnce({
                                 data: { data: mockGoal }
@@ -146,7 +164,11 @@ describe(
                 it(
                     'should return the created goal',
                     async () => {
-                        const input = { title: 'Walk daily', category: 'PHYSICAL', isPrimary: false } as GoalInput
+                        const input = {
+                            title: 'Walk daily',
+                            category: 'PHYSICAL',
+                            isPrimary: false
+                        } as GoalInput
                         vi.mocked(api.post)
                             .mockResolvedValueOnce({
                                 data: { data: mockGoal }
@@ -347,7 +369,13 @@ describe(
                     async () => {
                         vi.mocked(api.get)
                             .mockResolvedValueOnce({
-                                data: { data: { total: 3, active: 2, completed: 1 } }
+                                data: {
+                                    data: {
+                                        total: 3,
+                                        active: 2,
+                                        completed: 1
+                                    }
+                                }
                             })
 
                         await fetchRecoveryGoalsStats()
@@ -358,7 +386,11 @@ describe(
                 it(
                     'should return the stats',
                     async () => {
-                        const mockStats = { total: 3, active: 2, completed: 1 }
+                        const mockStats = {
+                            total: 3,
+                            active: 2,
+                            completed: 1
+                        }
                         vi.mocked(api.get)
                             .mockResolvedValueOnce({
                                 data: { data: mockStats }

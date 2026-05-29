@@ -39,7 +39,7 @@ describe(
                     async () => {
                         const onSubmit = vi.fn().mockResolvedValueOnce(undefined)
                         const handler = wrapFormSubmit(mockForm, onSubmit)
-                        await handler({ name: 'test' })
+                        await (handler as any)({ name: 'test' })
 
                         expect(onSubmit).toHaveBeenCalledWith({ name: 'test' })
                         expect(mockForm.setError).not.toHaveBeenCalled()
@@ -50,7 +50,7 @@ describe(
                     async () => {
                         const onSubmit = vi.fn().mockResolvedValueOnce(undefined)
                         const handler = wrapFormSubmit(mockForm, onSubmit, { resetOnSuccess: true })
-                        await handler({})
+                        await (handler as any)({})
 
                         expect(mockForm.reset).toHaveBeenCalled()
                     })
@@ -60,7 +60,7 @@ describe(
                     async () => {
                         const onSubmit = vi.fn().mockResolvedValueOnce(undefined)
                         const handler = wrapFormSubmit(mockForm, onSubmit, { resetOnSuccess: false })
-                        await handler({})
+                        await (handler as any)({})
 
                         expect(mockForm.reset).not.toHaveBeenCalled()
                     })
@@ -77,7 +77,7 @@ describe(
                         vi.mocked(axios.isAxiosError).mockReturnValueOnce(true)
                         const onSubmit = vi.fn().mockRejectedValueOnce(axiosError)
                         const handler = wrapFormSubmit(mockForm, onSubmit)
-                        await handler({})
+                        await (handler as any)({})
 
                         expect(mockForm.setError).toHaveBeenCalledWith('root', {
                             type: 'manual',
@@ -92,7 +92,7 @@ describe(
                         vi.mocked(axios.isAxiosError).mockReturnValueOnce(true)
                         const onSubmit = vi.fn().mockRejectedValueOnce(axiosError)
                         const handler = wrapFormSubmit(mockForm, onSubmit, { fallbackMessage: 'Custom fallback' })
-                        await handler({})
+                        await (handler as any)({})
 
                         expect(mockForm.setError).toHaveBeenCalledWith('root', {
                             type: 'manual',
@@ -107,7 +107,7 @@ describe(
                         vi.mocked(axios.isAxiosError).mockReturnValueOnce(true)
                         const onSubmit = vi.fn().mockRejectedValueOnce(axiosError)
                         const handler = wrapFormSubmit(mockForm, onSubmit)
-                        await handler({})
+                        await (handler as any)({})
 
                         expect(mockForm.setError).toHaveBeenCalledWith('root', {
                             type: 'manual',
@@ -126,7 +126,7 @@ describe(
                         vi.mocked(axios.isAxiosError).mockReturnValueOnce(false)
                         const onSubmit = vi.fn().mockRejectedValueOnce(new Error('native error'))
                         const handler = wrapFormSubmit(mockForm, onSubmit)
-                        await handler({})
+                        await (handler as any)({})
 
                         expect(mockForm.setError).toHaveBeenCalledWith('root', {
                             type: 'manual',
@@ -145,7 +145,7 @@ describe(
                         vi.mocked(axios.isAxiosError).mockReturnValueOnce(false)
                         const onSubmit = vi.fn().mockRejectedValueOnce('just a string')
                         const handler = wrapFormSubmit(mockForm, onSubmit, { fallbackMessage: 'Custom fallback' })
-                        await handler({})
+                        await (handler as any)({})
 
                         expect(mockForm.setError).toHaveBeenCalledWith('root', {
                             type: 'manual',
@@ -159,7 +159,7 @@ describe(
                         vi.mocked(axios.isAxiosError).mockReturnValueOnce(false)
                         const onSubmit = vi.fn().mockRejectedValueOnce('just a string')
                         const handler = wrapFormSubmit(mockForm, onSubmit)
-                        await handler({})
+                        await (handler as any)({})
 
                         expect(mockForm.setError).toHaveBeenCalledWith('root', {
                             type: 'manual',

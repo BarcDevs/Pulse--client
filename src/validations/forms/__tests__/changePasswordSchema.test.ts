@@ -1,4 +1,8 @@
-import { describe, expect, it } from 'vitest'
+import {
+    describe,
+    expect,
+    it
+} from 'vitest'
 
 import { createChangePasswordSchema } from '@/validations/forms/changePasswordSchema'
 
@@ -33,7 +37,11 @@ describe('createChangePasswordSchema', () => {
     })
 
     it('rejects newPassword shorter than 8 characters', () => {
-        const result = schema.safeParse({ ...valid, newPassword: 'Sh@1', confirmPassword: 'Sh@1' })
+        const result = schema.safeParse({
+            ...valid,
+            newPassword: 'Sh@1',
+            confirmPassword: 'Sh@1'
+        })
         expect(result.success).toBe(false)
     })
 

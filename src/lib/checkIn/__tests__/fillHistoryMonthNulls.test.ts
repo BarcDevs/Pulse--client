@@ -1,4 +1,10 @@
-import { afterEach,describe, expect, it, vi } from 'vitest'
+import {
+    afterEach,
+    describe,
+    expect,
+    it,
+    vi
+} from 'vitest'
 
 import type { MoodPainSeriesPoint } from '@/types/checkIn'
 
@@ -26,7 +32,11 @@ afterEach(() => {
     vi.useRealTimers()
 })
 
-const makePoint = (date: string, mood: number | null = 5, pain: number | null = 3): MoodPainSeriesPoint => ({
+const makePoint = (
+    date: string,
+    mood: number | null = 5,
+    pain: number | null = 3
+): MoodPainSeriesPoint => ({
     date,
     originalDate: `${date}T12:00:00.000Z`,
     mood,

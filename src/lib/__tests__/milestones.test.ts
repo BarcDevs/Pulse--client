@@ -1,4 +1,8 @@
-import { describe, expect,it } from 'vitest'
+import {
+    describe,
+    expect,
+    it
+} from 'vitest'
 
 import type { GoalMilestone } from '@/types/goals'
 import { MilestoneStatus } from '@/types/goals'
@@ -6,7 +10,8 @@ import { MilestoneStatus } from '@/types/goals'
 import {
     getInsightColor,
     getMilestoneCardConfig,
-    getMilestoneIconColor } from '@/lib/milestones'
+    getMilestoneIconColor
+} from '@/lib/milestones'
 
 const mockLocales = {
     milestoneCardLabels: {
