@@ -1,6 +1,9 @@
+import Link from 'next/link'
+
 import { UserAvatar } from '@/components/shared/UserAvatar'
 
 type CommunityActivityItemProps = {
+    userId: string
     avatar: string
     user: string
     action: string
@@ -8,12 +11,16 @@ type CommunityActivityItemProps = {
 }
 
 export const CommunityActivityItem = ({
+    userId,
     avatar,
     user,
     action,
     time
 }: CommunityActivityItemProps) => (
-    <div className={'flex items-start gap-3'}>
+    <Link
+        href={`/community/post/${userId}`}
+        className={'flex items-start gap-3 hover:opacity-80 transition-opacity'}
+    >
         <UserAvatar
             initials={avatar}
             className={{ wrapper: 'size-8' }}
@@ -29,5 +36,5 @@ export const CommunityActivityItem = ({
                 {time}
             </p>
         </div>
-    </div>
+    </Link>
 )

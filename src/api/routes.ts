@@ -22,6 +22,7 @@ export const ENDPOINTS = {
             postId: string,
             replyId: string
         ) => `/forum/posts/${postId}/replies/${replyId}/like`,
+        recommendations: '/forum/recommendations',
         tags: '/forum/tags',
         tagsUnknown: '/forum/tags/unknown',
         postCategories: '/forum/posts/categories'

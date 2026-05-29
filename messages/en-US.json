@@ -188,7 +188,8 @@
     },
     "activity": {
       "title": "Community activity",
-      "viewAll": "View all"
+      "viewAll": "View all",
+      "loadError": "We couldn't load community activity right now"
     },
     "confirmations": {
       "deletePost": "Are you sure you want to remove this post?",
@@ -1229,6 +1230,13 @@
       "bio": {
         "tooLong": "Keep your bio under {max} characters"
       }
+    }
+  },
+  "recommendations": {
+    "action": {
+      "askedQuestion": "asked the community",
+      "postedAbout": "shared about {category}",
+      "sharedPost": "shared an update"
     }
   }
 }

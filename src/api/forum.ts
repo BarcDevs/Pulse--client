@@ -1,4 +1,5 @@
 import type {
+    CommunityActivityData,
     PartialTag,
     Post,
     Reply
@@ -8,6 +9,14 @@ import type { Response } from '@/types/responses'
 import { api } from '@/api/index'
 import { ENDPOINTS } from '@/api/routes'
 import { PostSchema } from '@/validations/forms/postSchema'
+
+export const fetchCommunityRecommendations = async (
+): Promise<CommunityActivityData> => {
+    const res = await api.get<Response<CommunityActivityData>>(
+        ENDPOINTS.forum.recommendations
+    )
+    return res.data.data
+}
 
 export const fetchPosts = async (
     query: any

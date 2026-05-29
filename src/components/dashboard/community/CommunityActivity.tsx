@@ -3,12 +3,19 @@
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 
+import { useQuery } from '@tanstack/react-query'
+
+import { useDateLocale } from '@/hooks/ui/useDateLocale'
+
 import { cn } from '@/lib/utils'
 
+import { mapActivityItems } from '@/utils/community'
+
+import { fetchCommunityRecommendations } from '@/api/forum'
 import { communityLocales } from '@/locales/communityLocales'
-import { COMMUNITY_ACTIVITY_FEED } from '@/mocks/activityFeed'
 
 import { CommunityActivityItem } from './CommunityActivityItem'
+import { CommunityActivitySkeletons } from './CommunityActivitySkeletons'
 
 type CommunityActivityProps = {
     fullHeight?: boolean
@@ -18,10 +25,24 @@ export const CommunityActivity = ({
     fullHeight = false
 }: CommunityActivityProps) => {
     const t = useTranslations()
-    const recommendedCommunityPosts=
-        fullHeight
-            ? COMMUNITY_ACTIVITY_FEED.slice(0, 5)
-            : COMMUNITY_ACTIVITY_FEED.slice(0, 3)
+    const dateLocale = useDateLocale()
+
+    const {
+        data,
+        isLoading,
+        isError
+    } = useQuery({
+        queryKey: ['forum', 'recommendations'],
+        queryFn: fetchCommunityRecommendations
+    })
+
+    const limit = fullHeight ? 5 : 3
+    const posts = mapActivityItems(
+        data?.posts || [],
+        t,
+        dateLocale,
+        limit
+    )
 
     return (
         <div className={cn(
@@ -40,16 +61,28 @@ export const CommunityActivity = ({
                 </Link>
             </div>
 
-            <div className={'mt-4 space-y-4'}>
-                {recommendedCommunityPosts.map((activity) => (
-                    <CommunityActivityItem
-                        key={activity.id}
-                        avatar={activity.avatar}
-                        user={activity.user}
-                        action={activity.action}
-                        time={activity.time}
-                    />
-                ))}
+            <div className={'mt-4'}>
+                {isLoading ? (
+                    <CommunityActivitySkeletons count={limit}/>
+                ) : isError ? (
+                    // todo: use error card
+                    <p className={'text-sm text-muted-foreground'}>
+                        {t(communityLocales.activity.loadError)}
+                    </p>
+                ) : (
+                    <div className={'space-y-4'}>
+                        {posts.map((activity) => (
+                            <CommunityActivityItem
+                                key={activity.id}
+                                userId={activity.id}
+                                avatar={activity.avatar}
+                                user={activity.user}
+                                action={activity.action}
+                                time={activity.time}
+                            />
+                        ))}
+                    </div>
+                )}
             </div>
         </div>
     )

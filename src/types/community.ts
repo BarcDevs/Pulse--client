@@ -60,3 +60,22 @@ export type Tag = {
         followers?: number
     }
 }
+
+export type CommunityActivityItem = {
+    id: string
+    userId: string
+    username: string
+    firstName: string
+    lastName: string
+    actionKey: string
+    actionParams?: Record<string, string>
+    timestamp: string
+}
+
+export type CommunityActivityData = {
+    status: string
+    isStale: boolean
+    posts: CommunityActivityItem[]
+    generatedAt: string
+    basedOnCheckInId: string
+}

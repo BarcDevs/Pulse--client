@@ -181,7 +181,8 @@
     },
     "activity": {
       "title": "פעילות הקהילה",
-      "viewAll": "הצגת הכל"
+      "viewAll": "הצגת הכל",
+      "loadError": "לא הצלחנו לטעון פעילות מהקהילה כרגע"
     },
     "confirmations": {
       "deletePost": "למחוק את הפוסט הזה?",
@@ -1222,6 +1223,13 @@
       "bio": {
         "tooLong": "כדאי לקצר מעט את הביוגרפיה"
       }
+    }
+  },
+  "recommendations": {
+    "action": {
+      "askedQuestion": "שיתף שאלה",
+      "postedAbout": "שיתף על {category}",
+      "sharedPost": "שיתף עדכון"
     }
   }
 }
