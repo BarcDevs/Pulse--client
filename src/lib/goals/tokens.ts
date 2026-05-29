@@ -57,12 +57,11 @@ export const GOAL_STATUS_TOKENS: Record<
     }
 }
 
-export const GOAL_BADGES = {
-    NOT_STARTED: 'NOT STARTED',
-    IN_PROGRESS: 'IN PROGRESS',
-    ON_TRACK: 'ON TRACK',
-    COMPLETE: 'COMPLETE'
-} as const
+export enum GoalBadgeKey {
+    NOT_STARTED = 'NOT_STARTED',
+    IN_PROGRESS = 'IN_PROGRESS',
+    ON_TRACK = 'ON_TRACK',
+    COMPLETE = 'COMPLETE'
+}
 
-export type GoalBadge =
-    typeof GOAL_BADGES[keyof typeof GOAL_BADGES]
+export type GoalBadge = GoalBadgeKey

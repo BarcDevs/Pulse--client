@@ -1,6 +1,11 @@
+import { useTranslations } from 'next-intl'
+
 import { useRecoveryGoalsData } from '@/hooks/useRecoveryGoalsData'
 
-import { getBadge } from '@/lib/goals/getBadge'
+import {
+    getBadge,
+    getBadgeLabel
+} from '@/lib/goals/getBadge'
 
 import { EditGoalButton } from '../EditGoalButton'
 import { GoalDetailsSection } from '../GoalDetailsSection'
@@ -15,6 +20,7 @@ export const MainProgressCard = ({
     onCompleteToday,
     onEditGoal
 }: MainProgressCardProps) => {
+    const t = useTranslations()
     const {
         activeGoal,
         overallPercentage
@@ -22,7 +28,8 @@ export const MainProgressCard = ({
 
     if (!activeGoal) return null
 
-    const badge = getBadge(overallPercentage)
+    const badgeKey = getBadge(overallPercentage)
+    const badge = getBadgeLabel(badgeKey, t)
 
     return (
         <div className={'md:col-span-8 bg-white rounded-xl overflow-hidden relative'}>
@@ -33,9 +40,7 @@ export const MainProgressCard = ({
                 />
             )}
             <div className={'flex flex-col md:flex-row gap-0'}>
-                <GoalProgressSection
-                    percentage={overallPercentage}
-                />
+                <GoalProgressSection percentage={overallPercentage}/>
 
                 <GoalDetailsSection
                     goal={activeGoal}
