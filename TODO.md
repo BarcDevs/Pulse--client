@@ -4,6 +4,17 @@ Centralised list of all in-code TODOs, grouped by domain.
 
 ---
 
+## CRITICAL — Replace Mocks in Active Pages
+
+Replace hardcoded mock data with real API integration for pages with enabled features.
+
+| # | File | Feature | Mock Data | Note |
+|---|------|---------|-----------|------|
+| 1 | `src/components/dashboard/community/CommunityActivity.tsx` | forumLinking | `COMMUNITY_ACTIVITY_FEED` | Community activity feed mock — integrate with real forum posts API |
+| 2 | `src/components/dashboard/cards/TodaysFocus.tsx` | motivationFeedback | "5 minutes of mindfulness" (hardcoded in messages/en-US.json:306) | Replace hardcoded suggested activity with real API data from activity suggestions endpoint |
+
+---
+
 ## AI / Data
 
 | # | File | Line | Note |

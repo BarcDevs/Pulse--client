@@ -62,10 +62,10 @@ describe('buildStatsData', () => {
             expect(streak.value).toBe(0)
         })
 
-        it('PROGRESS value is "-"', () => {
+        it('MILESTONES_COMPLETED value is 0', () => {
             const result = buildStatsData(undefined)
-            const progress = result.find(s => s.id === 'PROGRESS')!
-            expect(progress.value).toBe('-')
+            const milestonesCompleted = result.find(s => s.id === 'MILESTONES_COMPLETED')!
+            expect(milestonesCompleted.value).toBe(0)
         })
     })
 
@@ -88,10 +88,33 @@ describe('buildStatsData', () => {
             expect(streak.value).toBe(5)
         })
 
-        it('PROGRESS value is always "-"', () => {
-            const result = buildStatsData(mockStats())
-            const progress = result.find(s => s.id === 'PROGRESS')!
-            expect(progress.value).toBe('-')
+        it('MILESTONES_COMPLETED value is from goalsStats', () => {
+            const result = buildStatsData(mockStats(), {
+                goals: {
+                    totalCreated: 5,
+                    completed: 2,
+                    completionRate: 40,
+                    streak: 1,
+                    active: 2,
+                    paused: 1,
+                    byCategory: {
+                        PHYSICAL: 1,
+                        MENTAL: 2,
+                        LIFESTYLE: 2
+                    }
+                },
+                milestones: {
+                    totalCreated: 10,
+                    completed: 3,
+                    completionRate: 30,
+                    streak: 1,
+                    active: 5,
+                    paused: 2
+                }
+            })
+            const milestonesCompleted = result.find(s =>
+                s.id === 'MILESTONES_COMPLETED')!
+            expect(milestonesCompleted.value).toBe(3)
         })
     })
 
@@ -114,10 +137,10 @@ describe('buildStatsData', () => {
             expect(streak.labelKey).toBe('dashboard.stats.labels.streak')
         })
 
-        it('PROGRESS labelKey is dashboard.stats.labels.progress', () => {
+        it('MILESTONES_COMPLETED labelKey is dashboard.stats.labels.milestonesCompleted', () => {
             const result = buildStatsData(undefined)
-            const progress = result.find(s => s.id === 'PROGRESS')!
-            expect(progress.labelKey).toBe('dashboard.stats.labels.progress')
+            const milestonesCompleted = result.find(s => s.id === 'MILESTONES_COMPLETED')!
+            expect(milestonesCompleted.labelKey).toBe('dashboard.stats.labels.milestonesCompleted')
         })
     })
 
