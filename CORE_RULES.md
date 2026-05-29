@@ -18,6 +18,7 @@
 - Don't break single imports to multiple lines unless very long (50+ chars)
 - Never break line around single imports - if import is too long, break before the `from` keyword
 - Don't make line-breaking too strict
+- Always provide informative filenames and variable names
 
 ## Language & Format
 - Quotes: Single quotes (') for all strings, imports, JSX props, backtick allowed for template strings
