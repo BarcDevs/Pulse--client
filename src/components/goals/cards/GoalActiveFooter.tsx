@@ -1,5 +1,7 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
+
 import {
     Goal,
     GoalStatusToken,
@@ -8,6 +10,8 @@ import {
 
 import { getGoalMilestoneStats } from '@/lib/goals/getGoalMilestoneStats'
 import { cn } from '@/lib/utils'
+
+import { goalsLocales } from '@/locales/goalsLocales'
 
 type Props = {
     goal: Goal
@@ -18,6 +22,7 @@ export const GoalActiveFooter = ({
     goal,
     tokens
 }: Props) => {
+    const t = useTranslations()
     const {
         milestones,
         total,
@@ -42,21 +47,30 @@ export const GoalActiveFooter = ({
         <div>
             {goal.nextMilestone && (
                 <div className={'flex items-center gap-2 mb-2.5'}>
-                    <div className={'w-1.5 h-1.5 rounded-full bg-active-goal ring-2 ring-active-goal-soft shrink-0'} />
+                    <div className={'w-1.5 h-1.5 rounded-full bg-active-goal ring-2 ring-active-goal-soft shrink-0'}/>
                     <span className={'text-xs text-on-surface-variant truncate'}>
-                        <span className={'font-semibold text-active-goal'}>{'Now: '}</span>
-                        {goal.nextMilestone}
+                        {t(
+                            goalsLocales.activeFooter.nextMilestone, {
+                                milestone: goal.nextMilestone
+                            })}
                     </span>
                 </div>
             )}
             <div className={'flex justify-between mb-1.5'}>
                 <span className={'text-[10px] font-bold uppercase tracking-wider text-on-surface-variant/60'}>
                     {total > 0
-                        ? `Phase ${Math.min(completedCount + 1, total)} of ${total}`
-                        : 'Progress'
+                        ? t(
+                            goalsLocales.activeFooter.phaseProgress, {
+                                current: Math.min(completedCount + 1, total),
+                                total
+                            }
+                        ) : t(goalsLocales.activeFooter.progress)
                     }
                 </span>
-                <span className={cn('text-[10px] font-bold', tokens.accentText)}>
+                <span className={cn(
+                    'text-[10px] font-bold',
+                    tokens.accentText
+                )}>
                     {`${pct}%`}
                 </span>
             </div>
@@ -77,9 +91,15 @@ export const GoalActiveFooter = ({
                     ))}
                 </div>
             ) : (
-                <div className={cn('h-1.5 rounded-full overflow-hidden', tokens.progressTrack)}>
+                <div className={cn(
+                    'h-1.5 rounded-full overflow-hidden',
+                    tokens.progressTrack
+                )}>
                     <div
-                        className={cn('h-full rounded-full transition-all', tokens.progressFill)}
+                        className={cn(
+                            'h-full rounded-full transition-all',
+                            tokens.progressFill
+                        )}
                         style={{ width: `${pct}%` }}
                     />
                 </div>

@@ -1,5 +1,7 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
+
 import {
     Goal,
     GoalStatus,
@@ -21,6 +23,7 @@ export const GoalCardStatusFooter = ({
     goal,
     tokens
 }: GoalCardStatusFooterProps) => {
+    const t = useTranslations()
     const {
         total,
         pct,
@@ -52,7 +55,8 @@ export const GoalCardStatusFooter = ({
         total,
         completedCount,
         pct,
-        date
+        date,
+        t
     )
 
     return (
@@ -63,11 +67,14 @@ export const GoalCardStatusFooter = ({
         )}>
             <div className={'flex items-center gap-2'}>
                 <div className={iconContainerCn}>
-                    <Icon className={iconCn} />
+                    <Icon className={iconCn}/>
                 </div>
                 <div>
                     {text1 && (
-                        <p className={cn('text-xs font-bold leading-tight', tokens.accentText)}>
+                        <p className={cn(
+                            'text-xs font-bold leading-tight',
+                            tokens.accentText
+                        )}>
                             {text1}
                         </p>
                     )}
