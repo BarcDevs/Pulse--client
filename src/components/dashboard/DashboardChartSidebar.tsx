@@ -15,11 +15,9 @@ export const DashboardChartSidebar = ({
         </div>
         <div className={'space-y-6'}>
             {showAIInsight && (
-                <DashboardAIInsight/>
+                <DashboardAIInsight hideButton={showAIInsight}/>
             )}
-            <CommunityActivity
-                fullHeight={!showAIInsight}
-            />
+            <CommunityActivity fullHeight={!showAIInsight}/>
         </div>
     </div>
 )

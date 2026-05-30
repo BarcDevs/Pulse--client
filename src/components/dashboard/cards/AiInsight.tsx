@@ -25,10 +25,12 @@ import { dashboardLocales } from '@/locales/dashboardLocales'
 
 type DashboardAIInsightProps = {
     className?: ClassName
+    hideButton?: boolean
 }
 
 export const DashboardAIInsight = ({
-    className
+    className,
+    hideButton = false
 }: DashboardAIInsightProps) => {
     const t = useTranslations()
     const [isExpanded, setIsExpanded] = useState(false)
@@ -69,15 +71,17 @@ export const DashboardAIInsight = ({
                         )}>
                             {insightText}
                         </blockquote>
-                        <button
-                            onClick={() => setIsExpanded(!isExpanded)}
-                            className={'text-sm text-primary hover:underline cursor-pointer'}
-                        >
-                            {t(isExpanded
-                                ? dashboardLocales.aiInsight.seeLess
-                                : dashboardLocales.aiInsight.seeMore
-                            )}
-                        </button>
+                        {!hideButton && (
+                            <button
+                                onClick={() => setIsExpanded(!isExpanded)}
+                                className={'text-sm text-primary hover:underline cursor-pointer'}
+                            >
+                                {t(isExpanded
+                                    ? dashboardLocales.aiInsight.seeLess
+                                    : dashboardLocales.aiInsight.seeMore
+                                )}
+                            </button>
+                        )}
                     </>
                 )}
             </CardContent>
