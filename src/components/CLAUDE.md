@@ -25,6 +25,9 @@
 - Don't use `React.*` types — import directly from react
 - Order: react → third-party → @/ → relative → styles
 
+## Props
+- `className` props must be typed as `ClassName` (from `/types/react`)
+
 ## State & Props
 - Avoid prop drilling — use context or composition
 - Use hooks at top of component
