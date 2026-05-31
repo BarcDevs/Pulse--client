@@ -7,6 +7,7 @@ import { Controller } from 'react-hook-form'
 
 import { Goal } from '@/types/goals'
 
+import { DatePickerInput } from '@/components/shared/inputs/DatePickerInput'
 import { FormInput } from '@/components/shared/inputs/FormInput'
 import {
     Form,
@@ -20,8 +21,6 @@ import { Textarea } from '@/components/ui/textarea'
 
 import { useGoalForm } from '@/hooks/forms/useGoalForm'
 import { useGoalFormSubmit } from '@/hooks/forms/useGoalFormSubmit'
-
-import { formatByUserPreference } from '@/lib/time'
 
 import { ROUTES } from '@/constants/routes'
 
@@ -136,46 +135,24 @@ export const GoalForm = ({
                         control={form.control}
                     />
 
-                    {/* todo: reusable FormField */}
                     <FormField
                         control={form.control}
                         name={'targetDate'}
-                        render={({ field }) => {
-                            const today =
-                                new Date()
-                                    .toISOString()
-                                    .split('T')[0]
-
-                            return (
-                                <FormItem>
-                                    <FormLabel>
-                                        {t(
-                                            goalsLocales
-                                                .goalForm
-                                                .fields
-                                                .targetDateLabel
-                                        )}
-                                    </FormLabel>
-                                    <FormControl>
-                                        <FormInput
-                                            id={'goal-date'}
-                                            type={'date'}
-                                            min={today}
-                                            required={false}
-                                            value={field.value || ''}
-                                            onChange={field.onChange}
-                                            onBlur={field.onBlur}
-                                            placeholder={
-                                                formatByUserPreference(
-                                                    new Date()
-                                                )
-                                            }
-                                        />
-                                    </FormControl>
-                                    <FormMessage/>
-                                </FormItem>
-                            )
-                        }}
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormLabel>
+                                    {t(goalsLocales.goalForm.fields.targetDateLabel)}
+                                </FormLabel>
+                                <FormControl>
+                                    <DatePickerInput
+                                        value={field.value}
+                                        onChangeAction={field.onChange}
+                                        onBlur={field.onBlur}
+                                    />
+                                </FormControl>
+                                <FormMessage/>
+                            </FormItem>
+                        )}
                     />
                 </div>
 
@@ -183,7 +160,6 @@ export const GoalForm = ({
                     isUpdate={isUpdate}
                     onCloseAction={onCloseAction}
                 />
-                {/* todo: reusable ErrorMessage component*/}
                 {form.formState.errors.root && (
                     <p className={'text-sm text-destructive mt-4'}>
                         {form.formState.errors.root.message}

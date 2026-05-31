@@ -37,7 +37,11 @@ export const createGoalSchema = (t: TranslatorFn) =>
             .refine(
                 (date) => {
                     if (!date) return true
-                    return new Date(date) >= new Date(new Date().toDateString())
+                    const [y, m, d] = date.split('-').map(Number)
+                    const picked = new Date(y, m - 1, d)
+                    const today = new Date()
+                    today.setHours(0, 0, 0, 0)
+                    return picked >= today
                 },
                 t(validationLocales.goal.targetDate.future)
             )
