@@ -22,8 +22,9 @@ export const getTodayMidnight = (): Date => {
 export const isDateStringTodayOrFuture = (
     date: string
 ): boolean => {
-    const [y, m, d] = date.split('-').map(Number)
-    return new Date(y, m - 1, d) >= getTodayMidnight()
+    const [year, month, day] = date.split('-').map(Number)
+    const parsed = new Date(year, month - 1, day)
+    return parsed >= getTodayMidnight()
 }
 
 export const getMsUntilMidnight = (): number => {

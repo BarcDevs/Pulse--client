@@ -9,6 +9,7 @@ import { Goal } from '@/types/goals'
 
 import { DatePickerInput } from '@/components/shared/inputs/DatePickerInput'
 import { FormInput } from '@/components/shared/inputs/FormInput'
+import { FormError } from '@/components/shared/ui/FormError'
 import {
     Form,
     FormControl,
@@ -160,11 +161,10 @@ export const GoalForm = ({
                     isUpdate={isUpdate}
                     onCloseAction={onCloseAction}
                 />
-                {form.formState.errors.root && (
-                    <p className={'text-sm text-destructive mt-4'}>
-                        {form.formState.errors.root.message}
-                    </p>
-                )}
+                <FormError
+                    errors={form.formState.errors}
+                    className={'mt-4'}
+                />
             </Form>
         </form>
     )
