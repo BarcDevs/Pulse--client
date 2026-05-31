@@ -122,3 +122,11 @@ export type MilestoneCardConfig = {
     titleSize: string
     contentLayout: string
 }
+
+export type GoalsLocales = {
+    milestoneCardLabels: {
+        completedFormat: string
+        activeFormat: string
+        lockedFormat: string
+    }
+}

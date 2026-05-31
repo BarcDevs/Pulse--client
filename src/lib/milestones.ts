@@ -2,6 +2,7 @@ import { useTranslations } from 'next-intl'
 
 import type {
     Goal,
+    GoalsLocales,
     MilestoneCardConfig,
     RecoveryGoalsStats
 } from '@/types/goals'
@@ -94,7 +95,7 @@ export const getInsightColor = (
 
 export const getMilestoneCardConfig = (
     milestone: GoalMilestone,
-    goalsLocales: any
+    goalsLocales: GoalsLocales
 ): MilestoneCardConfig => {
     const isCompleted = milestone.status === MilestoneStatus.COMPLETED
     const isActive = milestone.status === MilestoneStatus.ACTIVE

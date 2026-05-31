@@ -10,6 +10,7 @@ import {
 
 import { useCheckInStats } from '@/hooks/queries/useCheckInStats'
 
+import { cn } from '@/lib/utils'
 import { getWellnessData } from '@/lib/wellness'
 import { wellnessColors } from '@/lib/wellnessColors'
 
@@ -56,7 +57,10 @@ export const WellnessCard = () => {
                 </span>
             </div>
 
-            <div className={FEATURES.wellnessEnergy ? 'grid grid-cols-3 gap-4' : 'grid grid-cols-2 gap-4'}>
+            <div className={cn(
+                'grid gap-4',
+                FEATURES.wellnessEnergy ? 'grid-cols-3' : 'grid-cols-2'
+            )}>
                 <WellnessScoreCard
                     label={t(progressLocales.wellness.mood)}
                     score={moodScore}

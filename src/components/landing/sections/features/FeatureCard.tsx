@@ -4,13 +4,15 @@ import { useTranslations } from 'next-intl'
 
 import { type LucideIcon } from 'lucide-react'
 
+import { ClassName } from '@/types/react'
+
 import { cn } from '@/lib/utils'
 
 type FeatureCardProps = {
     icon: LucideIcon
     titleKey: string
     descKey: string
-    iconClassName: string
+    iconClassName: ClassName
 }
 
 export const FeatureCard = ({
