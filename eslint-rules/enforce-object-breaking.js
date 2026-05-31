@@ -14,6 +14,14 @@ export default {
         fixable: 'code'
     },
     create (context) {
+        const MAX_LINE_LENGTH = 50
+        const sourceCode = context.sourceCode
+
+        const exceedsLimit = (startLine) => {
+            const line = sourceCode.lines[startLine - 1] ?? ''
+            return line.length > MAX_LINE_LENGTH
+        }
+
         return {
             ObjectExpression (node) {
                 if ( node.properties.length < 3 ) return
@@ -23,7 +31,7 @@ export default {
                 const startLine = firstProp.loc.start.line
                 const endLine = lastProp.loc.end.line
 
-                if ( startLine === endLine ) {
+                if ( startLine === endLine && exceedsLimit(startLine) ) {
                     context.report({
                         node,
                         message:
@@ -40,7 +48,7 @@ export default {
                 const startLine = firstMember.loc.start.line
                 const endLine = lastMember.loc.end.line
 
-                if ( startLine === endLine ) {
+                if ( startLine === endLine && exceedsLimit(startLine) ) {
                     context.report({
                         node,
                         message:
@@ -57,7 +65,7 @@ export default {
                 const startLine = firstParam.loc.start.line
                 const endLine = lastParam.loc.end.line
 
-                if ( startLine === endLine ) {
+                if ( startLine === endLine && exceedsLimit(startLine) ) {
                     const paramSpan =
                         lastParam.loc.end.column
                         - firstParam.loc.start.column
@@ -79,7 +87,7 @@ export default {
                 const startLine = firstParam.loc.start.line
                 const endLine = lastParam.loc.end.line
 
-                if ( startLine === endLine ) {
+                if ( startLine === endLine && exceedsLimit(startLine) ) {
                     const paramSpan =
                         lastParam.loc.end.column
                         - firstParam.loc.start.column
@@ -102,7 +110,7 @@ export default {
                 const startLine = firstProp.loc.start.line
                 const endLine = lastProp.loc.end.line
 
-                if ( startLine === endLine ) {
+                if ( startLine === endLine && exceedsLimit(startLine) ) {
                     context.report({
                         node,
                         message:
@@ -122,7 +130,7 @@ export default {
                 const startLine = firstSpec.loc.start.line
                 const endLine = lastSpec.loc.end.line
 
-                if ( startLine === endLine ) {
+                if ( startLine === endLine && exceedsLimit(startLine) ) {
                     context.report({
                         node,
                         message:
