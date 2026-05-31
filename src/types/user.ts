@@ -11,7 +11,7 @@ export type User = {
     role: Role
     passwordUpdatedAt?: string
     createdAt: string
-    deletedAt?: string | null
+    deletedAt?: string
     profile?: UserProfile
 }
 

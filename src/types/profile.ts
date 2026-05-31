@@ -3,11 +3,11 @@ export type ProfileVisibility = 'onlyMe' | 'mentors' | 'community'
 export type UserProfile = {
     id: string
     userId: string
-    image?: string | null
-    bio?: string | null
-    location?: string | null
-    timezone?: string | null
-    dateFormat?: string | null
+    image?: string
+    bio?: string
+    location?: string
+    timezone?: string
+    dateFormat?: string
     theme: string
     language: string
     dailyReminder: boolean
@@ -69,10 +69,10 @@ export type ProfileOptions = {
 }
 
 export type ProfileUpdateInput = {
-    bio?: string | null
-    location?: string | null
-    timezone?: string | null
-    image?: string | null
+    bio?: string
+    location?: string
+    timezone?: string
+    image?: string
     theme?: string
     language?: string
     dailyReminder?: boolean

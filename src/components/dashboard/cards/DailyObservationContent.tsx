@@ -8,8 +8,8 @@ import { DailyObservationSkeletons } from './DailyObservationSkeletons'
 
 type DailyObservationProps = {
     isLoading: boolean
-    observation: TodayObservationResponse | null | undefined
-    activityLabel: string | null
+    observation?: TodayObservationResponse | null
+    activityLabel?: string | null
 }
 
 export const DailyObservationContent = ({

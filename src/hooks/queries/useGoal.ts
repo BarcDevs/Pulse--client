@@ -9,7 +9,7 @@ import { minuteInMs } from '@/constants/time'
 
 import { fetchGoal } from '@/api/goals'
 
-export const useGoal = (goalId: string | null | undefined) =>
+export const useGoal = (goalId?: string) =>
     useQueryWithNetworkError<Goal | null>({
         queryKey: recoveryGoalsQueryKeys.goal(
             goalId || 'unknown'
