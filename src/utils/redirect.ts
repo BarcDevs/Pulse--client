@@ -15,7 +15,7 @@ export const isValidRedirectUrl = (
  * Gets a safe redirect URL or falls back to default
  */
 export const getSafeRedirectUrl = (
-    url: string | null | undefined,
+    url?: string | null,
     defaultUrl: string = '/'
 ): string => {
     const decoded = url ? decodeURIComponent(url) : ''

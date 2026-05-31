@@ -26,7 +26,7 @@ const findPostInCache = (
 }
 
 export const useForumPost = (
-    postId: string | null | undefined
+    postId?: string
 ) => {
     const queryClient = useQueryClient()
 

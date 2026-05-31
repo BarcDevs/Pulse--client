@@ -15,7 +15,7 @@ export type CheckInSaveResult = {
 
 export const saveCheckIn = async (
     data: CheckInSchema,
-    latestCheckIn: CheckIn | null | undefined
+    latestCheckIn?: CheckIn
 ): Promise<CheckInSaveResult> => {
     const checkInExists = latestCheckIn
         && isTodayCheckIn(latestCheckIn)
