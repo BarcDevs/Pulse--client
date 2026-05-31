@@ -1,0 +1,8 @@
+export type ObservationType =
+    | 'activity_consistency'
+    | 'checkin_consistency'
+    | 'streak_consistency'
+    | 'mood_stability'
+    | 'pain_improvement'
+    | 'better_days_pattern'
+

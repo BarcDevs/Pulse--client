@@ -6,7 +6,7 @@ import { FEATURES } from '@/config/features'
 
 import { DashboardAIInsight } from './cards/AiInsight'
 import { DashboardCheckInCard } from './cards/CheckInCard'
-import { DashboardDailyReflection } from './cards/DailyReflection'
+import { DashboardDailyObservation } from './cards/DailyObservation'
 import { DashboardStatsCards } from './stats/StatsCards'
 import { DashboardChartSidebar } from './DashboardChartSidebar'
 
@@ -27,7 +27,7 @@ export const DashboardPageContent = () => {
                         />
                     )}
                 </div>
-                <DashboardDailyReflection/>
+                <DashboardDailyObservation/>
             </div>
 
             <DashboardStatsCards/>

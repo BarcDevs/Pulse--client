@@ -304,11 +304,11 @@
       "label": "Community",
       "viewAll": "View all"
     },
-    "dailyReflection": {
+    "dailyObservation": {
       "title": "A Small Moment for Yourself",
       "label": "Something we noticed",
       "description": "Check in regularly to see your personal patterns here.",
-      "observation": "You've been consistently making time for {activity} lately.",
+      "observation": "{activity} has appeared in your recent check-ins.",
       "supportCopy": "No need to keep a streak, it just felt worth noticing."
     },
     "historyChart": {
