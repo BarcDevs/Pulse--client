@@ -7,6 +7,7 @@ import { toast } from 'sonner'
 import { useMutation } from '@tanstack/react-query'
 
 import { DynamicFormField } from '@/components/form/DynamicFormField'
+import { FormError } from '@/components/shared/ui/FormError'
 import { Button } from '@/components/ui/button'
 import { Form } from '@/components/ui/form'
 
@@ -81,11 +82,7 @@ export const PasswordChangeStep = ({
                     control={form.control}
                     config={passwordFields.confirmPassword}
                 />
-                {form.formState.errors.root && (
-                    <p className={'text-sm text-destructive'}>
-                        {form.formState.errors.root.message}
-                    </p>
-                )}
+                <FormError errors={form.formState.errors}/>
                 <div className={'flex gap-2 pt-1'}>
                     <Button
                         type={'submit'}
