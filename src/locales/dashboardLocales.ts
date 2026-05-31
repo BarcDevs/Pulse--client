@@ -18,12 +18,12 @@ export const dashboardLocales = {
         label: 'dashboard.community.label',
         viewAll: 'dashboard.community.viewAll'
     },
-    dailyReflection: {
-        title: 'dashboard.dailyReflection.title',
-        label: 'dashboard.dailyReflection.label',
-        description: 'dashboard.dailyReflection.description',
-        observation: 'dashboard.dailyReflection.observation',
-        supportCopy: 'dashboard.dailyReflection.supportCopy'
+    dailyObservation: {
+        title: 'dashboard.dailyObservation.title',
+        label: 'dashboard.dailyObservation.label',
+        description: 'dashboard.dailyObservation.description',
+        observation: 'dashboard.dailyObservation.observation',
+        supportCopy: 'dashboard.dailyObservation.supportCopy'
     },
     historyChart: {
         title: 'dashboard.historyChart.title',

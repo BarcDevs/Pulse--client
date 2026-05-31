@@ -297,11 +297,11 @@
       "label": "קהילה",
       "viewAll": "הצג הכל"
     },
-    "dailyReflection": {
+    "dailyObservation": {
       "title": "רגע קטן לעצמך",
       "label": "שמנו לב",
       "description": "עדכן באופן קבוע כדי לראות את הדפוסים האישיים שלך.",
-      "observation": "הקדשת זמן ל{activity} באופן עקבי לאחרונה.",
+      "observation": "{activity} הופיעה בעדכונים האחרונים שלך.",
       "supportCopy": "אין צורך לשמור על רצף, פשוט שווה לציין."
     },
     "historyChart": {

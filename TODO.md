@@ -11,13 +11,13 @@ Replace hardcoded mock data with real API integration for pages with enabled fea
 | # | File | Feature | Mock Data | Note |
 |---|------|---------|-----------|------|
 | ~~1~~ | ~~`src/components/dashboard/community/CommunityActivity.tsx`~~ | ~~forumLinking~~ | ~~`COMMUNITY_ACTIVITY_FEED`~~ | ~~Community activity feed mock — integrate with real forum posts API~~ |
-| ~~2~~ | ~~`src/components/dashboard/cards/DailyReflection.tsx`~~ | ~~motivationFeedback~~ | ~~"5 minutes of mindfulness" (hardcoded in messages/en-US.json:306)~~ | ~~Replace hardcoded suggested activity with real API data from activity suggestions endpoint~~ |
+| ~~2~~ | ~~`src/components/dashboard/cards/DailyObservation.tsx`~~ | ~~motivationFeedback~~ | ~~"5 minutes of mindfulness" (hardcoded in messages/en-US.json:306)~~ | ~~Replace hardcoded suggested activity with real API data from activity suggestions endpoint~~ |
 
 ---
 
 ## AI / Reflective Insights
 
-The `DailyReflection` card currently shows a static hardcoded description. This is temporary.
+The `DailyObservation` card currently shows a static hardcoded description. This is temporary.
 
 **MVP goal:** Replace with a small AI-generated reflective insight card derived from:
 - Deterministic backend signals (top activities, mood trend, streak, check-in frequency)
@@ -30,7 +30,7 @@ The card reflects the user back to themselves — it does not instruct them.
 
 | # | File | Note |
 |---|------|------|
-| 1 | `src/components/dashboard/cards/DailyReflection.tsx` | Replace static `observation` with AI-generated reflective insight from backend. Backend derives insight from check-in signals; client renders as-is. |
+| 1 | `src/components/dashboard/cards/DailyObservation.tsx` | Replace static `observation` with AI-generated reflective insight from backend. Backend derives insight from check-in signals; client renders as-is. |
 
 **Scaling-deferred — do NOT build until data maturity + trust calibration:**
 
