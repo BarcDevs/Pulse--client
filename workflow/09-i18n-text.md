@@ -20,6 +20,7 @@
 - Button text: always include both `action` + `action + 'ing'` forms (create/creating, update/updating, delete/deleting)
 - Never hardcode text strings in components — always go through `t(localeKey)`
 - Never use `src/constants/componentTexts/` — that pattern is dead
+- Sentences with injected variables: use `{placeholder}` syntax in one message key — never split into multiple standalone word keys (`t('you') + ' ' + count + ' ' + t('items')` is wrong; use `t('itemCount', { count })` with `"itemCount": "You have {count} items"`)
 
 ## References
 - `src/locales/goalsLocales.ts`
