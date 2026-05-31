@@ -2,20 +2,25 @@
 
 import { useTranslations } from 'next-intl'
 
+import {
+    Activity,
+    Smile,
+    Zap
+} from 'lucide-react'
+
 import { useCheckInStats } from '@/hooks/queries/useCheckInStats'
 
-import {
-    getTrendData,
-    getWellnessStatusKey
-} from '@/lib/stats/getTrendLabel'
+import { getWellnessData } from '@/lib/wellness'
+import { wellnessColors } from '@/lib/wellnessColors'
+
+import { FEATURES } from '@/config/features'
 
 import { progressLocales } from '@/locales/progressLocales'
 
-import { WellnessScoreCard } from '../cards/WellnessScoreCard'
+import { WellnessCardSkeleton } from './WellnessCardSkeleton'
+import { WellnessScoreCard } from './WellnessScoreCard'
 
-import { WellnessScoreSkeleton } from './WellnessScoreSkeleton'
-
-export const WellnessScore = () => {
+export const WellnessCard = () => {
     const t = useTranslations()
     const {
         data,
@@ -23,31 +28,17 @@ export const WellnessScore = () => {
         isError
     } = useCheckInStats('weekly')
 
-    if (isLoading) return <WellnessScoreSkeleton/>
+    if (isLoading) return <WellnessCardSkeleton/>
 
-    const moodScore = isError
-        ? '-'
-        : data?.averageMoodScore ?? 0
-    const painScore = isError
-        ? '-'
-        : data?.averagePainLevel ?? 0
-    const moodTrend = getTrendData(
-        isError ? [] : data?.moodTrend ?? [],
-        'mood'
-    )
-    const painTrend = getTrendData(
-        isError ? [] : data?.painTrend ?? [],
-        'pain'
-    )
-    const moodTrendLabel = t(moodTrend.labelKey)
-    const painTrendLabel = t(painTrend.labelKey)
-    const wellnessStatusKey = getWellnessStatusKey(
+    const {
+        moodScore,
+        painScore,
         moodTrend,
-        painTrend
-    )
-    const wellnessStatus = wellnessStatusKey
-        ? t(wellnessStatusKey)
-        : `${moodTrendLabel} & ${painTrendLabel}`
+        painTrend,
+        moodTrendLabel,
+        painTrendLabel,
+        wellnessStatus
+    } = getWellnessData(data, isError, t)
 
     return (
         <div className={'card-base'}>
@@ -65,19 +56,33 @@ export const WellnessScore = () => {
                 </span>
             </div>
 
-            <div className={'grid grid-cols-2 gap-4'}>
+            <div className={FEATURES.wellnessEnergy ? 'grid grid-cols-3 gap-4' : 'grid grid-cols-2 gap-4'}>
                 <WellnessScoreCard
                     label={t(progressLocales.wellness.mood)}
                     score={moodScore}
                     trend={moodTrend}
                     trendLabel={moodTrendLabel}
+                    icon={Smile}
+                    color={wellnessColors.mood.primary}
                 />
                 <WellnessScoreCard
                     label={t(progressLocales.wellness.pain)}
                     score={painScore}
                     trend={painTrend}
                     trendLabel={painTrendLabel}
+                    icon={Activity}
+                    color={wellnessColors.pain.primary}
                 />
+                {FEATURES.wellnessEnergy && (
+                    <WellnessScoreCard
+                        label={t(progressLocales.wellness.energy)}
+                        score={0}
+                        trend={moodTrend}
+                        trendLabel={''}
+                        icon={Zap}
+                        color={wellnessColors.energy.primary}
+                    />
+                )}
             </div>
         </div>
     )

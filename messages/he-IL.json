@@ -412,6 +412,7 @@
       "timeframe": "השבוע שעבר לעומת השבוע הנוכחי",
       "mood": "מצב רוח",
       "pain": "כאב",
+      "energy": "רמת אנרגיה",
       "trends": {
         "improving": "משתפר",
         "declining": "דורש יותר תשומת לב",
@@ -432,11 +433,20 @@
       "streak": {
         "label": "רצף נוכחי",
         "unit": "ימים",
-        "bestPrefix": "השיא שלך:"
+        "personalBest": "שיא אישי - {days} ימים",
+        "last14Days": "מבט על השבועיים האחרונים",
+        "checkedIn": "{count}/14 עדכונים"
       },
       "milestones": {
-        "label": "צעדים שהושלמו",
-        "unit": "צעדים"
+        "label": "יעדים שהושלמו",
+        "unit": "יעדים",
+        "outOf": "מתוך {total}",
+        "acrossGoals": "ב-{count} יעדים שאתה מתקדם בהם",
+        "percentComplete": "{percent}% הושלמו",
+        "completedCount": "{count} הושלמו",
+        "inProgressCount": "{count} בתהליך",
+        "upcomingCount": "{count} בהמשך",
+        "nextUp": "הצעד הבא"
       }
     },
     "share": {
@@ -471,7 +481,7 @@
         "targetLabel": "יעד שבועי"
       },
       "painChart": {
-        "title": "עוצמת כאב",
+        "title": "רמת כאב",
         "subtitle": "מעקב אחר תחושות פיזיות לאורך זמן",
         "legendLabel": "רמת כאב"
       },

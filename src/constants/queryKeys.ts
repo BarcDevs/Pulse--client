@@ -35,8 +35,7 @@ export const profileQueryKeys = {
 export const recoveryGoalsQueryKeys = {
     all: ['recoveryGoals'] as const,
     stats: ['recoveryGoals', 'stats'] as const,
-    goal: (id: string) =>
-        ['recoveryGoals', id] as const,
+    goal: (id: string) => ['recoveryGoals', id] as const,
     milestones: (goalId: string) =>
         ['recoveryGoals', goalId, 'milestones'] as const
 }

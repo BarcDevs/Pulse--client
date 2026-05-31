@@ -6,7 +6,7 @@ import { dashboardLocales } from '@/locales/dashboardLocales'
 
 import { DailyObservationSkeletons } from './DailyObservationSkeletons'
 
-type Props = {
+type DailyObservationProps = {
     isLoading: boolean
     observation: TodayObservationResponse | null | undefined
     activityLabel: string | null
@@ -16,23 +16,24 @@ export const DailyObservationContent = ({
     isLoading,
     observation,
     activityLabel
-}: Props) => {
+}: DailyObservationProps) => {
     const t = useTranslations()
 
-    if (isLoading) return <DailyObservationSkeletons/>
+    if (isLoading)
+        return <DailyObservationSkeletons/>
 
-    const mainText = observation?.observation
-        ?? (activityLabel
+    const mainText = observation?.observation ?? (
+        activityLabel
             ? t(dashboardLocales.dailyObservation.observation, {
                 activity: activityLabel
-            })
-            : t(dashboardLocales.dailyObservation.description))
+            }) : t(dashboardLocales.dailyObservation.description)
+    )
 
-    const subText = observation?.supportiveDescription
-        ?? (activityLabel
+    const subText = observation?.supportiveDescription ?? (
+        activityLabel
             ? t(dashboardLocales.dailyObservation.supportCopy)
             : null
-        )
+    )
 
     return (
         <>

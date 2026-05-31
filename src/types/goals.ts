@@ -110,3 +110,15 @@ export type GoalStatusToken = {
     progressFill: string
     progressTrack: string
 }
+
+export type MilestoneCardConfig = {
+    bgClass: string
+    borderClass: string
+    opacityClass: string
+    padding: string
+    statusLabelKey: string
+    statusLabelOrder: number
+    statusBadgeClass: string
+    titleSize: string
+    contentLayout: string
+}

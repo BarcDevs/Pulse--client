@@ -13,6 +13,7 @@ export const progressLocales = {
         timeframe: 'progress.wellness.timeframe',
         mood: 'progress.wellness.mood',
         pain: 'progress.wellness.pain',
+        energy: 'progress.wellness.energy',
         trends: {
             improving: 'progress.wellness.trends.improving',
             declining: 'progress.wellness.trends.declining',
@@ -33,11 +34,20 @@ export const progressLocales = {
         streak: {
             label: 'progress.stats.streak.label',
             unit: 'progress.stats.streak.unit',
-            bestPrefix: 'progress.stats.streak.bestPrefix'
+            personalBest: 'progress.stats.streak.personalBest',
+            last14Days: 'progress.stats.streak.last14Days',
+            checkedIn: 'progress.stats.streak.checkedIn'
         },
         milestones: {
             label: 'progress.stats.milestones.label',
-            unit: 'progress.stats.milestones.unit'
+            unit: 'progress.stats.milestones.unit',
+            outOf: 'progress.stats.milestones.outOf',
+            acrossGoals: 'progress.stats.milestones.acrossGoals',
+            percentComplete: 'progress.stats.milestones.percentComplete',
+            completedCount: 'progress.stats.milestones.completedCount',
+            inProgressCount: 'progress.stats.milestones.inProgressCount',
+            upcomingCount: 'progress.stats.milestones.upcomingCount',
+            nextUp: 'progress.stats.milestones.nextUp'
         }
     },
     share: {

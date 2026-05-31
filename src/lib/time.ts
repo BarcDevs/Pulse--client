@@ -9,10 +9,20 @@ import {
  *
  * @return {string} The date in relative time format
  */
+export const toDateStr = (d: Date): string =>
+    d.toISOString().slice(0, 10)
+
+export const getTodayMidnight = (): Date => {
+    const today = new Date()
+     
+    today.setHours(0, 0, 0, 0)
+    return today
+}
+
 export const getMsUntilMidnight = (): number => {
     const now = new Date()
     const midnight = new Date(now)
-    // eslint-disable-next-line custom-rules/enforce-function-call-breaking
+     
     midnight.setHours(24, 0, 0, 0)
     return midnight.getTime() - now.getTime()
 }

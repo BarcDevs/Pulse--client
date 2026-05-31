@@ -25,6 +25,8 @@ export const FEATURES = {
     notifications: false,
     // Daily Activity Preferences section in profile
     activityPreferences: false,
+    // Energy metric in wellness card (no API data yet)
+    wellnessEnergy: false,
     // Dark mode theme toggle
     darkMode: false,
     // User level/badge in profile (no API data yet)

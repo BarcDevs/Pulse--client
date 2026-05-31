@@ -6,5 +6,9 @@ export const wellnessColors = {
     pain: { // Noticeable but gentle
         primary: '#F59E0B',
         fill: '#FDE68A'
+    },
+    energy: { // Fresh & uplifting
+        primary: '#06B6D4',
+        fill: '#A5F3FC'
     }
 } as const

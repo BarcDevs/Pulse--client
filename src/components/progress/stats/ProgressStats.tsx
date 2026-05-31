@@ -1,9 +1,11 @@
 import { MilestonesCard } from '../cards/MilestonesCard'
 import { StreakCard } from '../cards/StreakCard'
+import { WellnessCard } from '../cards/WellnessCard'
 
 export const ProgressStats = () => (
-    <div className={'lg:col-span-2 grid grid-cols-2 gap-4'}>
+    <div className={'grid grid-cols-1 lg:grid-cols-3 gap-6'}>
         <StreakCard/>
         <MilestonesCard/>
+        <WellnessCard/>
     </div>
 )

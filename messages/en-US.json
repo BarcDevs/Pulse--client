@@ -419,6 +419,7 @@
       "timeframe": "Last week compared to this week",
       "mood": "Mood",
       "pain": "Pain",
+      "energy": "Energy level",
       "trends": {
         "improving": "Improving",
         "declining": "Needs attention",
@@ -439,11 +440,20 @@
       "streak": {
         "label": "Current streak",
         "unit": "days",
-        "bestPrefix": "Personal best:"
+        "personalBest": "Personal best - {days} days",
+        "last14Days": "Your last two weeks",
+        "checkedIn": "{count}/14 checked in"
       },
       "milestones": {
-        "label": "Milestones reached",
-        "unit": "milestones"
+        "label": "Goal steps",
+        "unit": "milestones",
+        "outOf": "of {total}",
+        "acrossGoals": "Across {count} goals you’re working on",
+        "percentComplete": "{percent}% complete",
+        "completedCount": "{count} completed",
+        "inProgressCount": "{count} in progress",
+        "upcomingCount": "{count} up next",
+        "nextUp": "Next step"
       }
     },
     "share": {

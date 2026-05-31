@@ -1,19 +1,8 @@
 'use client'
 
-import { ElementType } from 'react'
-
 import { useTranslations } from 'next-intl'
 
-import {
-    Activity,
-    CalendarCheck,
-    Flame,
-    Heart,
-    TrendingDown,
-    Zap
-} from 'lucide-react'
-
-import type { ObservationType } from '@/types/insight'
+import { Activity } from 'lucide-react'
 
 import { RetryButton } from '@/components/shared/ui/RetryButton'
 import {
@@ -25,21 +14,14 @@ import {
 import { useCheckInStats } from '@/hooks/queries/useCheckInStats'
 import { useDailyObservation } from '@/hooks/queries/useDailyObservation'
 
+import { observationIconMap } from '@/constants/mappings/dashboard'
+
 import { DEFAULT_ACTIVITIES } from '@/config/defaultActivities'
 
 import { checkInLocales } from '@/locales/checkInLocales'
 import { dashboardLocales } from '@/locales/dashboardLocales'
 
 import { DailyObservationContent } from './DailyObservationContent'
-
-const OBSERVATION_ICONS: Record<ObservationType, ElementType> = {
-    activity_consistency: Activity,
-    checkin_consistency: CalendarCheck,
-    streak_consistency: Flame,
-    mood_stability: Heart,
-    pain_improvement: TrendingDown,
-    better_days_pattern: Zap
-}
 
 export const DashboardDailyObservation = () => {
     const t = useTranslations()
@@ -60,14 +42,14 @@ export const DashboardDailyObservation = () => {
         (a) => a.toLowerCase() === rawActivity?.toLowerCase()
     ) ?? null
 
-    const activityLabels = t
-        .raw(checkInLocales.activities.default) as Record<string, string>
+    const activityLabels =
+        t.raw(checkInLocales.activities.default) as Record<string, string>
     const activityLabel = matchedActivity
         ? activityLabels[matchedActivity] ?? matchedActivity
         : null
 
     const Icon = observation
-        ? OBSERVATION_ICONS[observation.type]
+        ? observationIconMap[observation.type]
         : Activity
 
     return (
