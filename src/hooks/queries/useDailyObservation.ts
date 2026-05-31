@@ -13,7 +13,9 @@ export const useDailyObservation = () => {
         data,
         isLoading,
         refetch
-    } = useQueryWithNetworkError<TodayObservationResponse | null>({
+    } = useQueryWithNetworkError<
+        TodayObservationResponse | null
+    >({
         queryKey: insightsQueryKeys.observation,
         queryFn: fetchTodayObservation,
         staleTime: getMsUntilMidnight(),

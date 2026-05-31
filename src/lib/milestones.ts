@@ -1,18 +1,67 @@
+import { useTranslations } from 'next-intl'
+
+import type {
+    Goal,
+    MilestoneCardConfig,
+    RecoveryGoalsStats
+} from '@/types/goals'
 import {
     GoalMilestone,
+    GoalStatus,
     MilestoneStatus
 } from '@/types/goals'
 
-export type MilestoneCardConfig = {
-    bgClass: string
-    borderClass: string
-    opacityClass: string
-    padding: string
-    statusLabelKey: string
-    statusLabelOrder: number
-    statusBadgeClass: string
-    titleSize: string
-    contentLayout: string
+import { progressLocales } from '@/locales/progressLocales'
+
+export const getMilestonesData = (
+    stats: RecoveryGoalsStats | undefined,
+    goals: Goal[],
+    isError: boolean,
+    t: ReturnType<typeof useTranslations>
+) => {
+    const completed = isError ? 0 : stats?.milestones.completed ?? 0
+    const total = isError ? 0 : stats?.milestones.totalCreated ?? 0
+    const inProgress = isError ? 0 : stats?.milestones.active ?? 0
+    const upcoming = Math.max(total - completed - inProgress, 0)
+    const completionRate = isError ? 0
+        : Math.min(stats?.milestones.completionRate ?? 0, 1)
+    const goalsCount = isError
+        ? 0 : (stats?.goals.active ?? 0) + (stats?.goals.completed ?? 0)
+    const nextMilestone = goals
+        .filter(g => g.status === GoalStatus.ACTIVE)
+        .sort((a, b) => (b.progress ?? 0) - (a.progress ?? 0))
+        .at(0)?.nextMilestone
+    const indicatorWidth = `${Math.min(completionRate * 100, 100)}%`
+    const remainingWidth = Math.max(0, 100 - completionRate * 100)
+    const inProgressPct = total > 0
+        ? Math.min((inProgress / total) * 100, remainingWidth)
+        : 0
+    const inProgressWidth = `${inProgressPct}%`
+    const m = progressLocales.stats.milestones
+    return {
+        completed,
+        total,
+        completionRate,
+        nextMilestone,
+        indicatorWidth,
+        inProgressWidth,
+        acrossGoalsLabel: t(m.acrossGoals, {
+            count: goalsCount
+        }),
+        percentCompleteLabel: t(
+            m.percentComplete,
+            { percent: Math.round(completionRate * 100) }),
+        completedCountLabel: t(m.completedCount, {
+            count: completed
+        }),
+        inProgressCountLabel: t(m.inProgressCount, {
+            count: inProgress
+        }),
+        upcomingCountLabel: t(m.upcomingCount, {
+            count: upcoming
+        }),
+        nextUpLabel: t(m.nextUp)
+    }
 }
 
 export const getMilestoneIconColor = (

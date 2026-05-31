@@ -1,9 +1,26 @@
+import { ElementType } from 'react'
+
 import {
     Activity,
+    CalendarCheck,
     Flame,
+    Heart,
     Smile,
-    Trophy
+    TrendingDown,
+    Trophy,
+    Zap
 } from 'lucide-react'
+
+import type { ObservationType } from '@/types/insight'
+
+export const observationIconMap: Record<ObservationType, ElementType> = {
+    activity_consistency: Activity,
+    checkin_consistency: CalendarCheck,
+    streak_consistency: Flame,
+    mood_stability: Heart,
+    pain_improvement: TrendingDown,
+    better_days_pattern: Zap
+}
 
 export const dashboardStatsIconMap = {
     MOOD: Smile,
