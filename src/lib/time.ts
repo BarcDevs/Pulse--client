@@ -7,10 +7,16 @@ import {
 /**
  * Converts the given date to a relative time format, e.g., "2 hours ago", "in 5 minutes", etc.
  *
- * @param {Date} date - The date to convert to relative time format
- * @param {Locale} locale - Optional date-fns locale for localized output
  * @return {string} The date in relative time format
  */
+export const getMsUntilMidnight = (): number => {
+    const now = new Date()
+    const midnight = new Date(now)
+    // eslint-disable-next-line custom-rules/enforce-function-call-breaking
+    midnight.setHours(24, 0, 0, 0)
+    return midnight.getTime() - now.getTime()
+}
+
 export const toRelative = (
     date: Date,
     locale?: Locale

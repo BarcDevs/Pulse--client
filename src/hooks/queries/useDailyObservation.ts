@@ -2,8 +2,9 @@ import type { TodayObservationResponse } from '@/types/insight'
 
 import { useQueryWithNetworkError } from '@/hooks/useQueryWithNetworkError'
 
+import { getMsUntilMidnight } from '@/lib/time'
+
 import { insightsQueryKeys } from '@/constants/queryKeys'
-import { hourInMs } from '@/constants/time'
 
 import { fetchTodayObservation } from '@/api/insight'
 
@@ -15,7 +16,7 @@ export const useDailyObservation = () => {
     } = useQueryWithNetworkError<TodayObservationResponse | null>({
         queryKey: insightsQueryKeys.observation,
         queryFn: fetchTodayObservation,
-        staleTime: hourInMs,
+        staleTime: getMsUntilMidnight(),
         retry: false
     })
 
