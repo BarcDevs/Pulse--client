@@ -6,3 +6,10 @@ export type ObservationType =
     | 'pain_improvement'
     | 'better_days_pattern'
 
+export type TodayObservationResponse = {
+    title: string
+    type: ObservationType
+    observation: string
+    supportiveDescription: string
+    icon: string
+}

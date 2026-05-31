@@ -15,6 +15,7 @@ import {
 
 import type { ObservationType } from '@/types/insight'
 
+import { RetryButton } from '@/components/shared/ui/RetryButton'
 import {
     Card,
     CardContent,
@@ -22,7 +23,7 @@ import {
 } from '@/components/ui/card'
 
 import { useCheckInStats } from '@/hooks/queries/useCheckInStats'
-import { useTodayObservation } from '@/hooks/queries/useTodayObservation'
+import { useDailyObservation } from '@/hooks/queries/useDailyObservation'
 
 import { DEFAULT_ACTIVITIES } from '@/config/defaultActivities'
 
@@ -44,8 +45,9 @@ export const DashboardDailyObservation = () => {
     const t = useTranslations()
     const {
         data: observation,
-        isLoading: observationLoading
-    } = useTodayObservation()
+        isLoading: observationLoading,
+        refetch: refetchObservation
+    } = useDailyObservation()
     const {
         data: stats,
         isLoading: statsLoading
@@ -91,6 +93,9 @@ export const DashboardDailyObservation = () => {
                     observation={observation}
                     activityLabel={activityLabel}
                 />
+                {!isLoading && !observation && (
+                    <RetryButton onClick={refetchObservation}/>
+                )}
             </CardContent>
         </Card>
     )

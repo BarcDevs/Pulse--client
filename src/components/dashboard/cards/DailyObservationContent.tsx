@@ -21,33 +21,29 @@ export const DailyObservationContent = ({
 
     if (isLoading) return <DailyObservationSkeletons/>
 
-    if (observation) return (
+    const mainText = observation?.observation
+        ?? (activityLabel
+            ? t(dashboardLocales.dailyObservation.observation, {
+                activity: activityLabel
+            })
+            : t(dashboardLocales.dailyObservation.description))
+
+    const subText = observation?.supportiveDescription
+        ?? (activityLabel
+            ? t(dashboardLocales.dailyObservation.supportCopy)
+            : null
+        )
+
+    return (
         <>
             <p className={'text-xl font-bold text-foreground leading-snug'}>
-                {observation.observation}
+                {mainText}
             </p>
-            {observation.supportiveDescription && (
+            {subText && (
                 <p className={'mt-3 text-sm text-muted-foreground'}>
-                    {observation.supportiveDescription}
+                    {subText}
                 </p>
             )}
         </>
-    )
-
-    if (activityLabel) return (
-        <>
-            <p className={'text-xl font-bold text-foreground leading-snug'}>
-                {t(dashboardLocales.dailyObservation.observation, { activity: activityLabel })}
-            </p>
-            <p className={'mt-3 text-sm text-muted-foreground'}>
-                {t(dashboardLocales.dailyObservation.supportCopy)}
-            </p>
-        </>
-    )
-
-    return (
-        <p className={'text-xl font-bold text-foreground leading-snug'}>
-            {t(dashboardLocales.dailyObservation.description)}
-        </p>
     )
 }

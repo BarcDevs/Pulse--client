@@ -21,7 +21,8 @@ export const forumQueryKeys = {
 export const insightsQueryKeys = {
     all: ['insights'] as const,
     stats: ['insights', 'stats'] as const,
-    patterns: ['insights', 'patterns'] as const
+    patterns: ['insights', 'patterns'] as const,
+    observation: ['insights', 'observation'] as const
 }
 
 export const profileQueryKeys = {

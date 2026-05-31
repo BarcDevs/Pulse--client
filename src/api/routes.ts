@@ -31,6 +31,9 @@ export const ENDPOINTS = {
         base: '/check-in',
         stats: '/check-in/stats'
     },
+    insight: {
+        observation: '/insight/observation'
+    },
     recoveryGoals: {
         base: '/recovery-goals',
         stats: '/recovery-goals/stats',
