@@ -3,6 +3,8 @@ import * as z from 'zod'
 import { GoalCategory } from '@/types/goals'
 import { TranslatorFn } from '@/types/i18n'
 
+import { isDateStringTodayOrFuture } from '@/lib/time'
+
 import { goalFormSchema } from '@/config/schema/goalForm'
 import { milestoneFormSchema } from '@/config/schema/milestoneForm'
 
@@ -35,14 +37,7 @@ export const createGoalSchema = (t: TranslatorFn) =>
         targetDate: z.string()
             .optional()
             .refine(
-                (date) => {
-                    if (!date) return true
-                    const [y, m, d] = date.split('-').map(Number)
-                    const picked = new Date(y, m - 1, d)
-                    const today = new Date()
-                    today.setHours(0, 0, 0, 0)
-                    return picked >= today
-                },
+                (date) => !date || isDateStringTodayOrFuture(date),
                 t(validationLocales.goal.targetDate.future)
             )
     })

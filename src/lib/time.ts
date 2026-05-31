@@ -14,15 +14,22 @@ export const toDateStr = (d: Date): string =>
 
 export const getTodayMidnight = (): Date => {
     const today = new Date()
-     
+
     today.setHours(0, 0, 0, 0)
     return today
+}
+
+export const isDateStringTodayOrFuture = (
+    date: string
+): boolean => {
+    const [y, m, d] = date.split('-').map(Number)
+    return new Date(y, m - 1, d) >= getTodayMidnight()
 }
 
 export const getMsUntilMidnight = (): number => {
     const now = new Date()
     const midnight = new Date(now)
-     
+
     midnight.setHours(24, 0, 0, 0)
     return midnight.getTime() - now.getTime()
 }
