@@ -5,6 +5,8 @@ import { useTranslations } from 'next-intl'
 
 import { useQuery } from '@tanstack/react-query'
 
+import { ErrorStateCard } from '@/components/shared/ErrorStateCard'
+
 import { useDateLocale } from '@/hooks/ui/useDateLocale'
 
 import { cn } from '@/lib/utils'
@@ -30,7 +32,8 @@ export const CommunityActivity = ({
     const {
         data,
         isLoading,
-        isError
+        isError,
+        error
     } = useQuery({
         queryKey: ['forum', 'recommendations'],
         queryFn: fetchCommunityRecommendations
@@ -65,10 +68,7 @@ export const CommunityActivity = ({
                 {isLoading ? (
                     <CommunityActivitySkeletons count={limit}/>
                 ) : isError ? (
-                    // todo: use error card
-                    <p className={'text-sm text-muted-foreground'}>
-                        {t(communityLocales.activity.loadError)}
-                    </p>
+                    <ErrorStateCard error={error}/>
                 ) : (
                     <div className={'space-y-4'}>
                         {posts.map((activity) => (

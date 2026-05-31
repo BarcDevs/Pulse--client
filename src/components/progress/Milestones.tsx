@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl'
 
 import { GoalStatus } from '@/types/goals'
 
+import { ErrorStateCard } from '@/components/shared/ErrorStateCard'
 import {
     Card,
     CardContent,
@@ -26,7 +27,12 @@ const { topGoalsCount } = defaults.progress
 
 export const ProgressMilestones = () => {
     const t = useTranslations()
-    const { data: goals, isLoading } = useGoals()
+    const {
+        data: goals,
+        isLoading,
+        isError,
+        error
+    } = useGoals()
 
     const activeGoals = goals?.filter((g) => g.status === GoalStatus.ACTIVE) ?? []
     const topGoals = [...activeGoals]
@@ -53,6 +59,8 @@ export const ProgressMilestones = () => {
             <CardContent>
                 {isLoading ? (
                     <ProgressMilestonesSkeletons count={topGoalsCount}/>
+                ) : isError ? (
+                    <ErrorStateCard error={error}/>
                 ) : activeGoals.length === 0 ? (
                     <p className={'text-sm text-muted-foreground'}>
                         {t(progressLocales.milestones.empty)}

@@ -30,7 +30,7 @@ The card reflects the user back to themselves — it does not instruct them.
 
 | # | File | Note |
 |---|------|------|
-| 1 | `src/components/dashboard/cards/DailyObservation.tsx` | Replace static `observation` with AI-generated reflective insight from backend. Backend derives insight from check-in signals; client renders as-is. |
+| ~~1~~ | ~~`src/components/dashboard/cards/DailyObservation.tsx`~~ | ~~Replace static `observation` with AI-generated reflective insight from backend. Backend derives insight from check-in signals; client renders as-is.~~ |
 
 **Scaling-deferred — do NOT build until data maturity + trust calibration:**
 
@@ -77,7 +77,7 @@ Behavioral intelligence systems require medical/legal caution, behavioral tuning
 
 | # | File | Line | Note |
 |---|------|------|------|
-| 1 | `src/components/progress/ProgressPageContent.tsx` | 18 | Add error card to Milestones & Achievements section when API errors occur |
+| ~~1~~ | ~~`src/components/progress/ProgressPageContent.tsx`~~ | ~~18~~ | ~~Add error card to Milestones & Achievements section when API errors occur~~ |
 | 2 | `src/components/goals/form/GoalForm.tsx` | — | Replace native date input with shadcn calendar component |
 
 ---
@@ -86,4 +86,4 @@ Behavioral intelligence systems require medical/legal caution, behavioral tuning
 
 | # | File | Line | Note |
 |---|------|------|------|
-| 1 | `.claude/design/` | — | Apply Claude Design's style guide to components (low priority) |
+| 1 | `.claude/design/resources/design-canvas.jsx` | — | Apply Claude Design's style guide to components (low priority) |

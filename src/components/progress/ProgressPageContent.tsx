@@ -20,7 +20,6 @@ import { ProgressStatsCharts } from './stats/ProgressStatsCharts'
 import { ProgressMilestones } from './Milestones'
 import { RecoveryInsight } from './RecoveryInsight'
 
-// TODO: Add error card to Milestones & Achievements section when API errors occur
 export const ProgressPageContent = () => {
     const t = useTranslations()
     const [shareModalOpen, setShareModalOpen] = useState(false)

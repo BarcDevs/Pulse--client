@@ -40,8 +40,7 @@ export const communityLocales = {
     },
     activity: {
         title: 'community.activity.title',
-        viewAll: 'community.activity.viewAll',
-        loadError: 'community.activity.loadError'
+        viewAll: 'community.activity.viewAll'
     },
     confirmations: {
         deletePost: 'community.confirmations.deletePost',
