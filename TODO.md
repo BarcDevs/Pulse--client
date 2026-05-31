@@ -80,7 +80,7 @@ Behavioral intelligence systems require medical/legal caution, behavioral tuning
 |---|------|------|------|
 | ~~1~~ | ~~`src/components/progress/ProgressPageContent.tsx`~~ | ~~18~~ | ~~Add error card to Milestones & Achievements section when API errors occur~~ |
 | ~~2~~ | ~~`src/components/goals/form/GoalForm.tsx`~~ | ~~—~~ | ~~Replace native date input with shadcn calendar component~~ |
-| 3 | `src/components/shared/` | — | Create reusable `ErrorMessage` component for inline form root errors (currently inlined in `GoalForm`) |
+| ~~3~~ | ~~`src/components/shared/`~~ | ~~—~~ | ~~Create reusable `ErrorMessage` component for inline form root errors (currently inlined in `GoalForm`)~~ |
 
 ---
 

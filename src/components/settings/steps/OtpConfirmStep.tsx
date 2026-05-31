@@ -6,6 +6,7 @@ import { toast } from 'sonner'
 
 import { useMutation } from '@tanstack/react-query'
 
+import { FormError } from '@/components/shared/ui/FormError'
 import { Button } from '@/components/ui/button'
 import {
     Form,
@@ -97,11 +98,7 @@ export const OtpConfirmStep = ({
                         </FormItem>
                     )}
                 />
-                {form.formState.errors.root && (
-                    <p className={'text-sm text-destructive'}>
-                        {form.formState.errors.root.message}
-                    </p>
-                )}
+                <FormError errors={form.formState.errors}/>
                 <div className={'flex gap-2 pt-1'}>
                     <Button
                         type={'submit'}
