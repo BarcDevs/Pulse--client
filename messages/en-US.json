@@ -211,7 +211,8 @@
       "backToCommunity": "Back to community",
       "repliesLoadError": "Unable to load replies",
       "postLoadError": "Unable to load this post right now. Please try again.",
-      "writeReplyPlaceholder": "Write a supportive reply…"
+      "writeReplyPlaceholder": "Write a supportive reply…",
+      "showMoreReplies": "Show more replies"
     },
     "postActions": {
       "solidarity": "Show support",

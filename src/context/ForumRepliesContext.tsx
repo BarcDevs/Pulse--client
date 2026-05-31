@@ -3,6 +3,7 @@
 import {
     createContext,
     ReactNode,
+    useCallback,
     useContext,
     useRef,
     useState
@@ -17,6 +18,8 @@ import { useForumReplies } from '@/hooks/queries/useForumReplies'
 
 import { withOptimisticToast } from '@/utils/optimisticToast'
 
+import { appSettings } from '@/config/appSettings'
+
 import { useAuth } from '@/context/AuthContext'
 
 import { communityLocales } from '@/locales/communityLocales'
@@ -26,12 +29,15 @@ import { PostFormSchema } from '@/validations/forms/postFormSchema'
 type ForumRepliesContextType = {
     replies: Reply[]
     isLoading: boolean
+    isFetching: boolean
     isError: boolean
     error: Error | null
     isPending: boolean
+    hasMore: boolean
+    loadMore: () => void
     addReply: (data: PostFormSchema) => Promise<void>
     updateReply: (
-        replyId: string, 
+        replyId: string,
         data: PostFormSchema
     ) => Promise<void>
     deleteReply: (replyId: string) => Promise<void>
@@ -45,8 +51,11 @@ type ForumRepliesStateProviderProps = {
     postId: string
     initialReplies: Reply[]
     isLoading: boolean
+    isFetching: boolean
     isError: boolean
     error: Error | null
+    hasMore: boolean
+    loadMore: () => void
 }
 
 const ForumRepliesStateProvider = ({
@@ -54,8 +63,11 @@ const ForumRepliesStateProvider = ({
     postId,
     initialReplies,
     isLoading,
+    isFetching,
     isError,
-    error
+    error,
+    hasMore,
+    loadMore
 }: ForumRepliesStateProviderProps) => {
     const t = useTranslations()
     const { user } = useAuth()
@@ -148,9 +160,12 @@ const ForumRepliesStateProvider = ({
     const value: ForumRepliesContextType = {
         replies,
         isLoading,
+        isFetching,
         isError,
         error,
         isPending,
+        hasMore,
+        loadMore,
         addReply: handleAddReply,
         updateReply: handleUpdateReply,
         deleteReply: handleDeleteReply
@@ -172,21 +187,32 @@ export const ForumRepliesProvider = ({
     children,
     postId
 }: ForumRepliesProviderProps) => {
+    const [page, setPage] = useState(1)
+    const { repliesPageSize } = appSettings.community
+    const currentLimit = repliesPageSize * page
+
     const {
         data,
         isLoading,
+        isFetching,
         isError,
         error
-    } = useForumReplies(postId)
+    } = useForumReplies(postId, currentLimit)
+
+    const hasMore = (data?.length ?? 0) === currentLimit
+    const loadMore = useCallback(() => setPage((p) => p + 1), [])
 
     return (
         <ForumRepliesStateProvider
-            key={isLoading ? 'loading' : 'loaded'}
+            key={currentLimit}
             postId={postId}
             initialReplies={data ?? []}
             isLoading={isLoading}
+            isFetching={isFetching}
             isError={isError}
             error={error ?? null}
+            hasMore={hasMore}
+            loadMore={loadMore}
         >
             {children}
         </ForumRepliesStateProvider>

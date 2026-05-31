@@ -202,7 +202,8 @@ describe(
                         await fetchReplies('post-123')
                         expect(api.get)
                             .toHaveBeenCalledWith(
-                                '/forum/posts/post-123/replies'
+                                '/forum/posts/post-123/replies',
+                                { params: undefined }
                             )
                     })
             })

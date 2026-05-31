@@ -8,20 +8,21 @@ import { minuteInMs } from '@/constants/time'
 import { fetchReplies } from '@/api/forum'
 
 export const useForumReplies = (
-    postId: string | null | undefined
+    postId: string | null | undefined,
+    limit?: number
 ) => useQueryWithNetworkError<Reply[]>({
     queryKey: postId
-        ? forumQueryKeys.replies(postId)
+        ? forumQueryKeys.replies(postId, limit)
         : [
             'forum',
             'replies',
             'disabled'
         ],
     queryFn: async () => {
-        if (!postId) {
+        if (!postId)
             throw new Error('Post ID is required')
-        }
-        return fetchReplies(postId)
+
+        return fetchReplies(postId, limit)
     },
     enabled: !!postId,
     staleTime: minuteInMs * 5,

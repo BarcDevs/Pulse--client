@@ -204,7 +204,8 @@
       "backToCommunity": "חזרה לקהילה",
       "repliesLoadError": "לא ניתן לטעון את התגובות",
       "postLoadError": "לא ניתן לטעון את הפוסט כרגע. אפשר לנסות שוב.",
-      "writeReplyPlaceholder": "שתף תגובה תומכת…"
+      "writeReplyPlaceholder": "שתף תגובה תומכת…",
+      "showMoreReplies": "הצג עוד תגובות"
     },
     "postActions": {
       "solidarity": "תמיכה",

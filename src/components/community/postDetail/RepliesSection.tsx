@@ -19,6 +19,7 @@ import {
 } from '@/components/community/postDetail/UnauthenticatedReplyPrompt'
 import { PostForm } from '@/components/community/postForm/PostForm'
 import { ErrorDisplay } from '@/components/shared/ErrorDisplay'
+import { Button } from '@/components/ui/button'
 import { Skeleton } from '@/components/ui/skeleton'
 
 import { useAuth } from '@/context/AuthContext'
@@ -42,12 +43,16 @@ export const RepliesSection = ({
         isReplyFormOpen,
         setIsReplyFormOpen
     } = usePostDetail()
+
     const {
         replies,
         isLoading,
         isError,
         error,
         isPending,
+        isFetching,
+        hasMore,
+        loadMore,
         addReply,
         updateReply,
         deleteReply
@@ -117,6 +122,16 @@ export const RepliesSection = ({
                     onUpdateReplyAction={updateReply}
                     isDeleting={isPending}
                 />
+            )}
+
+            {!isFetching && hasMore && (
+                <Button
+                    variant={'ghost'}
+                    size={'sm'}
+                    onClick={loadMore}
+                >
+                    {t(communityLocales.postDetail.showMoreReplies)}
+                </Button>
             )}
         </div>
     )

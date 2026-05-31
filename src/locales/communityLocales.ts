@@ -61,7 +61,8 @@ export const communityLocales = {
         backToCommunity: 'community.postDetail.backToCommunity',
         repliesLoadError: 'community.postDetail.repliesLoadError',
         postLoadError: 'community.postDetail.postLoadError',
-        writeReplyPlaceholder: 'community.postDetail.writeReplyPlaceholder'
+        writeReplyPlaceholder: 'community.postDetail.writeReplyPlaceholder',
+        showMoreReplies: 'community.postDetail.showMoreReplies'
     },
     postActions: {
         solidarity: 'community.postActions.solidarity',

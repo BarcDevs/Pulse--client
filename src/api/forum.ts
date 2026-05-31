@@ -66,10 +66,14 @@ export const deletePost = async (
 }
 
 export const fetchReplies = async (
-    postId: string
+    postId: string,
+    limit?: number
 ): Promise<Reply[]> => {
     const res = await api.get<Response<Reply[]>>(
-        ENDPOINTS.forum.replies(postId)
+        ENDPOINTS.forum.replies(postId),
+        { params: limit !== undefined
+                ? { limit }
+                : undefined }
     )
     return res.data.data
 }

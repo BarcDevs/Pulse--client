@@ -12,8 +12,8 @@ export const forumQueryKeys = {
     all: ['forum'] as const,
     posts: ['forum', 'posts'] as const,
     post: (id: string) => ['forum', 'posts', id] as const,
-    replies: (postId: string) =>
-        ['forum', 'posts', postId, 'replies'] as const,
+    replies: (postId: string, limit?: number) =>
+        ['forum', 'posts', postId, 'replies', limit] as const,
     tags: ['forum', 'tags'] as const,
     categoryCounts: ['forum', 'categoryCounts'] as const
 }
