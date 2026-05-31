@@ -6,6 +6,7 @@ import { useTranslations } from 'next-intl'
 import type { Control } from 'react-hook-form'
 
 import { FormInputField } from '@/components/shared/inputs/FormInputField'
+import { FormError } from '@/components/shared/ui/FormError'
 import { Button } from '@/components/ui/button'
 import { Form } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
@@ -102,11 +103,10 @@ export const BasicInfoForm = ({
                     />
                 </div>
 
-                {form.formState.errors.root && (
-                    <p className={'mt-3 text-sm text-destructive'}>
-                        {form.formState.errors.root.message}
-                    </p>
-                )}
+                <FormError
+                    errors={form.formState.errors}
+                    className={'mt-3'}
+                />
 
                 <div className={'mt-6 flex gap-3'}>
                     <Button

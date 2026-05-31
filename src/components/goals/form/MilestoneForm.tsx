@@ -7,6 +7,7 @@ import { Controller } from 'react-hook-form'
 import { MilestoneInput } from '@/types/goals'
 
 import { FormInput } from '@/components/shared/inputs/FormInput'
+import { FormError } from '@/components/shared/ui/FormError'
 import {
     Form,
     FormControl,
@@ -110,11 +111,10 @@ export const MilestoneForm = ({
                     isSubmitting={isSubmitting}
                     onCloseAction={onCloseAction}
                 />
-                {form.formState.errors.root && (
-                    <p className={'text-sm text-destructive mt-4'}>
-                        {form.formState.errors.root.message}
-                    </p>
-                )}
+                <FormError
+                    errors={form.formState.errors}
+                    className={'mt-4'}
+                />
             </Form>
         </form>
     )
