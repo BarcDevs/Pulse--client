@@ -51,6 +51,7 @@ Behavioral intelligence systems require medical/legal caution, behavioral tuning
 | # | File | Line | Note |
 |---|------|------|------|
 | 1 | `src/components/profile/settings/BasicInfoView.tsx` | 37–39 | Add `dateOfBirth`, `recoveryType`, `careProvider` once API supports them |
+| 2 | `../healease--server` | — | `GET /forum/recommendations` should always return posts — currently returns empty `posts: []` when `status: "processing"` causing blank community activity card |
 
 ---
 
