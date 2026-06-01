@@ -14,4 +14,6 @@ Quick-reference guide. Find your scenario, read constraints + references only.
 - [SCENARIO 7: Adding an action handler](./workflow/07-action-handler.md)
 - [SCENARIO 8: Adding validation schema](./workflow/08-validation-schema.md)
 - [SCENARIO 9: Adding text with next-intl (i18n)](./workflow/09-i18n-text.md)
+- [SCENARIO 10: UI Design Audit (Screenshots + Playwright)](./workflow/10-ui-design-audit.md)
+- [SCENARIO 11: API Data Rendering](./workflow/11-api-data-rendering.md)
 - [GLOBAL CONSTRAINTS](./workflow/global-constraints.md)
