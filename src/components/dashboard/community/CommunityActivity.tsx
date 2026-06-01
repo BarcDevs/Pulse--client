@@ -14,6 +14,7 @@ import { cn } from '@/lib/utils'
 import { mapActivityItems } from '@/utils/community'
 
 import { fetchCommunityRecommendations } from '@/api/forum'
+import { secondInMs } from '@/constants/time'
 import { communityLocales } from '@/locales/communityLocales'
 
 import { CommunityActivityItem } from './CommunityActivityItem'
@@ -36,9 +37,13 @@ export const CommunityActivity = ({
         error
     } = useQuery({
         queryKey: ['forum', 'recommendations'],
-        queryFn: fetchCommunityRecommendations
+        queryFn: fetchCommunityRecommendations,
+        refetchInterval: (query) =>
+            query.state.data?.status === 'processing'
+                ? 30 * secondInMs : false
     })
 
+    const isProcessing = data?.status === 'processing'
     const limit = fullHeight ? 5 : 3
     const posts = mapActivityItems(
         data?.posts || [],
@@ -65,7 +70,7 @@ export const CommunityActivity = ({
             </div>
 
             <div className={'mt-4'}>
-                {isLoading ? (
+                {isLoading || isProcessing ? (
                     <CommunityActivitySkeletons count={limit}/>
                 ) : isError ? (
                     <ErrorStateCard error={error}/>
