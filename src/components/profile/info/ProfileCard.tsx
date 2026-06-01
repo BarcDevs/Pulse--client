@@ -44,14 +44,15 @@ export const ProfileCard = () => {
                         }}
                     />
 
-                    {/* TODO: implement profile image upload */}
-                    <Button
-                        size={'icon'}
-                        variant={'ghost'}
-                        className={'absolute -bottom-1 -left-1 size-7 rounded-full border-2 border-white bg-muted text-muted-foreground hover:bg-muted/80'}
-                    >
-                        <Camera className={'size-3.5'}/>
-                    </Button>
+                    {FEATURES.profileImageUpload && (
+                        <Button
+                            size={'icon'}
+                            variant={'ghost'}
+                            className={'absolute -bottom-1 -left-1 size-7 rounded-full border-2 border-white bg-muted text-muted-foreground hover:bg-muted/80'}
+                        >
+                            <Camera className={'size-3.5'}/>
+                        </Button>
+                    )}
 
                     {FEATURES.profileLevel && (
                         // todo: add a tooltip

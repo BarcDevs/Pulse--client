@@ -62,7 +62,7 @@ Behavioral intelligence systems require medical/legal caution, behavioral tuning
 |---|------|------|------|
 | 1 | `src/components/profile/RecoveryIdentity.tsx` | 66 | Show user bio once seeded data replaced with real content |
 | 2 | `src/components/profile/RecoveryIdentity.tsx` | 67 | Add health interests editing (`getProfileOptions` + `addInterests`/`removeInterest`) |
-| 3 | `src/components/profile/info/ProfileCard.tsx` | 47 | Hide camera upload button behind feature flag (image upload implementation deferred to scaling) |
+| ~~3~~ | ~~`src/components/profile/info/ProfileCard.tsx`~~ | ~~47~~ | ~~Hide camera upload button behind feature flag (image upload implementation deferred to scaling)~~ |
 
 ---
 

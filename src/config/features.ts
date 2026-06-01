@@ -31,6 +31,8 @@ export const FEATURES = {
     darkMode: false,
     // User level/badge in profile (no API data yet)
     profileLevel: false,
+    // Profile image upload - deferred to scaling phase
+    profileImageUpload: false,
     // Settings tabs — gated individually
     settingsNotifications: false,
     settingsPrivacy: false,
