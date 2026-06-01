@@ -13,6 +13,7 @@ Deferred items — not required for MVP. See `TODO.md` for active work.
 | 3 | `src/components/chat/ChatPageContent.tsx` | 13 | Implement real AI chat API + error handling (page currently behind feature flag) |
 | 4 | `src/components/insights/InsightsPageContent.tsx` | 8 | Implement real data fetching + error cards (page currently behind feature flag) |
 | 5 | `src/components/community/postForm/TagInput.tsx` | — | AI tag normalization: map typos/variations to canonical tags, surface candidates, auto-correct on high confidence. Triggered via `POST /forum/tags/unknown` data. |
+| 6 | `src/components/profile/RecoveryIdentity.tsx` | — | AI-powered interest suggestions — surface relevant health interests based on user activity patterns (drives: community discovery, personalization, recovery identity) |
 
 ---
 
@@ -28,6 +29,7 @@ Deferred items — not required for MVP. See `TODO.md` for active work.
 | 6 | `src/components/settings/sections/PrivacySettings.tsx` | 60 | Activity visible to mentors — needs `profileVisibility` or new field |
 | 7 | `src/components/profile/info/ProfileCard.tsx` | 31 | Level data not yet in `Profile` type — requires server changes |
 | 8 | `src/components/layout/sidebar/sections/MentorItem.tsx` | 22 | Replace mock mentor data with real data |
+| 9 | — | — | Refactor server `Tag` model: replace flat `name`/`nameHe` columns with JSON `name: { en, he }` to match the slug-based i18n pattern used by interests/activities |
 
 ---
 
@@ -85,3 +87,5 @@ Deferred items — not required for MVP. See `TODO.md` for active work.
 | 6 | — | — | Add option to translate a post/comment to user's language |
 | 7 | — | — | Add an option to backfill 3 past check-ins |
 | 8 | — | — | Share Progress feature |
+| 9 | — | — | Improve daily observation according to GPT recommendations |
+| 10 | `src/components/community/` | — | Author profile view — read-only profile page when clicking a community member's name (design in `.claude/design/pages/profile/profile.jsx` - `AuthorProfileView`) |
