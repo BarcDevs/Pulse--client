@@ -65,15 +65,18 @@ export const deletePost = async (
     return undefined
 }
 
+type FetchRepliesParams = {
+    limit?: number
+    offset?: number
+}
+
 export const fetchReplies = async (
     postId: string,
-    limit?: number
+    params?: FetchRepliesParams
 ): Promise<Reply[]> => {
     const res = await api.get<Response<Reply[]>>(
         ENDPOINTS.forum.replies(postId),
-        { params: limit !== undefined
-                ? { limit }
-                : undefined }
+        { params }
     )
     return res.data.data
 }

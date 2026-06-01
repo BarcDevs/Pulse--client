@@ -205,6 +205,31 @@ describe(
                                 '/forum/posts/post-123/replies',
                                 { params: undefined }
                             )
+
+                    })
+
+                it(
+                    'should pass limit and offset params',
+                    async () => {
+                        vi.mocked(api.get)
+                            .mockResolvedValueOnce({
+                                data: {
+                                    data: { replies: [] }
+                                }
+                            })
+
+                        await fetchReplies(
+                            'post-123',
+                            {
+                                limit: 5,
+                                offset: 10
+                            }
+                        )
+                        expect(api.get)
+                            .toHaveBeenCalledWith(
+                                '/forum/posts/post-123/replies',
+                                { params: { limit: 5, offset: 10 } }
+                            )
                     })
             })
 

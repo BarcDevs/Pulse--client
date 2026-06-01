@@ -5,20 +5,19 @@ import {
     ReactNode,
     useCallback,
     useContext,
+    useMemo,
     useRef,
     useState
 } from 'react'
 
 import { useTranslations } from 'next-intl'
 
-import { Reply } from '@/types/community'
+import type { Reply } from '@/types/community'
 
 import { useForumPostMutations } from '@/hooks/mutations/useForumPostMutations'
 import { useForumReplies } from '@/hooks/queries/useForumReplies'
 
 import { withOptimisticToast } from '@/utils/optimisticToast'
-
-import { appSettings } from '@/config/appSettings'
 
 import { useAuth } from '@/context/AuthContext'
 
@@ -77,7 +76,30 @@ const ForumRepliesStateProvider = ({
         deleteReply
     } = useForumPostMutations({ postId })
     const tempIdRef = useRef(0)
-    const [replies, setReplies] = useState<Reply[]>(initialReplies)
+
+    // Optimistic delta — separate from server state so initialReplies updates
+    // (new pages) never wipe in-flight mutations
+    const [pendingAdds, setPendingAdds] = useState<Reply[]>([])
+    const [pendingBodies, setPendingBodies] = useState<Record<string, string>>({})
+    const [deletedIds, setDeletedIds] = useState<Set<string>>(new Set())
+
+    // Derive full list at render time — deduplication filter removes pending
+    // adds whose real reply has arrived in initialReplies
+    const replies = useMemo(() => [
+        ...pendingAdds.filter((pending) =>
+            !initialReplies.some((server) => server.id === pending.id)),
+        ...initialReplies
+            .filter((reply) => !deletedIds.has(reply.id))
+            .map((reply) => pendingBodies[reply.id] != null
+                ? { ...reply, body: pendingBodies[reply.id] }
+                : reply
+            )
+    ], [
+        pendingAdds,
+        initialReplies,
+        deletedIds,
+        pendingBodies
+    ])
 
     const isPending =
         createReply.isPending
@@ -104,11 +126,11 @@ const ForumRepliesStateProvider = ({
                 }
             } : undefined
         }
-        setReplies((prev) => [tempReply, ...prev])
+        setPendingAdds((prev) => [tempReply, ...prev])
 
         return withOptimisticToast({
             action: createReply.mutateAsync(data).then((reply) => {
-                setReplies((prev) => prev.map((r) =>
+                setPendingAdds((prev) => prev.map((r) =>
                     r.id === tempId
                         ? { ...reply, author: tempReply.author }
                         : r
@@ -118,7 +140,7 @@ const ForumRepliesStateProvider = ({
             errorMsg: t(communityLocales.toasts.replyPostFailed),
             retryLabel: t(globalLocales.shared.retry),
             onRetry: () => void handleAddReply(data),
-            onError: () => setReplies((prev) =>
+            onError: () => setPendingAdds((prev) =>
                 prev.filter((r) => r.id !== tempId)
             )
         })
@@ -128,10 +150,8 @@ const ForumRepliesStateProvider = ({
         replyId: string,
         data: PostFormSchema
     ): Promise<void> => {
-        const snapshot = replies
-        setReplies((prev) => prev.map((r) =>
-            r.id === replyId ? { ...r, body: data.body } : r
-        ))
+        const snapshot = pendingBodies[replyId]
+        setPendingBodies((prev) => ({ ...prev, [replyId]: data.body }))
 
         return withOptimisticToast({
             action: updateReply.mutateAsync({ replyId, data }),
@@ -139,13 +159,17 @@ const ForumRepliesStateProvider = ({
             errorMsg: t(communityLocales.toasts.replyUpdateFailed),
             retryLabel: t(globalLocales.shared.retry),
             onRetry: () => void handleUpdateReply(replyId, data),
-            onError: () => setReplies(snapshot)
+            onError: () => setPendingBodies((prev) => {
+                const next = { ...prev }
+                if (snapshot !== undefined) next[replyId] = snapshot
+                else delete next[replyId]
+                return next
+            })
         })
     }
 
     const handleDeleteReply = (replyId: string): Promise<void> => {
-        const snapshot = replies
-        setReplies((prev) => prev.filter((r) => r.id !== replyId))
+        setDeletedIds((prev) => new Set([...prev, replyId]))
 
         return withOptimisticToast({
             action: deleteReply.mutateAsync(replyId),
@@ -153,7 +177,11 @@ const ForumRepliesStateProvider = ({
             errorMsg: t(communityLocales.toasts.replyDeleteFailed),
             retryLabel: t(globalLocales.shared.retry),
             onRetry: () => void handleDeleteReply(replyId),
-            onError: () => setReplies(snapshot)
+            onError: () => setDeletedIds((prev) => {
+                const next = new Set(prev)
+                next.delete(replyId)
+                return next
+            })
         })
     }
 
@@ -187,28 +215,26 @@ export const ForumRepliesProvider = ({
     children,
     postId
 }: ForumRepliesProviderProps) => {
-    const [page, setPage] = useState(1)
-    const { repliesPageSize } = appSettings.community
-    const currentLimit = repliesPageSize * page
-
     const {
         data,
         isLoading,
-        isFetching,
+        isFetchingNextPage,
         isError,
-        error
-    } = useForumReplies(postId, currentLimit)
+        error,
+        hasNextPage,
+        fetchNextPage
+    } = useForumReplies(postId)
 
-    const hasMore = (data?.length ?? 0) === currentLimit
-    const loadMore = useCallback(() => setPage((p) => p + 1), [])
+    const replies = useMemo(() => data?.pages.flat() ?? [], [data])
+    const hasMore = hasNextPage ?? false
+    const loadMore = useCallback(() => { void fetchNextPage() }, [fetchNextPage])
 
     return (
         <ForumRepliesStateProvider
-            key={currentLimit}
             postId={postId}
-            initialReplies={data ?? []}
+            initialReplies={replies}
             isLoading={isLoading}
-            isFetching={isFetching}
+            isFetching={isFetchingNextPage}
             isError={isError}
             error={error ?? null}
             hasMore={hasMore}
