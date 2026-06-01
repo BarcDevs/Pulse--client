@@ -11,8 +11,9 @@ export const profileLocales = {
     recoveryIdentity: {
         title: 'profile.recoveryIdentity.title',
         subtitle: 'profile.recoveryIdentity.subtitle',
-        focusAreas: 'profile.recoveryIdentity.focusAreas',
-        empty: 'profile.recoveryIdentity.empty'
+        empty: 'profile.recoveryIdentity.empty',
+        edit: 'profile.recoveryIdentity.edit',
+        done: 'profile.recoveryIdentity.done'
     },
     basicInfo: {
         title: 'profile.basicInfo.title',
