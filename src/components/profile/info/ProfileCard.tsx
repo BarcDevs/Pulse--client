@@ -66,7 +66,6 @@ export const ProfileCard = () => {
                     firstName={user.firstName}
                     lastName={user.lastName}
                     createdAt={user.createdAt}
-                    dateFormat={user.profile?.dateFormat ?? undefined}
                 />
 
                 {FEATURES.profileLevel && <ProfileLevel/>}

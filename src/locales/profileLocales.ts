@@ -27,6 +27,9 @@ export const profileLocales = {
         lastName: 'common.fields.lastName',
         location: 'common.fields.location',
         locationNotSet: 'profile.basicInfo.locationNotSet',
+        recoveryType: 'profile.basicInfo.recoveryType',
+        careProvider: 'profile.basicInfo.careProvider',
+        notSet: 'profile.basicInfo.notSet',
         save: 'profile.basicInfo.save',
         saving: 'profile.basicInfo.saving',
         cancel: 'profile.basicInfo.cancel',
@@ -46,6 +49,8 @@ export const profileLocales = {
     },
     dailyPreferences: {
         title: 'profile.dailyPreferences.title',
+        subtitle: 'profile.dailyPreferences.subtitle',
+        empty: 'profile.dailyPreferences.empty',
         morningRoutine: {
             title: 'profile.dailyPreferences.morningRoutine.title',
             subtitle: 'profile.dailyPreferences.morningRoutine.subtitle',
@@ -62,5 +67,17 @@ export const profileLocales = {
         settings: 'profile.systemPrivacy.settings',
         manageSettings: 'profile.systemPrivacy.manageSettings',
         signOut: 'profile.systemPrivacy.signOut'
-    }
+    },
+    bio: {
+        title: 'profile.bio.title',
+        empty: 'profile.bio.empty'
+    },
+    editBanner: {
+        viewing: 'profile.editBanner.viewing',
+        viewingSubtitle: 'profile.editBanner.viewingSubtitle',
+        edit: 'profile.editBanner.edit'
+    },
+    recoveryQuotes: ['0','1','2','3','4','5','6','7','8','9'].map(
+        (i) => `profile.recoveryQuotes.${i}` as const
+    )
 } as const

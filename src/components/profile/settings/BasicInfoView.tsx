@@ -2,23 +2,20 @@
 
 import { useTranslations } from 'next-intl'
 
-import { Button } from '@/components/ui/button'
+import { ErrorStateCard } from '@/components/shared/ErrorStateCard'
 
 import { useUser } from '@/hooks/ui/useUser'
 
 import { profileLocales } from '@/locales/profileLocales'
 
-type BasicInfoViewProps = {
-    onEditAction: () => void
-}
+import { BasicInfoSkeleton } from './BasicInfoSkeleton'
 
-export const BasicInfoView = ({
-    onEditAction
-}: BasicInfoViewProps) => {
+export const BasicInfoView = () => {
     const t = useTranslations()
-    const { user } = useUser()
+    const { user, isLoading, error } = useUser()
 
-    if (!user) return null
+    if (isLoading) return <BasicInfoSkeleton/>
+    if (!user) return <ErrorStateCard error={error instanceof Error ? error : null}/>
 
     const fields = [
         {
@@ -30,38 +27,42 @@ export const BasicInfoView = ({
             value: user.email
         },
         {
+            label: t(profileLocales.basicInfo.dateOfBirth),
+            value: null // TODO: add dateOfBirth once API supports it
+        },
+        {
             label: t(profileLocales.basicInfo.location),
-            value: user.profile?.location
-                ?? t(profileLocales.basicInfo.locationNotSet)
+            value: user.profile?.location ?? null
+        },
+        {
+            label: t(profileLocales.basicInfo.recoveryType),
+            value: null // TODO: add recoveryType once API supports it
+        },
+        {
+            label: t(profileLocales.basicInfo.careProvider),
+            value: null // TODO: add careProvider once API supports it
         }
-        // TODO: add dateOfBirth once API supports it
-        // TODO: add recoveryType once API supports it
-        // TODO: add careProvider once API supports it
     ]
 
     return (
-        <>
-            <div className={'grid gap-6 sm:grid-cols-2'}>
-                {fields.map((field) => (
-                    <div key={field.label}>
-                        <p className={'label-uppercase label-rtl text-muted-foreground'}>
-                            {field.label}
-                        </p>
-                        <p className={'mt-1 text-sm font-medium text-foreground'}>
-                            {field.value}
-                        </p>
-                    </div>
-                ))}
-            </div>
-            <div className={'mt-6'}>
-                <Button
-                    variant={'outline'}
-                    size={'sm'}
-                    onClick={onEditAction}
+        <div className={'grid gap-x-8 gap-y-0 sm:grid-cols-2'}>
+            {fields.map((field) => (
+                <div
+                    key={field.label}
+                    className={'border-b border-border py-5'}
                 >
-                    {t(profileLocales.basicInfo.edit)}
-                </Button>
-            </div>
-        </>
+                    <p className={'label-uppercase label-rtl mb-1.5 text-muted-foreground'}>
+                        {field.label}
+                    </p>
+                    <p className={'text-base font-semibold text-foreground'}>
+                        {field.value ?? (
+                            <span className={'font-normal italic text-muted-foreground'}>
+                                {t(profileLocales.basicInfo.notSet)}
+                            </span>
+                        )}
+                    </p>
+                </div>
+            ))}
+        </div>
     )
 }

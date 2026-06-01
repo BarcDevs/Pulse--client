@@ -1,6 +1,8 @@
 import { useTranslations } from 'next-intl'
 
-import { formatByUserPreference } from '@/lib/time'
+import { format } from 'date-fns'
+
+import { useDateLocale } from '@/hooks/ui/useDateLocale'
 
 import { profileLocales } from '@/locales/profileLocales'
 
@@ -8,20 +10,19 @@ type ProfileInfoProps = {
     firstName: string
     lastName: string
     createdAt: string
-    dateFormat?: string
 }
 
 export const ProfileInfo = ({
     firstName,
     lastName,
-    createdAt,
-    dateFormat
+    createdAt
 }: ProfileInfoProps) => {
     const t = useTranslations()
-    const memberDate = formatByUserPreference(
+    const dateLocale = useDateLocale()
+    const memberDate = format(
         new Date(createdAt),
-        false,
-        dateFormat
+        'MMM yyyy',
+        { locale: dateLocale }
     )
 
     return (

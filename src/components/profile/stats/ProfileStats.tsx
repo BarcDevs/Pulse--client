@@ -8,9 +8,13 @@ import {
 import { useTranslations } from 'next-intl'
 
 import type { CheckInStats } from '@/types/checkIn'
-import { GoalStatus } from '@/types/goals'
+import {
+    GoalStatus,
+    MilestoneStatus
+} from '@/types/goals'
 
 import { useGoals } from '@/hooks/queries/useGoals'
+import { useMilestones } from '@/hooks/queries/useMilestones'
 
 import { fetchCheckInStats } from '@/api/checkIn'
 import { profileLocales } from '@/locales/profileLocales'
@@ -21,6 +25,7 @@ export const ProfileStats = () => {
     const t = useTranslations()
     const [stats, setStats] = useState<CheckInStats | null>(null)
     const { data: goals } = useGoals()
+    const { allMilestones } = useMilestones()
 
     useEffect(() => {
         const getStats = async () => {
@@ -35,10 +40,13 @@ export const ProfileStats = () => {
         getStats()
     }, [])
 
-    const streak = stats?.total ?? 0
-    const milestones = stats?.milestonesAchieved ?? 0
-    const activeGoals = goals?.filter((g) =>
-        g.status === GoalStatus.ACTIVE).length ?? 0
+    const streak = stats?.currentStreak ?? 0
+    const milestones = allMilestones.filter(
+        (m) => m.status === MilestoneStatus.COMPLETED
+    ).length
+    const activeGoals = goals?.filter(
+        (g) => g.status === GoalStatus.ACTIVE
+    ).length ?? 0
 
     return (
         <div className={'mt-6 grid w-full grid-cols-3 gap-4 border-t border-border pt-6'}>

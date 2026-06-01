@@ -531,8 +531,8 @@
       "goals": "Active goals"
     },
     "recoveryIdentity": {
-      "title": "Your focus",
-      "subtitle": "Areas you are currently prioritizing",
+      "title": "Recovery focus",
+      "subtitle": "Areas you’re focusing on right now",
       "empty": "No focus areas added yet",
       "edit": "Edit focus",
       "done": "Done"
@@ -555,7 +555,10 @@
         "emailAddress": "Email address",
         "dateOfBirth": "Date of birth",
         "primarySupportContact": "Primary support contact"
-      }
+      },
+      "recoveryType": "Recovery type",
+      "careProvider": "Care provider",
+      "notSet": "Not added yet"
     },
     "goals": {
       "title": "Active goals",
@@ -585,7 +588,9 @@
       ]
     },
     "dailyPreferences": {
-      "title": "Daily activity preferences"
+      "title": "Daily activity preferences",
+      "subtitle": "Activities that feel supportive",
+      "empty": "No activity preferences added yet"
     },
     "systemPrivacy": {
       "title": "System & privacy",
@@ -608,6 +613,27 @@
           "title": "Login history"
         }
       ]
+    },
+    "bio": {
+      "title": "About you",
+      "empty": "No bio added yet"
+    },
+    "editBanner": {
+      "viewing": "Viewing your profile",
+      "viewingSubtitle": "Switch to edit mode when you want to update your details.",
+      "edit": "Edit profile"
+    },
+    "recoveryQuotes": {
+      "0": "Healing is not linear. Every small step forward still counts.",
+      "1": "Progress still matters, even when it is slow. Keep going at your pace.",
+      "2": "Your body is working hard to heal. Give it time and care.",
+      "3": "Rest is not a setback. It is part of the path forward.",
+      "4": "Every day you show up for yourself is worth recognizing.",
+      "5": "Recovery is not about perfection. It is about continuing with care.",
+      "6": "Strength can grow in the moments when continuing feels hard.",
+      "7": "Be patient with yourself. Good things take time to build.",
+      "8": "Your setbacks do not define you. Your next step still matters.",
+      "9": "One day at a time is not a small thing. Sometimes it is everything."
     }
   },
   "goals": {

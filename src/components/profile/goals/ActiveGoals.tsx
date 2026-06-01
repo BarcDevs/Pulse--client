@@ -33,7 +33,7 @@ export const ActiveGoals = () => {
         .slice(0, 3)
 
     return (
-        <div className={'rounded-2xl bg-primary p-6 text-primary-foreground'}>
+        <div className={'rounded-2xl bg-primary p-6 text-primary-foreground h-full'}>
             <h3 className={'text-lg font-semibold mb-6'}>
                 {t(profileLocales.goals.title)}
             </h3>

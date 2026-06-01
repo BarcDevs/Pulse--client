@@ -2,70 +2,47 @@
 
 import { useTranslations } from 'next-intl'
 
-import { Button } from '@/components/ui/button'
+import { EmptyState } from '@/components/shared/EmptyState'
 
-import { useActivityMutations } from '@/hooks/mutations/useActivityMutations'
-import { useProfileOptions } from '@/hooks/queries/useProfileOptions'
 import { useUser } from '@/hooks/ui/useUser'
-
-import { cn } from '@/lib/utils'
 
 import { profileLocales } from '@/locales/profileLocales'
 
+import { DailyActivityPreferencesSkeleton } from './DailyActivityPreferencesSkeleton'
+
 export const DailyActivityPreferences = () => {
     const t = useTranslations()
-    const { user } = useUser()
-    const { options } = useProfileOptions()
-    const {
-        addActivities,
-        removeActivity,
-        isPending
-    } = useActivityMutations()
+    const { user, isLoading } = useUser()
 
-    const selectedSlugs = new Set(
-        user?.profile?.activityPreferences?.
-        map((a) => a.slug) ?? []
-    )
-
-    const handleToggle = (slug: string) => {
-        if (selectedSlugs.has(slug)) {
-            removeActivity(slug)
-        } else {
-            addActivities([slug])
-        }
-    }
+    const selected = user?.profile?.activityPreferences ?? []
 
     return (
-        <div className={'card-base'}>
-            <h3 className={'text-lg font-semibold text-foreground mb-2'}>
+        <div className={'card-base h-full'}>
+            <h3 className={'mb-2 text-lg font-semibold text-foreground'}>
                 {t(profileLocales.dailyPreferences.title)}
             </h3>
-            <p className={'text-sm text-muted-foreground mb-6'}>
-                {`Select activities you enjoy — we'll personalise your suggestions.`}
+            <p className={'mb-6 text-sm text-muted-foreground'}>
+                {t(profileLocales.dailyPreferences.subtitle)}
             </p>
 
-            <div className={'flex--wrap gap-3'}>
-                {options?.activityPreferences.map((activity) => {
-                    const isSelected = selectedSlugs.has(activity.slug)
-
-                    return (
-                        <Button
-                            key={activity.slug}
-                            variant={'outline'}
-                            disabled={isPending}
-                            onClick={() => handleToggle(activity.slug)}
-                            className={cn(
-                                'rounded-full',
-                                isSelected
-                                    ? 'bg-primary-light text-primary border-primary'
-                                    : 'bg-surface-card text-muted-foreground border-border hover:border-primary/50'
-                            )}
-                        >
-                            {activity.name}
-                        </Button>
+            {/* TODO: show full toggleable list when global isEditing is true */}
+            {isLoading
+                ? <DailyActivityPreferencesSkeleton/>
+                : selected.length === 0
+                    ? <EmptyState message={t(profileLocales.dailyPreferences.empty)}/>
+                    : (
+                        <div className={'flex--wrap gap-3'}>
+                            {selected.map((activity) => (
+                                <span
+                                    key={activity.slug}
+                                    className={'rounded-full border border-primary bg-primary-light px-4 py-2 text-sm font-semibold text-primary'}
+                                >
+                                    {activity.description}
+                                </span>
+                            ))}
+                        </div>
                     )
-                })}
-            </div>
+            }
         </div>
     )
 }

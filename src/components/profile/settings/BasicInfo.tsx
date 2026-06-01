@@ -1,7 +1,3 @@
-'use client'
-
-import { useState } from 'react'
-
 import { useTranslations } from 'next-intl'
 
 import {
@@ -13,12 +9,10 @@ import {
 
 import { profileLocales } from '@/locales/profileLocales'
 
-import { BasicInfoForm } from './BasicInfoForm'
 import { BasicInfoView } from './BasicInfoView'
 
 export const ProfileBasicInfo = () => {
     const t = useTranslations()
-    const [isEditing, setIsEditing] = useState(false)
 
     return (
         <Card className={'border-0 shadow-sm'}>
@@ -28,10 +22,8 @@ export const ProfileBasicInfo = () => {
                 </CardTitle>
             </CardHeader>
             <CardContent>
-                {isEditing
-                    ? <BasicInfoForm onCancelAction={() => setIsEditing(false)}/>
-                    : <BasicInfoView onEditAction={() => setIsEditing(true)}/>
-                }
+                {/* TODO: show BasicInfoForm when global isEditing is true */}
+                <BasicInfoView/>
             </CardContent>
         </Card>
     )
