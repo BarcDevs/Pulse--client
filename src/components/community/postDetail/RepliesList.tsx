@@ -10,6 +10,7 @@ type RepliesListProps = {
     replies: Reply[]
     postId: string
     currentUserId?: string
+    postAuthorId?: string
     onDeleteReplyAction: (replyId: string) => Promise<void>
     onUpdateReplyAction: (
         replyId: string,
@@ -22,6 +23,7 @@ export const RepliesList = ({
     replies,
     postId,
     currentUserId,
+    postAuthorId,
     onDeleteReplyAction,
     onUpdateReplyAction,
     isDeleting
@@ -34,6 +36,7 @@ export const RepliesList = ({
                     reply={reply}
                     postId={postId}
                     currentUserId={currentUserId}
+                    postAuthorId={postAuthorId}
                     onDeleteAction={() => onDeleteReplyAction(reply.id)}
                     onUpdateAction={onUpdateReplyAction}
                     isDeleting={isDeleting}

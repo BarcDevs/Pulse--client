@@ -205,7 +205,8 @@
       "repliesLoadError": "לא ניתן לטעון את התגובות",
       "postLoadError": "לא ניתן לטעון את הפוסט כרגע. אפשר לנסות שוב.",
       "writeReplyPlaceholder": "שתף תגובה תומכת…",
-      "showMoreReplies": "הצג עוד תגובות"
+      "showMoreReplies": "הצג עוד תגובות",
+      "authorBadge": "הכותב"
     },
     "postActions": {
       "solidarity": "תמיכה",

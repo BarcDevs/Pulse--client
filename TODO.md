@@ -70,7 +70,7 @@ Behavioral intelligence systems require medical/legal caution, behavioral tuning
 
 | # | File | Line | Note |
 |---|------|------|------|
-| 1 | `src/components/community/` | — | Forum tweaks — add author badge next to post author name |
+| ~~1~~ | ~~`src/components/community/`~~ | ~~—~~ | ~~Forum tweaks — add author badge next to post author name~~ |
 | ~~2~~ | ~~`src/components/community/postDetail/`~~ | ~~—~~ | ~~Limit reply count — use expand button to show remaining replies~~ |
 
 ---

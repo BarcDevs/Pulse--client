@@ -8,12 +8,12 @@ import { Heart } from 'lucide-react'
 
 import { Reply } from '@/types/community'
 
-import { PostForm }
-    from '@/components/community/postForm/PostForm'
+import { PostForm } from '@/components/community/postForm/PostForm'
 import { PostActionButton }
     from '@/components/community/posts/postList/PostActionButton'
 import { ActionsMenu } from '@/components/shared/ActionsMenu'
 import { UserAvatar } from '@/components/shared/UserAvatar'
+import { Badge } from '@/components/ui/badge'
 
 import { useReplyInteractions } from '@/hooks/mutations/useReplyInteractions'
 import { useDateLocale } from '@/hooks/ui/useDateLocale'
@@ -30,9 +30,13 @@ type ReplyCardProps = {
     reply: Reply
     postId: string
     currentUserId?: string
+    postAuthorId?: string
     isNested?: boolean
     onDeleteAction: () => Promise<void>
-    onUpdateAction: (replyId: string, data: PostFormSchema) => Promise<void>
+    onUpdateAction: (
+        replyId: string,
+        data: PostFormSchema
+    ) => Promise<void>
     isDeleting?: boolean
 }
 
@@ -40,6 +44,7 @@ export const ReplyCard = ({
     reply,
     postId,
     currentUserId,
+    postAuthorId,
     isNested = false,
     onDeleteAction,
     onUpdateAction,
@@ -48,6 +53,8 @@ export const ReplyCard = ({
     const t = useTranslations()
     const [isEditing, setIsEditing] = useState(false)
     const isOwner = currentUserId === reply.authorId
+    const isPostAuthor = !!postAuthorId
+        && reply.authorId === postAuthorId
     const {
         liked,
         likeCount,
@@ -64,7 +71,10 @@ export const ReplyCard = ({
             ? `${authorUser.firstName} ${authorUser.lastName}`
             : authorUser.username)
         : 'Unknown'
-    const timeAgo = toRelative(new Date(reply.createdAt), dateLocale)
+    const timeAgo = toRelative(
+        new Date(reply.createdAt),
+        dateLocale
+    )
     const sanitizedBody = sanitizeHtml(reply.body)
     const isEdited = reply.updatedAt !== null
 
@@ -101,6 +111,11 @@ export const ReplyCard = ({
                         <span className={'font-semibold text-sm truncate'}>
                             {authorName}
                         </span>
+                        {isPostAuthor && (
+                            <Badge className={'bg-primary-light text-primary hover:bg-primary-light text-xs px-1.5 py-0 font-medium'}>
+                                {t(communityLocales.postDetail.authorBadge)}
+                            </Badge>
+                        )}
                         <span className={'text-xs text-muted-foreground whitespace-nowrap'}>
                             {timeAgo}
                             {isEdited && (

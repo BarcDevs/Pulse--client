@@ -31,10 +31,12 @@ import { PostFormSchema } from '@/validations/forms/postFormSchema'
 
 type RepliesSectionProps = {
     postId: string
+    postAuthorId?: string
 }
 
 export const RepliesSection = ({
-    postId
+    postId,
+    postAuthorId
 }: RepliesSectionProps) => {
     const t = useTranslations()
     const { user } = useAuth()
@@ -118,6 +120,7 @@ export const RepliesSection = ({
                     replies={replies}
                     postId={postId}
                     currentUserId={user?.profile?.id}
+                    postAuthorId={postAuthorId}
                     onDeleteReplyAction={deleteReply}
                     onUpdateReplyAction={updateReply}
                     isDeleting={isPending}

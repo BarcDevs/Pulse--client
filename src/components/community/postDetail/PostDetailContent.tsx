@@ -178,7 +178,10 @@ export const PostDetailContent = () => {
                 )}
             </div>
 
-            <RepliesSection postId={postId}/>
+            <RepliesSection
+                postId={postId}
+                postAuthorId={post?.authorId}
+            />
         </div>
     )
 }
