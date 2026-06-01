@@ -533,7 +533,9 @@
     "recoveryIdentity": {
       "title": "Your focus",
       "subtitle": "Areas you are currently prioritizing",
-      "empty": "No focus areas added yet"
+      "empty": "No focus areas added yet",
+      "edit": "Edit focus",
+      "done": "Done"
     },
     "basicInfo": {
       "title": "Basic information",
