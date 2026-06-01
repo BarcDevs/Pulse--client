@@ -1,6 +1,4 @@
-/**
- * Validates that a redirect URL is safe (relative path, not external)
- */
+/** Validates that a redirect URL is safe (relative path, not external) */
 export const isValidRedirectUrl = (
     url: string
 ): boolean => {
@@ -11,9 +9,7 @@ export const isValidRedirectUrl = (
     return url.startsWith('/') && !url.startsWith('//')
 }
 
-/**
- * Gets a safe redirect URL or falls back to default
- */
+/** Gets a safe redirect URL or falls back to default */
 export const getSafeRedirectUrl = (
     url?: string | null,
     defaultUrl: string = '/'
