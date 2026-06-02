@@ -42,6 +42,7 @@
 - No backwards-compatibility shims for removed code
 - Don't use redundant braces or parentheses
 - Avoid single statement followed by return — inline: `if (x) return fn()` not `if (x) { fn(); return }`
+- Avoid unnecessary `| null`, `| undefined` types for optional types unless explicitly required
 
 ## JSX Logic
 - Never use IIFEs in JSX — compute values in variables before `return`
@@ -61,7 +62,6 @@
 - 2+ elements in an array → each on its own line
 
 ## Formatting Tools
-
 - **ESLint** (`.eslint.config.mjs`): Enforces all formatting rules. Run `npm run lint:fix` to auto-apply fixes before committing.
 - **.editorconfig**: Cross-IDE settings (4-space indent, UTF-8, LF line endings). Respected by WebStorm, VS Code, etc.
 
