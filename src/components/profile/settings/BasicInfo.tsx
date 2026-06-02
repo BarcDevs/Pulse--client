@@ -1,3 +1,5 @@
+'use client'
+
 import { useTranslations } from 'next-intl'
 
 import {
@@ -7,23 +9,29 @@ import {
     CardTitle
 } from '@/components/ui/card'
 
+import { useProfileEditContext } from '@/context/ProfileEditContext'
+
 import { profileLocales } from '@/locales/profileLocales'
 
+import { BasicInfoForm } from './BasicInfoForm'
 import { BasicInfoView } from './BasicInfoView'
 
 export const ProfileBasicInfo = () => {
     const t = useTranslations()
+    const { isEditing } = useProfileEditContext()
 
     return (
         <Card className={'border-0 shadow-sm'}>
-            <CardHeader>
-                <CardTitle className={'text-lg font-semibold'}>
+            <CardHeader className={'pb-5'}>
+                <CardTitle className={'text-base font-semibold'}>
                     {t(profileLocales.basicInfo.title)}
                 </CardTitle>
             </CardHeader>
             <CardContent>
-                {/* TODO: show BasicInfoForm when global isEditing is true */}
-                <BasicInfoView/>
+                {isEditing
+                    ? <BasicInfoForm/>
+                    : <BasicInfoView/>
+                }
             </CardContent>
         </Card>
     )

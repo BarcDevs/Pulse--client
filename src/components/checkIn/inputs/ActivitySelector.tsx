@@ -8,6 +8,7 @@ import { Trophy } from 'lucide-react'
 
 import type { FormControlProps } from '@/types/forms'
 
+import { ActivityToggleButton } from '@/components/shared/inputs/ActivityToggleButton'
 import { FormInput } from '@/components/shared/inputs/FormInput'
 import {
     Card,
@@ -21,9 +22,8 @@ import { DEFAULT_ACTIVITIES } from '@/config/defaultActivities'
 import { checkInLocales } from '@/locales/checkInLocales'
 import type { CheckInSchema } from '@/validations/forms/checkInSchema'
 
-import { ActivityToggleButton } from './ActivityToggleButton'
-
-type CheckInActivitiesProps = FormControlProps<CheckInSchema> & {
+type CheckInActivitiesProps
+    = FormControlProps<CheckInSchema> & {
     suggestedActivities?: string[]
 }
 

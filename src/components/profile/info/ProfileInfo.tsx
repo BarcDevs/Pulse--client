@@ -30,7 +30,7 @@ export const ProfileInfo = ({
             <h2 className={'mt-4 text-xl font-semibold text-foreground'}>
                 {`${firstName} ${lastName}`}
             </h2>
-            <p className={'text-sm text-muted-foreground'}>
+            <p className={'mt-1 text-sm text-muted-foreground'}>
                 {`${t(profileLocales.info.memberSince)} ${memberDate}`}
             </p>
         </div>

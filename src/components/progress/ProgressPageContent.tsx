@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react'
 
 import { useTranslations } from 'next-intl'
 
+import { SavingBanner } from '@/components/shared/SavingBanner'
+
 import { useCheckInStats } from '@/hooks/queries/useCheckInStats'
 import { useRecoveryGoalsStats } from '@/hooks/queries/useRecoveryGoalsStats'
 
@@ -47,9 +49,7 @@ export const ProgressPageContent = () => {
         <>
             <div className={'p-6 space-y-6'}>
                 {isCheckInPending && (
-                    <div className={'rounded-xl bg-primary/10 px-4 py-3 text-sm text-primary font-medium'}>
-                        {t(checkInLocales.submitPendingMessage)}
-                    </div>
+                    <SavingBanner message={t(checkInLocales.submitPendingMessage)}/>
                 )}
                 <ProgressStatsCharts/>
                 <ProgressMilestones/>

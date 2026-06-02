@@ -8,6 +8,7 @@ import { useProfile } from '@/hooks/queries/useProfile'
 type UseUserReturn = {
     user: User | null
     isLoading: boolean
+    isError: boolean
     error: unknown | null
     isAuthenticated: boolean
 }
@@ -21,7 +22,8 @@ export const useUser = (): UseUserReturn => {
 
     const {
         profile,
-        isLoading: profileLoading
+        isLoading: profileLoading,
+        isError: profileError
     } = useProfile()
 
     const completeUser = user && profile
@@ -31,6 +33,7 @@ export const useUser = (): UseUserReturn => {
     return {
         user: completeUser ?? null,
         isLoading: userLoading || profileLoading,
+        isError: !!userError || profileError,
         error: userError,
         isAuthenticated: !!completeUser
     }

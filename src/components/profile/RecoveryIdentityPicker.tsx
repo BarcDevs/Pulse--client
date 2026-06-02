@@ -1,88 +1,94 @@
 'use client'
 
-import { useState } from 'react'
+import {
+    useLocale,
+    useTranslations
+} from 'next-intl'
 
-import { useTranslations } from 'next-intl'
-
-import { HealthInterest } from '@/types/profile'
+import { Check } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
-
-import { useProfileOptionsQuery } from '@/hooks/profile/useProfileOptionsQuery'
 
 import { cn } from '@/lib/utils'
 
 import {
-    profileRecoveryIdentityColorMap,
-    profileRecoveryIdentityIconMap
+    categoryOrder,
+    getInterestCategory,
+    getInterestName,
+    healthInterestSlugs
+} from '@/constants/mappings/healthInterestNames'
+import {
+    healthInterestIconMap,
+    recoveryCategoryStyleMap
 } from '@/constants/mappings/profile'
+
+import { useProfileEditContext } from '@/context/ProfileEditContext'
 
 import { profileLocales } from '@/locales/profileLocales'
 
-type Props = {
-    selected: HealthInterest[]
-    onCloseAction: () => void
-}
-
-export const RecoveryIdentityPicker = ({
-    selected,
-    onCloseAction
-}: Props) => {
+export const RecoveryIdentityPicker = () => {
     const t = useTranslations()
-    const { data: options } = useProfileOptionsQuery()
-    const [selectedSlugs, setSelectedSlugs] = useState(
-        () => new Set(selected.map((i) => i.slug))
-    )
+    const locale = useLocale()
+    const { profileFields, toggleProfileItem } = useProfileEditContext()
 
-    const toggle = (slug: string) => {
-        setSelectedSlugs((prev) => {
-            const next = new Set(prev)
-            if (next.has(slug)) next.delete(slug)
-            else next.add(slug)
-            return next
-        })
-    }
+    const selectedSlugs = new Set(profileFields.healthInterests)
 
-    const available = options?.healthInterests ?? []
+    const groups = categoryOrder
+        .map((category) => ({
+            category,
+            slugs: healthInterestSlugs.filter(
+                (slug) => getInterestCategory(slug) === category
+            )
+        }))
+        .filter((group) => group.slugs.length > 0)
 
     return (
-        <div>
-            <div className={'flex--wrap gap-3 mb-4'}>
-                {available.map((interest) => {
-                    const isSelected = selectedSlugs.has(interest.slug)
-                    const colorClass =
-                        profileRecoveryIdentityColorMap[interest.category]
-                        ?? 'bg-muted text-muted-foreground'
-                    const IconComponent =
-                        profileRecoveryIdentityIconMap[interest.category]
+        <div className={'space-y-5'}>
+            {groups.map(({ category, slugs }) => {
+                const style = recoveryCategoryStyleMap[category]
+                const labelKey =
+                    profileLocales.interestCategories[
+                        category as keyof typeof profileLocales.interestCategories
+                    ]
 
-                    return (
-                        <Button
-                            key={interest.id}
-                            variant={'ghost'}
-                            size={'sm'}
-                            onClick={() => toggle(interest.slug)}
-                            className={cn(
-                                'inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-opacity h-auto',
-                                isSelected
-                                    ? colorClass
-                                    : 'bg-muted text-muted-foreground opacity-50'
-                            )}
-                        >
-                            {IconComponent && (
-                                <IconComponent className={'h-4 w-4'}/>
-                            )}
-                            {interest.name}
-                        </Button>
-                    )
-                })}
-            </div>
-            <Button
-                size={'sm'}
-                onClick={onCloseAction}
-            >
-                {t(profileLocales.recoveryIdentity.done)}
-            </Button>
+                return (
+                    <div key={category}>
+                        <div className={'mb-2.5 flex items-center gap-2'}>
+                            <span className={cn('size-2 rounded-full', style?.dot)}/>
+                            <span className={'label-uppercase text-xs font-semibold text-muted-foreground'}>
+                                {t(labelKey)}
+                            </span>
+                        </div>
+                        <div className={'flex flex-wrap gap-2'}>
+                            {slugs.map((slug) => {
+                                const isSelected = selectedSlugs.has(slug)
+                                const IconComponent = healthInterestIconMap[slug]
+
+                                return (
+                                    <Button
+                                        key={slug}
+                                        variant={'ghost'}
+                                        size={'sm'}
+                                        onClick={() => toggleProfileItem('healthInterests', slug)}
+                                        className={cn(
+                                            'inline-flex h-auto items-center gap-1.5 rounded-full border px-3.5 py-1.5 text-sm font-medium transition-all',
+                                            isSelected
+                                                ? style?.selected
+                                                : 'border-border bg-card text-muted-foreground hover:bg-muted'
+                                        )}
+                                    >
+                                        {IconComponent && (
+                                            <IconComponent className={'size-3.5'}/>
+                                        )}
+                                        {getInterestName(slug, locale)}
+                                        {isSelected && <Check className={'size-3'}/>}
+                                    </Button>
+                                )
+                            })}
+                        </div>
+                    </div>
+                )
+            })}
         </div>
     )
 }

@@ -23,6 +23,10 @@ export const BasicInfoView = () => {
             value: `${user.firstName} ${user.lastName}`
         },
         {
+            label: t(profileLocales.basicInfo.username),
+            value: `@${user.username}`
+        },
+        {
             label: t(profileLocales.basicInfo.emailAddress),
             value: user.email
         },
@@ -49,12 +53,12 @@ export const BasicInfoView = () => {
             {fields.map((field) => (
                 <div
                     key={field.label}
-                    className={'border-b border-border py-5'}
+                    className={'border-b border-border pb-3.5'}
                 >
                     <p className={'label-uppercase label-rtl mb-1.5 text-muted-foreground'}>
                         {field.label}
                     </p>
-                    <p className={'text-base font-semibold text-foreground'}>
+                    <p className={'text-[15px] font-semibold text-foreground'}>
                         {field.value ?? (
                             <span className={'font-normal italic text-muted-foreground'}>
                                 {t(profileLocales.basicInfo.notSet)}

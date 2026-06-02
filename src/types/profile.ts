@@ -14,30 +14,10 @@ export type UserProfile = {
     communityAlerts: boolean
     profileVisibility: string
     anonymousParticipation: boolean
-    healthInterests?: HealthInterest[]
-    activityPreferences?: ActivityPreference[]
+    healthInterests?: string[]
+    activityPreferences?: string[]
     createdAt: string
     updatedAt: string
-}
-
-export type HealthInterest = {
-    id: string
-    slug: string
-    name: string
-    description: string
-    category: string
-    sortOrder: number
-    isActive: boolean
-}
-
-export type ActivityPreference = {
-    id: string
-    slug: string
-    name: string
-    description: string
-    category: string
-    sortOrder: number
-    isActive: boolean
 }
 
 export type Profile = {
@@ -54,8 +34,8 @@ export type Profile = {
     communityAlerts: boolean
     profileVisibility: ProfileVisibility
     anonymousParticipation: boolean
-    healthInterests: HealthInterest[]
-    activityPreferences: ActivityPreference[]
+    healthInterests: string[]
+    activityPreferences: string[]
     likedPostIds: string[]
     likedReplyIds: string[]
     savedPostIds: string[]
@@ -64,8 +44,7 @@ export type Profile = {
 }
 
 export type ProfileOptions = {
-    healthInterests: HealthInterest[]
-    activityPreferences: ActivityPreference[]
+    activityPreferences: string[]
 }
 
 export type ProfileUpdateInput = {
@@ -79,4 +58,6 @@ export type ProfileUpdateInput = {
     communityAlerts?: boolean
     profileVisibility?: ProfileVisibility
     anonymousParticipation?: boolean
+    healthInterests?: string[]
+    activityPreferences?: string[]
 }

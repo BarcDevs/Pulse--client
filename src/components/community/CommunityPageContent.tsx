@@ -10,6 +10,7 @@ import { toast } from 'sonner'
 import { Post } from '@/types/community'
 
 import { PostForm } from '@/components/community/postForm/PostForm'
+import { SavingBanner } from '@/components/shared/SavingBanner'
 
 import { useCreatePostMutation } from '@/hooks/mutations/useCreatePostMutation'
 import { useDebounce } from '@/hooks/useDebounce'
@@ -88,6 +89,11 @@ export const CommunityPageContent = () => {
 
     return (
         <div className={'p-6'}>
+            {createPost.isPending && (
+                <div className={'mb-4'}>
+                    <SavingBanner message={t(communityLocales.savingMessage)}/>
+                </div>
+            )}
             <div className={'mt-2 grid grid-cols-1 lg:grid-cols-3 gap-6'}>
                 <div className={'lg:col-span-2 flex flex-col gap-4'}>
                     <CommunitySearchBar
