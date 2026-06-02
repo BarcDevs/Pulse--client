@@ -13,8 +13,9 @@ import { cn } from '@/lib/utils'
 
 import { mapActivityItems } from '@/utils/community'
 
-import { fetchCommunityRecommendations } from '@/api/forum'
 import { secondInMs } from '@/constants/time'
+
+import { fetchCommunityRecommendations } from '@/api/forum'
 import { communityLocales } from '@/locales/communityLocales'
 
 import { CommunityActivityItem } from './CommunityActivityItem'

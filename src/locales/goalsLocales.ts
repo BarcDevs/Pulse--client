@@ -138,6 +138,7 @@ export const goalsLocales = {
             bundles: 'goals.goalForm.smartTip.bundles'
         }
     },
+    savingMessage: 'goals.savingMessage',
     toasts: {
         created: 'goals.toasts.created',
         updated: 'goals.toasts.updated',

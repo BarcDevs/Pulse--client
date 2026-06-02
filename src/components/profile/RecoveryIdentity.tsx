@@ -2,13 +2,17 @@
 
 import { useTranslations } from 'next-intl'
 
+import { useProfileEditContext } from '@/context/ProfileEditContext'
+
 import { profileLocales } from '@/locales/profileLocales'
 
+import { RecoveryIdentityPicker } from './RecoveryIdentityPicker'
 import { RecoveryInterestList } from './RecoveryInterestList'
 import { RecoveryQuote } from './RecoveryQuote'
 
 export const RecoveryIdentity = () => {
     const t = useTranslations()
+    const { isEditing } = useProfileEditContext()
 
     return (
         <div className={'card-base'}>
@@ -16,11 +20,17 @@ export const RecoveryIdentity = () => {
                 {t(profileLocales.recoveryIdentity.title)}
             </h3>
             <p className={'mb-6 text-sm text-muted-foreground'}>
-                {t(profileLocales.recoveryIdentity.subtitle)}
+                {isEditing
+                    ? t(profileLocales.recoveryIdentity.edit)
+                    : t(profileLocales.recoveryIdentity.subtitle)
+                }
             </p>
 
-            {/* TODO: show RecoveryIdentityPicker when global isEditing is true */}
-            <RecoveryInterestList/>
+            {isEditing ? (
+                <RecoveryIdentityPicker/>
+            ) : (
+                <RecoveryInterestList/>
+            )}
 
             <RecoveryQuote/>
         </div>

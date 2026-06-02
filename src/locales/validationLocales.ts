@@ -37,6 +37,12 @@ export const validationLocales = {
         },
         location: {
             tooLong: 'validation.name.location.tooLong'
+        },
+        username: {
+            empty: 'validation.name.username.empty',
+            tooShort: 'validation.name.username.tooShort',
+            tooLong: 'validation.name.username.tooLong',
+            invalid: 'validation.name.username.invalid'
         }
     },
     post: {

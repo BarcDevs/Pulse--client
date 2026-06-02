@@ -2,32 +2,34 @@
 
 import { useLocale } from 'next-intl'
 
-import type { HealthInterest } from '@/types/profile'
-
 import { cn } from '@/lib/utils'
 
-import { getInterestName } from '@/constants/mappings/healthInterestNames'
 import {
-    profileRecoveryIdentityColorMap,
-    profileRecoveryIdentityIconMap
+    getInterestCategory,
+    getInterestName
+} from '@/constants/mappings/healthInterestNames'
+import {
+    healthInterestIconMap,
+    recoveryCategoryStyleMap
 } from '@/constants/mappings/profile'
 
 type RecoveryInterestChipProps = {
-    interest: HealthInterest
+    slug: string
 }
 
-export const RecoveryInterestChip = ({ interest }: RecoveryInterestChipProps) => {
+export const RecoveryInterestChip = ({ slug }: RecoveryInterestChipProps) => {
     const locale = useLocale()
-    const colorClass = profileRecoveryIdentityColorMap[interest.category] ?? 'bg-muted text-muted-foreground'
-    const IconComponent = profileRecoveryIdentityIconMap[interest.category]
+    const category = getInterestCategory(slug)
+    const style = category ? recoveryCategoryStyleMap[category] : undefined
+    const IconComponent = healthInterestIconMap[slug]
 
     return (
-        <div className={cn('inline-flex items-center gap-2 px-4 py-2 rounded-full', colorClass)}>
+        <div className={cn('inline-flex items-center gap-2 rounded-full border px-4 py-2', style?.selected ?? 'border-transparent bg-muted text-muted-foreground')}>
             {IconComponent && (
                 <IconComponent className={'size-4'}/>
             )}
             <span className={'text-sm font-medium'}>
-                {getInterestName(interest.slug, locale)}
+                {getInterestName(slug, locale)}
             </span>
         </div>
     )

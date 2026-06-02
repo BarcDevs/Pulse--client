@@ -15,6 +15,12 @@ export const profileLocales = {
         edit: 'profile.recoveryIdentity.edit',
         done: 'profile.recoveryIdentity.done'
     },
+    interestCategories: {
+        'physical-recovery': 'profile.interestCategories.physical-recovery',
+        'wellness': 'profile.interestCategories.wellness',
+        'mental-emotional': 'profile.interestCategories.mental-emotional',
+        'community-support': 'profile.interestCategories.community-support'
+    },
     basicInfo: {
         title: 'profile.basicInfo.title',
         edit: 'profile.basicInfo.edit',
@@ -25,6 +31,7 @@ export const profileLocales = {
         primarySupportContact: 'profile.basicInfo.primarySupportContact',
         firstName: 'common.fields.firstName',
         lastName: 'common.fields.lastName',
+        username: 'common.fields.username',
         location: 'common.fields.location',
         locationNotSet: 'profile.basicInfo.locationNotSet',
         recoveryType: 'profile.basicInfo.recoveryType',
@@ -50,6 +57,7 @@ export const profileLocales = {
     dailyPreferences: {
         title: 'profile.dailyPreferences.title',
         subtitle: 'profile.dailyPreferences.subtitle',
+        editSubtitle: 'profile.dailyPreferences.editSubtitle',
         empty: 'profile.dailyPreferences.empty',
         morningRoutine: {
             title: 'profile.dailyPreferences.morningRoutine.title',
@@ -70,14 +78,34 @@ export const profileLocales = {
     },
     bio: {
         title: 'profile.bio.title',
+        placeholder: 'profile.bio.placeholder',
         empty: 'profile.bio.empty'
     },
+    savingMessage: 'profile.savingMessage',
     editBanner: {
         viewing: 'profile.editBanner.viewing',
         viewingSubtitle: 'profile.editBanner.viewingSubtitle',
-        edit: 'profile.editBanner.edit'
+        editing: 'profile.editBanner.editing',
+        editingSubtitle: 'profile.editBanner.editingSubtitle',
+        edit: 'profile.editBanner.edit',
+        save: 'profile.editBanner.save',
+        cancel: 'profile.editBanner.cancel'
     },
-    recoveryQuotes: ['0','1','2','3','4','5','6','7','8','9'].map(
+    toasts: {
+        saveFailed: 'profile.toasts.saveFailed'
+    },
+    recoveryQuotes: [
+        '0',
+        '1',
+        '2',
+        '3',
+        '4',
+        '5',
+        '6',
+        '7',
+        '8',
+        '9'
+    ].map(
         (i) => `profile.recoveryQuotes.${i}` as const
     )
 } as const

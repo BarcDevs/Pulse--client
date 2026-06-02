@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl'
 import { GoalsFilter } from '@/components/goals/GoalsFilter'
 import { RecoveryGoalsSkeletons } from '@/components/goals/RecoveryGoalsSkeletons'
 import { ErrorDisplay } from '@/components/shared/ErrorDisplay'
+import { SavingBanner } from '@/components/shared/SavingBanner'
 
 import { useGoalFiltering } from '@/hooks/useGoalFiltering'
 import { useRecoveryGoalsModal } from '@/hooks/useRecoveryGoalsModal'
@@ -24,7 +25,8 @@ export const RecoveryGoalsPageContent = () => {
         goals,
         isLoading,
         isError,
-        error
+        error,
+        isPending
     } = useGoalsContext()
 
     const {
@@ -48,6 +50,11 @@ export const RecoveryGoalsPageContent = () => {
     return (
         <>
             <div className={'p-8 md:p-12 max-w-7xl mx-auto w-full'}>
+                {isPending && (
+                    <div className={'mb-6'}>
+                        <SavingBanner message={t(goalsLocales.savingMessage)}/>
+                    </div>
+                )}
                 <div className={'flex justify-between items-end mb-8'}>
                     <div>
                         <h3 className={'text-3xl font-display font-bold tracking-tight text-on-surface'}>

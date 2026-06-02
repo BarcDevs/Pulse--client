@@ -8,20 +8,14 @@ import {
 } from 'react'
 
 import type {
-    ActivityPreference,
-    HealthInterest,
-    Profile
+    Profile,
+    ProfileUpdateInput
 } from '@/types/profile'
 
 import { useSaveSettings } from '@/hooks/mutations/useSaveSettings'
 import { useProfileQuery } from '@/hooks/profile/useProfileQuery'
 
-type SettingValue =
-    string
-    | boolean
-    | HealthInterest[]
-    | ActivityPreference[]
-    | string[]
+type SettingValue = string | boolean | string[]
 
 type SettingsContextType = {
     settings: Partial<Profile>
@@ -78,20 +72,18 @@ export const SettingsProvider = ({
     const handleSave = () => {
         if (!pendingChanges || !profile) return
 
-        const updates: Record<string, SettingValue> = {}
+        const updates: Partial<Profile> = {}
 
         Object.entries(pendingChanges).forEach((
             [key, value]
         ) => {
-            if (profile[key as keyof Profile]
-                !== value
-            ) {
-                updates[key] = value
+            if (profile[key as keyof Profile] !== value) {
+                (updates as Record<string, unknown>)[key] = value
             }
         })
 
         if (Object.keys(updates).length > 0) {
-            saveSettings(updates as Partial<Profile>, {
+            saveSettings(updates as ProfileUpdateInput, {
                 onSuccess: () => {
                     setPendingChanges({})
                 }

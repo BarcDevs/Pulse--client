@@ -29,7 +29,7 @@ export const ActivityToggleButton = ({
         )}
     >
         {isSelected
-            && <span className={'mr-1'}>+</span>}
-        {label ?? activity}
+            && <span className={'mr-1'}>{'+'}</span>}
+        {label || activity}
     </Button>
 )

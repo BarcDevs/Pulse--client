@@ -3,136 +3,83 @@
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 
-import type { Control } from 'react-hook-form'
-
-import { FormInputField } from '@/components/shared/inputs/FormInputField'
-import { FormError } from '@/components/shared/ui/FormError'
-import { Button } from '@/components/ui/button'
-import { Form } from '@/components/ui/form'
-import { Input } from '@/components/ui/input'
-
-import { useBasicInfoForm } from '@/hooks/forms/useBasicInfoForm'
-import { useBasicInfoSubmit } from '@/hooks/profile/useBasicInfoSubmit'
 import { useUser } from '@/hooks/ui/useUser'
 
 import { ROUTES } from '@/constants/routes'
 
+import { useProfileEditContext } from '@/context/ProfileEditContext'
+
 import { profileLocales } from '@/locales/profileLocales'
 
-type BasicInfoFormProps = {
-    onCancelAction: () => void
-}
+import { EditTextField } from './EditTextField'
 
-export const BasicInfoForm = ({
-    onCancelAction
-}: BasicInfoFormProps) => {
+export const BasicInfoForm = () => {
     const t = useTranslations()
     const { user } = useUser()
-    const { onSubmit, isSaving } = useBasicInfoSubmit(onCancelAction)
-    const { form, handleSubmit } = useBasicInfoForm({
-        onSubmit,
-        defaultValues: {
-            firstName: user?.firstName,
-            lastName: user?.lastName,
-            location: user?.profile?.location ?? undefined
-        }
-    })
+    const {
+        userFields,
+        profileFields,
+        updateUserField,
+        updateProfileField,
+        errors
+    } = useProfileEditContext()
 
     if (!user) return null
 
     return (
-        <Form {...form}>
-            <form onSubmit={handleSubmit}>
-                <div className={'grid gap-4 sm:grid-cols-2'}>
-                    <div className={'flex gap-2'}>
-                        <FormInputField
-                            control={form.control as Control<any>}
-                            name={'firstName'}
-                            label={t(profileLocales.basicInfo.firstName)}
-                            labelClassName={'label-uppercase label-rtl text-muted-foreground font-normal'}
-                            render={(field) => (
-                                <Input
-                                    {...field}
-                                    placeholder={t(profileLocales.basicInfo.firstName)}
-                                />
-                            )}
-                        />
-                        <FormInputField
-                            control={form.control as Control<any>}
-                            name={'lastName'}
-                            label={t(profileLocales.basicInfo.lastName)}
-                            labelClassName={'label-uppercase label-rtl text-muted-foreground font-normal'}
-                            render={(field) => (
-                                <Input
-                                    {...field}
-                                    placeholder={t(profileLocales.basicInfo.lastName)}
-                                />
-                            )}
-                        />
-                    </div>
-
-                    <div>
-                        <p className={'label-uppercase label-rtl text-muted-foreground mb-2'}>
-                            {t(profileLocales.basicInfo.emailAddress)}
-                        </p>
-                        <p className={'text-sm text-muted-foreground'}>
-                            {user.email}
-                        </p>
-                        <p className={'text-xs text-muted-foreground mt-1'}>
-                            {`${t(profileLocales.basicInfo.emailNote)} `}
-                            <Link 
-                                href={ROUTES.PROFILE_SETTINGS} 
-                                className={'underline hover:text-foreground'}
-                            >
-                                {t(profileLocales.basicInfo.emailNoteLink)}
-                            </Link>
-                        </p>
-                    </div>
-
-                    <FormInputField
-                        control={form.control as Control<any>}
-                        name={'location'}
-                        label={t(profileLocales.basicInfo.location)}
-                        labelClassName={'label-uppercase label-rtl text-muted-foreground font-normal'}
-                        render={(field) => (
-                            <Input
-                                {...field}
-                                placeholder={t(profileLocales.basicInfo.location)}
-                            />
-                        )}
-                    />
-                </div>
-
-                <FormError
-                    errors={form.formState.errors}
-                    className={'mt-3'}
+        <div className={'grid gap-4 sm:grid-cols-2'}>
+            <div className={'flex gap-2'}>
+                <EditTextField
+                    className={'flex-1'}
+                    label={t(profileLocales.basicInfo.firstName)}
+                    value={userFields.firstName}
+                    placeholder={t(profileLocales.basicInfo.firstName)}
+                    error={errors.firstName}
+                    onChangeAction={(v) => updateUserField('firstName', v)}
                 />
+                <EditTextField
+                    className={'flex-1'}
+                    label={t(profileLocales.basicInfo.lastName)}
+                    value={userFields.lastName}
+                    placeholder={t(profileLocales.basicInfo.lastName)}
+                    error={errors.lastName}
+                    onChangeAction={(v) => updateUserField('lastName', v)}
+                />
+            </div>
 
-                <div className={'mt-6 flex gap-3'}>
-                    <Button
-                        type={'submit'}
-                        size={'sm'}
-                        disabled={isSaving}
+            <EditTextField
+                label={t(profileLocales.basicInfo.username)}
+                value={userFields.username}
+                placeholder={t(profileLocales.basicInfo.username)}
+                error={errors.username}
+                onChangeAction={(v) => updateUserField('username', v)}
+            />
+
+            <div>
+                <p className={'label-uppercase label-rtl text-muted-foreground mb-2'}>
+                    {t(profileLocales.basicInfo.emailAddress)}
+                </p>
+                <p className={'text-sm text-muted-foreground'}>
+                    {user.email}
+                </p>
+                <p className={'text-xs text-muted-foreground mt-1'}>
+                    {`${t(profileLocales.basicInfo.emailNote)} `}
+                    <Link
+                        href={ROUTES.PROFILE_SETTINGS}
+                        className={'underline hover:text-foreground'}
                     >
-                        {isSaving
-                            ? t(profileLocales.basicInfo.saving)
-                            : t(profileLocales.basicInfo.save)
-                        }
-                    </Button>
-                    <Button
-                        type={'button'}
-                        variant={'outline'}
-                        size={'sm'}
-                        onClick={() => {
-                            form.reset()
-                            onCancelAction()
-                        }}
-                        disabled={isSaving}
-                    >
-                        {t(profileLocales.basicInfo.cancel)}
-                    </Button>
-                </div>
-            </form>
-        </Form>
+                        {t(profileLocales.basicInfo.emailNoteLink)}
+                    </Link>
+                </p>
+            </div>
+
+            <EditTextField
+                label={t(profileLocales.basicInfo.location)}
+                value={profileFields.location}
+                placeholder={t(profileLocales.basicInfo.location)}
+                error={errors.location}
+                onChangeAction={(v) => updateProfileField('location', v)}
+            />
+        </div>
     )
 }

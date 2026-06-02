@@ -13,19 +13,19 @@ import { RecoveryInterestChip } from './RecoveryInterestChip'
 
 export const RecoveryInterestList = () => {
     const t = useTranslations()
-    const { user, isLoading } = useUser()
+    const { user, isLoading, isError } = useUser()
 
     const interests = user?.profile?.healthInterests ?? []
 
     if (isLoading) return <RecoveryIdentitySkeleton/>
-    if (interests.length === 0) return <EmptyState message={t(profileLocales.recoveryIdentity.empty)}/>
+    if (isError || interests.length === 0) return <EmptyState message={t(profileLocales.recoveryIdentity.empty)}/>
 
     return (
         <div className={'flex flex-wrap gap-3 mb-6'}>
-            {interests.map((interest) => (
+            {interests.map((slug) => (
                 <RecoveryInterestChip
-                    key={interest.id}
-                    interest={interest}
+                    key={slug}
+                    slug={slug}
                 />
             ))}
         </div>

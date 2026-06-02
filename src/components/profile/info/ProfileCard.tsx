@@ -15,13 +15,14 @@ import { FEATURES } from '@/config/features'
 
 import { ProfileStats } from '../stats/ProfileStats'
 
+import { ProfileCardSkeleton } from './ProfileCardSkeleton'
 import { ProfileInfo } from './ProfileInfo'
 
 export const ProfileCard = () => {
-    const { user } = useUser()
+    const { user, isLoading } = useUser()
 
-    if (!user)
-        return null
+    if (isLoading) return <ProfileCardSkeleton/>
+    if (!user) return null
 
     const initials = getUserFallback(
         user.firstName,
@@ -30,7 +31,7 @@ export const ProfileCard = () => {
 
     return (
         <Card className={'border-0 shadow-sm'}>
-            <CardContent className={'flex flex-col items-center pt-8 text-center'}>
+            <CardContent className={'flex flex-col items-center p-6 text-center'}>
                 <div className={'relative'}>
                     <UserAvatar
                         initials={initials}

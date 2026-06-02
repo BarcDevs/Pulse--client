@@ -109,6 +109,7 @@ export const communityLocales = {
         tagPopularTopics: 'community.postForm.tagPopularTopics',
         categoryHint: 'community.postForm.categoryHint'
     },
+    savingMessage: 'community.savingMessage',
     toasts: {
         replyPosted: 'community.toasts.replyPosted',
         replyUpdated: 'community.toasts.replyUpdated',

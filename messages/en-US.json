@@ -5,7 +5,8 @@
       "firstName": "First name",
       "lastName": "Last name",
       "email": "Email address",
-      "location": "Location"
+      "location": "Location",
+      "username": "Username"
     }
   },
   "auth": {
@@ -119,13 +120,13 @@
       "suggestedLabel": "Your top activities",
       "allLabel": "All activities",
       "default": {
-        "Meditation": "Meditation",
-        "Exercise": "Exercise",
-        "Social time": "Social time",
-        "Reading": "Reading",
-        "Journaling": "Journaling",
-        "Therapy": "Therapy",
-        "Rest": "Rest"
+        "meditation": "Meditation",
+        "exercise": "Exercise",
+        "social time": "Social time",
+        "reading": "Reading",
+        "journaling": "Journaling",
+        "therapy": "Therapy",
+        "rest": "Rest"
       }
     },
     "journal": {
@@ -148,6 +149,7 @@
     ]
   },
   "community": {
+    "savingMessage": "Publishing your post…",
     "posts": {
       "edited": "(edited)",
       "filterLabels": {
@@ -521,6 +523,10 @@
     }
   },
   "profile": {
+    "savingMessage": "Saving your profile changes…",
+    "toasts": {
+      "saveFailed": "We couldn't save your profile right now."
+    },
     "info": {
       "memberSince": "Member since"
     },
@@ -535,7 +541,13 @@
       "subtitle": "Areas you’re focusing on right now",
       "empty": "No focus areas added yet",
       "edit": "Edit focus",
-      "done": "Done"
+      "done": "Finish editing"
+    },
+    "interestCategories": {
+      "physical-recovery": "Recovery",
+      "wellness": "Wellness",
+      "mental-emotional": "Emotional Wellbeing",
+      "community-support": "Community"
     },
     "basicInfo": {
       "title": "Basic information",
@@ -590,6 +602,7 @@
     "dailyPreferences": {
       "title": "Daily activity preferences",
       "subtitle": "Activities that feel supportive",
+      "editSubtitle": "Choose activities to help personalize your suggestions.",
       "empty": "No activity preferences added yet"
     },
     "systemPrivacy": {
@@ -615,13 +628,18 @@
       ]
     },
     "bio": {
-      "title": "About you",
-      "empty": "No bio added yet"
+      "title": "About",
+      "placeholder": "Share anything you'd like others to know about your recovery journey...",
+      "empty": "No introduction added yet"
     },
     "editBanner": {
       "viewing": "Viewing your profile",
-      "viewingSubtitle": "Switch to edit mode when you want to update your details.",
-      "edit": "Edit profile"
+      "viewingSubtitle": "Switch to edit mode whenever you'd like to make changes.",
+      "editing": "Editing your profile",
+      "editingSubtitle": "Update your details below and save when you're ready.",
+      "edit": "Edit profile",
+      "save": "Save changes",
+      "cancel": "Cancel"
     },
     "recoveryQuotes": {
       "0": "Healing is not linear. Every small step forward still counts.",
@@ -637,6 +655,7 @@
     }
   },
   "goals": {
+    "savingMessage": "Saving your goals…",
     "header": {
       "title": "Recovery Goals",
       "description": "Recovery can move at different speeds. Focus on steady, meaningful steps that support your long term wellbeing."
@@ -1212,6 +1231,12 @@
       },
       "location": {
         "tooLong": "Location must be {max} characters or fewer"
+      },
+      "username": {
+        "empty": "Choose a username",
+        "tooShort": "Username must contain at least {min} characters",
+        "tooLong": "Username must be {max} characters or fewer",
+        "invalid": "Use only letters, numbers, and underscores"
       }
     },
     "post": {

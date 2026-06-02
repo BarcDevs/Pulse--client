@@ -2,13 +2,21 @@ import {
     Activity,
     Bell,
     Brain,
+    Check,
+    ClipboardCheck,
+    Dumbbell,
+    Flame,
     Heart,
     History,
+    Leaf,
     type LucideIcon,
     Moon,
     Share2,
     Shield,
+    Smile,
+    Sparkles,
     Sun,
+    Target,
     Users
 } from 'lucide-react'
 
@@ -50,19 +58,70 @@ export const profileActivitiesIconMap = {
 }
 
 export const profileRecoveryIdentityIconMap: Record<string, LucideIcon> = {
-    PHYSICAL: Activity,
-    MENTAL: Brain,
-    LIFESTYLE: Moon,
-    WELLNESS: Heart,
-    SOCIAL: Users
+    Recovery: Activity,
+    Wellness: Heart,
+    'Condition-Specific': Brain,
+    Physical: Activity,
+    Mindfulness: Moon
 }
 
 export const profileRecoveryIdentityColorMap: Record<string, string> = {
-    PHYSICAL: 'bg-destructive/10 text-destructive',
-    MENTAL: 'bg-secondary/10 text-secondary',
-    LIFESTYLE: 'bg-primary/10 text-primary',
-    WELLNESS: 'bg-purple-light text-purple',
-    SOCIAL: 'bg-purple-light text-purple'
+    Recovery: 'bg-destructive/10 text-destructive',
+    Wellness: 'bg-secondary/10 text-secondary',
+    'Condition-Specific': 'bg-primary/10 text-primary',
+    Physical: 'bg-secondary/10 text-secondary',
+    Mindfulness: 'bg-accent/10 text-accent'
+}
+
+export const healthInterestIconMap: Record<string, LucideIcon> = {
+    'rehabilitation': Activity,
+    'physical-therapy': Dumbbell,
+    'occupational-therapy': ClipboardCheck,
+    'mobility': Activity,
+    'injury-recovery': Heart,
+    'surgery-recovery': ClipboardCheck,
+    'chronic-pain': Activity,
+    'pain-management': Activity,
+    'neurological-recovery': Brain,
+    'strength-building': Dumbbell,
+    'nutrition': Leaf,
+    'sleep': Moon,
+    'healthy-habits': Check,
+    'fitness': Dumbbell,
+    'self-care': Heart,
+    'mental-health': Brain,
+    'emotional-wellbeing': Smile,
+    'stress-management': Activity,
+    'mindfulness': Sparkles,
+    'meditation': Leaf,
+    'motivation': Flame,
+    'peer-support': Users,
+    'disability-support': Heart,
+    'goal-progress': Target
+}
+
+type RecoveryCategoryStyle = {
+    dot: string
+    selected: string
+}
+
+export const recoveryCategoryStyleMap: Record<string, RecoveryCategoryStyle> = {
+    'physical-recovery': {
+        dot: 'bg-destructive',
+        selected: 'border-destructive bg-destructive/10 text-destructive'
+    },
+    'wellness': {
+        dot: 'bg-secondary',
+        selected: 'border-secondary bg-secondary/10 text-secondary'
+    },
+    'mental-emotional': {
+        dot: 'bg-violet-500',
+        selected: 'border-violet-500 bg-violet-100 text-violet-700'
+    },
+    'community-support': {
+        dot: 'bg-primary',
+        selected: 'border-primary bg-primary/10 text-primary'
+    }
 }
 
 export const profileSettingsIconMap = {
