@@ -2,6 +2,7 @@
 
 import { Camera } from 'lucide-react'
 
+import { ProfileLevel } from '@/components/profile/info/ProfileLevel'
 import { UserAvatar } from '@/components/shared/UserAvatar'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
@@ -15,7 +16,6 @@ import { FEATURES } from '@/config/features'
 import { ProfileStats } from '../stats/ProfileStats'
 
 import { ProfileInfo } from './ProfileInfo'
-import { ProfileLevel } from './ProfileLevel'
 
 export const ProfileCard = () => {
     const { user } = useUser()
@@ -27,9 +27,6 @@ export const ProfileCard = () => {
         user.firstName,
         user.lastName
     )
-
-    // TODO: level data not yet in Profile type — requires server changes
-    const level = 3
 
     return (
         <Card className={'border-0 shadow-sm'}>
@@ -44,6 +41,7 @@ export const ProfileCard = () => {
                         }}
                     />
 
+                    {/* TODO: profile image upload — deferred to scaling phase */}
                     {FEATURES.profileImageUpload && (
                         <Button
                             size={'icon'}
@@ -52,13 +50,6 @@ export const ProfileCard = () => {
                         >
                             <Camera className={'size-3.5'}/>
                         </Button>
-                    )}
-
-                    {FEATURES.profileLevel && (
-                        // todo: add a tooltip
-                        <div className={'absolute -bottom-1 -right-1 flex size-8 items-center justify-center rounded-full border-2 border-white bg-secondary text-xs font-bold text-white'}>
-                            {level}
-                        </div>
                     )}
                 </div>
 
