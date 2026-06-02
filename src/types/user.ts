@@ -9,6 +9,9 @@ export type User = {
     username: string
     email: string
     role: Role
+    dateOfBirth?: Date
+    recoveryType?: string
+    careProvider?: string
     passwordUpdatedAt?: string
     createdAt: string
     deletedAt?: string

@@ -32,7 +32,7 @@ export const BasicInfoView = () => {
         },
         {
             label: t(profileLocales.basicInfo.dateOfBirth),
-            value: null // TODO: add dateOfBirth once API supports it
+            value: user.dateOfBirth ? new Date(user.dateOfBirth).toLocaleDateString() : null
         },
         {
             label: t(profileLocales.basicInfo.location),
@@ -40,11 +40,11 @@ export const BasicInfoView = () => {
         },
         {
             label: t(profileLocales.basicInfo.recoveryType),
-            value: null // TODO: add recoveryType once API supports it
+            value: user.recoveryType ?? null
         },
         {
             label: t(profileLocales.basicInfo.careProvider),
-            value: null // TODO: add careProvider once API supports it
+            value: user.careProvider ?? null
         }
     ]
 
