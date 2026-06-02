@@ -14,14 +14,15 @@ import { FEATURES } from '@/config/features'
 
 import { ProfileStats } from '../stats/ProfileStats'
 
+import { ProfileCardSkeleton } from './ProfileCardSkeleton'
 import { ProfileInfo } from './ProfileInfo'
 import { ProfileLevel } from './ProfileLevel'
 
 export const ProfileCard = () => {
-    const { user } = useUser()
+    const { user, isLoading } = useUser()
 
-    if (!user)
-        return null
+    if (isLoading) return <ProfileCardSkeleton/>
+    if (!user) return null
 
     const initials = getUserFallback(
         user.firstName,
