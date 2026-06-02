@@ -10,6 +10,7 @@
 - Spread caller's `defaultValues` over hardcoded defaults: `{ title: '', ...defaultValues }`
 - Catch errors in `.handleSubmit()` wrapper, set via `form.setError('root', { type: 'manual', message })`
 - Call `form.reset()` after successful submission
+- **Form validation MUST wire to error display** — validation errors from `form.formState.errors` always shown in UI (error messages, aria-invalid, error styling)
 - Return `{ form, handleSubmit }`
 
 ## References
