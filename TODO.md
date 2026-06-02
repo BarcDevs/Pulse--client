@@ -58,13 +58,10 @@ Behavioral intelligence systems require medical/legal caution, behavioral tuning
 
 ## Profile / Identity
 
-| # | File | Line | Note |
-|---|------|------|------|
-| 1 | `src/components/profile/RecoveryIdentity.tsx` | 66 | Show user bio once seeded data replaced with real content |
-| ~~2a~~ | ~~`src/components/profile/RecoveryIdentity.tsx`~~ | ~~67~~ | ~~Fetch available interests via `getProfileOptions` and render selectable options~~ |
-| 2b | `src/components/profile/RecoveryIdentity.tsx` | 67 | Add interests — call `addInterests(slugs)` on selection |
-| 2c | `src/components/profile/RecoveryIdentity.tsx` | 67 | Remove interests — call `removeInterest(slug)` on deselection |
-| 2d | `src/components/profile/RecoveryIdentity.tsx` | — | Add i18n strings for health interests UI (blocked: server must finalize interest names/categories) |
+| #     | File                                              | Line   | Note                                                                                                |
+|-------|---------------------------------------------------|--------|-----------------------------------------------------------------------------------------------------|
+| ~~1~~ | ~~`src/components/profile/RecoveryIdentity.tsx`~~ | ~~66~~ | ~~Show user bio once seeded data replaced with real content~~                                     |
+| ~~2~~ | ~~`src/components/profile/RecoveryIdentity.tsx`~~ | ~~67~~ | ~~Fetch available interests via `getProfileOptions` and render selectable options~~                 |
 | ~~3~~ | ~~`src/components/profile/info/ProfileCard.tsx`~~ | ~~47~~ | ~~Hide camera upload button behind feature flag (image upload implementation deferred to scaling)~~ |
 
 ---
