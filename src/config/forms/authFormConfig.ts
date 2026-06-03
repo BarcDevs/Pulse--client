@@ -13,7 +13,7 @@ const authFormConfigs: AuthFormConfigs = {
             email: {
                 type: 'email',
                 label: authLocales.common.emailLabel,
-                placeholder: authLocales.common.emailPlaceholder,
+                placeholder: 'name@example.com',
                 required: true
             },
             password: {
@@ -60,7 +60,7 @@ const authFormConfigs: AuthFormConfigs = {
             email: {
                 type: 'email',
                 label: authLocales.common.emailLabel,
-                placeholder: authLocales.common.emailPlaceholder,
+                placeholder: 'name@example.com',
                 required: true
             },
             password: {
@@ -97,7 +97,7 @@ const authFormConfigs: AuthFormConfigs = {
             email: {
                 type: 'email',
                 label: authLocales.common.emailLabel,
-                placeholder: authLocales.common.emailPlaceholder,
+                placeholder: 'name@example.com',
                 required: true
             }
         },

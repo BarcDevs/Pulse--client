@@ -16,11 +16,9 @@
   "auth": {
     "common": {
       "emailLabel": "כתובת אימייל",
-      "emailPlaceholder": "name@example.com",
       "passwordLabel": "סיסמה",
       "backButton": "חזרה לכניסה",
       "orContinueWith": "או להמשיך בדרך שנוחה לך",
-      "googleButton": "Google",
       "continueWithGoogle": "המשך עם Google"
     },
     "login": {
@@ -463,7 +461,6 @@
       "title": "ההתקדמות שלי",
       "tagline": "גם צעדים קטנים נחשבים.",
       "cta": "מעקב אחר ההתקדמות שלך עם HealEase",
-      "filename": "healease-progress.png",
       "toastShare": "שותף בהצלחה",
       "toastCopied": "התמונה הועתקה",
       "toastDownloaded": "התמונה נשמרה",
@@ -1054,7 +1051,6 @@
       }
     },
     "landing": {
-      "brandName": "HealEase",
       "descriptions": {
         "about": "HealEase תומכת באנשים המתמודדים עם החלמה לאחר טיפול רפואי, פציעה או תקופה מאתגרת בחיים. עדכונים יומיים מסייעים לזהות דפוסים, תובנות מבוססות AI מספקות הכוונה, והקהילה מאפשרת להרגיש פחות לבד לאורך הדרך.",
         "benefits": "תמיכה שמותאמת לשלבים שונים בתהליך ההחלמה",
@@ -1110,7 +1106,6 @@
         "tryRefreshingBtn": "רענון דף",
         "contactSupportBtn": "יצירת קשר עם התמיכה",
         "crisisNoticeStart": "במצב חירום או צורך בתמיכה מיידית, יש לפנות לשירותי חירום או לגורמי תמיכה מקומיים.",
-        "hotlineNumber": "1-800-HEAL-NOW",
         "journalSavedTitle": "היומן נשמר",
         "journalSavedDesc": "רשומת היומן האחרונה נשמרה בהצלחה.",
         "systemHealthTitle": "מצב המערכת",
@@ -1135,8 +1130,7 @@
         "description": "כרגע יש קושי להתחבר. כדאי לבדוק את החיבור ולנסות שוב.",
         "tryAgainBtn": "נסה שוב",
         "checkStatusBtn": "בדיקת סטטוס",
-        "supportMessage": "במקרה של צורך בתמיכה דחופה, יש לפנות לספק שירותי הבריאות המקומי או לשירותי החירום.",
-        "supportPhone": "1-800-HEAL-NOW"
+        "supportMessage": "במקרה של צורך בתמיכה דחופה, יש לפנות לספק שירותי הבריאות המקומי או לשירותי החירום."
       },
       "inlineErrorTexts": {
         "generic": "משהו השתבש, אך המידע וההתקדמות שלך נשמרו.",
@@ -1297,7 +1291,7 @@
     "action": {
       "askedQuestion": "שיתף שאלה",
       "postedAbout": "שיתף על {category}",
-      "sharedPost": "שיתף עדכון"
+      "sharedPost": "שיתף פוסט"
     }
   }
 }
