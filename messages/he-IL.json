@@ -144,7 +144,7 @@
   "community": {
     "savingMessage": "מפרסם את הפוסט...",
     "posts": {
-      "edited": "(נערך)",
+      "edited": " (נערך)",
       "filterLabels": {
         "newest": "חדשים",
         "popular": "פופולריים",
@@ -207,7 +207,7 @@
       "repliesLoadError": "לא ניתן לטעון את התגובות",
       "postLoadError": "לא ניתן לטעון את הפוסט כרגע. אפשר לנסות שוב.",
       "writeReplyPlaceholder": "שתף תגובה תומכת…",
-      "showMoreReplies": "הצג עוד תגובות",
+      "showMoreRepliesWithCount": "הצג עוד {count} {count, plural, one {תגובה} other {תגובות}}",
       "authorBadge": "הכותב"
     },
     "postActions": {
@@ -279,7 +279,11 @@
       "replyUpdateFailed": "לא הצלחנו לעדכן את התגובה כרגע",
       "replyDeleteFailed": "לא הצלחנו להסיר את התגובה כרגע",
       "postPublishFailed": "לא הצלחנו לפרסם את הפוסט כרגע",
-      "postUpdateFailed": "לא הצלחנו לעדכן את הפוסט כרגע"
+      "postUpdateFailed": "לא הצלחנו לעדכן את הפוסט כרגע",
+      "loginToLike": "יש להתחבר כדי לאהוב פוסטים",
+      "loginToLikeReply": "יש להתחבר כדי לאהוב תגובות",
+      "loginToSave": "יש להתחבר כדי לשמור פוסטים",
+      "loginButton": "כניסה"
     }
   },
   "dashboard": {

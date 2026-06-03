@@ -11,22 +11,15 @@ import { useQueryClient } from '@tanstack/react-query'
 
 import { Post } from '@/types/community'
 
-import { PostDetailActions }
-    from '@/components/community/postDetail/PostDetailActions'
-import { PostDetailCard }
-    from '@/components/community/postDetail/PostDetailCard'
-import { PostDetailSkeletons }
-    from '@/components/community/postDetail/PostDetailSkeletons'
-import { PostNotFound }
-    from '@/components/community/postDetail/PostNotFound'
-import { RepliesSection }
-    from '@/components/community/postDetail/RepliesSection'
-import { PostForm }
-    from '@/components/community/postForm/PostForm'
+import { PostDetailActions } from '@/components/community/postDetail/PostDetailActions'
+import { PostDetailCard } from '@/components/community/postDetail/PostDetailCard'
+import { PostDetailSkeletons } from '@/components/community/postDetail/PostDetailSkeletons'
+import { PostNotFound } from '@/components/community/postDetail/PostNotFound'
+import { RepliesSection } from '@/components/community/postDetail/RepliesSection'
+import { PostForm } from '@/components/community/postForm/PostForm'
 import { ErrorDisplay } from '@/components/shared/ErrorDisplay'
 
-import { useForumPostMutations }
-    from '@/hooks/mutations/useForumPostMutations'
+import { useForumPostMutations } from '@/hooks/mutations/useForumPostMutations'
 import { useForumPost } from '@/hooks/queries/useForumPost'
 import { useDateLocale } from '@/hooks/ui/useDateLocale'
 
@@ -115,11 +108,21 @@ export const PostDetailContent = () => {
         )
         setIsEditingPost(false)
 
+        const successMsg = t(
+            communityLocales.toasts.postUpdated
+        )
+        const errorMsg = t(
+            communityLocales.toasts.postUpdateFailed
+        )
+        const retryLabel = t(
+            globalLocales.shared.retry
+        )
+
         return withOptimisticToast({
             action: updatePost.mutateAsync(data),
-            successMsg: t(communityLocales.toasts.postUpdated),
-            errorMsg: t(communityLocales.toasts.postUpdateFailed),
-            retryLabel: t(globalLocales.shared.retry),
+            successMsg,
+            errorMsg,
+            retryLabel,
             onRetry: () => void handleUpdatePost(data),
             onError: () => {
                 queryClient.setQueryData(
@@ -181,6 +184,7 @@ export const PostDetailContent = () => {
             <RepliesSection
                 postId={postId}
                 postAuthorId={post?.authorId}
+                totalReplies={post?._count?.replies}
             />
         </div>
     )

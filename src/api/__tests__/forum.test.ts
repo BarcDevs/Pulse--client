@@ -222,13 +222,13 @@ describe(
                             'post-123',
                             {
                                 limit: 5,
-                                offset: 10
+                                page: 2
                             }
                         )
                         expect(api.get)
                             .toHaveBeenCalledWith(
                                 '/forum/posts/post-123/replies',
-                                { params: { limit: 5, offset: 10 } }
+                                { params: { limit: 5, page: 2 } }
                             )
                     })
             })

@@ -1,6 +1,6 @@
 'use client'
 
-import { Reply } from '@/types/community'
+import type { Reply } from '@/types/community'
 
 import { ReplyCard } from '@/components/community/postDetail/ReplyCard'
 
