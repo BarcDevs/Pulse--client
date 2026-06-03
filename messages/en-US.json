@@ -1,6 +1,10 @@
 {
   "common": {
     "retry": "Try again",
+    "loginButton": "Log in",
+    "download": "Download",
+    "share": "Share",
+    "pickDate": "Pick a date",
     "fields": {
       "firstName": "First name",
       "lastName": "Last name",
@@ -207,7 +211,6 @@
       "reply": "Reply",
       "noReplies": "No replies yet. You can share your thoughts whenever you feel comfortable.",
       "loginToReply": "Please log in to reply",
-      "loginButton": "Log in",
       "notFoundTitle": "Post not found",
       "notFoundDescription": "This post may have been removed or is no longer available.",
       "backToCommunity": "Back to community",
@@ -290,7 +293,9 @@
       "loginToLike": "Log in to like posts",
       "loginToLikeReply": "Log in to like replies",
       "loginToSave": "Log in to save posts",
-      "loginButton": "Log in"
+      "loginToCreate": "Log in to create a post",
+      "sessionExpired": "Your session expired. Please log in again.",
+      "workSaved": "Your work has been saved. Return within {minutes} min to resume."
     }
   },
   "dashboard": {
@@ -1105,12 +1110,6 @@
         "checkInError": "We couldn't save your daily update right now. Please try again.",
         "checkInDeleted": "Your daily update has been removed"
       }
-    },
-    "shared": {
-      "download": "Download",
-      "share": "Share",
-      "retry": "Retry",
-      "pickDate": "Pick a date"
     },
     "errors": {
       "errorPageTexts": {

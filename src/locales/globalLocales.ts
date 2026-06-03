@@ -113,10 +113,10 @@ export const globalLocales = {
         }
     },
     shared: {
-        download: 'global.shared.download',
-        share: 'global.shared.share',
-        retry: 'global.shared.retry',
-        pickDate: 'global.shared.pickDate'
+        download: 'common.download',
+        share: 'common.share',
+        retry: 'common.retry',
+        pickDate: 'common.pickDate'
     },
     errors: {
         errorPage: {

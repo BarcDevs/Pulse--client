@@ -1,6 +1,10 @@
 {
   "common": {
     "retry": "נסה שוב",
+    "loginButton": "כניסה",
+    "download": "הורדה",
+    "share": "שיתוף",
+    "pickDate": "בחר תאריך",
     "fields": {
       "firstName": "שם פרטי",
       "lastName": "שם משפחה",
@@ -200,7 +204,6 @@
       "reply": "תגובה",
       "noReplies": "אין תגובות עדיין. אתה יכול לשתף את המחשבות שלך כשתרגיש בנוח.",
       "loginToReply": "יש להתחבר כדי להגיב",
-      "loginButton": "כניסה",
       "notFoundTitle": "הפוסט לא נמצא",
       "notFoundDescription": "הפוסט שחיפשת הוסר או שאינו זמין יותר.",
       "backToCommunity": "חזרה לקהילה",
@@ -282,8 +285,7 @@
       "postUpdateFailed": "לא הצלחנו לעדכן את הפוסט כרגע",
       "loginToLike": "יש להתחבר כדי לאהוב פוסטים",
       "loginToLikeReply": "יש להתחבר כדי לאהוב תגובות",
-      "loginToSave": "יש להתחבר כדי לשמור פוסטים",
-      "loginButton": "כניסה"
+      "loginToSave": "יש להתחבר כדי לשמור פוסטים"
     }
   },
   "dashboard": {
@@ -1098,12 +1100,6 @@
         "checkInError": "לא ניתן לשמור את העדכון היומי כרגע. נסה שוב.",
         "checkInDeleted": "העדכון היומי נמחק בהצלחה"
       }
-    },
-    "shared": {
-      "download": "הורדה",
-      "share": "שיתוף",
-      "retry": "נסה שוב",
-      "pickDate": "בחר תאריך"
     },
     "errors": {
       "errorPageTexts": {
