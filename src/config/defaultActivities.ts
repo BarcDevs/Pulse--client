@@ -1,9 +1,16 @@
 export const DEFAULT_ACTIVITIES = [
-    'Meditation',
-    'Exercise',
-    'Social time',
-    'Reading',
-    'Journaling',
-    'Therapy',
-    'Rest'
+    'walking',
+    'exercise',
+    'stretching',
+    'therapy',
+    'work',
+    'study',
+    'household',
+    'socializing',
+    'rest',
+    'hobbies',
+    'outdoors',
+    'mindfulness',
+    'self-care',
+    'medical'
 ] as const
