@@ -1105,7 +1105,8 @@
     "shared": {
       "download": "Download",
       "share": "Share",
-      "retry": "Retry"
+      "retry": "Retry",
+      "pickDate": "Pick a date"
     },
     "errors": {
       "errorPageTexts": {

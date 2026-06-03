@@ -148,7 +148,7 @@ export const GoalForm = ({
                                     <DatePickerInput
                                         value={field.value}
                                         onChangeAction={field.onChange}
-                                        onBlur={field.onBlur}
+                                        onBlurAction={field.onBlur}
                                     />
                                 </FormControl>
                                 <FormMessage/>

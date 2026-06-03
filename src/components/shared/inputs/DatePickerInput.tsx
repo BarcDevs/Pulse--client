@@ -1,6 +1,11 @@
 'use client'
 
-import { useState } from 'react'
+import {
+    type ComponentProps,
+    useState
+} from 'react'
+
+import { useTranslations } from 'next-intl'
 
 import { format, parseISO } from 'date-fns'
 import { CalendarIcon } from 'lucide-react'
@@ -16,21 +21,26 @@ import {
 import { formatByUserPreference } from '@/lib/time'
 import { cn } from '@/lib/utils'
 
+import { globalLocales } from '@/locales/globalLocales'
+
 type DatePickerInputProps = {
     value?: string
     onChangeAction: (value: string) => void
-    onBlur?: () => void
+    onBlurAction?: () => void
     placeholder?: string
     disabled?: boolean
+    disabledDates?: ComponentProps<typeof Calendar>['disabled']
 }
 
 export const DatePickerInput = ({
     value,
     onChangeAction,
-    onBlur,
-    placeholder = 'Pick a date',
-    disabled = false
+    onBlurAction,
+    placeholder,
+    disabled = false,
+    disabledDates
 }: DatePickerInputProps) => {
+    const t = useTranslations()
     const [open, setOpen] = useState(false)
 
     const selected = value ? parseISO(value) : undefined
@@ -39,12 +49,12 @@ export const DatePickerInput = ({
 
     const handleSelect = (date: Date | undefined) => {
         onChangeAction(date ? format(date, 'yyyy-MM-dd') : '')
-        onBlur?.()
+        onBlurAction?.()
         setOpen(false)
     }
 
     const handleOpenChange = (next: boolean) => {
-        if (!next) onBlur?.()
+        if (!next) onBlurAction?.()
         setOpen(next)
     }
 
@@ -65,7 +75,7 @@ export const DatePickerInput = ({
                     <CalendarIcon className={'mr-2 size-4'}/>
                     {selected
                         ? formatByUserPreference(selected)
-                        : placeholder
+                        : (placeholder ?? t(globalLocales.shared.pickDate))
                     }
                 </Button>
             </PopoverTrigger>
@@ -77,7 +87,7 @@ export const DatePickerInput = ({
                     mode={'single'}
                     selected={selected}
                     onSelect={handleSelect}
-                    disabled={{ before: today }}
+                    disabled={disabledDates ?? { before: today }}
                     defaultMonth={selected ?? today}
                     autoFocus
                 />

@@ -115,7 +115,8 @@ export const globalLocales = {
     shared: {
         download: 'global.shared.download',
         share: 'global.shared.share',
-        retry: 'global.shared.retry'
+        retry: 'global.shared.retry',
+        pickDate: 'global.shared.pickDate'
     },
     errors: {
         errorPage: {

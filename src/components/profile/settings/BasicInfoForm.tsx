@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 
-import { DatePickerField } from '@/components/profile/settings/DatePickerField'
+import { DatePickerInput } from '@/components/shared/inputs/DatePickerInput'
 
 import { useUser } from '@/hooks/ui/useUser'
 
@@ -83,11 +83,17 @@ export const BasicInfoForm = () => {
                 onChangeAction={(v) => updateProfileField('location', v)}
             />
 
-            <DatePickerField
-                label={t(profileLocales.basicInfo.dateOfBirth)}
-                value={profileFields.dateOfBirth}
-                onChangeAction={(v) => updateProfileField('dateOfBirth', v)}
-            />
+            <div>
+                <p className={'label-uppercase label-rtl text-muted-foreground mb-2'}>
+                    {t(profileLocales.basicInfo.dateOfBirth)}
+                </p>
+                <DatePickerInput
+                    value={profileFields.dateOfBirth}
+                    onChangeAction={(v) =>
+                        updateProfileField('dateOfBirth', v)}
+                    disabledDates={(date) => date > new Date()}
+                />
+            </div>
 
             <EditTextField
                 label={t(profileLocales.basicInfo.recoveryType)}

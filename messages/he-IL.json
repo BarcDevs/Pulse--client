@@ -1098,7 +1098,8 @@
     "shared": {
       "download": "הורדה",
       "share": "שיתוף",
-      "retry": "נסה שוב"
+      "retry": "נסה שוב",
+      "pickDate": "בחר תאריך"
     },
     "errors": {
       "errorPageTexts": {
