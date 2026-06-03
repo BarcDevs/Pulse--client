@@ -8,13 +8,10 @@ import {
 import { useTranslations } from 'next-intl'
 
 import type { CheckInStats } from '@/types/checkIn'
-import {
-    GoalStatus,
-    MilestoneStatus
-} from '@/types/goals'
+import { GoalStatus } from '@/types/goals'
 
 import { useGoals } from '@/hooks/queries/useGoals'
-import { useMilestones } from '@/hooks/queries/useMilestones'
+import { useRecoveryGoalsStats } from '@/hooks/queries/useRecoveryGoalsStats'
 
 import { fetchCheckInStats } from '@/api/checkIn'
 import { profileLocales } from '@/locales/profileLocales'
@@ -27,7 +24,7 @@ export const ProfileStats = () => {
     const [stats, setStats] = useState<CheckInStats | null>(null)
     const [isLoading, setIsLoading] = useState(true)
     const { data: goals } = useGoals()
-    const { allMilestones } = useMilestones()
+    const { data: goalsStats } = useRecoveryGoalsStats()
 
     useEffect(() => {
         const getStats = async () => {
@@ -45,9 +42,7 @@ export const ProfileStats = () => {
     }, [])
 
     const streak = stats?.currentStreak ?? 0
-    const milestones = allMilestones.filter(
-        (m) => m.status === MilestoneStatus.COMPLETED
-    ).length
+    const milestones = goalsStats?.milestones.completed ?? 0
     const activeGoals = goals?.filter(
         (g) => g.status === GoalStatus.ACTIVE
     ).length ?? 0
