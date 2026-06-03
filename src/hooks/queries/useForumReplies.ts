@@ -45,13 +45,13 @@ export const useForumReplies = (postId?: string | null) => {
 
             return fetchReplies(postId, {
                 limit: repliesPageSize,
-                offset: pageParam
+                page: pageParam
             })
         },
-        initialPageParam: 0,
+        initialPageParam: 1,
         getNextPageParam: (lastPage, allPages) =>
             lastPage.length === repliesPageSize
-                ? allPages.length * repliesPageSize
+                ? allPages.length + 1
                 : undefined,
         enabled: !!postId,
         staleTime: minuteInMs * 5,

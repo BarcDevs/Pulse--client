@@ -6,9 +6,10 @@ import { useTranslations } from 'next-intl'
 
 import { Heart } from 'lucide-react'
 
-import { Reply } from '@/types/community'
+import type { Reply } from '@/types/community'
 
-import { PostForm } from '@/components/community/postForm/PostForm'
+import { PostForm }
+    from '@/components/community/postForm/PostForm'
 import { PostActionButton }
     from '@/components/community/posts/postList/PostActionButton'
 import { ActionsMenu } from '@/components/shared/ActionsMenu'
@@ -91,6 +92,22 @@ export const ReplyCard = ({
         return onUpdateAction(reply.id, data)
     }
 
+    const editReplyLabel = t(
+        communityLocales.postActions.editReply
+    )
+    const deleteReplyLabel = t(
+        communityLocales.postActions.deleteReply
+    )
+    const cancelLabel = t(
+        communityLocales.postForm.cancel
+    )
+    const deleteReplyTitle = t(
+        communityLocales.confirmations.deleteReplyTitle
+    )
+    const deleteReplyDesc = t(
+        communityLocales.confirmations.deleteReplyDescription
+    )
+
     return (
         <div className={cn(
             'flex gap-3 p-4 rounded-lg border border-border bg-secondary-50',
@@ -128,14 +145,16 @@ export const ReplyCard = ({
 
                     {isOwner && !isEditing && (
                         <ActionsMenu
-                            onEditAction={() => setIsEditing(true)}
+                            onEditAction={() =>
+                                setIsEditing(true)
+                            }
                             onDeleteAction={onDeleteAction}
                             isLoading={isDeleting}
-                            editLabel={t(communityLocales.postActions.editReply)}
-                            deleteLabel={t(communityLocales.postActions.deleteReply)}
-                            cancelLabel={t(communityLocales.postForm.cancel)}
-                            confirmTitle={t(communityLocales.confirmations.deleteReplyTitle)}
-                            confirmDescription={t(communityLocales.confirmations.deleteReplyDescription)}
+                            editLabel={editReplyLabel}
+                            deleteLabel={deleteReplyLabel}
+                            cancelLabel={cancelLabel}
+                            confirmTitle={deleteReplyTitle}
+                            confirmDescription={deleteReplyDesc}
                         />
                     )}
                 </div>

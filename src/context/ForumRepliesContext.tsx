@@ -30,7 +30,7 @@ type ForumRepliesContextType = {
     isLoading: boolean
     isFetching: boolean
     isError: boolean
-    error: Error | undefined
+    error: Error | null
     isPending: boolean
     hasMore: boolean
     loadMore: () => void
@@ -189,7 +189,7 @@ const ForumRepliesStateProvider = ({
         isLoading,
         isFetching,
         isError,
-        error,
+        error: error ?? null,
         isPending,
         hasMore,
         loadMore,
@@ -223,10 +223,19 @@ export const ForumRepliesProvider = ({
         fetchNextPage
     } = useForumReplies(postId)
 
-    const replies = useMemo(() => data?.pages.flat() ?? [], [data])
+    const replies = useMemo(() => {
+        const seen = new Set<string>()
+        return (data?.pages.flat() ?? []).filter((r) => {
+            if (seen.has(r.id)) return false
+            seen.add(r.id)
+            return true
+        })
+    }, [data])
     const hasMore = hasNextPage ?? false
-    const loadMore = useCallback(() =>
-    { void fetchNextPage() }, [fetchNextPage])
+    const loadMore = useCallback(
+        () => void fetchNextPage(),
+        [fetchNextPage]
+    )
 
     return (
         <ForumRepliesStateProvider

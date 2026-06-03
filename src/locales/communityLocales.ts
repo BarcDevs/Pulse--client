@@ -62,7 +62,7 @@ export const communityLocales = {
         repliesLoadError: 'community.postDetail.repliesLoadError',
         postLoadError: 'community.postDetail.postLoadError',
         writeReplyPlaceholder: 'community.postDetail.writeReplyPlaceholder',
-        showMoreReplies: 'community.postDetail.showMoreReplies',
+        showMoreRepliesWithCount: 'community.postDetail.showMoreRepliesWithCount',
         authorBadge: 'community.postDetail.authorBadge'
     },
     postActions: {
@@ -120,6 +120,10 @@ export const communityLocales = {
         replyUpdateFailed: 'community.toasts.replyUpdateFailed',
         replyDeleteFailed: 'community.toasts.replyDeleteFailed',
         postPublishFailed: 'community.toasts.postPublishFailed',
-        postUpdateFailed: 'community.toasts.postUpdateFailed'
+        postUpdateFailed: 'community.toasts.postUpdateFailed',
+        loginToLike: 'community.toasts.loginToLike',
+        loginToLikeReply: 'community.toasts.loginToLikeReply',
+        loginToSave: 'community.toasts.loginToSave',
+        loginButton: 'community.toasts.loginButton'
     }
 } as const

@@ -40,7 +40,6 @@ export const MilestonesCard = () => {
         inProgressCountLabel,
         upcomingCountLabel,
         nextUpLabel
-        // eslint-disable-next-line custom-rules/enforce-function-call-breaking
     } = getMilestonesData(stats, goals, isError, t)
 
     return (

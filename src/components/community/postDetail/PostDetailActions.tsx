@@ -9,7 +9,7 @@ import {
     Share2
 } from 'lucide-react'
 
-import { Post } from '@/types/community'
+import type { Post } from '@/types/community'
 
 import { PostActionButton }
     from '@/components/community/posts/postList/PostActionButton'
@@ -60,12 +60,37 @@ export const PostDetailActions = ({
     }
 
     const solidarityText = liked
-        ? t(communityLocales.postActions.solidarityActive)
+        ? t(
+            communityLocales
+                .postActions
+                .solidarityActive
+        )
         : t(communityLocales.postActions.solidarity)
 
     const saveText = saved
         ? t(communityLocales.posts.saved)
         : t(communityLocales.posts.save)
+
+    const shareText = t(
+        communityLocales.postActions.share
+    )
+    const editPostLabel = t(
+        communityLocales.postActions.editPost
+    )
+    const deletePostLabel = t(
+        communityLocales.postActions.deletePost
+    )
+    const cancelLabel = t(
+        communityLocales.postForm.cancel
+    )
+    const deletePostTitle = t(
+        communityLocales.confirmations.deletePostTitle
+    )
+    const deletePostDesc = t(
+        communityLocales
+            .confirmations
+            .deletePostDescription
+    )
 
     return (
         <div className={'flex items-center gap-1 px-7 py-4 border-t border-border'}>
@@ -79,7 +104,7 @@ export const PostDetailActions = ({
             />
             <PostActionButton
                 icon={Share2}
-                text={t(communityLocales.postActions.share)}
+                text={shareText}
                 onClick={sharePost}
             />
             <PostActionButton
@@ -91,14 +116,16 @@ export const PostDetailActions = ({
             {isPostOwner && (
                 <div className={'absolute top-3 right-3'}>
                     <ActionsMenu
-                        onEditAction={() => setIsEditingPost(true)}
+                        onEditAction={() =>
+                            setIsEditingPost(true)
+                        }
                         onDeleteAction={handleDeletePost}
                         isLoading={deletePost.isPending}
-                        editLabel={t(communityLocales.postActions.editPost)}
-                        deleteLabel={t(communityLocales.postActions.deletePost)}
-                        cancelLabel={t(communityLocales.postForm.cancel)}
-                        confirmTitle={t(communityLocales.confirmations.deletePostTitle)}
-                        confirmDescription={t(communityLocales.confirmations.deletePostDescription)}
+                        editLabel={editPostLabel}
+                        deleteLabel={deletePostLabel}
+                        cancelLabel={cancelLabel}
+                        confirmTitle={deletePostTitle}
+                        confirmDescription={deletePostDesc}
                     />
                 </div>
             )}
