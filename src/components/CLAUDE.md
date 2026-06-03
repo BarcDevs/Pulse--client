@@ -50,6 +50,7 @@
 ## Component Style
 - Colors: check `globals.css` @utility blocks first. Only add custom tw color if it doesn't exist. Never hardcode colors. Before adding new custom color, verify it's not already defined under different name
 - Always prefer custom brand colors over tw-native colors
+- **TW Shorthand**: always use Tailwind shorthand over verbose equivalents — `shrink-0` not `flex-shrink-0`, `grow` not `flex-grow-1`, `basis-auto` not `flex-basis-auto`, `w-1.25` not `w-[5px]`, `size-4` not `w-4 h-4`
 
 ### UI components — shadcn first
 - Always use shadcn/ui component if one exists (`Button`, `Input`, `Select`, `Badge`, `Card`, etc.)
