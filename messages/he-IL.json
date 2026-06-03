@@ -212,8 +212,7 @@
       "authorBadge": "הכותב"
     },
     "postActions": {
-      "solidarity": "תמיכה",
-      "solidarityActive": "תומך",
+      "solidarity": "{count, plural, one {תומך} other {תומכים}}",
       "reply": "תגובה",
       "share": "שיתוף",
       "linkCopied": "הקישור הועתק ללוח!",

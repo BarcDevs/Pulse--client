@@ -59,13 +59,10 @@ export const PostDetailActions = ({
         router.push('/community')
     }
 
-    const solidarityText = liked
-        ? t(
-            communityLocales
-                .postActions
-                .solidarityActive
-        )
-        : t(communityLocales.postActions.solidarity)
+    const solidarityText = t(
+        communityLocales.postActions.solidarity,
+        { count: likeCount }
+    )
 
     const saveText = saved
         ? t(communityLocales.posts.saved)
