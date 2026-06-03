@@ -47,20 +47,21 @@ export const useReplyInteractions = ({
     const likeCallbacks = profileToggleCallbacks(
         queryClient,
         'likedReplyIds',
-        replyId
+        replyId,
+        (data: { liked: boolean }) => data.liked
     )
 
     const likeMutation = useMutation({
         mutationFn: () => likeReplyApi(postId, replyId),
         onMutate: likeCallbacks.onMutate,
         onSuccess: (data) => {
+            likeCallbacks.onSuccess(data)
             setLikeCount(data.likes)
         },
         onError: (err, vars, context) => {
             likeCallbacks.onError(err, vars, context)
             setLikeCount(originalCountRef.current)
-        },
-        onSettled: likeCallbacks.onSettled
+        }
     })
 
     const showLoginToast = () => {

@@ -50,20 +50,21 @@ export const usePostInteractions = ({
         profileToggleCallbacks(
             queryClient,
             'likedPostIds',
-            postId
+            postId,
+            (data: { liked: boolean }) => data.liked
         )
 
     const likeMutation = useMutation({
         mutationFn: () => likePostApi(postId),
         onMutate: likeCallbacks.onMutate,
         onSuccess: (data) => {
+            likeCallbacks.onSuccess(data)
             setLikeCount(data.likes)
         },
         onError: (err, vars, context) => {
             likeCallbacks.onError(err, vars, context)
             setLikeCount(originalCountRef.current)
-        },
-        onSettled: likeCallbacks.onSettled
+        }
     })
 
     const saveMutation = useMutation({
@@ -71,7 +72,8 @@ export const usePostInteractions = ({
         ...profileToggleCallbacks(
             queryClient,
             'savedPostIds',
-            postId
+            postId,
+            (data: { saved: boolean }) => data.saved
         )
     })
 

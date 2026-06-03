@@ -10,10 +10,11 @@ type StringArrayProfileField =
     | 'savedPostIds'
 
 export const profileToggleCallbacks =
-    <K extends StringArrayProfileField>(
+    <K extends StringArrayProfileField, D>(
         queryClient: QueryClient,
         field: K,
-        id: string
+        id: string,
+        getActive: (data: D) => boolean
     ) => ({
         onMutate: async () => {
             await queryClient.cancelQueries({
@@ -38,6 +39,24 @@ export const profileToggleCallbacks =
             )
             return { snapshot }
         },
+        // TODO: if server adds side effects to likes (badges, streaks) that mutate
+        // other profile fields, they'll be missed until next stale refetch (5 min)
+        onSuccess: (data: D) => {
+            const isActive = getActive(data)
+            queryClient.setQueryData<Profile>(
+                authQueryKeys.profile,
+                (old) => {
+                    if (!old) return old
+                    const arr = old[field] as string[]
+                    return {
+                        ...old,
+                        [field]: isActive
+                            ? arr.includes(id) ? arr : [...arr, id]
+                            : arr.filter((x) => x !== id)
+                    } as Profile
+                }
+            )
+        },
         onError: (
             _err: unknown,
             _vars: unknown,
@@ -48,10 +67,5 @@ export const profileToggleCallbacks =
                     authQueryKeys.profile,
                     context.snapshot
                 )
-        },
-        onSettled: () => {
-            void queryClient.invalidateQueries({
-                queryKey: authQueryKeys.profile
-            })
         }
     })
