@@ -1,7 +1,10 @@
 'use client'
 
 import Link from 'next/link'
+
 import { useTranslations } from 'next-intl'
+
+import { DatePickerField } from '@/components/profile/settings/DatePickerField'
 
 import { useUser } from '@/hooks/ui/useUser'
 
@@ -79,6 +82,26 @@ export const BasicInfoForm = () => {
                 placeholder={t(profileLocales.basicInfo.location)}
                 error={errors.location}
                 onChangeAction={(v) => updateProfileField('location', v)}
+            />
+
+            <DatePickerField
+                label={t(profileLocales.basicInfo.dateOfBirth)}
+                value={profileFields.dateOfBirth}
+                onChangeAction={(v) => updateProfileField('dateOfBirth', v)}
+            />
+
+            <EditTextField
+                label={t(profileLocales.basicInfo.recoveryType)}
+                value={profileFields.recoveryType}
+                placeholder={t(profileLocales.basicInfo.recoveryType)}
+                onChangeAction={(v) => updateProfileField('recoveryType', v)}
+            />
+
+            <EditTextField
+                label={t(profileLocales.basicInfo.careProvider)}
+                value={profileFields.careProvider}
+                placeholder={t(profileLocales.basicInfo.careProvider)}
+                onChangeAction={(v) => updateProfileField('careProvider', v)}
             />
         </div>
     )
