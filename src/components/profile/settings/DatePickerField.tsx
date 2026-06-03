@@ -10,7 +10,9 @@ import {
     PopoverContent,
     PopoverTrigger
 } from '@/components/ui/popover'
+
 import { useUser } from '@/hooks/ui/useUser'
+
 import { formatByUserPreference } from '@/lib/time'
 import { cn } from '@/lib/utils'
 
@@ -52,8 +54,7 @@ export const DatePickerField = ({
                                 selected,
                                 false,
                                 user?.profile?.dateFormat
-                            )
-                            : '-'
+                            ) : '-'
                         }
                     </Button>
                 </PopoverTrigger>

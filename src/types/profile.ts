@@ -54,6 +54,9 @@ export type ProfileUpdateInput = {
     image?: string
     theme?: string
     language?: string
+    dateOfBirth?: string
+    recoveryType?: string
+    careProvider?: string
     dailyReminder?: boolean
     communityAlerts?: boolean
     profileVisibility?: ProfileVisibility
