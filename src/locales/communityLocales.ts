@@ -55,7 +55,7 @@ export const communityLocales = {
         reply: 'community.postDetail.reply',
         noReplies: 'community.postDetail.noReplies',
         loginToReply: 'community.postDetail.loginToReply',
-        loginButton: 'community.postDetail.loginButton',
+        loginButton: 'common.loginButton',
         notFoundTitle: 'community.postDetail.notFoundTitle',
         notFoundDescription: 'community.postDetail.notFoundDescription',
         backToCommunity: 'community.postDetail.backToCommunity',
@@ -124,6 +124,9 @@ export const communityLocales = {
         loginToLike: 'community.toasts.loginToLike',
         loginToLikeReply: 'community.toasts.loginToLikeReply',
         loginToSave: 'community.toasts.loginToSave',
-        loginButton: 'community.toasts.loginButton'
+        loginToCreate: 'community.toasts.loginToCreate',
+        loginButton: 'common.loginButton',
+        sessionExpired: 'community.toasts.sessionExpired',
+        workSaved: 'community.toasts.workSaved'
     }
 } as const
