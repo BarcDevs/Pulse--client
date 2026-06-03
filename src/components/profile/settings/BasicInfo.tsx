@@ -22,7 +22,7 @@ export const ProfileBasicInfo = () => {
 
     return (
         <Card className={'border-0 shadow-sm'}>
-            <CardHeader className={'pb-5'}>
+            <CardHeader className={'pb-0'}>
                 <CardTitle className={'text-base font-semibold'}>
                     {t(profileLocales.basicInfo.title)}
                 </CardTitle>

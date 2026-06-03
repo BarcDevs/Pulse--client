@@ -31,7 +31,7 @@ export const ProfileCard = () => {
 
     return (
         <Card className={'border-0 shadow-sm'}>
-            <CardContent className={'flex flex-col items-center p-6 text-center'}>
+            <CardContent className={'flex flex-col items-center px-6 text-center'}>
                 <div className={'relative'}>
                     <UserAvatar
                         initials={initials}

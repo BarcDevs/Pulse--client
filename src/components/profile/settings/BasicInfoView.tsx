@@ -50,7 +50,7 @@ export const BasicInfoView = () => {
     ]
 
     return (
-        <div className={'grid gap-x-8 gap-y-0 sm:grid-cols-2'}>
+        <div className={'grid gap-x-8 gap-y-4 sm:grid-cols-2'}>
             {fields.map((field) => (
                 <div
                     key={field.label}
