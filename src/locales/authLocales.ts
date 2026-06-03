@@ -1,11 +1,9 @@
 export const authLocales = {
     common: {
         emailLabel: 'auth.common.emailLabel',
-        emailPlaceholder: 'auth.common.emailPlaceholder',
         passwordLabel: 'auth.common.passwordLabel',
         backButton: 'auth.common.backButton',
         orContinueWith: 'auth.common.orContinueWith',
-        googleButton: 'auth.common.googleButton',
         continueWithGoogle: 'auth.common.continueWithGoogle'
     },
     login: {

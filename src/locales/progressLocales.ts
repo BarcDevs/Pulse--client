@@ -54,7 +54,6 @@ export const progressLocales = {
         title: 'progress.share.title',
         tagline: 'progress.share.tagline',
         cta: 'progress.share.cta',
-        filename: 'progress.share.filename',
         toastShare: 'progress.share.toastShare',
         toastCopied: 'progress.share.toastCopied',
         toastDownloaded: 'progress.share.toastDownloaded',

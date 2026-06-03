@@ -16,11 +16,9 @@
   "auth": {
     "common": {
       "emailLabel": "Email address",
-      "emailPlaceholder": "name@example.com",
       "passwordLabel": "Password",
       "backButton": "Back to login",
       "orContinueWith": "Or continue in a way that feels comfortable",
-      "googleButton": "Google",
       "continueWithGoogle": "Continue with Google"
     },
     "login": {
@@ -473,7 +471,6 @@
       "title": "My progress",
       "tagline": "Small steps still matter.",
       "cta": "Track your progress with HealEase",
-      "filename": "healease-progress.png",
       "toastShare": "Shared successfully",
       "toastCopied": "Image copied",
       "toastDownloaded": "Image saved",
@@ -1064,7 +1061,6 @@
       }
     },
     "landing": {
-      "brandName": "HealEase",
       "descriptions": {
         "about": "HealEase supports people navigating recovery after medical treatment, injury, or major life challenges. Daily check-ins help you notice patterns, AI-powered insights provide guidance, and community support helps you feel less alone through the process.",
         "benefits": "Support designed for different stages of recovery",
@@ -1120,7 +1116,6 @@
         "tryRefreshingBtn": "Refresh Page",
         "contactSupportBtn": "Contact Support",
         "crisisNoticeStart": "If you need immediate support, please contact your local emergency or crisis support services.",
-        "hotlineNumber": "1-800-HEAL-NOW",
         "journalSavedTitle": "Journal Saved",
         "journalSavedDesc": "Your latest journal entry was safely saved.",
         "systemHealthTitle": "System Status",
@@ -1145,8 +1140,7 @@
         "description": "We are having trouble connecting right now. Please check your connection and try again.",
         "tryAgainBtn": "Try Again",
         "checkStatusBtn": "Check Status",
-        "supportMessage": "If you need urgent support, please contact your local care provider or emergency services.",
-        "supportPhone": "1-800-HEAL-NOW"
+        "supportMessage": "If you need urgent support, please contact your local care provider or emergency services."
       },
       "inlineErrorTexts": {
         "generic": "Something went wrong, but your progress and information remain safe.",

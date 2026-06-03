@@ -65,7 +65,6 @@ export const globalLocales = {
         }
     },
     landing: {
-        brandName: 'global.landing.brandName',
         descriptions: {
             about: 'global.landing.descriptions.about',
             benefits: 'global.landing.descriptions.benefits',
@@ -127,7 +126,6 @@ export const globalLocales = {
             tryRefreshingBtn: 'global.errors.errorPageTexts.tryRefreshingBtn',
             contactSupportBtn: 'global.errors.errorPageTexts.contactSupportBtn',
             crisisNoticeStart: 'global.errors.errorPageTexts.crisisNoticeStart',
-            hotlineNumber: 'global.errors.errorPageTexts.hotlineNumber',
             journalSavedTitle: 'global.errors.errorPageTexts.journalSavedTitle',
             journalSavedDesc: 'global.errors.errorPageTexts.journalSavedDesc',
             systemHealthTitle: 'global.errors.errorPageTexts.systemHealthTitle',
@@ -152,8 +150,7 @@ export const globalLocales = {
             description: 'global.errors.networkErrorPageTexts.description',
             tryAgainBtn: 'global.errors.networkErrorPageTexts.tryAgainBtn',
             checkStatusBtn: 'global.errors.networkErrorPageTexts.checkStatusBtn',
-            supportMessage: 'global.errors.networkErrorPageTexts.supportMessage',
-            supportPhone: 'global.errors.networkErrorPageTexts.supportPhone'
+            supportMessage: 'global.errors.networkErrorPageTexts.supportMessage'
         },
         inline: {
             generic: 'global.errors.inlineErrorTexts.generic',

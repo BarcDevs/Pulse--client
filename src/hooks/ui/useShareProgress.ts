@@ -55,7 +55,7 @@ export const useShareProgress = ():
 
             const file = new File(
                 [blob],
-                t(progressLocales.share.filename),
+                'healease-progress.png',
                 { type: 'image/png' }
             )
 
@@ -98,7 +98,7 @@ export const useShareProgress = ():
             const url = canvas.toDataURL('image/png')
             const link = document.createElement('a')
             link.href = url
-            link.download = t(progressLocales.share.filename)
+            link.download = 'healease-progress.png'
             document.body.appendChild(link)
             link.click()
             document.body.removeChild(link)

@@ -22,13 +22,14 @@ export const NetworkErrorSupport = () => {
                 />
                 <span className={'text-foreground'}>
                     {`${t(globalLocales.errors.networkErrorPage.supportMessage)} `}
-                    <Link
-                        href={`tel:${appSettings.supportPhoneNumber}`}
-                        className={'text-primary font-bold hover:underline'}
-                    >
-                        {appSettings.supportPhoneNumber}
-                    </Link>
-                    .
+                    {appSettings.supportPhoneNumber && (
+                        <Link
+                            href={`tel:${appSettings.supportPhoneNumber}`}
+                            className={'text-primary font-bold hover:underline'}
+                        >
+                            {appSettings.supportPhoneNumber}
+                        </Link>
+                    )}
                 </span>
             </div>
         </div>

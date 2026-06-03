@@ -35,11 +35,7 @@ export const EmailInput = <T extends FieldValues> ({
             <FormControl>
                 <Input
                     type={'email'}
-                    placeholder={
-                        config.placeholder
-                            ? t(config.placeholder)
-                            : ''
-                    }
+                    placeholder={config.placeholder}
                     disabled={config.disabled}
                     autoComplete={'email'}
                     className={cn(config.className)}
