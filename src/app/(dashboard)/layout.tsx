@@ -1,4 +1,4 @@
-import { LayoutProps } from '@/types'
+import { LayoutProps } from '@/types/react'
 
 import { AppHeader } from '@/components/AppHeader'
 import { DashboardClientProviders } from '@/components/layout/DashboardClientProviders'

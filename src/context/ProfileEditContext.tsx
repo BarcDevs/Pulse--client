@@ -6,7 +6,6 @@ import {
     useMemo,
     useState
 } from 'react'
-import type { ReactNode } from 'react'
 
 import { useTranslations } from 'next-intl'
 
@@ -15,6 +14,7 @@ import { toast } from 'sonner'
 import { useQueryClient } from '@tanstack/react-query'
 
 import type { Profile } from '@/types/profile'
+import { LayoutProps } from '@/types/react'
 import type { User } from '@/types/user'
 
 import { useSaveSettings } from '@/hooks/mutations/useSaveSettings'
@@ -25,7 +25,8 @@ import { authQueryKeys } from '@/constants/queryKeys'
 
 import { globalLocales } from '@/locales/globalLocales'
 import { profileLocales } from '@/locales/profileLocales'
-import { createProfileEditSchema } from '@/validations/forms/profileEditSchema'
+import { createProfileEditSchema }
+    from '@/validations/forms/profileEditSchema'
 
 type UserFields = {
     username: string
@@ -38,6 +39,9 @@ type ProfileFields = {
     bio: string
     healthInterests: string[]
     activityPreferences: string[]
+    dateOfBirth: string
+    recoveryType: string
+    careProvider: string
 }
 
 type ProfileEditContextValue = {
@@ -48,9 +52,16 @@ type ProfileEditContextValue = {
     isSaving: boolean
     userFields: UserFields
     profileFields: ProfileFields
-    updateUserField: <K extends keyof UserFields>(key: K, value: UserFields[K]) => void
-    updateProfileField: <K extends keyof ProfileFields>(key: K, value: ProfileFields[K]) => void
-    toggleProfileItem: (key: 'healthInterests' | 'activityPreferences', slug: string) => void
+    updateUserField: <K extends keyof UserFields>(
+        key: K, value: UserFields[K]
+    ) => void
+    updateProfileField: <K extends keyof ProfileFields>(
+        key: K, value: ProfileFields[K]
+    ) => void
+    toggleProfileItem: (
+        key: 'healthInterests' | 'activityPreferences',
+        slug: string
+    ) => void
     errors: Record<string, string>
     hasErrors: boolean
 }
@@ -65,12 +76,18 @@ const EMPTY_PROFILE: ProfileFields = {
     location: '',
     bio: '',
     healthInterests: [],
-    activityPreferences: []
+    activityPreferences: [],
+    dateOfBirth: '',
+    recoveryType: '',
+    careProvider: ''
 }
 
-const ProfileEditContext = createContext<ProfileEditContextValue | null>(null)
+const ProfileEditContext =
+    createContext<ProfileEditContextValue | null>(null)
 
-export const ProfileEditProvider = ({ children }: { children: ReactNode }) => {
+export const ProfileEditProvider = ({
+    children
+}: LayoutProps) => {
     const t = useTranslations()
     const queryClient = useQueryClient()
     const { user } = useUser()
@@ -78,16 +95,24 @@ export const ProfileEditProvider = ({ children }: { children: ReactNode }) => {
     const [userFields, setUserFields] = useState<UserFields>(EMPTY_USER)
     const [profileFields, setProfileFields] = useState<ProfileFields>(EMPTY_PROFILE)
 
-    const { mutateAsync: updateUser, isPending: isUpdatingUser } = useUpdateUser()
-    const { mutateAsync: saveSettings, isPending: isSavingSettings } = useSaveSettings()
+    const {
+        mutateAsync: updateUser,
+        isPending: isUpdatingUser
+    } = useUpdateUser()
+    const {
+        mutateAsync: saveSettings,
+        isPending: isSavingSettings
+    } = useSaveSettings()
 
-    const updateUserField = <K extends keyof UserFields>(key: K, value: UserFields[K]) =>
+    const updateUserField =
+        <K extends keyof UserFields> (key: K, value: UserFields[K]) =>
         setUserFields((prev) => ({
             ...prev,
             [key]: value
         }))
 
-    const updateProfileField = <K extends keyof ProfileFields>(key: K, value: ProfileFields[K]) =>
+    const updateProfileField =
+        <K extends keyof ProfileFields> (key: K, value: ProfileFields[K]) =>
         setProfileFields((prev) => ({
             ...prev,
             [key]: value
@@ -114,7 +139,12 @@ export const ProfileEditProvider = ({ children }: { children: ReactNode }) => {
             location: user?.profile?.location ?? '',
             bio: user?.profile?.bio ?? '',
             healthInterests: user?.profile?.healthInterests ?? [],
-            activityPreferences: user?.profile?.activityPreferences ?? []
+            activityPreferences: user?.profile?.activityPreferences ?? [],
+            dateOfBirth: user?.dateOfBirth
+                ? new Date(user.dateOfBirth).toISOString().split('T')[0]
+                : '',
+            recoveryType: user?.recoveryType ?? '',
+            careProvider: user?.careProvider ?? ''
         })
         setIsEditing(true)
     }
@@ -137,7 +167,8 @@ export const ProfileEditProvider = ({ children }: { children: ReactNode }) => {
         })
         if (result.success) return {}
         return Object.fromEntries(
-            result.error.issues.map((issue) => [String(issue.path[0]), issue.message])
+            result.error.issues.map((issue) =>
+                [String(issue.path[0]), issue.message])
         )
     }, [userFields, profileFields, schema])
 
@@ -159,17 +190,32 @@ export const ProfileEditProvider = ({ children }: { children: ReactNode }) => {
             textUpdates.location = profileFields.location
         if (profileFields.bio !== (user.profile?.bio ?? ''))
             textUpdates.bio = profileFields.bio
+        if (profileFields.recoveryType !== (user.recoveryType ?? ''))
+            textUpdates.recoveryType = profileFields.recoveryType
+        if (profileFields.careProvider !== (user.careProvider ?? ''))
+            textUpdates.careProvider = profileFields.careProvider
+        const currentDob = user.dateOfBirth
+            ? new Date(user.dateOfBirth).toISOString().split('T')[0]
+            : ''
+        if (profileFields.dateOfBirth !== currentDob && profileFields.dateOfBirth)
+            textUpdates.dateOfBirth = profileFields.dateOfBirth
 
         const prevUser = queryClient.getQueryData<User>(authQueryKeys.getMe)
         const prevProfile = queryClient.getQueryData<Profile>(authQueryKeys.profile)
 
         const profileChanged =
-            Object.keys(textUpdates).length > 0 ||
-            profileFields.healthInterests.join() !== (prevProfile?.healthInterests ?? []).join() ||
-            profileFields.activityPreferences.join() !== (prevProfile?.activityPreferences ?? []).join()
+            Object.keys(textUpdates).length > 0
+            || profileFields.healthInterests.join() !== (prevProfile?.healthInterests ?? []).join()
+            || profileFields.activityPreferences.join() !== (prevProfile?.activityPreferences ?? []).join()
 
         queryClient.setQueryData<User>(authQueryKeys.getMe, (old) =>
-            old ? { ...old, ...userUpdates } : old
+            old ? {
+                ...old,
+                ...userUpdates,
+                ...(profileFields.dateOfBirth && { dateOfBirth: new Date(profileFields.dateOfBirth) }),
+                recoveryType: profileFields.recoveryType || undefined,
+                careProvider: profileFields.careProvider || undefined
+            } : old
         )
         queryClient.setQueryData<Profile>(authQueryKeys.profile, (old) => {
             if (!old) return old
@@ -197,6 +243,7 @@ export const ProfileEditProvider = ({ children }: { children: ReactNode }) => {
                     : Promise.resolve()
             ])
             queryClient.invalidateQueries({ queryKey: authQueryKeys.profile })
+            queryClient.invalidateQueries({ queryKey: authQueryKeys.getMe })
             setUserFields(EMPTY_USER)
             setProfileFields(EMPTY_PROFILE)
         } catch {

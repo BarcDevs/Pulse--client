@@ -2,7 +2,6 @@
 
 import {
     createContext,
-    type ReactNode,
     useContext,
     useState
 } from 'react'
@@ -11,6 +10,7 @@ import type {
     Profile,
     ProfileUpdateInput
 } from '@/types/profile'
+import { ContextProps } from '@/types/react'
 
 import { useSaveSettings } from '@/hooks/mutations/useSaveSettings'
 import { useProfileQuery } from '@/hooks/profile/useProfileQuery'
@@ -34,13 +34,9 @@ const SettingsContext = createContext<
     SettingsContextType | undefined
 >(undefined)
 
-type SettingsProviderProps = {
-    children: ReactNode
-}
-
 export const SettingsProvider = ({
     children
-}: SettingsProviderProps) => {
+}: ContextProps) => {
     const { data: profile, isLoading } =
         useProfileQuery()
     const {

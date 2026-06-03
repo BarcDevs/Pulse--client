@@ -2,7 +2,6 @@
 
 import {
     createContext,
-    ReactNode,
     useOptimistic,
     useRef,
     useTransition
@@ -15,7 +14,10 @@ import {
     MilestoneInput,
     MilestoneStatus
 } from '@/types/goals'
-import { OptimisticActionMap } from '@/types/react'
+import {
+    ContextProps,
+    OptimisticActionMap
+} from '@/types/react'
 
 import { useGoalMutations } from '@/hooks/mutations/useGoalMutations'
 
@@ -31,10 +33,9 @@ export const GoalMilestonesContext =
     createContext<GoalMilestonesContextType | null>(null)
 
 type GoalMilestonesProviderProps = {
-    children: ReactNode
     goalId: string
     initialMilestones: GoalMilestone[]
-}
+} & ContextProps
 
 type MilestoneOptimisticAction = OptimisticActionMap<{
     add: { data: MilestoneInput }

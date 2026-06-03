@@ -1,16 +1,12 @@
 'use client'
 
-import { ReactNode } from 'react'
+import { ContextProps } from '@/types/react'
 
 import { CheckInProvider } from '@/context/CheckInContext'
 
-type DashboardClientProvidersProps = {
-    children: ReactNode
-}
-
 export const DashboardClientProviders = ({
     children
-}: DashboardClientProvidersProps) => (
+}: ContextProps) => (
     <CheckInProvider>
         {children}
     </CheckInProvider>

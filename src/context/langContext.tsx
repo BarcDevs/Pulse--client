@@ -1,25 +1,19 @@
 import {
     createContext,
-    ReactNode,
     useContext,
     useEffect,
     useState
 } from 'react'
 
 import { Language } from '@/types'
+import { ContextProps } from '@/types/react'
 
 import languages from '@/data/languages'
-
-//region Types
-type ContextProps = {
-    children: ReactNode | undefined
-}
 
 type ContextValue = {
     lang: Language,
     changeLang: (lang: Language) => void
 }
-//endregion
 
 //region LocalStorage
 const getLangFromStorage = () => {

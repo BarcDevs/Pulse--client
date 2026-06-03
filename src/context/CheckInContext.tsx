@@ -2,7 +2,6 @@
 
 import {
     createContext,
-    ReactNode,
     useContext,
     useState
 } from 'react'
@@ -19,6 +18,7 @@ import type {
     CheckInStats,
     MoodPainSeriesPoint
 } from '@/types/checkIn'
+import { ContextProps } from '@/types/react'
 
 import { formatByUserPreference } from '@/lib/time'
 
@@ -46,13 +46,9 @@ type CheckInContextType = {
 export const CheckInContext =
     createContext<CheckInContextType | null>(null)
 
-type CheckInProviderProps = {
-    children: ReactNode
-}
-
 export const CheckInProvider = ({
     children
-}: CheckInProviderProps) => {
+}: ContextProps) => {
     const router = useRouter()
     const queryClient = useQueryClient()
     const t = useTranslations()

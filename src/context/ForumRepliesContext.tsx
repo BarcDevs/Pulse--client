@@ -2,7 +2,6 @@
 
 import {
     createContext,
-    ReactNode,
     useCallback,
     useContext,
     useMemo,
@@ -13,6 +12,7 @@ import {
 import { useTranslations } from 'next-intl'
 
 import type { Reply } from '@/types/community'
+import { ContextProps } from '@/types/react'
 
 import { useForumPostMutations } from '@/hooks/mutations/useForumPostMutations'
 import { useForumReplies } from '@/hooks/queries/useForumReplies'
@@ -30,7 +30,7 @@ type ForumRepliesContextType = {
     isLoading: boolean
     isFetching: boolean
     isError: boolean
-    error: Error | null
+    error: Error | undefined
     isPending: boolean
     hasMore: boolean
     loadMore: () => void
@@ -46,16 +46,15 @@ export const ForumRepliesContext =
     createContext<ForumRepliesContextType | null>(null)
 
 type ForumRepliesStateProviderProps = {
-    children: ReactNode
     postId: string
     initialReplies: Reply[]
     isLoading: boolean
     isFetching: boolean
     isError: boolean
-    error: Error | null
+    error?: Error
     hasMore: boolean
     loadMore: () => void
-}
+} & ContextProps
 
 const ForumRepliesStateProvider = ({
     children,
@@ -207,9 +206,8 @@ const ForumRepliesStateProvider = ({
 }
 
 type ForumRepliesProviderProps = {
-    children: ReactNode
     postId: string
-}
+} & ContextProps
 
 export const ForumRepliesProvider = ({
     children,
@@ -227,7 +225,8 @@ export const ForumRepliesProvider = ({
 
     const replies = useMemo(() => data?.pages.flat() ?? [], [data])
     const hasMore = hasNextPage ?? false
-    const loadMore = useCallback(() => { void fetchNextPage() }, [fetchNextPage])
+    const loadMore = useCallback(() =>
+    { void fetchNextPage() }, [fetchNextPage])
 
     return (
         <ForumRepliesStateProvider
@@ -236,7 +235,7 @@ export const ForumRepliesProvider = ({
             isLoading={isLoading}
             isFetching={isFetchingNextPage}
             isError={isError}
-            error={error ?? null}
+            error={error ?? undefined}
             hasMore={hasMore}
             loadMore={loadMore}
         >

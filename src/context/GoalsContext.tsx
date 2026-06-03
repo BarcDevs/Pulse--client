@@ -2,7 +2,6 @@
 
 import {
     createContext,
-    ReactNode,
     useContext,
     useOptimistic,
     useRef,
@@ -16,7 +15,10 @@ import {
     GoalCategory,
     GoalStatus
 } from '@/types/goals'
-import { OptimisticActionMap } from '@/types/react'
+import {
+    ContextProps,
+    OptimisticActionMap
+} from '@/types/react'
 
 import { useGoalMutations } from '@/hooks/mutations/useGoalMutations'
 import { useGoals } from '@/hooks/queries/useGoals'
@@ -65,12 +67,11 @@ export const GoalsContext =
     createContext<GoalsContextType | null>(null)
 
 type GoalsStateProviderProps = {
-    children: ReactNode
     initialGoals: Goal[]
     isLoading: boolean
     isError: boolean
     error: Error | null
-}
+} & ContextProps
 
 const GoalsStateProvider = ({
     children,
@@ -347,13 +348,9 @@ const GoalsStateProvider = ({
     )
 }
 
-type GoalsProviderProps = {
-    children: ReactNode
-}
-
 export const GoalsProvider = ({
     children
-}: GoalsProviderProps) => {
+}: ContextProps) => {
     const {
         data,
         isLoading,

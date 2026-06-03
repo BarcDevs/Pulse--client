@@ -2,10 +2,11 @@
 
 import {
     createContext,
-    ReactNode,
     useContext,
     useState
 } from 'react'
+
+import { ContextProps } from '@/types/react'
 
 type PostDetailContextType = {
     postId: string
@@ -20,9 +21,8 @@ const PostDetailContext = createContext<
 >(undefined)
 
 type PostDetailProviderProps = {
-    children: ReactNode
     postId: string
-}
+} & ContextProps
 
 export const PostDetailProvider = ({
     children,

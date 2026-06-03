@@ -6,7 +6,7 @@ import {
     QueryClientProvider
 } from '@tanstack/react-query'
 
-import { LayoutProps } from '@/types'
+import { LayoutProps } from '@/types/react'
 
 import { getQueryClient } from '@/lib/queryClient'
 

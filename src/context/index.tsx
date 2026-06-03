@@ -1,6 +1,6 @@
 import { Toaster } from 'sonner'
 
-import { LayoutProps } from '@/types'
+import { LayoutProps } from '@/types/react'
 
 import { LangProvider } from '@/context/langContext'
 

@@ -3,9 +3,11 @@
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 
-import { LayoutProps } from '@/types'
+import { LayoutProps } from '@/types/react'
 
 import { LanguageSwitcher } from '@/components/shared/LanguageSwitcher'
+
+import { ROUTES } from '@/constants/routes'
 
 import { globalLocales } from '@/locales/globalLocales'
 
@@ -16,14 +18,12 @@ const AuthLayout = ({ children }: LayoutProps) => {
         <div className={'flex min-h-screen flex-col bg-linear-to-br from-surface-page via-primary-light/30 to-purple-light/20'}>
             <header className={'flex-center-between p-4 md:p-6'}>
                 <Link
-                    href={'/'}
+                    href={ROUTES.HOME}
                     className={'text-xl font-semibold text-primary'}
                 >
                     HealEase
                 </Link>
-                <nav
-                    className={'flex items-center gap-4 text-sm'}
-                >
+                <nav className={'flex items-center gap-4 text-sm'}>
                     <Link
                         href={'/help'}
                         className={'text-muted-foreground hover:text-foreground'}

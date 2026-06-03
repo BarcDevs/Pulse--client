@@ -2,7 +2,7 @@
 
 import { useTranslations } from 'next-intl'
 
-import type { ReactNode } from 'react'
+import { WrapperProps } from '@/types/react'
 
 import { Button } from '@/components/ui/button'
 import {
@@ -20,8 +20,7 @@ import { progressLocales } from '@/locales/progressLocales'
 type ShareImageModalProps = {
     open: boolean
     onOpenChangeAction: (open: boolean) => void
-    children: ReactNode
-}
+} & WrapperProps
 
 export const ShareProgressModal = ({
     open,
