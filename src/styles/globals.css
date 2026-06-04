@@ -25,16 +25,16 @@
     --popover-foreground: #1a2b3c;
 
     /* Primary - Deep Blue */
-    --primary: #4a90e2;
+    --primary: #005da7;
     --primary-foreground: #ffffff;
     --primary-light: #e8f4fd;
-    --primary-gradient-start: #005da7;
-    --primary-gradient-end: #2976c7;
+    --primary-gradient-start: #4a90e2;
+    --primary-gradient-end: #005da7;
     --primary-deep: #1e3a8a;
     --chart-highlight: #7cf8dd;
 
-    /* Secondary - Teal for positive states */
-    --secondary: #006b5b;
+    /* Secondary - Emerald for positive states */
+    --secondary: #10b981;
     --secondary-foreground: #ffffff;
     --secondary-light: #e6f5f2;
 
@@ -52,9 +52,9 @@
     --surface-card: #ffffff;
 
     /* States */
-    --destructive: #ef4444;
+    --destructive: #ba1a1a;
     --destructive-foreground: #ffffff;
-    --warning: #f59e0b;
+    --warning: #a35e0a;
     --warning-foreground: #ffffff;
     --streak-past: #fbbf24;
     --streak-icon-bg: #fef3c7;
