@@ -4,7 +4,6 @@ export const protectedRoutes = [
     '/check-in',
     '/insights',
     '/progress',
-    '/community',
     '/chat'
 ]
 

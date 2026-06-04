@@ -25,6 +25,7 @@ import {
     isUnauthorizedError
 } from '@/utils/error'
 
+import { protectedRoutes } from '@/constants/proxyRoutes'
 import { authQueryKeys } from '@/constants/queryKeys'
 import { ROUTES } from '@/constants/routes'
 import { minuteInMs } from '@/constants/time'
@@ -103,12 +104,12 @@ export const AuthProvider = ({
                 queryKey: authQueryKeys.getMe
             })
         }
-        return () => { authState.onRefreshSuccess = null }
+        return () => void (authState.onRefreshSuccess = null)
     }, [queryClient])
 
     useEffect(() => {
         authState.onNetworkRecovery = () => setNetworkError(null)
-        return () => { authState.onNetworkRecovery = null }
+        return () => void (authState.onNetworkRecovery = null)
     }, [])
 
     useEffect(() => {
@@ -119,11 +120,10 @@ export const AuthProvider = ({
     }, [error, refetchMe])
 
     useEffect(() => {
-        if (
-            error
-            && isUnauthorizedError(error)
-            && !PUBLIC_ROUTES.includes(pathname as typeof PUBLIC_ROUTES[number])
-        ) {
+        const isProtected = protectedRoutes.some(
+            (route) => pathname.startsWith(route)
+        )
+        if (error && isUnauthorizedError(error) && isProtected) {
             initiateLogout(pathname)
         }
     }, [error, pathname])
