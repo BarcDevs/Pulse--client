@@ -7,7 +7,6 @@ import { Button } from '@/components/ui/button'
 
 import { ROUTES } from '@/constants/routes'
 
-import { globalLocales } from '@/locales/globalLocales'
 import { landingLocales } from '@/locales/landingLocales'
 
 export const HeroCTAs = () => {
@@ -18,19 +17,22 @@ export const HeroCTAs = () => {
             <Link href={ROUTES.SIGNUP}>
                 <Button
                     size={'lg'}
-                    className={'transition-all duration-200 hover:shadow-lg hover:shadow-primary/40'}
+                    className={'transition-all duration-200'}
                 >
                     {t(landingLocales.hero.startJourney)}
                 </Button>
             </Link>
-            <Link href={'/community'}>
-                <Button
-                    variant={'outline'}
-                    size={'lg'}
-                    className={'transition-all duration-200 hover:shadow-lg hover:shadow-primary/20'}
+            <Link
+                href={'/community'}
+                className={'inline-block py-3 text-sm font-semibold text-primary underline decoration-primary/35 decoration-[1.5px] underline-offset-4 transition-[text-decoration-color] duration-150 hover:decoration-primary'}
+            >
+                {`${t(landingLocales.hero.exploreCommunity)} `}
+                <span
+                    aria-hidden={'true'}
+                    className={'text-base'}
                 >
-                    {t(globalLocales.landing.buttons.exploreForum)}
-                </Button>
+                    {'→'}
+                </span>
             </Link>
         </div>
     )
