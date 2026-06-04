@@ -4,6 +4,7 @@ import {
 } from 'next/server'
 
 import { authRoutes } from '@/constants/proxyRoutes'
+import { ROUTES } from '@/constants/routes'
 
 /**
  * Redirects authenticated users away from auth routes
@@ -29,7 +30,7 @@ export const authRouteMiddleware = (
         && sessionCookie
     ) {
         return NextResponse.redirect(
-            new URL('/dashboard', request.url)
+            new URL(ROUTES.DASHBOARD, request.url)
         )
     }
 

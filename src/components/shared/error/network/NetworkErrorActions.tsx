@@ -1,22 +1,20 @@
 'use client'
 
-import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 
 import { Icon } from '@/components/shared/ui/Icon'
 import { Button } from '@/components/ui/button'
 
+import { ROUTES } from '@/constants/routes'
+
 import { globalLocales } from '@/locales/globalLocales'
 
 export const NetworkErrorActions = () => {
     const t = useTranslations()
-    const router = useRouter()
 
     const handleTryAgain = () =>
         window.location.reload()
-
-    const handleCheckStatus = () =>
-        router.push('/status')
 
     return (
         <div className={'flex flex-col sm:flex-row items-center justify-center gap-4 pt-4'}>
@@ -31,15 +29,17 @@ export const NetworkErrorActions = () => {
                 {t(globalLocales.errors.networkErrorPage.tryAgainBtn)}
             </Button>
             <Button
-                onClick={handleCheckStatus}
+                asChild
                 variant={'outline'}
                 className={'px-8 py-4 gap-2 rounded-xl'}
             >
-                <Icon
-                    name={'error/help'}
-                    size={20}
-                />
-                {t(globalLocales.errors.networkErrorPage.checkStatusBtn)}
+                <Link href={ROUTES.STATUS}>
+                    <Icon
+                        name={'error/help'}
+                        size={20}
+                    />
+                    {t(globalLocales.errors.networkErrorPage.checkStatusBtn)}
+                </Link>
             </Button>
         </div>
     )

@@ -25,13 +25,13 @@ const AuthLayout = ({ children }: LayoutProps) => {
                 </Link>
                 <nav className={'flex items-center gap-4 text-sm'}>
                     <Link
-                        href={'/help'}
+                        href={ROUTES.HELP}
                         className={'text-muted-foreground hover:text-foreground'}
                     >
                         {t(globalLocales.nav.help)}
                     </Link>
                     <Link
-                        href={'/about'}
+                        href={ROUTES.ABOUT}
                         className={'text-muted-foreground hover:text-foreground'}
                     >
                         {t(globalLocales.nav.about)}
@@ -48,19 +48,19 @@ const AuthLayout = ({ children }: LayoutProps) => {
                 <p>{t(globalLocales.footer.copyright)}</p>
                 <div className={'mt-2 flex--center gap-4'}>
                     <Link
-                        href={'/support'}
+                        href={ROUTES.SUPPORT}
                         className={'hover:text-foreground'}
                     >
                         {t(globalLocales.footer.support)}
                     </Link>
                     <Link
-                        href={'/privacy'}
+                        href={ROUTES.PRIVACY}
                         className={'hover:text-foreground'}
                     >
                         {t(globalLocales.footer.privacy)}
                     </Link>
                     <Link
-                        href={'/terms'}
+                        href={ROUTES.TERMS}
                         className={'hover:text-foreground'}
                     >
                         {t(globalLocales.footer.terms)}

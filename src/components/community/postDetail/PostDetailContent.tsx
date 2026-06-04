@@ -37,6 +37,7 @@ import { withOptimisticToast } from '@/utils/optimisticToast'
 import { sanitizeHtml } from '@/utils/sanitizeHtml'
 
 import { forumQueryKeys } from '@/constants/queryKeys'
+import { ROUTES } from '@/constants/routes'
 
 import { usePostDetail } from '@/context/PostDetailContext'
 
@@ -88,8 +89,8 @@ export const PostDetailContent = () => {
         tag: string | null
     ) => {
         const url = tag
-            ? `/community?tag=${encodeURIComponent(tag)}`
-            : '/community'
+            ? `${ROUTES.COMMUNITY}?tag=${encodeURIComponent(tag)}`
+            : ROUTES.COMMUNITY
         router.push(url)
     }
 
@@ -163,7 +164,7 @@ export const PostDetailContent = () => {
     return (
         <div className={'space-y-6'}>
             <Link
-                href={'/community'}
+                href={ROUTES.COMMUNITY}
                 className={'inline-flex items-center gap-1.5 text-sm text-primary hover:text-primary/80 transition-colors'}
             >
                 <ArrowLeft className={'h-4 w-4'}/>

@@ -3,6 +3,8 @@
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 
+import { ROUTES } from '@/constants/routes'
+
 import { authLocales } from '@/locales/authLocales'
 
 type LoginSecurityFooterProps = {
@@ -20,7 +22,7 @@ export const LoginSecurityFooter = ({
                 <p className={'text-center text-sm text-muted-foreground'}>
                     {`${t(authLocales.login.signupText)} `}
                     <Link
-                        href={'/signup'}
+                        href={ROUTES.SIGNUP}
                         className={'font-medium text-foreground hover:underline'}
                     >
                         {t(authLocales.login.signupLink)}

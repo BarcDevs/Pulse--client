@@ -23,7 +23,7 @@ export const HeroCTAs = () => {
                 </Button>
             </Link>
             <Link
-                href={'/community'}
+                href={ROUTES.COMMUNITY}
                 className={'inline-block py-3 text-sm font-semibold text-primary underline decoration-primary/35 decoration-[1.5px] underline-offset-4 transition-[text-decoration-color] duration-150 hover:decoration-primary'}
             >
                 {`${t(landingLocales.hero.exploreCommunity)} `}

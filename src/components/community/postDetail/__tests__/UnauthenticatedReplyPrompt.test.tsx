@@ -7,12 +7,14 @@ import {
 
 import { render, screen } from '@testing-library/react'
 
+import { ROUTES } from '@/constants/routes'
+
 vi.mock('next-intl', () => ({
     useTranslations: () => (key: string) => key
 }))
 
 vi.mock('next/navigation', () => ({
-    usePathname: () => '/community/post/abc-123',
+    usePathname: () => ROUTES.communityPost('abc-123'),
     useRouter: () => ({ push: vi.fn() }),
     useSearchParams: () => new URLSearchParams()
 }))
@@ -25,10 +27,9 @@ describe('UnauthenticatedReplyPrompt', () => {
         render(<UnauthenticatedReplyPrompt/>)
 
         const link = screen.getByRole('link')
-        const expectedRedirect = encodeURIComponent('/community/post/abc-123')
 
         expect(link.getAttribute('href')).toBe(
-            `/login?redirect=${expectedRedirect}`
+            ROUTES.loginWithRedirect(ROUTES.communityPost('abc-123'))
         )
     })
 
@@ -37,6 +38,7 @@ describe('UnauthenticatedReplyPrompt', () => {
 
         const link = screen.getByRole('link')
 
-        expect(link.getAttribute('href')).toMatch(/^\/login/)
+        expect(link.getAttribute('href'))
+            .toMatch(new RegExp(`^${ROUTES.LOGIN}`))
     })
 })

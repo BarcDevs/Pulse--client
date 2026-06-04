@@ -7,6 +7,8 @@ import {
     vi
 } from 'vitest'
 
+import { ROUTES } from '@/constants/routes'
+
 const mockAuthState = vi.hoisted(() => ({
     isShuttingDown: false,
     isRefreshing: false,

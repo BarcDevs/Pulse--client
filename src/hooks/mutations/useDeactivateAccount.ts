@@ -21,7 +21,7 @@ export const useDeactivateAccount = () => {
         },
         onSuccess: async () => {
             queryClient.removeQueries()
-            await router.push(ROUTES.LOGIN)
+            router.push(ROUTES.LOGIN)
         }
     })
 }

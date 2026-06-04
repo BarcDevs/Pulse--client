@@ -13,6 +13,7 @@ import { cn } from '@/lib/utils'
 
 import { mapActivityItems } from '@/utils/community'
 
+import { ROUTES } from '@/constants/routes'
 import { secondInMs } from '@/constants/time'
 
 import { fetchCommunityRecommendations } from '@/api/forum'
@@ -63,7 +64,7 @@ export const CommunityActivity = ({
                     {t(communityLocales.activity.title)}
                 </h3>
                 <Link
-                    href={'/community'}
+                    href={ROUTES.COMMUNITY}
                     className={'text-xs font-medium text-primary hover:underline'}
                 >
                     {t(communityLocales.activity.viewAll)}

@@ -8,6 +8,7 @@ import { getApiErrorMessage } from '@/utils/error'
 import { getSafeRedirectUrl } from '@/utils/redirect'
 
 import { authQueryKeys } from '@/constants/queryKeys'
+import { ROUTES } from '@/constants/routes'
 
 import { useAuth } from '@/context/AuthContext'
 
@@ -39,7 +40,7 @@ export const useAuthHandlers = () => {
             router.push(
                 getSafeRedirectUrl(
                     params.get('redirect'),
-                    '/dashboard'
+                    ROUTES.DASHBOARD
                 )
             )
 
@@ -63,7 +64,7 @@ export const useAuthHandlers = () => {
             await queryClient.invalidateQueries({
                 queryKey: authQueryKeys.getMe
             })
-            router.push('/dashboard')
+            router.push(ROUTES.DASHBOARD)
             return null
         } catch (error: unknown) {
             return getApiErrorMessage(error, 'Signup failed')

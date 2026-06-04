@@ -11,6 +11,7 @@ import {
 import { getUserFallback } from '@/lib/utils'
 
 import { userMenuItems } from '@/constants/navigationItems'
+import { ROUTES } from '@/constants/routes'
 
 import { FEATURES } from '@/config/features'
 
@@ -49,7 +50,7 @@ export const UserMenu = () => {
                 <DropdownMenuSeparator/>
                 {userMenuItems
                     .filter((item) =>
-                        item.href !== '/profile/settings'
+                        item.href !== ROUTES.PROFILE_SETTINGS
                         || FEATURES.profilePreferences
                     )
                     .map((item) => (

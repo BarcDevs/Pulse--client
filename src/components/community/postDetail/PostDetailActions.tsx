@@ -19,6 +19,8 @@ import { useForumPostMutations } from '@/hooks/mutations/useForumPostMutations'
 import { usePostInteractions } from '@/hooks/mutations/usePostInteractions'
 import { useSharePost } from '@/hooks/ui/useSharePost'
 
+import { ROUTES } from '@/constants/routes'
+
 import { useAuth } from '@/context/AuthContext'
 import { usePostDetail } from '@/context/PostDetailContext'
 
@@ -56,7 +58,7 @@ export const PostDetailActions = ({
 
     const handleDeletePost = async () => {
         await deletePost.mutateAsync()
-        router.push('/community')
+        router.push(ROUTES.COMMUNITY)
     }
 
     const solidarityText = t(
