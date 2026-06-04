@@ -44,7 +44,7 @@ vi.mock('@/hooks/mutations/useCreatePostMutation', () => ({
 vi.mock('@/hooks/useAuthExpiredToast', () => ({
     useAuthExpiredToast: () => ({
         showSessionExpired: vi.fn(),
-        showWorkSaved: vi.fn()
+        showAuthExpiredWithDraft: vi.fn()
     })
 }))
 

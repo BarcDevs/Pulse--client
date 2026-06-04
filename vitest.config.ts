@@ -14,7 +14,8 @@ export default defineConfig({
         }
     },
     define: {
-        'process.env.VITEST': 'true'
+        'process.env.VITEST': 'true',
+        'process.env.NEXT_PUBLIC_SENTRY_REPLAYS_SESSION_SAMPLE_RATE': '"0"'
     },
     test: {
         environment: 'jsdom',

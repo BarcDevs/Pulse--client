@@ -17,7 +17,6 @@ import {
     setCsrfToken
 } from '@/lib/csrf'
 
-import { ROUTES } from '@/constants/routes'
 import { ENDPOINTS } from '@/api/routes'
 
 export const handleRequestSuccess = (
@@ -95,8 +94,7 @@ export const handleResponseError = async (
     )
     const alreadyRetried = originalRequest?._retry
 
-    const onCommunityPage = typeof window !== 'undefined'
-        && window.location.pathname.startsWith(ROUTES.COMMUNITY)
+    const onCommunityPage = authState.isCommunityPage
 
     if (isUnauthorized && !isUnauthEndpoint) {
         if (isCsrfError(error) && !alreadyRetried) {

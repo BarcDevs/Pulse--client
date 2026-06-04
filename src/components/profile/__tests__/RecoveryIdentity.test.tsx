@@ -22,6 +22,10 @@ vi.mock('@/hooks/ui/useUser', () => ({
     useUser: vi.fn()
 }))
 
+vi.mock('@/context/ProfileEditContext', () => ({
+    useProfileEditContext: () => ({ isEditing: false })
+}))
+
 vi.mock('@/components/profile/RecoveryInterestList', () => ({
     RecoveryInterestList: () => <div data-testid={'recovery-interest-list'}/>
 }))

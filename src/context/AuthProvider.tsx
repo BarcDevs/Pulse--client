@@ -11,7 +11,7 @@ import { usePathname } from 'next/navigation'
 
 import { useQueryClient } from '@tanstack/react-query'
 
-import type { LayoutProps } from '@/types'
+import type { LayoutProps } from '@/types/react'
 import type { User } from '@/types/user'
 
 import { ErrorBannerWrapper } from '@/components/shared/ErrorBannerWrapper'
@@ -97,6 +97,11 @@ export const AuthProvider = ({
         },
         []
     )
+
+    useEffect(() => {
+        authState.isCommunityPage
+            = pathname.startsWith(ROUTES.COMMUNITY)
+    }, [pathname])
 
     useEffect(() => {
         authState.onRefreshSuccess = () => {

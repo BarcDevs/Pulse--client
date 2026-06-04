@@ -1,5 +1,7 @@
 'use client'
 
+import { useRef } from 'react'
+
 import { useTranslations } from 'next-intl'
 
 import { Loader2 } from 'lucide-react'
@@ -45,7 +47,7 @@ export const RepliesSection = ({
         setIsReplyFormOpen
     } = usePostDetail()
 
-    const replyDraft = getDraft(DRAFT_KEYS.newReply(postId))
+    const replyDraftRef = useRef(getDraft(DRAFT_KEYS.newReply(postId)))
 
     const {
         replies,
@@ -108,7 +110,7 @@ export const RepliesSection = ({
                     isLoading={isPending}
                     onSubmitAction={handleReplySubmit}
                     onCancelAction={() => setIsReplyFormOpen(false)}
-                    defaultValues={replyDraft?.data}
+                    defaultValues={replyDraftRef.current?.data}
                 />
             )}
 

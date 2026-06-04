@@ -46,6 +46,11 @@ export const getDraft = (key: string): DraftEntry | null => {
         const raw = localStorage.getItem(key)
         if (!raw) return null
         const entry: DraftEntry = JSON.parse(raw)
+        if (
+            !entry
+            || typeof entry.expiresAt !== 'number'
+            || !entry.data
+        ) return null
         if (Date.now() > entry.expiresAt) {
             localStorage.removeItem(key)
             return null

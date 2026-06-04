@@ -22,14 +22,18 @@ const config: Config = {
     isDev: process.env.NODE_ENV === 'development',
     loginDuration: 7 * dayInMs,
     communityDraftTtlMinutes: 5,
-    communityDraftTtl: 5 * minuteInMs,
+    get communityDraftTtl() {
+        return this.communityDraftTtlMinutes * minuteInMs
+    },
 
     replaysSessionSampleRate: (() => {
         const raw = process.env.NEXT_PUBLIC_SENTRY_REPLAYS_SESSION_SAMPLE_RATE
         const parsed = Number(raw)
 
         if (isNaN(parsed)) {
-            throw new Error('NEXT_PUBLIC_SENTRY_REPLAYS_SESSION_SAMPLE_RATE must be a valid number')
+            throw new Error(
+                'NEXT_PUBLIC_SENTRY_REPLAYS_SESSION_SAMPLE_RATE must be a valid number'
+            )
         }
 
         return parsed
