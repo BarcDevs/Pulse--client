@@ -1155,44 +1155,46 @@
       "about": "About"
     },
     "hero": {
-      "headline": "Recovery, With Clarity.",
-      "headlineAccent": "Support That Stays With You.",
-      "subtitle": "HealEase helps you track recovery, understand patterns, and stay connected to meaningful support through every stage of the process.",
-      "startJourney": "Get Started",
+      "headline": "Recovery",
+      "headlineLine2": "Refined.",
+      "headlineAccent": "Support",
+      "headlineSuffix": "That Stays.",
+      "subtitle": "Track your recovery, reflect on your progress, and connect with people who understand what you're going through. All in one place designed to support the journey ahead.",
+      "startJourney": "Start Your Journey",
       "exploreCommunity": "Explore Community",
-      "streakLabel": "Current Streak",
+      "streakLabel": "Check-In Streak",
       "moodLabel": "Today's Mood",
       "chartPeriod": "Last 14 Days",
       "chartTrend": "Finding More Balance",
       "chartToday": "Today"
     },
     "features": {
-      "sectionTitle": "Designed to Support Recovery",
-      "sectionDesc": "Simple tools that help you stay consistent, reflect on progress, and feel supported without overwhelm.",
-      "card1Title": "Daily Tracking",
-      "card1Desc": "Log mood, pain levels, routines, and reflections through a calm and structured experience.",
-      "card2Title": "Personalized Insights",
-      "card2Desc": "Understand trends, habits, and recovery patterns with AI-powered guidance tailored to your progress.",
-      "card3Title": "Supportive Community",
-      "card3Desc": "Connect with people who relate to your experience in a respectful and emotionally safe space."
+      "sectionTitle": "Built to reduce mental load",
+      "sectionDesc": "Everything is designed to stay simple, clear, and supportive while you focus on recovery.",
+      "card1Title": "Simple tracking",
+      "card1Desc": "Log mood, pain, energy, and activities in a structured flow that takes seconds, not effort.",
+      "card2Title": "Personalized and clear insights",
+      "card2Desc": "Your patterns are summarized into understandable signals that reflect your recovery over time.",
+      "card3Title": "Supportive community",
+      "card3Desc": "Connect with people who share similar recovery experiences in a respectful and emotionally safe space."
     },
     "howItWorks": {
-      "sectionTitle": "How HealEase Supports You",
-      "step1Title": "Reflect",
-      "step1Desc": "Take a moment each day to check in with how you feel physically and emotionally.",
-      "step2Title": "Understand",
-      "step2Desc": "View clear insights and trends that help you better understand your recovery over time.",
-      "step3Title": "Move Forward",
-      "step3Desc": "Build supportive routines, track goals, and stay connected to encouragement when you need it.",
-      "chartLabel": "Recovery Trends",
+      "sectionTitle": "How recovery flows in HealEase",
+      "step1Title": "Daily check in",
+      "step1Desc": "A short guided flow to capture how you feel physically and emotionally.",
+      "step2Title": "Track patterns",
+      "step2Desc": "Your data is organized into simple visual trends that reflect real progress over time.",
+      "step3Title": "Stay supported",
+      "step3Desc": "Receive insights and community context that help you stay consistent without pressure.",
+      "chartLabel": "Recovery trend",
       "statMood": "Mood",
       "statStreak": "Streak",
       "statProgress": "Progress"
     },
     "cta": {
-      "headline": "Start Your Recovery Space",
-      "desc": "Track progress, build healthier routines, and stay connected to support that understands the process.",
-      "button": "Start for Free"
+      "headline": "Start your recovery log",
+      "desc": "A structured space to track, understand, and support your recovery over time.",
+      "button": "Get started"
     }
   },
   "validation": {

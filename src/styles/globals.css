@@ -37,10 +37,15 @@
     --secondary: #10b981;
     --secondary-foreground: #ffffff;
     --secondary-light: #e6f5f2;
+    --secondary-deep: #006b5b;
 
     /* Accent - hover/focus state background */
     --accent: #ebf4fc;
     --accent-foreground: #1a2b3c;
+
+    /* AI accent - "AI moments" (insights) */
+    --accent-ai: #7c4dff;
+    --accent-ai-light: #f3eeff;
 
     /* Muted/Neutral tones */
     --muted: #eef1f5;
@@ -171,9 +176,12 @@
     --secondary: #14b8a6;
     --secondary-foreground: #ffffff;
     --secondary-light: #134e4a;
+    --secondary-deep: #2dd4bf;
     --accent: #a78bfa;
     --accent-foreground: #ffffff;
     --accent-light: #2e1065;
+    --accent-ai: #a78bfa;
+    --accent-ai-light: #2e1065;
     --muted: #334155;
     --muted-foreground: #94a3b8;
     --surface-page: #0f172a;
@@ -330,6 +338,11 @@
     --color-outline-variant: var(--outline-variant);
     --color-primary-gradient-start: var(--primary-gradient-start);
     --color-primary-gradient-end: var(--primary-gradient-end);
+    --color-primary-deep: var(--primary-deep);
+    --color-chart-highlight: var(--chart-highlight);
+    --color-accent-ai: var(--accent-ai);
+    --color-accent-ai-light: var(--accent-ai-light);
+    --color-secondary-deep: var(--secondary-deep);
     --color-surface-bright: var(--surface-bright);
     --color-on-surface: var(--on-surface);
     --color-secondary-fixed: var(--secondary-fixed);

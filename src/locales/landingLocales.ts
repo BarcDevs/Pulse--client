@@ -6,7 +6,9 @@ export const landingLocales = {
     },
     hero: {
         headline: 'landing.hero.headline',
+        headlineLine2: 'landing.hero.headlineLine2',
         headlineAccent: 'landing.hero.headlineAccent',
+        headlineSuffix: 'landing.hero.headlineSuffix',
         subtitle: 'landing.hero.subtitle',
         startJourney: 'landing.hero.startJourney',
         exploreCommunity: 'landing.hero.exploreCommunity',

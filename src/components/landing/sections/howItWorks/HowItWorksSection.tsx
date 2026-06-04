@@ -27,6 +27,7 @@ export const HowItWorksSection = () => {
                         {HOW_IT_WORKS_STEPS.map(step => (
                             <StepItem
                                 key={step.titleKey}
+                                stepNumber={step.stepNumber}
                                 titleKey={step.titleKey}
                                 descKey={step.descKey}
                             />

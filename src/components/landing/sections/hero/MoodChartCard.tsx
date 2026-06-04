@@ -20,7 +20,7 @@ export const MoodChartCard = () => {
                         {t(landingLocales.hero.chartTrend)}
                     </p>
                 </div>
-                <span className={'rounded-full bg-secondary-light px-2 py-0.5 text-[11px] font-bold text-secondary'}>
+                <span className={'rounded-full bg-secondary-light px-2 py-0.5 text-[11px] font-bold text-secondary-deep'}>
                     {'+18%'}
                 </span>
             </div>
@@ -28,8 +28,8 @@ export const MoodChartCard = () => {
             <MoodChartSvg/>
 
             <div className={'mt-2 flex justify-between text-[10px] text-muted-foreground'}>
-                <span>{'Apr 15'}</span>
-                <span>{'Apr 22'}</span>
+                <span>{'Apr 13'}</span>
+                <span>{'Apr 19'}</span>
                 <span>{t(landingLocales.hero.chartToday)}</span>
             </div>
         </div>

@@ -18,7 +18,7 @@ export const HeroPreviewCard = () => {
     const t = useTranslations()
 
     return (
-        <div className={'relative flex h-96 items-center justify-center overflow-hidden rounded-2xl bg-linear-to-br from-primary-light to-accent-light shadow-2xl'}>
+        <div className={'relative flex h-96 items-center justify-center overflow-hidden rounded-2xl bg-linear-to-br from-primary-light to-accent-ai-light shadow-2xl'}>
             <MoodChartCard/>
 
             <div className={'absolute left-[18px] top-[22px] grid grid-cols-7 gap-1 rounded-xl bg-surface-card/85 p-2.5 shadow backdrop-blur-md'}>
@@ -28,7 +28,7 @@ export const HeroPreviewCard = () => {
             </div>
 
             <div className={'absolute right-5 top-5 rounded-xl bg-surface-card/95 px-3.5 py-2.5 shadow backdrop-blur-md'}>
-                <p className={'text-xs font-bold text-secondary'}>
+                <p className={'text-xs font-bold text-secondary-deep'}>
                     {`✦ 142 ${t(landingLocales.hero.streakLabel)}`}
                 </p>
             </div>

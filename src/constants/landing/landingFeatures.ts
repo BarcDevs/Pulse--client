@@ -17,7 +17,7 @@ export const LANDING_FEATURES = [
         icon: Sparkles,
         titleKey: landingLocales.features.card2Title,
         descKey: landingLocales.features.card2Desc,
-        iconClassName: 'text-accent bg-accent-light'
+        iconClassName: 'text-accent-ai bg-accent-ai-light'
     },
     {
         icon: Users,
