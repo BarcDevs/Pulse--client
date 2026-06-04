@@ -274,15 +274,18 @@
       "replyUpdated": "התגובה עודכנה",
       "replyDeleted": "התגובה הוסרה",
       "postPublished": "הפוסט פורסם",
-      "postUpdated": "הפוסט עודכן בהצלחה",
+      "postUpdated": "הפוסט עודכן",
       "replyPostFailed": "לא הצלחנו לפרסם את התגובה כרגע",
       "replyUpdateFailed": "לא הצלחנו לעדכן את התגובה כרגע",
       "replyDeleteFailed": "לא הצלחנו להסיר את התגובה כרגע",
       "postPublishFailed": "לא הצלחנו לפרסם את הפוסט כרגע",
       "postUpdateFailed": "לא הצלחנו לעדכן את הפוסט כרגע",
-      "loginToLike": "יש להתחבר כדי לאהוב פוסטים",
-      "loginToLikeReply": "יש להתחבר כדי לאהוב תגובות",
-      "loginToSave": "יש להתחבר כדי לשמור פוסטים"
+      "loginToLike": "יש להתחבר כדי להראות תמיכה",
+      "loginToLikeReply": "יש להתחבר כדי להראות תמיכה",
+      "loginToSave": "יש להתחבר כדי לשמור פוסטים",
+      "loginToCreate": "יש להתחבר כדי לשתף פוסט",
+      "sessionExpired": "פג תוקף ההתחברות שלך. יש להתחבר מחדש.",
+      "workSaved": "הטיוטה שלך נשמרה. אפשר לחזור בתוך {minutes} דקות ולהמשיך מהמקום שבו הפסקת."
     }
   },
   "dashboard": {

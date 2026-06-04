@@ -132,6 +132,19 @@ describe(
                 expect(result).toBe(false)
                 expect(window.location.href).toContain('/login')
             })
+
+        it(
+            'skips logout when skipLogout=true and refresh fails',
+            async () => {
+                vi.mocked(refresh).mockRejectedValueOnce(
+                    new Error('fail')
+                )
+
+                const result = await performRefresh(true)
+
+                expect(result).toBe(false)
+                expect(logout).not.toHaveBeenCalled()
+            })
     })
 
 // ==================== initiateLogout ====================

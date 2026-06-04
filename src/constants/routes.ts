@@ -11,7 +11,9 @@ export const ROUTES = {
     PROFILE_SETTINGS: '/profile/settings',
     RECOVERY_GOALS: '/recovery-goals',
     CONTACT_SUPPORT: '/contact-support',
-    PROGRESS: '/progress'
+    PROGRESS: '/progress',
+    loginWithRedirect: (redirect: string) =>
+        `/login?redirect=${encodeURIComponent(redirect)}`
 } as const
 
 export const ROUTE_IDS = {
@@ -21,4 +23,7 @@ export const ROUTE_IDS = {
     FORGOT_PASSWORD: '/(auth)/forgot-password'
 } as const
 
-export type RouteKey = keyof typeof ROUTES
+export type RouteKey = {
+    [K in keyof typeof ROUTES]
+    : typeof ROUTES[K] extends string ? K : never
+}[keyof typeof ROUTES]

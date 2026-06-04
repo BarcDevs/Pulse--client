@@ -248,7 +248,8 @@ describe(
 
                         expect(flushQueue).toHaveBeenCalledWith(
                             mockApi,
-                            true
+                            true,
+                            undefined
                         )
                     })
 

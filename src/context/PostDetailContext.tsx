@@ -8,6 +8,13 @@ import {
 
 import { ContextProps } from '@/types/react'
 
+import {
+    DRAFT_KEYS,
+    getDraft
+} from '@/utils/communityDraft'
+
+import { useAuth } from '@/context/AuthContext'
+
 type PostDetailContextType = {
     postId: string
     isReplyFormOpen: boolean
@@ -28,12 +35,23 @@ export const PostDetailProvider = ({
     children,
     postId
 }: PostDetailProviderProps) => {
+    const { user } = useAuth()
     const [
         isReplyFormOpen, setIsReplyFormOpen
-    ] = useState(false)
+    ] = useState(() => {
+        const draft = getDraft(
+            DRAFT_KEYS.newReply(postId)
+        )
+        return !!(draft && user)
+    })
     const [
         isEditingPost, setIsEditingPost
-    ] = useState(false)
+    ] = useState(() => {
+        const draft = getDraft(
+            DRAFT_KEYS.updatePost(postId)
+        )
+        return !!draft
+    })
 
     const value: PostDetailContextType = {
         postId,

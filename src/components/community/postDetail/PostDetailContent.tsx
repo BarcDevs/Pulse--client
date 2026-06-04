@@ -22,9 +22,17 @@ import { ErrorDisplay } from '@/components/shared/ErrorDisplay'
 import { useForumPostMutations } from '@/hooks/mutations/useForumPostMutations'
 import { useForumPost } from '@/hooks/queries/useForumPost'
 import { useDateLocale } from '@/hooks/ui/useDateLocale'
+import { useAuthExpiredToast } from '@/hooks/useAuthExpiredToast'
 
 import { toRelative } from '@/lib/time'
 
+import { getAuthorDisplayName } from '@/utils/community'
+import {
+    clearDraft,
+    DRAFT_KEYS,
+    getDraft,
+    saveDraft
+} from '@/utils/communityDraft'
 import { withOptimisticToast } from '@/utils/optimisticToast'
 import { sanitizeHtml } from '@/utils/sanitizeHtml'
 
@@ -47,6 +55,8 @@ export const PostDetailContent = () => {
     const dateLocale = useDateLocale()
     const queryClient = useQueryClient()
     const { updatePost } = useForumPostMutations({ postId })
+    const { showAuthExpiredWithDraft } = useAuthExpiredToast()
+
     const {
         data: post,
         isLoading: isPostLoading,
@@ -68,11 +78,8 @@ export const PostDetailContent = () => {
     const sanitizedBody = post ? sanitizeHtml(post.body) : ''
 
     const author = post
-        ? (post.author
-            ? (post.author.user.firstName && post.author.user.lastName
-                ? `${post.author.user.firstName} ${post.author.user.lastName}`
-                : post.author.user.username)
-            : 'Unknown') : ''
+        ? getAuthorDisplayName(post.author, 'Unknown')
+        : ''
 
     const timeAgo = post
         ? toRelative(new Date(post.createdAt), dateLocale) : ''
@@ -124,11 +131,25 @@ export const PostDetailContent = () => {
             errorMsg,
             retryLabel,
             onRetry: () => void handleUpdatePost(data),
+            onSuccess: () => clearDraft(DRAFT_KEYS.updatePost(postId)),
             onError: () => {
                 queryClient.setQueryData(
                     forumQueryKeys.post(postId),
                     snapshot
                 )
+            },
+            onUnauthorized: () => {
+                queryClient.setQueryData(
+                    forumQueryKeys.post(postId),
+                    snapshot
+                )
+                saveDraft(
+                    DRAFT_KEYS.updatePost(postId),
+                    'updatePost',
+                    data,
+                    postId
+                )
+                showAuthExpiredWithDraft()
             }
         })
     }
@@ -136,6 +157,8 @@ export const PostDetailContent = () => {
     const tagDefaultValues = post && Array.isArray(post.tags)
         ? post.tags.map((tag) => tag.slug)
         : []
+
+    const editDraft = getDraft(DRAFT_KEYS.updatePost(postId))
 
     return (
         <div className={'space-y-6'}>
@@ -155,7 +178,7 @@ export const PostDetailContent = () => {
                         isLoading={updatePost.isPending}
                         onSubmitAction={handleUpdatePost}
                         onCancelAction={() => setIsEditingPost(false)}
-                        defaultValues={{
+                        defaultValues={editDraft?.data ?? {
                             title: post.title,
                             category: post.category,
                             body: post.body,

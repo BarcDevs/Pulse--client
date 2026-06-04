@@ -287,12 +287,12 @@
       "replyDeleteFailed": "We couldn't remove your reply right now",
       "postPublishFailed": "We couldn't publish your post right now",
       "postUpdateFailed": "We couldn't update your post right now",
-      "loginToLike": "Log in to like posts",
-      "loginToLikeReply": "Log in to like replies",
+      "loginToLike": "Log in to show support",
+      "loginToLikeReply": "Log in to show support",
       "loginToSave": "Log in to save posts",
-      "loginToCreate": "Log in to create a post",
-      "sessionExpired": "Your session expired. Please log in again.",
-      "workSaved": "Your work has been saved. Return within {minutes} min to resume."
+      "loginToCreate": "Log in to share a post",
+      "sessionExpired": "Your session has expired. Please log in again.",
+      "workSaved": "Your draft has been saved. Return within {minutes} minutes to continue where you left off."
     }
   },
   "dashboard": {

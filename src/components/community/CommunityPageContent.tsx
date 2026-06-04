@@ -2,7 +2,7 @@
 
 import { useRef, useState } from 'react'
 
-import { useSearchParams } from 'next/navigation'
+import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 
 import { toast } from 'sonner'
@@ -13,8 +13,18 @@ import { PostForm } from '@/components/community/postForm/PostForm'
 import { SavingBanner } from '@/components/shared/SavingBanner'
 
 import { useCreatePostMutation } from '@/hooks/mutations/useCreatePostMutation'
+import { useAuthExpiredToast } from '@/hooks/useAuthExpiredToast'
 import { useDebounce } from '@/hooks/useDebounce'
 
+import {
+    clearDraft,
+    DRAFT_KEYS,
+    getDraft,
+    saveDraft
+} from '@/utils/communityDraft'
+import { isUnauthorizedError } from '@/utils/error'
+
+import { ROUTES } from '@/constants/routes'
 import { secondInMs } from '@/constants/time'
 
 import { useAuth } from '@/context/AuthContext'
@@ -30,16 +40,38 @@ import { CommunitySearchBar } from './CommunitySearchBar'
 export const CommunityPageContent = () => {
     const t = useTranslations()
     const searchParams = useSearchParams()
+    const router = useRouter()
+    const pathname = usePathname()
     const { user } = useAuth()
+    const { showAuthExpiredWithDraft } = useAuthExpiredToast()
     const [selectedTag, setSelectedTag] = useState<string | null>(
         searchParams.get('tag')
     )
-    const [isNewPostOpen, setIsNewPostOpen] = useState(false)
+    const [isNewPostOpen, setIsNewPostOpen] = useState(
+        () => !!(getDraft(DRAFT_KEYS.newPost) && user)
+    )
     const [search, setSearch] = useState('')
     const [pendingPosts, setPendingPosts] = useState<Post[]>([])
     const tempCountRef = useRef(0)
     const debouncedSearch = useDebounce(search)
     const createPost = useCreatePostMutation()
+
+    const postDraft = getDraft(DRAFT_KEYS.newPost)
+
+    const handleOpenNewPost = () => {
+        if (!user) {
+            toast.info(t(communityLocales.toasts.loginToCreate), {
+                action: {
+                    label: t(communityLocales.toasts.loginButton),
+                    onClick: () => router.push(
+                        ROUTES.loginWithRedirect(pathname)
+                    )
+                }
+            })
+            return
+        }
+        setIsNewPostOpen(true)
+    }
 
     const handlePostSubmit = async (data: PostFormSchema) => {
         tempCountRef.current += 1
@@ -64,22 +96,26 @@ export const CommunityPageContent = () => {
             setPendingPosts((prev) =>
                 prev.map((p) => p.id === tempPost.id ? realPost : p)
             )
+            clearDraft(DRAFT_KEYS.newPost)
             toast.success(
                 t(communityLocales.toasts.postPublished),
                 { duration: 2.5 * secondInMs }
             )
-        } catch {
+        } catch (error) {
             setPendingPosts((prev) =>
                 prev.filter((p) => p.id !== tempPost.id)
             )
+            if (isUnauthorizedError(error as Error)) {
+                saveDraft(DRAFT_KEYS.newPost, 'newPost', data)
+                showAuthExpiredWithDraft()
+                return
+            }
             toast.error(
                 t(communityLocales.toasts.postPublishFailed),
                 {
                     action: {
                         label: t(globalLocales.shared.retry),
-                        onClick: () => void handlePostSubmit(
-                            data
-                        )
+                        onClick: () => void handlePostSubmit(data)
                     },
                     duration: 5 * secondInMs
                 }
@@ -99,7 +135,7 @@ export const CommunityPageContent = () => {
                     <CommunitySearchBar
                         searchValue={search}
                         onSearchAction={setSearch}
-                        onNewPostAction={() => setIsNewPostOpen(true)}
+                        onNewPostAction={handleOpenNewPost}
                         isPostOpen={isNewPostOpen}
                     />
                     <PostForm
@@ -108,6 +144,7 @@ export const CommunityPageContent = () => {
                         isLoading={createPost.isPending}
                         onSubmitAction={handlePostSubmit}
                         onCancelAction={() => setIsNewPostOpen(false)}
+                        defaultValues={postDraft?.data}
                     />
                     <PostList
                         tag={selectedTag}

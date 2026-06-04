@@ -16,7 +16,13 @@ import { ContextProps } from '@/types/react'
 
 import { useForumPostMutations } from '@/hooks/mutations/useForumPostMutations'
 import { useForumReplies } from '@/hooks/queries/useForumReplies'
+import { useAuthExpiredToast } from '@/hooks/useAuthExpiredToast'
 
+import {
+    clearDraft,
+    DRAFT_KEYS,
+    saveDraft
+} from '@/utils/communityDraft'
 import { withOptimisticToast } from '@/utils/optimisticToast'
 
 import { useAuth } from '@/context/AuthContext'
@@ -70,20 +76,24 @@ const ForumRepliesStateProvider = ({
     const t = useTranslations()
     const { user } = useAuth()
     const {
+        showSessionExpired,
+        showAuthExpiredWithDraft
+    } = useAuthExpiredToast()
+    const {
         createReply,
         updateReply,
         deleteReply
     } = useForumPostMutations({ postId })
     const tempIdRef = useRef(0)
 
-    // Optimistic delta — separate from server state so initialReplies updates
-    // (new pages) never wipe in-flight mutations
+    /** Optimistic delta — separate from server state so initialReplies updates
+     * (new pages) never wipe in-flight mutations */
     const [pendingAdds, setPendingAdds] = useState<Reply[]>([])
     const [pendingBodies, setPendingBodies] = useState<Record<string, string>>({})
     const [deletedIds, setDeletedIds] = useState<Set<string>>(new Set())
 
-    // Derive full list at render time — deduplication filter removes pending
-    // adds whose real reply has arrived in initialReplies
+    /** Derive full list at render time — deduplication filter removes pending
+     * adds whose real reply has arrived in initialReplies */
     const replies = useMemo(() => [
         ...pendingAdds.filter((pending) =>
             !initialReplies.some((server) => server.id === pending.id)),
@@ -105,7 +115,9 @@ const ForumRepliesStateProvider = ({
         || updateReply.isPending
         || deleteReply.isPending
 
-    const handleAddReply = (data: PostFormSchema): Promise<void> => {
+    const handleAddReply = (
+        data: PostFormSchema
+    ): Promise<void> => {
         tempIdRef.current += 1
         const tempId = `temp-reply-${postId}-${tempIdRef.current}`
         const tempReply: Reply = {
@@ -139,9 +151,22 @@ const ForumRepliesStateProvider = ({
             errorMsg: t(communityLocales.toasts.replyPostFailed),
             retryLabel: t(globalLocales.shared.retry),
             onRetry: () => void handleAddReply(data),
+            onSuccess: () => clearDraft(DRAFT_KEYS.newReply(postId)),
             onError: () => setPendingAdds((prev) =>
                 prev.filter((r) => r.id !== tempId)
-            )
+            ),
+            onUnauthorized: () => {
+                setPendingAdds((prev) =>
+                    prev.filter((r) => r.id !== tempId)
+                )
+                saveDraft(
+                    DRAFT_KEYS.newReply(postId),
+                    'newReply',
+                    data,
+                    postId
+                )
+                showAuthExpiredWithDraft()
+            }
         })
     }
 
@@ -158,16 +183,37 @@ const ForumRepliesStateProvider = ({
             errorMsg: t(communityLocales.toasts.replyUpdateFailed),
             retryLabel: t(globalLocales.shared.retry),
             onRetry: () => void handleUpdateReply(replyId, data),
+            onSuccess: () => clearDraft(
+                DRAFT_KEYS.updateReply(postId, replyId)
+            ),
             onError: () => setPendingBodies((prev) => {
                 const next = { ...prev }
                 if (snapshot !== undefined) next[replyId] = snapshot
                 else delete next[replyId]
                 return next
-            })
+            }),
+            onUnauthorized: () => {
+                setPendingBodies((prev) => {
+                    const next = { ...prev }
+                    if (snapshot !== undefined) next[replyId] = snapshot
+                    else delete next[replyId]
+                    return next
+                })
+                saveDraft(
+                    DRAFT_KEYS.updateReply(postId, replyId),
+                    'updateReply',
+                    data,
+                    postId,
+                    replyId
+                )
+                showAuthExpiredWithDraft()
+            }
         })
     }
 
-    const handleDeleteReply = (replyId: string): Promise<void> => {
+    const handleDeleteReply = (
+        replyId: string
+    ): Promise<void> => {
         setDeletedIds((prev) => new Set([...prev, replyId]))
 
         return withOptimisticToast({
@@ -180,7 +226,15 @@ const ForumRepliesStateProvider = ({
                 const next = new Set(prev)
                 next.delete(replyId)
                 return next
-            })
+            }),
+            onUnauthorized: () => {
+                setDeletedIds((prev) => {
+                    const next = new Set(prev)
+                    next.delete(replyId)
+                    return next
+                })
+                showSessionExpired()
+            }
         })
     }
 

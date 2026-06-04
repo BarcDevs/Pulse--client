@@ -2,6 +2,7 @@ import type { Locale } from 'date-fns'
 
 import type { CommunityActivityItem } from '@/types/community'
 import { TranslatorFn } from '@/types/i18n'
+import type { PartialUser } from '@/types/user'
 
 import { toRelative } from '@/lib/time'
 import { getUserFallback } from '@/lib/utils'
@@ -12,6 +13,17 @@ type ActivityDisplayItem = {
     user: string
     action: string
     time: string
+}
+
+export const getAuthorDisplayName = (
+    author: PartialUser | undefined,
+    fallback = 'Unknown'
+): string => {
+    if (!author) return fallback
+    const { firstName, lastName, username } = author.user
+    return firstName && lastName
+        ? `${firstName} ${lastName}`
+        : username
 }
 
 export const mapActivityItems = (

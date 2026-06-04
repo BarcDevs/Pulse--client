@@ -8,10 +8,8 @@ import { Heart } from 'lucide-react'
 
 import type { Reply } from '@/types/community'
 
-import { PostForm }
-    from '@/components/community/postForm/PostForm'
-import { PostActionButton }
-    from '@/components/community/posts/postList/PostActionButton'
+import { PostForm } from '@/components/community/postForm/PostForm'
+import { PostActionButton } from '@/components/community/posts/postList/PostActionButton'
 import { ActionsMenu } from '@/components/shared/ActionsMenu'
 import { UserAvatar } from '@/components/shared/UserAvatar'
 import { Badge } from '@/components/ui/badge'
@@ -22,6 +20,11 @@ import { useDateLocale } from '@/hooks/ui/useDateLocale'
 import { toRelative } from '@/lib/time'
 import { cn, getUserFallback } from '@/lib/utils'
 
+import { getAuthorDisplayName } from '@/utils/community'
+import {
+    DRAFT_KEYS,
+    getDraft
+} from '@/utils/communityDraft'
 import { sanitizeHtml } from '@/utils/sanitizeHtml'
 
 import { communityLocales } from '@/locales/communityLocales'
@@ -66,12 +69,7 @@ export const ReplyCard = ({
         initialLikes: reply._count?.likes ?? 0
     })
     const dateLocale = useDateLocale()
-    const authorUser = reply.author?.user
-    const authorName = authorUser
-        ? (authorUser.firstName && authorUser.lastName
-            ? `${authorUser.firstName} ${authorUser.lastName}`
-            : authorUser.username)
-        : 'Unknown'
+    const authorName = getAuthorDisplayName(reply.author)
     const timeAgo = toRelative(
         new Date(reply.createdAt),
         dateLocale
@@ -80,6 +78,7 @@ export const ReplyCard = ({
     const isEdited = reply.updatedAt !== null
 
     const { author } = reply
+    const authorUser = author?.user
     const initials = authorUser && getUserFallback(
         authorUser.firstName,
         authorUser.lastName
@@ -166,7 +165,11 @@ export const ReplyCard = ({
                         isLoading={isDeleting}
                         onSubmitAction={handleUpdate}
                         onCancelAction={() => setIsEditing(false)}
-                        defaultValues={{ body: reply.body }}
+                        defaultValues={
+                            getDraft(DRAFT_KEYS
+                                .updateReply(postId, reply.id))?.data
+                            ?? { body: reply.body }
+                        }
                         submitLabel={t(communityLocales.postForm.saveChanges)}
                         hideHeader={true}
                     />

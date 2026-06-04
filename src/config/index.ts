@@ -1,4 +1,4 @@
-import { dayInMs } from '@/constants/time'
+import { dayInMs, minuteInMs } from '@/constants/time'
 
 type Config = {
     serverUrl: string
@@ -6,6 +6,9 @@ type Config = {
     serverApiVersion: string
     loginDuration: number
     isDev: boolean
+
+    communityDraftTtl: number
+    communityDraftTtlMinutes: number
 
     replaysSessionSampleRate: number
 
@@ -18,6 +21,8 @@ const config: Config = {
     serverApiVersion: process.env.NEXT_PUBLIC_SERVER_API_VERSION || 'v1',
     isDev: process.env.NODE_ENV === 'development',
     loginDuration: 7 * dayInMs,
+    communityDraftTtlMinutes: 5,
+    communityDraftTtl: 5 * minuteInMs,
 
     replaysSessionSampleRate: (() => {
         const raw = process.env.NEXT_PUBLIC_SENTRY_REPLAYS_SESSION_SAMPLE_RATE

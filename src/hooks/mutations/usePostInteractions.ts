@@ -13,8 +13,11 @@ import {
 } from '@tanstack/react-query'
 
 import { useProfile } from '@/hooks/queries/useProfile'
+import { useAuthExpiredToast } from '@/hooks/useAuthExpiredToast'
 
 import { profileToggleCallbacks } from '@/utils/mutationHelpers'
+
+import { ROUTES } from '@/constants/routes'
 
 import { useAuth } from '@/context/AuthContext'
 
@@ -39,6 +42,7 @@ export const usePostInteractions = ({
     const router = useRouter()
     const pathname = usePathname()
     const t = useTranslations()
+    const { showSessionExpired } = useAuthExpiredToast()
 
     const liked = profile?.likedPostIds.includes(postId) ?? false
     const saved = profile?.savedPostIds.includes(postId) ?? false
@@ -64,29 +68,38 @@ export const usePostInteractions = ({
         onError: (err, vars, context) => {
             likeCallbacks.onError(err, vars, context)
             setLikeCount(originalCountRef.current)
+            showSessionExpired()
         }
     })
 
+    const saveCallbacks = profileToggleCallbacks(
+        queryClient,
+        'savedPostIds',
+        postId,
+        (data: { saved: boolean }) => data.saved
+    )
+
     const saveMutation = useMutation({
         mutationFn: () => savePostApi(postId),
-        ...profileToggleCallbacks(
-            queryClient,
-            'savedPostIds',
-            postId,
-            (data: { saved: boolean }) => data.saved
-        )
+        onMutate: saveCallbacks.onMutate,
+        onSuccess: saveCallbacks.onSuccess,
+        onError: (err, vars, context) => {
+            saveCallbacks.onError(err, vars, context)
+            showSessionExpired()
+        }
     })
 
-    const showLoginToast = (msgKey: keyof typeof communityLocales.toasts) => {
-        toast.info(t(communityLocales.toasts[msgKey]), {
+    const showLoginToast = (
+        msgKey: keyof typeof communityLocales.toasts
+    ) => toast.info(
+        t(communityLocales.toasts[msgKey]),
+        {
             action: {
                 label: t(communityLocales.toasts.loginButton),
-                onClick: () => router.push(
-                    `/login?redirect=${encodeURIComponent(pathname)}`
-                )
+                onClick: () => router.push(ROUTES.loginWithRedirect(pathname))
             }
-        })
-    }
+        }
+    )
 
     const toggleLike = () => {
         if (!user) {

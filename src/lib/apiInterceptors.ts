@@ -63,7 +63,8 @@ const UNAUTHENTICATED_ENDPOINTS = [
     '/auth/login',
     '/auth/signup',
     '/auth/refresh',
-    '/auth/logout'
+    '/auth/logout',
+    '/auth/me'
 ]
 
 const isCsrfError = (error: AxiosError): boolean => {
@@ -91,6 +92,9 @@ export const handleResponseError = async (
     )
     const alreadyRetried = originalRequest?._retry
 
+    const onCommunityPage = typeof window !== 'undefined'
+        && window.location.pathname.startsWith('/community')
+
     if (isUnauthorized && !isUnauthEndpoint) {
         if (isCsrfError(error) && !alreadyRetried) {
             originalRequest._retry = true
@@ -101,7 +105,7 @@ export const handleResponseError = async (
         }
 
         if (alreadyRetried) {
-            await initiateLogout()
+            if (!onCommunityPage) await initiateLogout()
             return Promise.reject(error)
         }
 
@@ -118,16 +122,12 @@ export const handleResponseError = async (
                 if (!authState.isRefreshing) {
                     authState.isRefreshing = true
 
-                    performRefresh()
+                    performRefresh(onCommunityPage)
                         .then((success) => {
-                            flushQueue(api, success)
+                            flushQueue(api, success, success ? undefined : error)
                         })
                         .catch(() => {
-                            flushQueue(
-                                api,
-                                false,
-                                new AxiosError('Refresh failed')
-                            )
+                            flushQueue(api, false, error)
                         })
                         .finally(() => {
                             authState.isRefreshing = false

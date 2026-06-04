@@ -36,10 +36,11 @@ export const callRefresh = async ():
     }
 }
 
-export const performRefresh = async ():
-    Promise<boolean> => {
+export const performRefresh = async (
+    skipLogout = false
+): Promise<boolean> => {
     const success = await callRefresh()
-    if (!success) await initiateLogout()
+    if (!success && !skipLogout) await initiateLogout()
     return success
 }
 

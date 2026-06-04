@@ -13,8 +13,11 @@ import {
 } from '@tanstack/react-query'
 
 import { useProfile } from '@/hooks/queries/useProfile'
+import { useAuthExpiredToast } from '@/hooks/useAuthExpiredToast'
 
 import { profileToggleCallbacks } from '@/utils/mutationHelpers'
+
+import { ROUTES } from '@/constants/routes'
 
 import { useAuth } from '@/context/AuthContext'
 
@@ -38,6 +41,7 @@ export const useReplyInteractions = ({
     const router = useRouter()
     const pathname = usePathname()
     const t = useTranslations()
+    const { showSessionExpired } = useAuthExpiredToast()
 
     const liked = profile?.likedReplyIds.includes(replyId) ?? false
 
@@ -61,19 +65,14 @@ export const useReplyInteractions = ({
         onError: (err, vars, context) => {
             likeCallbacks.onError(err, vars, context)
             setLikeCount(originalCountRef.current)
+            showSessionExpired()
         }
     })
 
     const showLoginToast = () => {
-        const message = t(
-            communityLocales.toasts.loginToLikeReply
-        )
-        const buttonLabel = t(
-            communityLocales.toasts.loginButton
-        )
-        const redirectUrl = (
-            `/login?redirect=${encodeURIComponent(pathname)}`
-        )
+        const message = t(communityLocales.toasts.loginToLikeReply)
+        const buttonLabel = t(communityLocales.toasts.loginButton)
+        const redirectUrl = ROUTES.loginWithRedirect(pathname)
         toast.info(message, {
             action: {
                 label: buttonLabel,

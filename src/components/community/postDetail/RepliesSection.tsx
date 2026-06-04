@@ -14,6 +14,11 @@ import { ErrorDisplay } from '@/components/shared/ErrorDisplay'
 import { Button } from '@/components/ui/button'
 import { Skeleton } from '@/components/ui/skeleton'
 
+import {
+    DRAFT_KEYS,
+    getDraft
+} from '@/utils/communityDraft'
+
 import { useAuth } from '@/context/AuthContext'
 import { useForumRepliesContext } from '@/context/ForumRepliesContext'
 import { usePostDetail } from '@/context/PostDetailContext'
@@ -39,6 +44,8 @@ export const RepliesSection = ({
         isReplyFormOpen,
         setIsReplyFormOpen
     } = usePostDetail()
+
+    const replyDraft = getDraft(DRAFT_KEYS.newReply(postId))
 
     const {
         replies,
@@ -101,6 +108,7 @@ export const RepliesSection = ({
                     isLoading={isPending}
                     onSubmitAction={handleReplySubmit}
                     onCancelAction={() => setIsReplyFormOpen(false)}
+                    defaultValues={replyDraft?.data}
                 />
             )}
 
