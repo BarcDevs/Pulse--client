@@ -50,7 +50,7 @@ export const PostDetailProvider = ({
         const draft = getDraft(
             DRAFT_KEYS.updatePost(postId)
         )
-        return !!draft
+        return !!(draft && user)
     })
 
     const value: PostDetailContextType = {

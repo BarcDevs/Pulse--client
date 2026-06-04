@@ -15,6 +15,7 @@ import {
 import { useProfile } from '@/hooks/queries/useProfile'
 import { useAuthExpiredToast } from '@/hooks/useAuthExpiredToast'
 
+import { isUnauthorizedError } from '@/utils/error'
 import { profileToggleCallbacks } from '@/utils/mutationHelpers'
 
 import { ROUTES } from '@/constants/routes'
@@ -68,7 +69,7 @@ export const usePostInteractions = ({
         onError: (err, vars, context) => {
             likeCallbacks.onError(err, vars, context)
             setLikeCount(originalCountRef.current)
-            showSessionExpired()
+            if (isUnauthorizedError(err as Error)) showSessionExpired()
         }
     })
 
@@ -85,7 +86,7 @@ export const usePostInteractions = ({
         onSuccess: saveCallbacks.onSuccess,
         onError: (err, vars, context) => {
             saveCallbacks.onError(err, vars, context)
-            showSessionExpired()
+            if (isUnauthorizedError(err as Error)) showSessionExpired()
         }
     })
 

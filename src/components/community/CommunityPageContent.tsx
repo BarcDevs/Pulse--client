@@ -56,7 +56,7 @@ export const CommunityPageContent = () => {
     const debouncedSearch = useDebounce(search)
     const createPost = useCreatePostMutation()
 
-    const postDraft = getDraft(DRAFT_KEYS.newPost)
+    const postDraftRef = useRef(getDraft(DRAFT_KEYS.newPost))
 
     const handleOpenNewPost = () => {
         if (!user) {
@@ -144,7 +144,7 @@ export const CommunityPageContent = () => {
                         isLoading={createPost.isPending}
                         onSubmitAction={handlePostSubmit}
                         onCancelAction={() => setIsNewPostOpen(false)}
-                        defaultValues={postDraft?.data}
+                        defaultValues={postDraftRef.current?.data}
                     />
                     <PostList
                         tag={selectedTag}

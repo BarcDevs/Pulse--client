@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 
 import { useTranslations } from 'next-intl'
 
@@ -76,6 +76,9 @@ export const ReplyCard = ({
     )
     const sanitizedBody = sanitizeHtml(reply.body)
     const isEdited = reply.updatedAt !== null
+    const editDraftRef = useRef(
+        getDraft(DRAFT_KEYS.updateReply(postId, reply.id))
+    )
 
     const { author } = reply
     const authorUser = author?.user
@@ -166,8 +169,7 @@ export const ReplyCard = ({
                         onSubmitAction={handleUpdate}
                         onCancelAction={() => setIsEditing(false)}
                         defaultValues={
-                            getDraft(DRAFT_KEYS
-                                .updateReply(postId, reply.id))?.data
+                            editDraftRef.current?.data
                             ?? { body: reply.body }
                         }
                         submitLabel={t(communityLocales.postForm.saveChanges)}
@@ -188,7 +190,7 @@ export const ReplyCard = ({
                             icon={Heart}
                             count={likeCount}
                             isActive={liked}
-                            activeClassName={'text-rose-600 hover:text-rose-600'}
+                            activeClassName={'text-destructive hover:text-destructive'}
                             onClick={toggleLike}
                         />
                     </div>

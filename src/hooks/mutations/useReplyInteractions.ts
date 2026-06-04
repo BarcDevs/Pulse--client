@@ -15,6 +15,7 @@ import {
 import { useProfile } from '@/hooks/queries/useProfile'
 import { useAuthExpiredToast } from '@/hooks/useAuthExpiredToast'
 
+import { isUnauthorizedError } from '@/utils/error'
 import { profileToggleCallbacks } from '@/utils/mutationHelpers'
 
 import { ROUTES } from '@/constants/routes'
@@ -65,7 +66,7 @@ export const useReplyInteractions = ({
         onError: (err, vars, context) => {
             likeCallbacks.onError(err, vars, context)
             setLikeCount(originalCountRef.current)
-            showSessionExpired()
+            if (isUnauthorizedError(err as Error)) showSessionExpired()
         }
     })
 

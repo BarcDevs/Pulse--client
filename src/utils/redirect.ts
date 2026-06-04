@@ -4,8 +4,8 @@ export const isValidRedirectUrl = (
 ): boolean => {
     if (!url) return false
 
-    // Only allow relative URLs starting with /
-    // Reject // (protocol-relative URLs) to prevent open redirects
+    /** Only allow relative URLs starting with /
+    * Reject // (protocol-relative URLs) to prevent open redirects */
     return url.startsWith('/') && !url.startsWith('//')
 }
 

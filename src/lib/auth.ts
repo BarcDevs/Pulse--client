@@ -19,6 +19,7 @@ export type QueuedRequest = {
 export const authState = {
     isRefreshing: false,
     isShuttingDown: false,
+    isCommunityPage: false,
     requestQueue: [] as QueuedRequest[],
     onRefreshSuccess: null as (() => void) | null,
     onNetworkRecovery: null as (() => void) | null
