@@ -55,5 +55,10 @@ describe('insight API', () => {
             const result = await fetchTodayObservation()
             expect(result).toBeNull()
         })
+
+        it('propagates network errors', async () => {
+            vi.mocked(api.get).mockRejectedValueOnce(new Error('Network Error'))
+            await expect(fetchTodayObservation()).rejects.toThrow('Network Error')
+        })
     })
 })

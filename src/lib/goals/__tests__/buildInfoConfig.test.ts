@@ -97,6 +97,18 @@ describe('buildInfoConfig — PAUSED', () => {
     })
 })
 
+describe('buildInfoConfig — ACTIVE', () => {
+    it('falls through to XCircle branch (same as ABANDONED)', () => {
+        const config = buildInfoConfig(
+            { ...baseGoal, status: GoalStatus.ACTIVE },
+            GOAL_STATUS_TOKENS[GoalStatus.ACTIVE],
+            2, 1, 40, DATE, t
+        )
+        expect(config.Icon).toBe(XCircle)
+        expect(config.pct).toBeNull()
+    })
+})
+
 describe('buildInfoConfig — ABANDONED', () => {
     it('uses XCircle icon and pct is null', () => {
         const config = buildInfoConfig(

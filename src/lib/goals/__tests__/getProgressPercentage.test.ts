@@ -45,4 +45,8 @@ describe('getProgressPercentage', () => {
     it('caps at 100 when progress exceeds 1', () => {
         expect(getProgressPercentage({ ...baseGoal, progress: 1.5 })).toBe(100)
     })
+
+    it('returns negative value for negative progress (no floor applied)', () => {
+        expect(getProgressPercentage({ ...baseGoal, progress: -0.5 })).toBe(-50)
+    })
 })

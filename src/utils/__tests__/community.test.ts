@@ -60,6 +60,11 @@ describe('getAuthorDisplayName', () => {
 describe('mapActivityItems', () => {
     beforeEach(() => vi.clearAllMocks())
 
+    it('returns empty array when input is empty', () => {
+        expect(mapActivityItems([], t, locale, 10)).toEqual([])
+    })
+
+
     it('maps items to display shape', () => {
         const items = [makeItem()]
         const result = mapActivityItems(items, t, locale, 10)
