@@ -20,6 +20,7 @@ vi.mock(
 import type { GoalInput } from '@/types/goals'
 
 import { api } from '@/api'
+import { ENDPOINTS } from '@/api/routes'
 import {
     completeMilestone,
     createGoal,
@@ -76,7 +77,7 @@ describe(
 
                         await fetchGoals()
                         expect(api.get)
-                            .toHaveBeenCalledWith('/recovery-goals')
+                            .toHaveBeenCalledWith(ENDPOINTS.recoveryGoals.base)
                     })
 
                 it(
@@ -117,7 +118,7 @@ describe(
 
                         await fetchGoal('g-1')
                         expect(api.get)
-                            .toHaveBeenCalledWith('/recovery-goals/g-1')
+                            .toHaveBeenCalledWith(ENDPOINTS.recoveryGoals.goal('g-1'))
                     })
 
                 it(
@@ -158,7 +159,7 @@ describe(
 
                         await createGoal(input)
                         expect(api.post)
-                            .toHaveBeenCalledWith('/recovery-goals', input)
+                            .toHaveBeenCalledWith(ENDPOINTS.recoveryGoals.base, input)
                     })
 
                 it(
@@ -194,7 +195,7 @@ describe(
 
                         await updateGoal('g-1', patch)
                         expect(api.patch)
-                            .toHaveBeenCalledWith('/recovery-goals/g-1', patch)
+                            .toHaveBeenCalledWith(ENDPOINTS.recoveryGoals.goal('g-1'), patch)
                     })
 
                 it(
@@ -224,7 +225,7 @@ describe(
 
                         await deleteGoal('g-1')
                         expect(api.delete)
-                            .toHaveBeenCalledWith('/recovery-goals/g-1')
+                            .toHaveBeenCalledWith(ENDPOINTS.recoveryGoals.goal('g-1'))
                     })
 
                 it(
@@ -253,7 +254,7 @@ describe(
 
                         await createMilestone('g-1', input)
                         expect(api.post)
-                            .toHaveBeenCalledWith('/recovery-goals/g-1/milestones', input)
+                            .toHaveBeenCalledWith(ENDPOINTS.recoveryGoals.milestones('g-1'), input)
                     })
 
                 it(
@@ -285,7 +286,7 @@ describe(
 
                         await updateMilestone('g-1', 'm-1', patch)
                         expect(api.patch)
-                            .toHaveBeenCalledWith('/recovery-goals/g-1/milestones/m-1', patch)
+                            .toHaveBeenCalledWith(ENDPOINTS.recoveryGoals.milestone('g-1', 'm-1'), patch)
                     })
 
                 it(
@@ -315,7 +316,7 @@ describe(
 
                         await deleteMilestone('g-1', 'm-1')
                         expect(api.delete)
-                            .toHaveBeenCalledWith('/recovery-goals/g-1/milestones/m-1')
+                            .toHaveBeenCalledWith(ENDPOINTS.recoveryGoals.milestone('g-1', 'm-1'))
                     })
 
                 it(
@@ -343,7 +344,7 @@ describe(
 
                         await completeMilestone('g-1', 'm-1')
                         expect(api.patch)
-                            .toHaveBeenCalledWith('/recovery-goals/g-1/milestones/m-1/complete')
+                            .toHaveBeenCalledWith(ENDPOINTS.recoveryGoals.completeMilestone('g-1', 'm-1'))
                     })
 
                 it(
@@ -380,7 +381,7 @@ describe(
 
                         await fetchRecoveryGoalsStats()
                         expect(api.get)
-                            .toHaveBeenCalledWith('/recovery-goals/stats')
+                            .toHaveBeenCalledWith(ENDPOINTS.recoveryGoals.stats)
                     })
 
                 it(

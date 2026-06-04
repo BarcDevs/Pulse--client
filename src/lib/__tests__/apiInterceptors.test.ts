@@ -8,6 +8,7 @@ import {
 } from 'vitest'
 
 import { ROUTES } from '@/constants/routes'
+import { ENDPOINTS } from '@/api/routes'
 
 const mockAuthState = vi.hoisted(() => ({
     isShuttingDown: false,
@@ -107,7 +108,7 @@ describe(
         it(
             'passes through 401 on /auth/login without logout',
             async () => {
-                const error = makeError({ url: '/auth/login' })
+                const error = makeError({ url: ENDPOINTS.auth.login })
                 await expect(
                     handleResponseError(error, mockApi as any)
                 ).rejects.toBe(error)
@@ -117,7 +118,7 @@ describe(
         it(
             'passes through 401 on /auth/signup without logout',
             async () => {
-                const error = makeError({ url: '/auth/signup' })
+                const error = makeError({ url: ENDPOINTS.auth.signup })
                 await expect(
                     handleResponseError(error, mockApi as any)
                 ).rejects.toBe(error)
@@ -127,7 +128,7 @@ describe(
         it(
             'passes through 401 on /auth/refresh without logout',
             async () => {
-                const error = makeError({ url: '/auth/refresh' })
+                const error = makeError({ url: ENDPOINTS.auth.refresh })
                 await expect(
                     handleResponseError(error, mockApi as any)
                 ).rejects.toBe(error)
