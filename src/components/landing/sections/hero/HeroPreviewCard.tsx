@@ -22,9 +22,9 @@ export const HeroPreviewCard = () => {
             <MoodChartCard/>
 
             <div className={'absolute left-[18px] top-[22px] grid grid-cols-7 gap-1 rounded-xl bg-surface-card/85 p-2.5 shadow backdrop-blur-md'}>
-                {STREAK_DOTS.map((cls) => (
+                {STREAK_DOTS.map((cls, i) => (
                     <div
-                        key={cls}
+                        key={i}
                         className={cn('size-2 rounded-[2px]', cls)}
                     />
                 ))}
