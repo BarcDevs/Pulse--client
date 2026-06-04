@@ -11,6 +11,8 @@ import {
     Users
 } from 'lucide-react'
 
+import { ROUTES } from '@/constants/routes'
+
 import { globalLocales } from '@/locales/globalLocales'
 
 export type NavItem = {
@@ -23,37 +25,37 @@ export const mainNavItems: NavItem[] = [
     {
         icon: Home,
         labelKey: globalLocales.nav.sidebar.dashboard,
-        href: '/dashboard'
+        href: ROUTES.DASHBOARD
     },
     {
         icon: CalendarCheck,
         labelKey: globalLocales.nav.sidebar.dailyCheckIn,
-        href: '/daily-checkin'
+        href: ROUTES.DAILY_CHECKIN
     },
     {
         icon: BarChart3,
         labelKey: globalLocales.nav.sidebar.progress,
-        href: '/progress'
+        href: ROUTES.PROGRESS
     },
     {
         icon: Trophy,
         labelKey: globalLocales.nav.sidebar.recoveryGoals,
-        href: '/recovery-goals'
+        href: ROUTES.RECOVERY_GOALS
     },
     {
         icon: Lightbulb,
         labelKey: globalLocales.nav.sidebar.insights,
-        href: '/insights'
+        href: ROUTES.INSIGHTS
     },
     {
         icon: Users,
         labelKey: globalLocales.nav.sidebar.community,
-        href: '/community'
+        href: ROUTES.COMMUNITY
     },
     {
         icon: MessageCircle,
         labelKey: globalLocales.nav.sidebar.chat,
-        href: '/chat'
+        href: ROUTES.CHAT
     }
 ]
 
@@ -61,16 +63,16 @@ export const userMenuItems: NavItem[] = [
     {
         icon: User,
         labelKey: globalLocales.nav.sidebar.profile,
-        href: '/profile'
+        href: ROUTES.PROFILE
     },
     {
         icon: Settings,
         labelKey: globalLocales.nav.sidebar.settings,
-        href: '/profile/settings'
+        href: ROUTES.PROFILE_SETTINGS
     },
     {
         icon: LogOut,
         labelKey: globalLocales.nav.sidebar.logout,
-        href: '/logout'
+        href: ROUTES.LOGOUT
     }
 ]

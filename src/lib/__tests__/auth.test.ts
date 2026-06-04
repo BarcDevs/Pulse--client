@@ -7,6 +7,8 @@ import {
     vi
 } from 'vitest'
 
+import { ROUTES } from '@/constants/routes'
+
 vi.mock(
     '@/config',
     () => ({
@@ -53,7 +55,7 @@ beforeEach(() => {
         writable: true,
         value: {
             href: '',
-            pathname: '/dashboard',
+            pathname: ROUTES.DASHBOARD,
             search: ''
         }
     })
@@ -130,7 +132,7 @@ describe(
                 const result = await performRefresh()
 
                 expect(result).toBe(false)
-                expect(window.location.href).toContain('/login')
+                expect(window.location.href).toContain(ROUTES.LOGIN)
             })
 
         it(
@@ -198,9 +200,9 @@ describe(
         it(
             'redirects to /login with redirectPath param when provided',
             async () => {
-                await initiateLogout('/dashboard/goals')
+                await initiateLogout(ROUTES.RECOVERY_GOALS)
                 expect(window.location.href).toBe(
-                    `/login?redirect=${encodeURIComponent('/dashboard/goals')}`
+                    ROUTES.loginWithRedirect(ROUTES.RECOVERY_GOALS)
                 )
             })
 
@@ -209,7 +211,7 @@ describe(
             async () => {
                 await initiateLogout()
                 expect(window.location.href).toContain(
-                    `/login?redirect=`
+                    `${ROUTES.LOGIN}?redirect=`
                 )
             })
     })

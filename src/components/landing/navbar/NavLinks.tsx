@@ -1,6 +1,8 @@
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 
+import { ROUTES } from '@/constants/routes'
+
 import { landingLocales } from '@/locales/landingLocales'
 
 export const NavLinks = () => {
@@ -15,7 +17,7 @@ export const NavLinks = () => {
                 {t(landingLocales.nav.howItWorks)}
             </Link>
             <Link
-                href={'/community'}
+                href={ROUTES.COMMUNITY}
                 className={'text-sm font-medium text-muted-foreground transition-colors duration-150 hover:text-foreground'}
             >
                 {t(landingLocales.nav.community)}

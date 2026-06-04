@@ -4,20 +4,21 @@ import {
     authRoutes,
     protectedRoutes
 } from '@/constants/proxyRoutes'
+import { ROUTES } from '@/constants/routes'
 
 describe('protectedRoutes', () => {
     it('does not include /community', () => {
-        expect(protectedRoutes).not.toContain('/community')
+        expect(protectedRoutes).not.toContain(ROUTES.COMMUNITY)
     })
 
     it('includes core authenticated routes', () => {
         const expected = [
-            '/dashboard',
-            '/profile',
-            '/check-in',
-            '/insights',
-            '/progress',
-            '/chat'
+            ROUTES.DASHBOARD,
+            ROUTES.PROFILE,
+            ROUTES.CHECK_IN,
+            ROUTES.INSIGHTS,
+            ROUTES.PROGRESS,
+            ROUTES.CHAT
         ]
         expected.forEach((route) => {
             expect(protectedRoutes).toContain(route)
@@ -27,7 +28,7 @@ describe('protectedRoutes', () => {
 
 describe('authRoutes', () => {
     it('includes login and signup', () => {
-        expect(authRoutes).toContain('/login')
-        expect(authRoutes).toContain('/signup')
+        expect(authRoutes).toContain(ROUTES.LOGIN)
+        expect(authRoutes).toContain(ROUTES.SIGNUP)
     })
 })

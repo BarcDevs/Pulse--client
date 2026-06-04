@@ -8,6 +8,8 @@ import { Home } from 'lucide-react'
 import { Icon } from '@/components/shared/ui/Icon'
 import { Button } from '@/components/ui/button'
 
+import { ROUTES } from '@/constants/routes'
+
 import { globalLocales } from '@/locales/globalLocales'
 
 type NotFoundContentProps = {
@@ -39,7 +41,7 @@ export const NotFoundContent = ({
 
             <div className={'flex flex-col sm:flex-row items-center gap-4'}>
                 <Button asChild>
-                    <Link href={'/dashboard'}>
+                    <Link href={ROUTES.DASHBOARD}>
                         <Home className={'w-5 h-5'}/>
                         {t(globalLocales.errors.notFoundPage.returnDashboardBtn)}
                     </Link>

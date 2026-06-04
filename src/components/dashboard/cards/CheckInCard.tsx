@@ -8,6 +8,8 @@ import { ArrowRight, ClipboardCheck } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 
+import { ROUTES } from '@/constants/routes'
+
 import { dashboardLocales } from '@/locales/dashboardLocales'
 
 export const DashboardCheckInCard = () => {
@@ -30,7 +32,7 @@ export const DashboardCheckInCard = () => {
                     variant={'outline'}
                     className={'border-white/30 bg-white text-primary hover:bg-white/90 hover:text-primary'}
                 >
-                    <Link href={'/check-in'}>
+                    <Link href={ROUTES.CHECK_IN}>
                         {t(dashboardLocales.checkIn.button)}
                         <ArrowRight className={'ml-2 size-4'}/>
                     </Link>

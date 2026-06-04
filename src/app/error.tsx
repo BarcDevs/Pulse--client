@@ -6,6 +6,8 @@ import { redirect } from 'next/navigation'
 
 import { ErrorPageContent } from '@/components/shared/error/ErrorPageContent'
 
+import { ROUTES } from '@/constants/routes'
+
 type ErrorProps = {
     error: Error & { digest?: string }
     reset: () => void
@@ -30,7 +32,7 @@ const ErrorPage = ({
     }, [])
 
     if (isNetworkError)
-        redirect('/network-error')
+        redirect(ROUTES.NETWORK_ERROR)
 
     return (
         <ErrorPageContent

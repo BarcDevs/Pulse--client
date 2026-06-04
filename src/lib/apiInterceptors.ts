@@ -17,6 +17,8 @@ import {
     setCsrfToken
 } from '@/lib/csrf'
 
+import { ROUTES } from '@/constants/routes'
+
 export const handleRequestSuccess = (
     config: InternalAxiosRequestConfig
 ) => {
@@ -93,7 +95,7 @@ export const handleResponseError = async (
     const alreadyRetried = originalRequest?._retry
 
     const onCommunityPage = typeof window !== 'undefined'
-        && window.location.pathname.startsWith('/community')
+        && window.location.pathname.startsWith(ROUTES.COMMUNITY)
 
     if (isUnauthorized && !isUnauthEndpoint) {
         if (isCsrfError(error) && !alreadyRetried) {

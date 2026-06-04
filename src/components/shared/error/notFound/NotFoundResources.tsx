@@ -3,6 +3,8 @@
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 
+import { ROUTES } from '@/constants/routes'
+
 import { globalLocales } from '@/locales/globalLocales'
 
 export const NotFoundResources = () => {
@@ -15,7 +17,7 @@ export const NotFoundResources = () => {
                     {t(globalLocales.errors.notFoundPage.resourceCenterLabel)}
                 </span>
                 <Link
-                    href={'/check-in'}
+                    href={ROUTES.CHECK_IN}
                     className={'text-sm font-semibold hover:text-primary transition-colors'}
                 >
                     {t(globalLocales.errors.notFoundPage.dailyJournalLink)}
@@ -26,7 +28,7 @@ export const NotFoundResources = () => {
                     {t(globalLocales.errors.notFoundPage.supportHubLabel)}
                 </span>
                 <Link
-                    href={'/community'}
+                    href={ROUTES.COMMUNITY}
                     className={'text-sm font-semibold hover:text-primary transition-colors'}
                 >
                     {t(globalLocales.errors.notFoundPage.groupMeetingsLink)}

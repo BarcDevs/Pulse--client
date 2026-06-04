@@ -9,6 +9,8 @@ import {
     isValidRedirectUrl
 } from '@/utils/redirect'
 
+import { ROUTES } from '@/constants/routes'
+
 // ==================== isValidRedirectUrl ====================
 describe(
     'isValidRedirectUrl',
@@ -16,13 +18,13 @@ describe(
         it(
             'returns true for relative path',
             () => {
-                expect(isValidRedirectUrl('/dashboard')).toBe(true)
+                expect(isValidRedirectUrl(ROUTES.DASHBOARD)).toBe(true)
             })
 
         it(
             'returns true for path with query string',
             () => {
-                expect(isValidRedirectUrl('/profile?tab=settings')).toBe(true)
+                expect(isValidRedirectUrl(`${ROUTES.PROFILE}?tab=settings`)).toBe(true)
             })
 
         it(
@@ -57,39 +59,40 @@ describe(
         it(
             'returns relative URL as-is',
             () => {
-                expect(getSafeRedirectUrl('/dashboard')).toBe('/dashboard')
+                expect(getSafeRedirectUrl(ROUTES.DASHBOARD)).toBe(ROUTES.DASHBOARD)
             })
 
         it(
             'returns default "/" when null',
             () => {
-                expect(getSafeRedirectUrl(null)).toBe('/')
+                expect(getSafeRedirectUrl(null)).toBe(ROUTES.HOME)
             })
 
         it(
             'returns default "/" when undefined',
             () => {
-                expect(getSafeRedirectUrl(undefined)).toBe('/')
+                expect(getSafeRedirectUrl(undefined)).toBe(ROUTES.HOME)
             })
 
         it(
             'returns default "/" when URL is invalid',
             () => {
-                expect(getSafeRedirectUrl('https://evil.com')).toBe('/')
+                expect(getSafeRedirectUrl('https://evil.com')).toBe(ROUTES.HOME)
             })
 
         it(
             'uses custom default',
             () => {
-                expect(getSafeRedirectUrl(null, '/dashboard')).toBe('/dashboard')
+                expect(getSafeRedirectUrl(null, ROUTES.DASHBOARD))
+                    .toBe(ROUTES.DASHBOARD)
             })
 
         it(
             'decodes encoded relative URL',
             () => {
                 expect(
-                    getSafeRedirectUrl(encodeURIComponent('/dashboard/goals'))
-                ).toBe('/dashboard/goals')
+                    getSafeRedirectUrl(encodeURIComponent(ROUTES.RECOVERY_GOALS))
+                ).toBe(ROUTES.RECOVERY_GOALS)
             })
 
         it(
@@ -97,6 +100,6 @@ describe(
             () => {
                 expect(
                     getSafeRedirectUrl(encodeURIComponent('https://evil.com'))
-                ).toBe('/')
+                ).toBe(ROUTES.HOME)
             })
     })

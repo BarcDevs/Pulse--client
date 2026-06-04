@@ -17,6 +17,8 @@ import {
     CardTitle
 } from '@/components/ui/card'
 
+import { ROUTES } from '@/constants/routes'
+
 import { timings } from '@/config/timings'
 
 import { authLocales } from '@/locales/authLocales'
@@ -32,7 +34,7 @@ const ResetPasswordPage = () => {
 
         setTimeout(() => {
             setIsLoading(false)
-            router.push('/login')
+            router.push(ROUTES.LOGIN)
         }, timings.AUTH_API_DELAY)
     }
 
@@ -62,7 +64,7 @@ const ResetPasswordPage = () => {
                     <p className={'mt-6 text-center text-xs text-muted-foreground'}>
                         {`${t(authLocales.resetPassword.troubleText)} `}
                         <Link
-                            href={'/support'}
+                            href={ROUTES.SUPPORT}
                             className={'text-primary hover:underline'}
                         >
                             {t(authLocales.resetPassword.supportLink)}

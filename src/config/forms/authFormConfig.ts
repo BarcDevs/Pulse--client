@@ -1,5 +1,7 @@
 import { AuthFormType, FormConfig } from '@/types/forms'
 
+import { ROUTES } from '@/constants/routes'
+
 import { authLocales } from '@/locales/authLocales'
 
 type AuthFormConfigs = Record<
@@ -38,7 +40,7 @@ const authFormConfigs: AuthFormConfigs = {
         links: [
             {
                 label: authLocales.login.forgotPasswordLink,
-                href: '/forgot-password'
+                href: ROUTES.FORGOT_PASSWORD
             }
         ]
     },
@@ -87,7 +89,7 @@ const authFormConfigs: AuthFormConfigs = {
         links: [
             {
                 label: authLocales.signup.loginLink,
-                href: '/login'
+                href: ROUTES.LOGIN
             }
         ]
     },
@@ -110,7 +112,7 @@ const authFormConfigs: AuthFormConfigs = {
         links: [
             {
                 label: authLocales.common.backButton,
-                href: '/login'
+                href: ROUTES.LOGIN
             }
         ]
     },
@@ -139,7 +141,7 @@ const authFormConfigs: AuthFormConfigs = {
         links: [
             {
                 label: authLocales.common.backButton,
-                href: '/login'
+                href: ROUTES.LOGIN
             }
         ]
     }

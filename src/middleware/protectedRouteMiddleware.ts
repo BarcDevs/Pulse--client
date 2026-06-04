@@ -4,6 +4,7 @@ import {
 } from 'next/server'
 
 import { protectedRoutes } from '@/constants/proxyRoutes'
+import { ROUTES } from '@/constants/routes'
 
 /**
  * Protects routes requiring authentication
@@ -29,7 +30,7 @@ export const protectedRouteMiddleware = (
         && !sessionCookie
     ) {
         return NextResponse.redirect(
-            new URL('/login', request.url)
+            new URL(ROUTES.LOGIN, request.url)
         )
     }
 

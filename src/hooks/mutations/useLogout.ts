@@ -5,6 +5,8 @@ import {
     useQueryClient
 } from '@tanstack/react-query'
 
+import { ROUTES } from '@/constants/routes'
+
 import { logout as logoutApi } from '@/api/auth'
 
 export const useLogout = () => {
@@ -21,7 +23,7 @@ export const useLogout = () => {
         },
         onSuccess: async () => {
             queryClient.removeQueries()
-            router.push('/')
+            router.push(ROUTES.HOME)
         },
         onError: (error: Error) => {
             console.error('Logout error:', error)

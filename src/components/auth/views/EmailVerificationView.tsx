@@ -7,6 +7,8 @@ import { ArrowLeft, Mail } from 'lucide-react'
 
 import { Card, CardContent } from '@/components/ui/card'
 
+import { ROUTES } from '@/constants/routes'
+
 import { authLocales } from '@/locales/authLocales'
 
 type EmailVerificationViewProps = {
@@ -34,7 +36,7 @@ export const EmailVerificationView = ({
                     </span>
                 </p>
                 <Link
-                    href={'/login'}
+                    href={ROUTES.LOGIN}
                     className={'mt-6 inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline'}
                 >
                     <ArrowLeft className={'size-4'}/>

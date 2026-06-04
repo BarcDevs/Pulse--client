@@ -4,6 +4,8 @@ import { LogIn } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
 
+import { ROUTES } from '@/constants/routes'
+
 export const UserLoginButton = () => (
     <Button
         asChild
@@ -11,7 +13,7 @@ export const UserLoginButton = () => (
         size={'sm'}
     >
         <Link
-            href={'/login'}
+            href={ROUTES.LOGIN}
             className={'flex items-center gap-2'}
         >
             <LogIn className={'size-4'}/>
