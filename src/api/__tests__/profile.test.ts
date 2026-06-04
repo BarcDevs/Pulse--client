@@ -18,6 +18,7 @@ vi.mock(
     } ))
 
 import { api } from '@/api'
+import { ENDPOINTS } from '@/api/routes'
 import {
     getProfile,
     getProfileOptions,
@@ -51,7 +52,7 @@ describe(
 
                         await getProfile()
                         expect(api.get)
-                            .toHaveBeenCalledWith('/profile')
+                            .toHaveBeenCalledWith(ENDPOINTS.profile.base)
                     })
 
                 it(
@@ -78,7 +79,7 @@ describe(
 
                         await updateProfile(updates)
                         expect(api.patch)
-                            .toHaveBeenCalledWith('/profile', updates)
+                            .toHaveBeenCalledWith(ENDPOINTS.profile.base, updates)
                     })
 
                 it(
@@ -105,7 +106,7 @@ describe(
 
                         await getProfileOptions()
                         expect(api.get)
-                            .toHaveBeenCalledWith('/profile/list/activities')
+                            .toHaveBeenCalledWith(ENDPOINTS.profile.listActivities)
                     })
 
                 it(

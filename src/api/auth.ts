@@ -3,6 +3,7 @@ import type { Response } from '@/types/responses'
 import type { Role } from '@/types/user'
 
 import { api } from '@/api/index'
+import { ENDPOINTS } from '@/api/routes'
 import type { ChangeEmailSchema } from '@/validations/forms/changeEmailSchema'
 import type { LoginSchema } from '@/validations/forms/loginSchema'
 import type { SignupSchema } from '@/validations/forms/signupSchema'
@@ -20,7 +21,7 @@ export const login = async (
     credentials: LoginSchema
 ): Promise<AuthResponse> => {
     const res = await api.post<Response<AuthResponse>>(
-        '/auth/login',
+        ENDPOINTS.auth.login,
         credentials
     )
     return res.data.data
@@ -30,7 +31,7 @@ export const signup = async (userData: Omit<
     SignupSchema, 'confirmPassword'
 >): Promise<AuthResponse> => {
     const res = await api.post<Response<AuthResponse>>(
-        '/auth/signup',
+        ENDPOINTS.auth.signup,
         userData
     )
     return res.data.data
@@ -38,13 +39,13 @@ export const signup = async (userData: Omit<
 
 export const getMe = async ():
     Promise<AuthResponse> => {
-    const res = await api.get<Response<AuthResponse>>('/auth/me')
+    const res = await api.get<Response<AuthResponse>>(ENDPOINTS.auth.me)
     return res.data.data
 }
 
 export const logout = async ():
     Promise<null> => {
-    await api.get('/auth/logout')
+    await api.get(ENDPOINTS.auth.logout)
     return null
 }
 
@@ -52,14 +53,14 @@ export const refresh = async ():
     Promise<{ _csrf: string }> => {
     const res = await api.get<Response<{
         _csrf: string
-    }>>('/auth/refresh')
+    }>>(ENDPOINTS.auth.refresh)
     return res.data.data
 }
 
 export const changeEmail = async (
     input: ChangeEmailSchema
 ): Promise<void> => {
-    await api.post('/auth/change-email', input)
+    await api.post(ENDPOINTS.auth.changeEmail, input)
 }
 
 export const confirmEmailChange = async (
@@ -67,6 +68,6 @@ export const confirmEmailChange = async (
 ): Promise<{ user: ConfirmedEmailUser }> => {
     const res = await api.post<Response<{
         user: ConfirmedEmailUser
-    }>>('/auth/confirm-email-change', input)
+    }>>(ENDPOINTS.auth.confirmEmailChange, input)
     return res.data.data
 }

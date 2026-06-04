@@ -18,6 +18,7 @@ import {
 } from '@/lib/csrf'
 
 import { ROUTES } from '@/constants/routes'
+import { ENDPOINTS } from '@/api/routes'
 
 export const handleRequestSuccess = (
     config: InternalAxiosRequestConfig
@@ -62,11 +63,11 @@ export const handleResponseSuccess = (
 }
 
 const UNAUTHENTICATED_ENDPOINTS = [
-    '/auth/login',
-    '/auth/signup',
-    '/auth/refresh',
-    '/auth/logout',
-    '/auth/me'
+    ENDPOINTS.auth.login,
+    ENDPOINTS.auth.signup,
+    ENDPOINTS.auth.refresh,
+    ENDPOINTS.auth.logout,
+    ENDPOINTS.auth.me
 ]
 
 const isCsrfError = (error: AxiosError): boolean => {

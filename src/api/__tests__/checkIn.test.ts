@@ -33,6 +33,7 @@ vi.mock(
     } ))
 
 import { api } from '@/api'
+import { ENDPOINTS } from '@/api/routes'
 import {
     createCheckIn,
     fetchCheckInHistory,
@@ -93,7 +94,7 @@ describe(
                         await fetchCheckIns()
                         expect(api.get)
                             .toHaveBeenCalledWith(
-                                '/check-in',
+                                ENDPOINTS.checkIn.base,
                                 { params: { limit: undefined } }
                             )
                     })
@@ -109,7 +110,7 @@ describe(
                         await fetchCheckIns(5)
                         expect(api.get)
                             .toHaveBeenCalledWith(
-                                '/check-in',
+                                ENDPOINTS.checkIn.base,
                                 { params: { limit: 5 } }
                             )
                     })
@@ -142,7 +143,7 @@ describe(
                         await fetchCheckInHistory()
                         expect(api.get)
                             .toHaveBeenCalledWith(
-                                '/check-in',
+                                ENDPOINTS.checkIn.base,
                                 { params: {} }
                             )
                     })
@@ -158,7 +159,7 @@ describe(
                         await fetchCheckInHistory(7)
                         expect(api.get)
                             .toHaveBeenCalledWith(
-                                '/check-in',
+                                ENDPOINTS.checkIn.base,
                                 { params: { limit: 7 } }
                             )
                     })
@@ -201,7 +202,7 @@ describe(
                         await submitCheckIn(input as never)
                         expect(api.post)
                             .toHaveBeenCalledWith(
-                                '/check-in',
+                                ENDPOINTS.checkIn.base,
                                 input
                             )
                     })
@@ -233,7 +234,7 @@ describe(
 
                         await createCheckIn({} as never)
                         expect(api.post)
-                            .toHaveBeenCalledWith('/check-in', {})
+                            .toHaveBeenCalledWith(ENDPOINTS.checkIn.base, {})
                     })
 
                 it(
@@ -264,7 +265,7 @@ describe(
                         await fetchCheckInStats()
                         expect(api.get)
                             .toHaveBeenCalledWith(
-                                '/check-in/stats',
+                                ENDPOINTS.checkIn.stats,
                                 { params: {} }
                             )
                     })
@@ -280,7 +281,7 @@ describe(
                         await fetchCheckInStats('weekly')
                         expect(api.get)
                             .toHaveBeenCalledWith(
-                                '/check-in/stats',
+                                ENDPOINTS.checkIn.stats,
                                 { params: { period: 'weekly' } }
                             )
                     })
@@ -314,7 +315,7 @@ describe(
                         await patchCheckIn('ci-1', patch as never)
                         expect(api.patch)
                             .toHaveBeenCalledWith(
-                                '/check-in/ci-1',
+                                `${ENDPOINTS.checkIn.base}/ci-1`,
                                 patch
                             )
                     })
@@ -347,7 +348,7 @@ describe(
                         await updateCheckIn('ci-1', { painLevel: 2 } as never)
                         expect(api.patch)
                             .toHaveBeenCalledWith(
-                                '/check-in/ci-1',
+                                `${ENDPOINTS.checkIn.base}/ci-1`,
                                 { painLevel: 2 }
                             )
                     })
@@ -367,7 +368,7 @@ describe(
 
                         await getCheckIn('ci-1')
                         expect(api.get)
-                            .toHaveBeenCalledWith('/check-in/ci-1')
+                            .toHaveBeenCalledWith(`${ENDPOINTS.checkIn.base}/ci-1`)
                     })
 
                 it(

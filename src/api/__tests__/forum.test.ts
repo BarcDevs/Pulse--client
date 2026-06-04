@@ -17,6 +17,7 @@ vi.mock(
         }
     } ))
 
+import { ENDPOINTS } from '@/api/routes'
 import {
     createPost,
     createReply,
@@ -58,7 +59,7 @@ describe(
                         await fetchPosts(query)
                         expect(api.get)
                             .toHaveBeenCalledWith(
-                                '/forum/posts',
+                                ENDPOINTS.forum.posts,
                                 { params: query }
                             )
                     })
@@ -76,7 +77,7 @@ describe(
                         await fetchPosts({})
                         expect(api.get)
                             .toHaveBeenCalledWith(
-                                '/forum/posts',
+                                ENDPOINTS.forum.posts,
                                 { params: {} }
                             )
                     })
@@ -99,7 +100,7 @@ describe(
                         await fetchPost('post-123')
                         expect(api.get)
                             .toHaveBeenCalledWith(
-                                '/forum/posts/post-123'
+                                ENDPOINTS.forum.post('post-123')
                             )
                     })
             })
@@ -127,7 +128,7 @@ describe(
                         await createPost(post)
                         expect(api.post)
                             .toHaveBeenCalledWith(
-                                '/forum/posts',
+                                ENDPOINTS.forum.posts,
                                 { ...post }
                             )
                     })
@@ -159,7 +160,7 @@ describe(
                         )
                         expect(api.put)
                             .toHaveBeenCalledWith(
-                                '/forum/posts/post-123',
+                                ENDPOINTS.forum.post('post-123'),
                                 { ...post }
                             )
                     })
@@ -180,7 +181,7 @@ describe(
                         await deletePost('post-123')
                         expect(api.delete)
                             .toHaveBeenCalledWith(
-                                '/forum/posts/post-123'
+                                ENDPOINTS.forum.post('post-123')
                             )
                     })
             })
@@ -202,7 +203,7 @@ describe(
                         await fetchReplies('post-123')
                         expect(api.get)
                             .toHaveBeenCalledWith(
-                                '/forum/posts/post-123/replies',
+                                ENDPOINTS.forum.replies('post-123'),
                                 { params: undefined }
                             )
 
@@ -227,7 +228,7 @@ describe(
                         )
                         expect(api.get)
                             .toHaveBeenCalledWith(
-                                '/forum/posts/post-123/replies',
+                                ENDPOINTS.forum.replies('post-123'),
                                 { params: { limit: 5, page: 2 } }
                             )
                     })
@@ -264,7 +265,7 @@ describe(
                         )
                         expect(api.post)
                             .toHaveBeenCalledWith(
-                                '/forum/posts/post-123/replies',
+                                ENDPOINTS.forum.replies('post-123'),
                                 { ...reply }
                             )
                     })
@@ -302,7 +303,7 @@ describe(
                         )
                         expect(api.put)
                             .toHaveBeenCalledWith(
-                                '/forum/posts/post-123/replies/reply-1',
+                                ENDPOINTS.forum.reply('post-123', 'reply-1'),
                                 { ...reply }
                             )
                     })

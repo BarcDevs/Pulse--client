@@ -1,6 +1,7 @@
 import type { PartialUser } from '@/types/user'
 
 import { api } from './index'
+import { ENDPOINTS } from './routes'
 
 type UpdateUserInput = {
     firstName?: string
@@ -19,7 +20,7 @@ export const updateUser = async (
     const { data } = await api.patch<{
         data: PartialUser
     }>(
-        '/users/me',
+        ENDPOINTS.users.me,
         updates
     )
     return data.data
@@ -28,9 +29,9 @@ export const updateUser = async (
 export const changePassword = async (
     input: ChangePasswordInput
 ): Promise<void> => {
-    await api.patch('/users/password', input)
+    await api.patch(ENDPOINTS.users.password, input)
 }
 
 export const deleteUser = async (): Promise<void> => {
-    await api.delete('/users/me')
+    await api.delete(ENDPOINTS.users.me)
 }

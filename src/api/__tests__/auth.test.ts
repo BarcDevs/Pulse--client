@@ -16,6 +16,7 @@ vi.mock(
     } ))
 
 import { api } from '@/api'
+import { ENDPOINTS } from '@/api/routes'
 import {
     getMe,
     login,
@@ -58,7 +59,7 @@ describe(
                         await login(credentials)
                         expect(api.post)
                             .toHaveBeenCalledWith(
-                                '/auth/login',
+                                ENDPOINTS.auth.login,
                                 credentials
                             )
                     })
@@ -111,7 +112,7 @@ describe(
                         await signup(userData)
                         expect(api.post)
                             .toHaveBeenCalledWith(
-                                '/auth/signup',
+                                ENDPOINTS.auth.signup,
                                 userData
                             )
                     })
@@ -129,7 +130,7 @@ describe(
 
                         await logout()
                         expect(api.get)
-                            .toHaveBeenCalledWith('/auth/logout')
+                            .toHaveBeenCalledWith(ENDPOINTS.auth.logout)
                     })
             })
 
@@ -150,7 +151,7 @@ describe(
 
                         await refresh()
                         expect(api.get)
-                            .toHaveBeenCalledWith('/auth/refresh')
+                            .toHaveBeenCalledWith(ENDPOINTS.auth.refresh)
                     })
             })
 
@@ -179,7 +180,7 @@ describe(
 
                         await getMe()
                         expect(api.get)
-                            .toHaveBeenCalledWith('/auth/me')
+                            .toHaveBeenCalledWith(ENDPOINTS.auth.me)
                     })
             })
     })

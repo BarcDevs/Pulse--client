@@ -16,6 +16,7 @@ vi.mock(
     } ))
 
 import { api } from '@/api'
+import { ENDPOINTS } from '@/api/routes'
 import {
     changePassword,
     deleteUser,
@@ -54,7 +55,7 @@ describe(
                         await updateUser(updates)
                         expect(api.patch)
                             .toHaveBeenCalledWith(
-                                '/users/me',
+                                ENDPOINTS.users.me,
                                 updates
                             )
                     })
@@ -90,7 +91,7 @@ describe(
                         await changePassword(input)
                         expect(api.patch)
                             .toHaveBeenCalledWith(
-                                '/users/password',
+                                ENDPOINTS.users.password,
                                 input
                             )
                     })
@@ -121,7 +122,7 @@ describe(
 
                         await deleteUser()
                         expect(api.delete)
-                            .toHaveBeenCalledWith('/users/me')
+                            .toHaveBeenCalledWith(ENDPOINTS.users.me)
                     })
 
                 it(

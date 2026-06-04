@@ -4,7 +4,14 @@ export const ENDPOINTS = {
         signup: '/auth/signup',
         logout: '/auth/logout',
         csrf: '/auth/csrf',
-        me: '/auth/me'
+        me: '/auth/me',
+        refresh: '/auth/refresh',
+        changeEmail: '/auth/change-email',
+        confirmEmailChange: '/auth/confirm-email-change'
+    },
+    users: {
+        me: '/users/me',
+        password: '/users/password'
     },
     forum: {
         posts: '/forum/posts',
@@ -30,6 +37,10 @@ export const ENDPOINTS = {
     checkIn: {
         base: '/check-in',
         stats: '/check-in/stats'
+    },
+    profile: {
+        base: '/profile',
+        listActivities: '/profile/list/activities'
     },
     insight: {
         observation: '/insight/observation'
