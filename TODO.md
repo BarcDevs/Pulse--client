@@ -87,6 +87,6 @@ Behavioral intelligence systems require medical/legal caution, behavioral tuning
 
 ## Style / Design
 
-| # | File | Line | Note |
-|---|------|------|------|
-| 1 | `.claude/design/resources/design-canvas.jsx` | — | Apply Claude Design's style guide to components (low priority) |
+| #     | File                                             | Line  | Note                                                               |
+|-------|--------------------------------------------------|-------|--------------------------------------------------------------------|
+| ~~1~~ | ~~`.claude/design/resources/design-canvas.jsx`~~ | ~~—~~ | ~~Apply Claude Design's style guide to components (low priority)~~ |
