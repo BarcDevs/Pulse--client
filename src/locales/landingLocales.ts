@@ -11,7 +11,10 @@ export const landingLocales = {
         startJourney: 'landing.hero.startJourney',
         exploreCommunity: 'landing.hero.exploreCommunity',
         streakLabel: 'landing.hero.streakLabel',
-        moodLabel: 'landing.hero.moodLabel'
+        moodLabel: 'landing.hero.moodLabel',
+        chartPeriod: 'landing.hero.chartPeriod',
+        chartTrend: 'landing.hero.chartTrend',
+        chartToday: 'landing.hero.chartToday'
     },
     features: {
         sectionTitle: 'landing.features.sectionTitle',
@@ -31,7 +34,10 @@ export const landingLocales = {
         step2Desc: 'landing.howItWorks.step2Desc',
         step3Title: 'landing.howItWorks.step3Title',
         step3Desc: 'landing.howItWorks.step3Desc',
-        chartLabel: 'landing.howItWorks.chartLabel'
+        chartLabel: 'landing.howItWorks.chartLabel',
+        statMood: 'landing.howItWorks.statMood',
+        statStreak: 'landing.howItWorks.statStreak',
+        statProgress: 'landing.howItWorks.statProgress'
     },
     cta: {
         headline: 'landing.cta.headline',

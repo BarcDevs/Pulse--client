@@ -1161,7 +1161,10 @@
       "startJourney": "Get Started",
       "exploreCommunity": "Explore Community",
       "streakLabel": "Current Streak",
-      "moodLabel": "Today’s Mood"
+      "moodLabel": "Today's Mood",
+      "chartPeriod": "Last 14 Days",
+      "chartTrend": "Finding More Balance",
+      "chartToday": "Today"
     },
     "features": {
       "sectionTitle": "Designed to Support Recovery",
@@ -1181,7 +1184,10 @@
       "step2Desc": "View clear insights and trends that help you better understand your recovery over time.",
       "step3Title": "Move Forward",
       "step3Desc": "Build supportive routines, track goals, and stay connected to encouragement when you need it.",
-      "chartLabel": "Recovery Trends"
+      "chartLabel": "Recovery Trends",
+      "statMood": "Mood",
+      "statStreak": "Streak",
+      "statProgress": "Progress"
     },
     "cta": {
       "headline": "Start Your Recovery Space",

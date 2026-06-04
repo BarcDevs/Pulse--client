@@ -1154,7 +1154,10 @@
       "startJourney": "התחל את המסע שלך",
       "exploreCommunity": "כניסה לקהילה",
       "streakLabel": "רצף נוכחי",
-      "moodLabel": "מצב הרוח היום"
+      "moodLabel": "מצב הרוח היום",
+      "chartPeriod": "14 הימים האחרונים",
+      "chartTrend": "שיפור הדרגתי",
+      "chartToday": "היום"
     },
     "features": {
       "sectionTitle": "נבנה כדי לתמוך בהחלמה",
@@ -1174,7 +1177,10 @@
       "step2Desc": "לראות מגמות ותובנות שעוזרות להבין את ההתקדמות לאורך זמן.",
       "step3Title": "להמשיך קדימה",
       "step3Desc": "לבנות שגרות תומכות, לעקוב אחר יעדים ולהישאר מחוברים לעידוד כשצריך.",
-      "chartLabel": "מגמות החלמה"
+      "chartLabel": "מגמות החלמה",
+      "statMood": "מצב רוח",
+      "statStreak": "רצף",
+      "statProgress": "התקדמות"
     },
     "cta": {
       "headline": "להתחיל לבנות את מרחב ההחלמה",

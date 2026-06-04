@@ -55,9 +55,9 @@ export const RecoveryChartPreview = () => {
             </div>
 
             <div className={'flex gap-6 border-t border-white/10 pt-5'}>
-                <ChartStat label={'MOOD'} value={'8/10'}/>
-                <ChartStat label={'STREAK'} value={'142'} highlight/>
-                <ChartStat label={'PROGRESS'} value={'+15%'}/>
+                <ChartStat label={t(landingLocales.howItWorks.statMood)} value={'8/10'}/>
+                <ChartStat label={t(landingLocales.howItWorks.statStreak)} value={'142'} highlight/>
+                <ChartStat label={t(landingLocales.howItWorks.statProgress)} value={'+15%'}/>
             </div>
         </div>
     )
