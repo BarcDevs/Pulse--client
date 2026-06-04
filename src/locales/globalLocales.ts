@@ -153,6 +153,7 @@ export const globalLocales = {
             supportMessage: 'global.errors.networkErrorPageTexts.supportMessage'
         },
         inline: {
+            title: 'global.errors.inlineErrorTexts.title',
             generic: 'global.errors.inlineErrorTexts.generic',
             network: 'global.errors.inlineErrorTexts.network',
             tryAgainBtn: 'global.errors.inlineErrorTexts.tryAgainBtn'

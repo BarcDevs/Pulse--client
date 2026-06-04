@@ -1142,6 +1142,7 @@
         "supportMessage": "If you need urgent support, please contact your local care provider or emergency services."
       },
       "inlineErrorTexts": {
+        "title": "Something went wrong.",
         "generic": "Something went wrong, but your progress and information remain safe.",
         "network": "Connection issues are preventing updates right now. Please try again shortly.",
         "tryAgainBtn": "Try Again"

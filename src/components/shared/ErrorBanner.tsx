@@ -34,7 +34,7 @@ export const ErrorBanner = ({
         ? getApiErrorMessage(error, error.message)
         : isNetErr
             ? t(globalLocales.errors.networkErrorPage.title)
-            : 'Something went wrong.'
+            : t(globalLocales.errors.inline.title)
     const description = isNetErr
         ? t(globalLocales.errors.inline.network)
         : t(globalLocales.errors.inline.generic)
