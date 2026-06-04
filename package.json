@@ -4,7 +4,7 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 5173",
+    "dev": "cross-env NODE_OPTIONS=--max-old-space-size=8192 next dev -p 5173",
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
@@ -88,6 +88,7 @@
     "@types/react-dom": "19.2.3",
     "@typescript-eslint/parser": "^8.57.1",
     "@vitejs/plugin-react": "^4.2.1",
+    "cross-env": "^10.1.0",
     "eslint": "^9.39.4",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^7.0.1",
