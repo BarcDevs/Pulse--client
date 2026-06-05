@@ -7,7 +7,6 @@ import {
     vi
 } from 'vitest'
 
-import { ROUTES } from '@/constants/routes'
 import { ENDPOINTS } from '@/api/routes'
 
 const mockAuthState = vi.hoisted(() => ({

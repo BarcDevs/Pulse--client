@@ -99,8 +99,8 @@ export const AuthProvider = ({
     )
 
     useEffect(() => {
-        authState.isCommunityPage
-            = pathname.startsWith(ROUTES.COMMUNITY)
+        authState.isCommunityPage =
+            pathname.startsWith(ROUTES.COMMUNITY)
     }, [pathname])
 
     useEffect(() => {

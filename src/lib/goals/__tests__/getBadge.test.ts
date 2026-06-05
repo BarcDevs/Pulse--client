@@ -4,11 +4,11 @@ import {
     it
 } from 'vitest'
 
-import { GoalBadgeKey } from '@/lib/goals/tokens'
 import {
     getBadge,
     getBadgeLabel
 } from '@/lib/goals/getBadge'
+import { GoalBadgeKey } from '@/lib/goals/tokens'
 
 describe('getBadge', () => {
     it('returns NOT_STARTED at 0', () => {

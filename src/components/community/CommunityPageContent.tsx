@@ -2,7 +2,11 @@
 
 import { useRef, useState } from 'react'
 
-import { usePathname, useRouter, useSearchParams } from 'next/navigation'
+import {
+    usePathname,
+    useRouter,
+    useSearchParams
+} from 'next/navigation'
 import { useTranslations } from 'next-intl'
 
 import { toast } from 'sonner'
@@ -56,7 +60,7 @@ export const CommunityPageContent = () => {
     const debouncedSearch = useDebounce(search)
     const createPost = useCreatePostMutation()
 
-    const postDraftRef = useRef(getDraft(DRAFT_KEYS.newPost))
+    const [postDraft] = useState(() => getDraft(DRAFT_KEYS.newPost)?.data)
 
     const handleOpenNewPost = () => {
         if (!user) {
@@ -144,7 +148,7 @@ export const CommunityPageContent = () => {
                         isLoading={createPost.isPending}
                         onSubmitAction={handlePostSubmit}
                         onCancelAction={() => setIsNewPostOpen(false)}
-                        defaultValues={postDraftRef.current?.data}
+                        defaultValues={postDraft}
                     />
                     <PostList
                         tag={selectedTag}

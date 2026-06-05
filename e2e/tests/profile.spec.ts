@@ -4,7 +4,7 @@ import {
     mockApiFallback,
     mockAuth,
     mockProfile,
-    setEnglishLocale,
+    setEnglishLocale
 } from '../helpers/mockApi'
 
 const API = '**/api/v1'
@@ -17,7 +17,7 @@ test.describe('Profile Edit', () => {
             value: 'mock-access-token',
             domain: 'localhost',
             path: '/',
-            sameSite: 'Lax',
+            sameSite: 'Lax'
         }])
         await mockApiFallback(page)
         await mockAuth(page)
@@ -59,7 +59,7 @@ test.describe('Profile Edit', () => {
             route.fulfill({
                 status: 200,
                 contentType: 'application/json',
-                body: JSON.stringify({ success: true, data: {} }),
+                body: JSON.stringify({ success: true, data: {} })
             })
         )
         await page.getByRole('button', { name: 'Edit profile' }).click()

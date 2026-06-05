@@ -16,7 +16,6 @@ vi.mock(
     } ))
 
 import { api } from '@/api'
-import { ENDPOINTS } from '@/api/routes'
 import {
     getMe,
     login,
@@ -24,6 +23,7 @@ import {
     refresh,
     signup
 } from '@/api/auth'
+import { ENDPOINTS } from '@/api/routes'
 
 // ==================== auth API ====================
 describe(

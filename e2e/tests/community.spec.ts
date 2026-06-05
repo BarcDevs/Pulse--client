@@ -4,7 +4,7 @@ import {
     mockApiFallback,
     mockAuth,
     mockUnauthenticated,
-    setEnglishLocale,
+    setEnglishLocale
 } from '../helpers/mockApi'
 
 test.describe('Community', () => {

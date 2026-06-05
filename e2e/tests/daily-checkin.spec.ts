@@ -5,7 +5,7 @@ import {
     mockAuth,
     mockCheckIn,
     mockProfile,
-    setEnglishLocale,
+    setEnglishLocale
 } from '../helpers/mockApi'
 
 test.describe('Daily Check-In', () => {

@@ -7,7 +7,7 @@ export const mockUser = {
     username: 'testuser',
     email: 'test@example.com',
     role: 'USER' as const,
-    createdAt: '2024-01-01T00:00:00.000Z',
+    createdAt: '2024-01-01T00:00:00.000Z'
 }
 
 const ok = (data: unknown) =>
@@ -23,7 +23,7 @@ export const setEnglishLocale = async (page: Page) => {
         value: 'en-US',
         domain: 'localhost',
         path: '/',
-        sameSite: 'Lax',
+        sameSite: 'Lax'
     }])
 }
 
@@ -35,7 +35,7 @@ export const mockApiFallback = async (page: Page) => {
         route.fulfill({
             status: 200,
             contentType: 'application/json',
-            body: ok(null),
+            body: ok(null)
         })
     )
 }
@@ -45,14 +45,14 @@ export const mockAuth = async (page: Page) => {
         route.fulfill({
             status: 200,
             contentType: 'application/json',
-            body: ok({ user: mockUser, _csrf: 'test-csrf' }),
+            body: ok({ user: mockUser, _csrf: 'test-csrf' })
         })
     )
     await page.route('**/api/v1/auth/refresh', (route) =>
         route.fulfill({
             status: 200,
             contentType: 'application/json',
-            body: ok({ _csrf: 'test-csrf' }),
+            body: ok({ _csrf: 'test-csrf' })
         })
     )
 }
@@ -74,14 +74,14 @@ export const mockCheckIn = async (page: Page) => {
         route.fulfill({
             status: 200,
             contentType: 'application/json',
-            body: ok([]),
+            body: ok([])
         })
     )
     await page.route('**/api/v1/check-in/stats', (route) =>
         route.fulfill({
             status: 200,
             contentType: 'application/json',
-            body: ok(null),
+            body: ok(null)
         })
     )
 }
@@ -91,14 +91,14 @@ export const mockGoals = async (page: Page) => {
         route.fulfill({
             status: 200,
             contentType: 'application/json',
-            body: ok([]),
+            body: ok([])
         })
     )
     await page.route('**/api/v1/recovery-goals/stats', (route) =>
         route.fulfill({
             status: 200,
             contentType: 'application/json',
-            body: ok({ total: 0, completed: 0, active: 0 }),
+            body: ok({ total: 0, completed: 0, active: 0 })
         })
     )
 }
@@ -108,14 +108,14 @@ export const mockProfile = async (page: Page) => {
         route.fulfill({
             status: 200,
             contentType: 'application/json',
-            body: ok(null),
+            body: ok(null)
         })
     )
     await page.route('**/api/v1/profile/list/activities', (route) =>
         route.fulfill({
             status: 200,
             contentType: 'application/json',
-            body: ok([]),
+            body: ok([])
         })
     )
 }
@@ -125,7 +125,7 @@ export const mockInsights = async (page: Page) => {
         route.fulfill({
             status: 200,
             contentType: 'application/json',
-            body: ok([]),
+            body: ok([])
         })
     )
 }

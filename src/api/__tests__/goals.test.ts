@@ -20,7 +20,6 @@ vi.mock(
 import type { GoalInput } from '@/types/goals'
 
 import { api } from '@/api'
-import { ENDPOINTS } from '@/api/routes'
 import {
     completeMilestone,
     createGoal,
@@ -33,6 +32,7 @@ import {
     updateGoal,
     updateMilestone
 } from '@/api/goals'
+import { ENDPOINTS } from '@/api/routes'
 
 const mockGoal = {
     id: 'g-1',

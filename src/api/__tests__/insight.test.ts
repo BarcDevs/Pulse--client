@@ -15,9 +15,9 @@ vi.mock(
     })
 )
 
-import { ENDPOINTS } from '@/api/routes'
-import { fetchTodayObservation } from '@/api/insight'
 import { api } from '@/api/index'
+import { fetchTodayObservation } from '@/api/insight'
+import { ENDPOINTS } from '@/api/routes'
 
 describe('insight API', () => {
     beforeEach(() => {

@@ -33,7 +33,6 @@ vi.mock(
     } ))
 
 import { api } from '@/api'
-import { ENDPOINTS } from '@/api/routes'
 import {
     createCheckIn,
     fetchCheckInHistory,
@@ -44,6 +43,7 @@ import {
     submitCheckIn,
     updateCheckIn
 } from '@/api/checkIn'
+import { ENDPOINTS } from '@/api/routes'
 
 const mockCheckIn = {
     id: 'ci-1',

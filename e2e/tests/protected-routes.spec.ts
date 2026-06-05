@@ -1,6 +1,10 @@
 import { expect, test } from '@playwright/test'
 
-import { mockApiFallback, mockUnauthenticated, setEnglishLocale } from '../helpers/mockApi'
+import {
+    mockApiFallback,
+    mockUnauthenticated,
+    setEnglishLocale
+} from '../helpers/mockApi'
 
 // Only routes listed in src/constants/proxyRoutes.ts protectedRoutes
 const PROTECTED = ['/dashboard', '/check-in', '/profile', '/insights', '/progress']

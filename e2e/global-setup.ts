@@ -1,9 +1,13 @@
 import { chromium } from '@playwright/test'
 
 const mockUser = {
-    id: 'test-user-1', firstName: 'Test', lastName: 'User',
-    username: 'testuser', email: 'test@example.com',
-    role: 'USER', createdAt: '2024-01-01T00:00:00.000Z',
+    id: 'test-user-1',
+    firstName: 'Test',
+    lastName: 'User',
+    username: 'testuser',
+    email: 'test@example.com',
+    role: 'USER',
+    createdAt: '2024-01-01T00:00:00.000Z'
 }
 const ok = (data: unknown) => JSON.stringify({ success: true, data })
 
@@ -30,35 +34,83 @@ export default async function globalSetup() {
         const base = 'http://localhost:5173'
 
         await context.addCookies([
-            { name: 'NEXT_LOCALE', value: 'en-US', domain: 'localhost', path: '/', sameSite: 'Lax' },
-            { name: 'accessToken', value: 'warmup-token', domain: 'localhost', path: '/', sameSite: 'Lax' },
+            {
+                name: 'NEXT_LOCALE',
+                value: 'en-US',
+                domain: 'localhost',
+                path: '/',
+                sameSite: 'Lax'
+            },
+            {
+                name: 'accessToken',
+                value: 'warmup-token',
+                domain: 'localhost',
+                path: '/',
+                sameSite: 'Lax'
+            }
         ])
 
         // All API calls are mocked so no auth redirect fires
         await page.route('**/api/**', (route) =>
-            route.fulfill({ status: 200, contentType: 'application/json', body: ok(null) })
+            route.fulfill({
+                status: 200,
+                contentType: 'application/json',
+                body: ok(null)
+            })
         )
         await page.route('**/api/v1/auth/me', (route) =>
-            route.fulfill({ status: 200, contentType: 'application/json', body: ok({ user: mockUser, _csrf: 'warmup-csrf' }) })
+            route.fulfill({
+                status: 200,
+                contentType: 'application/json',
+                body: ok({ user: mockUser, _csrf: 'warmup-csrf' })
+            })
         )
         await page.route('**/api/v1/auth/refresh', (route) =>
-            route.fulfill({ status: 200, contentType: 'application/json', body: ok({ _csrf: 'warmup-csrf' }) })
+            route.fulfill({
+                status: 200,
+                contentType: 'application/json',
+                body: ok({ _csrf: 'warmup-csrf' })
+            })
         )
         await page.route('**/api/v1/check-in**', (route) =>
-            route.fulfill({ status: 200, contentType: 'application/json', body: ok([]) })
+            route.fulfill({
+                status: 200,
+                contentType: 'application/json',
+                body: ok([])
+            })
         )
         await page.route('**/api/v1/recovery-goals**', (route) =>
-            route.fulfill({ status: 200, contentType: 'application/json', body: ok([]) })
+            route.fulfill({
+                status: 200,
+                contentType: 'application/json',
+                body: ok([])
+            })
         )
         await page.route('**/api/v1/profile**', (route) =>
-            route.fulfill({ status: 200, contentType: 'application/json', body: ok(null) })
+            route.fulfill({
+                status: 200,
+                contentType: 'application/json',
+                body: ok(null)
+            })
         )
         await page.route('**/api/v1/insight**', (route) =>
-            route.fulfill({ status: 200, contentType: 'application/json', body: ok([]) })
+            route.fulfill({
+                status: 200,
+                contentType: 'application/json',
+                body: ok([])
+            })
         )
 
         // Phase 1a: compile all pages except community (avoid triggering react-quill-new early)
-        for (const path of ['/dashboard', '/daily-checkin', '/recovery-goals', '/check-in', '/profile', '/insights', '/progress']) {
+        for (const path of [
+            '/dashboard',
+            '/daily-checkin',
+            '/recovery-goals',
+            '/check-in',
+            '/profile',
+            '/insights',
+            '/progress'
+        ]) {
             await page.goto(`${base}${path}`, { waitUntil: 'load', timeout: 30_000 })
         }
 
@@ -87,7 +139,13 @@ export default async function globalSetup() {
         // Phase 1.5: compile login form validation chunks (needs no accessToken)
         await context.clearCookies()
         await context.addCookies([
-            { name: 'NEXT_LOCALE', value: 'en-US', domain: 'localhost', path: '/', sameSite: 'Lax' },
+            {
+                name: 'NEXT_LOCALE',
+                value: 'en-US',
+                domain: 'localhost',
+                path: '/',
+                sameSite: 'Lax'
+            }
         ])
         await page.goto(`${base}/login`, { waitUntil: 'load', timeout: 30_000 })
         await page.getByRole('button', { name: 'Log in' }).click()
@@ -95,8 +153,20 @@ export default async function globalSetup() {
 
         await context.clearCookies()
         await context.addCookies([
-            { name: 'NEXT_LOCALE', value: 'en-US', domain: 'localhost', path: '/', sameSite: 'Lax' },
-            { name: 'accessToken', value: 'warmup-token', domain: 'localhost', path: '/', sameSite: 'Lax' },
+            {
+                name: 'NEXT_LOCALE',
+                value: 'en-US',
+                domain: 'localhost',
+                path: '/',
+                sameSite: 'Lax'
+            },
+            {
+                name: 'accessToken',
+                value: 'warmup-token',
+                domain: 'localhost',
+                path: '/',
+                sameSite: 'Lax'
+            }
         ])
 
         // Phase 2a: open the post form on community to compile react-quill-new.
@@ -124,14 +194,28 @@ export default async function globalSetup() {
 
         // Phase 2c: visit all other authenticated pages to refresh their RSC payloads
         // with the post-rechunk Turbopack manifest.
-        for (const path of ['/dashboard', '/daily-checkin', '/recovery-goals', '/check-in', '/profile', '/insights', '/progress']) {
+        for (const path of [
+            '/dashboard',
+            '/daily-checkin',
+            '/recovery-goals',
+            '/check-in',
+            '/profile',
+            '/insights',
+            '/progress'
+        ]) {
             await page.goto(`${base}${path}`, { waitUntil: 'networkidle', timeout: 30_000 })
         }
 
         // Phase 2.5: unauthenticated re-visit for /login RSC cache refresh
         await context.clearCookies()
         await context.addCookies([
-            { name: 'NEXT_LOCALE', value: 'en-US', domain: 'localhost', path: '/', sameSite: 'Lax' },
+            {
+                name: 'NEXT_LOCALE',
+                value: 'en-US',
+                domain: 'localhost',
+                path: '/',
+                sameSite: 'Lax'
+            }
         ])
         await page.goto(`${base}/login`, { waitUntil: 'networkidle', timeout: 30_000 })
 

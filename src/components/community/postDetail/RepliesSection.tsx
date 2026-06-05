@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef } from 'react'
+import { useState } from 'react'
 
 import { useTranslations } from 'next-intl'
 
@@ -47,7 +47,7 @@ export const RepliesSection = ({
         setIsReplyFormOpen
     } = usePostDetail()
 
-    const replyDraftRef = useRef(getDraft(DRAFT_KEYS.newReply(postId)))
+    const [replyDraft] = useState(() => getDraft(DRAFT_KEYS.newReply(postId))?.data)
 
     const {
         replies,
@@ -110,7 +110,7 @@ export const RepliesSection = ({
                     isLoading={isPending}
                     onSubmitAction={handleReplySubmit}
                     onCancelAction={() => setIsReplyFormOpen(false)}
-                    defaultValues={replyDraftRef.current?.data}
+                    defaultValues={replyDraft}
                 />
             )}
 

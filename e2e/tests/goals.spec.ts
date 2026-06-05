@@ -6,7 +6,7 @@ import {
     mockGoals,
     mockInsights,
     mockProfile,
-    setEnglishLocale,
+    setEnglishLocale
 } from '../helpers/mockApi'
 
 test.describe('Recovery Goals', () => {

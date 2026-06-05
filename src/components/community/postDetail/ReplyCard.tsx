@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, useState } from 'react'
+import { useState } from 'react'
 
 import { useTranslations } from 'next-intl'
 
@@ -76,8 +76,8 @@ export const ReplyCard = ({
     )
     const sanitizedBody = sanitizeHtml(reply.body)
     const isEdited = reply.updatedAt !== null
-    const editDraftRef = useRef(
-        getDraft(DRAFT_KEYS.updateReply(postId, reply.id))
+    const [editDraft] = useState(() =>
+        getDraft(DRAFT_KEYS.updateReply(postId, reply.id))?.data
     )
 
     const { author } = reply
@@ -169,7 +169,7 @@ export const ReplyCard = ({
                         onSubmitAction={handleUpdate}
                         onCancelAction={() => setIsEditing(false)}
                         defaultValues={
-                            editDraftRef.current?.data
+                            editDraft
                             ?? { body: reply.body }
                         }
                         submitLabel={t(communityLocales.postForm.saveChanges)}

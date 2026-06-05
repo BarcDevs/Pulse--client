@@ -18,12 +18,12 @@ vi.mock(
     } ))
 
 import { api } from '@/api'
-import { ENDPOINTS } from '@/api/routes'
 import {
     getProfile,
     getProfileOptions,
     updateProfile
 } from '@/api/profile'
+import { ENDPOINTS } from '@/api/routes'
 
 const mockProfile = {
     id: 'p-1',

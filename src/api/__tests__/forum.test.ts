@@ -17,7 +17,6 @@ vi.mock(
         }
     } ))
 
-import { ENDPOINTS } from '@/api/routes'
 import {
     createPost,
     createReply,
@@ -29,6 +28,7 @@ import {
     updateReply
 } from '@/api/forum'
 import { api } from '@/api/index'
+import { ENDPOINTS } from '@/api/routes'
 
 // ==================== forum API ====================
 describe(

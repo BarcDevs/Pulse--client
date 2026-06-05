@@ -38,14 +38,22 @@ const locale = {} as Locale
 describe('getAuthorDisplayName', () => {
     it('returns full name when firstName and lastName present', () => {
         const author = {
-            user: { firstName: 'Jane', lastName: 'Smith', username: 'janesmith' }
+            user: {
+                firstName: 'Jane',
+                lastName: 'Smith',
+                username: 'janesmith'
+            }
         } as Parameters<typeof getAuthorDisplayName>[0]
         expect(getAuthorDisplayName(author)).toBe('Jane Smith')
     })
 
     it('falls back to username when names are missing', () => {
         const author = {
-            user: { firstName: '', lastName: '', username: 'janesmith' }
+            user: {
+                firstName: '',
+                lastName: '',
+                username: 'janesmith'
+            }
         } as Parameters<typeof getAuthorDisplayName>[0]
         expect(getAuthorDisplayName(author)).toBe('janesmith')
     })

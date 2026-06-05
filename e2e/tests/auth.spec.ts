@@ -4,7 +4,7 @@ import {
     mockApiFallback,
     mockAuth,
     mockUser,
-    setEnglishLocale,
+    setEnglishLocale
 } from '../helpers/mockApi'
 
 const API = '**/api/v1'
@@ -35,8 +35,8 @@ test.describe('Login', () => {
                 contentType: 'application/json',
                 body: JSON.stringify({
                     success: false,
-                    message: 'Invalid credentials',
-                }),
+                    message: 'Invalid credentials'
+                })
             })
         )
 
@@ -55,15 +55,15 @@ test.describe('Login', () => {
                 value: 'mock-access-token',
                 domain: 'localhost',
                 path: '/',
-                sameSite: 'Lax',
+                sameSite: 'Lax'
             }])
             await route.fulfill({
                 status: 200,
                 contentType: 'application/json',
                 body: JSON.stringify({
                     success: true,
-                    data: { user: mockUser, _csrf: 'test-csrf' },
-                }),
+                    data: { user: mockUser, _csrf: 'test-csrf' }
+                })
             })
         })
         await mockAuth(page)
