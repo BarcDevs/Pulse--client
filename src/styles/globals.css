@@ -277,7 +277,7 @@
 }
 
 @theme inline {
-    --font-sans: 'Inter', system-ui, sans-serif;
+    --font-sans: var(--font-inter), var(--font-noto-sans-hebrew), system-ui, sans-serif;
     --font-mono: 'Geist Mono', monospace;
     --color-background: var(--background);
     --color-foreground: var(--foreground);
