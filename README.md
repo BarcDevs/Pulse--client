@@ -192,4 +192,3 @@ Currently deployed on **Render** with automatic builds from main branch. Future 
 - 📖 [Backend Repository](https://github.com/BarcDevs/HealEase--server)
 - 📋 [Technical PRD](https://www.notion.so/HealEase-technical-PRD-3599e15469d280aa940cd64b53b46d38)
 - 🐛 [Issues](https://github.com/BarcDevs/HealEase--client/issues)
-- 💬 [Community Forum](https://healease-client.onrender.com/forum)

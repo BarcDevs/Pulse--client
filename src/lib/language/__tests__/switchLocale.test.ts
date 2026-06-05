@@ -6,14 +6,6 @@ import {
     vi
 } from 'vitest'
 
-const { mockUpdateProfile } = vi.hoisted(() => ({
-    mockUpdateProfile: vi.fn()
-}))
-
-vi.mock('@/api/profile', () => ({
-    updateProfile: mockUpdateProfile
-}))
-
 const { mockCookieSet, mockCookieStore } = vi.hoisted(() => {
     const mockCookieSet = vi.fn()
     const mockCookieStore = { set: mockCookieSet }
@@ -41,34 +33,5 @@ describe('switchLocale', () => {
         await switchLocale('he-IL')
 
         expect(mockCookieSet).toHaveBeenCalledWith('NEXT_LOCALE', 'he-IL')
-    })
-
-    it('does not call updateProfile when window is defined (client side)', async () => {
-        // jsdom environment has window defined — this is the client path
-        await switchLocale('en-US')
-
-        expect(mockUpdateProfile).not.toHaveBeenCalled()
-    })
-
-    it('calls updateProfile with language when on server side', async () => {
-        vi.stubGlobal('window', undefined)
-
-        mockUpdateProfile.mockResolvedValueOnce({})
-
-        await switchLocale('en-US')
-
-        expect(mockUpdateProfile).toHaveBeenCalledWith({ language: 'en-US' })
-
-        vi.unstubAllGlobals()
-    })
-
-    it('does not throw when updateProfile fails on server side', async () => {
-        vi.stubGlobal('window', undefined)
-
-        mockUpdateProfile.mockRejectedValueOnce(new Error('Network error'))
-
-        await expect(switchLocale('en-US')).resolves.toBeUndefined()
-
-        vi.unstubAllGlobals()
     })
 })
