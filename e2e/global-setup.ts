@@ -128,6 +128,7 @@ export default async function globalSetup() {
 
         // Trigger profile edit mode to compile BasicInfoForm + DatePickerInput chunks
         await page.goto(`${base}/profile`, { waitUntil: 'load', timeout: 30 * secondInMs })
+        await page.waitForLoadState('networkidle', { timeout: 15 * secondInMs }).catch(() => {})
         const editProfileBtn = page.getByRole('button', { name: 'Edit profile' })
         if (await editProfileBtn.isVisible({ timeout: 5 * secondInMs }).catch(() => false)) {
             await editProfileBtn.click()
