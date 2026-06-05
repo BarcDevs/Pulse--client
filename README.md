@@ -52,7 +52,7 @@ Lightweight, supportive insights generated from check-in patterns help detect tr
 | **Routing** | Next.js App Router (file-based)                       |
 | **Forms** | react-hook-form, Zod                                  |
 | **HTTP** | Axios with CSRF interceptors                          |
-| **State** | Redux Toolkit, TanStack Query, Next.js Context        |
+| **State** | TanStack Query, Next.js Context                       |
 | **Deployment** | Render (current), AWS (future production)             |
 
 **Note**: This is a frontend-only repository. The backend API runs separately.
@@ -106,19 +106,18 @@ npm run typecheck # TypeScript type checking
 
 ## Folder Structure
 
-See [docs/structure.md](./docs/structure.md) for complete structure.
+See [docs/structure.md](docs/STRUCTURE.md) for complete structure.
 
 Key directories:
 - **src/app/** — Next.js App Router (file-based routing)
 - **src/api/** — API client modules by domain
 - **src/components/** — React components (ui, shared, layout, feature-specific)
 - **src/hooks/** — Custom React hooks
-- **src/store/** — Redux Toolkit state management
 - **src/services/** — Business logic and utilities
 - **src/validations/** — Zod validation schemas
 - **src/types/** — TypeScript type definitions
 - **src/constants/** — App constants and configuration
-- **src/context/** — React Context providers
+- **src/context/** — React Context providers (auth state management)
 - **src/config/** — Environment and feature configuration
 
 ---
@@ -127,7 +126,7 @@ Key directories:
 
 [Architecture Diagram](https://www.notion.so/HealEase-structure-diagram-30d9e15469d280468f41e0d8925c6c98?source=copy_link)
 
-See [docs/TECHNICAL_PRD.md](./docs/TECHNICAL_PRD.md) for:
+See [Technical PRD](https://www.notion.so/HealEase-technical-PRD-3599e15469d280aa940cd64b53b46d38) for:
 - System architecture
 - Data models
 - API specification
@@ -144,7 +143,7 @@ Code follows [CLAUDE.md](./CLAUDE.md) conventions:
 - Single quotes, no semicolons, 4-space indentation
 - shadcn/ui for UI components
 - Centralized API client with CSRF protection
-- Redux for global state
+- TanStack Query for state management
 
 ---
 
@@ -166,7 +165,7 @@ HealEase supports two authentication methods:
 Both methods use the same session system:
 - JWT stored in HTTP-only `accessToken` cookie (auto-sent on requests)
 - CSRF token in `_csrf` cookie (read and sent as `x-csrf-token` header for mutations)
-- Redux state tracks authenticated user
+- React Context (AuthContext) with TanStack Query manages authenticated user
 - Auto-refresh of auth state on app mount and periodic validation
 
 ---
@@ -191,6 +190,6 @@ Currently deployed on **Render** with automatic builds from main branch. Future 
 ## Support & Contribution
 
 - 📖 [Backend Repository](https://github.com/BarcDevs/HealEase--server)
-- 📋 [Technical PRD](./docs/TECHNICAL_PRD.md)
+- 📋 [Technical PRD](https://www.notion.so/HealEase-technical-PRD-3599e15469d280aa940cd64b53b46d38)
 - 🐛 [Issues](https://github.com/BarcDevs/HealEase--client/issues)
 - 💬 [Community Forum](https://healease-client.onrender.com/forum)

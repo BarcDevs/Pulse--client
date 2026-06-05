@@ -1,16 +1,23 @@
-import { describe, expect, it } from 'vitest'
+import {
+    describe,
+    expect,
+    it
+} from 'vitest'
 
-import { postSchema } from '@/validations/forms/postSchema'
+import { createPostSchema } from '@/validations/forms/postSchema'
+
+import { mockLocales } from './mockLocales'
+
+const postSchema = createPostSchema(mockLocales)
 
 // ==================== postSchema ====================
 describe(
     'postSchema',
     () => {
         const validPost = {
-            category: 'fractures',
+            category: 'recovery',
             title: 'A valid post title here',
-            body: 'This is valid body content that is ' +
-                'long enough for testing the schema.',
+            body: 'This is valid body content that is long enough for testing the schema.',
             tags: ['TAG']
         }
 
@@ -29,25 +36,22 @@ describe(
                     tags: ['lowercase']
                 })
                 expect(result.success).toBe(true)
-                if ( result.success ) {
-                    expect(result.data.tags[ 0 ]).toBe('LOWERCASE')
-                }
+                if (result.success)
+                    expect(result.data.tags[0]).toBe('LOWERCASE')
             })
 
         it(
             'should accept all valid category keys',
             () => {
                 const validKeys = [
-                    'fractures',
-                    'spinals',
-                    'brain',
-                    'musculoskeletal',
-                    'physical',
-                    'occupational',
-                    'coping',
-                    'emotional',
-                    'introduction',
-                    'success',
+                    'recovery',
+                    'therapy',
+                    'mental',
+                    'milestones',
+                    'lifestyle',
+                    'support',
+                    'questions',
+                    'stories',
                     'discussion'
                 ]
                 validKeys.forEach(key => {
@@ -77,11 +81,10 @@ describe(
                     category: 'nonexistent'
                 })
                 expect(result.success).toBe(false)
-                if ( !result.success ) {
+                if (!result.success) {
                     const categoryIssue =
                         result.error.issues.find(
-                            i => i.message ===
-                                'Category is invalid'
+                            (i) => i.message === 'Category is invalid'
                         )
                     expect(categoryIssue).toBeDefined()
                 }
@@ -105,11 +108,10 @@ describe(
                     title: 'Hi'
                 })
                 expect(result.success).toBe(false)
-                if ( !result.success ) {
+                if (!result.success) {
                     const titleIssue =
                         result.error.issues.find(
-                            i => i.message ===
-                                'Title is too short'
+                            i => i.message === 'Title is too short'
                         )
                     expect(titleIssue).toBeDefined()
                 }
@@ -123,11 +125,10 @@ describe(
                     title: 'A'.repeat(101)
                 })
                 expect(result.success).toBe(false)
-                if ( !result.success ) {
+                if (!result.success) {
                     const titleIssue =
                         result.error.issues.find(
-                            i => i.message ===
-                                'Title is too long'
+                            i => i.message === 'Title is too long'
                         )
                     expect(titleIssue).toBeDefined()
                 }
@@ -167,11 +168,11 @@ describe(
                     body: 'Short body'
                 })
                 expect(result.success).toBe(false)
-                if ( !result.success ) {
+                if (!result.success) {
                     const bodyIssue =
                         result.error.issues.find(
-                            i => i.message ===
-                                'Content is too short'
+                            i => i.message
+                                === 'Content is too short'
                         )
                     expect(bodyIssue).toBeDefined()
                 }
@@ -185,7 +186,7 @@ describe(
                     body: 'A'.repeat(301)
                 })
                 expect(result.success).toBe(false)
-                if ( !result.success ) {
+                if (!result.success) {
                     const bodyIssue =
                         result.error.issues.find(
                             i => i.message.includes(
@@ -204,21 +205,21 @@ describe(
                     tags: []
                 })
                 expect(result.success).toBe(false)
-                if ( !result.success ) {
-                    expect(result.error.issues[ 0 ].message)
+                if (!result.success) {
+                    expect(result.error.issues[0].message)
                         .toBe('At least one tag is required')
                 }
             })
 
         it(
-            'should reject more than 3 tags',
+            'should reject more than 5 tags',
             () => {
                 const result = postSchema.safeParse({
                     ...validPost,
-                    tags: ['TAG1', 'TAG2', 'TAG3', 'TAG4']
+                    tags: ['TAG1', 'TAG2', 'TAG3', 'TAG4', 'TAG5', 'TAG6']
                 })
                 expect(result.success).toBe(false)
-                if ( !result.success ) {
+                if (!result.success) {
                     const tagIssue =
                         result.error.issues.find(
                             i => i.message.includes(
@@ -240,14 +241,14 @@ describe(
             })
 
         it(
-            'should reject tags shorter than 3 characters',
+            'should reject tags shorter than 2 characters',
             () => {
                 const result = postSchema.safeParse({
                     ...validPost,
-                    tags: ['AB']
+                    tags: ['A']
                 })
                 expect(result.success).toBe(false)
-                if ( !result.success ) {
+                if (!result.success) {
                     const tagIssue =
                         result.error.issues.find(
                             i => i.message === 'Tag is too short'
@@ -257,14 +258,14 @@ describe(
             })
 
         it(
-            'should reject tags longer than 15 characters',
+            'should reject tags longer than 20 characters',
             () => {
                 const result = postSchema.safeParse({
                     ...validPost,
-                    tags: ['A'.repeat(16)]
+                    tags: ['A'.repeat(21)]
                 })
                 expect(result.success).toBe(false)
-                if ( !result.success ) {
+                if (!result.success) {
                     const tagIssue =
                         result.error.issues.find(
                             i => i.message === 'Tag is too long'
@@ -278,13 +279,13 @@ describe(
             () => {
                 const minResult = postSchema.safeParse({
                     ...validPost,
-                    tags: ['ABC']
+                    tags: ['AB']
                 })
                 expect(minResult.success).toBe(true)
 
                 const maxResult = postSchema.safeParse({
                     ...validPost,
-                    tags: ['A'.repeat(15)]
+                    tags: ['A'.repeat(20)]
                 })
                 expect(maxResult.success).toBe(true)
             })

@@ -1,17 +1,23 @@
-export type CheckInInsightType = 'tip' | 'warning' | 'positive'
+export type CheckInInsightType = 'MOOD_DROP_ALERT' | 'MOTIVATIONAL' | 'WEEKLY_SUMMARY'
 
 export type CheckInInsight = {
     id: string
+    checkInId: string
     type: CheckInInsightType
-    text: string
-    content?: string
+    content: string
+    title: string
+    userId: string
+    classification: string
+    priority: 'high' | 'normal'
+    metadata?: Record<string, unknown>
+    createdAt: string
 }
 
 export type MoodPainSeriesPoint = {
     date: string
-    mood: number
-    pain: number
-    energy?: number
+    originalDate: string
+    mood: number | null
+    pain: number | null
 }
 
 export type CheckIn = {
@@ -20,7 +26,6 @@ export type CheckIn = {
     checkInDate: string
     moodScore: number
     painLevel: number
-    energy?: number
     activities: string[]
     notes?: string
     insights?: CheckInInsight[]
@@ -36,6 +41,12 @@ export type CheckInInput = {
     notes?: string
 }
 
+export type TrendPoint = {
+    date: string
+    actual: number | null
+    target?: number
+}
+
 export type CheckInStats = {
     total: number
     totalCheckIns: number
@@ -46,6 +57,9 @@ export type CheckInStats = {
     topActivities: string[]
     currentStreak: number
     longestStreak: number
+    moodTrend: TrendPoint[]
+    painTrend: TrendPoint[]
+    milestonesAchieved: number
 }
 
 export type PaginatedResponse<T> = {

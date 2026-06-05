@@ -15,14 +15,15 @@ vi.mock(
         }
     } ))
 
+import { api } from '@/api'
 import {
-    getCsrfToken,
     getMe,
     login,
     logout,
+    refresh,
     signup
 } from '@/api/auth'
-import { api } from '@/api/index'
+import { ENDPOINTS } from '@/api/routes'
 
 // ==================== auth API ====================
 describe(
@@ -58,7 +59,7 @@ describe(
                         await login(credentials)
                         expect(api.post)
                             .toHaveBeenCalledWith(
-                                '/auth/login',
+                                ENDPOINTS.auth.login,
                                 credentials
                             )
                     })
@@ -83,7 +84,7 @@ describe(
                             password: 'Test@1234',
                             remember: false
                         })
-                        expect(result).toEqual(mockResponse)
+                        expect(result).toEqual(mockResponse.data.data)
                     })
             })
 
@@ -111,7 +112,7 @@ describe(
                         await signup(userData)
                         expect(api.post)
                             .toHaveBeenCalledWith(
-                                '/auth/signup',
+                                ENDPOINTS.auth.signup,
                                 userData
                             )
                     })
@@ -129,16 +130,16 @@ describe(
 
                         await logout()
                         expect(api.get)
-                            .toHaveBeenCalledWith('/auth/logout')
+                            .toHaveBeenCalledWith(ENDPOINTS.auth.logout)
                     })
             })
 
-        // ==================== getCsrfToken ====================
+        // ==================== refresh ====================
         describe(
-            'getCsrfToken',
+            'refresh',
             () => {
                 it(
-                    'should GET /auth/csrf',
+                    'should GET /auth/refresh',
                     async () => {
                         vi.mocked(api.get)
                             .mockResolvedValueOnce({
@@ -148,9 +149,9 @@ describe(
                                 }
                             })
 
-                        await getCsrfToken()
+                        await refresh()
                         expect(api.get)
-                            .toHaveBeenCalledWith('/auth/csrf')
+                            .toHaveBeenCalledWith(ENDPOINTS.auth.refresh)
                     })
             })
 
@@ -179,7 +180,7 @@ describe(
 
                         await getMe()
                         expect(api.get)
-                            .toHaveBeenCalledWith('/auth/me')
+                            .toHaveBeenCalledWith(ENDPOINTS.auth.me)
                     })
             })
     })

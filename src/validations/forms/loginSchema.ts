@@ -1,17 +1,22 @@
 import * as z from 'zod'
 
-import config from '@/config/schema/authForm'
+import { TranslatorFn } from '@/types/i18n'
 
-export const loginSchema = z.object({
-    email: z.string()
-        .min(1, 'Email is required')
-        .email('Invalid email'),
-    password: z.string()
-        .min(1, 'Password is required')
-        .min(config.password.minLength,
-            `Password must be at least ${config.password.minLength} characters`)
-        .regex(config.password.format, config.password.formatMessage),
-    remember: z.boolean()
-})
+import { validationLocales } from '@/locales/validationLocales'
 
-export type LoginSchema = z.infer<typeof loginSchema>
+import { passwordField } from './validators'
+
+export const createLoginSchema = (t: TranslatorFn) =>
+    z.object({
+        email: z.string()
+            .min(1, t(validationLocales.email.required))
+            .email(t(validationLocales.email.invalid)),
+        password: passwordField(
+            t,
+            t(validationLocales.password.required)
+        ),
+        remember: z.boolean()
+    })
+
+export type LoginSchema =
+    z.infer<ReturnType<typeof createLoginSchema>>

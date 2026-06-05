@@ -1,0 +1,1308 @@
+{
+  "common": {
+    "retry": "נסה שוב",
+    "loginButton": "כניסה",
+    "download": "הורדה",
+    "share": "שיתוף",
+    "pickDate": "בחר תאריך",
+    "fields": {
+      "firstName": "שם פרטי",
+      "lastName": "שם משפחה",
+      "email": "כתובת אימייל",
+      "location": "מיקום",
+      "username": "שם משתמש"
+    }
+  },
+  "auth": {
+    "common": {
+      "emailLabel": "כתובת אימייל",
+      "passwordLabel": "סיסמה",
+      "backButton": "חזרה לכניסה",
+      "orContinueWith": "או להמשיך בדרך שנוחה לך",
+      "continueWithGoogle": "המשך עם Google"
+    },
+    "login": {
+      "title": "ברוך הבא",
+      "description": "התחבר כדי לחזור למרחב שלך ולהמשיך בקצב שלך.",
+      "forgotPasswordLink": "שכחת את הסיסמה?",
+      "loginButton": "כניסה",
+      "loggingInButton": "מתחבר...",
+      "signupText": "פה בפעם הראשונה?",
+      "signupLink": "יצירת חשבון",
+      "hipaaText": "המידע שלך מוצפן ומאובטח",
+      "rememberMe": "השאר אותי מחובר"
+    },
+    "signup": {
+      "title": "יצירת חשבון",
+      "description": "אפשר להתחיל לבנות שגרות והרגלים שתומכים בהתקדמות שלך לאורך זמן.",
+      "firstNamePlaceholder": "ישראל",
+      "lastNamePlaceholder": "ישראלי",
+      "confirmPasswordLabel": "אימות סיסמה",
+      "signupButton": "יצירת חשבון",
+      "signingUpButton": "יוצר את החשבון שלך...",
+      "loginText": "יש כבר חשבון?",
+      "loginLink": "כניסה",
+      "passwordDescription": "לפחות 8 תווים, כולל אות אחת ומספר אחד"
+    },
+    "forgotPassword": {
+      "title": "איפוס סיסמה",
+      "description": "שכחת את הסיסמה? זה קורה. אפשר להזין את כתובת האימייל ויישלח לך קישור לאיפוס הסיסמה.",
+      "submitButton": "שליחת קישור",
+      "sendingButton": "הקישור נשלח...",
+      "checkEmailTitle": "בדיקת האימייל",
+      "checkEmailDesc": "קישור לאיפוס הסיסמה נשלח אל",
+      "supportLink": "צוות התמיכה",
+      "supportText": "אם אין לך גישה לאימייל, אפשר לפנות אל",
+      "supportVerification": "לצורך אימות."
+    },
+    "resetPassword": {
+      "title": "יצירת סיסמה חדשה",
+      "description": "אפשר לבחור סיסמה חדשה כדי לחזור לחשבון בצורה מאובטחת.",
+      "passwordLabel": "סיסמה חדשה",
+      "confirmPasswordLabel": "אימות סיסמה",
+      "minLengthText": "לפחות 8 תווים",
+      "specialCharText": "כולל אות ומספר",
+      "submitButton": "שמור את הסיסמה החדשה",
+      "resettingButton": "מעדכן את הסיסמה...",
+      "troubleText": "צריך עזרה?",
+      "supportLink": "פנייה לתמיכה"
+    }
+  },
+  "chat": {
+    "inputPlaceholder": "אפשר לשתף מה עובר עליך...",
+    "pageTitle": "צ'אט תמיכה",
+    "pageSubtitle": "מרחב לשיתוף, שאלות ותמיכה",
+    "badge": "פרטי ותומך",
+    "suggestedForYou": "אולי זה יכול לעזור",
+    "messages": {
+      "youLabel": "אתה",
+      "openingMessage": "היי {name}. אני כאן איתך היום. איך אתה מרגיש כרגע?",
+      "exampleUserRestlessness": "הרגשתי קצת חסר מנוחה היום...",
+      "aiResponse1": "זה יכול לקרות במהלך ההחלמה, במיוחד כשהראש או הגוף מרגישים חסרי שקט. לפעמים עוזר לעצור לרגע ולהתמקד במה שמרגיש אפשרי כרגע.",
+      "suggestions": [
+        "נסה תרגיל נשימה קצר",
+        "שפר את סביבת השינה שלך"
+      ],
+      "aiResponse2": "בוא נתחיל עם תרגיל קצר שיעזור לך להתמקד ברגע הנוכחי ולהרגיש קצת יותר יציב."
+    },
+    "sidebar": {
+      "nextMilestoneBadge": "{percent}% השלמת",
+      "insightsTitle": "תובנות מהזמן האחרון",
+      "emotionalTrendDescription": "מצב הרוח שלך מרגיש יציב יותר לאחרונה",
+      "quote": "צעדים קטנים ועקביים יכולים ליצור שינוי משמעותי לאורך זמן."
+    }
+  },
+  "checkIn": {
+    "headerTitle": "המצב שלך כרגע",
+    "pageTitle": "עדכון יומי",
+    "pageSubtitle": "רגע לעצור, להקשיב לעצמך ולשים לב איך עובר עליך היום.",
+    "submitButton": "שמור עדכון יומי",
+    "submittedFeedback": "העדכון נשמר! מעביר אותך לדף ההתקדמות...",
+    "mood": {
+      "label": "מצב רוח",
+      "min": "נמוך מאוד",
+      "max": "גבוה מאוד"
+    },
+    "pain": {
+      "label": "רמת כאב",
+      "helper": "עד כמה הגוף שלך מרגיש בנוח כרגע?",
+      "min": "ללא כאב",
+      "max": "כאב חמור"
+    },
+    "activities": {
+      "title": "פעילויות",
+      "placeholder": "הוספת פעילות",
+      "suggestedLabel": "הפעילויות המובילות שלך",
+      "allLabel": "כל הפעילויות",
+      "default": {
+        "meditation": "מדיטציה",
+        "exercise": "פעילות גופנית",
+        "social time": "זמן חברתי",
+        "reading": "קריאה",
+        "journaling": "כתיבה ביומן",
+        "therapy": "טיפול",
+        "rest": "מנוחה"
+      }
+    },
+    "journal": {
+      "title": "יומן",
+      "placeholder": "אפשר לכתוב איך עבר היום, מה הרגיש טוב, מה היה מאתגר או כל דבר אחר שיושב על הלב."
+    },
+    "submitError": "לא הצלחנו לשמור את העדכון היומי כרגע. אפשר לנסות שוב בעוד רגע.",
+    "submitPendingMessage": "מעבד את העדכון היומי שלך…",
+    "quotes": [
+      "להגיע עד לכאן היום זה כבר משמעותי.",
+      "גם הצעד הקטן ביותר עדיין נחשב.",
+      "לא צריך להספיק הכל היום.",
+      "עקביות עדינה יכולה ליצור שינוי גדול לאורך זמן.",
+      "יש ימים קלים יותר ויש ימים שמרגישים כבדים יותר, וזה חלק מהדרך.",
+      "התקדמות יכולה להתרחש גם בשקט.",
+      "להקדיש רגע לעצמך זה כבר משהו משמעותי.",
+      "המאמץ שלך היום חשוב, גם אם הוא קטן.",
+      "כדאי לנסות לדבר לעצמך באותה עדינות שהיית נותן לאחרים.",
+      "ההחלמה לא נראית אותו דבר בכל יום."
+    ]
+  },
+  "community": {
+    "savingMessage": "מפרסם את הפוסט...",
+    "posts": {
+      "edited": " (נערך)",
+      "filterLabels": {
+        "newest": "חדשים",
+        "popular": "פופולריים",
+        "unanswered": "ללא מענה"
+      },
+      "repliesLabel": "תגובות",
+      "postedBy": "פורסם על ידי",
+      "share": "שיתוף",
+      "save": "שמירה",
+      "saved": "נשמר",
+      "newPostButton": "פוסט חדש",
+      "searchPlaceholder": "חיפוש שיחות ודיונים...",
+      "empty": "עדיין לא שותפו פוסטים. אתה יכול להתחיל את השיחה כשתרגיש מוכן.",
+      "emptyWithFilter": "לא נמצאו פוסטים שמתאימים לסינון הזה. אפשר לנסות סינון אחר או לעיין בכל הדיונים.",
+      "likedLabel": "הביעו תמיכה",
+      "allCategories": "כל הקטגוריות",
+      "filterByCategory": "סנן לפי קטגוריה",
+      "tagFilter": "סנן לפי תג",
+      "clearTagFilter": "נקה סינון"
+    },
+    "mentors": {
+      "title": "מנטורים תומכים",
+      "chatButton": "פתיחת שיחה"
+    },
+    "sanctuary": {
+      "title": "מרחב הקהילה",
+      "description": "HealEase נבנתה כדי לאפשר שיח בטוח, מכבד ותומך.",
+      "rules": {
+        "kind": "נהגו באכפתיות ובפתיחות",
+        "noAdvice": "הימנעו ממתן עצות רפואיות ללא הכשרה מתאימה",
+        "privacy": "שמרו על פרטיות ואנונימיות"
+      },
+      "readGuidelines": "כל ההנחיות"
+    },
+    "trending": {
+      "title": "דיונים בולטים"
+    },
+    "activity": {
+      "title": "פעילות הקהילה",
+      "viewAll": "הצגת הכל",
+      "loadError": "לא הצלחנו לטעון פעילות מהקהילה כרגע"
+    },
+    "confirmations": {
+      "deletePost": "למחוק את הפוסט הזה?",
+      "deleteReply": "למחוק את התגובה הזו?",
+      "deletePostTitle": "למחוק את הפוסט?",
+      "deletePostDescription": "הפוסט וכל תגובותיו יוסרו לצמיתות. פעולה זו אינה הפיכה.",
+      "deleteReplyTitle": "למחוק את התגובה?",
+      "deleteReplyDescription": "התגובה תוסר לצמיתות. פעולה זו אינה הפיכה."
+    },
+    "postDetail": {
+      "replies": "תגובות",
+      "reply": "תגובה",
+      "noReplies": "אין תגובות עדיין. אתה יכול לשתף את המחשבות שלך כשתרגיש בנוח.",
+      "loginToReply": "יש להתחבר כדי להגיב",
+      "notFoundTitle": "הפוסט לא נמצא",
+      "notFoundDescription": "הפוסט שחיפשת הוסר או שאינו זמין יותר.",
+      "backToCommunity": "חזרה לקהילה",
+      "repliesLoadError": "לא ניתן לטעון את התגובות",
+      "postLoadError": "לא ניתן לטעון את הפוסט כרגע. אפשר לנסות שוב.",
+      "writeReplyPlaceholder": "שתף תגובה תומכת…",
+      "showMoreRepliesWithCount": "הצג עוד {count} {count, plural, one {תגובה} other {תגובות}}",
+      "authorBadge": "הכותב"
+    },
+    "postActions": {
+      "solidarity": "{count, plural, one {תומך} other {תומכים}}",
+      "reply": "תגובה",
+      "share": "שיתוף",
+      "linkCopied": "הקישור הועתק ללוח!",
+      "editPost": "עריכת פוסט",
+      "deletePost": "מחיקת פוסט",
+      "editReply": "עריכת תגובה",
+      "deleteReply": "מחיקת תגובה"
+    },
+    "postForm": {
+      "writeReply": "כתיבת תגובה",
+      "createPost": "יצירת פוסט",
+      "createPostSubtitle": "בחר קטגוריה ומספר תגיות כדי שהפוסט יגיע לאנשים הנכונים.",
+      "content": "תוכן",
+      "cancel": "ביטול",
+      "saveChanges": "שמירת שינויים",
+      "sendReply": "שלח תגובה",
+      "title": "כותרת",
+      "titlePlaceholder": "כותרת קצרה וברורה לפוסט",
+      "category": "קטגוריה",
+      "categoryPlaceholder": "בחירת קטגוריה",
+      "bodyPlaceholderReply": "אפשר לכתוב תגובה...",
+      "bodyPlaceholderPost": "שתף את הסיפור שלך, שאל שאלה, או הצע עידוד…",
+      "tags": "תגיות",
+      "tagsPlaceholder": "הקלד נושא, למשל שבר, חרדה, מדיטציה…",
+      "tagsPlaceholderMore": "הוסף עוד…",
+      "tagsHint": "הוסף 1–5 נושאים ספציפיים",
+      "tagSuggestions": "הצעות",
+      "tagPopularTopics": "נושאים פופולריים",
+      "categoryHint": "איזה סוג שיחה זו?"
+    },
+    "categories": {
+      "names": {
+        "recovery": "מסע ההחלמה",
+        "therapy": "טיפול ושיקום פיזי",
+        "mental": "תמיכה רגשית ונפשית",
+        "milestones": "יעדים והתקדמות",
+        "lifestyle": "אורח חיים ורווחה",
+        "support": "תמיכת קהילה",
+        "questions": "שאלות והכוונה",
+        "stories": "סיפורי החלמה",
+        "wellness": "רווחה ושגרה",
+        "discussion": "דיון פתוח"
+      },
+      "descriptions": {
+        "recovery": "התקדמות, תקופות מאתגרות ורגעים משמעותיים בדרך",
+        "therapy": "פיזיותרפיה, תרגילים ותהליכי שיקום",
+        "mental": "מצב רוח, לחץ, מוטיבציה והתמודדות רגשית",
+        "milestones": "מטרות אישיות והתקדמות לאורך הדרך",
+        "lifestyle": "שינה, תזונה והרגלים יומיומיים",
+        "support": "תמיכה, עידוד וחיבור עם אחרים",
+        "questions": "שאלות והתייעצות עם הקהילה",
+        "stories": "שיתוף חוויות אישיות ותהליכי החלמה",
+        "wellness": "מיינדפולנס, שגרות בריאות ורווחה רגשית",
+        "discussion": "שיחות כלליות סביב תהליך ההחלמה"
+      }
+    },
+    "toasts": {
+      "replyPosted": "התגובה פורסמה",
+      "replyUpdated": "התגובה עודכנה",
+      "replyDeleted": "התגובה הוסרה",
+      "postPublished": "הפוסט פורסם",
+      "postUpdated": "הפוסט עודכן",
+      "replyPostFailed": "לא הצלחנו לפרסם את התגובה כרגע",
+      "replyUpdateFailed": "לא הצלחנו לעדכן את התגובה כרגע",
+      "replyDeleteFailed": "לא הצלחנו להסיר את התגובה כרגע",
+      "postPublishFailed": "לא הצלחנו לפרסם את הפוסט כרגע",
+      "postUpdateFailed": "לא הצלחנו לעדכן את הפוסט כרגע",
+      "loginToLike": "יש להתחבר כדי להראות תמיכה",
+      "loginToLikeReply": "יש להתחבר כדי להראות תמיכה",
+      "loginToSave": "יש להתחבר כדי לשמור פוסטים",
+      "loginToCreate": "יש להתחבר כדי לשתף פוסט",
+      "sessionExpired": "פג תוקף ההתחברות שלך. יש להתחבר מחדש.",
+      "workSaved": "הטיוטה שלך נשמרה. אפשר לחזור בתוך {minutes} דקות ולהמשיך מהמקום שבו הפסקת."
+    }
+  },
+  "dashboard": {
+    "title": "לוח הבקרה",
+    "greeting": "ברוך שובך, {name}",
+    "checkIn": {
+      "badge": "הרהור יומי",
+      "title": "מוכן לעדכון היומי?",
+      "description": "עדכונים יומיים קבועים יכולים לעזור לזהות דפוסים ולהבין טוב יותר איך התקופות השונות משפיעות עליך.",
+      "button": "התחל עדכון יומי"
+    },
+    "aiInsight": {
+      "label": "תובנה",
+      "seeMore": "להמשך קריאה",
+      "seeLess": "הצג פחות",
+      "failedToLoad": "לא הצלחנו לטעון תובנות כרגע"
+    },
+    "noInsights": "עוד כמה עדכונים יומיים יעזרו ליצור תובנות אישיות והתקדמות לאורך זמן.",
+    "community": {
+      "label": "קהילה",
+      "viewAll": "הצג הכל"
+    },
+    "dailyObservation": {
+      "title": "רגע קטן לעצמך",
+      "label": "שמנו לב",
+      "description": "עדכן באופן קבוע כדי לראות את הדפוסים האישיים שלך.",
+      "observation": "{activity} הופיעה בעדכונים האחרונים שלך.",
+      "supportCopy": "אין צורך לשמור על רצף, פשוט שווה לציין."
+    },
+    "historyChart": {
+      "title": "מגמת ההתקדמות שלך",
+      "week": "שבוע",
+      "month": "חודש"
+    },
+    "stats": {
+      "labels": {
+        "mood": "מצב רוח",
+        "pain": "רמת כאב",
+        "streak": "רצף",
+        "milestonesCompleted": "צעדים שהושלמו"
+      },
+      "subValues": {
+        "days": " ימים"
+      },
+      "descriptions": {
+        "mood": {
+          "great": "טוב מאוד",
+          "stable": "יציב",
+          "low": "נמוך"
+        },
+        "pain": {
+          "decreasing": "במגמת ירידה",
+          "elevated": "מורגש יותר",
+          "high": "גבוה"
+        },
+        "streak": {
+          "newRecord": "שיא חדש",
+          "personalBest": "שיא אישי: {days}"
+        }
+      }
+    }
+  },
+  "insights": {
+    "title": "תובנות",
+    "subtitle": "דפוסים ותצפיות המבוססים על הפעילות האחרונה שלך",
+    "aiActive": "ניתוח פעיל",
+    "criticalInsight": {
+      "label": "תובנה חשובה",
+      "title": "מצב הרוח שלך נוטה להשתפר בימים שכוללים מתיחות ותנועה.",
+      "description": "העדכונים האחרונים שלך מצביעים על קשר בין שגרת המתיחות בבוקר לבין רמות אנרגיה יציבות יותר במהלך היום.",
+      "buttonPrimary": "תזמון מתיחות",
+      "buttonSecondary": "הצגת פרטי הדפוס"
+    },
+    "painAlert": {
+      "title": "נצפתה עלייה ברמות הכאב",
+      "description": "רמות הכאב שלך היו מעט גבוהות יותר היום בהשוואה לממוצע האחרון. גם איכות השינה נראית נמוכה מהרגיל.",
+      "status": "דורש תשומת לב",
+      "action": "עדכון היומן"
+    },
+    "actionableStep": {
+      "title": "הצעד הבא המוצע",
+      "description": "יוגה עדינה למשך כמה דקות יכולה לעזור להפחית מתח ולתמוך בהרפיה לקראת הלילה.",
+      "button": "התחלת שיעור"
+    },
+    "header": {
+      "badge": "תובנה מודגשת",
+      "title": "מצב הרוח שלך נוטה להשתפר בימים שכוללים מתיחות ותנועה.",
+      "description": "המגמות האחרונות מצביעות על כך ששגרת המתיחות בבוקר עשויה לתמוך באנרגיה יציבה יותר ובאיזון רגשי במהלך היום.",
+      "buttonPrimary": "תזמון מתיחות",
+      "buttonSecondary": "הצגת פרטי הדפוס"
+    },
+    "behavioralPatterns": {
+      "title": "דפוסים התנהגותיים",
+      "tabs": {
+        "sevenDays": "שבוע",
+        "thirtyDays": "חודש"
+      },
+      "correlation": {
+        "label": "דפוס",
+        "title": "אינטראקציה חברתית ורמות לחץ",
+        "description": "נראה שרמות הלחץ נמוכות יותר בימים שבהם יש יותר השתתפות בשיחות קהילה."
+      },
+      "observation": {
+        "label": "תצפית",
+        "title": "עקביות בשגרת הבוקר",
+        "description": "השלמת עדכון יומי מוקדם יותר ביום קשורה לעקביות גבוהה יותר בהשגת יעדי ההחלמה שלך.",
+        "statLabel": "שיעור הצלחה עם עדכונים יומיים קבועים"
+      },
+      "prediction": {
+        "label": "תחזית",
+        "title": "מגמת החלמה צפויה",
+        "description": "אם השגרה הנוכחית תישמר, מגמות הניידות שלך עשויות להמשיך להשתפר גם בשבוע הבא.",
+        "confidence": "רמת ביטחון גבוהה"
+      }
+    },
+    "summary": {
+      "title": "סיכום שבועי",
+      "description": "סקירה של מגמות רגשיות, פיזיות והתנהגותיות מהתקופה האחרונה.",
+      "exportButton": "ייצוא דוח"
+    }
+  },
+  "progress": {
+    "title": "התקדמות",
+    "subtitle": "מבט ברור יותר על הדפוסים, העקביות וההתקדמות שלך לאורך זמן.",
+    "exportPdf": "ייצא לPDF",
+    "shareJourney": "שיתוף התקדמות",
+    "milestones": {
+      "title": "צעדים משמעותיים והישגים",
+      "seeAll": "כל {count} הצעדים",
+      "empty": "עדיין אין יעדים פעילים. אפשר להוסיף יעדים דרך דף יעדי החלמה."
+    },
+    "wellness": {
+      "label": "סיכום שבועי",
+      "timeframe": "השבוע שעבר לעומת השבוע הנוכחי",
+      "mood": "מצב רוח",
+      "pain": "כאב",
+      "energy": "רמת אנרגיה",
+      "trends": {
+        "improving": "משתפר",
+        "declining": "דורש יותר תשומת לב",
+        "steady": "יציב",
+        "increasing": "עולה",
+        "stable": "יציב",
+        "building": "נבנה בהדרגה"
+      },
+      "status": {
+        "thriving": "נראה שיש שיפור עקבי",
+        "needsAttention": "דורש יותר תשומת לב",
+        "moodImproving": "מצב הרוח משתפר",
+        "painRelieving": "רמות הכאב יורדות",
+        "stableAndMaintaining": "נשאר יציב"
+      }
+    },
+    "stats": {
+      "streak": {
+        "label": "רצף נוכחי",
+        "unit": "ימים",
+        "personalBest": "שיא אישי - {days} ימים",
+        "last14Days": "מבט על השבועיים האחרונים",
+        "checkedIn": "{count}/14 עדכונים"
+      },
+      "milestones": {
+        "label": "יעדים שהושלמו",
+        "unit": "יעדים",
+        "outOf": "מתוך {total}",
+        "acrossGoals": "ב-{count} יעדים שאתה מתקדם בהם",
+        "percentComplete": "{percent}% הושלמו",
+        "completedCount": "{count} הושלמו",
+        "inProgressCount": "{count} בתהליך",
+        "upcomingCount": "{count} בהמשך",
+        "nextUp": "הצעד הבא"
+      }
+    },
+    "share": {
+      "title": "ההתקדמות שלי",
+      "tagline": "גם צעדים קטנים נחשבים.",
+      "cta": "מעקב אחר ההתקדמות שלך עם HealEase",
+      "toastShare": "שותף בהצלחה",
+      "toastCopied": "התמונה הועתקה",
+      "toastDownloaded": "התמונה נשמרה",
+      "streakUnit": "ימי רצף",
+      "noMoodData": "עדיין אין נתוני מצב רוח",
+      "currentStreakLabel": "רצף נוכחי",
+      "averageMoodLabel": "מצב רוח ממוצע",
+      "milestonesLabel": "צעדים שהושלמו",
+      "modalTitle": "שיתוף ההתקדמות שלך",
+      "modalDescription": "תצוגה מקדימה ושיתוף ההתקדמות האחרונה שלך עם אנשים קרובים",
+      "download": "הורדה",
+      "share": "שיתוף"
+    },
+    "insight": {
+      "label": "תובנה מההתקדמות שלך",
+      "emptyInsight": "ככל שיצטברו יותר עדכונים יומיים, נוכל לזהות דפוסים ותובנות אישיות.",
+      "buttonPrimary": "המשך",
+      "buttonSecondary": "הבנתי"
+    },
+    "charts": {
+      "moodChart": {
+        "title": "מגמת מצב רוח",
+        "subtitle": "ממוצע מצב הרוח היומי לאורך זמן",
+        "legendLabel": "מצב רוח",
+        "targetLabel": "יעד שבועי"
+      },
+      "painChart": {
+        "title": "רמת כאב",
+        "subtitle": "מעקב אחר תחושות פיזיות לאורך זמן",
+        "legendLabel": "רמת כאב"
+      },
+      "moodTrendChart": {
+        "title": "מגמת מצב רוח",
+        "subtitle": "ממוצע מצב הרוח היומי לאורך זמן",
+        "legendLabel": "מצב רוח",
+        "targetLabel": "יעד שבועי"
+      },
+      "painIntensityChart": {
+        "title": "עוצמת כאב",
+        "subtitle": "מעקב אחר שינויים פיזיים לאורך זמן",
+        "legendLabel": "רמת כאב"
+      },
+      "timePeriods": {
+        "weekly": "שבועי",
+        "monthly": "חודשי"
+      },
+      "tabTriggers": {
+        "week": "שבוע",
+        "month": "חודש"
+      },
+      "status": {
+        "loadError": "לא ניתן לטעון נתונים",
+        "noCheckIn": "אין עדיין עדכונים יומיים. התחל לעדכן כדי לראות את ההתקדמות שלך כאן",
+        "noCheckInTooltip": "אין עדכון יומי"
+      }
+    }
+  },
+  "profile": {
+    "savingMessage": "שומר את השינויים בפרופיל...",
+    "toasts": {
+      "saveFailed": "לא הצלחנו לשמור את הפרופיל כרגע."
+    },
+    "info": {
+      "memberSince": "משתמש מאז"
+    },
+    "levelBadge": "רמה {level}: {title}",
+    "stats": {
+      "streak": "רצף נוכחי",
+      "milestones": "הישגים שהושלמו",
+      "goals": "יעדים פעילים"
+    },
+    "recoveryIdentity": {
+      "title": "מה חשוב לך בהחלמה",
+      "subtitle": "תחומי המיקוד שלך בתקופה הזו",
+      "empty": "לא נוספו תחומי מיקוד עדיין",
+      "edit": "עריכה",
+      "done": "סיום עריכה"
+    },
+    "interestCategories": {
+      "physical-recovery": "שיקום והחלמה",
+      "wellness": "רווחה ואיזון",
+      "mental-emotional": "רגש ונפש",
+      "community-support": "קהילה"
+    },
+    "basicInfo": {
+      "title": "פרטים בסיסיים",
+      "edit": "עריכה",
+      "fullName": "שם מלא",
+      "emailAddress": "כתובת אימייל",
+      "dateOfBirth": "תאריך לידה",
+      "primarySupportContact": "איש קשר לתמיכה",
+      "locationNotSet": "מיקום לא הוגדר",
+      "save": "שמור שינויים",
+      "saving": "שומר...",
+      "cancel": "ביטול",
+      "emailNote": "לא ניתן לשנות אימייל כאן.",
+      "emailNoteLink": "שינוי בהגדרות",
+      "fields": {
+        "fullName": "שם מלא",
+        "emailAddress": "כתובת אימייל",
+        "dateOfBirth": "תאריך לידה",
+        "primarySupportContact": "איש קשר לתמיכה"
+      },
+      "recoveryType": "תחום ההחלמה",
+      "careProvider": "גורם מטפל",
+      "notSet": "לא צוין"
+    },
+    "goals": {
+      "title": "יעדים פעילים",
+      "viewRoadmap": "הצגת התוכנית"
+    },
+    "activities": {
+      "title": "שגרות ופעילויות"
+    },
+    "settings": {
+      "title": "פרטיות והעדפות",
+      "list": [
+        {
+          "title": "אבטחה",
+          "description": "עודכן לפני {daysAgo} ימים"
+        },
+        {
+          "title": "התראות",
+          "description": "התראות פעילות"
+        },
+        {
+          "title": "שיתוף נתונים",
+          "description": "גישה לצוות המטפל פעילה"
+        },
+        {
+          "title": "היסטוריית כניסות"
+        }
+      ]
+    },
+    "dailyPreferences": {
+      "title": "העדפות לפעילות יומית",
+      "subtitle": "פעילויות שיכולות לתמוך בך",
+      "editSubtitle": "בחר פעילויות כדי להתאים את ההמלצות עבורך.",
+      "empty": "עדיין לא נבחרו העדפות פעילות"
+    },
+    "systemPrivacy": {
+      "title": "פרטיות והעדפות",
+      "manageSettings": "ניהול הגדרות",
+      "signOut": "התנתק",
+      "settings": [
+        {
+          "title": "אבטחה",
+          "subtitle": "עודכן לפני {daysAgo} ימים"
+        },
+        {
+          "title": "התראות",
+          "subtitle": "התראות פעילות"
+        },
+        {
+          "title": "שיתוף נתונים",
+          "subtitle": "גישה לצוות המטפל פעילה"
+        },
+        {
+          "title": "היסטוריית כניסות"
+        }
+      ]
+    },
+    "bio": {
+      "title": "עליי",
+      "placeholder": "אפשר לשתף כל דבר שתרצה שאחרים ידעו על מסע ההחלמה שלך...",
+      "empty": "עדיין לא נוסף תיאור"
+    },
+    "editBanner": {
+      "viewing": "צפייה בפרופיל",
+      "viewingSubtitle": "אפשר לעבור למצב עריכה בכל רגע שתרצה לעדכן פרטים.",
+      "editing": "עריכת הפרופיל",
+      "editingSubtitle": "אפשר לעדכן את הפרטים למטה ולשמור כשתסיים.",
+      "edit": "עריכת פרופיל",
+      "save": "שמירת שינויים",
+      "cancel": "ביטול"
+    },
+    "recoveryQuotes": {
+      "0": "החלמה לא תמיד מתקדמת בקו ישר. גם צעד קטן קדימה נחשב.",
+      "1": "גם התקדמות איטית היא התקדמות. אפשר להמשיך בקצב שלך.",
+      "2": "הגוף שלך עובד קשה כדי להחלים. מגיע לו זמן ועדינות.",
+      "3": "מנוחה היא לא נסיגה. היא חלק מהדרך קדימה.",
+      "4": "כל יום שבו בחרת להיות שם בשביל עצמך ראוי להכרה.",
+      "5": "החלמה היא לא שלמות. היא התמדה, גם בצעדים קטנים.",
+      "6": "לפעמים הכוח נבנה דווקא ברגעים שבהם ממשיכים למרות שקשה.",
+      "7": "סבלנות לעצמך היא חלק מהתהליך. דברים טובים נבנים עם זמן.",
+      "8": "רגעים קשים לא מגדירים אותך. הדרך שבה ממשיכים אחריהם כן.",
+      "9": "יום אחד בכל פעם הוא לא דבר קטן. לפעמים זה כל מה שצריך."
+    }
+  },
+  "goals": {
+    "savingMessage": "שומר את היעדים...",
+    "header": {
+      "title": "יעדים",
+      "description": "התקדמות לא תמיד נראית אותו דבר. צעדים קטנים ועקביים יכולים ליצור שינוי משמעותי לאורך זמן."
+    },
+    "categoryLabels": {
+      "PHYSICAL": "פיזי",
+      "MENTAL": "מנטלי",
+      "LIFESTYLE": "אורח חיים"
+    },
+    "statusLabels": {
+      "ACTIVE": "פעיל",
+      "COMPLETED": "הושלם",
+      "PAUSED": "מושהה",
+      "ABANDONED": "הופסק"
+    },
+    "milestoneStatusLabels": {
+      "LOCKED": "נעול",
+      "ACTIVE": "בתהליך",
+      "COMPLETED": "הושלם"
+    },
+    "milestoneCardLabels": {
+      "activeFormat": "שלב {order} · בתהליך",
+      "completedFormat": "שלב {order} · הושלם",
+      "lockedFormat": "שלב {order} · נעול"
+    },
+    "overview": {
+      "greeting": "המשך בקצב שמתאים לך.",
+      "subtitle": "מקום לעקוב אחרי יעדים, צעדים קטנים והתקדמות לאורך הזמן.",
+      "filterButton": "סינון",
+      "newGoalButton": "יעד חדש",
+      "addGoalPlaceholder": "הוספת יעד חדש",
+      "addGoalSubtitle": "יצירת יעד שמרגיש ריאלי ומשמעותי עבורך"
+    },
+    "mainCard": {
+      "badge": "התקדמות עקבית",
+      "overall": "התקדמות כוללת"
+    },
+    "statSummary": {
+      "title": "סיכום יעדים",
+      "description": "סקירה של ההתקדמות הנוכחית שלך"
+    },
+    "milestones": {
+      "title": "צעדים בדרך",
+      "subtitle": "שלבים קטנים שיכולים לעזור להתקדם בצורה יציבה יותר",
+      "viewAll": "הצגת הכל",
+      "markComplete": "סימון כהושלם",
+      "empty": "עדיין אין שלבים",
+      "emptySubtitle": "אפשר להוסיף שלבים קטנים כדי לפרק את היעד לצעדים ברורים יותר",
+      "completedOn": "הושלם בתאריך {date}",
+      "addButton": "הוספת שלב",
+      "addingButton": "מוסיף...",
+      "formTitle": "הוספת שלב חדש",
+      "formTitleLabel": "שם השלב",
+      "formTitlePlaceholder": "תיאור קצר של השלב",
+      "formDescriptionLabel": "תיאור נוסף (אופציונלי)",
+      "formDescriptionPlaceholder": "פרטים נוספים שיכולים לעזור לאורך הדרך"
+    },
+    "detail": {
+      "breadcrumbGoals": "יעדים",
+      "markCompletePhase": "סימון שלב כהושלם",
+      "targetDate": "תאריך יעד",
+      "overallProgress": "התקדמות כוללת"
+    },
+    "insights": {
+      "title": "תובנות",
+      "weeklyViewTitle": "מבט שבועי",
+      "emptyState": "ככל שיצטברו יותר שלבים והתקדמות, נוכל לזהות תובנות אישיות.",
+      "failedToLoad": "לא ניתן לטעון תובנות כרגע. נסה שוב מאוחר יותר."
+    },
+    "actions": {
+      "completeToday": "השלמה להיום",
+      "editPlan": "עריכת התוכנית"
+    },
+    "goalCard": {
+      "progressLabel": "התקדמות"
+    },
+    "goalActions": {
+      "edit": "עריכה",
+      "delete": "הסרה",
+      "deleteConfirm": "להסיר את היעד הזה? אי אפשר לשחזר אותו לאחר מכן.",
+      "activate": "חידוש",
+      "pause": "השהיה",
+      "abandon": "הפסקת יעד",
+      "abandonConfirm": "להפסיק לעבוד על היעד הזה? תמיד אפשר לחזור אליו בהמשך.",
+      "reopen": "פתיחה מחדש",
+      "restore": "שחזור"
+    },
+    "goalStats": {
+      "activeMilestonesLabel": "שלבים פעילים"
+    },
+    "emptyState": {
+      "message": "עדיין לא יצרת יעדים. התחל ממשהו קטן וניתן לניהול."
+    },
+    "goalForm": {
+      "createTitle": "צור יעד חדש",
+      "updateTitle": "עדכן יעד",
+      "subtitle": "יעד ברור ופשוט יכול לעזור ליצור כיוון ותחושת התקדמות.",
+      "backLabel": "חזרה ליעדים",
+      "fields": {
+        "titleLabel": "שם היעד",
+        "titlePlaceholder": "לדוגמה: מיינדפולנס יומי",
+        "descriptionLabel": "תיאור נוסף (אופציונלי)",
+        "descriptionPlaceholder": "הערות, מחשבות או כל דבר שיכול לעזור לשמור על עקביות",
+        "categoryLabel": "קטגוריה",
+        "categoryPlaceholder": "בחירת קטגוריה",
+        "targetDateLabel": "תאריך יעד"
+      },
+      "buttons": {
+        "create": "צור יעד",
+        "update": "עדכן יעד",
+        "cancel": "ביטול"
+      },
+      "smartTip": {
+        "title": "מחשבות שיכולות לעזור",
+        "bundles": [
+          {
+            "body": "בהחלמה, לא תמיד צריך להתקדם מהר כדי להרגיש התקדמות.",
+            "tips": [
+              "גם צעדים קטנים יכולים ליצור שינוי לאורך זמן.",
+              "יש ימים שבהם עצם ההתמדה היא ההצלחה.",
+              "לא כל התקדמות חייבת להיות מורגשת מיד.",
+              "לפעמים קצב רגוע מחזיק טוב יותר לאורך זמן.",
+              "מותר לשנות כיוון תוך כדי הדרך."
+            ]
+          },
+          {
+            "body": "יעדים בדרך כלל מרגישים יציבים יותר כשהם משתלבים בשגרה במקום להילחם בה.",
+            "tips": [
+              "מטרות פשוטות לרוב קל יותר לשמור לאורך זמן.",
+              "עדיף יעד שמתאים לחיים שלך עכשיו.",
+              "גם שגרות קטנות יכולות ליצור תחושת יציבות.",
+              "לא צריך להספיק הכל בבת אחת.",
+              "גמישות היא חלק טבעי מהתהליך."
+            ]
+          },
+          {
+            "body": "בתקופות עמוסות או לא יציבות, לפעמים מספיק יעד ברור אחד כדי ליצור קצת סדר.",
+            "tips": [
+              "לפעמים עוזר להתמקד רק בשלב הבא.",
+              "כשמשהו מרגיש כבד מדי, אפשר לפשט אותו.",
+              "לא כל יום ירגיש אותו דבר וזה בסדר.",
+              "אפשר לעצור ולהמשיך מחדש מתי שצריך.",
+              "גם מודעות לעצמך היא חלק מההתקדמות."
+            ]
+          }
+        ]
+      }
+    },
+    "toasts": {
+      "created": "היעד נוצר",
+      "updated": "היעד עודכן",
+      "deleted": "היעד הוסר",
+      "createFailed": "לא הצלחנו ליצור את היעד כרגע",
+      "updateFailed": "לא הצלחנו לעדכן את היעד כרגע",
+      "deleteFailed": "לא הצלחנו להסיר את היעד כרגע",
+      "activated": "היעד הופעל",
+      "activateFailed": "לא הצלחנו לחדש את היעד כרגע",
+      "paused": "היעד הושהה",
+      "pauseFailed": "לא הצלחנו להשהות את היעד כרגע",
+      "abandoned": "היעד הופסק לעת עתה",
+      "abandonFailed": "לא הצלחנו לעדכן את היעד כרגע",
+      "reopened": "היעד פעיל שוב",
+      "reopenFailed": "לא הצלחנו לפתוח מחדש את היעד כרגע",
+      "restored": "היעד שוחזר",
+      "restoreFailed": "לא הצלחנו לשחזר את היעד כרגע"
+    },
+    "cardFooter": {
+      "completedAllMilestones": "כל {total} הצעדים הושלמו",
+      "completedDate": "הושלם בתאריך {date}",
+      "pausedSince": "מושהה מאז {date}",
+      "milestonesProgress": "{completedCount} מתוך {total} צעדים הושלמו · אפשר להמשיך בכל שלב",
+      "resumeAnytime": "אפשר להמשיך בכל שלב",
+      "stoppedOn": "הופסק בתאריך {date}",
+      "reachedMilestone": "הושג שלב {milestone} מתוך {total}"
+    },
+    "activeFooter": {
+      "nextMilestone": "השלב הנוכחי: {milestone}",
+      "phaseProgress": "שלב {current} מתוך {total}",
+      "progress": "התקדמות"
+    },
+    "badges": {
+      "notStarted": "טרם התחיל",
+      "inProgress": "בתהליך",
+      "onTrack": "מתקדם כמתוכנן",
+      "complete": "הושלם"
+    }
+  },
+  "settings": {
+    "title": "הגדרות",
+    "subtitle": "התאמה של החוויה, הפרטיות וההעדפות שלך",
+    "tabs": [
+      {
+        "id": "notifications",
+        "label": "התראות",
+        "icon": "Bell"
+      },
+      {
+        "id": "privacy",
+        "label": "פרטיות",
+        "icon": "Lock"
+      },
+      {
+        "id": "security",
+        "label": "חשבון ואבטחה",
+        "icon": "Shield"
+      },
+      {
+        "id": "preferences",
+        "label": "העדפות אפליקציה",
+        "icon": "Palette"
+      }
+    ],
+    "support": {
+      "label": "תמיכה",
+      "helpCenter": "מרכז עזרה"
+    },
+    "buttons": {
+      "discardChanges": "ביטול שינויים",
+      "savePreferences": "שמירת העדפות",
+      "savingPreferences": "שומר..."
+    },
+    "notifications": {
+      "title": "התראות",
+      "description": "שליטה באופן ובזמן שבו HealEase יוצרת קשר.",
+      "dailyReminder": {
+        "label": "תזכורת יומית",
+        "description": "תזכורות עדינות לעדכונים יומיים, שגרות ופעילויות החלמה"
+      },
+      "communityAlerts": {
+        "label": "התראות קהילה",
+        "description": "עדכון כאשר מישהו מגיב לפוסטים או לאינטראקציות שלך"
+      },
+      "pushNotifications": {
+        "label": "התראות Push",
+        "description": "קבלת התראות ישירות למכשיר"
+      },
+      "aiInsights": {
+        "label": "תובנות AI",
+        "description": "עדכון כאשר תובנות חדשות מוכנות"
+      },
+      "milestoneAlerts": {
+        "label": "התראות התקדמות",
+        "description": "חגוג כשאתה מגיע לצעד חדש"
+      }
+    },
+    "privacy": {
+      "title": "הגדרות פרטיות",
+      "description": "הנתונים שלך נשארים בשליטה שלך.",
+      "visibility": {
+        "title": "נראות פרופיל",
+        "description": "בחר מי יכול לראות את הפרופיל וההתקדמות שלך",
+        "options": [
+          {
+            "value": "onlyMe",
+            "label": "רק אני"
+          },
+          {
+            "value": "mentors",
+            "label": "מנטורים בלבד"
+          },
+          {
+            "value": "community",
+            "label": "קהילה"
+          }
+        ]
+      },
+      "dataSharing": {
+        "title": "שיתוף נתונים",
+        "description": "שימוש בנתונים אנונימיים לצורך שיפור מחקר ותובנות החלמה"
+      },
+      "anonymousParticipation": {
+        "label": "השתתפות אנונימית",
+        "description": "הסתרת הזהות בדיונים בקהילה"
+      },
+      "activityVisible": {
+        "label": "פעילות גלויה למנטורים",
+        "description": "אפשרות לצוות המטפל לצפות בהתקדמות"
+      }
+    },
+    "security": {
+      "title": "חשבון ואבטחה",
+      "email": {
+        "label": "כתובת אימייל",
+        "newEmail": "כתובת אימייל חדשה",
+        "currentPassword": "סיסמה נוכחית",
+        "sendCodeButton": "שליחת קוד אימות",
+        "sendingCodeButton": "שולח...",
+        "otpTitle": "בדוק את האימייל החדש שלך",
+        "otpDescription": "הזן את קוד האימות בן 6 הספרות שנשלח לכתובת האימייל החדשה",
+        "verifyButton": "אימות",
+        "verifyingButton": "מאמת...",
+        "cancelButton": "ביטול",
+        "successToast": "כתובת האימייל עודכנה בהצלחה"
+      },
+      "password": {
+        "label": "סיסמה",
+        "value": "עודכנה לאחרונה {timeAgo}",
+        "changeTitle": "שינוי סיסמה",
+        "currentPassword": "סיסמה נוכחית",
+        "newPassword": "סיסמה חדשה",
+        "confirmPassword": "אימות סיסמה חדשה",
+        "passwordMismatch": "הסיסמאות אינן תואמות",
+        "changeButton": "עדכון סיסמה",
+        "changingButton": "מעדכן...",
+        "cancelButton": "ביטול",
+        "successToast": "הסיסמה עודכנה בהצלחה"
+      },
+      "deactivate": {
+        "label": "הסר את החשבון",
+        "description": "הסרה לצמיתות של החשבון ונתוני ההחלמה",
+        "buttonText": "מחיקת חשבון",
+        "confirmTitle": "מחיקת חשבון",
+        "confirmDescription": "החשבון יושהה ולא תהיה גישה אליו. הנתונים נשמרים וניתן לשחזר את החשבון דרך התמיכה.",
+        "confirmButton": "כן, מחק את החשבון",
+        "confirmingButton": "מוחק...",
+        "cancelButton": "ביטול"
+      }
+    },
+    "preferences": {
+      "title": "העדפות אפליקציה",
+      "theme": {
+        "title": "מצב תצוגה",
+        "description": "בחירת המראה שמרגיש הכי נוח",
+        "light": "בהיר",
+        "dark": "כהה"
+      },
+      "language": {
+        "title": "שפה מועדפת",
+        "description": "בחירת השפה שתשמש ברחבי האפליקציה"
+      }
+    }
+  },
+  "global": {
+    "footer": {
+      "brandTagline": "תמיכה לאורך מסע ההחלמה שלך",
+      "quickLinksTitle": "קישורים מהירים",
+      "legalTitle": "משפטי",
+      "socialTitle": "עקבו אחרינו",
+      "copyright": "© 2026 HealEase. כל הזכויות שמורות.",
+      "support": "תמיכה",
+      "privacy": "פרטיות",
+      "terms": "תנאי שימוש",
+      "links": {
+        "quick": {
+          "dailyCheckIn": "עדכון יומי",
+          "progress": "ההתקדמות שלי",
+          "communityForum": "פורום הקהילה",
+          "insights": "התובנות שלי"
+        },
+        "legal": {
+          "privacyPolicy": "מדיניות פרטיות",
+          "termsOfService": "תנאי שימוש",
+          "cookiePolicy": "מדיניות עוגיות"
+        }
+      }
+    },
+    "nav": {
+      "help": "עזרה",
+      "about": "אודות",
+      "sidebar": {
+        "dashboard": "לוח בקרה",
+        "dailyCheckIn": "עדכון יומי",
+        "progress": "התקדמות",
+        "recoveryGoals": "יעדי החלמה",
+        "insights": "תובנות",
+        "community": "קהילה",
+        "chat": "צ'אט",
+        "profile": "פרופיל",
+        "settings": "הגדרות",
+        "logout": "התנתק"
+      }
+    },
+    "layout": {
+      "header": {
+        "searchPlaceholder": "חיפוש...",
+        "notificationsAria": "התראות"
+      },
+      "headerItems": {
+        "healthOverview": "סקירת בריאות",
+        "aiChat": "צ'אט תמיכה",
+        "safeSpace": "מרחב בטוח"
+      }
+    },
+    "pageSubtitles": {
+      "community": {
+        "title": "קהילה",
+        "subtitle": "חיבור עם אנשים שמבינים חלקים מהמסע שלך"
+      },
+      "insights": {
+        "title": "תובנות",
+        "subtitle": "דפוסים ותצפיות המבוססים על ההתקדמות שלך",
+        "badge": "ניתוח פעיל"
+      },
+      "profile": {
+        "title": "פרופיל",
+        "subtitle": "ניהול מרחב ההחלמה האישי שלך"
+      }
+    },
+    "landing": {
+      "descriptions": {
+        "about": "HealEase תומכת באנשים המתמודדים עם החלמה לאחר טיפול רפואי, פציעה או תקופה מאתגרת בחיים. עדכונים יומיים מסייעים לזהות דפוסים, תובנות מבוססות AI מספקות הכוונה, והקהילה מאפשרת להרגיש פחות לבד לאורך הדרך.",
+        "benefits": "תמיכה שמותאמת לשלבים שונים בתהליך ההחלמה",
+        "hero": "מעקב אחר ההתקדמות, בניית שגרות תומכות וחיבור עם אנשים שמבינים.",
+        "features": "כלים פשוטים שנועדו לתמוך בהחלמה וברווחה"
+      },
+      "footer": {
+        "H3": "החלמה, יחד.",
+        "desc": "תמיכה בהחלמה דרך שגרה, מודעות וקהילה.",
+        "rights": "© 2026 HealEase. כל הזכויות שמורות.",
+        "quickLinks": "קישורים מהירים",
+        "legalLinks": "קישורים משפטיים"
+      },
+      "fields": {
+        "forgotPassword": "שכחת את הסיסמה?",
+        "remember": "זכור אותי"
+      },
+      "buttons": {
+        "exploreForum": "כניסה לקהילה",
+        "joinNow": "התחלה",
+        "signIn": "כניסה",
+        "signUp": "הרשמה",
+        "login": "התחברות",
+        "logout": "התנתקות",
+        "verifyCode": "אימות קוד",
+        "resetPassword": "איפוס סיסמה",
+        "backToLogin": "חזרה לכניסה",
+        "createPost": "יצירת פוסט",
+        "updatePost": "עדכון פוסט",
+        "deletePost": "מחיקת פוסט",
+        "newCheckIn": "עדכון יומי חדש",
+        "updateCheckIn": "עדכון עדכון יומי",
+        "saveCheckIn": "שמירת עדכון יומי",
+        "tryAgain": "נסה שוב",
+        "showStackTrace": "הצגת פרטים טכניים",
+        "goBack": "חזרה",
+        "goHome": "חזרה לדף הבית",
+        "reloadPage": "טען מחדש"
+      },
+      "toasts": {
+        "checkInSaved": "העדכון היומי נשמר בהצלחה",
+        "checkInUpdated": "העדכון היומי עודכן בהצלחה",
+        "checkInError": "לא ניתן לשמור את העדכון היומי כרגע. נסה שוב.",
+        "checkInDeleted": "העדכון היומי נמחק בהצלחה"
+      }
+    },
+    "errors": {
+      "errorPageTexts": {
+        "badge": "שגיאה 500",
+        "mainHeading": "משהו השתבש.",
+        "subHeading": "אנחנו עובדים על פתרון הבעיה.",
+        "description": "אירעה תקלה זמנית, אך ההתקדמות והמידע שלך נשמרו.",
+        "tryRefreshingBtn": "רענון דף",
+        "contactSupportBtn": "יצירת קשר עם התמיכה",
+        "crisisNoticeStart": "במצב חירום או צורך בתמיכה מיידית, יש לפנות לשירותי חירום או לגורמי תמיכה מקומיים.",
+        "journalSavedTitle": "היומן נשמר",
+        "journalSavedDesc": "רשומת היומן האחרונה נשמרה בהצלחה.",
+        "systemHealthTitle": "מצב המערכת",
+        "systemHealthDesc": "רוב השירותים פועלים כרגיל בזמן שהתקלה מטופלת.",
+        "autoRecoveryTitle": "שחזור אוטומטי",
+        "autoRecoveryDesc": "הצוות שלנו עודכן ופועל לפתרון הבעיה.",
+        "getSupport": "פנייה לתמיכה"
+      },
+      "notFoundPageTexts": {
+        "badgeLabel": "דף לא נמצא",
+        "mainHeading": "העמוד הזה אינו זמין.",
+        "description": "ייתכן שהעמוד הוסר, הועבר או שאינו זמין כרגע.",
+        "returnDashboardBtn": "חזרה ללוח הבקרה",
+        "previousPageBtn": "חזרה לעמוד הקודם",
+        "resourceCenterLabel": "משאבים",
+        "dailyJournalLink": "יומן יומי",
+        "supportHubLabel": "תמיכה",
+        "groupMeetingsLink": "קבוצות קהילה"
+      },
+      "networkErrorPageTexts": {
+        "title": "החיבור נותק.",
+        "description": "כרגע יש קושי להתחבר. כדאי לבדוק את החיבור ולנסות שוב.",
+        "tryAgainBtn": "נסה שוב",
+        "checkStatusBtn": "בדיקת סטטוס",
+        "supportMessage": "במקרה של צורך בתמיכה דחופה, יש לפנות לספק שירותי הבריאות המקומי או לשירותי החירום."
+      },
+      "inlineErrorTexts": {
+        "title": "משהו השתבש.",
+        "generic": "משהו השתבש, אך המידע וההתקדמות שלך נשמרו.",
+        "network": "בעיית חיבור מונעת עדכונים כרגע. אפשר לנסות שוב בעוד רגע.",
+        "tryAgainBtn": "נסה שוב"
+      }
+    }
+  },
+  "landing": {
+    "nav": {
+      "howItWorks": "איך זה עובד",
+      "community": "קהילה",
+      "about": "אודות"
+    },
+    "hero": {
+      "headline": "החלמה",
+      "headlineLine2": "בדרך שלך.",
+      "headlineAccent": "תמיכה",
+      "headlineSuffix": "שנשארת.",
+      "subtitle": "לעקוב אחרי ההחלמה שלך, לעצור לרגע להתבונן בהתקדמות, ולהתחבר לאנשים שמבינים את הדרך. הכל במקום אחד שנועד ללוות אותך לאורך המסע.",
+      "startJourney": "התחל את המסע",
+      "exploreCommunity": "גלה את הקהילה",
+      "streakLabel": "רצף עדכונים",
+      "moodLabel": "מצב הרוח היום",
+      "chartPeriod": "14 הימים האחרונים",
+      "chartTrend": "מרגיש מאוזן יותר",
+      "chartToday": "היום"
+    },
+    "features": {
+      "sectionTitle": "פחות עומס, יותר בהירות",
+      "sectionDesc": "כל חלק במערכת נועד לעזור לך להתמקד בהחלמה בלי רעש מיותר.",
+      "card1Title": "מעקב פשוט",
+      "card1Desc": "רישום מצב רוח, כאב, אנרגיה ופעילות בתוך תהליך קצר וברור.",
+      "card2Title": "תובנות ברורות ומותאמות אישית",
+      "card2Desc": "סיכום דפוסים שמציג את ההתקדמות שלך בצורה פשוטה ומובנת.",
+      "card3Title": "קהילה תומכת",
+      "card3Desc": "חיבור לאנשים שמבינים חלק מהחוויה האישית שלך בסביבה מכבדת ובטוחה רגשית."
+    },
+    "howItWorks": {
+      "sectionTitle": "איך ההחלמה נראית בפועל",
+      "step1Title": "דיווח יומי",
+      "step1Desc": "מילוי קצר שמסכם איך אתה מרגיש פיזית ונפשית.",
+      "step2Title": "מעקב אחר מגמות",
+      "step2Desc": "הנתונים שלך הופכים לגרפים פשוטים שמראים שינוי לאורך זמן.",
+      "step3Title": "תמיכה מתמשכת",
+      "step3Desc": "תובנות והקשר מהמערכת ומהקהילה כדי לשמור על יציבות.",
+      "chartLabel": "מגמת החלמה",
+      "statMood": "מצב רוח",
+      "statStreak": "רצף",
+      "statProgress": "התקדמות"
+    },
+    "cta": {
+      "headline": "להתחיל מעקב החלמה",
+      "desc": "מרחב מסודר לרישום, הבנה ותמיכה בתהליך ההחלמה שלך.",
+      "button": "התחלה"
+    }
+  },
+  "validation": {
+    "email": {
+      "required": "כדי להמשיך, צריך להזין כתובת אימייל",
+      "invalid": "נראה שכתובת האימייל לא תקינה עדיין"
+    },
+    "password": {
+      "required": "יש להזין סיסמה כדי להמשיך",
+      "current": {
+        "required": "יש להזין את הסיסמה הנוכחית"
+      },
+      "new": {
+        "required": "יש לבחור סיסמה חדשה לחשבון"
+      },
+      "confirm": {
+        "required": "יש לאשר את הסיסמה החדשה",
+        "please": "צריך לאשר את הסיסמה לפני שממשיכים"
+      },
+      "noMatch": "הסיסמאות לא תואמות כרגע",
+      "tooShort": "הסיסמה צריכה להכיל לפחות {min} תווים",
+      "format": "יש להשתמש בלפחות 8 תווים, כולל אותיות ומספרים"
+    },
+    "otp": {
+      "required": "יש להזין את קוד האימות שנשלח אליך",
+      "tooShort": "קוד האימות קצר מדי",
+      "invalid": "קוד האימות לא נראה תקין"
+    },
+    "name": {
+      "firstName": {
+        "required": "יש להזין שם פרטי",
+        "empty": "השם הפרטי לא יכול להישאר ריק",
+        "tooLong": "השם הפרטי צריך להיות עד {max} תווים"
+      },
+      "lastName": {
+        "required": "יש להזין שם משפחה",
+        "empty": "שם המשפחה לא יכול להישאר ריק",
+        "tooLong": "שם המשפחה צריך להיות עד {max} תווים"
+      },
+      "location": {
+        "tooLong": "המיקום צריך להיות עד {max} תווים"
+      },
+      "username": {
+        "empty": "בחר שם משתמש",
+        "tooShort": "שם המשתמש צריך להכיל לפחות {min} תווים",
+        "tooLong": "שם המשתמש צריך להכיל עד {max} תווים",
+        "invalid": "אפשר להשתמש רק באותיות באנגלית, מספרים וקו תחתון"
+      }
+    },
+    "post": {
+      "category": {
+        "required": "יש לבחור קטגוריה לפוסט",
+        "invalid": "הקטגוריה שנבחרה אינה זמינה כרגע"
+      },
+      "title": {
+        "required": "יש להוסיף כותרת כדי שאנשים יבינו במה הפוסט עוסק",
+        "tooShort": "כדאי להוסיף עוד קצת פירוט לכותרת",
+        "tooLong": "כדאי לקצר מעט את הכותרת כדי שיהיה קל יותר לקרוא"
+      },
+      "content": {
+        "required": "יש לכתוב משהו לפני פרסום הפוסט",
+        "tooShort": "כדאי להוסיף עוד קצת כדי שאנשים יוכלו להבין טוב יותר",
+        "tooShortMin": "יש לכתוב לפחות {min} תווים",
+        "tooLong": "כדאי לקצר מעט את התוכן"
+      },
+      "tag": {
+        "tooShort": "תגיות צריכות להכיל לפחות {min} תווים",
+        "tooLong": "כדאי לשמור על תגיות קצרות מ-{max} תווים",
+        "required": "יש להוסיף לפחות תג אחד כדי לעזור לאחרים למצוא את הפוסט",
+        "tooMany": "אפשר להוסיף עד {max} תגים"
+      }
+    },
+    "checkIn": {
+      "activity": {
+        "empty": "אי אפשר להשאיר פעילות ריקה",
+        "tooLong": "כדאי לקצר מעט את תיאור הפעילות",
+        "required": "יש להוסיף לפחות פעילות אחת מהיום"
+      },
+      "notes": {
+        "tooLong": "כדאי לקצר מעט את ההערות"
+      }
+    },
+    "goal": {
+      "title": {
+        "required": "יש לתת ליעד כותרת ברורה",
+        "tooLong": "כדאי לקצר מעט את כותרת היעד"
+      },
+      "description": {
+        "tooLong": "כדאי לקצר מעט את התיאור"
+      },
+      "targetDate": {
+        "future": "יש לבחור תאריך עתידי עבור היעד"
+      }
+    },
+    "milestone": {
+      "title": {
+        "required": "יש לתת שם לצעד כדי שיהיה קל לזהות אותו בהמשך",
+        "tooLong": "כדאי לקצר מעט את שם הצעד"
+      },
+      "description": {
+        "tooLong": "כדאי לקצר מעט את התיאור"
+      }
+    },
+    "profile": {
+      "bio": {
+        "tooLong": "כדאי לקצר מעט את הביוגרפיה"
+      }
+    }
+  },
+  "recommendations": {
+    "action": {
+      "askedQuestion": "שיתף שאלה",
+      "postedAbout": "שיתף על {category}",
+      "sharedPost": "שיתף פוסט"
+    }
+  }
+}

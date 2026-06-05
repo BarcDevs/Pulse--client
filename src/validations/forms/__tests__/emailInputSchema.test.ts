@@ -4,7 +4,11 @@ import {
     it
 } from 'vitest'
 
-import { emailInputSchema } from '@/validations/forms/emailInputSchema'
+import { createEmailInputSchema } from '@/validations/forms/emailInputSchema'
+
+import { mockLocales } from './mockLocales'
+
+const emailInputSchema = createEmailInputSchema(mockLocales)
 
 // ==================== emailInputSchema ====================
 describe(

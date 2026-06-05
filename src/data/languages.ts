@@ -1,16 +1,18 @@
-import {Language} from '@/types'
+import { Language } from '@/types'
 
 const languages : Record<string, Language> = {
     en: {
         name: 'English',
         nativeName: 'English',
-        code: 'en',
+        code: 'en-US',
+        shortCode: 'EN',
         dir: 'ltr'
     },
     he: {
         name: 'Hebrew',
         nativeName: 'עברית',
-        code: 'he',
+        code: 'he-IL',
+        shortCode: 'HE',
         dir: 'rtl'
     }
 }

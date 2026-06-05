@@ -1,73 +1,38 @@
 import {
-    ActivityPreference,
-    HealthInterest,
     Profile,
     ProfileOptions,
-    ProfileUpdateInput} from '@/types/profile'
+    ProfileUpdateInput
+} from '@/types/profile'
 
-import {api} from './index'
+import { api } from './index'
+import { ENDPOINTS } from './routes'
 
-export const getProfile = async (): Promise<Profile> => {
-    const {data} = await api.get<Profile>(
-        '/profile/me'
+export const getProfile = async ():
+    Promise<Profile> => {
+    const { data } = await api.get<{
+        data: Profile
+    }>(
+        ENDPOINTS.profile.base
     )
-    return data
+    return data.data
 }
 
 export const updateProfile = async (
     updates: ProfileUpdateInput
 ): Promise<Profile> => {
-    const {data} = await api.patch<Profile>(
-        '/profile/me',
+    const { data } = await api.patch<{
+        data: Profile
+    }>(
+        ENDPOINTS.profile.base,
         updates
     )
-    return data
+    return data.data
 }
 
 export const getProfileOptions = async ():
     Promise<ProfileOptions> => {
-    const {data} = await api.get<ProfileOptions>(
-        '/profile/options'
-    )
-    return data
-}
-
-export const addInterests = async (
-    slugs: string[]
-): Promise<HealthInterest[]> => {
-    const {data} = await api.post<
-        HealthInterest[]
-    >(
-        '/health-interests',
-        {slugs}
-    )
-    return data
-}
-
-export const removeInterest = async (
-    slug: string
-): Promise<void> => {
-    await api.delete(
-        `/health-interests/${slug}`
-    )
-}
-
-export const addActivities = async (
-    slugs: string[]
-): Promise<ActivityPreference[]> => {
-    const {data} = await api.post<
-        ActivityPreference[]
-    >(
-        '/activities',
-        {slugs}
-    )
-    return data
-}
-
-export const removeActivity = async (
-    slug: string
-): Promise<void> => {
-    await api.delete(
-        `/activities/${slug}`
-    )
+    const { data } = await api.get<{
+        data: string[]
+    }>(ENDPOINTS.profile.listActivities)
+    return { activityPreferences: data.data }
 }

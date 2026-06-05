@@ -1,0 +1,236 @@
+import {
+    useMutation,
+    useQueryClient
+} from '@tanstack/react-query'
+
+import {
+    GoalInput,
+    GoalStatus,
+    MilestoneInput,
+    MilestonePatchInput
+} from '@/types/goals'
+
+import { recoveryGoalsQueryKeys } from '@/constants/queryKeys'
+
+import {
+    completeMilestone,
+    createGoal,
+    createMilestone,
+    deleteGoal,
+    deleteMilestone,
+    updateGoal,
+    updateMilestone
+} from '@/api/goals'
+
+export const useGoalMutations = () => {
+    const queryClient = useQueryClient()
+
+    const createGoalMutation = useMutation({
+        mutationFn: (data: GoalInput) => {
+            const transformedData = {
+                ...data,
+                targetDate: data.targetDate
+                    ? `${data.targetDate}T00:00:00.000Z`
+                    : undefined
+            }
+            return createGoal(transformedData)
+        },
+        onSuccess: () => {
+            queryClient.invalidateQueries({
+                queryKey: recoveryGoalsQueryKeys.all
+            })
+        }
+    })
+
+    const updateGoalMutation = useMutation({
+        mutationFn: ({
+            goalId,
+            data
+        }: {
+            goalId: string
+            data: Partial<GoalInput>
+        }) => {
+            const transformedData = {
+                ...data,
+                targetDate: data.targetDate
+                    ? `${data.targetDate}T00:00:00.000Z`
+                    : data.targetDate
+            }
+            return updateGoal(goalId, transformedData)
+        },
+        onSuccess: (_, { goalId }) => {
+            queryClient.invalidateQueries({
+                queryKey: recoveryGoalsQueryKeys.all
+            })
+            queryClient.invalidateQueries({
+                queryKey: recoveryGoalsQueryKeys.goal(
+                    goalId
+                )
+            })
+        }
+    })
+
+    const activateGoalMutation = useMutation({
+        mutationFn: (goalId: string) =>
+            updateGoal(goalId, { status: GoalStatus.ACTIVE }),
+        onSuccess: (_, goalId) => {
+            queryClient.invalidateQueries({
+                queryKey: recoveryGoalsQueryKeys.all
+            })
+            queryClient.invalidateQueries({
+                queryKey: recoveryGoalsQueryKeys.goal(goalId)
+            })
+        }
+    })
+
+    const pauseGoalMutation = useMutation({
+        mutationFn: (goalId: string) =>
+            updateGoal(goalId, { status: GoalStatus.PAUSED }),
+        onSuccess: (_, goalId) => {
+            queryClient.invalidateQueries({
+                queryKey: recoveryGoalsQueryKeys.all
+            })
+            queryClient.invalidateQueries({
+                queryKey: recoveryGoalsQueryKeys.goal(goalId)
+            })
+        }
+    })
+
+    const abandonGoalMutation = useMutation({
+        mutationFn: (goalId: string) =>
+            updateGoal(goalId, { status: GoalStatus.ABANDONED }),
+        onSuccess: (_, goalId) => {
+            queryClient.invalidateQueries({
+                queryKey: recoveryGoalsQueryKeys.all
+            })
+            queryClient.invalidateQueries({
+                queryKey: recoveryGoalsQueryKeys.goal(goalId)
+            })
+        }
+    })
+
+    const setGoalActiveMutation = useMutation({
+        mutationFn: (goalId: string) =>
+            updateGoal(goalId, { status: GoalStatus.ACTIVE }),
+        onSuccess: (_, goalId) => {
+            queryClient.invalidateQueries({
+                queryKey: recoveryGoalsQueryKeys.all
+            })
+            queryClient.invalidateQueries({
+                queryKey: recoveryGoalsQueryKeys.goal(goalId)
+            })
+        }
+    })
+
+    const deleteGoalMutation = useMutation({
+        mutationFn: (goalId: string) =>
+            deleteGoal(goalId),
+        onSuccess: () => {
+            queryClient.invalidateQueries({
+                queryKey: recoveryGoalsQueryKeys.all
+            })
+        }
+    })
+
+    const createMilestoneMutation = useMutation({
+        mutationFn: ({
+            goalId,
+            data
+        }: {
+            goalId: string
+            data: MilestoneInput
+        }) => createMilestone(goalId, data),
+        onSuccess: (_, { goalId }) => {
+            queryClient.invalidateQueries({
+                queryKey: recoveryGoalsQueryKeys.goal(
+                    goalId
+                )
+            })
+        }
+    })
+
+    const updateMilestoneMutation = useMutation({
+        mutationFn: ({
+            goalId,
+            milestoneId,
+            data
+        }: {
+            goalId: string
+            milestoneId: string
+            data: MilestonePatchInput
+        }) =>
+            updateMilestone(
+                goalId,
+                milestoneId,
+                data
+            ),
+        onSuccess: (_, { goalId }) => {
+            queryClient.invalidateQueries({
+                queryKey: recoveryGoalsQueryKeys.goal(
+                    goalId
+                )
+            })
+            queryClient.invalidateQueries({
+                queryKey: recoveryGoalsQueryKeys.all
+            })
+        }
+    })
+
+    const deleteMilestoneMutation = useMutation({
+        mutationFn: ({
+            goalId,
+            milestoneId
+        }: {
+            goalId: string
+            milestoneId: string
+        }) => deleteMilestone(goalId, milestoneId),
+        onSuccess: (_, { goalId }) => {
+            queryClient.invalidateQueries({
+                queryKey: recoveryGoalsQueryKeys.goal(
+                    goalId
+                )
+            })
+        }
+    })
+
+    const completeMilestoneMutation =
+        useMutation({
+            mutationFn: ({
+                goalId,
+                milestoneId
+            }: {
+                goalId: string
+                milestoneId: string
+            }) =>
+                completeMilestone(
+                    goalId,
+                    milestoneId
+                ),
+            onSuccess: (_, { goalId }) => {
+                queryClient.invalidateQueries({
+                    queryKey:
+                        recoveryGoalsQueryKeys
+                            .goal(goalId)
+                })
+                queryClient.invalidateQueries({
+                    queryKey:
+                    recoveryGoalsQueryKeys.all
+                })
+            }
+        })
+
+    return {
+        createGoal: createGoalMutation,
+        updateGoal: updateGoalMutation,
+        activateGoal: activateGoalMutation,
+        pauseGoal: pauseGoalMutation,
+        abandonGoal: abandonGoalMutation,
+        reopenGoal: setGoalActiveMutation,
+        restoreGoal: setGoalActiveMutation,
+        deleteGoal: deleteGoalMutation,
+        createMilestone: createMilestoneMutation,
+        updateMilestone: updateMilestoneMutation,
+        deleteMilestone: deleteMilestoneMutation,
+        completeMilestone: completeMilestoneMutation
+    }
+}

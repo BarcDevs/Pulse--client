@@ -1,6 +1,14 @@
-import { describe, expect, it } from 'vitest'
+import {
+    describe,
+    expect,
+    it
+} from 'vitest'
 
-import { otpSchema } from '@/validations/forms/otpSchema'
+import { createOtpSchema } from '@/validations/forms/otpSchema'
+
+import { mockLocales } from './mockLocales'
+
+const otpSchema = createOtpSchema(mockLocales)
 
 // ==================== otpSchema ====================
 describe('otpSchema',
@@ -10,33 +18,6 @@ describe('otpSchema',
             () => {
                 const result = otpSchema.safeParse({
                     otp: '123456'
-                })
-                expect(result.success).toBe(true)
-            })
-
-        it(
-            'should validate a valid 6-character alphanumeric OTP',
-            () => {
-                const result = otpSchema.safeParse({
-                    otp: 'abc123'
-                })
-                expect(result.success).toBe(true)
-            })
-
-        it(
-            'should validate a valid 6-character all-letters OTP',
-            () => {
-                const result = otpSchema.safeParse({
-                    otp: 'abcdef'
-                })
-                expect(result.success).toBe(true)
-            })
-
-        it(
-            'should validate uppercase letters',
-            () => {
-                const result = otpSchema.safeParse({
-                    otp: 'ABCDEF'
                 })
                 expect(result.success).toBe(true)
             })
@@ -84,6 +65,24 @@ describe('otpSchema',
                         )
                     expect(longIssue).toBeDefined()
                 }
+            })
+
+        it(
+            'should reject alphanumeric OTP',
+            () => {
+                const result = otpSchema.safeParse({
+                    otp: 'abc123'
+                })
+                expect(result.success).toBe(false)
+            })
+
+        it(
+            'should reject OTP with letters only',
+            () => {
+                const result = otpSchema.safeParse({
+                    otp: 'abcdef'
+                })
+                expect(result.success).toBe(false)
             })
 
         it(

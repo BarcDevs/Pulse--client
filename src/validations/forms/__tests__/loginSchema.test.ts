@@ -1,6 +1,14 @@
-import { describe, expect, it } from 'vitest'
+import {
+    describe,
+    expect,
+    it
+} from 'vitest'
 
-import { loginSchema } from '@/validations/forms/loginSchema'
+import { createLoginSchema } from '@/validations/forms/loginSchema'
+
+import { mockLocales } from './mockLocales'
+
+const loginSchema = createLoginSchema(mockLocales)
 
 // ==================== loginSchema ====================
 describe('loginSchema',

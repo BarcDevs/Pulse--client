@@ -2,13 +2,15 @@ import eslintPluginReact from 'eslint-plugin-react'
 import eslintPluginReactHooks from 'eslint-plugin-react-hooks'
 import eslintPluginReactRefresh from 'eslint-plugin-react-refresh'
 import eslintPluginSimpleImportSort from 'eslint-plugin-simple-import-sort'
-import { dirname } from 'path'
-import { fileURLToPath } from 'url'
+import {dirname} from 'path'
+import {fileURLToPath} from 'url'
 
-import { FlatCompat } from '@eslint/eslintrc'
+import {FlatCompat} from '@eslint/eslintrc'
 import eslintPluginTypescript from '@typescript-eslint/eslint-plugin'
 import typescriptParser from '@typescript-eslint/parser'
 import js from '@eslint/js'
+import enforceObjectBreaking from './eslint-rules/enforce-object-breaking.js'
+import enforceFunctionCallBreaking from './eslint-rules/enforce-function-call-breaking.js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
@@ -27,7 +29,10 @@ const config = [
             '.idea',
             'eslint.config.mjs',
             'postcss.config.mjs',
-            'next.config.ts'
+            'next.config.ts',
+            'next-env.d.ts',
+            '**/*.yml',
+            '**/*.yaml'
         ]
     },
 
@@ -56,78 +61,105 @@ const config = [
         },
         plugins: {
             '@typescript-eslint': eslintPluginTypescript,
-            'react': eslintPluginReact,
+            react: eslintPluginReact,
             'react-hooks': eslintPluginReactHooks,
             'react-refresh': eslintPluginReactRefresh,
-            'simple-import-sort': eslintPluginSimpleImportSort
+            'simple-import-sort': eslintPluginSimpleImportSort,
+            'custom-rules': {
+                rules: {
+                    'enforce-object-breaking': enforceObjectBreaking,
+                    'enforce-function-call-breaking': enforceFunctionCallBreaking
+                }
+            }
         },
         rules: {
-            // Disabled rules
             'no-empty-pattern': 'off',
             'react-refresh/only-export-components': 'off',
             '@typescript-eslint/no-explicit-any': 'off',
             '@typescript-eslint/ban-ts-comment': 'off',
             'react/react-in-jsx-scope': 'off',
-
-            // Code quality
             '@typescript-eslint/no-unused-expressions': 'error',
-            'no-console': ['warn', {
-                allow: ['warn', 'error']
-            }],
-
-            // React rules
+            'no-console': [
+                'warn',
+                {allow: ['warn', 'error']}
+            ],
             'react/no-unescaped-entities': 'off',
             'react/prop-types': 'off',
             'react/self-closing-comp': 'warn',
             'react/display-name': 'off',
+            'prefer-arrow-callback': 'warn',
+            'func-style': ['warn', 'expression'],
+            semi: ['warn', 'never'],
+            quotes: ['warn',
+                'single', {
+                    avoidEscape: true,
+                    allowTemplateLiterals: true
+                }],
+            'object-curly-spacing': ['warn', 'always'],
+            'operator-linebreak': [
+                'warn',
+                'before',
+                {overrides: {'=': 'after'}}
+            ],
+            'simple-import-sort/imports': [
+                'warn',
+                {
+                    groups: [
+                        // 1. React (always first)
+                        ['^react$', '^react-dom$'],
 
-            // Semicolon and quotes (per CLAUDE.md)
-            'semi': ['warn', 'never'],
-            'quotes': ['warn', 'single', {
-                avoidEscape: true
-            }],
+                        // 2. Next.js
+                        ['^next'],
 
-            // Import sorting
-            'simple-import-sort/imports': ['warn', {
-                groups: [
-                    // 1. React and react-dom (always first)
-                    ['^react$', '^react-dom$'],
+                        // 3. Third-party packages
+                        ['^[^@.]'],
 
-                    // 2. Third-party packages
-                    ['^[^@.]'],
+                        // 4. @-scoped third-party packages
+                        ['^@(?!/)'],
 
-                    // 3. @-scoped third-party packages
-                    ['^@(?!/)'],
+                        // 5. Custom @/ imports (grouped by subdirectory)
+                        ['^@/types'],
+                        ['^@/components'],
+                        ['^@/hooks'],
+                        ['^@/lib'],
+                        ['^@/utils'],
+                        ['^@/services'],
+                        ['^@/constants'],
+                        ['^@/config'],
+                        ['^@/context'],
+                        ['^@/handlers'],
+                        ['^@/'],
 
-                    // 4. Custom @/ imports (grouped by subdirectory)
-                    ['^@/types'],
-                    ['^@/components'],
-                    ['^@/hooks'],
-                    ['^@/lib'],
-                    ['^@/utils'],
-                    ['^@/services'],
-                    ['^@/constants'],
-                    ['^@/config'],
-                    ['^@/context'],
-                    ['^@/handlers'],
-                    ['^@/pages'],
-                    ['^@/'],
+                        // 6. Relative imports (parent directories)
+                        ['^\\.\\.(?!/?$)', '^\\.\\./'],
 
-                    // 5. Relative imports (parent directories)
-                    ['^\\.\\.(?!/?$)', '^\\.\\./'],
+                        // 7. Relative imports (same directory)
+                        ['^\\./(?=.*/)(?!/?$)', '^\\.(?!/?$)', '^\\./?$'],
 
-                    // 6. Relative imports (same directory)
-                    ['^\\./(?=.*/)(?!/?$)', '^\\.(?!/?$)', '^\\./?$'],
+                        // 8. Side effect imports
+                        ['^\\u0000'],
 
-                    // 7. Side effect imports
-                    ['^\\u0000'],
-
-                    // 8. Style imports (always last)
-                    ['^.+\\.css$']
-                ]
-            }],
-            'simple-import-sort/exports': 'warn'
+                        // 9. Style imports (always last)
+                        ['^.+\\.css$']
+                    ]
+                }
+            ],
+            'simple-import-sort/exports': 'warn',
+            'comma-dangle': ['warn', 'never'],
+            'custom-rules/enforce-object-breaking': 'warn',
+            'custom-rules/enforce-function-call-breaking': 'warn'
         }
+    },
+
+    // shadcn/ui components - totally disable ESLint checks
+    {
+        ignores: ['src/components/ui/**']
+    },
+
+    // Test files - disable function call breaking rule
+    {
+        files: ['**/__tests__/**/*.{js,ts,tsx}', '**/*.test.{js,ts,tsx}'],
+        rules: {'custom-rules/enforce-function-call-breaking': 'off'}
     }
 ]
 

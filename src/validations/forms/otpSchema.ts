@@ -1,13 +1,33 @@
 import * as z from 'zod'
 
+import { TranslatorFn } from '@/types/i18n'
+
 import config from '@/config/schema/authForm'
 
-export const otpSchema = z.object({
-    otp: z.string()
-        .min(1, 'OTP is required')
-        .min(config.otp.length, 'OTP is too short')
-        .max(config.otp.length, 'Invalid OTP')
-        .regex(config.otp.pattern, 'Invalid OTP')
-})
+import { validationLocales } from '@/locales/validationLocales'
 
-export type OtpSchema = z.infer<typeof otpSchema>
+export const createOtpSchema = (
+    t: TranslatorFn
+) =>
+    z.object({
+        otp: z.string()
+            .min(
+                1,
+                t(validationLocales.otp.required)
+            )
+            .min(
+                config.otp.length,
+                t(validationLocales.otp.tooShort)
+            )
+            .max(
+                config.otp.length,
+                t(validationLocales.otp.invalid)
+            )
+            .regex(
+                config.otp.pattern,
+                t(validationLocales.otp.invalid)
+            )
+    })
+
+export type OtpSchema =
+    z.infer<ReturnType<typeof createOtpSchema>>

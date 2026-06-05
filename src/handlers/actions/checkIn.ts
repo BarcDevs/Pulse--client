@@ -1,28 +1,29 @@
-import {CheckIn} from '@/types/checkIn'
+import { CheckIn } from '@/types/checkIn'
 
-import {createCheckIn, patchCheckIn,submitCheckIn} from '@/api/checkIn'
-import {CheckInSchema} from '@/validations/forms/checkInSchema'
+import {
+    createCheckIn,
+    patchCheckIn,
+    submitCheckIn
+} from '@/api/checkIn'
+import { CheckInSchema } from '@/validations/forms/checkInSchema'
 
 export const handleCheckInSubmit = async (
     data: CheckInSchema
 ): Promise<CheckIn> => {
-    const res = await submitCheckIn(data)
-    return res.data.data
+    return submitCheckIn(data)
 }
 
 export const handleCheckInCreate = async (
     data: CheckInSchema
 ): Promise<CheckIn> => {
-    const res = await createCheckIn(data)
-    return res.data.data
+    return createCheckIn(data)
 }
 
 export const handleCheckInUpdate = async (
     id: string,
     data: Partial<CheckInSchema>
 ): Promise<CheckIn> => {
-    const res = await patchCheckIn(id, data)
-    return res.data.data
+    return patchCheckIn(id, data)
 }
 
 export const handleCheckInSave = async (
@@ -30,10 +31,12 @@ export const handleCheckInSave = async (
     existingCheckIn?: CheckIn
 ): Promise<{checkIn: CheckIn; created: boolean}> => {
     if (existingCheckIn) {
-        const checkIn = await handleCheckInUpdate(existingCheckIn.id, data)
-        return {checkIn, created: false}
+        const checkIn = await handleCheckInUpdate(
+            existingCheckIn.id, data
+        )
+        return { checkIn, created: false }
     }
 
     const checkIn = await handleCheckInCreate(data)
-    return {checkIn, created: true}
+    return { checkIn, created: true }
 }

@@ -1,19 +1,19 @@
-import {createContext, ReactNode, useContext, useState} from 'react'
+import {
+    createContext,
+    useContext,
+    useEffect,
+    useState
+} from 'react'
 
-import {Language} from '@/types'
+import { Language } from '@/types'
+import { ContextProps } from '@/types/react'
 
 import languages from '@/data/languages'
-
-//region Types
-type ContextProps = {
-    children: ReactNode | undefined
-}
 
 type ContextValue = {
     lang: Language,
     changeLang: (lang: Language) => void
 }
-//endregion
 
 //region LocalStorage
 const getLangFromStorage = () => {
@@ -34,12 +34,14 @@ const LangContext = createContext<ContextValue>({
 
 const useLanguage = () => useContext(LangContext)
 
-const LangProvider = ({children}: ContextProps) => {
-    const htmlElement = document.documentElement
+const LangProvider = ({ children }: ContextProps) => {
     const [lang, setLang] = useState<Language>(getLangFromStorage())
 
-    htmlElement.lang = lang.code
-    htmlElement.dir = lang.dir
+    useEffect(() => {
+        const htmlElement = document.documentElement
+        htmlElement.lang = lang.code
+        htmlElement.dir = lang.dir
+    }, [lang])
 
     const changeLang = (lang: Language) => {
         setLang(lang)
@@ -47,10 +49,10 @@ const LangProvider = ({children}: ContextProps) => {
     }
 
     return (
-        <LangContext.Provider value={{lang, changeLang}}>
+        <LangContext.Provider value={{ lang, changeLang }}>
             {children}
         </LangContext.Provider>
     )
 }
 
-export {LangProvider, useLanguage}
+export { LangProvider, useLanguage }

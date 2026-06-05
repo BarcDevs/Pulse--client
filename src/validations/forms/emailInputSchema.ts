@@ -1,9 +1,24 @@
 import * as z from 'zod'
 
-export const emailInputSchema = z.object({
-    email: z.string()
-        .min(1, 'Email is required')
-        .email('Invalid email')
-})
+import { TranslatorFn } from '@/types/i18n'
 
-export type EmailInputSchema = z.infer<typeof emailInputSchema>
+import { validationLocales } from '@/locales/validationLocales'
+
+export const createEmailInputSchema = (
+    t: TranslatorFn
+) =>
+    z.object({
+        email: z.string()
+            .min(
+                1,
+                t(validationLocales.email.required)
+            )
+            .email(
+                t(validationLocales.email.invalid)
+            )
+    })
+
+export type EmailInputSchema =
+    z.infer<
+        ReturnType<typeof createEmailInputSchema>
+    >

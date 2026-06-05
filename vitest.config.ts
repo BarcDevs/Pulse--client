@@ -1,0 +1,43 @@
+import path from 'path'
+import { defineConfig } from 'vite'
+
+import react from '@vitejs/plugin-react'
+
+export default defineConfig({
+    plugins: [react()],
+    resolve: {
+        alias: {
+            '@': path.resolve(
+                __dirname,
+                './src'
+            )
+        }
+    },
+    define: {
+        'process.env.VITEST': 'true',
+        'process.env.NEXT_PUBLIC_SENTRY_REPLAYS_SESSION_SAMPLE_RATE': '"0"'
+    },
+    test: {
+        environment: 'jsdom',
+        globals: true,
+        // todo: create ci/cd pipeline
+        watch: false,
+        setupFiles: ['./src/__tests__/setup.ts'],
+        include: [
+            'src/**/*.test.ts',
+            'src/**/*.test.tsx'
+        ],
+        coverage: {
+            provider: 'v8',
+            reporter: [
+                'text',
+                'json',
+                'html'
+            ],
+            exclude: [
+                'node_modules/',
+                'src/__tests__/'
+            ]
+        }
+    }
+} as any)

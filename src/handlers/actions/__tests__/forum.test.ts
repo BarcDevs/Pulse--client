@@ -22,10 +22,8 @@ vi.mock('@/api/forum', () => ({
     getPostReplies: vi.fn(),
     deletePost: vi.fn(),
     upvotePost: vi.fn(),
-    downvotePost: vi.fn(),
     removeVote: vi.fn(),
     upvoteReply: vi.fn(),
-    downvoteReply: vi.fn(),
     removeReplyVote: vi.fn()
 }))
 
@@ -50,9 +48,7 @@ describe(
             authorId: 'user-1',
             votes: {
                 upvotes: 0,
-                downvotes: 0,
-                upvotedBy: [],
-                downvotedBy: []
+                upvotedBy: []
             }
         }
 
@@ -88,19 +84,12 @@ describe(
                         it(
                             'should return response data from createPost',
                             async () => {
-                                const expectedResponse = {
-                                    message: 'Post created successfully',
-                                    data: mockCreatedPost
-                                }
-
                                 mockCreatePost
-                                    .mockResolvedValueOnce({
-                                        data: expectedResponse
-                                    })
+                                    .mockResolvedValueOnce(mockCreatedPost)
 
                                 const result = await submitForm(mockPost)
 
-                                expect(result).toEqual(expectedResponse)
+                                expect(result).toEqual(mockCreatedPost)
                             })
 
                         it(
@@ -167,22 +156,15 @@ describe(
                                     title: 'Updated Title'
                                 }
 
-                                const expectedResponse = {
-                                    message: 'Post updated successfully',
-                                    data: updatedPost
-                                }
-
                                 mockUpdatePost
-                                    .mockResolvedValueOnce({
-                                        data: expectedResponse
-                                    })
+                                    .mockResolvedValueOnce(updatedPost)
 
                                 const result = await submitForm(
                                     mockPost,
                                     'post-123'
                                 )
 
-                                expect(result).toEqual(expectedResponse)
+                                expect(result).toEqual(updatedPost)
                             })
 
                         it(

@@ -1,21 +1,17 @@
-/**
- * Validates that a redirect URL is safe (relative path, not external)
- */
+/** Validates that a redirect URL is safe (relative path, not external) */
 export const isValidRedirectUrl = (
     url: string
 ): boolean => {
     if (!url) return false
 
-    // Only allow relative URLs starting with /
-    // Reject // (protocol-relative URLs) to prevent open redirects
+    /** Only allow relative URLs starting with /
+    * Reject // (protocol-relative URLs) to prevent open redirects */
     return url.startsWith('/') && !url.startsWith('//')
 }
 
-/**
- * Gets a safe redirect URL or falls back to default
- */
+/** Gets a safe redirect URL or falls back to default */
 export const getSafeRedirectUrl = (
-    url: string | null | undefined,
+    url?: string | null,
     defaultUrl: string = '/'
 ): string => {
     const decoded = url ? decodeURIComponent(url) : ''

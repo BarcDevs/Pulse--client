@@ -1,12 +1,12 @@
-import {CheckIn} from '@/types/checkIn'
+import { CheckIn } from '@/types/checkIn'
 
-import {DEFAULTS} from '@/constants/defaults'
+import { defaults } from '@/constants/defaults'
 
-const {maxSuggestedActivities} = DEFAULTS.checkIn
+const { maxSuggestedActivities } = defaults.checkIn
 
 type ActivityCounter = Map<
     string,
-    {label: string, count: number}
+    { label: string, count: number }
 >
 
 export const aggregateActivities =
@@ -38,3 +38,13 @@ export const aggregateActivities =
             .slice(0, maxSuggestedActivities)
             .map(item => item.label)
     }
+
+export const pickQuote = (
+    quotes: string[],
+    locale: string
+) => {
+    const seed = `${locale}-${new Date().toDateString()}`
+    const index = [...seed].reduce((acc, c) =>
+        acc + c.charCodeAt(0), 0) % quotes.length
+    return quotes[index]
+}

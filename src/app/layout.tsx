@@ -1,49 +1,74 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Inter, Noto_Sans_Hebrew } from 'next/font/google'
+import { NextIntlClientProvider } from 'next-intl'
+import { getLocale, getMessages } from 'next-intl/server'
 
 import { Analytics } from '@vercel/analytics/next'
 
+import type { LayoutProps } from '@/types'
+
+import { DirectionProvider } from '@/components/ui/direction'
+import { Toaster } from '@/components/ui/sonner'
+
+import { cn } from '@/lib/utils'
+
+import { appMetadata } from '@/config/appMetadata'
+
+import { AuthProvider } from '@/context/AuthProvider'
+
+import { QueryProvider } from '@/app/providers/QueryProvider'
+
 import '@/styles/globals.css'
 
-const inter = Inter({ 
-  subsets: ['latin'],
-  variable: '--font-inter'
+const inter = Inter({
+    subsets: ['latin'],
+    variable: '--font-inter'
 })
 
-export const metadata: Metadata = {
-  title: 'HealEase - Recovery & Wellness Sanctuary',
-  description: 'Your digital sanctuary for recovery and wellness. Track your journey, connect with community, and heal with AI-powered insights.',
-  generator: 'v0.app',
-  icons: {
-    icon: [
-      {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
-      },
-    ],
-    apple: '/apple-icon.png',
-  },
+const notoSansHebrew = Noto_Sans_Hebrew({
+    subsets: ['hebrew'],
+    variable: '--font-noto-sans-hebrew'
+})
+
+export const metadata: Metadata = appMetadata
+
+const RootLayout = async ({
+    children
+}: Readonly<LayoutProps>) => {
+    const locale = await getLocale()
+    const messages = await getMessages()
+    const dir = locale === 'he-IL' ? 'rtl' : 'ltr'
+
+    return (
+        <html
+            lang={locale}
+            dir={dir}
+            className={cn(
+                inter.variable,
+                notoSansHebrew.variable
+            )}
+        >
+        <body className={'font-sans antialiased bg-surface-page'}>
+        <DirectionProvider
+            dir={dir}
+            direction={dir}
+        >
+            <NextIntlClientProvider
+                locale={locale}
+                messages={messages}
+            >
+                <QueryProvider>
+                    <AuthProvider>
+                        {children}
+                    </AuthProvider>
+                </QueryProvider>
+            </NextIntlClientProvider>
+        </DirectionProvider>
+        <Toaster/>
+        <Analytics/>
+        </body>
+        </html>
+    )
 }
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
-  return (
-    <html lang="en">
-      <body className={`${inter.variable} font-sans antialiased bg-[var(--surface-page)]`}>
-        {children}
-        <Analytics />
-      </body>
-    </html>
-  )
-}
+export default RootLayout

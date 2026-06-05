@@ -1,34 +1,46 @@
 import * as z from 'zod'
 
-import config from '@/config/schema/checkInForm'
+import { TranslatorFn } from '@/types/i18n'
 
-export const checkInSchema = z.object({
-    moodScore: z.number()
-        .min(config.moodScore.min)
-        .max(config.moodScore.max),
-    painLevel: z.number()
-        .min(config.painLevel.min)
-        .max(config.painLevel.max),
-    activities: z.array(
-        z.string()
-            .min(
-                config.activities.minLength,
-                'Activity cannot be empty'
-            )
+import { checkInFormSchema } from '@/config/schema/checkInForm'
+
+import { validationLocales } from '@/locales/validationLocales'
+
+export const createCheckInSchema = (t: TranslatorFn) =>
+    z.object({
+        moodScore: z.number()
+            .min(checkInFormSchema.moodScore.min)
+            .max(checkInFormSchema.moodScore.max),
+        painLevel: z.number()
+            .min(checkInFormSchema.painLevel.min)
+            .max(checkInFormSchema.painLevel.max),
+        activities: z.array(
+            z.string()
+                .min(
+                    checkInFormSchema.activities.minLength,
+                    t(validationLocales.checkIn.activity.empty)
+                )
+                .max(
+                    checkInFormSchema.activities.maxLength,
+                    t(
+                        validationLocales.checkIn.activity.tooLong,
+                        { max: checkInFormSchema.activities.maxLength }
+                    )
+                )
+        ).min(
+            checkInFormSchema.activities.minCount,
+            t(validationLocales.checkIn.activity.required)
+        ),
+        notes: z.string()
             .max(
-                config.activities.maxLength,
-                `Activity must be under ${config.activities.maxLength} characters`
+                checkInFormSchema.notes.maxLength,
+                t(
+                    validationLocales.checkIn.notes.tooLong,
+                    { max: checkInFormSchema.notes.maxLength }
+                )
             )
-    ).min(
-        config.activities.minCount,
-        'At least one activity is required'
-    ),
-    notes: z.string()
-        .max(
-            config.notes.maxLength,
-            `Notes must be under ${config.notes.maxLength} characters`
-        )
-        .optional()
-})
+            .optional()
+    })
 
-export type CheckInSchema = z.infer<typeof checkInSchema>
+export type CheckInSchema =
+    z.infer<ReturnType<typeof createCheckInSchema>>

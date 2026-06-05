@@ -8,8 +8,9 @@ export default {
         maxLength: 300
     },
     tags: {
-        max: 3,
-        minLength: 3,
-        maxLength: 15
+        min: 1,
+        max: 5,
+        minLength: 2,
+        maxLength: 20
     }
 }

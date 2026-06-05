@@ -1,21 +1,23 @@
-export type HealthInterest = {
-    id: string
-    slug: string
-    name: string
-    description: string
-    category: string
-    sortOrder: number
-    isActive: boolean
-}
+export type ProfileVisibility = 'onlyMe' | 'mentors' | 'community'
 
-export type ActivityPreference = {
+export type UserProfile = {
     id: string
-    slug: string
-    name: string
-    description: string
-    category: string
-    sortOrder: number
-    isActive: boolean
+    userId: string
+    image?: string
+    bio?: string
+    location?: string
+    timezone?: string
+    dateFormat?: string
+    theme: string
+    language: string
+    dailyReminder: boolean
+    communityAlerts: boolean
+    profileVisibility: string
+    anonymousParticipation: boolean
+    healthInterests?: string[]
+    activityPreferences?: string[]
+    createdAt: string
+    updatedAt: string
 }
 
 export type Profile = {
@@ -25,19 +27,40 @@ export type Profile = {
     bio?: string
     location?: string
     timezone?: string
-    healthInterests: HealthInterest[]
-    activityPreferences: ActivityPreference[]
+    dateFormat?: string
+    theme: string
+    language: string
+    dailyReminder: boolean
+    communityAlerts: boolean
+    profileVisibility: ProfileVisibility
+    anonymousParticipation: boolean
+    healthInterests: string[]
+    activityPreferences: string[]
+    likedPostIds: string[]
+    likedReplyIds: string[]
+    savedPostIds: string[]
     createdAt: string
     updatedAt: string
 }
 
 export type ProfileOptions = {
-    healthInterests: HealthInterest[]
-    activityPreferences: ActivityPreference[]
+    activityPreferences: string[]
 }
 
 export type ProfileUpdateInput = {
-    bio?: string | null
-    location?: string | null
-    timezone?: string | null
+    bio?: string
+    location?: string
+    timezone?: string
+    image?: string
+    theme?: string
+    language?: string
+    dateOfBirth?: string
+    recoveryType?: string
+    careProvider?: string
+    dailyReminder?: boolean
+    communityAlerts?: boolean
+    profileVisibility?: ProfileVisibility
+    anonymousParticipation?: boolean
+    healthInterests?: string[]
+    activityPreferences?: string[]
 }

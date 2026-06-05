@@ -1,4 +1,4 @@
-export const DEFAULTS = {
+export const defaults = {
     scoreSlider: {
         min: 1,
         max: 10,
@@ -8,5 +8,8 @@ export const DEFAULTS = {
         historyLimit: 30,
         maxSuggestedActivities: 5,
         dateFormat: 'MMM d'
+    },
+    progress: {
+        topGoalsCount: 4
     }
 }

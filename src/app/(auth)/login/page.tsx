@@ -2,146 +2,64 @@
 
 import { useState } from 'react'
 
-import { Shield } from 'lucide-react'
-import Link from 'next/link'
-import { useRouter } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 
-import { Button } from '@/components/ui/Button'
-import { Card, CardContent, CardDescription,CardHeader, CardTitle } from '@/components/ui/Card'
-import { Input } from '@/components/ui/Input'
+import { GoogleLoginButton } from '@/components/auth/forms/GoogleLoginButton'
+import { LoginSecurityFooter } from '@/components/auth/sections/LoginSecurityFooter'
+import { AuthForm } from '@/components/form/AuthForm'
+import {
+    Card,
+    CardContent,
+    CardDescription,
+    CardHeader,
+    CardTitle
+} from '@/components/ui/card'
 
-export default function LoginPage() {
-  const router = useRouter()
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [isLoading, setIsLoading] = useState(false)
+import { useAuthHandlers } from '@/hooks/useAuthHandlers'
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsLoading(true)
-    
-    // Simulate login
-    setTimeout(() => {
-      setIsLoading(false)
-      router.push('/dashboard')
-    }, 1000)
-  }
+import { authLocales } from '@/locales/authLocales'
+import type { LoginSchema } from '@/validations/forms/loginSchema'
 
-  return (
-    <Card className="w-full max-w-md border-0 shadow-lg">
-      <CardHeader className="text-center">
-        <CardTitle className="text-2xl font-semibold">Welcome Back</CardTitle>
-        <CardDescription>
-          Please enter your details to access your sanctuary.
-        </CardDescription>
-      </CardHeader>
-      <CardContent>
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div className="space-y-2">
-            <label
-              htmlFor="email"
-              className="text-xs font-medium uppercase tracking-wider text-[var(--muted-foreground)]"
-            >
-              EMAIL ADDRESS
-            </label>
-            <Input
-              id="email"
-              type="email"
-              placeholder="name@example.com"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="h-11 border-[var(--border)] bg-[var(--muted)]"
-              required
-            />
-          </div>
+const LoginPage = () => {
+    const t = useTranslations()
+    const { handleLogin } = useAuthHandlers()
+    const [isLoading, setIsLoading] = useState(false)
+    const [error, setError] = useState<string | null>(null)
 
-          <div className="space-y-2">
-            <div className="flex items-center justify-between">
-              <label
-                htmlFor="password"
-                className="text-xs font-medium uppercase tracking-wider text-[var(--muted-foreground)]"
-              >
-                PASSWORD
-              </label>
-              <Link
-                href="/forgot-password"
-                className="text-sm text-[var(--primary)] hover:underline"
-              >
-                Forgot Password?
-              </Link>
-            </div>
-            <Input
-              id="password"
-              type="password"
-              placeholder="********"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="h-11 border-[var(--border)] bg-[var(--muted)]"
-              required
-            />
-          </div>
+    const handleLoginSuccess = async (
+        credentials: LoginSchema
+    ) => {
+        setIsLoading(true)
+        setError(null)
+        const err = await handleLogin(credentials)
+        setError(err)
+        setIsLoading(false)
+    }
 
-          <Button
-            type="submit"
-            className="h-11 w-full bg-[var(--primary)] text-white hover:bg-[var(--primary)]/90"
-            disabled={isLoading}
-          >
-            {isLoading ? 'Logging in...' : 'Log In'}
-          </Button>
+    return (
+        <Card className={'w-full max-w-md border-0 shadow-lg'}>
+            <CardHeader className={'text-center'}>
+                <CardTitle className={'text-2xl font-semibold'}>
+                    {t(authLocales.login.title)}
+                </CardTitle>
+                <CardDescription>
+                    {t(authLocales.login.description)}
+                </CardDescription>
+            </CardHeader>
+            <CardContent>
+                <AuthForm
+                    formType={'login'}
+                    onSuccessAction={handleLoginSuccess}
+                    isLoading={isLoading}
+                    error={error}
+                />
 
-          <div className="relative">
-            <div className="absolute inset-0 flex items-center">
-              <span className="w-full border-t border-[var(--border)]" />
-            </div>
-            <div className="relative flex justify-center text-xs uppercase">
-              <span className="bg-[var(--card)] px-2 text-[var(--muted-foreground)]">
-                OR CONTINUE WITH
-              </span>
-            </div>
-          </div>
+                <GoogleLoginButton/>
 
-          <Button
-            type="button"
-            variant="outline"
-            className="h-11 w-full border-[var(--border)]"
-          >
-            <svg className="mr-2 size-5" viewBox="0 0 24 24">
-              <path
-                d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
-                fill="#4285F4"
-              />
-              <path
-                d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
-                fill="#34A853"
-              />
-              <path
-                d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"
-                fill="#FBBC05"
-              />
-              <path
-                d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
-                fill="#EA4335"
-              />
-            </svg>
-            Google
-          </Button>
-
-          <p className="text-center text-sm text-[var(--muted-foreground)]">
-            {"Don't have an account?"}{' '}
-            <Link
-              href="/signup"
-              className="font-medium text-[var(--foreground)] hover:underline"
-            >
-              Sign Up
-            </Link>
-          </p>
-        </form>
-
-        <div className="mt-6 flex items-center justify-center gap-2 text-xs text-[var(--muted-foreground)]">
-          <Shield className="size-4" />
-          SECURE HIPAA COMPLIANT CONNECTION
-        </div>
-      </CardContent>
-    </Card>
-  )
+                <LoginSecurityFooter/>
+            </CardContent>
+        </Card>
+    )
 }
+
+export default LoginPage

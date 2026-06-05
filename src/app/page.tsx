@@ -1,5 +1,5 @@
-import { redirect } from 'next/navigation'
+import { LandingPageContent } from '@/components/landing/LandingPageContent'
 
-export default function Home() {
-  redirect('/dashboard')
-}
+const Home = () => <LandingPageContent/>
+
+export default Home

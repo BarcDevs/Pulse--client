@@ -5,6 +5,7 @@
 node_modules/
 .next/
 .DS_Store
+next-env.d.ts
 
 # Logs
 logs
@@ -14,12 +15,14 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
-package-lock*
+
+*.tsbuildinfo
 
 node_modules
 dist
 dist-ssr
 *.local
+test-results
 
 # Editor directories and files
 .vscode/*
@@ -40,8 +43,11 @@ dist-ssr
 qodana.yaml
 nul
 
-# Claude
+# Claude and Codex
 review
 .claude
+.codex
 healease-refined-ui-example
 designs
+docs/plans
+.browsertest

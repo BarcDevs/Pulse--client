@@ -28,6 +28,7 @@ import {
     updateReply
 } from '@/api/forum'
 import { api } from '@/api/index'
+import { ENDPOINTS } from '@/api/routes'
 
 // ==================== forum API ====================
 describe(
@@ -58,7 +59,7 @@ describe(
                         await fetchPosts(query)
                         expect(api.get)
                             .toHaveBeenCalledWith(
-                                '/forum/posts',
+                                ENDPOINTS.forum.posts,
                                 { params: query }
                             )
                     })
@@ -76,7 +77,7 @@ describe(
                         await fetchPosts({})
                         expect(api.get)
                             .toHaveBeenCalledWith(
-                                '/forum/posts',
+                                ENDPOINTS.forum.posts,
                                 { params: {} }
                             )
                     })
@@ -99,7 +100,7 @@ describe(
                         await fetchPost('post-123')
                         expect(api.get)
                             .toHaveBeenCalledWith(
-                                '/forum/posts/post-123'
+                                ENDPOINTS.forum.post('post-123')
                             )
                     })
             })
@@ -127,7 +128,7 @@ describe(
                         await createPost(post)
                         expect(api.post)
                             .toHaveBeenCalledWith(
-                                '/forum/posts',
+                                ENDPOINTS.forum.posts,
                                 { ...post }
                             )
                     })
@@ -159,7 +160,7 @@ describe(
                         )
                         expect(api.put)
                             .toHaveBeenCalledWith(
-                                '/forum/posts/post-123',
+                                ENDPOINTS.forum.post('post-123'),
                                 { ...post }
                             )
                     })
@@ -180,7 +181,7 @@ describe(
                         await deletePost('post-123')
                         expect(api.delete)
                             .toHaveBeenCalledWith(
-                                '/forum/posts/post-123'
+                                ENDPOINTS.forum.post('post-123')
                             )
                     })
             })
@@ -202,7 +203,33 @@ describe(
                         await fetchReplies('post-123')
                         expect(api.get)
                             .toHaveBeenCalledWith(
-                                '/forum/posts/post-123/replies'
+                                ENDPOINTS.forum.replies('post-123'),
+                                { params: undefined }
+                            )
+
+                    })
+
+                it(
+                    'should pass limit and offset params',
+                    async () => {
+                        vi.mocked(api.get)
+                            .mockResolvedValueOnce({
+                                data: {
+                                    data: { replies: [] }
+                                }
+                            })
+
+                        await fetchReplies(
+                            'post-123',
+                            {
+                                limit: 5,
+                                page: 2
+                            }
+                        )
+                        expect(api.get)
+                            .toHaveBeenCalledWith(
+                                ENDPOINTS.forum.replies('post-123'),
+                                { params: { limit: 5, page: 2 } }
                             )
                     })
             })
@@ -222,9 +249,7 @@ describe(
                             authorId: 'user-1',
                             votes: {
                                 upvotes: 0,
-                                downvotes: 0,
-                                upvotedBy: [],
-                                downvotedBy: []
+                                upvotedBy: []
                             }
                         }
                         vi.mocked(api.post)
@@ -240,7 +265,7 @@ describe(
                         )
                         expect(api.post)
                             .toHaveBeenCalledWith(
-                                '/forum/posts/post-123/replies',
+                                ENDPOINTS.forum.replies('post-123'),
                                 { ...reply }
                             )
                     })
@@ -261,9 +286,7 @@ describe(
                             authorId: 'user-1',
                             votes: {
                                 upvotes: 0,
-                                downvotes: 0,
-                                upvotedBy: [],
-                                downvotedBy: []
+                                upvotedBy: []
                             }
                         }
                         vi.mocked(api.put)
@@ -280,7 +303,7 @@ describe(
                         )
                         expect(api.put)
                             .toHaveBeenCalledWith(
-                                '/forum/posts/post-123/replies/reply-1',
+                                ENDPOINTS.forum.reply('post-123', 'reply-1'),
                                 { ...reply }
                             )
                     })

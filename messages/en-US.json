@@ -1,0 +1,1315 @@
+{
+  "common": {
+    "retry": "Try again",
+    "loginButton": "Log in",
+    "download": "Download",
+    "share": "Share",
+    "pickDate": "Pick a date",
+    "fields": {
+      "firstName": "First name",
+      "lastName": "Last name",
+      "email": "Email address",
+      "location": "Location",
+      "username": "Username"
+    }
+  },
+  "auth": {
+    "common": {
+      "emailLabel": "Email address",
+      "passwordLabel": "Password",
+      "backButton": "Back to login",
+      "orContinueWith": "Or continue in a way that feels comfortable",
+      "continueWithGoogle": "Continue with Google"
+    },
+    "login": {
+      "title": "Welcome back",
+      "description": "Sign in to return to your space and continue where you left off.",
+      "forgotPasswordLink": "Forgot your password?",
+      "loginButton": "Log in",
+      "loggingInButton": "Logging you in...",
+      "signupText": "New here?",
+      "signupLink": "Create an account",
+      "hipaaText": "Your information is encrypted and securely protected",
+      "rememberMe": "Keep me signed in"
+    },
+    "signup": {
+      "title": "Create your account",
+      "description": "Set up your space and begin building healthier routines at your own pace.",
+      "firstNamePlaceholder": "John",
+      "lastNamePlaceholder": "Doe",
+      "confirmPasswordLabel": "Confirm password",
+      "signupButton": "Create account",
+      "signingUpButton": "Creating your account...",
+      "loginText": "Already have an account?",
+      "loginLink": "Sign in",
+      "passwordDescription": "Use at least 8 characters, including one letter and one number"
+    },
+    "forgotPassword": {
+      "title": "Reset your password",
+      "description": "Forgot your password? It happens. Enter your email and we’ll send you a secure reset link.",
+      "submitButton": "Send reset link",
+      "sendingButton": "Sending...",
+      "checkEmailTitle": "Check your email",
+      "checkEmailDesc": "We sent a password reset link to",
+      "supportLink": "support team",
+      "supportText": "If you cannot access your email anymore, please contact our",
+      "supportVerification": "for identity verification support."
+    },
+    "resetPassword": {
+      "title": "Create a new password",
+      "description": "Choose a secure password so you can safely return to your account.",
+      "passwordLabel": "New password",
+      "confirmPasswordLabel": "Confirm new password",
+      "minLengthText": "At least 8 characters",
+      "specialCharText": "Include one special character",
+      "submitButton": "Reset password",
+      "resettingButton": "Resetting password...",
+      "troubleText": "Need help?",
+      "supportLink": "Contact support"
+    }
+  },
+  "chat": {
+    "inputPlaceholder": "Share what’s on your mind...",
+    "pageTitle": "Support Chat",
+    "pageSubtitle": "A space to reflect, ask questions, and feel supported",
+    "badge": "Private and supportive",
+    "suggestedForYou": "You might find this helpful",
+    "messages": {
+      "assistantLabel": "Support Chat",
+      "youLabel": "You",
+      "openingMessage": "Hi {name}. I’m here with you today. How are you feeling right now?",
+      "exampleUserRestlessness": "I’ve been feeling a bit restless today...",
+      "aiResponse1": "That can happen during recovery, especially when your mind or body feels unsettled. Sometimes it helps to slow things down and focus on what feels manageable right now.",
+      "suggestions": [
+        "Try a grounding exercise",
+        "Improve your sleep environment"
+      ],
+      "aiResponse2": "Let’s begin with a grounding exercise. It can help bring your attention back to the present moment and create a sense of stability."
+    },
+    "sidebar": {
+      "nextMilestoneLabel": "Next milestone",
+      "nextMilestoneTitle": "{days} days",
+      "nextMilestoneBadge": "{percent}% completed",
+      "insightsTitle": "Recent insights",
+      "insightsTimeframe": "Last 7 days",
+      "emotionalTrendLabel": "Emotional trend",
+      "emotionalTrendTitle": "More stable",
+      "emotionalTrendDescription": "Your mood has been more balanced recently",
+      "quote": "Consistent small steps can create meaningful change over time",
+      "quoteAuthor": "HealEase Community"
+    }
+  },
+  "checkIn": {
+    "headerTitle": "Your current state",
+    "pageTitle": "Daily check-in",
+    "pageSubtitle": "Take a moment to pause, reflect, and notice how you’re doing today.",
+    "submitButton": "Save check-in",
+    "submittedFeedback": "Check-in saved! Taking you to your progress...",
+    "mood": {
+      "label": "Mood",
+      "min": "Very low",
+      "max": "Very high"
+    },
+    "pain": {
+      "label": "Pain level",
+      "helper": "How physically comfortable do you feel right now?",
+      "min": "No pain",
+      "max": "Severe pain"
+    },
+    "activities": {
+      "title": "Activities",
+      "placeholder": "Add your own",
+      "suggestedLabel": "Your top activities",
+      "allLabel": "All activities",
+      "default": {
+        "meditation": "Meditation",
+        "exercise": "Exercise",
+        "social time": "Social time",
+        "reading": "Reading",
+        "journaling": "Journaling",
+        "therapy": "Therapy",
+        "rest": "Rest"
+      }
+    },
+    "journal": {
+      "title": "Journal",
+      "placeholder": "Write about how today feels, what’s been difficult, or anything else on your mind."
+    },
+    "submitError": "We couldn't save your daily update right now. Please try again in a moment.",
+    "submitPendingMessage": "Processing your check-in…",
+    "quotes": [
+      "Showing up today is already meaningful.",
+      "Small steps still move you forward.",
+      "You do not have to figure everything out today.",
+      "Consistency matters more than perfection.",
+      "Some days feel lighter than others, and that is okay.",
+      "Progress can happen quietly over time.",
+      "Taking a moment to reflect is part of caring for yourself.",
+      "Your effort today still counts.",
+      "Try to give yourself the same patience you would give someone else.",
+      "Recovery can look different from one day to the next."
+    ]
+  },
+  "community": {
+    "savingMessage": "Publishing your post…",
+    "posts": {
+      "edited": "(edited)",
+      "filterLabels": {
+        "newest": "Newest",
+        "popular": "Popular",
+        "unanswered": "Unanswered"
+      },
+      "repliesLabel": "replies",
+      "postedBy": "Posted by",
+      "share": "Share",
+      "save": "Save",
+      "saved": "Saved",
+      "newPostButton": "Create post",
+      "searchPlaceholder": "Search conversations and discussions...",
+      "empty": "No posts have been shared yet. You can start the conversation when you feel ready.",
+      "emptyWithFilter": "No posts matched this filter. Try another one or explore all discussions.",
+      "likedLabel": "showed support",
+      "allCategories": "All categories",
+      "filterByCategory": "Browse categories",
+      "tagFilter": "Filter by tag",
+      "clearTagFilter": "Clear filter"
+    },
+    "mentors": {
+      "title": "Support Mentors",
+      "chatButton": "Start chat"
+    },
+    "sanctuary": {
+      "title": "Community space",
+      "description": "HealEase is built to support respectful conversations, privacy, and a sense of emotional safety.",
+      "rules": {
+        "kind": "Lead with kindness and openness",
+        "noAdvice": "Avoid giving medical advice unless qualified",
+        "privacy": "Respect privacy and anonymity"
+      },
+      "readGuidelines": "Read guidelines"
+    },
+    "trending": {
+      "title": "Trending discussions"
+    },
+    "activity": {
+      "title": "Community activity",
+      "viewAll": "View all",
+      "loadError": "We couldn't load community activity right now"
+    },
+    "confirmations": {
+      "deletePost": "Are you sure you want to remove this post?",
+      "deleteReply": "Are you sure you want to remove this reply?",
+      "deletePostTitle": "Delete this post?",
+      "deletePostDescription": "This will permanently remove your post and all of its replies. This action cannot be undone.",
+      "deleteReplyTitle": "Delete this reply?",
+      "deleteReplyDescription": "This will permanently remove your reply. This action cannot be undone."
+    },
+    "postDetail": {
+      "replies": "Replies",
+      "reply": "Reply",
+      "noReplies": "No replies yet. You can share your thoughts whenever you feel comfortable.",
+      "loginToReply": "Please log in to reply",
+      "notFoundTitle": "Post not found",
+      "notFoundDescription": "This post may have been removed or is no longer available.",
+      "backToCommunity": "Back to community",
+      "repliesLoadError": "Unable to load replies",
+      "postLoadError": "Unable to load this post right now. Please try again.",
+      "writeReplyPlaceholder": "Write a supportive reply…",
+      "showMoreRepliesWithCount": "Show {count} more {count, plural, one {reply} other {replies}}",
+      "authorBadge": "Author"
+    },
+    "postActions": {
+      "solidarity": "Showed support",
+      "reply": "Reply",
+      "share": "Share",
+      "linkCopied": "Link copied to clipboard!",
+      "editPost": "Edit post",
+      "deletePost": "Delete post",
+      "editReply": "Edit reply",
+      "deleteReply": "Delete reply"
+    },
+    "postForm": {
+      "writeReply": "Write a reply",
+      "createPost": "Share with the community",
+      "createPostSubtitle": "Your post will be visible to the HealEase community. Keep the space supportive and avoid medical advice.",
+      "content": "Content",
+      "cancel": "Cancel",
+      "saveChanges": "Save changes",
+      "sendReply": "Send reply",
+      "title": "Title",
+      "titlePlaceholder": "Give your post a clear title",
+      "category": "Category",
+      "categoryPlaceholder": "Choose a category",
+      "bodyPlaceholderReply": "Write your reply here...",
+      "bodyPlaceholderPost": "Share what’s on your mind, ask a question, or offer support to others...",
+      "tags": "Tags",
+      "tagsPlaceholder": "Add a topic like recovery, anxiety, sleep...",
+      "tagsPlaceholderMore": "Add another topic...",
+      "tagsHint": "Add 1–5 topics to help others find your post",
+      "tagSuggestions": "Suggested topics",
+      "tagPopularTopics": "Popular topics",
+      "categoryHint": "What kind of conversation would you like to start?"
+    },
+    "categories": {
+      "names": {
+        "recovery": "Recovery Journey",
+        "therapy": "Therapy & Physical Recovery",
+        "mental": "Mental & Emotional Wellbeing",
+        "milestones": "Goals & Progress",
+        "lifestyle": "Lifestyle & Daily Wellness",
+        "support": "Community Support",
+        "questions": "Questions & Guidance",
+        "stories": "Recovery Stories",
+        "wellness": "Wellness & Routines",
+        "discussion": "Open Discussion"
+      },
+      "descriptions": {
+        "recovery": "Milestones, setbacks, progress stories",
+        "therapy": "Physical therapy, exercises, sessions",
+        "mental": "Mood, stress, motivation, mindset",
+        "milestones": "Recovery goals and milestones",
+        "lifestyle": "Sleep, nutrition, routines",
+        "support": "Encouragement and peer connection",
+        "questions": "Ask the community for input",
+        "stories": "Share your full experience",
+        "wellness": "Mindfulness, healthy routines, and emotional wellbeing",
+        "discussion": "Anything else recovery-related"
+      }
+    },
+    "toasts": {
+      "replyPosted": "Your reply has been posted",
+      "replyUpdated": "Your reply has been updated",
+      "replyDeleted": "Your reply has been removed",
+      "postPublished": "Your post is now live",
+      "postUpdated": "Your post has been updated",
+      "replyPostFailed": "We couldn't post your reply right now",
+      "replyUpdateFailed": "We couldn't update your reply right now",
+      "replyDeleteFailed": "We couldn't remove your reply right now",
+      "postPublishFailed": "We couldn't publish your post right now",
+      "postUpdateFailed": "We couldn't update your post right now",
+      "loginToLike": "Log in to show support",
+      "loginToLikeReply": "Log in to show support",
+      "loginToSave": "Log in to save posts",
+      "loginToCreate": "Log in to share a post",
+      "sessionExpired": "Your session has expired. Please log in again.",
+      "workSaved": "Your draft has been saved. Return within {minutes} minutes to continue where you left off."
+    }
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "greeting": "Welcome back, {name}",
+    "checkIn": {
+      "badge": "Daily reflection",
+      "title": "Ready for today’s check-in?",
+      "description": "Regular check-ins can help you better understand patterns in how you feel over time.",
+      "button": "Start check-in"
+    },
+    "aiInsight": {
+      "label": "Insight",
+      "seeMore": "Read more",
+      "seeLess": "Show less",
+      "failedToLoad": "We couldn't load insights right now"
+    },
+    "noInsights": "Complete a few more check-ins to unlock personalized insights and trends.",
+    "community": {
+      "label": "Community",
+      "viewAll": "View all"
+    },
+    "dailyObservation": {
+      "title": "A Small Moment for Yourself",
+      "label": "Something we noticed",
+      "description": "Check in regularly to see your personal patterns here.",
+      "observation": "{activity} has appeared in your recent check-ins.",
+      "supportCopy": "No need to keep a streak, it just felt worth noticing."
+    },
+    "historyChart": {
+      "title": "Your recovery trend",
+      "week": "Week",
+      "month": "Month"
+    },
+    "stats": {
+      "labels": {
+        "mood": "Mood",
+        "pain": "Pain Level",
+        "streak": "Streak",
+        "milestonesCompleted": "Milestones Completed"
+      },
+      "subValues": {
+        "days": " days"
+      },
+      "descriptions": {
+        "mood": {
+          "great": "Great",
+          "stable": "Stable",
+          "low": "Low"
+        },
+        "pain": {
+          "decreasing": "Decreasing",
+          "elevated": "Elevated",
+          "high": "High"
+        },
+        "streak": {
+          "newRecord": "New record!",
+          "personalBest": "{days} best"
+        }
+      }
+    }
+  },
+  "insights": {
+    "title": "Insights",
+    "subtitle": "Patterns and observations based on your recent activity",
+    "aiActive": "Analysis active",
+    "criticalInsight": {
+      "label": "Important insight",
+      "title": "Your mood tends to improve on days that include mobility stretching.",
+      "description": "Your recent check-ins suggest a connection between your morning stretching routine and higher energy levels later in the day.",
+      "buttonPrimary": "Schedule stretching",
+      "buttonSecondary": "View pattern details"
+    },
+    "painAlert": {
+      "title": "Pain trend noticed",
+      "description": "Your pain levels were slightly higher today compared to your recent average. Sleep quality also appears lower than usual.",
+      "status": "Needs attention",
+      "action": "Update journal"
+    },
+    "actionableStep": {
+      "title": "Suggested next step",
+      "description": "A short restorative yoga session may help reduce tension and support relaxation later tonight.",
+      "button": "Start session"
+    },
+    "header": {
+      "badge": "Highlighted insight",
+      "title": "Your mood tends to improve on days that include mobility stretching.",
+      "description": "Recent trends suggest your morning stretching routine may support better energy and emotional balance later in the day.",
+      "buttonPrimary": "Schedule stretching",
+      "buttonSecondary": "View pattern details"
+    },
+    "behavioralPatterns": {
+      "title": "Behavioral patterns",
+      "tabs": {
+        "sevenDays": "7 days",
+        "thirtyDays": "30 days"
+      },
+      "correlation": {
+        "label": "Pattern",
+        "title": "Social interaction and stress levels",
+        "description": "You tend to report lower stress levels on days when you participate in community conversations."
+      },
+      "observation": {
+        "label": "Observation",
+        "title": "Morning routine consistency",
+        "description": "Completing a daily check-in earlier in the day is associated with higher consistency in reaching your recovery goals.",
+        "statLabel": "Success rate with regular check-ins"
+      },
+      "prediction": {
+        "label": "Projection",
+        "title": "Projected recovery trend",
+        "description": "If your current routine continues, your mobility trends may continue improving over the next week.",
+        "confidence": "High confidence trend"
+      }
+    },
+    "summary": {
+      "title": "Weekly summary",
+      "description": "An overview of recent emotional, physical, and behavioral trends.",
+      "exportButton": "Export report"
+    }
+  },
+  "progress": {
+    "title": "Progress",
+    "subtitle": "A clearer view of your patterns, consistency, and growth over time.",
+    "exportPdf": "Export PDF",
+    "shareJourney": "Share progress",
+    "milestones": {
+      "title": "Milestones & achievements",
+      "seeAll": "See all {count} milestones",
+      "empty": "No active goals yet. You can add goals anytime from Goals & Milestones."
+    },
+    "wellness": {
+      "label": "Weekly wellness overview",
+      "timeframe": "Last week compared to this week",
+      "mood": "Mood",
+      "pain": "Pain",
+      "energy": "Energy level",
+      "trends": {
+        "improving": "Improving",
+        "declining": "Needs attention",
+        "steady": "Steady",
+        "increasing": "Increasing",
+        "stable": "Stable",
+        "building": "Building gradually"
+      },
+      "status": {
+        "thriving": "Thriving & Improving",
+        "needsAttention": "Needs Attention",
+        "moodImproving": "Mood Improving",
+        "painRelieving": "Pain Relieving",
+        "stableAndMaintaining": "Stable & Maintaining"
+      }
+    },
+    "stats": {
+      "streak": {
+        "label": "Current streak",
+        "unit": "days",
+        "personalBest": "Personal best - {days} days",
+        "last14Days": "Your last two weeks",
+        "checkedIn": "{count}/14 checked in"
+      },
+      "milestones": {
+        "label": "Goal steps",
+        "unit": "milestones",
+        "outOf": "of {total}",
+        "acrossGoals": "Across {count} goals you’re working on",
+        "percentComplete": "{percent}% complete",
+        "completedCount": "{count} completed",
+        "inProgressCount": "{count} in progress",
+        "upcomingCount": "{count} up next",
+        "nextUp": "Next step"
+      }
+    },
+    "share": {
+      "title": "My progress",
+      "tagline": "Small steps still matter.",
+      "cta": "Track your progress with HealEase",
+      "toastShare": "Shared successfully",
+      "toastCopied": "Image copied",
+      "toastDownloaded": "Image saved",
+      "streakUnit": "day streak",
+      "noMoodData": "No mood data yet",
+      "currentStreakLabel": "Current streak",
+      "averageMoodLabel": "Average mood",
+      "milestonesLabel": "Milestones completed",
+      "modalTitle": "Share your progress",
+      "modalDescription": "Preview and share your recent progress with people you trust",
+      "download": "Download",
+      "share": "Share"
+    },
+    "insight": {
+      "label": "Recovery insight",
+      "emptyInsight": "Complete more check-ins to unlock personalized insights.",
+      "buttonPrimary": "Continue",
+      "buttonSecondary": "Got it"
+    },
+    "charts": {
+      "moodChart": {
+        "title": "Mood trend",
+        "subtitle": "Daily average mood score",
+        "legendLabel": "Mood score",
+        "targetLabel": "Weekly target"
+      },
+      "painChart": {
+        "title": "Pain intensity",
+        "subtitle": "Tracking physical discomfort over time",
+        "legendLabel": "Pain level"
+      },
+      "moodTrendChart": {
+        "title": "Mood trend",
+        "subtitle": "Daily average mood score",
+        "legendLabel": "Mood score",
+        "targetLabel": "Weekly target"
+      },
+      "painIntensityChart": {
+        "title": "Pain intensity",
+        "subtitle": "Tracking physical changes over time",
+        "legendLabel": "Pain level"
+      },
+      "timePeriods": {
+        "weekly": "Weekly",
+        "monthly": "Monthly"
+      },
+      "tabTriggers": {
+        "week": "Week",
+        "month": "Month"
+      },
+      "status": {
+        "loadError": "Unable to load data",
+        "noCheckIn": "No daily updates yet. Start checking in to see your progress here",
+        "noCheckInTooltip": "No daily update"
+      }
+    }
+  },
+  "profile": {
+    "savingMessage": "Saving your profile changes…",
+    "toasts": {
+      "saveFailed": "We couldn't save your profile right now."
+    },
+    "info": {
+      "memberSince": "Member since"
+    },
+    "levelBadge": "Level {level}: {title}",
+    "stats": {
+      "streak": "Current streak",
+      "milestones": "Milestones completed",
+      "goals": "Active goals"
+    },
+    "recoveryIdentity": {
+      "title": "Recovery focus",
+      "subtitle": "Areas you’re focusing on right now",
+      "empty": "No focus areas added yet",
+      "edit": "Edit focus",
+      "done": "Finish editing"
+    },
+    "interestCategories": {
+      "physical-recovery": "Recovery",
+      "wellness": "Wellness",
+      "mental-emotional": "Emotional Wellbeing",
+      "community-support": "Community"
+    },
+    "basicInfo": {
+      "title": "Basic information",
+      "edit": "Edit",
+      "fullName": "Full name",
+      "emailAddress": "Email address",
+      "dateOfBirth": "Date of birth",
+      "primarySupportContact": "Primary support contact",
+      "locationNotSet": "Location not set",
+      "save": "Save changes",
+      "saving": "Saving...",
+      "cancel": "Cancel",
+      "emailNote": "Email cannot be changed here.",
+      "emailNoteLink": "Change in settings",
+      "fields": {
+        "fullName": "Full name",
+        "emailAddress": "Email address",
+        "dateOfBirth": "Date of birth",
+        "primarySupportContact": "Primary support contact"
+      },
+      "recoveryType": "Recovery type",
+      "careProvider": "Care provider",
+      "notSet": "Not added yet"
+    },
+    "goals": {
+      "title": "Active goals",
+      "viewRoadmap": "View roadmap"
+    },
+    "activities": {
+      "title": "Daily activity preferences"
+    },
+    "settings": {
+      "title": "System & privacy",
+      "list": [
+        {
+          "title": "Security",
+          "description": "Updated {daysAgo} days ago"
+        },
+        {
+          "title": "Notifications",
+          "description": "Push notifications enabled"
+        },
+        {
+          "title": "Data sharing",
+          "description": "Clinician access enabled"
+        },
+        {
+          "title": "Login history"
+        }
+      ]
+    },
+    "dailyPreferences": {
+      "title": "Daily activity preferences",
+      "subtitle": "Activities that feel supportive",
+      "editSubtitle": "Choose activities to help personalize your suggestions.",
+      "empty": "No activity preferences added yet"
+    },
+    "systemPrivacy": {
+      "title": "System & privacy",
+      "manageSettings": "Manage settings",
+      "signOut": "Sign out",
+      "settings": [
+        {
+          "title": "Security",
+          "subtitle": "Updated {daysAgo} days ago"
+        },
+        {
+          "title": "Notifications",
+          "subtitle": "Push notifications enabled"
+        },
+        {
+          "title": "Data sharing",
+          "subtitle": "Clinician access enabled"
+        },
+        {
+          "title": "Login history"
+        }
+      ]
+    },
+    "bio": {
+      "title": "About",
+      "placeholder": "Share anything you'd like others to know about your recovery journey...",
+      "empty": "No introduction added yet"
+    },
+    "editBanner": {
+      "viewing": "Viewing your profile",
+      "viewingSubtitle": "Switch to edit mode whenever you'd like to make changes.",
+      "editing": "Editing your profile",
+      "editingSubtitle": "Update your details below and save when you're ready.",
+      "edit": "Edit profile",
+      "save": "Save changes",
+      "cancel": "Cancel"
+    },
+    "recoveryQuotes": {
+      "0": "Healing is not linear. Every small step forward still counts.",
+      "1": "Progress still matters, even when it is slow. Keep going at your pace.",
+      "2": "Your body is working hard to heal. Give it time and care.",
+      "3": "Rest is not a setback. It is part of the path forward.",
+      "4": "Every day you show up for yourself is worth recognizing.",
+      "5": "Recovery is not about perfection. It is about continuing with care.",
+      "6": "Strength can grow in the moments when continuing feels hard.",
+      "7": "Be patient with yourself. Good things take time to build.",
+      "8": "Your setbacks do not define you. Your next step still matters.",
+      "9": "One day at a time is not a small thing. Sometimes it is everything."
+    }
+  },
+  "goals": {
+    "savingMessage": "Saving your goals…",
+    "header": {
+      "title": "Recovery Goals",
+      "description": "Recovery can move at different speeds. Focus on steady, meaningful steps that support your long term wellbeing."
+    },
+    "categoryLabels": {
+      "PHYSICAL": "Physical",
+      "MENTAL": "Mental",
+      "LIFESTYLE": "Lifestyle"
+    },
+    "statusLabels": {
+      "ACTIVE": "Active",
+      "COMPLETED": "Completed",
+      "PAUSED": "Paused",
+      "ABANDONED": "Stopped"
+    },
+    "milestoneStatusLabels": {
+      "LOCKED": "Locked",
+      "ACTIVE": "In Progress",
+      "COMPLETED": "Completed"
+    },
+    "milestoneCardLabels": {
+      "activeFormat": "Milestone {order} · In Progress",
+      "completedFormat": "Milestone {order} · Completed",
+      "lockedFormat": "Milestone {order} · Locked"
+    },
+    "overview": {
+      "greeting": "Keep moving at your own pace.",
+      "subtitle": "Track your goals, milestones, and daily consistency.",
+      "filterButton": "Filter",
+      "newGoalButton": "New Goal",
+      "addGoalPlaceholder": "Add New Goal",
+      "addGoalSubtitle": "Create a goal that feels realistic and meaningful to you"
+    },
+    "mainCard": {
+      "badge": "Steady Progress",
+      "overall": "Overall Progress"
+    },
+    "statSummary": {
+      "title": "Goals Summary",
+      "description": "An overview of your current progress"
+    },
+    "milestones": {
+      "title": "Milestones",
+      "subtitle": "Smaller steps that support your larger goals",
+      "viewAll": "View All",
+      "markComplete": "Mark Complete",
+      "empty": "No milestones yet",
+      "emptySubtitle": "Add milestones to track your progress toward this goal",
+      "completedOn": "Completed on {date}",
+      "addButton": "Add Milestone",
+      "addingButton": "Adding...",
+      "formTitle": "Add a New Milestone",
+      "formTitleLabel": "Milestone Title",
+      "formTitlePlaceholder": "Describe your milestone",
+      "formDescriptionLabel": "Description (Optional)",
+      "formDescriptionPlaceholder": "Add more details about this milestone"
+    },
+    "detail": {
+      "breadcrumbGoals": "Goals",
+      "markCompletePhase": "Complete Phase",
+      "targetDate": "Target Date",
+      "overallProgress": "Overall Progress"
+    },
+    "insights": {
+      "title": "Insights",
+      "weeklyViewTitle": "Weekly View",
+      "emptyState": "Complete more milestones to unlock personalized insights.",
+      "failedToLoad": "Unable to load insights right now. Please try again later."
+    },
+    "actions": {
+      "completeToday": "Complete Today",
+      "editPlan": "Edit Plan"
+    },
+    "goalCard": {
+      "progressLabel": "Progress"
+    },
+    "goalActions": {
+      "edit": "Edit",
+      "delete": "Remove",
+      "deleteConfirm": "Remove this goal? This can't be undone.",
+      "activate": "Resume",
+      "pause": "Pause",
+      "abandon": "Stop goal",
+      "abandonConfirm": "Stop working on this goal? You can return to it anytime.",
+      "reopen": "Reopen",
+      "restore": "Restore"
+    },
+    "goalStats": {
+      "activeMilestonesLabel": "Active Milestones"
+    },
+    "emptyState": {
+      "message": "You have not created any goals yet. Start with something small and manageable."
+    },
+    "goalForm": {
+      "createTitle": "Create New Goal",
+      "updateTitle": "Edit Goal",
+      "subtitle": "Set a goal that feels clear, realistic, and supportive of where you are right now.",
+      "backLabel": "Back to Goals",
+      "fields": {
+        "titleLabel": "Goal Title",
+        "titlePlaceholder": "Example: Daily mindfulness",
+        "descriptionLabel": "Description (Optional)",
+        "descriptionPlaceholder": "Add notes, motivation, or details that may help you stay consistent...",
+        "categoryLabel": "Category",
+        "categoryPlaceholder": "Select category",
+        "targetDateLabel": "Target Date"
+      },
+      "buttons": {
+        "create": "Create Goal",
+        "update": "Edit Goal",
+        "cancel": "Cancel"
+      },
+      "smartTip": {
+        "title": "Helpful Goal Tips",
+        "bundles": [
+          {
+            "body": "Smaller and more specific goals are often easier to maintain consistently over time.",
+            "tips": [
+              "Start with goals that feel manageable.",
+              "Break larger goals into smaller milestones.",
+              "Focus on consistency rather than perfection.",
+              "Review your goals regularly and adjust when needed.",
+              "Choose goals that genuinely matter to you."
+            ]
+          },
+          {
+            "body": "Goals tend to feel more sustainable when they are connected to your personal values and daily routines.",
+            "tips": [
+              "Choose goals that support your current needs.",
+              "Track progress in a way that feels motivating, not stressful.",
+              "Notice small improvements along the way.",
+              "Allow flexibility when difficult days happen.",
+              "Share goals with someone you trust if that feels supportive."
+            ]
+          },
+          {
+            "body": "Clear goals can provide structure and direction during periods that feel uncertain or overwhelming.",
+            "tips": [
+              "Keep goals visible as a gentle reminder.",
+              "Use clear and specific wording.",
+              "Set timelines that feel realistic.",
+              "Adjust expectations as your situation changes.",
+              "Reconnect goals to the bigger reasons behind them."
+            ]
+          }
+        ]
+      }
+    },
+    "toasts": {
+      "created": "Your goal has been created",
+      "updated": "Your goal has been updated",
+      "deleted": "Your goal has been removed",
+      "createFailed": "We couldn't create your goal right now",
+      "updateFailed": "We couldn't update your goal right now",
+      "deleteFailed": "We couldn't remove your goal right now",
+      "activated": "Your goal has been activated",
+      "activateFailed": "We couldn't resume your goal right now",
+      "paused": "Your goal has been paused",
+      "pauseFailed": "We couldn't pause your goal right now",
+      "abandoned": "You've stopped this goal for now",
+      "abandonFailed": "We couldn't update this goal right now",
+      "reopened": "Your goal is active again",
+      "reopenFailed": "We couldn't reopen your goal right now",
+      "restored": "Your goal has been restored",
+      "restoreFailed": "We couldn't restore your goal right now"
+    },
+    "cardFooter": {
+      "completedAllMilestones": "All {total} milestones completed",
+      "completedDate": "Completed on {date}",
+      "pausedSince": "Paused since {date}",
+      "milestonesProgress": "{completedCount} of {total} milestones completed · continue anytime",
+      "resumeAnytime": "Continue anytime",
+      "stoppedOn": "Stopped on {date}",
+      "reachedMilestone": "Reached milestone {milestone} of {total}"
+    },
+    "activeFooter": {
+      "nextMilestone": "Current milestone: {milestone}",
+      "phaseProgress": "Phase {current} of {total}",
+      "progress": "Progress"
+    },
+    "badges": {
+      "notStarted": "Not started",
+      "inProgress": "In progress",
+      "onTrack": "On track",
+      "complete": "Completed"
+    }
+  },
+  "settings": {
+    "title": "Settings",
+    "subtitle": "Adjust your experience, privacy, and preferences",
+    "tabs": [
+      {
+        "id": "notifications",
+        "label": "Notifications",
+        "icon": "Bell"
+      },
+      {
+        "id": "privacy",
+        "label": "Privacy",
+        "icon": "Lock"
+      },
+      {
+        "id": "security",
+        "label": "Account & Security",
+        "icon": "Shield"
+      },
+      {
+        "id": "preferences",
+        "label": "App Preferences",
+        "icon": "Palette"
+      }
+    ],
+    "support": {
+      "label": "Support",
+      "helpCenter": "Help Center"
+    },
+    "buttons": {
+      "discardChanges": "Discard Changes",
+      "savePreferences": "Save Preferences",
+      "savingPreferences": "Saving..."
+    },
+    "notifications": {
+      "title": "Notifications",
+      "description": "Control how and when HealEase contacts you.",
+      "dailyReminder": {
+        "label": "Daily Reminder",
+        "description": "Receive gentle reminders for check-ins, routines, and recovery activities"
+      },
+      "communityAlerts": {
+        "label": "Community Alerts",
+        "description": "Get notified when someone responds to your posts or interactions"
+      },
+      "pushNotifications": {
+        "label": "Push Notifications",
+        "description": "Receive alerts on your device"
+      },
+      "aiInsights": {
+        "label": "AI Insights",
+        "description": "Be notified when new AI observations are ready"
+      },
+      "milestoneAlerts": {
+        "label": "Milestone Alerts",
+        "description": "Celebrate when you hit a new milestone"
+      }
+    },
+    "privacy": {
+      "title": "Privacy Settings",
+      "description": "Your data, your control.",
+      "visibility": {
+        "title": "Profile Visibility",
+        "description": "Choose who can view your profile and progress",
+        "options": [
+          {
+            "value": "onlyMe",
+            "label": "Only Me"
+          },
+          {
+            "value": "mentors",
+            "label": "Mentors Only"
+          },
+          {
+            "value": "community",
+            "label": "Community"
+          }
+        ]
+      },
+      "dataSharing": {
+        "title": "Data Sharing",
+        "description": "Allow anonymous data to help improve recovery research and insights"
+      },
+      "anonymousParticipation": {
+        "label": "Anonymous Participation",
+        "description": "Hide your identity in community discussions"
+      },
+      "activityVisible": {
+        "label": "Activity Visible to Mentors",
+        "description": "Allow your care team to view your progress"
+      }
+    },
+    "security": {
+      "title": "Account & Security",
+      "email": {
+        "label": "Email Address",
+        "newEmail": "New email address",
+        "currentPassword": "Current password",
+        "sendCodeButton": "Send verification code",
+        "sendingCodeButton": "Sending...",
+        "otpTitle": "Check your new email",
+        "otpDescription": "Enter the 6-digit verification code sent to your new email address",
+        "verifyButton": "Verify",
+        "verifyingButton": "Verifying...",
+        "cancelButton": "Cancel",
+        "successToast": "Your email address has been updated"
+      },
+      "password": {
+        "label": "Password",
+        "value": "Last updated {timeAgo}",
+        "changeTitle": "Change Password",
+        "currentPassword": "Current password",
+        "newPassword": "New password",
+        "confirmPassword": "Confirm new password",
+        "passwordMismatch": "Passwords do not match",
+        "changeButton": "Update password",
+        "changingButton": "Updating...",
+        "cancelButton": "Cancel",
+        "successToast": "Your password has been updated"
+      },
+      "deactivate": {
+        "label": "Deactivate Account",
+        "description": "Permanently remove your account and recovery data",
+        "buttonText": "Deactivate",
+        "confirmTitle": "Deactivate Account",
+        "confirmDescription": "Your account will be deactivated and you will lose access. Your data is kept and the account can be restored by contacting support.",
+        "confirmButton": "Yes, deactivate",
+        "confirmingButton": "Deactivating...",
+        "cancelButton": "Cancel"
+      }
+    },
+    "preferences": {
+      "title": "App Preferences",
+      "theme": {
+        "title": "Theme Mode",
+        "description": "Choose the appearance that feels most comfortable for you",
+        "light": "Light",
+        "dark": "Dark"
+      },
+      "language": {
+        "title": "Preferred Language",
+        "description": "Select the language used throughout the app"
+      }
+    }
+  },
+  "global": {
+    "footer": {
+      "brandTagline": "Supporting your recovery journey",
+      "quickLinksTitle": "Quick Links",
+      "legalTitle": "Legal",
+      "socialTitle": "Follow Us",
+      "copyright": "© 2026 HealEase. All rights reserved.",
+      "support": "Support",
+      "privacy": "Privacy",
+      "terms": "Terms",
+      "links": {
+        "quick": {
+          "dailyCheckIn": "Daily Check-In",
+          "progress": "My Progress",
+          "communityForum": "Community Forum",
+          "insights": "My Insights"
+        },
+        "legal": {
+          "privacyPolicy": "Privacy Policy",
+          "termsOfService": "Terms of Service",
+          "cookiePolicy": "Cookie Policy"
+        }
+      }
+    },
+    "nav": {
+      "help": "Help",
+      "about": "About",
+      "sidebar": {
+        "dashboard": "Dashboard",
+        "dailyCheckIn": "Daily Check-In",
+        "progress": "Progress",
+        "recoveryGoals": "Recovery Goals",
+        "insights": "Insights",
+        "community": "Community",
+        "chat": "Chat",
+        "profile": "Profile",
+        "settings": "Settings",
+        "logout": "Log Out"
+      }
+    },
+    "layout": {
+      "header": {
+        "searchPlaceholder": "Search...",
+        "notificationsAria": "Notifications"
+      },
+      "headerItems": {
+        "healthOverview": "Health Overview",
+        "aiChat": "Support Chat",
+        "safeSpace": "Safe Space"
+      }
+    },
+    "pageSubtitles": {
+      "community": {
+        "title": "Community",
+        "subtitle": "Connect with people who understand parts of your journey"
+      },
+      "insights": {
+        "title": "Insights",
+        "subtitle": "Patterns and observations based on your progress",
+        "badge": "Analysis Active"
+      },
+      "profile": {
+        "title": "Profile",
+        "subtitle": "Manage your personal recovery space"
+      }
+    },
+    "landing": {
+      "descriptions": {
+        "about": "HealEase supports people navigating recovery after medical treatment, injury, or major life challenges. Daily check-ins help you notice patterns, AI-powered insights provide guidance, and community support helps you feel less alone through the process.",
+        "benefits": "Support designed for different stages of recovery",
+        "hero": "Track your progress, build supportive routines, and connect with people who understand.",
+        "features": "Simple tools designed to support recovery and wellbeing"
+      },
+      "footer": {
+        "H3": "Recovery, together.",
+        "desc": "Supporting healing through structure, reflection, and community.",
+        "rights": "© 2026 HealEase. All rights reserved.",
+        "quickLinks": "Quick Links",
+        "legalLinks": "Legal"
+      },
+      "fields": {
+        "forgotPassword": "Forgot your password?",
+        "remember": "Remember Me"
+      },
+      "buttons": {
+        "exploreForum": "Explore Community",
+        "joinNow": "Get Started",
+        "signIn": "Sign In",
+        "signUp": "Sign Up",
+        "login": "Log In",
+        "logout": "Log Out",
+        "verifyCode": "Verify Code",
+        "resetPassword": "Reset Password",
+        "backToLogin": "Back to Login",
+        "createPost": "Create Post",
+        "updatePost": "Update Post",
+        "deletePost": "Delete Post",
+        "newCheckIn": "New Check-In",
+        "updateCheckIn": "Update Check-In",
+        "saveCheckIn": "Save Check-In",
+        "tryAgain": "Try Again",
+        "showStackTrace": "Show Technical Details",
+        "goBack": "Go Back",
+        "goHome": "Go Home",
+        "reloadPage": "Reload Page"
+      },
+      "toasts": {
+        "checkInSaved": "Your daily update has been saved",
+        "checkInUpdated": "Your daily update has been updated",
+        "checkInError": "We couldn't save your daily update right now. Please try again.",
+        "checkInDeleted": "Your daily update has been removed"
+      }
+    },
+    "errors": {
+      "errorPageTexts": {
+        "badge": "Error 500",
+        "mainHeading": "Something interrupted the experience.",
+        "subHeading": "We are working on restoring things.",
+        "description": "Something went wrong on our side. Your information and progress are still safe.",
+        "tryRefreshingBtn": "Refresh Page",
+        "contactSupportBtn": "Contact Support",
+        "crisisNoticeStart": "If you need immediate support, please contact your local emergency or crisis support services.",
+        "journalSavedTitle": "Journal Saved",
+        "journalSavedDesc": "Your latest journal entry was safely saved.",
+        "systemHealthTitle": "System Status",
+        "systemHealthDesc": "Most systems are running normally while this issue is being resolved.",
+        "autoRecoveryTitle": "Automatic Recovery",
+        "autoRecoveryDesc": "Our team has been notified and is actively working on a fix.",
+        "getSupport": "Find Support"
+      },
+      "notFoundPageTexts": {
+        "badgeLabel": "Page Not Found",
+        "mainHeading": "This page could not be found.",
+        "description": "The page may have moved, been removed, or is temporarily unavailable.",
+        "returnDashboardBtn": "Return to Dashboard",
+        "previousPageBtn": "Previous Page",
+        "resourceCenterLabel": "Resources",
+        "dailyJournalLink": "Daily Journal",
+        "supportHubLabel": "Support",
+        "groupMeetingsLink": "Community Groups"
+      },
+      "networkErrorPageTexts": {
+        "title": "Connection interrupted.",
+        "description": "We are having trouble connecting right now. Please check your connection and try again.",
+        "tryAgainBtn": "Try Again",
+        "checkStatusBtn": "Check Status",
+        "supportMessage": "If you need urgent support, please contact your local care provider or emergency services."
+      },
+      "inlineErrorTexts": {
+        "title": "Something went wrong.",
+        "generic": "Something went wrong, but your progress and information remain safe.",
+        "network": "Connection issues are preventing updates right now. Please try again shortly.",
+        "tryAgainBtn": "Try Again"
+      }
+    }
+  },
+  "landing": {
+    "nav": {
+      "howItWorks": "How It Works",
+      "community": "Community",
+      "about": "About"
+    },
+    "hero": {
+      "headline": "Recovery",
+      "headlineLine2": "Refined.",
+      "headlineAccent": "Support",
+      "headlineSuffix": "That Stays.",
+      "subtitle": "Track your recovery, reflect on your progress, and connect with people who understand what you're going through. All in one place designed to support the journey ahead.",
+      "startJourney": "Start Your Journey",
+      "exploreCommunity": "Explore Community",
+      "streakLabel": "Check-In Streak",
+      "moodLabel": "Today's Mood",
+      "chartPeriod": "Last 14 Days",
+      "chartTrend": "Finding More Balance",
+      "chartToday": "Today"
+    },
+    "features": {
+      "sectionTitle": "Built to reduce mental load",
+      "sectionDesc": "Everything is designed to stay simple, clear, and supportive while you focus on recovery.",
+      "card1Title": "Simple tracking",
+      "card1Desc": "Log mood, pain, energy, and activities in a structured flow that takes seconds, not effort.",
+      "card2Title": "Personalized and clear insights",
+      "card2Desc": "Your patterns are summarized into understandable signals that reflect your recovery over time.",
+      "card3Title": "Supportive community",
+      "card3Desc": "Connect with people who share similar recovery experiences in a respectful and emotionally safe space."
+    },
+    "howItWorks": {
+      "sectionTitle": "How recovery flows in HealEase",
+      "step1Title": "Daily check in",
+      "step1Desc": "A short guided flow to capture how you feel physically and emotionally.",
+      "step2Title": "Track patterns",
+      "step2Desc": "Your data is organized into simple visual trends that reflect real progress over time.",
+      "step3Title": "Stay supported",
+      "step3Desc": "Receive insights and community context that help you stay consistent without pressure.",
+      "chartLabel": "Recovery trend",
+      "statMood": "Mood",
+      "statStreak": "Streak",
+      "statProgress": "Progress"
+    },
+    "cta": {
+      "headline": "Start your recovery log",
+      "desc": "A structured space to track, understand, and support your recovery over time.",
+      "button": "Get started"
+    }
+  },
+  "validation": {
+    "email": {
+      "required": "Enter your email so we can keep your account secure",
+      "invalid": "Enter a valid email address"
+    },
+    "password": {
+      "required": "Enter your password to continue",
+      "current": {
+        "required": "Enter your current password"
+      },
+      "new": {
+        "required": "Create a new password for your account"
+      },
+      "confirm": {
+        "required": "Confirm your new password",
+        "please": "Please confirm your password before continuing"
+      },
+      "noMatch": "The passwords do not match",
+      "tooShort": "Password must contain at least {min} characters",
+      "format": "Use at least 8 characters, including letters and numbers"
+    },
+    "otp": {
+      "required": "Enter the verification code we sent you",
+      "tooShort": "Verification code is too short",
+      "invalid": "Verification code is invalid"
+    },
+    "name": {
+      "firstName": {
+        "required": "Enter your first name",
+        "empty": "First name cannot be empty",
+        "tooLong": "First name must be {max} characters or fewer"
+      },
+      "lastName": {
+        "required": "Enter your last name",
+        "empty": "Last name cannot be empty",
+        "tooLong": "Last name must be {max} characters or fewer"
+      },
+      "location": {
+        "tooLong": "Location must be {max} characters or fewer"
+      },
+      "username": {
+        "empty": "Choose a username",
+        "tooShort": "Username must contain at least {min} characters",
+        "tooLong": "Username must be {max} characters or fewer",
+        "invalid": "Use only letters, numbers, and underscores"
+      }
+    },
+    "post": {
+      "category": {
+        "required": "Choose a category for your post",
+        "invalid": "This category is not available"
+      },
+      "title": {
+        "required": "Give your post a title so people know what it's about",
+        "tooShort": "Add a little more detail to your title",
+        "tooLong": "Shorten the title so it's easier to read"
+      },
+      "content": {
+        "required": "Write something before sharing your post",
+        "tooShort": "Add a bit more so others can better understand",
+        "tooShortMin": "Write at least {min} characters",
+        "tooLong": "Keep your post under {max} characters"
+      },
+      "tag": {
+        "tooShort": "Tags should contain at least {min} characters",
+        "tooLong": "Keep tags under {max} characters",
+        "required": "Add at least one tag to help people find your post",
+        "tooMany": "You can add up to {max} tags"
+      }
+    },
+    "checkIn": {
+      "activity": {
+        "empty": "Activity cannot be empty",
+        "tooLong": "Keep the activity under {max} characters",
+        "required": "Add at least one activity from your day"
+      },
+      "notes": {
+        "tooLong": "Keep your notes under {max} characters"
+      }
+    },
+    "goal": {
+      "title": {
+        "required": "Give your goal a clear title",
+        "tooLong": "Goal title must be {max} characters or fewer"
+      },
+      "description": {
+        "tooLong": "Keep the description under {max} characters"
+      },
+      "targetDate": {
+        "future": "Choose a future date for this goal"
+      }
+    },
+    "milestone": {
+      "title": {
+        "required": "Name this step so it's easy to recognize later",
+        "tooLong": "Step title must be {max} characters or fewer"
+      },
+      "description": {
+        "tooLong": "Keep the description under {max} characters"
+      }
+    },
+    "profile": {
+      "bio": {
+        "tooLong": "Keep your bio under {max} characters"
+      }
+    }
+  },
+  "recommendations": {
+    "action": {
+      "askedQuestion": "asked the community",
+      "postedAbout": "shared about {category}",
+      "sharedPost": "shared an update"
+    }
+  }
+}
