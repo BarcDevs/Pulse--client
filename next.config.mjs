@@ -4,6 +4,7 @@ const withNextIntl = createNextIntlPlugin('./src/lib/language/request.ts')
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+    output: 'standalone',
     typescript: {
         ignoreBuildErrors: true
     },
