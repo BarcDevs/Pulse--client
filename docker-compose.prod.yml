@@ -1,0 +1,15 @@
+services:
+  client:
+    build:
+      context: .
+      target: runner
+      args:
+        NEXT_PUBLIC_SERVER_URL: ${NEXT_PUBLIC_SERVER_URL}
+        NEXT_PUBLIC_SERVER_API_VERSION: ${NEXT_PUBLIC_SERVER_API_VERSION}
+        NEXT_PUBLIC_HOSTNAME: ${NEXT_PUBLIC_HOSTNAME}
+        NEXT_PUBLIC_SENTRY_REPLAYS_SESSION_SAMPLE_RATE: ${NEXT_PUBLIC_SENTRY_REPLAYS_SESSION_SAMPLE_RATE:-0.1}
+        NEXT_PUBLIC_SENTRY_DSN: ${NEXT_PUBLIC_SENTRY_DSN:-}
+    ports:
+      - '3000:3000'
+    environment:
+      - NODE_ENV=production
