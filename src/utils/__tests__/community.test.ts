@@ -10,6 +10,8 @@ vi.mock('@/lib/time', () => ({
     toRelative: vi.fn(() => '2 hours ago')
 }))
 
+import type { Locale } from 'date-fns'
+
 import type { CommunityActivityItem } from '@/types/community'
 
 import {
@@ -58,7 +60,7 @@ describe('getAuthorDisplayName', () => {
 })
 
 describe('mapActivityItems', () => {
-    beforeEach(() => vi.clearAllMocks())
+    beforeEach(() => { vi.clearAllMocks() })
 
     it('returns empty array when input is empty', () => {
         expect(mapActivityItems([], t, locale, 10)).toEqual([])

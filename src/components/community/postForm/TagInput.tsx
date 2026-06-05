@@ -40,10 +40,11 @@ export const TagInput = ({
     const t = useTranslations()
     const locale = useLocale()
     const lang = locale.split('-')[0] as 'en' | 'he'
-    const { data: availableTags = [] } = useForumTags({
+    const { data } = useForumTags({
         filter: 'popular',
         limit: 20
     })
+    const availableTags = data ?? []
 
     const query = input.toLowerCase().trim()
     const suggestions = availableTags
