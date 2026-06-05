@@ -1,12 +1,12 @@
 {
   "name": "heal-ease",
-  "version": "0.29.9",
+  "version": "0.29.10",
   "type": "module",
   "private": true,
   "scripts": {
     "dev": "cross-env NODE_OPTIONS=--max-old-space-size=8192 next dev -p 5173",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p $PORT",
     "lint": "eslint .",
     "lint:check": "eslint .",
     "lint:fix": "eslint . --fix",
