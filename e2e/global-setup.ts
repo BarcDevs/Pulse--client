@@ -1,5 +1,7 @@
 import { chromium } from '@playwright/test'
 
+import { secondInMs } from './helpers/time'
+
 const mockUser = {
     id: 'test-user-1',
     firstName: 'Test',
@@ -11,20 +13,22 @@ const mockUser = {
 }
 const ok = (data: unknown) => JSON.stringify({ success: true, data })
 
-// Pre-loads all pages so Turbopack compiles their chunks before tests run.
-//
-// Problem: react-quill-new is a dynamic import inside PostFormBody. It only compiles
-// when the post form opens. That first compilation causes Turbopack to rechunk the
-// module graph. Any route whose RSC payload was cached before the rechunk references
-// stale chunk hashes → ChunkLoadError in tests.
-//
-// Strategy:
-//   Phase 1  – compile all static modules (all pages + modal interactions)
-//   Phase 2a – open community post form to trigger react-quill-new compilation + rechunk
-//   Phase 2b – wait 8 s for WebSocket HMR rechunk to propagate to all route RSC caches
-//              (networkidle only tracks HTTP; Turbopack HMR uses WebSocket)
-//   Phase 2c – re-visit community, then every authenticated page after rechunk settles
-//   Phase 2.5 – unauthenticated /login re-visit for RSC cache refresh
+/**
+ * Pre-loads all pages so Turbopack compiles their chunks before tests run.
+ *
+ * Problem: react-quill-new is a dynamic import inside PostFormBody. It only compiles
+ * when the post form opens. That first compilation causes Turbopack to rechunk the
+ * module graph. Any route whose RSC payload was cached before the rechunk references
+ * stale chunk hashes → ChunkLoadError in tests.
+ *
+ * Strategy:
+ *   Phase 1  – compile all static modules (all pages + modal interactions)
+ *   Phase 2a – open community post form to trigger react-quill-new compilation + rechunk
+ *   Phase 2b – wait 8 s for WebSocket HMR rechunk to propagate to all route RSC caches
+ *              (networkidle only tracks HTTP; Turbopack HMR uses WebSocket)
+ *   Phase 2c – re-visit community, then every authenticated page after rechunk settles
+ *   Phase 2.5 – unauthenticated /login re-visit for RSC cache refresh
+ */
 export default async function globalSetup() {
     const browser = await chromium.launch()
     const context = await browser.newContext()
@@ -111,30 +115,30 @@ export default async function globalSetup() {
             '/insights',
             '/progress'
         ]) {
-            await page.goto(`${base}${path}`, { waitUntil: 'load', timeout: 30_000 })
+            await page.goto(`${base}${path}`, { waitUntil: 'load', timeout: 30 * secondInMs })
         }
 
         // Trigger goal modal to compile form components
-        await page.goto(`${base}/recovery-goals`, { waitUntil: 'load', timeout: 30_000 })
+        await page.goto(`${base}/recovery-goals`, { waitUntil: 'load', timeout: 30 * secondInMs })
         const newGoalBtn = page.getByRole('button', { name: 'New Goal' })
-        if (await newGoalBtn.isVisible({ timeout: 5_000 }).catch(() => false)) {
+        if (await newGoalBtn.isVisible({ timeout: 5 * secondInMs }).catch(() => false)) {
             await newGoalBtn.click()
-            await page.waitForTimeout(1_000)
+            await page.waitForTimeout(secondInMs)
         }
 
         // Trigger profile edit mode to compile BasicInfoForm + DatePickerInput chunks
-        await page.goto(`${base}/profile`, { waitUntil: 'load', timeout: 30_000 })
+        await page.goto(`${base}/profile`, { waitUntil: 'load', timeout: 30 * secondInMs })
         const editProfileBtn = page.getByRole('button', { name: 'Edit profile' })
-        if (await editProfileBtn.isVisible({ timeout: 5_000 }).catch(() => false)) {
+        if (await editProfileBtn.isVisible({ timeout: 5 * secondInMs }).catch(() => false)) {
             await editProfileBtn.click()
-            await page.waitForTimeout(1_000)
+            await page.waitForTimeout(secondInMs)
         }
 
         // Phase 1b: visit community to compile its static chunks (react-quill-new NOT yet
         // compiled — it's a dynamic import only triggered when the post form is open).
-        await page.goto(`${base}/community`, { waitUntil: 'load', timeout: 30_000 })
-        await page.waitForLoadState('networkidle', { timeout: 15_000 }).catch(() => {})
-        await page.waitForTimeout(2_000)
+        await page.goto(`${base}/community`, { waitUntil: 'load', timeout: 30 * secondInMs })
+        await page.waitForLoadState('networkidle', { timeout: 15 * secondInMs }).catch(() => {})
+        await page.waitForTimeout(2 * secondInMs)
 
         // Phase 1.5: compile login form validation chunks (needs no accessToken)
         await context.clearCookies()
@@ -147,9 +151,9 @@ export default async function globalSetup() {
                 sameSite: 'Lax'
             }
         ])
-        await page.goto(`${base}/login`, { waitUntil: 'load', timeout: 30_000 })
+        await page.goto(`${base}/login`, { waitUntil: 'load', timeout: 30 * secondInMs })
         await page.getByRole('button', { name: 'Log in' }).click()
-        await page.waitForTimeout(1_000)
+        await page.waitForTimeout(secondInMs)
 
         await context.clearCookies()
         await context.addCookies([
@@ -173,24 +177,24 @@ export default async function globalSetup() {
         // This triggers Turbopack rechunking of the module graph.
         const phase2AuthReady = page.waitForResponse(
             resp => resp.url().includes('auth/me') && resp.status() === 200,
-            { timeout: 10_000 }
+            { timeout: 10 * secondInMs }
         ).catch(() => null)
-        await page.goto(`${base}/community`, { waitUntil: 'networkidle', timeout: 30_000 })
+        await page.goto(`${base}/community`, { waitUntil: 'networkidle', timeout: 30 * secondInMs })
         await phase2AuthReady
-        await page.waitForTimeout(1_000)
+        await page.waitForTimeout(secondInMs)
         const p2CreatePostBtn = page.getByRole('button', { name: 'Create post' })
-        if (await p2CreatePostBtn.isVisible({ timeout: 3_000 }).catch(() => false)) {
+        if (await p2CreatePostBtn.isVisible({ timeout: 3 * secondInMs }).catch(() => false)) {
             await p2CreatePostBtn.click()
-            await page.waitForSelector('.ql-editor', { timeout: 15_000 }).catch(() => {})
+            await page.waitForSelector('.ql-editor', { timeout: 15 * secondInMs }).catch(() => {})
             // Phase 2b: wait for WebSocket HMR rechunk to propagate to all route RSC caches.
             // networkidle only tracks HTTP; Turbopack rechunk HMR uses WebSocket, so we
             // need an explicit delay here before re-visiting other pages.
-            await page.waitForTimeout(8_000)
+            await page.waitForTimeout(8 * secondInMs)
         }
 
         // Re-visit community to refresh its own RSC payload after rechunking.
-        await page.goto(`${base}/community`, { waitUntil: 'networkidle', timeout: 30_000 })
-        await page.waitForTimeout(1_000)
+        await page.goto(`${base}/community`, { waitUntil: 'networkidle', timeout: 30 * secondInMs })
+        await page.waitForTimeout(secondInMs)
 
         // Phase 2c: visit all other authenticated pages to refresh their RSC payloads
         // with the post-rechunk Turbopack manifest.
@@ -203,7 +207,7 @@ export default async function globalSetup() {
             '/insights',
             '/progress'
         ]) {
-            await page.goto(`${base}${path}`, { waitUntil: 'networkidle', timeout: 30_000 })
+            await page.goto(`${base}${path}`, { waitUntil: 'networkidle', timeout: 30 * secondInMs })
         }
 
         // Phase 2.5: unauthenticated re-visit for /login RSC cache refresh
@@ -217,10 +221,10 @@ export default async function globalSetup() {
                 sameSite: 'Lax'
             }
         ])
-        await page.goto(`${base}/login`, { waitUntil: 'networkidle', timeout: 30_000 })
+        await page.goto(`${base}/login`, { waitUntil: 'networkidle', timeout: 30 * secondInMs })
 
         // Let Turbopack finish any in-flight compilations before tests start
-        await page.waitForTimeout(2_000)
+        await page.waitForTimeout(2 * secondInMs)
     } finally {
         await browser.close()
     }
