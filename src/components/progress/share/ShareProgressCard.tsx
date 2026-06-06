@@ -19,8 +19,9 @@ import {
 
 import type { CheckInStats } from '@/types/checkIn'
 
-import { appSettings } from '@/config/appSettings'
 import { wellnessColors } from '@/lib/wellnessColors'
+
+import { appSettings } from '@/config/appSettings'
 
 import { progressLocales } from '@/locales/progressLocales'
 

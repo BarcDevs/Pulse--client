@@ -3,7 +3,9 @@ import Link from 'next/link'
 
 import { ROUTES } from '@/constants/routes'
 
-const BRAND_NAME = 'HealEase'
+import { appSettings } from '@/config/appSettings'
+
+const BRAND_NAME = appSettings.brandName
 
 export const Logo = ({}) => (
     <Link
