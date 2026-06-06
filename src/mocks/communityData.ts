@@ -15,7 +15,7 @@ export const COMMUNITY_MENTORS = [
     }
 ]
 
-export const COMMUNITY_SANCTUARY_RULES = [
+export const COMMUNITY_GUIDELINES_RULES = [
     'Be kind and be open',
     'No unsolicited medical advice',
     'Protect user anonymity'

@@ -77,15 +77,15 @@ Deferred items — not required for MVP. See `TODO.md` for active work.
 
 ## Community / Misc
 
-| # | File | Line | Note |
-|---|------|------|------|
-| 1 | `src/components/layout/sidebar/sections/SanctuaryCard.tsx` | 46 | Add community guidelines link/modal |
-| 2 | `src/components/community/` | — | Forum tweaks — author profile link/card on post author click |
-| 3 | — | — | Translation for server errors — map server error codes/messages to i18n keys |
-| 4 | — | — | Improve toast styling to match design |
-| 5 | — | — | Reply-to-reply feature — notify replied user |
-| 6 | — | — | Add option to translate a post/comment to user's language |
-| 7 | — | — | Add an option to backfill 3 past check-ins |
-| 8 | — | — | Share Progress feature |
-| 9 | — | — | Improve daily observation according to GPT recommendations |
-| 10 | `src/components/community/` | — | Author profile view — read-only profile page when clicking a community member's name (design in `.claude/design/pages/profile/profile.jsx` - `AuthorProfileView`) |
+| # | File                                                        | Line | Note |
+|---|-------------------------------------------------------------|------|------|
+| 1 | `src/components/layout/sidebar/sections/GuidelinesCard.tsx` | 46 | Add community guidelines link/modal |
+| 2 | `src/components/community/`                                 | — | Forum tweaks — author profile link/card on post author click |
+| 3 | —                                                           | — | Translation for server errors — map server error codes/messages to i18n keys |
+| 4 | —                                                           | — | Improve toast styling to match design |
+| 5 | —                                                           | — | Reply-to-reply feature — notify replied user |
+| 6 | —                                                           | — | Add option to translate a post/comment to user's language |
+| 7 | —                                                           | — | Add an option to backfill 3 past check-ins |
+| 8 | —                                                           | — | Share Progress feature |
+| 9 | —                                                           | — | Improve daily observation according to GPT recommendations |
+| 10 | `src/components/community/`                                 | — | Author profile view — read-only profile page when clicking a community member's name (design in `.claude/design/pages/profile/profile.jsx` - `AuthorProfileView`) |
