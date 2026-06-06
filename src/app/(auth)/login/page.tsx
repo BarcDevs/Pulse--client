@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 
+import { useSearchParams } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 
 import { GoogleLoginButton } from '@/components/auth/forms/GoogleLoginButton'
@@ -23,6 +24,8 @@ import type { LoginSchema } from '@/validations/forms/loginSchema'
 const LoginPage = () => {
     const t = useTranslations()
     const { handleLogin } = useAuthHandlers()
+    const searchParams = useSearchParams()
+    const redirect = searchParams.get('redirect')
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState<string | null>(null)
 
@@ -54,7 +57,7 @@ const LoginPage = () => {
                     error={error}
                 />
 
-                <GoogleLoginButton/>
+                <GoogleLoginButton redirect={redirect}/>
 
                 <LoginSecurityFooter/>
             </CardContent>
