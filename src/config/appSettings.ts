@@ -1,5 +1,5 @@
 export const appSettings = {
-    brandName: 'Sanctuary',
+    brandName: 'HealEase',
     community: {
         repliesPageSize: 5
     },

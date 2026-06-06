@@ -1,5 +1,5 @@
 import { MentorsCard } from '@/components/layout/sidebar/sections/MentorsCard'
-import { SanctuaryCard } from '@/components/layout/sidebar/sections/SanctuaryCard'
+import { GuidelinesCard } from '@/components/layout/sidebar/sections/GuidelinesCard'
 import { TrendingTopicsCard } from '@/components/layout/sidebar/sections/TrendingTopicsCard'
 
 import { FEATURES } from '@/config/features'
@@ -15,7 +15,7 @@ export const CommunityPanel = ({
 }: CommunityPanelProps) => (
     <div className={'space-y-6'}>
         {FEATURES.mentors && <MentorsCard/>}
-        <SanctuaryCard/>
+        <GuidelinesCard/>
         <TrendingTopicsCard
             selectedTag={selectedTag}
             onTagSelectAction={onTagSelect}

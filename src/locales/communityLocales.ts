@@ -25,15 +25,15 @@ export const communityLocales = {
         title: 'community.mentors.title',
         chatButton: 'community.mentors.chatButton'
     },
-    sanctuary: {
-        title: 'community.sanctuary.title',
-        description: 'community.sanctuary.description',
+    guidelines: {
+        title: 'community.guidelines.title',
+        description: 'community.guidelines.description',
         rules: {
-            kind: 'community.sanctuary.rules.kind',
-            noAdvice: 'community.sanctuary.rules.noAdvice',
-            privacy: 'community.sanctuary.rules.privacy'
+            kind: 'community.guidelines.rules.kind',
+            noAdvice: 'community.guidelines.rules.noAdvice',
+            privacy: 'community.guidelines.rules.privacy'
         },
-        readGuidelines: 'community.sanctuary.readGuidelines'
+        readGuidelines: 'community.guidelines.readGuidelines'
     },
     trending: {
         title: 'community.trending.title'

@@ -3,6 +3,7 @@ import { dayInMs, minuteInMs } from '@/constants/time'
 type Config = {
     serverUrl: string
     hostname: string
+    appDomain: string
     serverApiVersion: string
     loginDuration: number
     isDev: boolean
@@ -17,7 +18,8 @@ type Config = {
 
 const config: Config = {
     serverUrl: process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:4000',
-    hostname: process.env.NEXT_PUBLIC_HOSTNAME || 'http://localhost:3000',
+    hostname: process.env.NEXT_PUBLIC_HOSTNAME || 'http://localhost:5173',
+    appDomain: process.env.NEXT_PUBLIC_APP_DOMAIN || 'https://healease.app',
     serverApiVersion: process.env.NEXT_PUBLIC_SERVER_API_VERSION || 'v1',
     isDev: process.env.NODE_ENV === 'development',
     loginDuration: 7 * dayInMs,
