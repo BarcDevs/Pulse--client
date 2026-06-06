@@ -5,7 +5,6 @@ node_modules
 Dockerfile
 .dockerignore
 *.local
-.env*.local
 .DS_Store
 test-results
 .claude
@@ -13,5 +12,4 @@ test-results
 designs
 docs/plans
 .browsertest
-healease-refined-ui-example
 review
