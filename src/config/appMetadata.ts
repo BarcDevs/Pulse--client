@@ -1,10 +1,9 @@
 import type { Metadata } from 'next'
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL
-    || 'https://healease.app'
+import config from '@/config'
 
 export const appMetadata: Metadata = {
-    metadataBase: new URL(SITE_URL),
+    metadataBase: new URL(config.appDomain),
     title: 'HealEase - Recovery Tracking, Support & Wellness',
     description: 'Track your recovery, build healthy routines, connect with a supportive community, and gain meaningful insights throughout your healing journey.',
     applicationName: 'HealEase',
@@ -20,7 +19,7 @@ export const appMetadata: Metadata = {
     openGraph: {
         type: 'website',
         locale: 'en_US',
-        url: SITE_URL,
+        url: config.appDomain,
         siteName: 'HealEase',
         title: 'HealEase - Recovery Tracking, Support & Wellness',
         description: 'Track your recovery, build healthy routines, connect with a supportive community, and gain meaningful insights throughout your healing journey.',
@@ -46,7 +45,7 @@ export const appMetadata: Metadata = {
         }
     },
     alternates: {
-        canonical: SITE_URL
+        canonical: config.appDomain
     },
     icons: {
         icon: [
