@@ -1,6 +1,6 @@
-# Claude Code Preferences — HealEase
+# Claude Code Preferences — Pulse
 
-HealEase — Recovery support platform. Next.js 16, React 19, TypeScript, TanStack Query.
+Pulse — Recovery support platform. Next.js 16, React 19, TypeScript, TanStack Query.
 Server: `../healease--server`.
 
 ## Model Selection

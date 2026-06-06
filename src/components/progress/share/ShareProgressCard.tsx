@@ -156,7 +156,7 @@ export const ShareProgressCard =
                     <div style={headerStyle}>
                         <img
                             src={'/logos/PulseLogoNoCaption.webp'}
-                            alt={'HealEase'}
+                            alt={appSettings.brandName}
                             style={logoStyle}
                         />
                         <div style={titleWrapperStyle}>

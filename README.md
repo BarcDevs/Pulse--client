@@ -1,6 +1,6 @@
-# HealEase — Recovery Support Platform
+# Pulse — Recovery Support Platform
 
-Recovery is difficult to manage without structure. HealEase provides patients transitioning from hospital or clinical care with daily check-in rituals, progress visibility, and community support.
+Recovery is difficult to manage without structure. Pulse provides patients transitioning from hospital or clinical care with daily check-in rituals, progress visibility, and community support.
 
 ---
 
@@ -8,7 +8,7 @@ Recovery is difficult to manage without structure. HealEase provides patients tr
 
 Patients leaving hospital or clinical care face a critical gap: the loss of daily medical oversight and structured routine. Between appointments, motivation declines, progress becomes invisible, and recovery drifts without reinforcement. The result is disengagement and setbacks.
 
-HealEase addresses this by creating a structured daily check-in ritual, making recovery progress visible through charts, and providing community connection with others in similar circumstances.
+Pulse addresses this by creating a structured daily check-in ritual, making recovery progress visible through charts, and providing community connection with others in similar circumstances.
 
 ---
 
@@ -149,7 +149,7 @@ Code follows [CLAUDE.md](./CLAUDE.md) conventions:
 
 ## Authentication
 
-HealEase supports two authentication methods:
+Pulse supports two authentication methods:
 
 **Email & Password**
 - Traditional email/password signup and login

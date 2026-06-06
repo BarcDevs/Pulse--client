@@ -1,4 +1,4 @@
-# HealEase Design System Reference
+# Pulse Design System Reference
 
 Handoff from Claude Design (2026-05-27). **These are prototypes, not production code.** Adapt structure to project's React/TypeScript patterns.
 

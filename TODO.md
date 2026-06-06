@@ -1,4 +1,4 @@
-# HealEase Client — TODO Tracker
+# Pulse Client — TODO Tracker
 
 MVP-level TODOs only. See `scaling-todo.md` for deferred items.
 
