@@ -14,7 +14,7 @@ export const Logo = ({}) => (
     >
         <div className={'flex size-10 items-center justify-center rounded-xl'}>
             <Image
-                src={'/logos/HealEaseLogoNoCaption.webp'}
+                src={'/logos/PulseLogoNoCaption.webp'}
                 alt={`${BRAND_NAME} Logo`}
                 width={40}
                 height={40}

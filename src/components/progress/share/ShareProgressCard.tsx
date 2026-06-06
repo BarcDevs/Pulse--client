@@ -155,7 +155,7 @@ export const ShareProgressCard =
                 <div ref={ref} style={cardStyle}>
                     <div style={headerStyle}>
                         <img
-                            src={'/logos/HealEaseLogoNoCaption.webp'}
+                            src={'/logos/PulseLogoNoCaption.webp'}
                             alt={'HealEase'}
                             style={logoStyle}
                         />
