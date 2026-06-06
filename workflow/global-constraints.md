@@ -1,7 +1,7 @@
 # GLOBAL CONSTRAINTS
 
 ## API contracts — check before implementing
-- Before building any feature tied to an API endpoint, read `../healease--server/docs/API.md`
+- Before building any feature tied to an API endpoint, read `../pulse--server/docs/API.md`
 - Verify: request body shape, required vs optional fields, response shape, error codes
 - Never guess endpoint behavior — the doc is authoritative
 

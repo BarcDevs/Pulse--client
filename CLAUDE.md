@@ -1,7 +1,7 @@
 # Claude Code Preferences — Pulse
 
 Pulse — Recovery support platform. Next.js 16, React 19, TypeScript, TanStack Query.
-Server: `../healease--server`.
+Server: `../pulse--server`.
 
 ## Model Selection
 - **Haiku**: sub-agents, file lookups, search queries, simple edits (<50 lines), code explanation, formatting fixes, style enforcement
