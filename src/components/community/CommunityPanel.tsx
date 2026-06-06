@@ -1,5 +1,5 @@
-import { MentorsCard } from '@/components/layout/sidebar/sections/MentorsCard'
 import { GuidelinesCard } from '@/components/layout/sidebar/sections/GuidelinesCard'
+import { MentorsCard } from '@/components/layout/sidebar/sections/MentorsCard'
 import { TrendingTopicsCard } from '@/components/layout/sidebar/sections/TrendingTopicsCard'
 
 import { FEATURES } from '@/config/features'

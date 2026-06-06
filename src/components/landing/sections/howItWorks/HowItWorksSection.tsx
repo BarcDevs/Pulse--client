@@ -4,6 +4,8 @@ import { useTranslations } from 'next-intl'
 
 import { HOW_IT_WORKS_STEPS } from '@/constants/landing/howItWorksSteps'
 
+import { appSettings } from '@/config/appSettings'
+
 import { landingLocales } from '@/locales/landingLocales'
 
 import { RecoveryChartPreview } from './RecoveryChartPreview'
@@ -20,7 +22,9 @@ export const HowItWorksSection = () => {
             <div className={'mx-auto grid max-w-7xl gap-16 lg:grid-cols-2 lg:items-center'}>
                 <div>
                     <h2 className={'mb-10 text-3xl font-bold tracking-tight text-foreground'}>
-                        {t(landingLocales.howItWorks.sectionTitle)}
+                        {t(landingLocales.howItWorks.sectionTitle, {
+                            brandName: appSettings.brandName
+                        })}
                     </h2>
 
                     <div className={'flex flex-col gap-7'}>

@@ -6,6 +6,8 @@ import { Bell } from 'lucide-react'
 
 import { SettingToggle } from '@/components/shared/inputs/SettingToggle'
 
+import { appSettings } from '@/config/appSettings'
+
 import { useSettings } from '@/context/SettingsContext'
 
 import { settingsLocales } from '@/locales/settingsLocales'
@@ -23,7 +25,9 @@ export const NotificationsSettings = () => {
                 </h3>
             </div>
             <p className={'text-sm text-muted-foreground mb-6'}>
-                {t(settingsLocales.notifications.description)}
+                {t(settingsLocales.notifications.description, {
+                    brandName: appSettings.brandName
+                })}
             </p>
 
             <div className={'space-y-6'}>

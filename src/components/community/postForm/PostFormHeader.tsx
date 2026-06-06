@@ -6,6 +6,8 @@ import { X } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
 
+import { appSettings } from '@/config/appSettings'
+
 import { communityLocales } from '@/locales/communityLocales'
 
 type PostFormHeaderProps = {
@@ -27,7 +29,9 @@ export const PostFormHeader = ({
                 </h3>
                 {!isReply && (
                     <p className={'text-xs text-muted-foreground mt-0.5'}>
-                        {t(communityLocales.postForm.createPostSubtitle)}
+                        {t(communityLocales.postForm.createPostSubtitle, {
+                            brandName: appSettings.brandName
+                        })}
                     </p>
                 )}
             </div>

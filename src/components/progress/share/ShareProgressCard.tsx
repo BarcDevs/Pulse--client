@@ -19,6 +19,7 @@ import {
 
 import type { CheckInStats } from '@/types/checkIn'
 
+import { appSettings } from '@/config/appSettings'
 import { wellnessColors } from '@/lib/wellnessColors'
 
 import { progressLocales } from '@/locales/progressLocales'
@@ -289,7 +290,9 @@ export const ShareProgressCard =
                             {t(progressLocales.share.tagline)}
                         </p>
                         <p style={ctaStyle}>
-                            {t(progressLocales.share.cta)}
+                            {t(progressLocales.share.cta, {
+                                brandName: appSettings.brandName
+                            })}
                         </p>
                     </div>
                 </div>
