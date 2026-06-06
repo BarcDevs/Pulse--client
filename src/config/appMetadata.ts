@@ -26,7 +26,7 @@ export const getAppMetadata = (): Metadata => ({
         description: 'Track your recovery, build healthy routines, connect with a supportive community, and gain meaningful insights throughout your healing journey.',
         images: [
             {
-                url: '/assets/HealEase-OG-Image.png',
+                url: '/assets/Pulse-OG-Image.png',
                 width: 1200,
                 height: 634,
                 alt: `${appSettings.brandName} - Your Recovery Companion`,
