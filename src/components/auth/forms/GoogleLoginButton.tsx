@@ -9,11 +9,15 @@ import { redirectToGoogleAuth } from '@/lib/auth'
 
 import { authLocales } from '@/locales/authLocales'
 
-export const GoogleLoginButton = () => {
+type Props = {
+    redirect?: string | null
+}
+
+export const GoogleLoginButton = ({ redirect }: Props) => {
     const t = useTranslations()
 
     const handleClick = async () => {
-        await redirectToGoogleAuth()
+        await redirectToGoogleAuth(redirect)
     }
 
     return (

@@ -97,7 +97,12 @@ export const initiateLogout = async (
     }
 }
 
-export const redirectToGoogleAuth = async () => {
-    window.location.href =
+export const redirectToGoogleAuth = async (
+    redirect?: string | null
+) => {
+    const url = new URL(
         `${config.serverUrl}/api/v1/auth/google`
+    )
+    if (redirect) url.searchParams.set('redirect', redirect)
+    window.location.href = url.toString()
 }
