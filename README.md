@@ -124,9 +124,9 @@ Key directories:
 
 ## Architecture & Documentation
 
-[Architecture Diagram](https://www.notion.so/HealEase-structure-diagram-30d9e15469d280468f41e0d8925c6c98?source=copy_link)
+[Architecture Diagram](https://www.notion.so/Pulse-structure-diagram-30d9e15469d280468f41e0d8925c6c98?source=copy_link)
 
-See [Technical PRD](https://www.notion.so/HealEase-technical-PRD-3599e15469d280aa940cd64b53b46d38) for:
+See [Technical PRD](https://www.notion.so/Pulse-technical-PRD-3599e15469d280aa940cd64b53b46d38) for:
 - System architecture
 - Data models
 - API specification
@@ -190,5 +190,5 @@ Currently deployed on **Render** with automatic builds from main branch. Future 
 ## Support & Contribution
 
 - 📖 [Backend Repository](https://github.com/BarcDevs/Pulse--server)
-- 📋 [Technical PRD](https://www.notion.so/HealEase-technical-PRD-3599e15469d280aa940cd64b53b46d38)
+- 📋 [Technical PRD](https://www.notion.so/Pulse-technical-PRD-3599e15469d280aa940cd64b53b46d38)
 - 🐛 [Issues](https://github.com/BarcDevs/Pulse--client/issues)
