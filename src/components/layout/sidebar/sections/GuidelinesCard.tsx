@@ -13,29 +13,29 @@ import { Button } from '@/components/ui/button'
 
 import { communityLocales } from '@/locales/communityLocales'
 
-export const SanctuaryCard = () => {
+export const GuidelinesCard = () => {
     const t = useTranslations()
 
     return (
         <div className={'rounded-2xl border border-primary/20 bg-primary/5 p-5'}>
             <h3 className={'mb-2 font-semibold text-foreground'}>
-                {t('community.sanctuary.title')}
+                {t('community.guidelines.title')}
             </h3>
             <p className={'mb-4 text-sm text-muted-foreground'}>
-                {t('community.sanctuary.description')}
+                {t('community.guidelines.description')}
             </p>
             <div className={'space-y-2'}>
                 <GuidelineItem
                     icon={Shield}
-                    label={t(communityLocales.sanctuary.rules.kind)}
+                    label={t(communityLocales.guidelines.rules.kind)}
                 />
                 <GuidelineItem
                     icon={Lock}
-                    label={t(communityLocales.sanctuary.rules.noAdvice)}
+                    label={t(communityLocales.guidelines.rules.noAdvice)}
                 />
                 <GuidelineItem
                     icon={UserX}
-                    label={t(communityLocales.sanctuary.rules.privacy)}
+                    label={t(communityLocales.guidelines.rules.privacy)}
                 />
             </div>
             <Button
@@ -44,7 +44,7 @@ export const SanctuaryCard = () => {
                 className={'mt-4 w-full'}
             >
                 {/* todo: add real community guidelines */}
-                {t('community.sanctuary.readGuidelines')}
+                {t('community.guidelines.readGuidelines')}
             </Button>
         </div>
     )
