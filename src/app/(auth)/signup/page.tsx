@@ -1,7 +1,8 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
+import { useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 
 import { GoogleLoginButton } from '@/components/auth/forms/GoogleLoginButton'
@@ -14,7 +15,10 @@ import {
     CardTitle
 } from '@/components/ui/card'
 
+import { useGetMe } from '@/hooks/queries/useGetMe'
 import { useAuthHandlers } from '@/hooks/useAuthHandlers'
+
+import { ROUTES } from '@/constants/routes'
 
 import { authLocales } from '@/locales/authLocales'
 import type { SignupSchema } from '@/validations/forms/signupSchema'
@@ -22,8 +26,15 @@ import type { SignupSchema } from '@/validations/forms/signupSchema'
 const SignupPage = () => {
     const t = useTranslations()
     const { handleSignup } = useAuthHandlers()
+    const router = useRouter()
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState<string | null>(null)
+
+    const { user } = useGetMe()
+
+    useEffect(() => {
+        if (user) router.replace(ROUTES.DASHBOARD)
+    }, [user, router])
 
     const handleSignupSuccess = async (
         userData: SignupSchema

@@ -1,8 +1,8 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
-import { useSearchParams } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 
 import { GoogleLoginButton } from '@/components/auth/forms/GoogleLoginButton'
@@ -16,7 +16,12 @@ import {
     CardTitle
 } from '@/components/ui/card'
 
+import { useGetMe } from '@/hooks/queries/useGetMe'
 import { useAuthHandlers } from '@/hooks/useAuthHandlers'
+
+import { getSafeRedirectUrl } from '@/utils/redirect'
+
+import { ROUTES } from '@/constants/routes'
 
 import { authLocales } from '@/locales/authLocales'
 import type { LoginSchema } from '@/validations/forms/loginSchema'
@@ -24,10 +29,19 @@ import type { LoginSchema } from '@/validations/forms/loginSchema'
 const LoginPage = () => {
     const t = useTranslations()
     const { handleLogin } = useAuthHandlers()
+    const router = useRouter()
     const searchParams = useSearchParams()
     const redirect = searchParams.get('redirect')
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState<string | null>(null)
+
+    const { user } = useGetMe()
+
+    useEffect(() => {
+        if (user) router.replace(
+            getSafeRedirectUrl(redirect, ROUTES.DASHBOARD)
+        )
+    }, [user, redirect, router])
 
     const handleLoginSuccess = async (
         credentials: LoginSchema
