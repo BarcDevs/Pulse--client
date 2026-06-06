@@ -9,6 +9,8 @@ import { LanguageSwitcher } from '@/components/shared/LanguageSwitcher'
 
 import { ROUTES } from '@/constants/routes'
 
+import { appSettings } from '@/config/appSettings'
+
 import { globalLocales } from '@/locales/globalLocales'
 
 const AuthLayout = ({ children }: LayoutProps) => {
@@ -21,7 +23,7 @@ const AuthLayout = ({ children }: LayoutProps) => {
                     href={ROUTES.HOME}
                     className={'text-xl font-semibold text-primary'}
                 >
-                    HealEase
+                    {appSettings.brandName}
                 </Link>
                 <nav className={'flex items-center gap-4 text-sm'}>
                     <Link

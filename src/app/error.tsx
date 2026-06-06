@@ -8,6 +8,8 @@ import { ErrorPageContent } from '@/components/shared/error/ErrorPageContent'
 
 import { ROUTES } from '@/constants/routes'
 
+import { appSettings } from '@/config/appSettings'
+
 type ErrorProps = {
     error: Error & { digest?: string }
     reset: () => void
@@ -28,7 +30,7 @@ const ErrorPage = ({
     )
 
     useEffect(() => {
-        document.title = 'Something went wrong | HealEase'
+        document.title = `Something went wrong | ${appSettings.brandName}`
     }, [])
 
     if (isNetworkError)
