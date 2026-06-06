@@ -25,11 +25,11 @@ export const appMetadata: Metadata = {
         description: 'Track your recovery, build healthy routines, connect with a supportive community, and gain meaningful insights throughout your healing journey.',
         images: [
             {
-                url: '/assets/HealEase-OG-Image.webp',
+                url: '/assets/HealEase-OG-Image.png',
                 width: 1200,
                 height: 634,
                 alt: 'HealEase - Your Recovery Companion',
-                type: 'image/webp'
+                type: 'image/png'
             }
         ]
     },
