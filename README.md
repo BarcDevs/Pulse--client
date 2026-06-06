@@ -70,8 +70,8 @@ Lightweight, supportive insights generated from check-in patterns help detect tr
 
 ```bash
 # Clone and install
-git clone https://github.com/BarcDevs/HealEase--client.git
-cd HealEase--client
+git clone https://github.com/BarcDevs/Pulse--client.git
+cd Pulse--client
 npm install
 
 # Create environment file
@@ -189,6 +189,6 @@ Currently deployed on **Render** with automatic builds from main branch. Future 
 
 ## Support & Contribution
 
-- 📖 [Backend Repository](https://github.com/BarcDevs/HealEase--server)
+- 📖 [Backend Repository](https://github.com/BarcDevs/Pulse--server)
 - 📋 [Technical PRD](https://www.notion.so/HealEase-technical-PRD-3599e15469d280aa940cd64b53b46d38)
-- 🐛 [Issues](https://github.com/BarcDevs/HealEase--client/issues)
+- 🐛 [Issues](https://github.com/BarcDevs/Pulse--client/issues)

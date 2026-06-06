@@ -14,4 +14,4 @@ Centralized Axios instance with CSRF interceptors auto-injected for mutations.
 
 ## DOCS
 - On every change in routes, update docs/TECHNICAL_PRD.md and README.md with new API endpoints, request/response formats, and any relevant details for frontend integration.
-- Use the API docs to generate the frontend API client. API docs are in `../HealEase--server/docs/API.md`.
+- Use the API docs to generate the frontend API client. API docs are in `../Pulse--server/docs/API.md`.

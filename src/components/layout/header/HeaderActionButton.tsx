@@ -28,7 +28,7 @@ export const HeaderActionButton = ({
         }
         if (action.type === 'share') {
             window.dispatchEvent(
-                new CustomEvent('healease:share-progress')
+                new CustomEvent('pulse:share-progress')
             )
         }
     }
