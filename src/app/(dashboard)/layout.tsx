@@ -2,6 +2,7 @@ import { LayoutProps } from '@/types/react'
 
 import { AppHeader } from '@/components/AppHeader'
 import { DashboardClientProviders } from '@/components/layout/DashboardClientProviders'
+import { MobileNavBar } from '@/components/layout/mobile-nav/MobileNavBar'
 import { Sidebar } from '@/components/layout/sidebar/Sidebar'
 import { Footer } from '@/components/shared/footer/Footer'
 
@@ -14,13 +15,14 @@ const DashboardLayout = ({
                 <Sidebar/>
                 <div className={'flex flex-col flex-1'}>
                     <AppHeader/>
-                    <main className={'flex-1 overflow-auto bg-surface-page'}>
+                    <main className={'flex-1 overflow-auto bg-surface-page pb-20 sm:pb-0'}>
                         {children}
                     </main>
                 </div>
             </div>
             <Footer/>
         </div>
+        <MobileNavBar/>
     </DashboardClientProviders>
 )
 
