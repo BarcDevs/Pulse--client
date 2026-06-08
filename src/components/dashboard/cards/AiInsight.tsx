@@ -63,6 +63,10 @@ export const DashboardAIInsight = ({
                     <p className={'text-sm text-muted-foreground'}>
                         {t(dashboardLocales.aiInsight.failedToLoad)}
                     </p>
+                ) : !insightText ? (
+                    <p className={'text-sm text-muted-foreground'}>
+                        {t(dashboardLocales.noInsights)}
+                    </p>
                 ) : (
                     <>
                         <blockquote className={cn(
