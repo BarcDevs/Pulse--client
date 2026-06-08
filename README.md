@@ -53,7 +53,7 @@ Lightweight, supportive insights generated from check-in patterns help detect tr
 | **Forms** | react-hook-form, Zod                                  |
 | **HTTP** | Axios with CSRF interceptors                          |
 | **State** | TanStack Query, Next.js Context                       |
-| **Deployment** | Render (current), AWS (future production)             |
+| **Deployment** | Vercel (current), AWS (future production)             |
 
 **Note**: This is a frontend-only repository. The backend API runs separately.
 
@@ -137,7 +137,7 @@ See [Technical PRD](https://www.notion.so/Pulse-technical-PRD-3599e15469d280aa94
 
 ## Code Standards
 
-Code follows [CLAUDE.md](./CLAUDE.md) conventions:
+Code follows [CORE_RULES.md](./CORE_RULES.md) conventions:
 - TypeScript with strict typing
 - React 19 functional components
 - Single quotes, no semicolons, 4-space indentation
@@ -183,7 +183,7 @@ Both methods use the same session system:
 
 ## Deployment
 
-Currently deployed on **Render** with automatic builds from main branch. Future production infrastructure planned on **AWS**.
+Currently deployed on **Vercel** at https://pulse-rehab.vercel.app with automatic builds from main branch. Future production infrastructure planned on **AWS**.
 
 ---
 
