@@ -20,7 +20,7 @@ export const DashboardPageContent = () => {
                     {!isTodayCheckInExists && (
                         <DashboardCheckInCard/>
                     )}
-                    {FEATURES.motivationFeedback && isTodayCheckInExists && (
+                    {FEATURES.motivationFeedback && (
                         <DashboardAIInsight
                             className={'pt-6 px-10 pb-10 h-full'}
                             hideButton={true}
