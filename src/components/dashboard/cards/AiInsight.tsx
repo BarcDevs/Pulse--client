@@ -72,6 +72,7 @@ export const DashboardAIInsight = ({
                             {insightText}
                         </blockquote>
                         {!hideButton && (
+                            // todo: replace with shadcn's
                             <button
                                 onClick={() => setIsExpanded(!isExpanded)}
                                 className={'text-sm text-primary hover:underline cursor-pointer'}

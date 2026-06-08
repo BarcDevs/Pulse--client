@@ -1030,7 +1030,8 @@
         "chat": "Chat",
         "profile": "Profile",
         "settings": "Settings",
-        "logout": "Log Out"
+        "logout": "Log Out",
+        "more": "More"
       }
     },
     "layout": {
