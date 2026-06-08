@@ -43,6 +43,29 @@ export const DashboardAIInsight = ({
     const insightText =
         getLatestInsights(checkInsResponse)
 
+    if (!insightText && !isLoading && !isError) {
+        return (
+            <Card className={cn(
+                'border-0 shadow-sm',
+                className
+            )}>
+                <CardHeader>
+                    <div className={'flex items-center gap-2'}>
+                        <Sparkles className={'size-4 text-purple'}/>
+                        <CardTitle className={'text-sm font-medium text-muted-foreground'}>
+                            {t(dashboardLocales.aiInsight.label)}
+                        </CardTitle>
+                    </div>
+                </CardHeader>
+                <CardContent>
+                    <p className={'text-sm text-muted-foreground'}>
+                        {t(dashboardLocales.noInsights)}
+                    </p>
+                </CardContent>
+            </Card>
+        )
+    }
+
     return (
         <Card className={cn(
             'border-0 shadow-sm',

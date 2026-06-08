@@ -90,3 +90,7 @@ Behavioral intelligence systems require medical/legal caution, behavioral tuning
 | #     | File                                             | Line  | Note                                                               |
 |-------|--------------------------------------------------|-------|--------------------------------------------------------------------|
 | ~~1~~ | ~~`.claude/design/resources/design-canvas.jsx`~~ | ~~—~~ | ~~Apply Claude Design's style guide to components (low priority)~~ |
+
+spotted:
+community activity loading forever if no activity to recommend
+progress streak - no optimistic update, broken streak shown as active streak color
