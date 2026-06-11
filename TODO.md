@@ -31,6 +31,7 @@ The card reflects the user back to themselves — it does not instruct them.
 | # | File | Note |
 |---|------|------|
 | ~~1~~ | ~~`src/components/dashboard/cards/DailyObservation.tsx`~~ | ~~Replace static `observation` with AI-generated reflective insight from backend. Backend derives insight from check-in signals; client renders as-is.~~ |
+| 2 | `src/components/dashboard/cards/DailyObservation.tsx` | Some activity slugs lack translated label in `checkInLocales.activities.default` and render as raw slug (e.g. `self-care`) instead of friendly name in daily observation card |
 
 **Scaling-deferred — do NOT build until data maturity + trust calibration:**
 
@@ -85,6 +86,7 @@ Behavioral intelligence systems require medical/legal caution, behavioral tuning
 | ~~2~~ | ~~`src/components/goals/form/GoalForm.tsx`~~ | ~~—~~ | ~~Replace native date input with shadcn calendar component~~ |
 | ~~3~~ | ~~`src/components/shared/`~~ | ~~—~~ | ~~Create reusable `ErrorMessage` component for inline form root errors (currently inlined in `GoalForm`)~~ |
 | 4 | `src/components/progress/cards/StreakCard.tsx`, `StreakBars.tsx` | — | Streak update isn't optimistic — after check-in, `currentStreak` only updates on refetch. If a check-in breaks the streak (gap day), `getBarColor` still colors it `var(--warning)` (active streak) until data refreshes, showing a broken streak as active |
+| 5 | `src/context/CheckInContext.tsx` | 99–126 | `buildOptimisticStats` always increments `currentStreak` by 1 on submit, even when editing existing check-in for today (upsert) instead of creating new — streak gets inflated on edits |
 
 ---
 
