@@ -77,7 +77,7 @@ export const GoalsFilter = ({
             </Popover>
             <Button
                 onClick={onOpenCreateModalAction}
-                className={'bg-linear-to-r from-primary-gradient-start to-primary-gradient-end text-primary-foreground shadow-lg shadow-blue-500/20'}
+                className={'hidden sm:inline-flex bg-linear-to-r from-primary-gradient-start to-primary-gradient-end text-primary-foreground shadow-lg shadow-blue-500/20'}
             >
                 <Plus className={'size-4 mr-2'}/>
                 {t(goalsLocales.overview.newGoalButton)}

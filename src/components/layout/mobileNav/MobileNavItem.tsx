@@ -21,7 +21,7 @@ export const MobileNavItem = ({
         <Link
             href={item.href}
             className={cn(
-                'flex flex-col items-center justify-center py-2 px-2 rounded-lg transition-colors gap-0.5 cursor-pointer',
+                'flex flex-1 min-w-0 flex-col items-center justify-center py-2 px-1 rounded-lg transition-colors gap-0.5 cursor-pointer',
                 isActive
                     ? 'text-primary-600 bg-primary-50'
                     : 'text-muted-600 hover:text-muted-700'
@@ -31,7 +31,7 @@ export const MobileNavItem = ({
                 size={20}
                 className={'shrink-0'}
             />
-            <span className={'text-xs font-medium text-center leading-tight'}>
+            <span className={'w-full text-[10px] font-medium text-center leading-tight'}>
                 {t(item.labelKey)}
             </span>
         </Link>

@@ -433,6 +433,23 @@
     }
 }
 
+@media (width < theme(--breakpoint-md)) {
+    [data-slot="input"],
+    [data-slot="textarea"],
+    input[data-slot="form-control"],
+    textarea[data-slot="form-control"] {
+        font-size: 16px;
+        height: 2rem;
+        padding-top: 0.125rem;
+        padding-bottom: 0.125rem;
+    }
+
+    [data-slot="textarea"],
+    textarea[data-slot="form-control"] {
+        height: auto;
+    }
+}
+
 @utility container {
     margin-inline: auto;
     padding-inline: 2rem;

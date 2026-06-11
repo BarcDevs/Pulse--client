@@ -98,7 +98,24 @@ export const mockGoals = async (page: Page) => {
         route.fulfill({
             status: 200,
             contentType: 'application/json',
-            body: ok({ total: 0, completed: 0, active: 0 })
+            body: ok({
+                goals: {
+                    totalCreated: 0,
+                    completed: 0,
+                    completionRate: 0,
+                    streak: 0,
+                    active: 0,
+                    paused: 0,
+                    byCategory: { PHYSICAL: 0, MENTAL: 0, LIFESTYLE: 0 }
+                },
+                milestones: {
+                    totalCreated: 0,
+                    completed: 0,
+                    completionRate: 0,
+                    streak: 0,
+                    active: 0
+                }
+            })
         })
     )
 }

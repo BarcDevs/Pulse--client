@@ -15,12 +15,12 @@ const DashboardLayout = ({
                 <Sidebar/>
                 <div className={'flex flex-col flex-1'}>
                     <AppHeader/>
-                    <main className={'flex-1 overflow-auto bg-surface-page pb-20 sm:pb-0'}>
+                    <main className={'flex-1 overflow-auto bg-surface-page'}>
                         {children}
                     </main>
                 </div>
             </div>
-            <Footer/>
+            <Footer className={'pb-20 sm:pb-0'}/>
         </div>
         <MobileNavBar/>
     </DashboardClientProviders>

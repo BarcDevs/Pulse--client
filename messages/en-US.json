@@ -1154,7 +1154,8 @@
     "nav": {
       "howItWorks": "How It Works",
       "community": "Community",
-      "about": "About"
+      "about": "About",
+      "menu": "Menu"
     },
     "hero": {
       "headline": "Recovery",

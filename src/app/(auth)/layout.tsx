@@ -47,7 +47,9 @@ const AuthLayout = ({ children }: LayoutProps) => {
             </main>
 
             <footer className={'p-4 text-center text-xs text-muted-foreground'}>
-                <p>{t(globalLocales.footer.copyright)}</p>
+                <p>{t(globalLocales.footer.copyright, {
+                    brandName: appSettings.brandName
+                })}</p>
                 <div className={'mt-2 flex--center gap-4'}>
                     <Link
                         href={ROUTES.SUPPORT}

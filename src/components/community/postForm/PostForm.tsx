@@ -40,7 +40,7 @@ export const PostForm = ({
     if (!isOpen) return null
 
     return (
-        <div className={'rounded-2xl bg-surface-card p-6 shadow-md border border-primary'}>
+        <div className={'rounded-2xl bg-surface-card p-4 sm:p-6 shadow-md border border-primary'}>
             {!hideHeader && (
                 <PostFormHeader
                     isReply={isReply}

@@ -42,13 +42,13 @@ export const MobileNavBar = () => {
                     <Button
                         onClick={() => setDrawerOpen(true)}
                         variant={'ghost'}
-                        className={'flex flex-col items-center justify-center py-2 px-2 h-auto rounded-lg text-muted-600 hover:text-muted-700 hover:bg-transparent gap-0.5'}
+                        className={'flex flex-1 min-w-0 flex-col items-center justify-center py-2 px-1 h-auto rounded-lg text-muted-600 hover:text-muted-700 hover:bg-transparent gap-0.5'}
                     >
                         <MoreHorizontal
                             size={20}
                             className={'shrink-0'}
                         />
-                        <span className={'text-xs font-medium text-center'}>
+                        <span className={'w-full text-[10px] font-medium text-center leading-tight'}>
                             {t(globalLocales.nav.sidebar.more)}
                         </span>
                     </Button>

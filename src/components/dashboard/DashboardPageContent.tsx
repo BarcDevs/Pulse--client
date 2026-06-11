@@ -22,7 +22,7 @@ export const DashboardPageContent = () => {
                     )}
                     {FEATURES.motivationFeedback && (
                         <DashboardAIInsight
-                            className={'pt-6 px-10 pb-10 h-full'}
+                            className={'hidden lg:block pt-6 px-10 pb-10 h-full'}
                             hideButton={true}
                         />
                     )}

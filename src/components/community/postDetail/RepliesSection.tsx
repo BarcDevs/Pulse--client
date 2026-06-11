@@ -87,7 +87,7 @@ export const RepliesSection = ({
     )
 
     return (
-        <div className={'rounded-2xl bg-surface-card shadow-sm p-6 space-y-4'}>
+        <div className={'rounded-2xl bg-surface-card shadow-sm p-4 sm:p-6 space-y-3 sm:space-y-4'}>
             {isLoading
                 ? <Skeleton className={'h-6 w-28'}/>
                 : <h2 className={'text-lg font-semibold'}>

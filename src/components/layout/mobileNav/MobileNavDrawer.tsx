@@ -1,9 +1,14 @@
 'use client'
 
 import { usePathname } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 
 import { Separator } from '@/components/ui/separator'
-import { Sheet, SheetContent } from '@/components/ui/sheet'
+import {
+    Sheet,
+    SheetContent,
+    SheetTitle
+} from '@/components/ui/sheet'
 
 import {
     filterNavItemsByFeatures,
@@ -14,6 +19,8 @@ import {
     mainNavItems,
     userMenuItems
 } from '@/constants/navigationItems'
+
+import { globalLocales } from '@/locales/globalLocales'
 
 import { DrawerNavItem } from './DrawerNavItem'
 
@@ -26,6 +33,7 @@ export const MobileNavDrawer = ({
     open,
     onOpenChangeAction
 }: MobileNavDrawerProps) => {
+    const t = useTranslations()
     const pathname = usePathname()
 
     const filteredMainItems =
@@ -40,6 +48,9 @@ export const MobileNavDrawer = ({
                 side={'left'}
                 className={'w-64 p-0'}
             >
+                <SheetTitle className={'sr-only'}>
+                    {t(globalLocales.nav.sidebar.more)}
+                </SheetTitle>
                 <div className={'flex flex-col h-full'}>
                     <div className={'flex-1 overflow-auto py-4'}>
                         <div className={'space-y-1 px-2'}>

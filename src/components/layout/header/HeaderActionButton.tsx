@@ -37,15 +37,18 @@ export const HeaderActionButton = ({
         <Button
             onClick={handleClick}
             variant={isOutline ? 'outline' : 'default'}
+            aria-label={t(action.label)}
             className={cn(
                 isPrimaryAction && 'bg-primary hover:bg-primary/90 text-primary-foreground',
                 isOutline && !isPrimaryAction && 'text-muted-foreground'
             )}
         >
             {action.icon && (
-                <action.icon className={'mr-2 h-4 w-4'}/>
+                <action.icon className={'sm:mr-2 h-4 w-4'}/>
             )}
-            {t(action.label)}
+            <span className={'hidden sm:inline'}>
+                {t(action.label)}
+            </span>
         </Button>
     )
 }
