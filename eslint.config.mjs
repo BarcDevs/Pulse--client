@@ -33,7 +33,9 @@ const config = [
             'next.config.ts',
             'next-env.d.ts',
             '**/*.yml',
-            '**/*.yaml'
+            '**/*.yaml',
+            '.heap-diagnostics',
+            'sentry.*.config.ts'
         ]
     },
 
