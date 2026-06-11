@@ -60,7 +60,7 @@ export const StreakCard = () => {
                     </div>
                 </div>
                 <div className={'h-12 w-12 rounded-xl flex--center bg-streak-icon-bg'}>
-                    <Flame className={'h-6 w-6 text-warning'}/>
+                    <Flame className={'h-6 w-6 text-streak-active'}/>
                 </div>
             </div>
 
