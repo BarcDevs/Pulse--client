@@ -6,12 +6,11 @@ import {
     Undo2
 } from 'lucide-react'
 
+import { AdditionalAction } from '@/types/actionMenu'
 import {
     Goal,
     GoalStatus
 } from '@/types/goals'
-
-import { AdditionalAction } from '@/components/shared/ActionsMenu'
 
 import { goalsLocales } from '@/locales/goalsLocales'
 

@@ -1,4 +1,4 @@
-# HealEase Client — Scaling TODOs
+# Pulse Client — Scaling TODOs
 
 Deferred items — not required for MVP. See `TODO.md` for active work.
 

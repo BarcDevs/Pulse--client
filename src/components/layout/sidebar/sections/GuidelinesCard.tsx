@@ -11,6 +11,8 @@ import {
 import { GuidelineItem } from '@/components/shared/content/GuidelineItem'
 import { Button } from '@/components/ui/button'
 
+import { appSettings } from '@/config/appSettings'
+
 import { communityLocales } from '@/locales/communityLocales'
 
 export const GuidelinesCard = () => {
@@ -22,7 +24,9 @@ export const GuidelinesCard = () => {
                 {t('community.guidelines.title')}
             </h3>
             <p className={'mb-4 text-sm text-muted-foreground'}>
-                {t('community.guidelines.description')}
+                {t('community.guidelines.description', {
+                    brandName: appSettings.brandName
+                })}
             </p>
             <div className={'space-y-2'}>
                 <GuidelineItem

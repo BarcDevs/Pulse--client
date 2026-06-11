@@ -13,7 +13,7 @@ export const CheckInQuote = () => {
     const quote = pickQuote(quotes, locale)
 
     return (
-        <div className={'mt-10 rounded-2xl bg-primary-light p-8 text-center'}>
+        <div className={'mt-10 mb-6 rounded-2xl bg-primary-light p-8 text-center'}>
             <Quote className={'mx-auto mb-4 size-8 text-primary'}/>
             <blockquote className={'text-lg italic text-foreground'}>
                 {quote}

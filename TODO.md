@@ -1,4 +1,4 @@
-# HealEase Client — TODO Tracker
+# Pulse Client — TODO Tracker
 
 MVP-level TODOs only. See `scaling-todo.md` for deferred items.
 
@@ -31,6 +31,7 @@ The card reflects the user back to themselves — it does not instruct them.
 | # | File | Note |
 |---|------|------|
 | ~~1~~ | ~~`src/components/dashboard/cards/DailyObservation.tsx`~~ | ~~Replace static `observation` with AI-generated reflective insight from backend. Backend derives insight from check-in signals; client renders as-is.~~ |
+| 2 | `src/components/dashboard/cards/DailyObservation.tsx` | Some activity slugs lack translated label in `checkInLocales.activities.default` and render as raw slug (e.g. `self-care`) instead of friendly name in daily observation card |
 
 **Scaling-deferred — do NOT build until data maturity + trust calibration:**
 
@@ -51,7 +52,7 @@ Behavioral intelligence systems require medical/legal caution, behavioral tuning
 | # | File | Line | Note |
 |---|------|------|------|
 | ~~1~~ | ~~`src/components/profile/settings/BasicInfoView.tsx`~~ | ~~37–39~~ | ~~Add `dateOfBirth`, `recoveryType`, `careProvider` once API supports them~~ |
-| ~~2~~ | ~~`../healease--server`~~ | ~~—~~ | ~~`GET /forum/recommendations` should always return posts — currently returns empty `posts: []` when `status: "processing"` causing blank community activity card~~ |
+| ~~2~~ | ~~`../pulse--server`~~ | ~~—~~ | ~~`GET /forum/recommendations` should always return posts — currently returns empty `posts: []` when `status: "processing"` causing blank community activity card~~ |
 | ~~3~~ | ~~`src/context/ForumRepliesContext.tsx`~~ | ~~—~~ | ~~Add reply count to post API response (or dedicated endpoint) so "Show more replies" button can display exact remaining count instead of static label~~ |
 
 ---
@@ -72,6 +73,8 @@ Behavioral intelligence systems require medical/legal caution, behavioral tuning
 |---|------|------|------|
 | ~~1~~ | ~~`src/components/community/`~~ | ~~—~~ | ~~Forum tweaks — add author badge next to post author name~~ |
 | ~~2~~ | ~~`src/components/community/postDetail/`~~ | ~~—~~ | ~~Limit reply count — use expand button to show remaining replies~~ |
+| 3 | `src/components/dashboard/community/CommunityActivity.tsx` | 43–46 | `refetchInterval` polls forever while `status === 'processing'`. If backend never has activity to recommend for a user, status stays `processing` indefinitely and card shows skeleton forever. Cap retries (e.g. stop after N attempts or timeout) and fall back to empty state |
+| 4 | `src/components/community/postDetail/RepliesSection.tsx` | 142–154 | Replace manual "show more replies" button with infinite scroll — load next page automatically via `IntersectionObserver` when user reaches bottom of `RepliesList` |
 
 ---
 
@@ -82,6 +85,8 @@ Behavioral intelligence systems require medical/legal caution, behavioral tuning
 | ~~1~~ | ~~`src/components/progress/ProgressPageContent.tsx`~~ | ~~18~~ | ~~Add error card to Milestones & Achievements section when API errors occur~~ |
 | ~~2~~ | ~~`src/components/goals/form/GoalForm.tsx`~~ | ~~—~~ | ~~Replace native date input with shadcn calendar component~~ |
 | ~~3~~ | ~~`src/components/shared/`~~ | ~~—~~ | ~~Create reusable `ErrorMessage` component for inline form root errors (currently inlined in `GoalForm`)~~ |
+| 4 | `src/components/progress/cards/StreakCard.tsx`, `StreakBars.tsx` | — | Streak update isn't optimistic — after check-in, `currentStreak` only updates on refetch. If a check-in breaks the streak (gap day), `getBarColor` still colors it `var(--warning)` (active streak) until data refreshes, showing a broken streak as active |
+| 5 | `src/context/CheckInContext.tsx` | 99–126 | `buildOptimisticStats` always increments `currentStreak` by 1 on submit, even when editing existing check-in for today (upsert) instead of creating new — streak gets inflated on edits |
 
 ---
 

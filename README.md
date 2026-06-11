@@ -1,6 +1,6 @@
-# HealEase — Recovery Support Platform
+# Pulse — Recovery Support Platform
 
-Recovery is difficult to manage without structure. HealEase provides patients transitioning from hospital or clinical care with daily check-in rituals, progress visibility, and community support.
+Recovery is difficult to manage without structure. Pulse provides patients transitioning from hospital or clinical care with daily check-in rituals, progress visibility, and community support.
 
 ---
 
@@ -8,7 +8,7 @@ Recovery is difficult to manage without structure. HealEase provides patients tr
 
 Patients leaving hospital or clinical care face a critical gap: the loss of daily medical oversight and structured routine. Between appointments, motivation declines, progress becomes invisible, and recovery drifts without reinforcement. The result is disengagement and setbacks.
 
-HealEase addresses this by creating a structured daily check-in ritual, making recovery progress visible through charts, and providing community connection with others in similar circumstances.
+Pulse addresses this by creating a structured daily check-in ritual, making recovery progress visible through charts, and providing community connection with others in similar circumstances.
 
 ---
 
@@ -53,7 +53,7 @@ Lightweight, supportive insights generated from check-in patterns help detect tr
 | **Forms** | react-hook-form, Zod                                  |
 | **HTTP** | Axios with CSRF interceptors                          |
 | **State** | TanStack Query, Next.js Context                       |
-| **Deployment** | Render (current), AWS (future production)             |
+| **Deployment** | Vercel (current), AWS (future production)             |
 
 **Note**: This is a frontend-only repository. The backend API runs separately.
 
@@ -70,8 +70,8 @@ Lightweight, supportive insights generated from check-in patterns help detect tr
 
 ```bash
 # Clone and install
-git clone https://github.com/BarcDevs/HealEase--client.git
-cd HealEase--client
+git clone https://github.com/BarcDevs/Pulse--client.git
+cd Pulse--client
 npm install
 
 # Create environment file
@@ -124,9 +124,9 @@ Key directories:
 
 ## Architecture & Documentation
 
-[Architecture Diagram](https://www.notion.so/HealEase-structure-diagram-30d9e15469d280468f41e0d8925c6c98?source=copy_link)
+[Architecture Diagram](https://www.notion.so/Pulse-structure-diagram-30d9e15469d280468f41e0d8925c6c98?source=copy_link)
 
-See [Technical PRD](https://www.notion.so/HealEase-technical-PRD-3599e15469d280aa940cd64b53b46d38) for:
+See [Technical PRD](https://www.notion.so/Pulse-technical-PRD-3599e15469d280aa940cd64b53b46d38) for:
 - System architecture
 - Data models
 - API specification
@@ -137,7 +137,7 @@ See [Technical PRD](https://www.notion.so/HealEase-technical-PRD-3599e15469d280a
 
 ## Code Standards
 
-Code follows [CLAUDE.md](./CLAUDE.md) conventions:
+Code follows [CORE_RULES.md](./CORE_RULES.md) conventions:
 - TypeScript with strict typing
 - React 19 functional components
 - Single quotes, no semicolons, 4-space indentation
@@ -149,7 +149,7 @@ Code follows [CLAUDE.md](./CLAUDE.md) conventions:
 
 ## Authentication
 
-HealEase supports two authentication methods:
+Pulse supports two authentication methods:
 
 **Email & Password**
 - Traditional email/password signup and login
@@ -183,12 +183,12 @@ Both methods use the same session system:
 
 ## Deployment
 
-Currently deployed on **Render** with automatic builds from main branch. Future production infrastructure planned on **AWS**.
+Currently deployed on **Vercel** at https://pulse-rehab.vercel.app with automatic builds from main branch. Future production infrastructure planned on **AWS**.
 
 ---
 
 ## Support & Contribution
 
-- 📖 [Backend Repository](https://github.com/BarcDevs/HealEase--server)
-- 📋 [Technical PRD](https://www.notion.so/HealEase-technical-PRD-3599e15469d280aa940cd64b53b46d38)
-- 🐛 [Issues](https://github.com/BarcDevs/HealEase--client/issues)
+- 📖 [Backend Repository](https://github.com/BarcDevs/Pulse--server)
+- 📋 [Technical PRD](https://www.notion.so/Pulse-technical-PRD-3599e15469d280aa940cd64b53b46d38)
+- 🐛 [Issues](https://github.com/BarcDevs/Pulse--client/issues)

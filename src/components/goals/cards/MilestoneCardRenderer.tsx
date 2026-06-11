@@ -55,10 +55,7 @@ export const MilestoneCardRenderer = ({
                 {statusLabel}
             </span>
             <div className={cn(contentLayout, 'gap-2')}>
-                <div className={cn(
-                    isActive && 'flex-1',
-                    'flex--col gap-2'
-                )}>
+                <div className={'flex-1 min-w-0 flex--col gap-2'}>
                     <h3 className={cn(
                         'font-bold font-headline',
                         titleSize

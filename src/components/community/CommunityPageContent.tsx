@@ -40,6 +40,7 @@ import { PostFormSchema } from '@/validations/forms/postFormSchema'
 import { PostList } from './posts/PostList'
 import { CommunityPanel } from './CommunityPanel'
 import { CommunitySearchBar } from './CommunitySearchBar'
+import { NewPostFloatingButton } from './NewPostFloatingButton'
 
 export const CommunityPageContent = () => {
     const t = useTranslations()
@@ -75,6 +76,7 @@ export const CommunityPageContent = () => {
             return
         }
         setIsNewPostOpen(true)
+        window.scrollTo({ top: 0, behavior: 'smooth' })
     }
 
     const handlePostSubmit = async (data: PostFormSchema) => {
@@ -163,6 +165,11 @@ export const CommunityPageContent = () => {
                     onTagSelect={setSelectedTag}
                 />
             </div>
+
+            <NewPostFloatingButton
+                isPostOpen={isNewPostOpen}
+                onClickAction={handleOpenNewPost}
+            />
         </div>
     )
 }

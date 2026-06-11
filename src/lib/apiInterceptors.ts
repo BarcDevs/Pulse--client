@@ -97,6 +97,8 @@ export const handleResponseError = async (
     const onCommunityPage = authState.isCommunityPage
 
     if (isUnauthorized && !isUnauthEndpoint) {
+        (error as any).silent = true
+
         if (isCsrfError(error) && !alreadyRetried) {
             originalRequest._retry = true
             const success = await callRefresh()

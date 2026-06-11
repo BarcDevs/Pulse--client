@@ -34,13 +34,13 @@ export const ProgressPageContent = () => {
         const handler = () =>
             setShareModalOpen(true)
         window.addEventListener(
-            'healease:share-progress',
+            'pulse:share-progress',
             handler
         )
 
         return () =>
             window.removeEventListener(
-                'healease:share-progress',
+                'pulse:share-progress',
                 handler
             )
     }, [])

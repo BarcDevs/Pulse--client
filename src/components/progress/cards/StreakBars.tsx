@@ -10,10 +10,13 @@ type StreakBarsProps = {
 const getBarColor = (
     date: string,
     checkInDates: Set<string>,
-    streakStartStr: string
+    streakStartStr: string,
+    isActive: boolean
 ) => {
-    if (!checkInDates.has(date)) return 'var(--border)'
-    if (date >= streakStartStr) return 'var(--warning)'
+    if (!checkInDates.has(date))
+        return 'var(--border)'
+    if (isActive && date >= streakStartStr)
+        return 'var(--streak-active)'
     return 'var(--streak-past)'
 }
 
@@ -41,6 +44,12 @@ export const StreakBars = ({
     const streakStartStr =
         currentStreak > 0 ? toDateStr(streakStart) : ''
 
+    const yesterday = new Date(today)
+    yesterday.setDate(today.getDate() - 1)
+    const yesterdayStr = toDateStr(yesterday)
+    const isActive = currentStreak > 0
+        && (streakStartStr > yesterdayStr || checkInDates.has(yesterdayStr))
+
     return (
         <div className={'flex items-end gap-1'}>
             {dates.map(date => (
@@ -51,7 +60,8 @@ export const StreakBars = ({
                         backgroundColor: getBarColor(
                             date,
                             checkInDates,
-                            streakStartStr
+                            streakStartStr,
+                            isActive
                         )
                     }}
                 />

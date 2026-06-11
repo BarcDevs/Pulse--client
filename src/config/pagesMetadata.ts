@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 
-import { appMetadata } from '@/config/appMetadata'
+import { getAppMetadata } from '@/config/appMetadata'
 
 interface PageMetadataInput {
     title: string
@@ -17,6 +17,7 @@ interface PageMetadataInput {
 export const createPageMetadata = (
     input: PageMetadataInput
 ): Metadata => {
+    const appMetadata = getAppMetadata()
     const siteUrl = appMetadata.metadataBase!.toString()
     const canonicalUrl = input.path
         ? `${siteUrl}${input.path}`

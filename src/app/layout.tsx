@@ -12,7 +12,7 @@ import { Toaster } from '@/components/ui/sonner'
 
 import { cn } from '@/lib/utils'
 
-import { appMetadata } from '@/config/appMetadata'
+import { getAppMetadata } from '@/config/appMetadata'
 
 import { AuthProvider } from '@/context/AuthProvider'
 
@@ -30,7 +30,7 @@ const notoSansHebrew = Noto_Sans_Hebrew({
     variable: '--font-noto-sans-hebrew'
 })
 
-export const metadata: Metadata = appMetadata
+export const metadata: Metadata = getAppMetadata()
 
 const RootLayout = async ({
     children

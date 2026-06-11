@@ -12,7 +12,8 @@ export const globalLocales = {
             chat: 'global.nav.sidebar.chat',
             profile: 'global.nav.sidebar.profile',
             settings: 'global.nav.sidebar.settings',
-            logout: 'global.nav.sidebar.logout'
+            logout: 'global.nav.sidebar.logout',
+            more: 'global.nav.sidebar.more'
         }
     },
     footer: {

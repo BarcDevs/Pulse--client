@@ -1,7 +1,7 @@
-# Claude Code Preferences — HealEase
+# Claude Code Preferences — Pulse
 
-HealEase — Recovery support platform. Next.js 16, React 19, TypeScript, TanStack Query.
-Server: `../healease--server`.
+Pulse — Recovery support platform. Next.js 16, React 19, TypeScript, TanStack Query.
+Server: `../pulse--server`.
 
 ## Model Selection
 - **Haiku**: sub-agents, file lookups, search queries, simple edits (<50 lines), code explanation, formatting fixes, style enforcement
@@ -43,3 +43,13 @@ SOLID principles | Industry standards | Type-safe forms
 ## Git & Commits
 **Read `.claude/GIT_RULES.md` before committing or when instructed to commit.** Do not skip it.
 Full rules there. Key constraint: never invoke `/commit` skill on small fixes, formatting, or docs changes — use plain `git commit` for those.
+
+## graphify
+
+This project has a knowledge graph at graphify-out/ with god nodes, community structure, and cross-file relationships.
+
+Rules:
+- For codebase questions, first run `graphify query "<question>"` when graphify-out/graph.json exists. Use `graphify path "<A>" "<B>"` for relationships and `graphify explain "<concept>"` for focused concepts. These return a scoped subgraph, usually much smaller than GRAPH_REPORT.md or raw grep output.
+- If graphify-out/wiki/index.md exists, use it for broad navigation instead of raw source browsing.
+- Read graphify-out/GRAPH_REPORT.md only for broad architecture review or when query/path/explain do not surface enough context.
+- After modifying code, run `graphify update .` to keep the graph current (AST-only, no API cost).

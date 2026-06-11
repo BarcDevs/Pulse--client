@@ -96,7 +96,7 @@
       "emotionalTrendTitle": "More stable",
       "emotionalTrendDescription": "Your mood has been more balanced recently",
       "quote": "Consistent small steps can create meaningful change over time",
-      "quoteAuthor": "HealEase Community"
+      "quoteAuthor": "{brandName} Community"
     }
   },
   "checkIn": {
@@ -180,7 +180,7 @@
     },
     "guidelines": {
       "title": "Community space",
-      "description": "HealEase is built to support respectful conversations, privacy, and a sense of emotional safety.",
+      "description": "{brandName} is built to support respectful conversations, privacy, and a sense of emotional safety.",
       "rules": {
         "kind": "Lead with kindness and openness",
         "noAdvice": "Avoid giving medical advice unless qualified",
@@ -231,7 +231,7 @@
     "postForm": {
       "writeReply": "Write a reply",
       "createPost": "Share with the community",
-      "createPostSubtitle": "Your post will be visible to the HealEase community. Keep the space supportive and avoid medical advice.",
+      "createPostSubtitle": "Your post will be visible to the {brandName} community. Keep the space supportive and avoid medical advice.",
       "content": "Content",
       "cancel": "Cancel",
       "saveChanges": "Save changes",
@@ -469,7 +469,7 @@
     "share": {
       "title": "My progress",
       "tagline": "Small steps still matter.",
-      "cta": "Track your progress with HealEase",
+      "cta": "Track your progress with {brandName}",
       "toastShare": "Shared successfully",
       "toastCopied": "Image copied",
       "toastDownloaded": "Image saved",
@@ -884,7 +884,7 @@
     },
     "notifications": {
       "title": "Notifications",
-      "description": "Control how and when HealEase contacts you.",
+      "description": "Control how and when {brandName} contacts you.",
       "dailyReminder": {
         "label": "Daily Reminder",
         "description": "Receive gentle reminders for check-ins, routines, and recovery activities"
@@ -999,7 +999,7 @@
       "quickLinksTitle": "Quick Links",
       "legalTitle": "Legal",
       "socialTitle": "Follow Us",
-      "copyright": "© 2026 HealEase. All rights reserved.",
+      "copyright": "© 2026 {brandName}. All rights reserved.",
       "support": "Support",
       "privacy": "Privacy",
       "terms": "Terms",
@@ -1030,7 +1030,8 @@
         "chat": "Chat",
         "profile": "Profile",
         "settings": "Settings",
-        "logout": "Log Out"
+        "logout": "Log Out",
+        "more": "More"
       }
     },
     "layout": {
@@ -1061,7 +1062,7 @@
     },
     "landing": {
       "descriptions": {
-        "about": "HealEase supports people navigating recovery after medical treatment, injury, or major life challenges. Daily check-ins help you notice patterns, AI-powered insights provide guidance, and community support helps you feel less alone through the process.",
+        "about": "{brandName} supports people navigating recovery after medical treatment, injury, or major life challenges. Daily check-ins help you notice patterns, AI-powered insights provide guidance, and community support helps you feel less alone through the process.",
         "benefits": "Support designed for different stages of recovery",
         "hero": "Track your progress, build supportive routines, and connect with people who understand.",
         "features": "Simple tools designed to support recovery and wellbeing"
@@ -1069,7 +1070,7 @@
       "footer": {
         "H3": "Recovery, together.",
         "desc": "Supporting healing through structure, reflection, and community.",
-        "rights": "© 2026 HealEase. All rights reserved.",
+        "rights": "© 2026 {brandName}. All rights reserved.",
         "quickLinks": "Quick Links",
         "legalLinks": "Legal"
       },
@@ -1153,7 +1154,8 @@
     "nav": {
       "howItWorks": "How It Works",
       "community": "Community",
-      "about": "About"
+      "about": "About",
+      "menu": "Menu"
     },
     "hero": {
       "headline": "Recovery",
@@ -1162,7 +1164,7 @@
       "headlineSuffix": "That Stays.",
       "subtitle": "Track your recovery, reflect on your progress, and connect with people who understand what you're going through. All in one place designed to support the journey ahead.",
       "startJourney": "Start Your Journey",
-      "exploreCommunity": "Explore Community",
+      "exploreCommunity": "Join the Community",
       "streakLabel": "Check-In Streak",
       "moodLabel": "Today's Mood",
       "chartPeriod": "Last 14 Days",
@@ -1180,7 +1182,7 @@
       "card3Desc": "Connect with people who share similar recovery experiences in a respectful and emotionally safe space."
     },
     "howItWorks": {
-      "sectionTitle": "How recovery flows in HealEase",
+      "sectionTitle": "How recovery flows in {brandName}",
       "step1Title": "Daily check in",
       "step1Desc": "A short guided flow to capture how you feel physically and emotionally.",
       "step2Title": "Track patterns",

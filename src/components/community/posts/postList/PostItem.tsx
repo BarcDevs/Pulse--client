@@ -58,19 +58,19 @@ export const PostItem = ({
         : post._count?.replies ?? 0
 
     return (
-        <div className={'p-6 hover:bg-surface-section/50 transition-colors'}>
+        <div className={'p-4 sm:p-6 hover:bg-surface-section/50 transition-colors'}>
             <Link
                 href={`/community/post/${post.id}`}
                 className={'block'}
             >
-                <div className={'flex items-start justify-between gap-4 mb-2'}>
+                <div className={'flex flex-wrap items-center gap-2 mb-2'}>
                     <PostHeader
                         category={post.category}
                         author={getAuthorName(post)}
                         timeAgo={toRelative(post.createdAt, dateLocale)}
                         isEdited={post.updatedAt !== null}
                     />
-                    <span className={'flex items-center gap-1 text-xs whitespace-nowrap'}>
+                    <span className={'flex items-center gap-1 text-xs whitespace-nowrap ms-auto'}>
                         <Heart className={'h-3 w-3 text-rose-400'}/>
                         <span className={'font-semibold text-foreground'}>
                             {post._count?.likes ?? 0}

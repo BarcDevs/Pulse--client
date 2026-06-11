@@ -63,12 +63,12 @@ export const PostFormFields = ({
 
                     return (
                         <FormItem>
-                            <div className={'flex items-baseline justify-between'}>
+                            <div className={'flex items-baseline justify-between gap-2'}>
                                 <FormLabel>
                                     {t(communityLocales.postForm.tags)}
                                 </FormLabel>
                                 <span className={cn(
-                                    'text-xs',
+                                    'text-xs shrink-0',
                                     hasError
                                         ? 'text-destructive'
                                         : 'text-muted-foreground'

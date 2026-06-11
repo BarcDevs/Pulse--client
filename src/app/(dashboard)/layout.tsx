@@ -2,6 +2,7 @@ import { LayoutProps } from '@/types/react'
 
 import { AppHeader } from '@/components/AppHeader'
 import { DashboardClientProviders } from '@/components/layout/DashboardClientProviders'
+import { MobileNavBar } from '@/components/layout/mobileNav/MobileNavBar'
 import { Sidebar } from '@/components/layout/sidebar/Sidebar'
 import { Footer } from '@/components/shared/footer/Footer'
 
@@ -19,8 +20,9 @@ const DashboardLayout = ({
                     </main>
                 </div>
             </div>
-            <Footer/>
+            <Footer className={'pb-20 sm:pb-0'}/>
         </div>
+        <MobileNavBar/>
     </DashboardClientProviders>
 )
 

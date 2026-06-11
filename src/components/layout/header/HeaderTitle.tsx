@@ -6,7 +6,7 @@ type HeaderTitleProps = {
 }
 
 export const HeaderTitle = ({ title, subtitle }: HeaderTitleProps) => (
-    <div className={'flex items-center gap-4'}>
+    <div className={'flex items-center gap-4 min-w-0'}>
         <div>
             <h1 className={'text-lg font-semibold text-foreground'}>
                 {title}

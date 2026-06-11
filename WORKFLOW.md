@@ -1,4 +1,4 @@
-# HealEase Feature Implementation Workflow
+# Pulse Feature Implementation Workflow
 
 Quick-reference guide. Find your scenario, read constraints + references only.
 

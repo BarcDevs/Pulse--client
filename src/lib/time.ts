@@ -10,7 +10,7 @@ import {
  * @return {string} The date in relative time format
  */
 export const toDateStr = (d: Date): string =>
-    d.toISOString().slice(0, 10)
+    format(d, 'yyyy-MM-dd')
 
 export const getTodayMidnight = (): Date => {
     const today = new Date()

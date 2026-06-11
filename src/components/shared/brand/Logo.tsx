@@ -3,7 +3,9 @@ import Link from 'next/link'
 
 import { ROUTES } from '@/constants/routes'
 
-const BRAND_NAME = 'HealEase'
+import { appSettings } from '@/config/appSettings'
+
+const BRAND_NAME = appSettings.brandName
 
 export const Logo = ({}) => (
     <Link
@@ -12,7 +14,7 @@ export const Logo = ({}) => (
     >
         <div className={'flex size-10 items-center justify-center rounded-xl'}>
             <Image
-                src={'/logos/HealEaseLogoNoCaption.webp'}
+                src={'/logos/PulseLogoNoCaption.webp'}
                 alt={`${BRAND_NAME} Logo`}
                 width={40}
                 height={40}

@@ -6,6 +6,8 @@ import { ClassName } from '@/types/react'
 
 import { cn } from '@/lib/utils'
 
+import { appSettings } from '@/config/appSettings'
+
 import { globalLocales } from '@/locales/globalLocales'
 
 import { FooterBrand } from './FooterBrand'
@@ -38,7 +40,7 @@ export const Footer = ({
                         <FooterSocial/>
                     </div>
                 ) : (
-                    <div className={'mb-4 flex items-center justify-between'}>
+                    <div className={'mb-4 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between'}>
                         <FooterBrand/>
                         <FooterSocial/>
                     </div>
@@ -46,7 +48,9 @@ export const Footer = ({
 
                 <div className={'border-t border-border pt-4 text-center'}>
                     <p className={'text-sm text-muted-foreground'}>
-                        {t(globalLocales.footer.copyright)}
+                        {t(globalLocales.footer.copyright, {
+                            brandName: appSettings.brandName
+                        })}
                     </p>
                 </div>
             </div>

@@ -1,16 +1,17 @@
 import type { Metadata } from 'next'
 
 import config from '@/config'
+import { appSettings } from '@/config/appSettings'
 
-export const appMetadata: Metadata = {
+export const getAppMetadata = (): Metadata => ({
     metadataBase: new URL(config.appDomain),
-    title: 'HealEase - Recovery Tracking, Support & Wellness',
+    title: `${appSettings.brandName} - Recovery Tracking, Support & Wellness`,
     description: 'Track your recovery, build healthy routines, connect with a supportive community, and gain meaningful insights throughout your healing journey.',
-    applicationName: 'HealEase',
+    applicationName: appSettings.brandName,
     keywords: ['recovery', 'wellness', 'mental health', 'support', 'community'],
-    authors: [{ name: 'HealEase Team' }],
-    creator: 'HealEase',
-    publisher: 'HealEase',
+    authors: [{ name: `${appSettings.brandName} Team` }],
+    creator: appSettings.brandName,
+    publisher: appSettings.brandName,
     formatDetection: {
         email: false,
         address: false,
@@ -20,15 +21,15 @@ export const appMetadata: Metadata = {
         type: 'website',
         locale: 'en_US',
         url: config.appDomain,
-        siteName: 'HealEase',
-        title: 'HealEase - Recovery Tracking, Support & Wellness',
+        siteName: appSettings.brandName,
+        title: `${appSettings.brandName} - Recovery Tracking, Support & Wellness`,
         description: 'Track your recovery, build healthy routines, connect with a supportive community, and gain meaningful insights throughout your healing journey.',
         images: [
             {
-                url: '/assets/HealEase-OG-Image.png',
+                url: '/assets/Pulse-OG-Image.png',
                 width: 1200,
                 height: 634,
-                alt: 'HealEase - Your Recovery Companion',
+                alt: `${appSettings.brandName} - Your Recovery Companion`,
                 type: 'image/png'
             }
         ]
@@ -65,4 +66,4 @@ export const appMetadata: Metadata = {
         apple: '/apple-icon.png'
     },
     manifest: '/site.webmanifest'
-}
+})
