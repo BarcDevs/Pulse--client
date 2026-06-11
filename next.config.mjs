@@ -18,7 +18,8 @@ const nextConfig = {
         unoptimized: true
     },
     experimental: {
-        optimizePackageImports: ['radix-ui']
+        optimizePackageImports: ['radix-ui'],
+        instrumentationHook: true
     }
 }
 
