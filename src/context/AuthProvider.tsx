@@ -148,7 +148,7 @@ export const AuthProvider = ({
         }
     }, [error])
 
-    if (error)
+    if (error && !isUnauthorizedError(error))
         console.error('Auth error:', error)
 
     const isLoading = queryLoading || mutationLoading

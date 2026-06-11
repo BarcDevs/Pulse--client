@@ -1,15 +1,8 @@
 import {
     describe,
     expect,
-    it,
-    vi
+    it
 } from 'vitest'
-
-vi.mock(
-    '@/locales/dashboardLocales',
-    () => ( {
-        dashboardLocales: { noInsights: 'no-insights-key' }
-    } ))
 
 import type { CheckIn } from '@/types/checkIn'
 
@@ -20,23 +13,23 @@ describe(
     'getLatestInsights',
     () => {
         it(
-            'should return the no-insights key when checkIns is undefined',
+            'should return null when checkIns is undefined',
             () => {
-                expect(getLatestInsights(undefined)).toBe('no-insights-key')
+                expect(getLatestInsights(undefined)).toBe(null)
             })
 
         it(
-            'should return the no-insights key for an empty array',
+            'should return null for an empty array',
             () => {
-                expect(getLatestInsights([])).toBe('no-insights-key')
+                expect(getLatestInsights([])).toBe(null)
             })
 
         it(
-            'should return the no-insights key when the first checkIn has no insights',
+            'should return null when the first checkIn has no insights',
             () => {
                 const checkIns = [{ insights: [] }] as unknown as CheckIn[]
 
-                expect(getLatestInsights(checkIns)).toBe('no-insights-key')
+                expect(getLatestInsights(checkIns)).toBe(null)
             })
 
         it(

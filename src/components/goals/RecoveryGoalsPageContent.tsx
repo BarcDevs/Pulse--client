@@ -18,6 +18,7 @@ import { GoalFormModal } from './form/GoalFormModal'
 import { GoalInsightsSection } from './GoalInsightsSection'
 import { GoalsGrid } from './GoalsGrid'
 import { GoalStatsSection } from './GoalStatsSection'
+import { NewGoalFloatingButton } from './NewGoalFloatingButton'
 
 export const RecoveryGoalsPageContent = () => {
     const t = useTranslations()
@@ -55,7 +56,7 @@ export const RecoveryGoalsPageContent = () => {
                         <SavingBanner message={t(goalsLocales.savingMessage)}/>
                     </div>
                 )}
-                <div className={'flex justify-between items-end mb-8'}>
+                <div className={'flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-8'}>
                     <div>
                         <h3 className={'text-3xl font-display font-bold tracking-tight text-on-surface'}>
                             {t(goalsLocales.overview.greeting)}
@@ -103,6 +104,8 @@ export const RecoveryGoalsPageContent = () => {
                 mode={modalMode}
                 goal={editingGoal}
             />
+
+            <NewGoalFloatingButton onClickAction={onOpenCreateModal}/>
         </>
     )
 }

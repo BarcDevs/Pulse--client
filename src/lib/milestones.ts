@@ -124,6 +124,6 @@ export const getMilestoneCardConfig = (
         titleSize: isActive ? 'text-2xl' : 'text-xl',
         contentLayout: isActive
             ? 'flex flex-col md:flex-row md:items-center justify-between gap-6'
-            : 'flex justify-between items-start'
+            : 'flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2'
     }
 }

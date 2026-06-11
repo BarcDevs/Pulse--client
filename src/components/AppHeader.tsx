@@ -75,7 +75,7 @@ export const AppHeader = () => {
     ) => setSearchValue(e.target.value)
 
     return (
-        <header className={'sticky top-0 z-10 flex h-16 items-center justify-between border-b border-border bg-surface-card px-4 md:px-6'}>
+        <header className={'sticky top-0 z-10 flex min-h-16 flex-wrap items-center justify-between gap-x-3 gap-y-2 border-b border-border bg-surface-card px-4 py-3 md:px-6'}>
             {isGoalDetail
                 ? <GoalDetailBreadcrumb goalId={goalId}/>
                 : <HeaderTitle
@@ -84,7 +84,7 @@ export const AppHeader = () => {
                 />
             }
 
-            <div className={'flex items-center gap-3'}>
+            <div className={'flex items-center gap-3 ms-auto'}>
                 {badge && (
                     <HeaderBadge
                         label={badge.label}

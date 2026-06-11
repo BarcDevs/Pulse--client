@@ -1023,7 +1023,8 @@
         "chat": "צ'אט",
         "profile": "פרופיל",
         "settings": "הגדרות",
-        "logout": "התנתק"
+        "logout": "התנתק",
+        "more": "עוד"
       }
     },
     "layout": {
@@ -1146,7 +1147,8 @@
     "nav": {
       "howItWorks": "איך זה עובד",
       "community": "קהילה",
-      "about": "אודות"
+      "about": "אודות",
+      "menu": "תפריט"
     },
     "hero": {
       "headline": "החלמה",

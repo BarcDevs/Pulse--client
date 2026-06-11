@@ -1030,7 +1030,8 @@
         "chat": "Chat",
         "profile": "Profile",
         "settings": "Settings",
-        "logout": "Log Out"
+        "logout": "Log Out",
+        "more": "More"
       }
     },
     "layout": {
@@ -1153,7 +1154,8 @@
     "nav": {
       "howItWorks": "How It Works",
       "community": "Community",
-      "about": "About"
+      "about": "About",
+      "menu": "Menu"
     },
     "hero": {
       "headline": "Recovery",

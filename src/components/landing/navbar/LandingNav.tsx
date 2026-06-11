@@ -1,5 +1,6 @@
 import { Logo } from '@/components/shared/brand/Logo'
 
+import { LandingMobileNav } from './LandingMobileNav'
 import { NavAuthLinks } from './NavAuthLinks'
 import { NavLinks } from './NavLinks'
 
@@ -9,6 +10,8 @@ export const LandingNav = () => (
 
         <NavLinks/>
 
-        <NavAuthLinks/>
+        <NavAuthLinks className={'hidden md:flex'}/>
+
+        <LandingMobileNav/>
     </header>
 )

@@ -2,7 +2,8 @@ export const landingLocales = {
     nav: {
         howItWorks: 'landing.nav.howItWorks',
         community: 'landing.nav.community',
-        about: 'landing.nav.about'
+        about: 'landing.nav.about',
+        menu: 'landing.nav.menu'
     },
     hero: {
         headline: 'landing.hero.headline',

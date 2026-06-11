@@ -56,7 +56,7 @@ export const ShareProgressModal = ({
                 <div className={'flex justify-center overflow-auto max-h-96 mt-6'}>
                     <div
                         ref={shareRef}
-                        className={'md:scale-50 scale-75 origin-top'}
+                        className={'text-[10px] sm:text-base'}
                     >
                         {children}
                     </div>

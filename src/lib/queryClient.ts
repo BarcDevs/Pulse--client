@@ -5,6 +5,22 @@ import {
 
 import { minuteInMs } from '@/constants/time'
 
+const originalError = console.error
+
+console.error = (...args: any[]) => {
+    const error = args[0]
+    if (error?.silent === true) return
+    originalError(...args)
+}
+
+if (typeof window !== 'undefined') {
+    window.addEventListener('unhandledrejection', (event) => {
+        if (event.reason?.silent === true) {
+            event.preventDefault()
+        }
+    })
+}
+
 export const createQueryClient = () =>
     new QueryClient({
         defaultOptions: {

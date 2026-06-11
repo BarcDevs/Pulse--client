@@ -40,7 +40,7 @@ export const Footer = ({
                         <FooterSocial/>
                     </div>
                 ) : (
-                    <div className={'mb-4 flex items-center justify-between'}>
+                    <div className={'mb-4 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between'}>
                         <FooterBrand/>
                         <FooterSocial/>
                     </div>

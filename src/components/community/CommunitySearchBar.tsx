@@ -39,7 +39,10 @@ export const CommunitySearchBar = ({
                 />
             </div>
             {!isPostOpen && (
-                <Button onClick={onNewPostAction} className={'gap-2'}>
+                <Button
+                    onClick={onNewPostAction}
+                    className={'hidden sm:inline-flex gap-2'}
+                >
                     <Plus className={'h-4 w-4'}/>
                     {t(communityLocales.posts.newPostButton)}
                 </Button>

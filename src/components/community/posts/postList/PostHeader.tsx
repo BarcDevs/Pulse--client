@@ -28,7 +28,7 @@ export const PostHeader = ({
     }
 
     return (
-        <div className={'flex items-center gap-2 mb-2'}>
+        <div className={'flex flex-wrap items-center gap-2'}>
             <span
                 className={'inline-flex items-center justify-center text-center px-2 py-0.5 rounded-full text-xs font-medium'}
                 style={{

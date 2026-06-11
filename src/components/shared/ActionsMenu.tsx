@@ -3,20 +3,15 @@
 import { MouseEvent, useState } from 'react'
 
 import {
-    LucideIcon,
-    MoreHorizontal,
+    MoreVertical,
     Pencil,
     Trash2
 } from 'lucide-react'
 
+import { AdditionalAction } from '@/types/actionMenu'
+
+import { ConfirmationDialog } from '@/components/shared/ConfirmationDialog'
 import { Button } from '@/components/ui/button'
-import {
-    Dialog,
-    DialogContent,
-    DialogDescription,
-    DialogHeader,
-    DialogTitle
-} from '@/components/ui/dialog'
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -24,16 +19,8 @@ import {
     DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu'
 
-export type AdditionalAction = {
-    id: string
-    label: string
-    icon: LucideIcon
-    action: () => Promise<void>
-    destructive?: boolean
-    requiresConfirmation?: boolean
-    confirmTitle?: string
-    confirmDescription?: string
-}
+const DESTRUCTIVE_CLASS = 'text-destructive focus:text-destructive'
+const DESTRUCTIVE_ICON_CLASS = 'text-destructive'
 
 type ActionsMenuProps = {
     onEditAction: () => void
@@ -61,16 +48,17 @@ export const ActionsMenu = ({
     additionalActions = []
 }: ActionsMenuProps) => {
     const [open, setOpen] = useState(false)
-    const [confirmingActionId, setConfirmingActionId] = useState<string | null>(null)
+    const [confirmingActionId, setConfirmingActionId] =
+        useState<string | null>(null)
 
-    const confirmingAction = additionalActions.find((a) => a.id === confirmingActionId)
+    const confirmingAction = additionalActions.find((a) =>
+        a.id === confirmingActionId)
     const ConfirmIcon = confirmingAction?.icon ?? Trash2
 
     const stopPropagation = (
         event: MouseEvent<HTMLElement>
-    ) => {
-        event.stopPropagation()
-    }
+    ) => event.stopPropagation()
+
 
     const handleDelete = async () => {
         try {
@@ -86,9 +74,9 @@ export const ActionsMenu = ({
         try {
             await action.action()
         } finally {
-            if (action.requiresConfirmation) {
+            if (action.requiresConfirmation)
                 setConfirmingActionId(null)
-            }
+
             setOpen(false)
         }
     }
@@ -104,7 +92,7 @@ export const ActionsMenu = ({
                         className={'h-8 w-8 p-0'}
                         onClick={stopPropagation}
                     >
-                        <MoreHorizontal size={iconSize}/>
+                        <MoreVertical size={iconSize}/>
                     </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align={'end'}>
@@ -120,8 +108,11 @@ export const ActionsMenu = ({
                     {additionalActions.map((action) => (
                         <DropdownMenuItem
                             key={action.id}
-                            className={action.destructive
-                                ? 'text-destructive focus:text-destructive' : ''}
+                            className={
+                                action.destructive
+                                    ? DESTRUCTIVE_CLASS
+                                    : ''
+                            }
                             onClick={(event) => {
                                 stopPropagation(event)
                                 if (action.requiresConfirmation) {
@@ -133,13 +124,17 @@ export const ActionsMenu = ({
                         >
                             <action.icon
                                 size={14}
-                                className={action.destructive ? 'text-destructive' : ''}
+                                className={
+                                    action.destructive
+                                        ? DESTRUCTIVE_ICON_CLASS
+                                        : ''
+                                }
                             />
                             {action.label}
                         </DropdownMenuItem>
                     ))}
                     <DropdownMenuItem
-                        className={'text-destructive focus:text-destructive'}
+                        className={DESTRUCTIVE_CLASS}
                         onClick={(event) => {
                             stopPropagation(event)
                             setOpen(true)
@@ -147,77 +142,35 @@ export const ActionsMenu = ({
                     >
                         <Trash2
                             size={14}
-                            className={'text-destructive'}
+                            className={DESTRUCTIVE_ICON_CLASS}
                         />
                         {deleteLabel}
                     </DropdownMenuItem>
                 </DropdownMenuContent>
             </DropdownMenu>
 
-            <Dialog
+            <ConfirmationDialog
                 open={open || confirmingActionId !== null}
-                onOpenChange={(isOpen) => {
+                onOpenChangeAction={(isOpen) => {
                     if (!isOpen) {
                         setOpen(false)
                         setConfirmingActionId(null)
                     }
                 }}
-            >
-                <DialogContent
-                    showCloseButton={false}
-                    className={'max-w-sm'}
-                >
-                    <DialogHeader>
-                        <div className={'flex items-center justify-center w-12 h-12 rounded-full bg-red-100 mx-auto mb-2'}>
-                            <ConfirmIcon
-                                className={'text-destructive'}
-                                size={20}
-                            />
-                        </div>
-                        <DialogTitle className={'text-center'}>
-                            {confirmingActionId
-                                ? additionalActions.find(a => a.id === confirmingActionId)?.confirmTitle
-                                : confirmTitle}
-                        </DialogTitle>
-                        <DialogDescription className={'text-center'}>
-                            {confirmingActionId
-                                ? additionalActions.find(a => a.id === confirmingActionId)?.confirmDescription
-                                : confirmDescription}
-                        </DialogDescription>
-                    </DialogHeader>
-                    <div className={'flex justify-center gap-2 mt-2'}>
-                        <Button
-                            variant={'outline'}
-                            onClick={(event) => {
-                                stopPropagation(event)
-                                setOpen(false)
-                                setConfirmingActionId(null)
-                            }}
-                        >
-                            {cancelLabel}
-                        </Button>
-                        <Button
-                            variant={'destructive'}
-                            disabled={isLoading}
-                            onClick={(event) => {
-                                stopPropagation(event)
-                                if (confirmingActionId) {
-                                    const action = additionalActions.find(a => a.id === confirmingActionId)
-                                    if (action) {
-                                        void handleAdditionalAction(action)
-                                    }
-                                } else {
-                                    void handleDelete()
-                                }
-                            }}
-                        >
-                            {confirmingActionId
-                                ? additionalActions.find(a => a.id === confirmingActionId)?.label
-                                : deleteLabel}
-                        </Button>
-                    </div>
-                </DialogContent>
-            </Dialog>
+                title={confirmingAction?.confirmTitle ?? confirmTitle}
+                description={
+                    confirmingAction?.confirmDescription
+                    ?? confirmDescription
+                }
+                label={confirmingAction?.label ?? deleteLabel}
+                icon={ConfirmIcon}
+                cancelLabel={cancelLabel}
+                isLoading={isLoading}
+                onConfirmAction={confirmingActionId && confirmingAction
+                    ? () => handleAdditionalAction(confirmingAction)
+                    : handleDelete
+                }
+            />
         </>
     )
 }

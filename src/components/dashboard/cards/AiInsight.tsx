@@ -63,6 +63,10 @@ export const DashboardAIInsight = ({
                     <p className={'text-sm text-muted-foreground'}>
                         {t(dashboardLocales.aiInsight.failedToLoad)}
                     </p>
+                ) : !insightText ? (
+                    <p className={'text-sm text-muted-foreground'}>
+                        {t(dashboardLocales.noInsights)}
+                    </p>
                 ) : (
                     <>
                         <blockquote className={cn(
@@ -72,6 +76,7 @@ export const DashboardAIInsight = ({
                             {insightText}
                         </blockquote>
                         {!hideButton && (
+                            // todo: replace with shadcn's
                             <button
                                 onClick={() => setIsExpanded(!isExpanded)}
                                 className={'text-sm text-primary hover:underline cursor-pointer'}

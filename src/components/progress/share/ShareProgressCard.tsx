@@ -47,38 +47,38 @@ export const ShareProgressCard =
         ) => {
             const t = useTranslations()
             const cardStyle: CSSProperties = {
-                width: '600px',
+                width: 'min(37.5em, 100%)',
                 background: 'linear-gradient(135deg, #e8f4fd 0%, #d9f0ff 50%, #e6f5f2 100%)',
-                padding: '32px',
+                padding: '2em',
                 fontFamily: 'system-ui, -apple-system, sans-serif',
                 color: '#1a2b3c',
                 boxSizing: 'border-box',
-                borderRadius: '16px',
+                borderRadius: '1em',
                 boxShadow: '0 8px 24px rgba(0, 0, 0, 0.08)',
-                border: '2px solid #4a90e2'
+                border: '0.125em solid #4a90e2'
             }
 
             const headerStyle: CSSProperties = {
                 display: 'flex',
                 alignItems: 'center',
-                gap: '16px',
-                marginBottom: '24px'
+                gap: '1em',
+                marginBottom: '1.5em'
             }
 
             const logoStyle: CSSProperties = {
-                height: '48px',
+                height: '3em',
                 width: 'auto'
             }
 
             const titleWrapperStyle: CSSProperties = {
                 display: 'flex',
                 flexDirection: 'column',
-                gap: '4px',
+                gap: '0.25em',
                 flex: 1
             }
 
             const titleStyle: CSSProperties = {
-                fontSize: '18px',
+                fontSize: '1.125em',
                 fontWeight: '600',
                 margin: 0,
                 color: '#000000'
@@ -87,45 +87,45 @@ export const ShareProgressCard =
             const streakPillStyle: CSSProperties = {
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: '6px',
+                gap: '0.375em',
                 backgroundColor: '#e6f5f2',
                 color: '#006b5b',
-                padding: '6px 14px',
+                padding: '0.375em 0.875em',
                 borderRadius: '999px',
-                fontSize: '13px',
+                fontSize: '0.8125em',
                 fontWeight: '600',
                 width: 'fit-content'
             }
 
             const chartWrapperStyle: CSSProperties = {
-                marginBottom: '32px',
-                height: '200px'
+                marginBottom: '2em',
+                height: '12.5em'
             }
 
             const statsGridStyle: CSSProperties = {
                 display: 'grid',
                 gridTemplateColumns: 'repeat(3, 1fr)',
-                gap: '16px',
-                marginBottom: '24px'
+                gap: '1em',
+                marginBottom: '1.5em'
             }
 
             const statCardStyle: CSSProperties = {
                 textAlign: 'center',
-                padding: '16px',
+                padding: '1em',
                 backgroundColor: '#e6f5f2',
-                borderRadius: '12px',
+                borderRadius: '0.75em',
                 border: '1px solid #c0e5dd'
             }
 
             const statValueStyle: CSSProperties = {
-                fontSize: '32px',
+                fontSize: '2em',
                 fontWeight: '700',
                 color: '#006b5b',
-                margin: '0 0 4px 0'
+                margin: '0 0 0.25em 0'
             }
 
             const statLabelStyle: CSSProperties = {
-                fontSize: '13px',
+                fontSize: '0.8125em',
                 color: '#00a896',
                 margin: 0,
                 fontWeight: '500'
@@ -133,19 +133,19 @@ export const ShareProgressCard =
 
             const footerStyle: CSSProperties = {
                 textAlign: 'center',
-                borderTop: '2px solid #4a90e2',
-                paddingTop: '16px'
+                borderTop: '0.125em solid #4a90e2',
+                paddingTop: '1em'
             }
 
             const taglineStyle: CSSProperties = {
-                fontSize: '15px',
+                fontSize: '0.9375em',
                 fontWeight: '700',
                 color: '#005da7',
-                margin: '0 0 8px 0'
+                margin: '0 0 0.5em 0'
             }
 
             const ctaStyle: CSSProperties = {
-                fontSize: '12px',
+                fontSize: '0.75em',
                 color: '#4a90e2',
                 margin: 0,
                 fontWeight: '500'
@@ -163,7 +163,7 @@ export const ShareProgressCard =
                             <h2 style={titleStyle}>
                                 {t(progressLocales.share.title)}
                                 {userName && (
-                                    <span style={{ fontSize: '12px' }}>
+                                    <span style={{ fontSize: '0.75em' }}>
                                     {` • ${userName}`}
                                 </span>
                                 )}
@@ -185,7 +185,7 @@ export const ShareProgressCard =
                                         justifyContent: 'center',
                                         height: '100%',
                                         color: '#64748b',
-                                        fontSize: '14px'
+                                        fontSize: '0.875em'
                                     }}
                                 >
                                     {t(progressLocales.share.noMoodData)}
