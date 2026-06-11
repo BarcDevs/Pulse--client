@@ -4,6 +4,7 @@ import eslintPluginReactRefresh from 'eslint-plugin-react-refresh'
 import eslintPluginSimpleImportSort from 'eslint-plugin-simple-import-sort'
 import {dirname} from 'path'
 import {fileURLToPath} from 'url'
+import globals from 'globals'
 
 import {FlatCompat} from '@eslint/eslintrc'
 import eslintPluginTypescript from '@typescript-eslint/eslint-plugin'
@@ -48,9 +49,9 @@ const config = [
             ecmaVersion: 2020,
             sourceType: 'module',
             globals: {
-                browser: true,
-                es2020: true,
-                node: true
+                ...globals.browser,
+                ...globals.node,
+                ...globals.es2020
             },
             parserOptions: {
                 ecmaFeatures: {
