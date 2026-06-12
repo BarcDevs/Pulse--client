@@ -205,7 +205,8 @@
     "activity": {
       "title": "Community activity",
       "viewAll": "View all",
-      "loadError": "We couldn't load community activity right now"
+      "loadError": "We couldn't load community activity right now",
+      "empty": "No community activity to show right now"
     },
     "confirmations": {
       "deletePost": "Are you sure you want to remove this post?",
