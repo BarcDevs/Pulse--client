@@ -1,3 +1,4 @@
+import { useProfile } from '@/hooks/queries/useProfile'
 import { useQueryWithNetworkError } from '@/hooks/useQueryWithNetworkError'
 
 import { isTodayCheckIn } from '@/lib/checkIn/loaderHelpers'
@@ -8,6 +9,8 @@ import { minuteInMs } from '@/constants/time'
 import { fetchCheckIns } from '@/api/checkIn'
 
 export const useLatestCheckIn = () => {
+    const { profile } = useProfile()
+
     const {
         data: response,
         isLoading,
@@ -23,7 +26,7 @@ export const useLatestCheckIn = () => {
 
     const latestCheckIn = response?.[0] ?? null
     const isTodayCheckInExists = latestCheckIn
-        ? isTodayCheckIn(latestCheckIn) : false
+        ? isTodayCheckIn(latestCheckIn, profile?.timezone) : false
 
     return {
         latestCheckIn,

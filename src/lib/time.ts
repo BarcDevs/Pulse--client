@@ -12,6 +12,14 @@ import {
 export const toDateStr = (d: Date): string =>
     format(d, 'yyyy-MM-dd')
 
+export const toDateStrInTimezone = (
+    d: Date,
+    timezone?: string
+): string =>
+    timezone
+        ? new Intl.DateTimeFormat('en-CA', { timeZone: timezone }).format(d)
+        : toDateStr(d)
+
 export const getTodayMidnight = (): Date => {
     const today = new Date()
 

@@ -1,6 +1,6 @@
 import { CheckIn, CheckInStats } from '@/types/checkIn'
 
-import { toDateStr } from '@/lib/time'
+import { toDateStrInTimezone } from '@/lib/time'
 
 export const normalizeStats =
     (raw: CheckInStats): CheckInStats => ({
@@ -11,5 +11,5 @@ export const normalizeStats =
     })
 
 export const isTodayCheckIn =
-    (checkIn: CheckIn): boolean =>
-        checkIn.checkInDate.slice(0, 10) === toDateStr(new Date())
+    (checkIn: CheckIn, timezone?: string): boolean =>
+        checkIn.checkInDate.slice(0, 10) === toDateStrInTimezone(new Date(), timezone)

@@ -25,16 +25,18 @@ const {
 type UseCheckInFormProps = {
     latestCheckIn: CheckIn | null
     stats: CheckInStats | null
+    timezone?: string
 }
 
 export const useCheckInForm = ({
     latestCheckIn,
-    stats
+    stats,
+    timezone
 }: UseCheckInFormProps) => {
     const t = useTranslations()
     const isTodayCheckInExists =
         latestCheckIn
-            ? isTodayCheckIn(latestCheckIn)
+            ? isTodayCheckIn(latestCheckIn, timezone)
             : false
 
     const topActivities = useMemo(

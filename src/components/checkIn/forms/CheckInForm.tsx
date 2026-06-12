@@ -10,6 +10,7 @@ import type {
 import { Button } from '@/components/ui/button'
 
 import { useCheckInForm } from '@/hooks/forms/useCheckInForm'
+import { useProfile } from '@/hooks/queries/useProfile'
 
 import { useCheckIn } from '@/context/CheckInContext'
 
@@ -30,12 +31,14 @@ export const CheckInForm = ({
 }: CheckInFormProps) => {
     const t = useTranslations()
     const { submitCheckIn } = useCheckIn()
+    const { profile } = useProfile()
     const {
         form,
         suggestedActivities
     } = useCheckInForm({
         latestCheckIn,
-        stats
+        stats,
+        timezone: profile?.timezone
     })
 
     const {

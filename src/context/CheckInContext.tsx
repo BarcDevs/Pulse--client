@@ -21,9 +21,13 @@ import type {
 } from '@/types/checkIn'
 import { ContextProps } from '@/types/react'
 
+import { useProfile } from '@/hooks/queries/useProfile'
+
 import {
     formatByUserPreference,
-    toDateStr
+    parseDateOnly,
+    toDateStr,
+    toDateStrInTimezone
 } from '@/lib/time'
 
 import { defaults } from '@/constants/defaults'
@@ -57,6 +61,7 @@ export const CheckInProvider = ({
     const queryClient = useQueryClient()
     const t = useTranslations()
     const locale = useLocale()
+    const { profile } = useProfile()
     const dateFnsLocale = locale === 'he-IL' ? he : undefined
     const [isPending, setIsPending] = useState(false)
     const [isSubmitted, setIsSubmitted] = useState(false)
@@ -142,9 +147,11 @@ export const CheckInProvider = ({
         const checkInsKey14 = [...checkInQueryKeys.all, 'list', 14] as const
 
         const now = new Date()
-        const todayStr = `${toDateStr(now)}T00:00:00.000Z`
-        const yesterday = new Date(now)
-        yesterday.setDate(now.getDate() - 1)
+        const todayDateStr = toDateStrInTimezone(now, profile?.timezone)
+        const todayStr = `${todayDateStr}T00:00:00.000Z`
+        const todayDate = parseDateOnly(todayDateStr)
+        const yesterday = new Date(todayDate)
+        yesterday.setDate(todayDate.getDate() - 1)
         const yesterdayStr = toDateStr(yesterday)
         const optimisticCheckIn: CheckIn = {
             id: 'optimistic',
@@ -159,7 +166,7 @@ export const CheckInProvider = ({
         }
         const newPoint: MoodPainSeriesPoint = {
             date: formatByUserPreference(
-                now,
+                todayDate,
                 true,
                 defaults.checkIn.dateFormat,
                 dateFnsLocale
