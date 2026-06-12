@@ -32,7 +32,7 @@ export const MilestoneCard = ({
         )}>
             {milestoneStatusIcons[milestone?.status]}
         </div>
-        <div className={'ml-4 mt-2 flex-1'}>
+        <div className={'ms-4 mt-2 flex-1'}>
             <MilestoneCardRenderer
                 milestone={milestone}
                 onCompleteAction={onCompleteAction}

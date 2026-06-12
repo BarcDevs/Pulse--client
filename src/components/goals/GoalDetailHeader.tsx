@@ -69,7 +69,7 @@ export const GoalDetailHeader = ({
                             }
                             size={'sm'}
                         >
-                            <Plus className={'w-4 h-4 mr-2'}/>
+                            <Plus className={'w-4 h-4 me-2'}/>
                             {t(goalsLocales.milestones.addButton)}
                         </Button>
                         <div className={'bg-primary-foreground border border-outline/20 shadow-sm p-6 rounded-xl flex flex-col items-center justify-center shrink-0 min-w-45'}>

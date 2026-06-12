@@ -85,14 +85,14 @@ export const GoalCard = ({
             )}
         >
             <div
-                className={'absolute left-0 top-0 bottom-0 w-1.25'}
+                className={'absolute start-0 top-0 bottom-0 w-1.25'}
                 style={{ background: statusTokens.stripeGradient }}
             />
             {isCompleted && (
-                <div className={'absolute -right-12 -top-12 w-40 h-40 rounded-full pointer-events-none bg-completed-goal/5 blur-2xl'} />
+                <div className={'absolute -end-12 -top-12 w-40 h-40 rounded-full pointer-events-none bg-completed-goal/5 blur-2xl'} />
             )}
 
-            <div className={'py-5 pl-5 pr-3 flex flex-col h-full'}>
+            <div className={'py-5 ps-5 pe-3 flex flex-col h-full'}>
                 <div className={'flex justify-between items-start mb-4'}>
                     <div className={'flex flex-wrap items-center gap-2'}>
                         <Badge className={cn(
@@ -124,7 +124,7 @@ export const GoalCard = ({
 
                 <Link
                     href={`${ROUTES.RECOVERY_GOALS}/${goal.id}`}
-                    className={'block w-full text-left rounded-lg focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring mb-5'}
+                    className={'block w-full text-start rounded-lg focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring mb-5'}
                 >
                     <h4 className={'text-xl font-headline font-bold mb-2 text-on-surface'}>
                         {goal.title}

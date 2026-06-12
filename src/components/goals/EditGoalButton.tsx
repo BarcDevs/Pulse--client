@@ -24,7 +24,7 @@ export const EditGoalButton = ({
             onClick={() => onEdit(goalId)}
             variant={'outline'}
             size={'icon'}
-            className={'absolute top-4 right-4 h-9 w-9'}
+            className={'absolute top-4 end-4 h-9 w-9'}
             title={t(goalsLocales.actions.editPlan)}
         >
             <Pencil size={16} />
