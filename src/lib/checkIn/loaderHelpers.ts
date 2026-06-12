@@ -1,6 +1,6 @@
-import { format } from 'date-fns'
-
 import { CheckIn, CheckInStats } from '@/types/checkIn'
+
+import { toDateStr } from '@/lib/time'
 
 export const normalizeStats =
     (raw: CheckInStats): CheckInStats => ({
@@ -11,16 +11,5 @@ export const normalizeStats =
     })
 
 export const isTodayCheckIn =
-    (checkIn: CheckIn): boolean => {
-        const today = format(
-            new Date(),
-            'yyyy-MM-dd'
-        )
-
-        const checkInDay = format(
-            new Date(checkIn.checkInDate),
-            'yyyy-MM-dd'
-        )
-
-        return checkInDay === today
-    }
+    (checkIn: CheckIn): boolean =>
+        checkIn.checkInDate.slice(0, 10) === toDateStr(new Date())
