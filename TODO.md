@@ -115,7 +115,7 @@ Behavioral intelligence systems require medical/legal caution, behavioral tuning
 | ~~1~~ | ~~`src/constants/footerLinks.ts`~~                        | ~~21–22~~ | ~~**[High, Bug]** Insights footer link should be feature-flagged (Insights page is gated)~~ |
 | 2 | `src/config/appSettings.ts`                           | 8–11 | **[Low]** Social links point to placeholder/wrong URLs — add proper social links        |
 | ~~3~~ | ~~`src/components/layout/mobileNav/MobileNavDrawer.tsx`~~ | ~~—~~ | ~~**[Low, Bug]** Remove redundant close (X) button from mobile side-menu~~                  |
-| 4 | Dashboard                                             | — | **[Low, Bug]** Expand insight card to full page's width                                 |
+| ~~4~~ | ~~Dashboard~~                                             | ~~—~~ | ~~**[Low, Bug]** AI insight card shown twice when no check-in exists today~~                                 |
 
 ---
 
