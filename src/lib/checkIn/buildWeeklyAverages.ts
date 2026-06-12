@@ -3,6 +3,8 @@ import { format } from 'date-fns'
 
 import { MoodPainSeriesPoint } from '@/types/checkIn'
 
+import { parseDateOnly } from '@/lib/time'
+
 const avg = (values: number[]): number | null =>
     values.length > 0
         ? Math.round((values.reduce((s, v) => s + v, 0)
@@ -14,8 +16,8 @@ const rangeLabel = (
     last: string,
     locale?: Locale
 ): string => {
-    const start = new Date(first)
-    const end = new Date(last)
+    const start = parseDateOnly(first)
+    const end = parseDateOnly(last)
     const options = locale ? { locale } : undefined
     const startMonth = format(start, 'MMM', options)
     const endMonth = format(end, 'MMM', options)

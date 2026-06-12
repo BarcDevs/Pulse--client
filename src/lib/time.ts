@@ -19,6 +19,11 @@ export const getTodayMidnight = (): Date => {
     return today
 }
 
+export const parseDateOnly = (isoDate: string): Date => {
+    const [year, month, day] = isoDate.slice(0, 10).split('-').map(Number)
+    return new Date(year, month - 1, day)
+}
+
 export const isDateStringTodayOrFuture = (
     date: string
 ): boolean => {

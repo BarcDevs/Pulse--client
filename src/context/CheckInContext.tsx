@@ -103,12 +103,15 @@ export const CheckInProvider = ({
     const buildOptimisticStats = (
         existing: CheckInStats,
         formData: CheckInSchema,
-        isEditingToday: boolean
+        isEditingToday: boolean,
+        hasYesterdayCheckIn: boolean
     ): CheckInStats => {
         if (isEditingToday) return existing
 
         const total = existing.totalCheckIns + 1
-        const newStreak = existing.currentStreak + 1
+        const newStreak = hasYesterdayCheckIn
+            ? existing.currentStreak + 1
+            : 1
         return {
             ...existing,
             totalCheckIns: total,
@@ -140,6 +143,9 @@ export const CheckInProvider = ({
 
         const now = new Date()
         const todayStr = `${toDateStr(now)}T00:00:00.000Z`
+        const yesterday = new Date(now)
+        yesterday.setDate(now.getDate() - 1)
+        const yesterdayStr = toDateStr(yesterday)
         const optimisticCheckIn: CheckIn = {
             id: 'optimistic',
             userId: '',
@@ -158,7 +164,7 @@ export const CheckInProvider = ({
                 defaults.checkIn.dateFormat,
                 dateFnsLocale
             ),
-            originalDate: now.toISOString(),
+            originalDate: todayStr,
             mood: data.moodScore,
             pain: data.painLevel
         }
@@ -213,6 +219,10 @@ export const CheckInProvider = ({
             const curCheckIns = queryClient
                 .getQueryData<CheckIn[]>(checkInsKey14)
 
+            const hasYesterdayCheckIn = (curCheckIns ?? []).some(
+                c => c.checkInDate.slice(0, 10) === yesterdayStr
+            )
+
             if (curCheckIns) {
                 queryClient.setQueryData<CheckIn[]>(
                     checkInsKey14,
@@ -228,7 +238,12 @@ export const CheckInProvider = ({
             if (curStats) {
                 queryClient.setQueryData<CheckInStats>(
                     statsKey,
-                    buildOptimisticStats(curStats, data, isEditingToday)
+                    buildOptimisticStats(
+                        curStats,
+                        data,
+                        isEditingToday,
+                        hasYesterdayCheckIn
+                    )
                 )
             } else {
                 void queryClient.prefetchQuery({
@@ -241,7 +256,12 @@ export const CheckInProvider = ({
                     if (fetched) {
                         queryClient.setQueryData<CheckInStats>(
                             statsKey,
-                            buildOptimisticStats(fetched, data, isEditingToday)
+                            buildOptimisticStats(
+                                fetched,
+                                data,
+                                isEditingToday,
+                                hasYesterdayCheckIn
+                            )
                         )
                     }
                 })

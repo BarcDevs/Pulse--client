@@ -103,6 +103,8 @@ Behavioral intelligence systems require medical/legal caution, behavioral tuning
 | ~~4~~ | ~~`src/components/progress/cards/StreakCard.tsx`, `StreakBars.tsx`~~ | ~~—~~ | ~~**[Bug]** Streak update isn't optimistic — after check-in, `currentStreak` only updates on refetch. If a check-in breaks the streak (gap day), `getBarColor` still colors it `var(--warning)` (active streak) until data refreshes, showing a broken streak as active~~ |
 | ~~5~~ | ~~`src/context/CheckInContext.tsx`~~ | ~~99–126~~ | ~~**[Bug]** `buildOptimisticStats` always increments `currentStreak` by 1 on submit, even when editing existing check-in for today (upsert) instead of creating new — streak gets inflated on edits~~ |
 | ~~6~~ | ~~`src/components/shared/inputs/DatePickerInput.tsx`~~ | ~~—~~ | ~~**[Critical, Bug]** Calendar date picker unusable — blocks goal due-date selection~~ |
+| ~~9~~ | ~~`src/context/CheckInContext.tsx`~~ | ~~—~~ | ~~**[Bug]** After check-in submit succeeds, optimistic data (today's check-in, streak, chart point) disappears on refetch — dashboard reverts to "no check-in today" state~~ |
+| ~~10~~ | ~~`src/components/progress/cards/StreakBars.tsx`~~ | ~~—~~ | ~~**[Bug]** Optimistic streak bar for a new streak (after breaking previous streak) shows previous streak's color instead of active streak color~~ |
 | ~~7~~ | ~~`src/components/goals/`~~ | ~~—~~ | ~~**[Medium, Bug]** Goal RTL layout broken (Hebrew)~~ |
 | ~~8~~ | ~~`src/components/goals/`~~ | ~~—~~ | ~~**[Low, Bug]** Goal due date and graphs display incorrectly in Hebrew locale~~ |
 
