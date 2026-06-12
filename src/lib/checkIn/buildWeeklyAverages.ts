@@ -20,8 +20,24 @@ const rangeLabel = (
     const startMonth = format(start, 'MMM', options)
     const endMonth = format(end, 'MMM', options)
     return startMonth === endMonth
-        ? `${format(start, 'd', options)} - ${format(end, 'd MMM', options)}`
-        : `${format(start, 'd MMM', options)} - ${format(end, 'd MMM', options)}`
+        ? `${format(
+            start,
+            'd',
+            options
+        )} - ${format(
+            end,
+            'd MMM',
+            options
+        )}`
+        : `${format(
+            start,
+            'd MMM',
+            options
+        )} - ${format(
+            end,
+            'd MMM',
+            options
+        )}`
 }
 
 export const buildWeeklyAverages = (
@@ -41,7 +57,11 @@ export const buildWeeklyAverages = (
         const last = chunk[chunk.length - 1]
 
         return {
-            date: rangeLabel(first.originalDate, last.originalDate, locale),
+            date: rangeLabel(
+                first.originalDate,
+                last.originalDate,
+                locale
+            ),
             originalDate: first.originalDate,
             mood: avg(moods),
             pain: avg(pains)

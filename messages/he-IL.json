@@ -121,7 +121,18 @@
         "reading": "קריאה",
         "journaling": "כתיבה ביומן",
         "therapy": "טיפול",
-        "rest": "מנוחה"
+        "rest": "מנוחה",
+        "walking": "הליכה",
+        "stretching": "מתיחות",
+        "work": "עבודה",
+        "study": "לימודים",
+        "household": "משק בית",
+        "socializing": "מפגשים חברתיים",
+        "hobbies": "תחביבים",
+        "outdoors": "פעילות בחוץ",
+        "mindfulness": "מיינדפולנס",
+        "self-care": "טיפוח עצמי",
+        "medical": "רפואי"
       }
     },
     "journal": {

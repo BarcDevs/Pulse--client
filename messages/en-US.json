@@ -128,7 +128,18 @@
         "reading": "Reading",
         "journaling": "Journaling",
         "therapy": "Therapy",
-        "rest": "Rest"
+        "rest": "Rest",
+        "walking": "Walking",
+        "stretching": "Stretching",
+        "work": "Work",
+        "study": "Study",
+        "household": "Household",
+        "socializing": "Socializing",
+        "hobbies": "Hobbies",
+        "outdoors": "Outdoors",
+        "mindfulness": "Mindfulness",
+        "self-care": "Self-care",
+        "medical": "Medical"
       }
     },
     "journal": {

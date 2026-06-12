@@ -31,7 +31,7 @@ The card reflects the user back to themselves — it does not instruct them.
 | # | File | Note |
 |---|------|------|
 | ~~1~~ | ~~`src/components/dashboard/cards/DailyObservation.tsx`~~ | ~~Replace static `observation` with AI-generated reflective insight from backend. Backend derives insight from check-in signals; client renders as-is.~~ |
-| 2 | `src/components/dashboard/cards/DailyObservation.tsx` | **[Bug]** Some activity slugs lack translated label in `checkInLocales.activities.default` and render as raw slug (e.g. `self-care`) instead of friendly name in daily observation card |
+| ~~2~~ | ~~`src/components/dashboard/cards/DailyObservation.tsx`~~ | ~~**[Bug]** Some activity slugs lack translated label in `checkInLocales.activities.default` and render as raw slug (e.g. `self-care`) instead of friendly name in daily observation card~~ |
 
 **Scaling-deferred — do NOT build until data maturity + trust calibration:**
 
