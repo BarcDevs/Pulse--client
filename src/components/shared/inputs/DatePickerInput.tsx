@@ -89,6 +89,9 @@ export const DatePickerInput = ({
                     onSelect={handleSelect}
                     disabled={disabledDates ?? { before: today }}
                     defaultMonth={selected ?? today}
+                    startMonth={new Date(today.getFullYear() - 100, 0)}
+                    endMonth={new Date(today.getFullYear() + 10, 11)}
+                    captionLayout={'dropdown'}
                     autoFocus
                 />
             </PopoverContent>
