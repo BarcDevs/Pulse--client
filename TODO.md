@@ -76,7 +76,7 @@ Behavioral intelligence systems require medical/legal caution, behavioral tuning
 | 3 | `src/components/dashboard/community/CommunityActivity.tsx` | 43–46 | **[Bug]** `refetchInterval` polls forever while `status === 'processing'`. If backend never has activity to recommend for a user, status stays `processing` indefinitely and card shows skeleton forever. Cap retries (e.g. stop after N attempts or timeout) and fall back to empty state |
 | 4 | `src/components/community/postDetail/RepliesSection.tsx` | 142–154 | Replace manual "show more replies" button with infinite scroll — load next page automatically via `IntersectionObserver` when user reaches bottom of `RepliesList` |
 | ~~5~~ | ~~`src/components/community/NewPostFloatingButton.tsx`~~ | ~~—~~ | ~~**[High, Bug]** Mobile floating "new post" button should be hidden when user is unauthenticated~~ |
-| 6 | `src/components/community/postForm/TagInput.tsx` | — | **[High, Bug]** Tag input missing suggestions |
+| ~~6~~ | ~~`src/components/community/postForm/TagInput.tsx`~~ | ~~—~~ | ~~**[High, Bug]** Tag input missing suggestions (root cause: empty `tags` table in DB, not client bug)~~ |
 | ~~7~~ | ~~`src/constants/footerLinks.ts`~~ | ~~17–18~~ | ~~**[Medium, Bug]** Community forum footer link points to old `/forum` page — update `footerQuickLinks.communityForum` href~~ |
 | 8 | `src/components/community/postForm/PostFormCategoryField.tsx` | — | **[Medium]** Add "shared progress" category to post categories |
 | 9 | `src/components/progress/share/ShareProgressCard.tsx` | — | **[Low]** Share progress in community — wire share action to community post creation |
