@@ -15,12 +15,16 @@ import { toast } from 'sonner'
 import { useQueryClient } from '@tanstack/react-query'
 
 import type {
+    CheckIn,
     CheckInStats,
     MoodPainSeriesPoint
 } from '@/types/checkIn'
 import { ContextProps } from '@/types/react'
 
-import { formatByUserPreference } from '@/lib/time'
+import {
+    formatByUserPreference,
+    toDateStr
+} from '@/lib/time'
 
 import { defaults } from '@/constants/defaults'
 import { checkInQueryKeys } from '@/constants/queryKeys'
@@ -132,8 +136,21 @@ export const CheckInProvider = ({
         const statsKey = [...checkInQueryKeys.stats, 'weekly'] as const
         const historyKey14 = [...checkInQueryKeys.all, 'history', 14, dateFnsLocale?.code] as const
         const historyKey35 = [...checkInQueryKeys.all, 'history', 35, dateFnsLocale?.code] as const
+        const checkInsKey14 = [...checkInQueryKeys.all, 'list', 14] as const
 
         const now = new Date()
+        const todayStr = `${toDateStr(now)}T00:00:00.000Z`
+        const optimisticCheckIn: CheckIn = {
+            id: 'optimistic',
+            userId: '',
+            checkInDate: todayStr,
+            moodScore: data.moodScore,
+            painLevel: data.painLevel,
+            activities: data.activities,
+            notes: data.notes,
+            createdAt: now.toISOString(),
+            updatedAt: now.toISOString()
+        }
         const newPoint: MoodPainSeriesPoint = {
             date: formatByUserPreference(
                 now,
@@ -193,6 +210,21 @@ export const CheckInProvider = ({
                 })
             }
 
+            const curCheckIns = queryClient
+                .getQueryData<CheckIn[]>(checkInsKey14)
+
+            if (curCheckIns) {
+                queryClient.setQueryData<CheckIn[]>(
+                    checkInsKey14,
+                    isEditingToday
+                        ? curCheckIns.map(c =>
+                            c.checkInDate.slice(0, 10) === todayStr.slice(0, 10)
+                                ? { ...c, ...optimisticCheckIn, id: c.id }
+                                : c)
+                        : [optimisticCheckIn, ...curCheckIns]
+                )
+            }
+
             if (curStats) {
                 queryClient.setQueryData<CheckInStats>(
                     statsKey,
@@ -219,6 +251,7 @@ export const CheckInProvider = ({
                 rolledBack = true
                 queryClient.setQueryData(historyKey14, curHistory)
                 queryClient.setQueryData(statsKey, curStats)
+                queryClient.setQueryData(checkInsKey14, curCheckIns)
             }
         }
 
