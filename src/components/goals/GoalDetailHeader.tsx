@@ -2,9 +2,10 @@
 
 import { useState } from 'react'
 
-import { useTranslations } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
 
-import { format, parseISO } from 'date-fns'
+import { parseISO } from 'date-fns'
+import { he } from 'date-fns/locale'
 import { Plus } from 'lucide-react'
 
 import { Goal, MilestoneStatus } from '@/types/goals'
@@ -12,6 +13,8 @@ import { Goal, MilestoneStatus } from '@/types/goals'
 import { Button } from '@/components/ui/button'
 
 import { useGoalMilestones } from '@/hooks/context/useGoalMilestones'
+
+import { formatByUserPreference } from '@/lib/time'
 
 import { goalsLocales } from '@/locales/goalsLocales'
 
@@ -26,6 +29,8 @@ export const GoalDetailHeader = ({
     goal
 }: GoalDetailHeaderProps) => {
     const t = useTranslations()
+    const locale = useLocale()
+    const dateFnsLocale = locale === 'he-IL' ? he : undefined
     const [addMilestoneOpen, setAddMilestoneOpen] = useState(false)
     const { milestones } = useGoalMilestones()
 
@@ -37,7 +42,12 @@ export const GoalDetailHeader = ({
         : 0
 
     const targetDateFormatted = goal.targetDate
-        ? format(parseISO(goal.targetDate), 'MMM dd, yyyy')
+        ? formatByUserPreference(
+            parseISO(goal.targetDate),
+            false,
+            'dd MMM yyyy',
+            dateFnsLocale
+        )
         : null
 
     return (

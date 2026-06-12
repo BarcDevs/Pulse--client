@@ -52,7 +52,8 @@ export const useCheckInChartData = (period: TimePeriod) => {
         previousPoint = result.previousPoint
     } else {
         filled = buildWeeklyAverages(
-            fillHistoryMonthNulls(rawData, dateFnsLocale)
+            fillHistoryMonthNulls(rawData, dateFnsLocale),
+            dateFnsLocale
         )
     }
 
