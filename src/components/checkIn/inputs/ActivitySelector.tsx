@@ -117,7 +117,7 @@ export const CheckInActivities = ({
                                 <ActivityToggleButton
                                     key={activity}
                                     activity={activity}
-                                    label={activityLabels[activity]}
+                                    label={activityLabels[activity] ?? activity}
                                     isSelected={selectedActivities.includes(activity)}
                                     onToggle={toggleActivity}
                                 />
