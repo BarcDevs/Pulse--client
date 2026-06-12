@@ -77,7 +77,7 @@ Behavioral intelligence systems require medical/legal caution, behavioral tuning
 | 4 | `src/components/community/postDetail/RepliesSection.tsx` | 142–154 | Replace manual "show more replies" button with infinite scroll — load next page automatically via `IntersectionObserver` when user reaches bottom of `RepliesList` |
 | ~~5~~ | ~~`src/components/community/NewPostFloatingButton.tsx`~~ | ~~—~~ | ~~**[High, Bug]** Mobile floating "new post" button should be hidden when user is unauthenticated~~ |
 | 6 | `src/components/community/postForm/TagInput.tsx` | — | **[High, Bug]** Tag input missing suggestions |
-| 7 | `src/constants/footerLinks.ts` | 17–18 | **[Medium, Bug]** Community forum footer link points to old `/forum` page — update `footerQuickLinks.communityForum` href |
+| ~~7~~ | ~~`src/constants/footerLinks.ts`~~ | ~~17–18~~ | ~~**[Medium, Bug]** Community forum footer link points to old `/forum` page — update `footerQuickLinks.communityForum` href~~ |
 | 8 | `src/components/community/postForm/PostFormCategoryField.tsx` | — | **[Medium]** Add "shared progress" category to post categories |
 | 9 | `src/components/progress/share/ShareProgressCard.tsx` | — | **[Low]** Share progress in community — wire share action to community post creation |
 | 10 | `src/components/progress/share/ShareProgressModal.tsx` | — | **[Low]** Open share menu on mobile when sharing progress/post |
@@ -112,7 +112,7 @@ Behavioral intelligence systems require medical/legal caution, behavioral tuning
 
 | # | File                                                  | Line | Note                                                                                    |
 |---|-------------------------------------------------------|------|-----------------------------------------------------------------------------------------|
-| 1 | `src/constants/footerLinks.ts`                        | 21–22 | **[High, Bug]** Insights footer link should be feature-flagged (Insights page is gated) |
+| ~~1~~ | ~~`src/constants/footerLinks.ts`~~                        | ~~21–22~~ | ~~**[High, Bug]** Insights footer link should be feature-flagged (Insights page is gated)~~ |
 | 2 | `src/config/appSettings.ts`                           | 8–11 | **[Low]** Social links point to placeholder/wrong URLs — add proper social links        |
 | 3 | `src/components/layout/mobileNav/MobileNavDrawer.tsx` | — | **[Low, Bug]** Remove redundant close (X) button from mobile side-menu                  |
 | 4 | Dashboard                                             | — | **[Low, Bug]** Expand insight card to full page's width                                 |

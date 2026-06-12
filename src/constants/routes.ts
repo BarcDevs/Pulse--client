@@ -8,7 +8,6 @@ export const ROUTES = {
     CHECK_IN_NEW: '/check-in/new',
     DASHBOARD: '/dashboard',
     DAILY_CHECKIN: '/daily-checkin',
-    FORUM: '/forum',
     FORUM_CREATE: '/forum/posts/create',
     COMMUNITY: '/community',
     INSIGHTS: '/insights',
