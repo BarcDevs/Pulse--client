@@ -47,6 +47,7 @@ export const MobileNavDrawer = ({
             <SheetContent
                 side={'left'}
                 className={'w-64 p-0'}
+                showCloseButton={false}
             >
                 <SheetTitle className={'sr-only'}>
                     {t(globalLocales.nav.sidebar.more)}
