@@ -98,8 +98,11 @@ export const CheckInProvider = ({
 
     const buildOptimisticStats = (
         existing: CheckInStats,
-        formData: CheckInSchema
+        formData: CheckInSchema,
+        isEditingToday: boolean
     ): CheckInStats => {
+        if (isEditingToday) return existing
+
         const total = existing.totalCheckIns + 1
         const newStreak = existing.currentStreak + 1
         return {
@@ -160,6 +163,9 @@ export const CheckInProvider = ({
                 ? history.map(p => p.date === newPoint.date ? newPoint : p)
                 : [newPoint, ...history]
 
+            const isEditingToday = (curHistory ?? [])
+                .some(p => p.date === newPoint.date)
+
             if (curHistory) {
                 queryClient.setQueryData(
                     historyKey14,
@@ -190,7 +196,7 @@ export const CheckInProvider = ({
             if (curStats) {
                 queryClient.setQueryData<CheckInStats>(
                     statsKey,
-                    buildOptimisticStats(curStats, data)
+                    buildOptimisticStats(curStats, data, isEditingToday)
                 )
             } else {
                 void queryClient.prefetchQuery({
@@ -203,7 +209,7 @@ export const CheckInProvider = ({
                     if (fetched) {
                         queryClient.setQueryData<CheckInStats>(
                             statsKey,
-                            buildOptimisticStats(fetched, data)
+                            buildOptimisticStats(fetched, data, isEditingToday)
                         )
                     }
                 })
