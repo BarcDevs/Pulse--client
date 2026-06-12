@@ -101,6 +101,12 @@ export const DatePickerInput = ({
                     endMonth={new Date(today.getFullYear() + 10, 11)}
                     captionLayout={'dropdown'}
                     locale={dateFnsLocale}
+                    formatters={{
+                        formatMonthDropdown: (date) =>
+                            format(date, 'MMM', dateFnsLocale ? {
+                                locale: dateFnsLocale
+                            } : undefined)
+                    }}
                     autoFocus
                 />
             </PopoverContent>
