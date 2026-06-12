@@ -6,6 +6,8 @@ import { Plus } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
 
+import { useUser } from '@/hooks/ui/useUser'
+
 import { communityLocales } from '@/locales/communityLocales'
 
 type NewPostFloatingButtonProps = {
@@ -18,8 +20,9 @@ export const NewPostFloatingButton = ({
     onClickAction
 }: NewPostFloatingButtonProps) => {
     const t = useTranslations()
+    const { isAuthenticated } = useUser()
 
-    if (isPostOpen) {
+    if (isPostOpen || !isAuthenticated) {
         return null
     }
 
