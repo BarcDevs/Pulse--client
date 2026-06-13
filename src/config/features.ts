@@ -37,7 +37,9 @@ export const FEATURES = {
     settingsNotifications: false,
     settingsPrivacy: false,
     settingsSecurity: true,
-    settingsPreferences: true
+    settingsPreferences: true,
+    // Footer social media links - hidden until real accounts are ready
+    socialLinks: false
 } as const
 
 export type FeatureFlags = typeof FEATURES
