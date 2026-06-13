@@ -34,11 +34,13 @@ import { PostFormSchema } from '@/validations/forms/postFormSchema'
 type RepliesSectionProps = {
     postId: string
     postAuthorId?: string
+    totalReplies?: number
 }
 
 export const RepliesSection = ({
     postId,
-    postAuthorId
+    postAuthorId,
+    totalReplies
 }: RepliesSectionProps) => {
     const t = useTranslations()
     const { user } = useAuth()
@@ -73,10 +75,11 @@ export const RepliesSection = ({
         return Promise.resolve()
     }
 
-    const replyLabel = replies.length === 1
+    const replyTotal = totalReplies ?? replies.length
+    const replyLabel = replyTotal === 1
         ? t(communityLocales.postDetail.reply)
         : t(communityLocales.postDetail.replies)
-    const replyCount = `${replies.length} ${replyLabel}`
+    const replyCount = `${replyTotal} ${replyLabel}`
 
     useEffect(() => {
         const observer = new IntersectionObserver(
