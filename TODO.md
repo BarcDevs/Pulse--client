@@ -89,7 +89,7 @@ Behavioral intelligence systems require medical/legal caution, behavioral tuning
 
 | # | File | Line | Note |
 |---|------|------|------|
-| 1 | `src/components/checkIn/inputs/ActivitySelector.tsx` | — | **[Medium]** Add previously picked activities to suggested activities list |
+| ~~1~~ | ~~`src/components/checkIn/inputs/ActivitySelector.tsx`~~ | ~~—~~ | ~~**[Medium]** Add previously picked activities to suggested activities list~~ |
 
 ---
 

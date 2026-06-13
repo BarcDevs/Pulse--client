@@ -2,10 +2,9 @@
 
 import { useQueryClient } from '@tanstack/react-query'
 
-import type {
-    CheckIn,
-    CheckInStats
-} from '@/types/checkIn'
+import type { CheckIn } from '@/types/checkIn'
+
+import { useCheckInStats } from '@/hooks/queries/useCheckInStats'
 
 import { checkInQueryKeys } from '@/constants/queryKeys'
 
@@ -16,15 +15,14 @@ export const CheckInPageContent = () => {
     const queryClient = useQueryClient()
     const latestCheckIn =
         queryClient.getQueryData<CheckIn[]>(checkInQueryKeys.all)?.[0] ?? null
-    const stats =
-        queryClient.getQueryData<CheckInStats>(checkInQueryKeys.stats) ?? null
+    const { data: stats } = useCheckInStats('weekly')
 
     return (
         <div className={'space-y-6 p-6'}>
             <CheckInQuote/>
             <CheckInForm
                 latestCheckIn={latestCheckIn}
-                stats={stats}
+                stats={stats ?? null}
             />
         </div>
     )
