@@ -11,6 +11,19 @@ export const useSharePost = (postId: string) => {
 
     return async () => {
         const url = `${window.location.origin}/community/post/${postId}`
+
+        if (navigator.share) {
+            try {
+                await navigator.share({ url })
+                return
+            } catch (error) {
+                if (
+                    error instanceof Error
+                    && error.name === 'AbortError'
+                ) return
+            }
+        }
+
         await navigator.clipboard.writeText(url)
         toast.success(t(communityLocales.postActions.linkCopied))
     }
