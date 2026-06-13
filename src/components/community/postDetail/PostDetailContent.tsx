@@ -208,7 +208,6 @@ export const PostDetailContent = () => {
             <RepliesSection
                 postId={postId}
                 postAuthorId={post?.authorId}
-                totalReplies={post?._count?.replies}
             />
         </div>
     )

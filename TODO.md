@@ -74,7 +74,7 @@ Behavioral intelligence systems require medical/legal caution, behavioral tuning
 | ~~1~~ | ~~`src/components/community/`~~ | ~~—~~ | ~~Forum tweaks — add author badge next to post author name~~ |
 | ~~2~~ | ~~`src/components/community/postDetail/`~~ | ~~—~~ | ~~Limit reply count — use expand button to show remaining replies~~ |
 | ~~3~~ | ~~`src/components/dashboard/community/CommunityActivity.tsx`~~ | ~~43–46~~ | ~~**[Bug]** `refetchInterval` polls forever while `status === 'processing'`. If backend never has activity to recommend for a user, status stays `processing` indefinitely and card shows skeleton forever. Cap retries (e.g. stop after N attempts or timeout) and fall back to empty state~~ |
-| 4 | `src/components/community/postDetail/RepliesSection.tsx` | 142–154 | Replace manual "show more replies" button with infinite scroll — load next page automatically via `IntersectionObserver` when user reaches bottom of `RepliesList` |
+| ~~4~~ | ~~`src/components/community/postDetail/RepliesSection.tsx`~~ | ~~142–154~~ | ~~Replace manual "show more replies" button with infinite scroll — load next page automatically via `IntersectionObserver` when user reaches bottom of `RepliesList`~~ |
 | ~~5~~ | ~~`src/components/community/NewPostFloatingButton.tsx`~~ | ~~—~~ | ~~**[High, Bug]** Mobile floating "new post" button should be hidden when user is unauthenticated~~ |
 | ~~6~~ | ~~`src/components/community/postForm/TagInput.tsx`~~ | ~~—~~ | ~~**[High, Bug]** Tag input missing suggestions (root cause: empty `tags` table in DB, not client bug)~~ |
 | ~~7~~ | ~~`src/constants/footerLinks.ts`~~ | ~~17–18~~ | ~~**[Medium, Bug]** Community forum footer link points to old `/forum` page — update `footerQuickLinks.communityForum` href~~ |

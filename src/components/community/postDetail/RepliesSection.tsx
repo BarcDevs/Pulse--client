@@ -1,6 +1,10 @@
 'use client'
 
-import { useState } from 'react'
+import {
+    useEffect,
+    useRef,
+    useState
+} from 'react'
 
 import { useTranslations } from 'next-intl'
 
@@ -13,7 +17,6 @@ import { ReplyInputSection } from '@/components/community/postDetail/ReplyInputS
 import { UnauthenticatedReplyPrompt } from '@/components/community/postDetail/UnauthenticatedReplyPrompt'
 import { PostForm } from '@/components/community/postForm/PostForm'
 import { ErrorDisplay } from '@/components/shared/ErrorDisplay'
-import { Button } from '@/components/ui/button'
 import { Skeleton } from '@/components/ui/skeleton'
 
 import {
@@ -31,13 +34,11 @@ import { PostFormSchema } from '@/validations/forms/postFormSchema'
 type RepliesSectionProps = {
     postId: string
     postAuthorId?: string
-    totalReplies?: number
 }
 
 export const RepliesSection = ({
     postId,
-    postAuthorId,
-    totalReplies
+    postAuthorId
 }: RepliesSectionProps) => {
     const t = useTranslations()
     const { user } = useAuth()
@@ -48,6 +49,7 @@ export const RepliesSection = ({
     } = usePostDetail()
 
     const [replyDraft] = useState(() => getDraft(DRAFT_KEYS.newReply(postId))?.data)
+    const sentinelRef = useRef<HTMLDivElement>(null)
 
     const {
         replies,
@@ -75,16 +77,31 @@ export const RepliesSection = ({
         ? t(communityLocales.postDetail.reply)
         : t(communityLocales.postDetail.replies)
     const replyCount = `${replies.length} ${replyLabel}`
-    const remainingCount = Math.max(
-        0,
-        (totalReplies ?? 0) - replies.length
-    )
-    const showMoreLabel = t(
-        communityLocales
-            .postDetail
-            .showMoreRepliesWithCount,
-        { count: remainingCount }
-    )
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                if (
+                    entries[0].isIntersecting
+                    && hasMore
+                    && !isFetching
+                ) {
+                    loadMore()
+                }
+            },
+            { threshold: 0.1 }
+        )
+
+        if (sentinelRef.current) {
+            observer.observe(sentinelRef.current)
+        }
+
+        return () => observer.disconnect()
+    }, [
+        hasMore,
+        isFetching,
+        loadMore
+    ])
 
     return (
         <div className={'rounded-2xl bg-surface-card shadow-sm p-4 sm:p-6 space-y-3 sm:space-y-4'}>
@@ -140,17 +157,14 @@ export const RepliesSection = ({
             )}
 
             {hasMore && (
-                <Button
-                    variant={'ghost'}
-                    size={'sm'}
-                    onClick={loadMore}
-                    disabled={isFetching}
+                <div
+                    ref={sentinelRef}
+                    className={'flex--center py-2'}
                 >
-                    {isFetching
-                        ? <Loader2 className={'animate-spin h-4 w-4'}/>
-                        : showMoreLabel
-                    }
-                </Button>
+                    {isFetching && (
+                        <Loader2 className={'animate-spin h-4 w-4'}/>
+                    )}
+                </div>
             )}
         </div>
     )
