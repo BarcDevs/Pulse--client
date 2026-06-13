@@ -19,6 +19,7 @@ export const ENDPOINTS = {
         post: (postId: string) => `/forum/posts/${postId}`,
         likePost: (postId: string) => `/forum/posts/${postId}/like`,
         savePost: (postId: string) => `/forum/posts/${postId}/save`,
+        sharePost: (postId: string) => `/forum/posts/${postId}/share`,
         replies: (postId: string) =>
             `/forum/posts/${postId}/replies`,
         reply: (

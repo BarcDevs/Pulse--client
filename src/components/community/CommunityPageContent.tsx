@@ -76,7 +76,10 @@ export const CommunityPageContent = () => {
             return
         }
         setIsNewPostOpen(true)
-        window.scrollTo({ top: 0, behavior: 'smooth' })
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        })
     }
 
     const handlePostSubmit = async (data: PostFormSchema) => {
@@ -89,6 +92,7 @@ export const CommunityPageContent = () => {
             tags: [],
             replies: [],
             views: 0,
+            shareCount: 0,
             createdAt: new Date(),
             updatedAt: null,
             authorId: user?.id ?? ''

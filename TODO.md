@@ -80,7 +80,7 @@ Behavioral intelligence systems require medical/legal caution, behavioral tuning
 | ~~7~~ | ~~`src/constants/footerLinks.ts`~~ | ~~17–18~~ | ~~**[Medium, Bug]** Community forum footer link points to old `/forum` page — update `footerQuickLinks.communityForum` href~~ |
 | ~~8~~ | ~~`src/components/community/postForm/PostFormCategoryField.tsx`~~ | ~~—~~ | ~~**[Medium]** Add "shared progress" category to post categories~~ |
 | ~~10~~ | ~~`src/components/progress/share/ShareProgressModal.tsx`~~ | ~~—~~ | ~~**[Low]** Open share menu on mobile when sharing progress/post~~ |
-| 11 | `src/components/community/posts/postList/PostActions.tsx` | — | **[Low]** Add share count to posts. **Needs server work:** no share tracking exists (no DB column or increment endpoint) in `pulse--server` — blocked until that's implemented |
+| ~~11~~ | ~~`src/components/community/posts/postList/PostActions.tsx`~~ | ~~—~~ | ~~**[Low]** Add share count to posts~~ |
 
 ---
 
