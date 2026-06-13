@@ -40,7 +40,7 @@ export const PostDetailActions = ({
     const { user } = useAuth()
     const { setIsEditingPost } = usePostDetail()
     const { deletePost } = useForumPostMutations({ postId })
-    const sharePost = useSharePost(postId)
+    const { share, shareCount } = useSharePost(postId, post?.shareCount ?? 0)
     const {
         liked,
         likeCount,
@@ -104,7 +104,8 @@ export const PostDetailActions = ({
             <PostActionButton
                 icon={Share2}
                 text={shareText}
-                onClick={sharePost}
+                count={shareCount}
+                onClick={share}
             />
             <PostActionButton
                 icon={Bookmark}

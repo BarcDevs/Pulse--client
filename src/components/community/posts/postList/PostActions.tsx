@@ -18,14 +18,16 @@ import { communityLocales } from '@/locales/communityLocales'
 type PostActionsProps = {
     postId: string
     replies: number
+    shareCount?: number
 }
 
 export const PostActions = ({
     postId,
-    replies
+    replies,
+    shareCount = 0
 }: PostActionsProps) => {
     const t = useTranslations()
-    const sharePost = useSharePost(postId)
+    const { share, shareCount: liveShareCount } = useSharePost(postId, shareCount)
     const {
         saved,
         toggleSave
@@ -44,7 +46,8 @@ export const PostActions = ({
             />
             <PostActionButton
                 text={t(communityLocales.posts.share)}
-                onClick={sharePost}
+                count={liveShareCount}
+                onClick={share}
                 icon={Share2}
             />
             <PostActionButton

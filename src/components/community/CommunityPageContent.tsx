@@ -89,6 +89,7 @@ export const CommunityPageContent = () => {
             tags: [],
             replies: [],
             views: 0,
+            shareCount: 0,
             createdAt: new Date(),
             updatedAt: null,
             authorId: user?.id ?? ''
