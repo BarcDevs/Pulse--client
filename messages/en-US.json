@@ -272,7 +272,8 @@
         "questions": "Questions & Guidance",
         "stories": "Recovery Stories",
         "wellness": "Wellness & Routines",
-        "discussion": "Open Discussion"
+        "discussion": "Open Discussion",
+        "sharedProgress": "Shared Progress"
       },
       "descriptions": {
         "recovery": "Milestones, setbacks, progress stories",
@@ -284,7 +285,8 @@
         "questions": "Ask the community for input",
         "stories": "Share your full experience",
         "wellness": "Mindfulness, healthy routines, and emotional wellbeing",
-        "discussion": "Anything else recovery-related"
+        "discussion": "Anything else recovery-related",
+        "sharedProgress": "Progress shared from goals and check-ins"
       }
     },
     "toasts": {
