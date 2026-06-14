@@ -33,7 +33,7 @@ export const MilestonesSection = () => {
                 </div>
             ) : (
                 <div className={'relative'}>
-                    <div className={'absolute left-10 top-8 bottom-8 w-0.5 bg-surface-container-high'}/>
+                    <div className={'absolute start-10 top-8 bottom-8 w-0.5 bg-surface-container-high'}/>
 
                     <div className={'space-y-4'}>
                         {sorted.map((milestone) => (

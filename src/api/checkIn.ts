@@ -8,7 +8,10 @@ import type {
 import type { Response } from '@/types/responses'
 import type { TimePeriod } from '@/types/time'
 
-import { formatByUserPreference } from '@/lib/time'
+import {
+    formatByUserPreference,
+    parseDateOnly
+} from '@/lib/time'
 
 import { defaults } from '@/constants/defaults'
 
@@ -39,7 +42,7 @@ export const fetchCheckInHistory = async (
     return res.data.data.map(
         (checkIn) => {
             const dateObj =
-                new Date(checkIn.checkInDate)
+                parseDateOnly(checkIn.checkInDate)
             return {
                 date: formatByUserPreference(
                     dateObj,

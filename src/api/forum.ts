@@ -145,6 +145,15 @@ export const likeReply = async (
     return res.data.data
 }
 
+export const sharePost = async (
+    postId: string
+): Promise<{ shareCount: number }> => {
+    const res = await api.post<Response<{
+        shareCount: number
+    }>>(ENDPOINTS.forum.sharePost(postId))
+    return res.data.data
+}
+
 export const savePost = async (
     postId: string
 ): Promise<{ saved: boolean }> => {

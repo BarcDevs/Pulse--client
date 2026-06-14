@@ -19,7 +19,8 @@ vi.mock(
 vi.mock(
     '@/lib/time',
     () => ( {
-        formatByUserPreference: vi.fn(() => '01/01')
+        formatByUserPreference: vi.fn(() => '01/01'),
+        parseDateOnly: vi.fn((isoDate: string) => new Date(isoDate))
     } ))
 
 vi.mock(

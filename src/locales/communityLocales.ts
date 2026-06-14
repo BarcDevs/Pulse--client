@@ -40,7 +40,8 @@ export const communityLocales = {
     },
     activity: {
         title: 'community.activity.title',
-        viewAll: 'community.activity.viewAll'
+        viewAll: 'community.activity.viewAll',
+        empty: 'community.activity.empty'
     },
     confirmations: {
         deletePost: 'community.confirmations.deletePost',
@@ -62,7 +63,6 @@ export const communityLocales = {
         repliesLoadError: 'community.postDetail.repliesLoadError',
         postLoadError: 'community.postDetail.postLoadError',
         writeReplyPlaceholder: 'community.postDetail.writeReplyPlaceholder',
-        showMoreRepliesWithCount: 'community.postDetail.showMoreRepliesWithCount',
         authorBadge: 'community.postDetail.authorBadge'
     },
     postActions: {

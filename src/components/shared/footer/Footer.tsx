@@ -7,6 +7,7 @@ import { ClassName } from '@/types/react'
 import { cn } from '@/lib/utils'
 
 import { appSettings } from '@/config/appSettings'
+import { FEATURES } from '@/config/features'
 
 import { globalLocales } from '@/locales/globalLocales'
 
@@ -37,12 +38,12 @@ export const Footer = ({
                         <FooterBrand/>
                         <FooterLinks/>
                         <FooterLegal/>
-                        <FooterSocial/>
+                        {FEATURES.socialLinks && <FooterSocial/>}
                     </div>
                 ) : (
                     <div className={'mb-4 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between'}>
                         <FooterBrand/>
-                        <FooterSocial/>
+                        {FEATURES.socialLinks && <FooterSocial/>}
                     </div>
                 )}
 

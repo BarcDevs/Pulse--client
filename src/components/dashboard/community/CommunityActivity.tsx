@@ -1,10 +1,13 @@
 'use client'
 
+import { useRef } from 'react'
+
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 
 import { useQuery } from '@tanstack/react-query'
 
+import { EmptyState } from '@/components/shared/EmptyState'
 import { ErrorStateCard } from '@/components/shared/ErrorStateCard'
 
 import { useDateLocale } from '@/hooks/ui/useDateLocale'
@@ -22,6 +25,8 @@ import { communityLocales } from '@/locales/communityLocales'
 import { CommunityActivityItem } from './CommunityActivityItem'
 import { CommunityActivitySkeletons } from './CommunityActivitySkeletons'
 
+const maxPollAttempts = 5
+
 type CommunityActivityProps = {
     fullHeight?: boolean
 }
@@ -31,6 +36,7 @@ export const CommunityActivity = ({
 }: CommunityActivityProps) => {
     const t = useTranslations()
     const dateLocale = useDateLocale()
+    const attemptsRef = useRef(0)
 
     const {
         data,
@@ -39,13 +45,21 @@ export const CommunityActivity = ({
         error
     } = useQuery({
         queryKey: ['forum', 'recommendations'],
-        queryFn: fetchCommunityRecommendations,
+        queryFn: async () => {
+            attemptsRef.current += 1
+            const result = await fetchCommunityRecommendations()
+            return result.status === 'processing'
+                && attemptsRef.current >= maxPollAttempts
+                ? { ...result, status: 'timedOut' }
+                : result
+        },
         refetchInterval: (query) =>
             query.state.data?.status === 'processing'
                 ? 30 * secondInMs : false
     })
 
     const isProcessing = data?.status === 'processing'
+    const pollTimedOut = data?.status === 'timedOut'
     const limit = fullHeight ? 5 : 3
     const posts = mapActivityItems(
         data?.posts || [],
@@ -76,6 +90,8 @@ export const CommunityActivity = ({
                     <CommunityActivitySkeletons count={limit}/>
                 ) : isError ? (
                     <ErrorStateCard error={error}/>
+                ) : pollTimedOut ? (
+                    <EmptyState message={t(communityLocales.activity.empty)}/>
                 ) : (
                     <div className={'space-y-4'}>
                         {posts.map((activity) => (

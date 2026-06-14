@@ -64,6 +64,14 @@ export const useShareProgress = ():
                 toast.success(
                     t(progressLocales.share.toastShare)
                 )
+            } else if (navigator.share) {
+                await navigator.share({
+                    title: t(progressLocales.share.title),
+                    url: window.location.origin
+                })
+                toast.success(
+                    t(progressLocales.share.toastShare)
+                )
             } else if (navigator.clipboard?.write) {
                 const item = new ClipboardItem(
                     { 'image/png': blob }
@@ -78,6 +86,8 @@ export const useShareProgress = ():
                 )
             }
         } catch (error) {
+            if (error instanceof Error && error.name === 'AbortError') return
+
             console.error(
                 'Share error:',
                 error

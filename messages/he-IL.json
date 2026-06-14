@@ -121,7 +121,18 @@
         "reading": "קריאה",
         "journaling": "כתיבה ביומן",
         "therapy": "טיפול",
-        "rest": "מנוחה"
+        "rest": "מנוחה",
+        "walking": "הליכה",
+        "stretching": "מתיחות",
+        "work": "עבודה",
+        "study": "לימודים",
+        "household": "משק בית",
+        "socializing": "מפגשים חברתיים",
+        "hobbies": "תחביבים",
+        "outdoors": "פעילות בחוץ",
+        "mindfulness": "מיינדפולנס",
+        "self-care": "טיפוח עצמי",
+        "medical": "רפואי"
       }
     },
     "journal": {
@@ -187,7 +198,8 @@
     "activity": {
       "title": "פעילות הקהילה",
       "viewAll": "הצגת הכל",
-      "loadError": "לא הצלחנו לטעון פעילות מהקהילה כרגע"
+      "loadError": "לא הצלחנו לטעון פעילות מהקהילה כרגע",
+      "empty": "אין כרגע פעילות קהילה להצגה"
     },
     "confirmations": {
       "deletePost": "למחוק את הפוסט הזה?",
@@ -208,7 +220,6 @@
       "repliesLoadError": "לא ניתן לטעון את התגובות",
       "postLoadError": "לא ניתן לטעון את הפוסט כרגע. אפשר לנסות שוב.",
       "writeReplyPlaceholder": "שתף תגובה תומכת…",
-      "showMoreRepliesWithCount": "הצג עוד {count} {count, plural, one {תגובה} other {תגובות}}",
       "authorBadge": "הכותב"
     },
     "postActions": {
@@ -254,7 +265,8 @@
         "questions": "שאלות והכוונה",
         "stories": "סיפורי החלמה",
         "wellness": "רווחה ושגרה",
-        "discussion": "דיון פתוח"
+        "discussion": "דיון פתוח",
+        "sharedProgress": "התקדמות משותפת"
       },
       "descriptions": {
         "recovery": "התקדמות, תקופות מאתגרות ורגעים משמעותיים בדרך",
@@ -266,7 +278,8 @@
         "questions": "שאלות והתייעצות עם הקהילה",
         "stories": "שיתוף חוויות אישיות ותהליכי החלמה",
         "wellness": "מיינדפולנס, שגרות בריאות ורווחה רגשית",
-        "discussion": "שיחות כלליות סביב תהליך ההחלמה"
+        "discussion": "שיחות כלליות סביב תהליך ההחלמה",
+        "sharedProgress": "התקדמות שמשותפת ממטרות וצ׳ק-אין"
       }
     },
     "toasts": {

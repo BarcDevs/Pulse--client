@@ -50,7 +50,7 @@ export const GoalStatusSection = ({
                     <span className={cn('text-xs font-bold px-2 py-0.5 rounded-full', tok.countBadgeCn)}>
                         {goals.length}
                     </span>
-                    <ChevronDown className={'ml-auto h-4 w-4 shrink-0 text-on-surface-variant transition-transform duration-200 [[data-state=open]_&]:rotate-180'} />
+                    <ChevronDown className={'ms-auto h-4 w-4 shrink-0 text-on-surface-variant transition-transform duration-200 [[data-state=open]_&]:rotate-180'} />
                 </div>
             </AccordionTrigger>
             <AccordionContent className={'px-4 pb-4 pt-2'}>

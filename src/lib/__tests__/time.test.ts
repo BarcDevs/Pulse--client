@@ -7,7 +7,12 @@ import {
     vi
 } from 'vitest'
 
-import { toRelative, toShortNumber } from '@/lib/time'
+import {
+    toDateStr,
+    toDateStrInTimezone,
+    toRelative,
+    toShortNumber
+} from '@/lib/time'
 
 // ==================== toRelative ====================
 describe(
@@ -70,6 +75,46 @@ describe(
                 const date = new Date('2024-10-15T12:00:00Z')
                 expect(toRelative(date))
                     .toContain('months ago')
+            })
+    })
+
+// ==================== toDateStrInTimezone ====================
+describe(
+    'toDateStrInTimezone',
+    () => {
+        beforeEach(() => {
+            vi.useFakeTimers()
+            vi.setSystemTime(
+                new Date('2025-06-15T14:00:00Z')
+            )
+        })
+
+        afterEach(() => {
+            vi.useRealTimers()
+        })
+
+        it(
+            'returns the next day for a timezone ahead of UTC',
+            () => {
+                const now = new Date()
+                expect(toDateStrInTimezone(now, 'Australia/Sydney'))
+                    .toBe('2025-06-16')
+            })
+
+        it(
+            'returns the same day for a timezone behind UTC',
+            () => {
+                const now = new Date()
+                expect(toDateStrInTimezone(now, 'America/Los_Angeles'))
+                    .toBe('2025-06-15')
+            })
+
+        it(
+            'falls back to local date when no timezone is given',
+            () => {
+                const now = new Date()
+                expect(toDateStrInTimezone(now))
+                    .toBe(toDateStr(now))
             })
     })
 

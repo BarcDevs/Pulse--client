@@ -12,11 +12,24 @@ import {
 export const toDateStr = (d: Date): string =>
     format(d, 'yyyy-MM-dd')
 
+export const toDateStrInTimezone = (
+    d: Date,
+    timezone?: string
+): string =>
+    timezone
+        ? new Intl.DateTimeFormat('en-CA', { timeZone: timezone }).format(d)
+        : toDateStr(d)
+
 export const getTodayMidnight = (): Date => {
     const today = new Date()
 
     today.setHours(0, 0, 0, 0)
     return today
+}
+
+export const parseDateOnly = (isoDate: string): Date => {
+    const [year, month, day] = isoDate.slice(0, 10).split('-').map(Number)
+    return new Date(year, month - 1, day)
 }
 
 export const isDateStringTodayOrFuture = (

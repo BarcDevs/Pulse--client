@@ -98,6 +98,14 @@ const categories: Category[] = [
             bg: '#E2E8F0',
             text: '#334155'
         }
+    },
+    {
+        key: 'sharedProgress',
+        group: 'Community',
+        color: {
+            bg: '#FFEDD5',
+            text: '#c2410c'
+        }
     }
 ]
 

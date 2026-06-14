@@ -93,6 +93,10 @@ vi.mock('@/components/shared/SavingBanner', () => ({
     SavingBanner: () => <div/>
 }))
 
+vi.mock('@/components/community/NewPostFloatingButton', () => ({
+    NewPostFloatingButton: () => <div/>
+}))
+
 import { toast } from 'sonner'
 
 import { CommunityPageContent } from '@/components/community/CommunityPageContent'

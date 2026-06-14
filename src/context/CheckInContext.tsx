@@ -15,12 +15,20 @@ import { toast } from 'sonner'
 import { useQueryClient } from '@tanstack/react-query'
 
 import type {
+    CheckIn,
     CheckInStats,
     MoodPainSeriesPoint
 } from '@/types/checkIn'
 import { ContextProps } from '@/types/react'
 
-import { formatByUserPreference } from '@/lib/time'
+import { useProfile } from '@/hooks/queries/useProfile'
+
+import {
+    formatByUserPreference,
+    parseDateOnly,
+    toDateStr,
+    toDateStrInTimezone
+} from '@/lib/time'
 
 import { defaults } from '@/constants/defaults'
 import { checkInQueryKeys } from '@/constants/queryKeys'
@@ -53,6 +61,7 @@ export const CheckInProvider = ({
     const queryClient = useQueryClient()
     const t = useTranslations()
     const locale = useLocale()
+    const { profile } = useProfile()
     const dateFnsLocale = locale === 'he-IL' ? he : undefined
     const [isPending, setIsPending] = useState(false)
     const [isSubmitted, setIsSubmitted] = useState(false)
@@ -98,10 +107,16 @@ export const CheckInProvider = ({
 
     const buildOptimisticStats = (
         existing: CheckInStats,
-        formData: CheckInSchema
+        formData: CheckInSchema,
+        isEditingToday: boolean,
+        hasYesterdayCheckIn: boolean
     ): CheckInStats => {
+        if (isEditingToday) return existing
+
         const total = existing.totalCheckIns + 1
-        const newStreak = existing.currentStreak + 1
+        const newStreak = hasYesterdayCheckIn
+            ? existing.currentStreak + 1
+            : 1
         return {
             ...existing,
             totalCheckIns: total,
@@ -129,16 +144,34 @@ export const CheckInProvider = ({
         const statsKey = [...checkInQueryKeys.stats, 'weekly'] as const
         const historyKey14 = [...checkInQueryKeys.all, 'history', 14, dateFnsLocale?.code] as const
         const historyKey35 = [...checkInQueryKeys.all, 'history', 35, dateFnsLocale?.code] as const
+        const checkInsKey14 = [...checkInQueryKeys.all, 'list', 14] as const
 
         const now = new Date()
+        const todayDateStr = toDateStrInTimezone(now, profile?.timezone)
+        const todayStr = `${todayDateStr}T00:00:00.000Z`
+        const todayDate = parseDateOnly(todayDateStr)
+        const yesterday = new Date(todayDate)
+        yesterday.setDate(todayDate.getDate() - 1)
+        const yesterdayStr = toDateStr(yesterday)
+        const optimisticCheckIn: CheckIn = {
+            id: 'optimistic',
+            userId: '',
+            checkInDate: todayStr,
+            moodScore: data.moodScore,
+            painLevel: data.painLevel,
+            activities: data.activities,
+            notes: data.notes,
+            createdAt: now.toISOString(),
+            updatedAt: now.toISOString()
+        }
         const newPoint: MoodPainSeriesPoint = {
             date: formatByUserPreference(
-                now,
+                todayDate,
                 true,
                 defaults.checkIn.dateFormat,
                 dateFnsLocale
             ),
-            originalDate: now.toISOString(),
+            originalDate: todayStr,
             mood: data.moodScore,
             pain: data.painLevel
         }
@@ -159,6 +192,9 @@ export const CheckInProvider = ({
             ) => history.some(p => p.date === newPoint.date)
                 ? history.map(p => p.date === newPoint.date ? newPoint : p)
                 : [newPoint, ...history]
+
+            const isEditingToday = (curHistory ?? [])
+                .some(p => p.date === newPoint.date)
 
             if (curHistory) {
                 queryClient.setQueryData(
@@ -187,10 +223,34 @@ export const CheckInProvider = ({
                 })
             }
 
+            const curCheckIns = queryClient
+                .getQueryData<CheckIn[]>(checkInsKey14)
+
+            const hasYesterdayCheckIn = (curCheckIns ?? []).some(
+                c => c.checkInDate.slice(0, 10) === yesterdayStr
+            )
+
+            if (curCheckIns) {
+                queryClient.setQueryData<CheckIn[]>(
+                    checkInsKey14,
+                    isEditingToday
+                        ? curCheckIns.map(c =>
+                            c.checkInDate.slice(0, 10) === todayStr.slice(0, 10)
+                                ? { ...c, ...optimisticCheckIn, id: c.id }
+                                : c)
+                        : [optimisticCheckIn, ...curCheckIns]
+                )
+            }
+
             if (curStats) {
                 queryClient.setQueryData<CheckInStats>(
                     statsKey,
-                    buildOptimisticStats(curStats, data)
+                    buildOptimisticStats(
+                        curStats,
+                        data,
+                        isEditingToday,
+                        hasYesterdayCheckIn
+                    )
                 )
             } else {
                 void queryClient.prefetchQuery({
@@ -203,7 +263,12 @@ export const CheckInProvider = ({
                     if (fetched) {
                         queryClient.setQueryData<CheckInStats>(
                             statsKey,
-                            buildOptimisticStats(fetched, data)
+                            buildOptimisticStats(
+                                fetched,
+                                data,
+                                isEditingToday,
+                                hasYesterdayCheckIn
+                            )
                         )
                     }
                 })
@@ -213,6 +278,7 @@ export const CheckInProvider = ({
                 rolledBack = true
                 queryClient.setQueryData(historyKey14, curHistory)
                 queryClient.setQueryData(statsKey, curStats)
+                queryClient.setQueryData(checkInsKey14, curCheckIns)
             }
         }
 

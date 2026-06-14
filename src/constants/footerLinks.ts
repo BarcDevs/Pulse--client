@@ -1,5 +1,7 @@
 import { ROUTES } from '@/constants/routes'
 
+import { FEATURES } from '@/config/features'
+
 import { globalLocales } from '@/locales/globalLocales'
 
 const { footer: footerLocales } = globalLocales
@@ -15,12 +17,14 @@ export const footerQuickLinks = [
     },
     {
         titleKey: footerLocales.links.quick.communityForum,
-        href: ROUTES.FORUM
+        href: ROUTES.COMMUNITY
     },
-    {
-        titleKey: footerLocales.links.quick.insights,
-        href: ROUTES.INSIGHTS
-    }
+    ...(FEATURES.insights
+        ? [{
+            titleKey: footerLocales.links.quick.insights,
+            href: ROUTES.INSIGHTS
+        }]
+        : [])
 ]
 
 export const footerLegalLinks = [

@@ -128,7 +128,18 @@
         "reading": "Reading",
         "journaling": "Journaling",
         "therapy": "Therapy",
-        "rest": "Rest"
+        "rest": "Rest",
+        "walking": "Walking",
+        "stretching": "Stretching",
+        "work": "Work",
+        "study": "Study",
+        "household": "Household",
+        "socializing": "Socializing",
+        "hobbies": "Hobbies",
+        "outdoors": "Outdoors",
+        "mindfulness": "Mindfulness",
+        "self-care": "Self-care",
+        "medical": "Medical"
       }
     },
     "journal": {
@@ -194,7 +205,8 @@
     "activity": {
       "title": "Community activity",
       "viewAll": "View all",
-      "loadError": "We couldn't load community activity right now"
+      "loadError": "We couldn't load community activity right now",
+      "empty": "No community activity to show right now"
     },
     "confirmations": {
       "deletePost": "Are you sure you want to remove this post?",
@@ -215,7 +227,6 @@
       "repliesLoadError": "Unable to load replies",
       "postLoadError": "Unable to load this post right now. Please try again.",
       "writeReplyPlaceholder": "Write a supportive reply…",
-      "showMoreRepliesWithCount": "Show {count} more {count, plural, one {reply} other {replies}}",
       "authorBadge": "Author"
     },
     "postActions": {
@@ -261,7 +272,8 @@
         "questions": "Questions & Guidance",
         "stories": "Recovery Stories",
         "wellness": "Wellness & Routines",
-        "discussion": "Open Discussion"
+        "discussion": "Open Discussion",
+        "sharedProgress": "Shared Progress"
       },
       "descriptions": {
         "recovery": "Milestones, setbacks, progress stories",
@@ -273,7 +285,8 @@
         "questions": "Ask the community for input",
         "stories": "Share your full experience",
         "wellness": "Mindfulness, healthy routines, and emotional wellbeing",
-        "discussion": "Anything else recovery-related"
+        "discussion": "Anything else recovery-related",
+        "sharedProgress": "Progress shared from goals and check-ins"
       }
     },
     "toasts": {

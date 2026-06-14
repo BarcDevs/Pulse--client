@@ -41,6 +41,7 @@ export const LandingMobileNav = () => {
             <SheetContent
                 side={'right'}
                 className={'flex flex-col gap-8 p-6'}
+                showCloseButton={false}
             >
                 <SheetTitle className={'sr-only'}>
                     {t(landingLocales.nav.menu)}

@@ -24,6 +24,7 @@ export type Post = Prettify<{
     views: number
     tags: Tag[] | PartialTag[]
     category: string
+    shareCount: number
     _count?: {
         replies?: number
         likes?: number

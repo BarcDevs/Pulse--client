@@ -5,9 +5,10 @@ import {
     useState
 } from 'react'
 
-import { useTranslations } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
 
 import { format, parseISO } from 'date-fns'
+import { he } from 'date-fns/locale'
 import { CalendarIcon } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
@@ -41,6 +42,8 @@ export const DatePickerInput = ({
     disabledDates
 }: DatePickerInputProps) => {
     const t = useTranslations()
+    const locale = useLocale()
+    const dateFnsLocale = locale === 'he-IL' ? he : undefined
     const [open, setOpen] = useState(false)
 
     const selected = value ? parseISO(value) : undefined
@@ -74,7 +77,12 @@ export const DatePickerInput = ({
                 >
                     <CalendarIcon className={'mr-2 size-4'}/>
                     {selected
-                        ? formatByUserPreference(selected)
+                        ? formatByUserPreference(
+                            selected,
+                            false,
+                            undefined,
+                            dateFnsLocale
+                        )
                         : (placeholder ?? t(globalLocales.shared.pickDate))
                     }
                 </Button>
@@ -89,6 +97,16 @@ export const DatePickerInput = ({
                     onSelect={handleSelect}
                     disabled={disabledDates ?? { before: today }}
                     defaultMonth={selected ?? today}
+                    startMonth={new Date(today.getFullYear() - 100, 0)}
+                    endMonth={new Date(today.getFullYear() + 10, 11)}
+                    captionLayout={'dropdown'}
+                    locale={dateFnsLocale}
+                    formatters={{
+                        formatMonthDropdown: (date) =>
+                            format(date, 'MMM', dateFnsLocale ? {
+                                locale: dateFnsLocale
+                            } : undefined)
+                    }}
                     autoFocus
                 />
             </PopoverContent>
