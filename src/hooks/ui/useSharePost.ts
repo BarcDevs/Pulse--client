@@ -17,10 +17,12 @@ export const useSharePost = (
     const [shareCount, setShareCount] = useState(initialShareCount)
 
     const incrementShareCount = async () => {
+        setShareCount((count) => count + 1)
         try {
-            const data = await sharePostApi(postId)
-            setShareCount(data.shareCount)
-        } catch {}
+            await sharePostApi(postId)
+        } catch {
+            setShareCount((count) => count - 1)
+        }
     }
 
     const share = async () => {
