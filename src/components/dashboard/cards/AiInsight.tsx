@@ -1,6 +1,10 @@
 'use client'
 
-import { useState } from 'react'
+import {
+    useLayoutEffect,
+    useRef,
+    useState
+} from 'react'
 
 import { useTranslations } from 'next-intl'
 
@@ -32,6 +36,8 @@ export const DashboardAIInsight = ({
 }: DashboardAIInsightProps) => {
     const t = useTranslations()
     const [isExpanded, setIsExpanded] = useState(false)
+    const [isTruncated, setIsTruncated] = useState(false)
+    const blockquoteRef = useRef<HTMLQuoteElement>(null)
     const {
         data: checkInsResponse,
         isLoading,
@@ -40,6 +46,13 @@ export const DashboardAIInsight = ({
 
     const insightText =
         getLatestInsights(checkInsResponse)
+
+    useLayoutEffect(() => {
+        const el = blockquoteRef.current
+        if (el && !isExpanded) {
+            setIsTruncated(el.scrollHeight > el.clientHeight)
+        }
+    }, [insightText, isExpanded])
 
     return (
         <Card className={cn(
@@ -67,21 +80,26 @@ export const DashboardAIInsight = ({
                     </p>
                 ) : (
                     <>
-                        <blockquote className={cn(
-                            'border-s-2 border-primary ps-4 italic text-foreground text-sm',
-                            !isExpanded && 'line-clamp-3'
-                        )}>
+                        <blockquote
+                            ref={blockquoteRef}
+                            className={cn(
+                                'border-s-2 border-primary ps-4 italic text-foreground text-sm',
+                                !isExpanded && 'line-clamp-3'
+                            )}
+                        >
                             {insightText}
                         </blockquote>
-                        <button
-                            onClick={() => setIsExpanded(!isExpanded)}
-                            className={'text-sm text-primary hover:underline cursor-pointer'}
-                        >
-                            {t(isExpanded
-                                ? dashboardLocales.aiInsight.seeLess
-                                : dashboardLocales.aiInsight.seeMore
-                            )}
-                        </button>
+                        {isTruncated && (
+                            <button
+                                onClick={() => setIsExpanded(!isExpanded)}
+                                className={'text-sm text-primary hover:underline cursor-pointer'}
+                            >
+                                {t(isExpanded
+                                    ? dashboardLocales.aiInsight.seeLess
+                                    : dashboardLocales.aiInsight.seeMore
+                                )}
+                            </button>
+                        )}
                     </>
                 )}
             </CardContent>
