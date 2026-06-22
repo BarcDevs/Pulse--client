@@ -12,5 +12,4 @@ export const DEFAULT_ACTIVITIES = [
     'outdoors',
     'mindfulness',
     'self-care',
-    'medical'
 ] as const
