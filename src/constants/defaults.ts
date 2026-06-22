@@ -7,7 +7,7 @@ export const defaults = {
     checkIn: {
         historyLimit: 30,
         maxSuggestedActivities: 5,
-        dateFormat: 'MMM d'
+        dateFormat: 'd MMM'
     },
     progress: {
         topGoalsCount: 4

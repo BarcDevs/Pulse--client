@@ -1,10 +1,14 @@
 'use client'
 
-import { useTranslations } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
+
+import { he } from 'date-fns/locale'
 
 import { ErrorStateCard } from '@/components/shared/ErrorStateCard'
 
 import { useUser } from '@/hooks/ui/useUser'
+
+import { formatByUserPreference } from '@/lib/time'
 
 import { profileLocales } from '@/locales/profileLocales'
 
@@ -12,6 +16,8 @@ import { BasicInfoSkeleton } from './BasicInfoSkeleton'
 
 export const BasicInfoView = () => {
     const t = useTranslations()
+    const locale = useLocale()
+    const dateFnsLocale = locale === 'he-IL' ? he : undefined
     const { user, isLoading, error } = useUser()
 
     if (isLoading) return <BasicInfoSkeleton/>
@@ -33,7 +39,12 @@ export const BasicInfoView = () => {
         {
             label: t(profileLocales.basicInfo.dateOfBirth),
             value: user.dateOfBirth
-                ? new Date(user.dateOfBirth).toLocaleDateString() : null
+                ? formatByUserPreference(
+                    new Date(user.dateOfBirth),
+                    false,
+                    undefined,
+                    dateFnsLocale
+                ) : null
         },
         {
             label: t(profileLocales.basicInfo.location),
