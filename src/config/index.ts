@@ -11,6 +11,9 @@ type Config = {
     communityDraftTtl: number
     communityDraftTtlMinutes: number
 
+    profileDraftTtl: number
+    profileDraftTtlMinutes: number
+
     replaysSessionSampleRate: number
 
     sentryDsn: string
@@ -26,6 +29,11 @@ const config: Config = {
     communityDraftTtlMinutes: 5,
     get communityDraftTtl() {
         return this.communityDraftTtlMinutes * minuteInMs
+    },
+
+    profileDraftTtlMinutes: 30,
+    get profileDraftTtl() {
+        return this.profileDraftTtlMinutes * minuteInMs
     },
 
     replaysSessionSampleRate: (() => {

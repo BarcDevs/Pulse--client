@@ -3,6 +3,7 @@
 import {
     createContext,
     useContext,
+    useEffect,
     useMemo,
     useState
 } from 'react'
@@ -20,6 +21,12 @@ import type { User } from '@/types/user'
 import { useSaveSettings } from '@/hooks/mutations/useSaveSettings'
 import { useUpdateUser } from '@/hooks/mutations/useUpdateUser'
 import { useUser } from '@/hooks/ui/useUser'
+
+import {
+    clearProfileDraft,
+    getProfileDraft,
+    saveProfileDraft
+} from '@/utils/profileDraft'
 
 import { authQueryKeys } from '@/constants/queryKeys'
 
@@ -130,21 +137,22 @@ export const ProfileEditProvider = ({
         }))
 
     const startEdit = () => {
+        const draft = user ? getProfileDraft(user.id) : null
         setUserFields({
-            username: user?.username ?? '',
-            firstName: user?.firstName ?? '',
-            lastName: user?.lastName ?? ''
+            username: draft?.username ?? user?.username ?? '',
+            firstName: draft?.firstName ?? user?.firstName ?? '',
+            lastName: draft?.lastName ?? user?.lastName ?? ''
         })
         setProfileFields({
-            location: user?.profile?.location ?? '',
-            bio: user?.profile?.bio ?? '',
-            healthInterests: user?.profile?.healthInterests ?? [],
-            activityPreferences: user?.profile?.activityPreferences ?? [],
-            dateOfBirth: user?.dateOfBirth
+            location: draft?.location ?? user?.profile?.location ?? '',
+            bio: draft?.bio ?? user?.profile?.bio ?? '',
+            healthInterests: draft?.healthInterests ?? user?.profile?.healthInterests ?? [],
+            activityPreferences: draft?.activityPreferences ?? user?.profile?.activityPreferences ?? [],
+            dateOfBirth: draft?.dateOfBirth ?? (user?.dateOfBirth
                 ? new Date(user.dateOfBirth).toISOString().split('T')[0]
-                : '',
-            recoveryType: user?.recoveryType ?? '',
-            careProvider: user?.careProvider ?? ''
+                : ''),
+            recoveryType: draft?.recoveryType ?? user?.recoveryType ?? '',
+            careProvider: draft?.careProvider ?? user?.careProvider ?? ''
         })
         setIsEditing(true)
     }
@@ -153,7 +161,13 @@ export const ProfileEditProvider = ({
         setUserFields(EMPTY_USER)
         setProfileFields(EMPTY_PROFILE)
         setIsEditing(false)
+        if (user) clearProfileDraft(user.id)
     }
+
+    useEffect(() => {
+        if (!isEditing || !user) return
+        saveProfileDraft(user.id, { ...userFields, ...profileFields })
+    }, [isEditing, user, userFields, profileFields])
 
     const schema = useMemo(() => createProfileEditSchema(t), [t])
 
@@ -246,6 +260,7 @@ export const ProfileEditProvider = ({
             queryClient.invalidateQueries({ queryKey: authQueryKeys.getMe })
             setUserFields(EMPTY_USER)
             setProfileFields(EMPTY_PROFILE)
+            if (user) clearProfileDraft(user.id)
         } catch {
             queryClient.setQueryData(authQueryKeys.getMe, prevUser)
             queryClient.setQueryData(authQueryKeys.profile, prevProfile)

@@ -68,7 +68,7 @@ Behavioral intelligence systems require medical/legal caution, behavioral tuning
 | ~~2~~ | ~~`src/components/profile/RecoveryIdentity.tsx`~~ | ~~67~~ | ~~Fetch available interests via `getProfileOptions` and render selectable options~~                 |
 | ~~3~~ | ~~`src/components/profile/info/ProfileCard.tsx`~~ | ~~47~~ | ~~Hide camera upload button behind feature flag (image upload implementation deferred to scaling)~~ |
 | ~~4~~ | ~~`src/components/profile/settings/BasicInfoForm.tsx`~~ | ~~—~~ | ~~Add location suggestions in location field via API~~ |
-| 5     | `src/components/profile/settings/`                       | —     | Add draft system to profile edit like the one in community (persist unsaved edits)                  |
+| ~~5~~ | ~~`src/components/profile/settings/`~~                       | ~~—~~     | ~~Add draft system to profile edit like the one in community (persist unsaved edits)~~                  |
 
 ---
 
