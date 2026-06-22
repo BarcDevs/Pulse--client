@@ -49,9 +49,16 @@ export const DashboardAIInsight = ({
 
     useLayoutEffect(() => {
         const el = blockquoteRef.current
-        if (el && !isExpanded) {
+        if (!el || isExpanded) return
+
+        const checkTruncation = () =>
             setIsTruncated(el.scrollHeight > el.clientHeight)
-        }
+
+        checkTruncation()
+
+        const observer = new ResizeObserver(checkTruncation)
+        observer.observe(el)
+        return () => observer.disconnect()
     }, [insightText, isExpanded])
 
     return (
