@@ -25,12 +25,10 @@ import { dashboardLocales } from '@/locales/dashboardLocales'
 
 type DashboardAIInsightProps = {
     className?: ClassName
-    hideButton?: boolean
 }
 
 export const DashboardAIInsight = ({
-    className,
-    hideButton = false
+    className
 }: DashboardAIInsightProps) => {
     const t = useTranslations()
     const [isExpanded, setIsExpanded] = useState(false)
@@ -70,23 +68,20 @@ export const DashboardAIInsight = ({
                 ) : (
                     <>
                         <blockquote className={cn(
-                            'border-l-2 border-primary pl-4 italic text-foreground text-sm',
+                            'border-s-2 border-primary ps-4 italic text-foreground text-sm',
                             !isExpanded && 'line-clamp-3'
                         )}>
                             {insightText}
                         </blockquote>
-                        {!hideButton && (
-                            // todo: replace with shadcn's
-                            <button
-                                onClick={() => setIsExpanded(!isExpanded)}
-                                className={'text-sm text-primary hover:underline cursor-pointer'}
-                            >
-                                {t(isExpanded
-                                    ? dashboardLocales.aiInsight.seeLess
-                                    : dashboardLocales.aiInsight.seeMore
-                                )}
-                            </button>
-                        )}
+                        <button
+                            onClick={() => setIsExpanded(!isExpanded)}
+                            className={'text-sm text-primary hover:underline cursor-pointer'}
+                        >
+                            {t(isExpanded
+                                ? dashboardLocales.aiInsight.seeLess
+                                : dashboardLocales.aiInsight.seeMore
+                            )}
+                        </button>
                     </>
                 )}
             </CardContent>

@@ -32,8 +32,8 @@ The card reflects the user back to themselves — it does not instruct them.
 |---|------|------|
 | ~~1~~ | ~~`src/components/dashboard/cards/DailyObservation.tsx`~~ | ~~Replace static `observation` with AI-generated reflective insight from backend. Backend derives insight from check-in signals; client renders as-is.~~ |
 | ~~2~~ | ~~`src/components/dashboard/cards/DailyObservation.tsx`~~ | ~~**[Bug]** Some activity slugs lack translated label in `checkInLocales.activities.default` and render as raw slug (e.g. `self-care`) instead of friendly name in daily observation card~~ |
-| 3 | `src/components/dashboard/cards/AiInsight.tsx` | **[High, Bug]** RTL layout not applied in insight popup |
-| 4 | `src/components/dashboard/cards/AiInsight.tsx` | **[High, Bug]** "Read more" button in insight popup not visible |
+| ~~3~~ | ~~`src/components/dashboard/cards/AiInsight.tsx`~~ | ~~**[High, Bug]** RTL layout not applied in insight popup~~ |
+| ~~4~~ | ~~`src/components/dashboard/cards/AiInsight.tsx`~~ | ~~**[High, Bug]** "Read more" button in insight popup not visible~~ |
 
 **Scaling-deferred — do NOT build until data maturity + trust calibration:**
 
@@ -63,11 +63,11 @@ Behavioral intelligence systems require medical/legal caution, behavioral tuning
 
 | #     | File                                              | Line   | Note                                                                                                |
 |-------|---------------------------------------------------|--------|-----------------------------------------------------------------------------------------------------|
-| ~~1~~ | ~~`src/components/profile/RecoveryIdentity.tsx`~~ | ~~66~~ | ~~Show user bio once seeded data replaced with real content~~                                     |
+| ~~1~~ | ~~`src/components/profile/RecoveryIdentity.tsx`~~ | ~~66~~ | ~~Show user bio once seeded data replaced with real content~~                                       |
 | ~~2~~ | ~~`src/components/profile/RecoveryIdentity.tsx`~~ | ~~67~~ | ~~Fetch available interests via `getProfileOptions` and render selectable options~~                 |
 | ~~3~~ | ~~`src/components/profile/info/ProfileCard.tsx`~~ | ~~47~~ | ~~Hide camera upload button behind feature flag (image upload implementation deferred to scaling)~~ |
-| 4     | `src/components/profile/settings/BasicInfoForm.tsx`     | —     | Add location suggestions in location field via API                                                |
-| 5     | `src/components/profile/settings/`                       | —     | Add draft system to profile edit (persist unsaved edits)                                          |
+| 4     | `src/components/profile/settings/BasicInfoForm.tsx`     | —     | Add location suggestions in location field via API                                                  |
+| 5     | `src/components/profile/settings/`                       | —     | Add draft system to profile edit like the one in community (persist unsaved edits)                  |
 
 ---
 
