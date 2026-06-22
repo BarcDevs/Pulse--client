@@ -64,7 +64,7 @@ Lightweight, supportive insights generated from check-in patterns help detect tr
 ### Prerequisites
 - Node.js 18+
 - npm or yarn
-- Backend API running on `http://localhost:4000` (optional for development)
+- Backend API running on `http://localhost:4001` (optional for development)
 
 ### Installation
 
@@ -85,7 +85,7 @@ npm run dev
 
 ```env
 # Backend API endpoint
-NEXT_PUBLIC_API_URL=http://localhost:4000
+NEXT_PUBLIC_API_URL=http://localhost:4001
 
 # Error tracking (optional)
 NEXT_PUBLIC_SENTRY_DSN=your-sentry-dsn
