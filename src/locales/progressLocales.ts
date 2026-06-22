@@ -65,7 +65,11 @@ export const progressLocales = {
         modalTitle: 'progress.share.modalTitle',
         modalDescription: 'progress.share.modalDescription',
         download: 'progress.share.download',
-        share: 'progress.share.share'
+        share: 'progress.share.share',
+        shareToCommunity: 'progress.share.shareToCommunity',
+        communityPostTitle: 'progress.share.communityPostTitle',
+        communityIntro: 'progress.share.communityIntro',
+        communityFooter: 'progress.share.communityFooter'
     },
     insight: {
         label: 'progress.insight.label',
