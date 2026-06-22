@@ -56,6 +56,7 @@ Behavioral intelligence systems require medical/legal caution, behavioral tuning
 | ~~1~~ | ~~`src/components/profile/settings/BasicInfoView.tsx`~~ | ~~37–39~~ | ~~Add `dateOfBirth`, `recoveryType`, `careProvider` once API supports them~~ |
 | ~~2~~ | ~~`../pulse--server`~~ | ~~—~~ | ~~`GET /forum/recommendations` should always return posts — currently returns empty `posts: []` when `status: "processing"` causing blank community activity card~~ |
 | ~~3~~ | ~~`src/context/ForumRepliesContext.tsx`~~ | ~~—~~ | ~~Add reply count to post API response (or dedicated endpoint) so "Show more replies" button can display exact remaining count instead of static label~~ |
+| 4 | `src/utils/error.ts`, `src/lib/errors.ts` | — | **[Bug]** "Network error" message shows hardcoded English even when locale is Hebrew — not pulled from translations |
 
 ---
 
@@ -114,6 +115,8 @@ Behavioral intelligence systems require medical/legal caution, behavioral tuning
 | ~~8~~ | ~~`src/components/goals/`~~ | ~~—~~ | ~~**[Low, Bug]** Goal due date and graphs display incorrectly in Hebrew locale~~ |
 | 11 | `src/components/dashboard/charts/HistoryChart.tsx` | — | **[Low]** Color null/no-data days (no dashed line) in graph grey |
 | 12 | `src/components/progress/cards/StreakCard.tsx` | — | **[Low]** Add hover effect to current streak stat |
+| 13 | `src/components/progress/cards/StreakBars.tsx`, `StreakCard.tsx` | — | **[Bug]** Streak chart still not updating optimistically after check-in submit — bars don't reflect new streak until refetch |
+| 14 | i18n / date formatting | — | **[Bug]** Hebrew locale shows date as month-then-day instead of day-then-month (reversed order) |
 
 ---
 
