@@ -86,8 +86,8 @@ Behavioral intelligence systems require medical/legal caution, behavioral tuning
 | ~~8~~ | ~~`src/components/community/postForm/PostFormCategoryField.tsx`~~ | ~~—~~ | ~~**[Medium]** Add "shared progress" category to post categories~~ |
 | ~~10~~ | ~~`src/components/progress/share/ShareProgressModal.tsx`~~ | ~~—~~ | ~~**[Low]** Open share menu on mobile when sharing progress/post~~ |
 | ~~11~~ | ~~`src/components/community/posts/postList/PostActions.tsx`~~ | ~~—~~ | ~~**[Low]** Add share count to posts~~ |
-| 12 | `src/components/community/posts/postList/PostItem.tsx` | — | **[High, Bug]** Optimistic post creation shows "Anonymous" as author until success response returns |
-| 13 | `src/components/progress/share/` | — | **[Low]** Share progress in community — wire share action to community post creation |
+| ~~12~~ | ~~`src/components/community/posts/postList/PostItem.tsx`~~ | ~~—~~ | ~~**[High, Bug]** Optimistic post creation shows "Anonymous" as author until success response returns~~ |
+| ~~13~~ | ~~`src/components/progress/share/`~~ | ~~—~~ | ~~**[Low]** Share progress in community — wire share action to community post creation~~ |
 
 ---
 

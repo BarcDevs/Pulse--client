@@ -486,7 +486,11 @@
       "modalTitle": "שיתוף ההתקדמות שלך",
       "modalDescription": "תצוגה מקדימה ושיתוף ההתקדמות האחרונה שלך עם אנשים קרובים",
       "download": "הורדה",
-      "share": "שיתוף"
+      "share": "שיתוף",
+      "shareToCommunity": "שיתוף לקהילה",
+      "communityPostTitle": "ההתקדמות שלי בהחלמה",
+      "communityIntro": "משתף עדכון קצר מהמסע שלי:",
+      "communityFooter": "נמדד עם Pulse"
     },
     "insight": {
       "label": "תובנה מההתקדמות שלך",
