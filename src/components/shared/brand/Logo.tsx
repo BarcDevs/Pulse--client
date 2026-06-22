@@ -3,11 +3,11 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { useAuth } from '@/context/AuthContext'
-
 import { ROUTES } from '@/constants/routes'
 
 import { appSettings } from '@/config/appSettings'
+
+import { useAuth } from '@/context/AuthContext'
 
 const BRAND_NAME = appSettings.brandName
 
