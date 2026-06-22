@@ -62,7 +62,10 @@ export const LocationField = ({
                             placeholder={placeholder}
                             onFocus={() => setIsFocused(true)}
                             onBlur={() => setIsFocused(false)}
-                            className={cn('bg-muted', error && 'border-destructive')}
+                            className={cn(
+                                'bg-muted ps-2',
+                                error && 'border-destructive'
+                            )}
                         />
                     </PopoverAnchor>
                     <PopoverContent
