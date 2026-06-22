@@ -39,6 +39,7 @@ import { handleCheckInSubmit } from '@/handlers/actions/checkIn'
 
 import {
     fetchCheckInHistory,
+    fetchCheckIns,
     fetchCheckInStats
 } from '@/api/checkIn'
 import { checkInLocales } from '@/locales/checkInLocales'
@@ -109,14 +110,16 @@ export const CheckInProvider = ({
         existing: CheckInStats,
         formData: CheckInSchema,
         isEditingToday: boolean,
-        hasYesterdayCheckIn: boolean
+        hasYesterdayCheckIn: boolean | undefined
     ): CheckInStats => {
         if (isEditingToday) return existing
 
         const total = existing.totalCheckIns + 1
-        const newStreak = hasYesterdayCheckIn
-            ? existing.currentStreak + 1
-            : 1
+        const newStreak = hasYesterdayCheckIn === undefined
+            ? existing.currentStreak
+            : hasYesterdayCheckIn
+                ? existing.currentStreak + 1
+                : 1
         return {
             ...existing,
             totalCheckIns: total,
@@ -226,20 +229,46 @@ export const CheckInProvider = ({
             const curCheckIns = queryClient
                 .getQueryData<CheckIn[]>(checkInsKey14)
 
-            const hasYesterdayCheckIn = (curCheckIns ?? []).some(
-                c => c.checkInDate.slice(0, 10) === yesterdayStr
-            )
+            const hasYesterdayCheckIn = curCheckIns
+                ? curCheckIns.some(
+                    c => c.checkInDate.slice(0, 10) === yesterdayStr
+                )
+                : curHistory
+                    ? curHistory.some(
+                        p => p.originalDate.slice(0, 10) === yesterdayStr
+                    ) : undefined
+
+            const upsertCheckIns = (
+                checkIns: CheckIn[]
+            ) => isEditingToday
+                ? checkIns.map(c =>
+                    c.checkInDate.slice(0, 10) === todayStr.slice(0, 10)
+                        ? {
+                            ...c,
+                            ...optimisticCheckIn, id: c.id
+                        } : c)
+                : [optimisticCheckIn, ...checkIns]
 
             if (curCheckIns) {
                 queryClient.setQueryData<CheckIn[]>(
                     checkInsKey14,
-                    isEditingToday
-                        ? curCheckIns.map(c =>
-                            c.checkInDate.slice(0, 10) === todayStr.slice(0, 10)
-                                ? { ...c, ...optimisticCheckIn, id: c.id }
-                                : c)
-                        : [optimisticCheckIn, ...curCheckIns]
+                    upsertCheckIns(curCheckIns)
                 )
+            } else {
+                void queryClient.prefetchQuery({
+                    queryKey: checkInsKey14,
+                    queryFn: () => fetchCheckIns(14)
+                }).then(() => {
+                    if (rolledBack) return
+                    const fetched = queryClient
+                        .getQueryData<CheckIn[]>(checkInsKey14)
+                    if (fetched) {
+                        queryClient.setQueryData<CheckIn[]>(
+                            checkInsKey14,
+                            upsertCheckIns(fetched)
+                        )
+                    }
+                })
             }
 
             if (curStats) {
