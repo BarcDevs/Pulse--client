@@ -187,6 +187,26 @@ Currently deployed on **Vercel** at https://pulse-rehab.vercel.app with automati
 
 ---
 
+## Staging Environment
+
+Every push to `development` auto-deploys a staging build, isolated from production.
+
+| Property | Value |
+|---|---|
+| URL | https://pulse-git-development-bar-cohens-projects.vercel.app |
+| Branch | `development` |
+| Backend | [Pulse--server-staging](https://github.com/BarcDevs/Pulse--server) on Render (see [server README](https://github.com/BarcDevs/Pulse--server#staging-environment)) |
+| Vercel Authentication | Disabled (publicly reachable) |
+
+**Branch-scoped env vars** — `NEXT_PUBLIC_SERVER_URL` is overridden for `preview` + `development` branch only (`vercel env ls preview`), pointing at the staging server. All other preview branches and production fall back to the default value.
+
+**Gotcha:** `NEXT_PUBLIC_*` vars are inlined into the JS bundle at build time. Adding/changing one does **not** affect already-deployed builds — trigger a rebuild:
+```bash
+vercel redeploy <deployment-url> --target preview
+```
+
+---
+
 ## Support & Contribution
 
 - 📖 [Backend Repository](https://github.com/BarcDevs/Pulse--server)
