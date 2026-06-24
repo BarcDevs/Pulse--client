@@ -12,7 +12,7 @@ import {
 import config from '@/config'
 
 export const api = axios.create({
-    baseURL: `${config.serverUrl}/api/${config.serverApiVersion}`,
+    baseURL: `/api/${config.serverApiVersion}`,
     withCredentials: true
 })
 
