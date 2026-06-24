@@ -64,7 +64,7 @@ Lightweight, supportive insights generated from check-in patterns help detect tr
 ### Prerequisites
 - Node.js 18+
 - npm or yarn
-- Backend API running on `http://localhost:4000` (optional for development)
+- Backend API running on `http://localhost:4001` (optional for development)
 
 ### Installation
 
@@ -85,7 +85,7 @@ npm run dev
 
 ```env
 # Backend API endpoint
-NEXT_PUBLIC_API_URL=http://localhost:4000
+NEXT_PUBLIC_API_URL=http://localhost:4001
 
 # Error tracking (optional)
 NEXT_PUBLIC_SENTRY_DSN=your-sentry-dsn
@@ -184,6 +184,26 @@ Both methods use the same session system:
 ## Deployment
 
 Currently deployed on **Vercel** at https://pulse-rehab.vercel.app with automatic builds from main branch. Future production infrastructure planned on **AWS**.
+
+---
+
+## Staging Environment
+
+Every push to `development` auto-deploys a staging build, isolated from production.
+
+| Property | Value |
+|---|---|
+| URL | https://pulse-git-development-bar-cohens-projects.vercel.app |
+| Branch | `development` |
+| Backend | [Pulse--server-staging](https://github.com/BarcDevs/Pulse--server) on Render (see [server README](https://github.com/BarcDevs/Pulse--server#staging-environment)) |
+| Vercel Authentication | Disabled (publicly reachable) |
+
+**Branch-scoped env vars** — `NEXT_PUBLIC_SERVER_URL` is overridden for `preview` + `development` branch only (`vercel env ls preview`), pointing at the staging server. All other preview branches and production fall back to the default value.
+
+**Gotcha:** `NEXT_PUBLIC_*` vars are inlined into the JS bundle at build time. Adding/changing one does **not** affect already-deployed builds — trigger a rebuild:
+```bash
+vercel redeploy <deployment-url> --target preview
+```
 
 ---
 

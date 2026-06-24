@@ -41,7 +41,7 @@ SOLID principles | Industry standards | Type-safe forms
 **Never:** Multiple components per file | NEXT_PUBLIC_ prefix | Server directives
 
 ## Git & Commits
-**Read `.claude/GIT_RULES.md` before committing or when instructed to commit.** Do not skip it.
+**Read `GIT_RULES.md` before committing or when instructed to commit.** Do not skip it.
 Full rules there. Key constraint: never invoke `/commit` skill on small fixes, formatting, or docs changes — use plain `git commit` for those.
 
 ## graphify

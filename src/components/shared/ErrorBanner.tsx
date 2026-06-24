@@ -30,10 +30,10 @@ export const ErrorBanner = ({
     if (!error || dismissed) return null
 
     const isNetErr = isNetworkError(error)
-    const message = isDev
-        ? getApiErrorMessage(error, error.message)
-        : isNetErr
-            ? t(globalLocales.errors.networkErrorPage.title)
+    const message = isNetErr
+        ? t(globalLocales.errors.networkErrorPage.title)
+        : isDev
+            ? getApiErrorMessage(error, error.message)
             : t(globalLocales.errors.inline.title)
     const description = isNetErr
         ? t(globalLocales.errors.inline.network)

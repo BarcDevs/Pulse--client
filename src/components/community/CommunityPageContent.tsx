@@ -95,7 +95,18 @@ export const CommunityPageContent = () => {
             shareCount: 0,
             createdAt: new Date(),
             updatedAt: null,
-            authorId: user?.id ?? ''
+            authorId: user?.id ?? '',
+            author: user
+                ? {
+                    id: user.id,
+                    image: user.profile?.image ?? null,
+                    user: {
+                        id: user.id,
+                        username: user.username,
+                        firstName: user.firstName,
+                        lastName: user.lastName
+                    }
+                }    : undefined
         }
         setPendingPosts((prev) => [tempPost, ...prev])
         setIsNewPostOpen(false)

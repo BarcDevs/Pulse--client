@@ -15,17 +15,17 @@ export const DashboardPageContent = () => {
 
     return (
         <div className={'p-6 space-y-6'}>
-            <div className={'grid grid-cols-1 lg:grid-cols-3 gap-6 items-start'}>
+            <div className={'grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch'}>
                 <div className={'lg:col-span-2'}>
                     {!isTodayCheckInExists && (
                         <DashboardCheckInCard/>
                     )}
-                    {FEATURES.motivationFeedback && isTodayCheckInExists && (
-                        <DashboardAIInsight
-                            className={'hidden lg:block pt-6 px-10 pb-10 h-full'}
-                            hideButton={true}
-                        />
-                    )}
+                    {
+                        FEATURES.motivationFeedback
+                        && isTodayCheckInExists
+                        && (
+                            <DashboardAIInsight className={'pt-6 px-10 pb-10 h-full'}/>
+                        )}
                 </div>
                 <DashboardDailyObservation/>
             </div>

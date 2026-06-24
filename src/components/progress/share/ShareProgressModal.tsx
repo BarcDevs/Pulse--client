@@ -20,11 +20,13 @@ import { progressLocales } from '@/locales/progressLocales'
 type ShareImageModalProps = {
     open: boolean
     onOpenChangeAction: (open: boolean) => void
+    onShareToCommunityAction: () => void
 } & WrapperProps
 
 export const ShareProgressModal = ({
     open,
     onOpenChangeAction,
+    onShareToCommunityAction,
     children
 }: ShareImageModalProps) => {
     const t = useTranslations()
@@ -63,6 +65,13 @@ export const ShareProgressModal = ({
                 </div>
 
                 <div className={'flex gap-3 justify-end pt-4'}>
+                    <Button
+                        variant={'outline'}
+                        onClick={onShareToCommunityAction}
+                        disabled={isCapturing}
+                    >
+                        {t(progressLocales.share.shareToCommunity)}
+                    </Button>
                     <Button
                         variant={'outline'}
                         onClick={download}

@@ -138,8 +138,7 @@
         "hobbies": "Hobbies",
         "outdoors": "Outdoors",
         "mindfulness": "Mindfulness",
-        "self-care": "Self-care",
-        "medical": "Medical"
+        "self-care": "Self-care"
       }
     },
     "journal": {
@@ -494,7 +493,11 @@
       "modalTitle": "Share your progress",
       "modalDescription": "Preview and share your recent progress with people you trust",
       "download": "Download",
-      "share": "Share"
+      "share": "Share",
+      "shareToCommunity": "Share to community",
+      "communityPostTitle": "My recovery progress",
+      "communityIntro": "Sharing a quick update on my journey:",
+      "communityFooter": "Tracked with Pulse"
     },
     "insight": {
       "label": "Recovery insight",

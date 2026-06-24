@@ -32,6 +32,11 @@ export const profileQueryKeys = {
     activities: ['profile', 'activities'] as const
 }
 
+export const locationQueryKeys = {
+    suggestions: (query: string) =>
+        ['locationSuggestions', query] as const
+}
+
 export const recoveryGoalsQueryKeys = {
     all: ['recoveryGoals'] as const,
     stats: ['recoveryGoals', 'stats'] as const,

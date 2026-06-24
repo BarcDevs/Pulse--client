@@ -11,13 +11,16 @@ type Config = {
     communityDraftTtl: number
     communityDraftTtlMinutes: number
 
+    profileDraftTtl: number
+    profileDraftTtlMinutes: number
+
     replaysSessionSampleRate: number
 
     sentryDsn: string
 }
 
 const config: Config = {
-    serverUrl: process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:4000',
+    serverUrl: process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:4001',
     hostname: process.env.NEXT_PUBLIC_HOSTNAME || 'http://localhost:5173',
     appDomain: process.env.NEXT_PUBLIC_APP_DOMAIN || 'https://pulse.app',
     serverApiVersion: process.env.NEXT_PUBLIC_SERVER_API_VERSION || 'v1',
@@ -26,6 +29,11 @@ const config: Config = {
     communityDraftTtlMinutes: 5,
     get communityDraftTtl() {
         return this.communityDraftTtlMinutes * minuteInMs
+    },
+
+    profileDraftTtlMinutes: 30,
+    get profileDraftTtl() {
+        return this.profileDraftTtlMinutes * minuteInMs
     },
 
     replaysSessionSampleRate: (() => {

@@ -21,10 +21,10 @@ export const ErrorStateCard = ({
     const errorMessage = error?.message || ''
     const isNetErr = isNetworkError(error)
 
-    const displayMessage = isDev
-        ? errorMessage
-        : isNetErr
-            ? t(globalLocales.errors.inline.network)
+    const displayMessage = isNetErr
+        ? t(globalLocales.errors.inline.network)
+        : isDev
+            ? errorMessage
             : t(globalLocales.errors.inline.generic)
 
     const handleRetry = () => {

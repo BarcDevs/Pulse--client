@@ -32,6 +32,8 @@ The card reflects the user back to themselves — it does not instruct them.
 |---|------|------|
 | ~~1~~ | ~~`src/components/dashboard/cards/DailyObservation.tsx`~~ | ~~Replace static `observation` with AI-generated reflective insight from backend. Backend derives insight from check-in signals; client renders as-is.~~ |
 | ~~2~~ | ~~`src/components/dashboard/cards/DailyObservation.tsx`~~ | ~~**[Bug]** Some activity slugs lack translated label in `checkInLocales.activities.default` and render as raw slug (e.g. `self-care`) instead of friendly name in daily observation card~~ |
+| ~~3~~ | ~~`src/components/dashboard/cards/AiInsight.tsx`~~ | ~~**[High, Bug]** RTL layout not applied in insight popup~~ |
+| ~~4~~ | ~~`src/components/dashboard/cards/AiInsight.tsx`~~ | ~~**[High, Bug]** "Read more" button in insight popup not visible~~ |
 
 **Scaling-deferred — do NOT build until data maturity + trust calibration:**
 
@@ -54,6 +56,7 @@ Behavioral intelligence systems require medical/legal caution, behavioral tuning
 | ~~1~~ | ~~`src/components/profile/settings/BasicInfoView.tsx`~~ | ~~37–39~~ | ~~Add `dateOfBirth`, `recoveryType`, `careProvider` once API supports them~~ |
 | ~~2~~ | ~~`../pulse--server`~~ | ~~—~~ | ~~`GET /forum/recommendations` should always return posts — currently returns empty `posts: []` when `status: "processing"` causing blank community activity card~~ |
 | ~~3~~ | ~~`src/context/ForumRepliesContext.tsx`~~ | ~~—~~ | ~~Add reply count to post API response (or dedicated endpoint) so "Show more replies" button can display exact remaining count instead of static label~~ |
+| ~~4~~ | ~~`src/components/shared/ErrorBanner.tsx`, `ErrorStateCard.tsx`, `ErrorDisplay.tsx`~~ | ~~—~~ | ~~**[Bug]** "Network error" message shows hardcoded English even when locale is Hebrew — not pulled from translations~~ |
 
 ---
 
@@ -61,9 +64,11 @@ Behavioral intelligence systems require medical/legal caution, behavioral tuning
 
 | #     | File                                              | Line   | Note                                                                                                |
 |-------|---------------------------------------------------|--------|-----------------------------------------------------------------------------------------------------|
-| ~~1~~ | ~~`src/components/profile/RecoveryIdentity.tsx`~~ | ~~66~~ | ~~Show user bio once seeded data replaced with real content~~                                     |
+| ~~1~~ | ~~`src/components/profile/RecoveryIdentity.tsx`~~ | ~~66~~ | ~~Show user bio once seeded data replaced with real content~~                                       |
 | ~~2~~ | ~~`src/components/profile/RecoveryIdentity.tsx`~~ | ~~67~~ | ~~Fetch available interests via `getProfileOptions` and render selectable options~~                 |
 | ~~3~~ | ~~`src/components/profile/info/ProfileCard.tsx`~~ | ~~47~~ | ~~Hide camera upload button behind feature flag (image upload implementation deferred to scaling)~~ |
+| ~~4~~ | ~~`src/components/profile/settings/BasicInfoForm.tsx`~~ | ~~—~~ | ~~Add location suggestions in location field via API~~ |
+| ~~5~~ | ~~`src/components/profile/settings/`~~                       | ~~—~~     | ~~Add draft system to profile edit like the one in community (persist unsaved edits)~~                  |
 
 ---
 
@@ -81,6 +86,8 @@ Behavioral intelligence systems require medical/legal caution, behavioral tuning
 | ~~8~~ | ~~`src/components/community/postForm/PostFormCategoryField.tsx`~~ | ~~—~~ | ~~**[Medium]** Add "shared progress" category to post categories~~ |
 | ~~10~~ | ~~`src/components/progress/share/ShareProgressModal.tsx`~~ | ~~—~~ | ~~**[Low]** Open share menu on mobile when sharing progress/post~~ |
 | ~~11~~ | ~~`src/components/community/posts/postList/PostActions.tsx`~~ | ~~—~~ | ~~**[Low]** Add share count to posts~~ |
+| ~~12~~ | ~~`src/components/community/posts/postList/PostItem.tsx`~~ | ~~—~~ | ~~**[High, Bug]** Optimistic post creation shows "Anonymous" as author until success response returns~~ |
+| ~~13~~ | ~~`src/components/progress/share/`~~ | ~~—~~ | ~~**[Low]** Share progress in community — wire share action to community post creation~~ |
 
 ---
 
@@ -106,6 +113,10 @@ Behavioral intelligence systems require medical/legal caution, behavioral tuning
 | ~~10~~ | ~~`src/components/progress/cards/StreakBars.tsx`~~ | ~~—~~ | ~~**[Bug]** Optimistic streak bar for a new streak (after breaking previous streak) shows previous streak's color instead of active streak color~~ |
 | ~~7~~ | ~~`src/components/goals/`~~ | ~~—~~ | ~~**[Medium, Bug]** Goal RTL layout broken (Hebrew)~~ |
 | ~~8~~ | ~~`src/components/goals/`~~ | ~~—~~ | ~~**[Low, Bug]** Goal due date and graphs display incorrectly in Hebrew locale~~ |
+| 11 | `src/components/dashboard/charts/HistoryChart.tsx` | — | **[Low]** Color null/no-data days (no dashed line) in graph grey |
+| 12 | `src/components/progress/cards/StreakCard.tsx` | — | **[Low]** Add hover effect to current streak stat |
+| ~~13~~ | ~~`src/context/CheckInContext.tsx`~~ | ~~—~~ | ~~**[Bug]** Streak chart still not updating optimistically after check-in submit — bars don't reflect new streak until refetch~~ |
+| ~~14~~ | ~~`src/constants/defaults.ts`, `BasicInfoView.tsx`~~ | ~~—~~ | ~~**[Bug]** Hebrew locale shows date as month-then-day instead of day-then-month (reversed order)~~ |
 
 ---
 

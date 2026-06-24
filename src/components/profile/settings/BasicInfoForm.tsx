@@ -14,6 +14,7 @@ import { useProfileEditContext } from '@/context/ProfileEditContext'
 import { profileLocales } from '@/locales/profileLocales'
 
 import { EditTextField } from './EditTextField'
+import { LocationField } from './LocationField'
 
 export const BasicInfoForm = () => {
     const t = useTranslations()
@@ -75,7 +76,7 @@ export const BasicInfoForm = () => {
                 </p>
             </div>
 
-            <EditTextField
+            <LocationField
                 label={t(profileLocales.basicInfo.location)}
                 value={profileFields.location}
                 placeholder={t(profileLocales.basicInfo.location)}
