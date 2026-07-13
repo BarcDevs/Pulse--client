@@ -136,6 +136,7 @@ Behavioral intelligence systems require medical/legal caution, behavioral tuning
 | #     | File                                             | Line  | Note                                                               |
 |-------|--------------------------------------------------|-------|--------------------------------------------------------------------|
 | ~~1~~ | ~~`.claude/design/resources/design-canvas.jsx`~~ | ~~—~~ | ~~Apply Claude Design's style guide to components (low priority)~~ |
+| 2 | `messages/he-IL.json` | `legal.terms` | **[Medium]** Terms of Service Hebrew copy is a placeholder (copied from English) — `legal.privacy` is already translated, `legal.terms` still needs real Hebrew translation |
 
 ---
 

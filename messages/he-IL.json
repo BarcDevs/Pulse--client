@@ -1322,5 +1322,334 @@
       "postedAbout": "שיתף על {category}",
       "sharedPost": "שיתף פוסט"
     }
+  },
+  "legal": {
+    "tabs": {
+      "privacy": "Privacy",
+      "terms": "Terms"
+    },
+    "common": {
+      "backLabel": "Back",
+      "metaBar": {
+        "lastUpdated": "Last updated: ",
+        "effectiveIn": "Effective in: ",
+        "effectiveInValue": "Global"
+      },
+      "toc": {
+        "onThisPage": "On this page"
+      },
+      "footerCta": {
+        "question": "Questions about this document?",
+        "description": "Our support team responds to every legal inquiry within 30 days.",
+        "contactSupport": "Contact support",
+        "emailLabel": "Email {email}",
+        "downloadPdf": "Download PDF"
+      }
+    },
+    "privacy": {
+      "kicker": "מדיניות פרטיות",
+      "title": "הפרטיות שלך חשובה לנו.",
+      "subtitle": "כאן תוכל ללמוד איזה מידע אנחנו אוספים, כיצד אנחנו משתמשים בו ואיך אנחנו שומרים עליו בזמן שאנחנו מלווים את תהליך ההחלמה שלך.",
+      "sections": [
+        {
+          "title": "סקירה כללית",
+          "body": [
+            "Pulse נבנתה כדי לתמוך בתהליך ההחלמה שלך תוך שמירה על הפרטיות שלך. אנחנו אוספים רק את המידע שנדרש כדי לספק את השירות, לעזור לך לעקוב אחר ההתקדמות שלך ולשפר את חוויית השימוש. אנחנו לעולם לא מוכרים את המידע האישי שלך.",
+            {
+              "callout": "בקצרה: מידע ההחלמה שלך שייך לך. אנחנו משתמשים בו רק כדי לספק את השירות, ומשתפים אותו רק כשיש בכך צורך או באישורך.",
+              "tone": "info"
+            }
+          ]
+        },
+        {
+          "title": "המידע שאנחנו אוספים",
+          "body": [
+            "אנחנו אוספים מספר סוגי מידע כדי לספק את שירותי Pulse:",
+            {
+              "table": [
+                [
+                  "קטגוריה",
+                  "דוגמאות",
+                  "מטרה"
+                ],
+                [
+                  "פרטי חשבון",
+                  "שם, כתובת אימייל, סיסמה מוצפנת",
+                  "כניסה מאובטחת וניהול החשבון"
+                ],
+                [
+                  "נתוני החלמה",
+                  "מצב רוח, כאב, אנרגיה, פעילויות, מחשבות ומטרות",
+                  "מעקב אחר ההחלמה והתאמה אישית של החוויה"
+                ],
+                [
+                  "מידע טכני",
+                  "כתובת IP, דפדפן, סוג המכשיר, גרסת האפליקציה",
+                  "אבטחה, יציבות ותמיכה טכנית"
+                ]
+              ]
+            },
+            "אנחנו אוספים רק מידע שנדרש לצורך הפעלת Pulse. אם בעתיד תתווסף תכונה שתדרוש הרשאות נוספות, תמיד נבקש את אישורך מראש."
+          ]
+        },
+        {
+          "title": "כיצד אנחנו משתמשים במידע",
+          "body": [
+            "המידע שלך מסייע לנו:",
+            {
+              "list": [
+                {
+                  "label": "להפעיל את Pulse",
+                  "text": "להציג את הצ'ק אין שלך, המטרות, ההתקדמות והיסטוריית ההחלמה."
+                },
+                {
+                  "label": "להתאים את החוויה",
+                  "text": "לספק תובנות מותאמות אישית ולהציג תכונות בהתאם לפעילות שלך."
+                },
+                {
+                  "label": "לשמור על אבטחת השירות",
+                  "text": "להגן על החשבון שלך, לזהות פעילות חריגה ולשמור על יציבות המערכת."
+                },
+                {
+                  "label": "לשפר את Pulse",
+                  "text": "להבין כיצד משתמשים באפליקציה כדי להמשיך ולשפר אותה."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "שיתוף מידע",
+          "body": [
+            "אנחנו לעולם לא מוכרים את המידע האישי שלך. ייתכן שנשתף מידע רק במקרים הבאים:",
+            {
+              "list": [
+                {
+                  "label": "איתך",
+                  "text": "המידע שלך תמיד זמין עבורך לצפייה ולניהול."
+                },
+                {
+                  "label": "עם ספקי שירות מהימנים",
+                  "text": "אנחנו עובדים עם ספקים המסייעים לנו להפעיל את Pulse בצורה מאובטחת ואמינה."
+                },
+                {
+                  "label": "כאשר החוק מחייב",
+                  "text": "ייתכן שנידרש למסור מידע בהתאם לדרישות החוק או להליך משפטי."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "אבטחת מידע",
+          "body": [
+            "שמירה על המידע שלך היא אחת מהעדיפויות שלנו.",
+            {
+              "list": [
+                {
+                  "label": "הצפנה",
+                  "text": "המידע שלך מוגן באמצעות הצפנה מקובלת בזמן ההעברה ובאחסון."
+                },
+                {
+                  "label": "בקרת גישה",
+                  "text": "גישה למידע רגיש מוגבלת לעובדים מורשים ורק כאשר היא נדרשת."
+                },
+                {
+                  "label": "אבטחת החשבון",
+                  "text": "אנחנו משתמשים באמצעי אימות ואבטחה כדי לסייע בהגנה על החשבון שלך."
+                },
+                {
+                  "label": "שיפור מתמשך",
+                  "text": "אנחנו בוחנים ומשפרים באופן קבוע את נהלי האבטחה שלנו."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "הבחירות והזכויות שלך",
+          "body": [
+            "בהתאם למקום מגוריך, ייתכן שעומדות לרשותך זכויות שונות בנוגע למידע האישי שלך. אנחנו שואפים לאפשר לכל משתמש שליטה ברורה על המידע שלו.",
+            {
+              "list": [
+                {
+                  "label": "צפייה",
+                  "text": "לצפות במידע האישי שלך ולנהל אותו מתוך החשבון."
+                },
+                {
+                  "label": "עדכון",
+                  "text": "לעדכן את פרטי הפרופיל ונתוני ההחלמה שלך בכל עת."
+                },
+                {
+                  "label": "מחיקה",
+                  "text": "לבקש למחוק את החשבון ואת המידע האישי המשויך אליו."
+                },
+                {
+                  "label": "יצירת קשר",
+                  "text": "לפנות אלינו בכל שאלה או בקשה בנושא פרטיות."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "שמירת מידע",
+          "body": [
+            "אנחנו שומרים את המידע שלך רק כל עוד הוא נדרש לצורך מתן השירות, עמידה בדרישות החוק ושמירה על תקינות המערכת. אם תמחק את החשבון שלך, המידע האישי יוסר בהתאם למדיניות שמירת המידע שלנו."
+          ]
+        },
+        {
+          "title": "פרטיות ילדים",
+          "body": [
+            "Pulse אינה מיועדת לילדים מתחת לגיל המינימלי הקבוע בחוק. אם ידוע לך שילד פתח חשבון, אנא פנה אלינו ונבדוק את הנושא בהקדם."
+          ]
+        },
+        {
+          "title": "עדכונים למדיניות",
+          "body": [
+            "ייתכן שנעדכן את מדיניות הפרטיות מעת לעת. במקרה של שינוי משמעותי נעדכן אותך באמצעות האפליקציה או בדוא\"ל, בהתאם לצורך. הגרסה העדכנית ביותר תמיד תהיה זמינה בעמוד זה."
+          ]
+        }
+      ]
+    },
+    "terms": {
+      "kicker": "Terms of Service",
+      "title": "The agreement between you and Pulse.",
+      "subtitle": "The rules of the road for using Pulse — written in plain English, then again in legal English.",
+      "sections": [
+        {
+          "title": "Agreement",
+          "body": [
+            "By creating an account or using Pulse, you agree to these Terms and to our Privacy Policy. If you don't agree, please don't use the service — and email us if you want help moving your data elsewhere.",
+            {
+              "callout": "Pulse is not a substitute for medical care. In a crisis, call or text 988 (US/Canada) or your local emergency number.",
+              "tone": "warn"
+            }
+          ]
+        },
+        {
+          "title": "Eligibility",
+          "body": [
+            "You must be 16 or older to use Pulse. By signing up, you confirm you are of legal age and capable of entering a binding agreement."
+          ]
+        },
+        {
+          "title": "Your account",
+          "body": [
+            "You are responsible for the activity on your account. Keep your password safe, use two-factor authentication, and let us know immediately if you suspect unauthorized access.",
+            {
+              "list": [
+                {
+                  "label": "One person, one account",
+                  "text": "Don't share your account or impersonate someone else."
+                },
+                {
+                  "label": "Accurate information",
+                  "text": "Provide truthful info for medication tracking and clinical sharing."
+                },
+                {
+                  "label": "Account suspension",
+                  "text": "We may suspend accounts that violate these Terms, with notice except in safety emergencies."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Not medical advice",
+          "body": [
+            "Pulse provides tools, insights, and community — not medical advice. Our AI suggestions are informational and have been reviewed by our clinical advisory board, but they are not a diagnosis or a treatment plan.",
+            "Always consult a licensed healthcare provider for medical decisions. If you are experiencing a mental-health emergency, contact emergency services or 988."
+          ]
+        },
+        {
+          "title": "Community conduct",
+          "body": [
+            "Our community is a sanctuary. To keep it safe, all members agree to:",
+            {
+              "list": [
+                {
+                  "label": "Respect each other",
+                  "text": "No harassment, hate speech, or judgmental responses to disclosures."
+                },
+                {
+                  "label": "Protect privacy",
+                  "text": "Don't share screenshots, names, or identifying details from other members."
+                },
+                {
+                  "label": "Stay supportive, not prescriptive",
+                  "text": "Share your experience; let clinicians prescribe."
+                },
+                {
+                  "label": "Report concerns",
+                  "text": "Flag content that worries you — our moderators review within 1 hour."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Your content",
+          "body": [
+            "You own everything you create in Pulse — your journal entries, check-ins, posts, and goals. You grant us a limited license to display this content back to you (and to anyone you explicitly share with). We never use your content to train AI models without separate, opt-in consent."
+          ]
+        },
+        {
+          "title": "Subscriptions & billing",
+          "body": [
+            "Pulse has a free tier and an optional Premium plan. You can cancel anytime; cancellation takes effect at the end of your billing cycle and we never auto-charge for renewals without 7 days notice.",
+            {
+              "table": [
+                [
+                  "Plan",
+                  "Includes",
+                  "Price"
+                ],
+                [
+                  "Free",
+                  "Check-ins, goals, community",
+                  "$0"
+                ],
+                [
+                  "Premium",
+                  "AI insights, care-team sharing, exports",
+                  "$9 / mo"
+                ],
+                [
+                  "Sponsored",
+                  "Premium, billed to clinician or employer",
+                  "Varies"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Termination",
+          "body": [
+            "You can delete your account anytime from Settings → Data. We may terminate accounts that violate these Terms, with notice and an opportunity to export your data — except in cases of safety risk or fraud."
+          ]
+        },
+        {
+          "title": "Limitation of liability",
+          "body": [
+            "To the maximum extent permitted by law, Pulse, Inc. is not liable for indirect, incidental, or consequential damages. Our total liability for any claim is limited to the amount you paid us in the 12 months before the claim arose.",
+            "Nothing in these Terms limits liability that cannot be limited by law — including liability for gross negligence, fraud, or personal injury."
+          ]
+        },
+        {
+          "title": "Governing law",
+          "body": [
+            "These Terms are governed by the laws of Ontario, Canada. Disputes will be resolved by binding arbitration in Toronto, except where local consumer law requires court access."
+          ]
+        },
+        {
+          "title": "Contact",
+          "body": [
+            "Questions about these Terms? Email legal@pulse.app or write to Pulse, Inc., 200 King Street West, Suite 1400, Toronto, ON M5H 3T4, Canada."
+          ]
+        }
+      ]
+    }
   }
 }
