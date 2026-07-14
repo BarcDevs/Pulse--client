@@ -9,6 +9,7 @@ export type ApiErrorDetail = {
     statusType: string
     statusCode: number
     error: string
+    property?: string
 }
 
 /** Shape of error response bodies from the server:
