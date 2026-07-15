@@ -7,9 +7,11 @@ export type LegalListBlock = {
     list: LegalListItem[]
 }
 
+export type LegalCalloutTone = 'info' | 'warn'
+
 export type LegalCalloutBlock = {
     callout: string
-    tone?: 'info' | 'warn'
+    tone: LegalCalloutTone
 }
 
 export type LegalTableBlock = {
@@ -22,9 +24,22 @@ export type LegalBlock =
     | LegalCalloutBlock
     | LegalTableBlock
 
+export type LegalCalloutBlockRaw = Omit<LegalCalloutBlock, 'tone'>
+
+export type LegalBlockRaw =
+    | string
+    | LegalListBlock
+    | LegalCalloutBlockRaw
+    | LegalTableBlock
+
 export type LegalSectionContent = {
     title: string
     body: LegalBlock[]
+}
+
+export type LegalSectionContentRaw = {
+    title: string
+    body: LegalBlockRaw[]
 }
 
 export type LegalSection = LegalSectionContent & {

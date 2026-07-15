@@ -1356,8 +1356,7 @@
           "body": [
             "Pulse נבנתה כדי לתמוך בתהליך ההחלמה שלך תוך שמירה על הפרטיות שלך. אנחנו אוספים רק את המידע שנדרש כדי לספק את השירות, לעזור לך לעקוב אחר ההתקדמות שלך ולשפר את חוויית השימוש. אנחנו לעולם לא מוכרים את המידע האישי שלך.",
             {
-              "callout": "בקצרה: מידע ההחלמה שלך שייך לך. אנחנו משתמשים בו רק כדי לספק את השירות, ומשתפים אותו רק כשיש בכך צורך או באישורך.",
-              "tone": "info"
+              "callout": "בקצרה: מידע ההחלמה שלך שייך לך. אנחנו משתמשים בו רק כדי לספק את השירות, ומשתפים אותו רק כשיש בכך צורך או באישורך."
             }
           ]
         },
@@ -1522,8 +1521,7 @@
           "body": [
             "By creating an account or using Pulse, you agree to these Terms and to our Privacy Policy. If you don't agree, please don't use the service — and email us if you want help moving your data elsewhere.",
             {
-              "callout": "Pulse is not a substitute for medical care. In a crisis, call or text 988 (US/Canada) or your local emergency number.",
-              "tone": "warn"
+              "callout": "Pulse is not a substitute for medical care. In a crisis, call or text 988 (US/Canada) or your local emergency number."
             }
           ]
         },

@@ -1363,8 +1363,7 @@
           "body": [
             "Pulse is built to support your recovery while respecting your privacy. We collect only the information needed to provide our services, help you track your progress, and improve your experience. We never sell your personal information.",
             {
-              "callout": "In short: Your recovery data belongs to you. We use it to provide Pulse and only share it when necessary or with your permission.",
-              "tone": "info"
+              "callout": "In short: Your recovery data belongs to you. We use it to provide Pulse and only share it when necessary or with your permission."
             }
           ]
         },
@@ -1529,8 +1528,7 @@
           "body": [
             "By creating an account or using Pulse, you agree to these Terms and to our Privacy Policy. If you don't agree, please don't use the service — and email us if you want help moving your data elsewhere.",
             {
-              "callout": "Pulse is not a substitute for medical care. In a crisis, call or text 988 (US/Canada) or your local emergency number.",
-              "tone": "warn"
+              "callout": "Pulse is not a substitute for medical care. In a crisis, call or text 988 (US/Canada) or your local emergency number."
             }
           ]
         },
