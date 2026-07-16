@@ -57,6 +57,7 @@ Behavioral intelligence systems require medical/legal caution, behavioral tuning
 | ~~2~~ | ~~`../pulse--server`~~ | ~~—~~ | ~~`GET /forum/recommendations` should always return posts — currently returns empty `posts: []` when `status: "processing"` causing blank community activity card~~ |
 | ~~3~~ | ~~`src/context/ForumRepliesContext.tsx`~~ | ~~—~~ | ~~Add reply count to post API response (or dedicated endpoint) so "Show more replies" button can display exact remaining count instead of static label~~ |
 | ~~4~~ | ~~`src/components/shared/ErrorBanner.tsx`, `ErrorStateCard.tsx`, `ErrorDisplay.tsx`~~ | ~~—~~ | ~~**[Bug]** "Network error" message shows hardcoded English even when locale is Hebrew — not pulled from translations~~ |
+| 5 | `pulse--server` (Prisma seed script) | — | Add a seed script for a handful of baseline forum tags. A fresh Postgres DB (e.g. `docker-compose.test.yml`'s `postgres-test`) has an empty `tags` table, so the create-post form is unsubmittable through the UI (`TagInput.tsx` only accepts tags that already exist server-side). Related to the "Tag input missing suggestions" entry in Community below. Needed to unblock a real-server e2e spec for the community flow (`e2e/real/`) |
 
 ---
 

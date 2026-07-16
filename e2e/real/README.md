@@ -1,12 +1,24 @@
-# Real-server smoke test
+# Real-server e2e suite
 
-`smoke.spec.ts` drives the app through the real UI (no mocks) against an actual
-running `pulse--server`, to catch client/server contract drift that the mocked
-e2e suite structurally can't (see DECIDE #1 in `docs/review/01-fix-plan.md`).
+Drives the app through the real UI (no mocks) against an actual running
+`pulse--server`, to catch client/server contract drift that the mocked e2e
+suite structurally can't (see DECIDE #1 in `docs/review/01-fix-plan.md`).
+
+- `smoke.spec.ts` — signup → login → check-in → dashboard
+- `goals.spec.ts` — create a recovery goal
+- `profile.spec.ts` — edit and save profile fields
+
+**Community is not covered yet.** Creating a post requires an existing forum
+tag, and a fresh test DB has none — see the `TODO.md` entry on seeding forum
+tags via a `pulse--server` Prisma seed script.
 
 Not run by `npm run test:e2e` — `playwright.config.ts` ignores `**/real/**`.
 Not wired into CI yet (needs cross-repo checkout + a Postgres service
 container — tracked as a follow-up, not done here).
+
+If `pulse--server` isn't reachable, `global-setup.ts` fails the whole run
+immediately with one clear error instead of every spec failing separately
+with a raw network error.
 
 ## Running locally
 
