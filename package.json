@@ -1,6 +1,6 @@
 {
   "name": "pulse",
-  "version": "0.38.10",
+  "version": "0.38.11",
   "type": "module",
   "private": true,
   "scripts": {
@@ -17,7 +17,8 @@
     "test": "vitest",
     "test:watch": "vitest --watch",
     "test:e2e": "playwright test",
-    "test:e2e:ui": "playwright test --ui"
+    "test:e2e:ui": "playwright test --ui",
+    "test:e2e:real": "playwright test --config=playwright.real.config.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
