@@ -1,12 +1,10 @@
 import { defineConfig, devices } from '@playwright/test'
 
 export default defineConfig({
-    testDir: './e2e',
-    testIgnore: ['**/real/**'],
-    globalSetup: './e2e/global-setup.ts',
-    fullyParallel: true,
+    testDir: './e2e/real',
+    fullyParallel: false,
     forbidOnly: !!process.env.CI,
-    retries: 1,
+    retries: 0,
     workers: 1,
     reporter: process.env.CI ? 'github' : 'html',
     use: {
