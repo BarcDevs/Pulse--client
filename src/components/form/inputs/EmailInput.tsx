@@ -39,6 +39,7 @@ export const EmailInput = <T extends FieldValues> ({
                     disabled={config.disabled}
                     autoComplete={'email'}
                     className={cn(config.className)}
+                    data-testid={field.name}
                     {...field}
                 />
             </FormControl>

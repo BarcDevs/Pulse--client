@@ -50,6 +50,7 @@ export const PasswordInput = <T extends FieldValues>({
                         disabled={config.disabled}
                         autoComplete={'current-password'}
                         className={cn('pr-10', config.className)}
+                        data-testid={field.name}
                         {...field}
                     />
                     <Button
