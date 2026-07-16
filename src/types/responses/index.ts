@@ -20,3 +20,13 @@ export type ApiErrorResponse = {
 }
 
 export type ApiResponse<T> = AxiosPromise<Response<T>>
+
+export type Paginated<T> = {
+    items: T[]
+    pagination: {
+        total: number
+        page: number
+        limit: number
+        hasMore: boolean
+    }
+}

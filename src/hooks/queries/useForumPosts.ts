@@ -32,7 +32,7 @@ export const useForumPosts = (
             query.category,
             query.search
         ] : forumQueryKeys.posts,
-    queryFn: () => fetchPosts(query),
+    queryFn: () => fetchPosts(query).then((res) => res.items),
     staleTime: 5 * minuteInMs,
     enabled: options?.enabled !== false,
     retry: false
