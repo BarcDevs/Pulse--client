@@ -4,6 +4,7 @@
 # Common ignores
 node_modules/
 .next/
+.eslintcache
 .DS_Store
 next-env.d.ts
 
