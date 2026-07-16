@@ -1520,74 +1520,74 @@
     },
     "terms": {
       "kicker": "Terms of Service",
-      "title": "The agreement between you and Pulse.",
-      "subtitle": "The rules of the road for using Pulse — written in plain English, then again in legal English.",
+      "title": "Terms for using Pulse.",
+      "subtitle": "These Terms explain how you can use Pulse and what you can expect from us in return.",
       "sections": [
         {
           "title": "Agreement",
           "body": [
-            "By creating an account or using Pulse, you agree to these Terms and to our Privacy Policy. If you don't agree, please don't use the service — and email us if you want help moving your data elsewhere.",
+            "By creating an account or using Pulse, you agree to these Terms and our Privacy Policy. If you do not agree, please do not use the service.",
             {
-              "callout": "Pulse is not a substitute for medical care. In a crisis, call or text 988 (US/Canada) or your local emergency number."
+              "callout": "Pulse supports your recovery journey, but it does not replace professional medical or mental health care."
             }
           ]
         },
         {
           "title": "Eligibility",
           "body": [
-            "You must be 16 or older to use Pulse. By signing up, you confirm you are of legal age and capable of entering a binding agreement."
+            "You must meet the minimum legal age required in your country to use Pulse. By creating an account, you confirm that you are legally allowed to enter into these Terms."
           ]
         },
         {
           "title": "Your account",
           "body": [
-            "You are responsible for the activity on your account. Keep your password safe, use two-factor authentication, and let us know immediately if you suspect unauthorized access.",
+            "You are responsible for keeping your account secure and for any activity that takes place using it.",
             {
               "list": [
                 {
-                  "label": "One person, one account",
-                  "text": "Don't share your account or impersonate someone else."
+                  "label": "One account per person",
+                  "text": "Please don't share your account or pretend to be someone else."
                 },
                 {
-                  "label": "Accurate information",
-                  "text": "Provide truthful info for medication tracking and clinical sharing."
+                  "label": "Keep your information accurate",
+                  "text": "Provide accurate account information and keep it up to date."
                 },
                 {
-                  "label": "Account suspension",
-                  "text": "We may suspend accounts that violate these Terms, with notice except in safety emergencies."
+                  "label": "Account security",
+                  "text": "Choose a strong password and contact us if you believe your account has been compromised."
                 }
               ]
             }
           ]
         },
         {
-          "title": "Not medical advice",
+          "title": "Medical disclaimer",
           "body": [
-            "Pulse provides tools, insights, and community — not medical advice. Our AI suggestions are informational and have been reviewed by our clinical advisory board, but they are not a diagnosis or a treatment plan.",
-            "Always consult a licensed healthcare provider for medical decisions. If you are experiencing a mental-health emergency, contact emergency services or 988."
+            "Pulse provides tools for tracking recovery, reflecting on your progress, and connecting with others. The information provided by Pulse, including AI-generated insights, is for informational purposes only and should not be considered medical advice, diagnosis, or treatment.",
+            "Always seek advice from a qualified healthcare professional regarding medical decisions or concerns."
           ]
         },
         {
-          "title": "Community conduct",
+          "title": "Community guidelines",
           "body": [
-            "Our community is a sanctuary. To keep it safe, all members agree to:",
+            "Our community is built on kindness, respect, and support. By participating, you agree to:",
             {
               "list": [
                 {
-                  "label": "Respect each other",
-                  "text": "No harassment, hate speech, or judgmental responses to disclosures."
+                  "label": "Treat others respectfully",
+                  "text": "Do not harass, threaten, discriminate against, or intentionally harm other members."
                 },
                 {
-                  "label": "Protect privacy",
-                  "text": "Don't share screenshots, names, or identifying details from other members."
+                  "label": "Respect privacy",
+                  "text": "Do not share another person's personal information or content without permission."
                 },
                 {
-                  "label": "Stay supportive, not prescriptive",
-                  "text": "Share your experience; let clinicians prescribe."
+                  "label": "Share experiences, not medical advice",
+                  "text": "You're welcome to share your own journey, but avoid presenting personal opinions as professional medical guidance."
                 },
                 {
-                  "label": "Report concerns",
-                  "text": "Flag content that worries you — our moderators review within 1 hour."
+                  "label": "Report inappropriate content",
+                  "text": "Help keep the community safe by reporting content that violates these guidelines."
                 }
               ]
             }
@@ -1596,62 +1596,37 @@
         {
           "title": "Your content",
           "body": [
-            "You own everything you create in Pulse — your journal entries, check-ins, posts, and goals. You grant us a limited license to display this content back to you (and to anyone you explicitly share with). We never use your content to train AI models without separate, opt-in consent."
+            "You retain ownership of the content you create in Pulse, including check-ins, reflections, goals, and community posts. By using the service, you grant us the limited rights necessary to store, display, and process your content in order to provide Pulse."
           ]
         },
         {
-          "title": "Subscriptions & billing",
+          "title": "Subscriptions",
           "body": [
-            "Pulse has a free tier and an optional Premium plan. You can cancel anytime; cancellation takes effect at the end of your billing cycle and we never auto-charge for renewals without 7 days notice.",
-            {
-              "table": [
-                [
-                  "Plan",
-                  "Includes",
-                  "Price"
-                ],
-                [
-                  "Free",
-                  "Check-ins, goals, community",
-                  "$0"
-                ],
-                [
-                  "Premium",
-                  "AI insights, care-team sharing, exports",
-                  "$9 / mo"
-                ],
-                [
-                  "Sponsored",
-                  "Premium, billed to clinician or employer",
-                  "Varies"
-                ]
-              ]
-            }
+            "Pulse is currently available free of charge. As the platform evolves, we may introduce new services or partnerships to help support and sustain the platform. If this happens, we will clearly communicate any changes before they take effect."
           ]
         },
         {
-          "title": "Termination",
+          "title": "Account termination",
           "body": [
-            "You can delete your account anytime from Settings → Data. We may terminate accounts that violate these Terms, with notice and an opportunity to export your data — except in cases of safety risk or fraud."
+            "You may delete your account at any time. We may suspend or terminate accounts that seriously violate these Terms or threaten the safety of our community."
           ]
         },
         {
           "title": "Limitation of liability",
           "body": [
-            "To the maximum extent permitted by law, Pulse, Inc. is not liable for indirect, incidental, or consequential damages. Our total liability for any claim is limited to the amount you paid us in the 12 months before the claim arose.",
-            "Nothing in these Terms limits liability that cannot be limited by law — including liability for gross negligence, fraud, or personal injury."
+            "To the fullest extent permitted by applicable law, Pulse is provided on an 'as is' and 'as available' basis. We are not responsible for indirect or consequential damages resulting from your use of the service."
           ]
         },
         {
-          "title": "Governing law",
+          "title": "Changes to these Terms",
           "body": [
-            "These Terms are governed by the laws of Ontario, Canada. Disputes will be resolved by binding arbitration in Toronto, except where local consumer law requires court access."
+            "We may update these Terms from time to time. If we make significant changes, we will notify you through the app or by email when appropriate."
           ]
         },
         {
           "title": "Contact",
           "body": [
-            "Questions about these Terms? Email legal@pulse.app or write to Pulse, Inc., 200 King Street West, Suite 1400, Toronto, ON M5H 3T4, Canada."
+            "If you have any questions about these Terms, please contact our support team."
           ]
         }
       ]
