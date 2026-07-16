@@ -37,10 +37,6 @@ const tabs = Object.keys({
     unanswered: true
 }) as FilterType[]
 
-type Post = (
-    Parameters<typeof PostItem>[0]
-    )['post']
-
 type PostListProps = {
     tag?: string | null
     search?: string
@@ -55,26 +51,22 @@ export const PostList = ({
     prependPosts
 }: PostListProps) => {
     const t = useTranslations()
-    // todo: extract post fetch functionality into a hook
     const [activeFilter, setActiveFilter] =
         useState<FilterType>('newest')
     const [category, setCategory] =
         useState<string | null>(null)
-    const [allPosts, setAllPosts] = useState<Post[]>([])
-    const [page, setPage] = useState(1)
-    const [hasMore, setHasMore] = useState(true)
     const sentinelRef = useRef<HTMLDivElement>(null)
-    const prevQueryRef = useRef<string>('')
-    const lastFetchedIdRef = useRef<string | null>(null)
 
     const query = useMemo(
         () => {
-            const q: Record<
-                string,
-                string | number
-            > = {
+            const q: {
+                limit: number
+                filter: FilterType
+                tag?: string
+                category?: string
+                search?: string
+            } = {
                 limit: PAGE_SIZE,
-                page,
                 filter: activeFilter
             }
             if (tag) q.tag = tag
@@ -83,7 +75,6 @@ export const PostList = ({
             return q
         },
         [
-            page,
             tag,
             category,
             activeFilter,
@@ -94,52 +85,17 @@ export const PostList = ({
     const {
         data,
         isLoading,
-        isFetching,
+        isFetchingNextPage,
         isError,
-        error
+        error,
+        hasNextPage,
+        fetchNextPage
     } = useForumPosts(query)
 
-    useEffect(() => {
-        const queryStr =
-            JSON.stringify(query)
-        const posts = data ?? []
-        const lastPostId = posts[posts.length - 1]?.id ?? null
-
-        if (
-            queryStr
-            !== prevQueryRef.current
-        ) {
-            prevQueryRef.current = queryStr
-            lastFetchedIdRef.current = null
-
-            setAllPosts([])
-            setPage(1)
-            setHasMore(true)
-
-            if (posts.length === 0) return
-        }
-
-        if (
-            posts.length === 0
-            || (
-                lastPostId
-                === lastFetchedIdRef.current
-            )
-        ) return
-
-        lastFetchedIdRef.current = lastPostId
-        setAllPosts((prevPosts) => [
-            ...prevPosts,
-            ...posts
-        ])
-
-        if (posts.length < PAGE_SIZE) {
-            setTimeout(
-                () => setHasMore(false),
-                0
-            )
-        }
-    }, [data, query])
+    const allPosts = useMemo(
+        () => data?.pages.flat() ?? [],
+        [data]
+    )
 
     useEffect(() => {
         const observer =
@@ -147,10 +103,10 @@ export const PostList = ({
                 (entries) => {
                     if (
                         entries[0].isIntersecting
-                        && hasMore
-                        && !isFetching
+                        && hasNextPage
+                        && !isFetchingNextPage
                     ) {
-                        setPage((prev) => prev + 1)
+                        void fetchNextPage()
                     }
                 },
                 { threshold: 0.1 }
@@ -164,16 +120,13 @@ export const PostList = ({
 
         return () =>
             observer.disconnect()
-    }, [hasMore, isFetching])
+    }, [hasNextPage, isFetchingNextPage, fetchNextPage])
 
 
     const handleFilterChange = (
         filter: FilterType
     ) => {
         setActiveFilter(filter)
-        setAllPosts([])
-        setPage(1)
-        setHasMore(true)
     }
 
     const emptyMessage = (
@@ -255,9 +208,9 @@ export const PostList = ({
                                 />
                             )
                         )}
-                        {hasMore && (
+                        {hasNextPage && (
                             <div ref={sentinelRef}>
-                                {isFetching && (
+                                {isFetchingNextPage && (
                                     <PostListSkeletons count={2}/>
                                 )}
                             </div>
