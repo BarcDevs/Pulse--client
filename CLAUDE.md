@@ -23,6 +23,9 @@ Server: `../pulse--server`.
 **Learn from mistakes:** Save feedback memory on any correction or confirmed non-obvious choice. User should never repeat the same correction. Check memory before similar work.
 **Goal-driven:** Define success criteria before starting. For multi-step tasks, state a plan: `1. [step] → verify: [check]`. Loop until verified.
 
+## Docs Sync
+New feature added → update client README, server PRD, AND server README same time, every time.
+
 ## Design Files
 `.claude/design/` — JSX design files from Claude Design (reference when building UI).
 
