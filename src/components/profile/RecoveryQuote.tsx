@@ -1,13 +1,16 @@
 'use client'
 
+import { useState } from 'react'
+
 import { useTranslations } from 'next-intl'
 
 import { profileLocales } from '@/locales/profileLocales'
 
 export const RecoveryQuote = () => {
     const t = useTranslations()
-    const dayOfYear = Math.floor(Date.now() / 86400000)
-    const index = dayOfYear % profileLocales.recoveryQuotes.length
+    const [index] = useState(() =>
+        Math.floor(Date.now() / 86400000) % profileLocales.recoveryQuotes.length
+    )
 
     // TODO: replace with user's recoveryGoalStatement field once API adds it
     return (
