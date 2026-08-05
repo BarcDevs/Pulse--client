@@ -145,5 +145,6 @@ Behavioral intelligence systems require medical/legal caution, behavioral tuning
 
 | # | Task | Priority | Note |
 |---|------|----------|------|
-| 1 | Buy a domain | Medium | Status unknown — verify if already purchased |
+| ~~1~~ | ~~Buy a domain~~ | ~~Medium~~ | ~~Done — `pulserehab.app`~~ |
 | 2 | Deploy MVP + monitor | High | In Progress — wire up monitoring tools |
+| 3 | Wire up `NEXT_PUBLIC_SENTRY_DSN` for the EC2 client deploy | Medium | Skipped for the initial AWS deploy — get client working end-to-end first, then pull the real DSN (likely only set in Vercel's env config today) and set it on the EC2 container |
