@@ -5,6 +5,8 @@ import {
     InternalAxiosRequestConfig
 } from 'axios'
 
+import { SilentableError } from '@/types/api'
+
 import {
     authState,
     callRefresh,
@@ -97,7 +99,7 @@ export const handleResponseError = async (
     const onCommunityPage = authState.isCommunityPage
 
     if (isUnauthorized && !isUnauthEndpoint) {
-        (error as any).silent = true
+        (error as SilentableError).silent = true
 
         if (isCsrfError(error) && !alreadyRetried) {
             originalRequest._retry = true

@@ -9,7 +9,7 @@ import { profileLocales } from '@/locales/profileLocales'
 export const RecoveryQuote = () => {
     const t = useTranslations()
     const [index] = useState(() =>
-        Math.floor(Math.random() * profileLocales.recoveryQuotes.length)
+        Math.floor(Date.now() / 86400000) % profileLocales.recoveryQuotes.length
     )
 
     // TODO: replace with user's recoveryGoalStatement field once API adds it

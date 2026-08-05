@@ -78,6 +78,7 @@ export const CheckInForm = ({
                 <Button
                     type={'submit'}
                     size={'lg'}
+                    data-testid={'check-in-submit'}
                 >
                     {t(checkInLocales.submitButton)}
                 </Button>

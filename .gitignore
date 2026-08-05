@@ -4,6 +4,7 @@
 # Common ignores
 node_modules/
 .next/
+.eslintcache
 .DS_Store
 next-env.d.ts
 
@@ -23,6 +24,7 @@ dist
 dist-ssr
 *.local
 test-results
+playwright-report
 
 # Editor directories and files
 .vscode/*

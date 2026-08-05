@@ -8,9 +8,13 @@ import {
 
 vi.mock(
     'axios',
-    () => ( {
-        default: { isAxiosError: vi.fn() }
-    } ))
+    async (importOriginal) => {
+        const actual = await importOriginal<typeof import('axios')>()
+        return {
+            ...actual,
+            default: { ...actual.default, isAxiosError: vi.fn() }
+        }
+    })
 
 import axios from 'axios'
 
@@ -112,6 +116,32 @@ describe(
                         expect(mockForm.setError).toHaveBeenCalledWith('root', {
                             type: 'manual',
                             message: 'Submission failed'
+                        })
+                    })
+
+                it(
+                    'should call setError with the named field when the server reports a property',
+                    async () => {
+                        const axiosError = new axios.AxiosError(
+                            undefined,
+                            undefined,
+                            undefined,
+                            undefined,
+                            {
+                                data: {
+                                    message: 'Title already in use',
+                                    error: [{ property: 'title' }]
+                                }
+                            } as any
+                        )
+                        vi.mocked(axios.isAxiosError).mockReturnValueOnce(true)
+                        const onSubmit = vi.fn().mockRejectedValueOnce(axiosError)
+                        const handler = wrapFormSubmit(mockForm, onSubmit)
+                        await (handler as any)({ title: '' })
+
+                        expect(mockForm.setError).toHaveBeenCalledWith('title', {
+                            type: 'manual',
+                            message: 'Title already in use'
                         })
                     })
             })

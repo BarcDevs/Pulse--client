@@ -4,6 +4,7 @@ export const appSettings = {
         repliesPageSize: 5
     },
     supportPhoneNumber: '',
+    supportEmail: '',
     socialMediaUrls: {
         facebook: 'https://www.facebook.com/Pulse-109044114129580',
         x: 'https://www.instagram.com/pulse.co/',

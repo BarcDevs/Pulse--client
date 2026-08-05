@@ -42,6 +42,7 @@ export const GoalFormActions = ({
             <Button
                 type={'submit'}
                 className={'bg-linear-to-br from-primary to-primary/80 text-primary-foreground'}
+                data-testid={'goal-form-submit'}
             >
                 {isUpdate
                     ? t(goalsLocales.goalForm.buttons.update)

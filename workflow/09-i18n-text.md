@@ -12,6 +12,7 @@
 4. Server: `getTranslations()` → `t(featureLocales.section.key)`
 
 ## Constraints
+- Only put actual translatable prose in the JSON. Never put non-linguistic data (internal IDs/slugs, fixed dates, structural keys) into `en-US.json`/`he-IL.json` — keep those as hardcoded constants in `src/constants/*.ts` and reference them directly, not through `t()`. If content is an ordered list of blocks needing a stable key, keep the id array in code and zip it with the translated array positionally.
 - Always update **both** `en-US.json` and `he-IL.json`
 - Keys in locales file are dot-path strings matching JSON structure: `'feature.section.key'`
 - Locale file name: `[feature]Locales.ts` (camelCase feature name)
