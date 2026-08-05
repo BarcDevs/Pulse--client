@@ -23,6 +23,13 @@ test.describe('Community', () => {
 
     test('shows empty state when no posts', async ({ page }) => {
         await mockUnauthenticated(page)
+        await page.route('**/api/**/forum/posts*', (route) =>
+            route.fulfill({
+                status: 200,
+                contentType: 'application/json',
+                body: JSON.stringify({ success: true, data: { items: [], pagination: { total: 0, page: 1, limit: 20 } } })
+            })
+        )
         await page.goto('/community')
         await expect(page.getByText(/no posts have been shared yet/i)).toBeVisible({ timeout: 15_000 })
     })
