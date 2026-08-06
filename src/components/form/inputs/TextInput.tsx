@@ -37,6 +37,7 @@ export const TextInput = <T extends FieldValues>({
                     placeholder={config.placeholder ? t(config.placeholder) : ''}
                     maxLength={config.maxLength}
                     disabled={config.disabled}
+                    data-testid={field.name}
                     {...field}
                 />
             </FormControl>

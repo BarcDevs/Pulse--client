@@ -89,6 +89,7 @@ export const AuthForm = ({
                     type={'submit'}
                     disabled={isLoading}
                     className={'h-11 w-full'}
+                    data-testid={`${formType}-submit`}
                 >
                     {isLoading
                         ? t(config.buttons.primary.loadingLabel)

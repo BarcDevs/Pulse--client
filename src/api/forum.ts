@@ -4,7 +4,10 @@ import type {
     Post,
     Reply
 } from '@/types/community'
-import type { Response } from '@/types/responses'
+import type {
+    Paginated,
+    Response
+} from '@/types/responses'
 
 import { api } from '@/api/index'
 import { ENDPOINTS } from '@/api/routes'
@@ -20,8 +23,8 @@ export const fetchCommunityRecommendations = async (
 
 export const fetchPosts = async (
     query: any
-): Promise<Post[]> => {
-    const res = await api.get<Response<Post[]>>(
+): Promise<Paginated<Post>> => {
+    const res = await api.get<Response<Paginated<Post>>>(
         ENDPOINTS.forum.posts,
         { params: query }
     )
@@ -73,8 +76,8 @@ type FetchRepliesParams = {
 export const fetchReplies = async (
     postId: string,
     params?: FetchRepliesParams
-): Promise<Reply[]> => {
-    const res = await api.get<Response<Reply[]>>(
+): Promise<Paginated<Reply>> => {
+    const res = await api.get<Response<Paginated<Reply>>>(
         ENDPOINTS.forum.replies(postId),
         { params }
     )

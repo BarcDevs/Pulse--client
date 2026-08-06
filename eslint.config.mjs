@@ -163,6 +163,19 @@ const config = [
     {
         files: ['**/__tests__/**/*.{js,ts,tsx}', '**/*.test.{js,ts,tsx}'],
         rules: {'custom-rules/enforce-function-call-breaking': 'off'}
+    },
+
+    // Components - warn when a file grows well past the ~40-line convention
+    {
+        files: ['src/components/**/*.tsx'],
+        ignores: ['**/__tests__/**', '**/*.test.tsx'],
+        rules: {
+            'max-lines': ['warn', {
+                max: 150,
+                skipBlankLines: true,
+                skipComments: true
+            }]
+        }
     }
 ]
 

@@ -16,7 +16,10 @@ export const DashboardCheckInCard = () => {
     const t = useTranslations()
 
     return (
-        <div className={'relative overflow-hidden rounded-2xl bg-linear-to-r from-primary-gradient-start to-primary-gradient-end p-6 text-white'}>
+        <div
+            className={'relative overflow-hidden rounded-2xl bg-linear-to-r from-primary-gradient-start to-primary-gradient-end p-6 text-white'}
+            data-testid={'check-in-prompt'}
+        >
             <div className={'relative z-10'}>
                 <Badge className={'mb-4 border-0 bg-white/20 text-white hover:bg-white/30'}>
                     {t(dashboardLocales.checkIn.badge)}

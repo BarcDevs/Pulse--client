@@ -46,7 +46,7 @@ export const useForumReplies = (postId?: string | null) => {
             return fetchReplies(postId, {
                 limit: repliesPageSize,
                 page: pageParam
-            })
+            }).then((res) => res.items)
         },
         initialPageParam: 1,
         getNextPageParam: (lastPage, allPages) =>

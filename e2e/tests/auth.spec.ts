@@ -18,13 +18,13 @@ test.describe('Login', () => {
     })
 
     test('renders login form', async ({ page }) => {
-        await expect(page.getByPlaceholder('name@example.com')).toBeVisible()
-        await expect(page.getByPlaceholder('••••••••').first()).toBeVisible()
-        await expect(page.getByRole('button', { name: 'Log in' })).toBeVisible()
+        await expect(page.getByTestId('email')).toBeVisible()
+        await expect(page.getByTestId('password')).toBeVisible()
+        await expect(page.getByTestId('login-submit')).toBeVisible()
     })
 
     test('shows validation errors on empty submit', async ({ page }) => {
-        await page.getByRole('button', { name: 'Log in' }).click()
+        await page.getByTestId('login-submit').click()
         await expect(page.getByText(/enter your email/i)).toBeVisible()
     })
 
@@ -40,9 +40,9 @@ test.describe('Login', () => {
             })
         )
 
-        await page.getByPlaceholder('name@example.com').fill('wrong@example.com')
-        await page.getByPlaceholder('••••••••').first().fill('Wrongpass1')
-        await page.getByRole('button', { name: 'Log in' }).click()
+        await page.getByTestId('email').fill('wrong@example.com')
+        await page.getByTestId('password').fill('Wrongpass1')
+        await page.getByTestId('login-submit').click()
 
         await expect(page.getByText(/invalid credentials/i)).toBeVisible()
     })
@@ -68,9 +68,9 @@ test.describe('Login', () => {
         })
         await mockAuth(page)
 
-        await page.getByPlaceholder('name@example.com').fill('test@example.com')
-        await page.getByPlaceholder('••••••••').first().fill('Password123!')
-        await page.getByRole('button', { name: 'Log in' }).click()
+        await page.getByTestId('email').fill('test@example.com')
+        await page.getByTestId('password').fill('Password123!')
+        await page.getByTestId('login-submit').click()
 
         await expect(page).toHaveURL(/\/dashboard/, { timeout: 15_000 })
     })

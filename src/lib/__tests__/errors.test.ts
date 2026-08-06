@@ -7,7 +7,7 @@ import {
     vi
 } from 'vitest'
 
-import { getErrorMessage } from '@/lib/errors'
+import { getErrorDetail, getErrorMessage } from '@/lib/errors'
 
 // ==================== getErrorMessage ====================
 describe(
@@ -22,10 +22,21 @@ describe(
             'AxiosError',
             () => {
                 it(
-                    'should return data.error when present',
+                    'should return data.error[0].error when present',
                     () => {
                         const axiosErr = new AxiosError('msg')
-                        axiosErr.response = { status: 400, data: { error: 'Bad input' } } as any
+                        axiosErr.response = {
+                            status: 400,
+                            data: {
+                                error: [
+                                    {
+                                        statusType: 'Validation Error',
+                                        statusCode: 400,
+                                        error: 'Bad input'
+                                    }
+                                ]
+                            }
+                        } as any
 
                         expect(getErrorMessage(axiosErr)).toBe('Bad input')
                     })
@@ -122,5 +133,55 @@ describe(
                     () => {
                         expect(getErrorMessage({ weird: true })).toBe('An unexpected error occurred. Please try again.')
                     })
+            })
+    })
+
+// ==================== getErrorDetail ====================
+describe(
+    'getErrorDetail',
+    () => {
+        beforeEach(() => {
+            vi.clearAllMocks()
+        })
+
+        it(
+            'should return the first error detail, including statusType and property',
+            () => {
+                const axiosErr = new AxiosError('msg')
+                axiosErr.response = {
+                    status: 400,
+                    data: {
+                        error: [
+                            {
+                                statusType: 'Validation Error',
+                                statusCode: 400,
+                                error: 'Invalid email format',
+                                property: 'email'
+                            }
+                        ]
+                    }
+                } as any
+
+                expect(getErrorDetail(axiosErr)).toEqual({
+                    statusType: 'Validation Error',
+                    statusCode: 400,
+                    error: 'Invalid email format',
+                    property: 'email'
+                })
+            })
+
+        it(
+            'should return undefined when there is no error detail array',
+            () => {
+                const axiosErr = new AxiosError('msg')
+                axiosErr.response = { status: 500, data: {} } as any
+
+                expect(getErrorDetail(axiosErr)).toBeUndefined()
+            })
+
+        it(
+            'should return undefined for non-Axios errors',
+            () => {
+                expect(getErrorDetail(new Error('not axios'))).toBeUndefined()
             })
     })

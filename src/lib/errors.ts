@@ -1,8 +1,10 @@
 import { AxiosError } from 'axios'
 
+import type { ApiErrorDetail } from '@/types/responses'
+
 type ErrorResponse = {
     message?: string
-    error?: string
+    error?: ApiErrorDetail[]
 }
 
 const HTTP_ERROR_MESSAGES: Record<
@@ -31,8 +33,9 @@ export const getErrorMessage = (
         const data = error.response?.data as ErrorResponse
 
         // First, try to get specific error message
-        if (data?.error && typeof data.error === 'string') {
-            return data.error
+        const detail = data?.error?.[0]
+        if (detail?.error) {
+            return detail.error
         }
 
         if (data?.message && typeof data.message === 'string') {
@@ -65,4 +68,18 @@ export const getErrorMessage = (
 
     // Generic fallback
     return 'An unexpected error occurred. Please try again.'
+}
+
+/**
+ * Returns the raw error detail (statusType, property) from an Axios error
+ * response, for callers that need more than the display message — e.g.
+ * highlighting the offending form field via `property`.
+ */
+export const getErrorDetail = (
+    error: unknown
+): ApiErrorDetail | undefined => {
+    if (!(error instanceof AxiosError)) return undefined
+
+    const data = error.response?.data as ErrorResponse
+    return data?.error?.[0]
 }

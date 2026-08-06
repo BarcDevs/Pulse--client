@@ -9,6 +9,7 @@ export type ApiErrorDetail = {
     statusType: string
     statusCode: number
     error: string
+    property?: string
 }
 
 /** Shape of error response bodies from the server:
@@ -19,3 +20,13 @@ export type ApiErrorResponse = {
 }
 
 export type ApiResponse<T> = AxiosPromise<Response<T>>
+
+export type Paginated<T> = {
+    items: T[]
+    pagination: {
+        total: number
+        page: number
+        limit: number
+        hasMore: boolean
+    }
+}

@@ -1329,5 +1329,307 @@
       "postedAbout": "shared about {category}",
       "sharedPost": "shared an update"
     }
+  },
+  "legal": {
+    "tabs": {
+      "privacy": "Privacy",
+      "terms": "Terms"
+    },
+    "common": {
+      "backLabel": "Back",
+      "metaBar": {
+        "lastUpdated": "Last updated: ",
+        "effectiveIn": "Effective in: ",
+        "effectiveInValue": "Global"
+      },
+      "toc": {
+        "onThisPage": "On this page"
+      },
+      "footerCta": {
+        "question": "Questions about this document?",
+        "description": "Our support team responds to every legal inquiry within 30 days.",
+        "contactSupport": "Contact support",
+        "emailLabel": "Email {email}",
+        "downloadPdf": "Download PDF"
+      }
+    },
+    "privacy": {
+      "kicker": "Privacy Policy",
+      "title": "Your privacy matters.",
+      "subtitle": "Learn what information we collect, how we use it, and how we help protect it while supporting your recovery journey.",
+      "sections": [
+        {
+          "title": "Overview",
+          "body": [
+            "Pulse is built to support your recovery while respecting your privacy. We collect only the information needed to provide our services, help you track your progress, and improve your experience. We never sell your personal information.",
+            {
+              "callout": "In short: Your recovery data belongs to you. We use it to provide Pulse and only share it when necessary or with your permission."
+            }
+          ]
+        },
+        {
+          "title": "Information we collect",
+          "body": [
+            "We collect a few categories of information to provide Pulse:",
+            {
+              "table": [
+                [
+                  "Category",
+                  "Examples",
+                  "Purpose"
+                ],
+                [
+                  "Account",
+                  "Name, email address, encrypted password",
+                  "Account access and authentication"
+                ],
+                [
+                  "Recovery data",
+                  "Mood, pain, energy, activities, reflections, goals",
+                  "Track your recovery and personalize your experience"
+                ],
+                [
+                  "Technical data",
+                  "IP address, browser, device type, app version",
+                  "Security, reliability, and troubleshooting"
+                ]
+              ]
+            },
+            "We only collect information that is relevant to providing Pulse. If a future feature requires additional permissions, we will always ask for your consent first."
+          ]
+        },
+        {
+          "title": "How we use your information",
+          "body": [
+            "We use your information to:",
+            {
+              "list": [
+                {
+                  "label": "Provide Pulse",
+                  "text": "Display your check-ins, goals, progress, and recovery history."
+                },
+                {
+                  "label": "Personalize your experience",
+                  "text": "Generate insights and tailor features based on your recovery activity."
+                },
+                {
+                  "label": "Keep the service secure",
+                  "text": "Protect accounts, detect suspicious activity, and maintain platform reliability."
+                },
+                {
+                  "label": "Improve Pulse",
+                  "text": "Understand how features are used so we can continue improving the product."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Sharing your information",
+          "body": [
+            "We never sell your personal information. We only share it in limited situations:",
+            {
+              "list": [
+                {
+                  "label": "With you",
+                  "text": "You can view and manage your own information anytime."
+                },
+                {
+                  "label": "With trusted service providers",
+                  "text": "We work with carefully selected providers who help us securely operate Pulse."
+                },
+                {
+                  "label": "When required by law",
+                  "text": "We may disclose information if required by applicable laws or legal processes."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Keeping your information secure",
+          "body": [
+            "Protecting your information is one of our priorities.",
+            {
+              "list": [
+                {
+                  "label": "Encryption",
+                  "text": "Information is protected during transmission and storage using industry-standard encryption."
+                },
+                {
+                  "label": "Access controls",
+                  "text": "Access to sensitive information is limited to authorized personnel when necessary."
+                },
+                {
+                  "label": "Account protection",
+                  "text": "We use secure authentication and monitoring to help protect your account."
+                },
+                {
+                  "label": "Continuous improvement",
+                  "text": "We regularly review and improve our security practices."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Your choices and rights",
+          "body": [
+            "Depending on where you live, you may have rights regarding your personal information. We aim to give every user clear control over their data.",
+            {
+              "list": [
+                {
+                  "label": "Access",
+                  "text": "View and manage your personal information within your account."
+                },
+                {
+                  "label": "Update",
+                  "text": "Edit your profile and recovery information whenever you need."
+                },
+                {
+                  "label": "Delete",
+                  "text": "Request deletion of your account and associated personal information."
+                },
+                {
+                  "label": "Questions",
+                  "text": "Contact us anytime if you have questions about your privacy."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Data retention",
+          "body": [
+            "We keep your information only for as long as it is needed to provide Pulse, comply with legal obligations, and maintain the integrity of our services. When your account is deleted, your personal information is removed according to our data retention policies."
+          ]
+        },
+        {
+          "title": "Children's privacy",
+          "body": [
+            "Pulse is not intended for children under the minimum age required by applicable law. If you believe a child has created an account, please contact us and we will investigate and take appropriate action."
+          ]
+        },
+        {
+          "title": "Updates to this policy",
+          "body": [
+            "We may update this Privacy Policy from time to time. If we make significant changes, we will notify you through the app or by email when appropriate. The latest version will always be available on this page."
+          ]
+        }
+      ]
+    },
+    "terms": {
+      "kicker": "Terms of Service",
+      "title": "Terms for using Pulse.",
+      "subtitle": "These Terms explain how you can use Pulse and what you can expect from us in return.",
+      "sections": [
+        {
+          "title": "Agreement",
+          "body": [
+            "By creating an account or using Pulse, you agree to these Terms and our Privacy Policy. If you do not agree, please do not use the service.",
+            {
+              "callout": "Pulse supports your recovery journey, but it does not replace professional medical or mental health care."
+            }
+          ]
+        },
+        {
+          "title": "Eligibility",
+          "body": [
+            "You must meet the minimum legal age required in your country to use Pulse. By creating an account, you confirm that you are legally allowed to enter into these Terms."
+          ]
+        },
+        {
+          "title": "Your account",
+          "body": [
+            "You are responsible for keeping your account secure and for any activity that takes place using it.",
+            {
+              "list": [
+                {
+                  "label": "One account per person",
+                  "text": "Please don't share your account or pretend to be someone else."
+                },
+                {
+                  "label": "Keep your information accurate",
+                  "text": "Provide accurate account information and keep it up to date."
+                },
+                {
+                  "label": "Account security",
+                  "text": "Choose a strong password and contact us if you believe your account has been compromised."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Medical disclaimer",
+          "body": [
+            "Pulse provides tools for tracking recovery, reflecting on your progress, and connecting with others. The information provided by Pulse, including AI-generated insights, is for informational purposes only and should not be considered medical advice, diagnosis, or treatment.",
+            "Always seek advice from a qualified healthcare professional regarding medical decisions or concerns."
+          ]
+        },
+        {
+          "title": "Community guidelines",
+          "body": [
+            "Our community is built on kindness, respect, and support. By participating, you agree to:",
+            {
+              "list": [
+                {
+                  "label": "Treat others respectfully",
+                  "text": "Do not harass, threaten, discriminate against, or intentionally harm other members."
+                },
+                {
+                  "label": "Respect privacy",
+                  "text": "Do not share another person's personal information or content without permission."
+                },
+                {
+                  "label": "Share experiences, not medical advice",
+                  "text": "You're welcome to share your own journey, but avoid presenting personal opinions as professional medical guidance."
+                },
+                {
+                  "label": "Report inappropriate content",
+                  "text": "Help keep the community safe by reporting content that violates these guidelines."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Your content",
+          "body": [
+            "You retain ownership of the content you create in Pulse, including check-ins, reflections, goals, and community posts. By using the service, you grant us the limited rights necessary to store, display, and process your content in order to provide Pulse."
+          ]
+        },
+        {
+          "title": "Subscriptions",
+          "body": [
+            "Pulse is currently available free of charge. As the platform evolves, we may introduce new services or partnerships to help support and sustain the platform. If this happens, we will clearly communicate any changes before they take effect."
+          ]
+        },
+        {
+          "title": "Account termination",
+          "body": [
+            "You may delete your account at any time. We may suspend or terminate accounts that seriously violate these Terms or threaten the safety of our community."
+          ]
+        },
+        {
+          "title": "Limitation of liability",
+          "body": [
+            "To the fullest extent permitted by applicable law, Pulse is provided on an 'as is' and 'as available' basis. We are not responsible for indirect or consequential damages resulting from your use of the service."
+          ]
+        },
+        {
+          "title": "Changes to these Terms",
+          "body": [
+            "We may update these Terms from time to time. If we make significant changes, we will notify you through the app or by email when appropriate."
+          ]
+        },
+        {
+          "title": "Contact",
+          "body": [
+            "If you have any questions about these Terms, please contact our support team."
+          ]
+        }
+      ]
+    }
   }
 }
