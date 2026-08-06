@@ -1,4 +1,4 @@
-FROM node:22-alpine AS base
+FROM node:24-alpine AS base
 
 # ── deps ──────────────────────────────────────────────────────────────────────
 FROM base AS deps
@@ -47,6 +47,7 @@ RUN addgroup --system --gid 1001 nodejs && \
 
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+COPY --from=builder --chown=nextjs:nodejs /app/public ./public
 
 USER nextjs
 
