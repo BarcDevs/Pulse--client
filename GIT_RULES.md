@@ -20,7 +20,7 @@
 - Conventional commits: `feat`, `fix`, `docs`, `style`, `rfc`, `test`, `chore`. Breaking changes: `feat!:`
 - Think on what the current commit job is before deciding if it either `feat`, `rfc`, `fix`, etc and REPORT BACK your reasoning - Don't just mechanically label as `feat` for everything.
 - *IMPORTANT:* refactor job - always name `rfc` instead of `refactor`!
-- If you're not sure, read `"C:\Users\66bar\OneDrive\documents\Programming\conventional-commits-cheatsheet.md"` for more info
+- If you're not sure, read `../../.resources/conventional-commits-cheatsheet.md` for more info
 - Atomic commits — one change or fix per commit
 - Claude's plans must never be committed
 - *IMPORTANT:* Use /commit skill only when user explicitly invokes it — never on plain "commit"
