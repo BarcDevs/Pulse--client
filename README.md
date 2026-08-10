@@ -53,7 +53,7 @@ Lightweight, supportive insights generated from check-in patterns help detect tr
 | **Forms** | react-hook-form, Zod                                  |
 | **HTTP** | Axios with CSRF interceptors                          |
 | **State** | TanStack Query, Next.js Context                       |
-| **Deployment** | Vercel (current), AWS (future production)             |
+| **Deployment** | AWS EC2+Docker (production, auto-deploy CI/CD), Vercel (preview/staging) |
 
 **Note**: This is a frontend-only repository. The backend API runs separately.
 
@@ -183,7 +183,11 @@ Both methods use the same session system:
 
 ## Deployment
 
-Currently deployed on **Vercel** at https://pulse-rehab.vercel.app with automatic builds from main branch. Future production infrastructure planned on **AWS**.
+Production runs on **AWS EC2+Docker** at https://pulserehab.app, on a separate instance from the server. The client is the sole public front door — `next.config.mjs` proxies `/api/:path*` to the server over the private VPC.
+
+Every push to `main` that passes CI auto-deploys via `.github/workflows/deploy.yml`: build + push image to ECR, then a blue/green container swap on the EC2 instance over AWS SSM (`scripts/deploy/ec2-redeploy.sh`) — no SSH, no downtime. Manual trigger: `gh workflow run deploy.yml`.
+
+**Vercel** still deploys at https://pulse-rehab.vercel.app in parallel, for preview/staging convenience — it is not the production origin.
 
 ---
 
