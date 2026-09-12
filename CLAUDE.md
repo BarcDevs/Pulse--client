@@ -30,8 +30,7 @@ Live at https://pulserehab.app — AWS EC2+Docker, separate instance from the se
 Alongside auto-memory (cross-session, not repo-visible), this repo tracks two parallel logs any
 collaborator/agent can read: `decisions/` (architecture/technical decisions, with reasoning) and
 `corrections/` (corrections or confirmed preferences given to Claude during sessions). Each is
-shaped `index.md` + per-topic files + `archive/<topic>.md` for superseded entries. Full spec:
-`~/Claude/work/projects/RULES.md`.
+shaped `index.md` + per-topic files + `archive/<topic>.md` for superseded entries.
 **Read both `decisions/index.md` and `corrections/index.md` at the start of every new session** —
 they are load-bearing context, same tier as this file. Load a topic file only when the task
 matches it.
