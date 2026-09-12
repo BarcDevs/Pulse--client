@@ -20,6 +20,7 @@
 - Conventional commits: `feat`, `fix`, `docs`, `style`, `rfc`, `test`, `chore`. Breaking changes: `feat!:`
 - Think on what the current commit job is before deciding if it either `feat`, `rfc`, `fix`, etc and REPORT BACK your reasoning - Don't just mechanically label as `feat` for everything.
 - *IMPORTANT:* refactor job - always name `rfc` instead of `refactor`!
+- Hiding/gating unimplemented UI behind a feature flag = `chore`, not `feat`. Restructuring/redesigning existing UI (even adding new sub-components as part of it) = `rfc`, not `feat` — `feat` implies net-new user-visible capability, a redesign reorganizes what already exists. Wiring an already-existing data field into an edit form is `rfc`, not `feat`, if the field already existed in view mode.
 - If you're not sure, read `"C:\Users\66bar\OneDrive\documents\Programming\conventional-commits-cheatsheet.md"` for more info
 - Atomic commits — one change or fix per commit
 - Claude's plans must never be committed
