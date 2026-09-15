@@ -114,8 +114,8 @@ Behavioral intelligence systems require medical/legal caution, behavioral tuning
 | ~~10~~ | ~~`src/components/progress/cards/StreakBars.tsx`~~ | ~~—~~ | ~~**[Bug]** Optimistic streak bar for a new streak (after breaking previous streak) shows previous streak's color instead of active streak color~~ |
 | ~~7~~ | ~~`src/components/goals/`~~ | ~~—~~ | ~~**[Medium, Bug]** Goal RTL layout broken (Hebrew)~~ |
 | ~~8~~ | ~~`src/components/goals/`~~ | ~~—~~ | ~~**[Low, Bug]** Goal due date and graphs display incorrectly in Hebrew locale~~ |
-| 11 | `src/components/dashboard/charts/HistoryChart.tsx` | — | **[Low]** Color null/no-data days (no dashed line) in graph grey |
-| 12 | `src/components/progress/cards/StreakCard.tsx` | — | **[Low]** Add hover effect to current streak stat |
+| ~~11~~ | ~~`src/components/dashboard/charts/HistoryChart.tsx`~~ | ~~—~~ | ~~**[Low]** Color null/no-data days (no dashed line) in graph grey~~ |
+| ~~12~~ | ~~`src/components/progress/cards/StreakCard.tsx`~~ | ~~—~~ | ~~**[Low]** Add hover effect to current streak stat~~ |
 | ~~13~~ | ~~`src/context/CheckInContext.tsx`~~ | ~~—~~ | ~~**[Bug]** Streak chart still not updating optimistically after check-in submit — bars don't reflect new streak until refetch~~ |
 | ~~14~~ | ~~`src/constants/defaults.ts`, `BasicInfoView.tsx`~~ | ~~—~~ | ~~**[Bug]** Hebrew locale shows date as month-then-day instead of day-then-month (reversed order)~~ |
 
@@ -146,5 +146,6 @@ Behavioral intelligence systems require medical/legal caution, behavioral tuning
 | # | Task | Priority | Note |
 |---|------|----------|------|
 | ~~1~~ | ~~Buy a domain~~ | ~~Medium~~ | ~~Done — `pulserehab.app`~~ |
-| 2 | Deploy MVP + monitor | High | In Progress — wire up monitoring tools |
+| ~~2~~ | ~~Deploy MVP + monitor~~ | ~~High~~ | ~~Done~~ |
 | 3 | Wire up `NEXT_PUBLIC_SENTRY_DSN` for the EC2 client deploy | Medium | Skipped for the initial AWS deploy — get client working end-to-end first, then pull the real DSN (likely only set in Vercel's env config today) and set it on the EC2 container |
+| 4 | **[Bug]** 500/ECONNREFUSED (server down/network error) shows raw axios error message in English, ignoring locale — should show a proper translated "offline/network error" state | Medium | Seen when backend unreachable; surfaces as untranslated `Request failed with status code 500` even in Hebrew locale |

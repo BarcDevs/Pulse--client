@@ -69,7 +69,7 @@ const enrichWithBridges = (
                             data[lastRealIdx][s.dataKey]
                     }
                     enrichedData[i][key] = val
-                    bridgeKeys.push({ key, color: s.color })
+                    bridgeKeys.push({ key, color: 'var(--muted-foreground)' })
                 }
                 lastRealIdx = i
                 inGap = false
