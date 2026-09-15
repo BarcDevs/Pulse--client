@@ -29,7 +29,7 @@ export const NavLinks = ({
                 {t(landingLocales.nav.howItWorks)}
             </Link>
             <Link
-                href={ROUTES.COMMUNITY}
+                href={ROUTES.loginWithRedirect(ROUTES.COMMUNITY)}
                 className={linkCn}
                 onClick={onLinkClickAction}
             >
