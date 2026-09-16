@@ -148,4 +148,5 @@ Behavioral intelligence systems require medical/legal caution, behavioral tuning
 | ~~1~~ | ~~Buy a domain~~ | ~~Medium~~ | ~~Done — `pulserehab.app`~~ |
 | ~~2~~ | ~~Deploy MVP + monitor~~ | ~~High~~ | ~~Done~~ |
 | 3 | Wire up `NEXT_PUBLIC_SENTRY_DSN` for the EC2 client deploy | Medium | Skipped for the initial AWS deploy — get client working end-to-end first, then pull the real DSN (likely only set in Vercel's env config today) and set it on the EC2 container |
-| 4 | **[Bug]** 500/ECONNREFUSED (server down/network error) shows raw axios error message in English, ignoring locale — should show a proper translated "offline/network error" state | Medium | Seen when backend unreachable; surfaces as untranslated `Request failed with status code 500` even in Hebrew locale |
+| 4 | **[Bug]** Raw axios error message (e.g. "Request failed with status code 500") shown in English regardless of active locale | Medium | Not pulled from translations — same class of bug as the ErrorBanner/ErrorStateCard/ErrorDisplay hardcoded-English issue already fixed |
+| 5 | **[Bug]** ECONNREFUSED / 500 from backend being unreachable should render a dedicated "network error / offline" state, not the generic auth/query error | Medium | Currently surfaces as a raw failed-request error instead of a distinct offline UI |
