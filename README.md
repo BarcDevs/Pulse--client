@@ -53,7 +53,7 @@ Lightweight, supportive insights generated from check-in patterns help detect tr
 | **Forms** | react-hook-form, Zod                                  |
 | **HTTP** | Axios with CSRF interceptors                          |
 | **State** | TanStack Query, Next.js Context                       |
-| **Deployment** | Vercel (current), AWS (future production)             |
+| **Deployment** | AWS EC2 + Docker                                      |
 
 **Note**: This is a frontend-only repository. The backend API runs separately.
 
@@ -183,7 +183,7 @@ Both methods use the same session system:
 
 ## Deployment
 
-Currently deployed on **Vercel** at https://pulse-rehab.vercel.app with automatic builds from main branch. Future production infrastructure planned on **AWS**.
+Production runs on **AWS EC2 + Docker**, public at [pulserehab.app](https://pulserehab.app), with automatic builds from `main`.
 
 ---
 
@@ -193,12 +193,12 @@ Every push to `development` auto-deploys a staging build, isolated from producti
 
 | Property | Value |
 |---|---|
-| URL | https://pulse-git-development-bar-cohens-projects.vercel.app |
+| URL | [staging.pulserehab.app](https://staging.pulserehab.app) |
 | Branch | `development` |
-| Backend | [Pulse--server-staging](https://github.com/BarcDevs/Pulse--server) on Render (see [server README](https://github.com/BarcDevs/Pulse--server#staging-environment)) |
+| Host | Vercel (production runs on AWS — staging stays on Vercel) |
 | Vercel Authentication | Disabled (publicly reachable) |
 
-**Branch-scoped env vars** — `NEXT_PUBLIC_SERVER_URL` is overridden for `preview` + `development` branch only (`vercel env ls preview`), pointing at the staging server. All other preview branches and production fall back to the default value.
+**Branch-scoped env vars** — `NEXT_PUBLIC_SERVER_URL` is overridden for `preview` + `development` branch only (`vercel env ls preview`), pointing at the staging server. All other preview branches fall back to the default value.
 
 **Gotcha:** `NEXT_PUBLIC_*` vars are inlined into the JS bundle at build time. Adding/changing one does **not** affect already-deployed builds — trigger a rebuild:
 ```bash
