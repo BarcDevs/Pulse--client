@@ -20,7 +20,7 @@ Server: `../pulse--server`.
 **Before coding:** State assumptions. Ask when uncertain (95% rule). Surface tradeoffs. Don't implement until 95% confident — ask until there.
 **Simplicity:** Minimum code that solves the problem. No extra features, abstractions, flexibility, or impossible-scenario handling. 200 lines that could be 50 → rewrite.
 **Surgical:** Touch only what you must. Don't improve adjacent code. Match existing style. Mention unrelated dead code — don't delete it. Remove only imports/vars YOUR changes made unused.
-**Learn from mistakes:** Log any correction or confirmed non-obvious choice immediately, same turn — to `../pulse--server/corrections/` (or `decisions/`), never Claude Code's own cross-session memory. Don't wait to be asked or reminded — a repeated pushback on the same thing within a session is itself a correction to log. End the turn with "logged: X" or "nothing to log." Full log format/rules: `~/Claude/work/projects/.sources/RULES.md` § Context Log. Check `corrections/index.md` before similar work.
+**Learn from mistakes:** Log any correction or confirmed non-obvious choice immediately, same turn — to `corrections/log.md` (or `decisions/log.md`) in **this repo**, never a sibling repo and never Claude Code's own cross-session memory. Don't wait to be asked or reminded — a repeated pushback on the same thing within a session is itself a correction to log. End the turn with "logged: X" or "nothing to log." Full log format/rules (topic-split once it grows): `~/Claude/work/projects/.sources/RULES.md` § Context Log. Check `corrections/log.md` before similar work.
 **Goal-driven:** Define success criteria before starting. For multi-step tasks, state a plan: `1. [step] → verify: [check]`. Loop until verified.
 
 ## Docs Sync
