@@ -118,6 +118,9 @@ Behavioral intelligence systems require medical/legal caution, behavioral tuning
 | ~~12~~ | ~~`src/components/progress/cards/StreakCard.tsx`~~ | ~~—~~ | ~~**[Low]** Add hover effect to current streak stat~~ |
 | ~~13~~ | ~~`src/context/CheckInContext.tsx`~~ | ~~—~~ | ~~**[Bug]** Streak chart still not updating optimistically after check-in submit — bars don't reflect new streak until refetch~~ |
 | ~~14~~ | ~~`src/constants/defaults.ts`, `BasicInfoView.tsx`~~ | ~~—~~ | ~~**[Bug]** Hebrew locale shows date as month-then-day instead of day-then-month (reversed order)~~ |
+| ~~15~~ | ~~`messages/he-IL.json`~~ | ~~`progress.stats.streak.personalBest`~~ | ~~**[Bug]** Dash next to `{days}` number broke Hebrew bidi text ordering ("שיא אישי - 1 ימים" rendered reversed) — changed dash to colon~~ |
+| ~~16~~ | ~~`src/components/shared/charts/TrendChart.tsx`, `ChartTooltip.tsx`~~ | ~~—~~ | ~~**[Bug]** No-data days (leading/trailing, not between two real check-ins) weren't visually distinguished from real data — added grey `ReferenceArea` fill; also fixed tooltip leaking internal `_tail_`/`_bridge_` keys~~ |
+| ~~17~~ | ~~`src/hooks/queries/useCheckInChartData.ts`~~ | ~~—~~ | ~~**[Bug]** Chart data array was reversed for Hebrew locale, making dates run newest→oldest left-to-right inconsistently with English — removed reversal, chronological order (oldest→newest, left-to-right) is now locale-independent~~ |
 
 ---
 
