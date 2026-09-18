@@ -61,14 +61,12 @@ const enrichWithBridges = (
             const isReal = val !== null && val !== undefined
 
             if (isReal) {
-                if (inGap && lastRealIdx !== null) {
+                // Skip bridging from the off-screen virtual anchor (-1) —
+                // it has no visible point to draw the dashed line from
+                if (inGap && lastRealIdx !== null && lastRealIdx !== -1) {
                     const key = `_bridge_${s.dataKey}_${bridgeIdx++}`
-                    if (lastRealIdx === -1) {
-                        enrichedData[0][key] = prevVal
-                    } else {
-                        enrichedData[lastRealIdx][key] =
-                            data[lastRealIdx][s.dataKey]
-                    }
+                    enrichedData[lastRealIdx][key] =
+                        data[lastRealIdx][s.dataKey]
                     enrichedData[i][key] = val
                     bridgeKeys.push({ key, color: s.color })
                 }
