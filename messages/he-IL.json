@@ -455,7 +455,7 @@
       "streak": {
         "label": "רצף נוכחי",
         "unit": "ימים",
-        "personalBest": "שיא אישי - {days} ימים",
+        "personalBest": "שיא אישי: {days} ימים",
         "last14Days": "מבט על השבועיים האחרונים",
         "checkedIn": "{count}/14 עדכונים"
       },

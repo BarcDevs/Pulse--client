@@ -11,8 +11,6 @@ import { buildWeeklyAverages } from '@/lib/checkIn/buildWeeklyAverages'
 import { fillHistoryMonthNulls } from '@/lib/checkIn/fillHistoryMonthNulls'
 import { fillHistoryWeekNulls } from '@/lib/checkIn/fillHistoryWeekNulls'
 
-import { reverseChartData } from '@/utils/chart'
-
 // Weekly fetches 14 to have pre-window data available for bridge anchoring
 const PERIOD_FETCH: Record<TimePeriod, number> = {
     weekly: 14,
@@ -57,11 +55,8 @@ export const useCheckInChartData = (period: TimePeriod) => {
         )
     }
 
-    const chartData = isRtl
-        ? reverseChartData(filled) : filled
-
     return {
-        chartData,
+        chartData: filled,
         isLoading,
         isError,
         previousPoint

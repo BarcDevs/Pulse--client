@@ -33,7 +33,7 @@ export const ChartTooltip = ({
 
     const realItems = (payload ?? []).filter(p => {
         const name = String(p.name)
-        return !name.startsWith('_bridge_') && name !== '__hover'
+        return !name.startsWith('_bridge_') && !name.startsWith('_tail_') && name !== '__hover'
     })
     const hasData = realItems.some(p => p.value !== null
         && p.value !== undefined && p.value !== '')
