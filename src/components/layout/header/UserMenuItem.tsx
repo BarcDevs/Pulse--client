@@ -18,12 +18,12 @@ export const UserMenuItem = ({
     item
 }: UserMenuItemProps) => {
     const router = useRouter()
-    const { logoutAsync } = useLogout()
+    const logout = useLogout()
     const t = useTranslations()
     const isLogout = item.href === '/logout'
 
     const handleClick = isLogout
-        ? () => logoutAsync()
+        ? () => logout.actions.logoutAsync()
         : () => router.push(item.href)
 
     return (

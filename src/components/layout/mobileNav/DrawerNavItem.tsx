@@ -22,7 +22,7 @@ export const DrawerNavItem = ({
     onClose
 }: DrawerNavItemProps) => {
     const t = useTranslations()
-    const { logoutAsync } = useLogout()
+    const logout = useLogout()
     const Icon = item.icon
     const isLogout = item.href === ROUTES.LOGOUT
 
@@ -47,7 +47,7 @@ export const DrawerNavItem = ({
     if (isLogout) {
         const handleLogout = () => {
             onClose()
-            void logoutAsync()
+            void logout.actions.logoutAsync()
         }
 
         return (

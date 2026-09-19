@@ -21,7 +21,7 @@ export const NavButton = ({
     const pathname = usePathname()
     const router = useRouter()
     const t = useTranslations()
-    const { logout } = useLogout()
+    const logout = useLogout()
 
     const isActive = pathname === item.href
         || pathname.startsWith(item.href + '/')
@@ -29,7 +29,7 @@ export const NavButton = ({
     const isLogout = item.href === '/logout'
 
     const handleNavigation = () =>
-        isLogout ? logout() : router.push(item.href)
+        isLogout ? logout.actions.logout() : router.push(item.href)
 
     return (
         <Button

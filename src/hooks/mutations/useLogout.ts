@@ -31,11 +31,15 @@ export const useLogout = () => {
     })
 
     return {
-        logout: mutation.mutate,
-        logoutAsync: mutation.mutateAsync,
-        isPending: mutation.isPending,
-        isError: mutation.isError,
-        error: mutation.error,
-        status: mutation.status
+        actions: {
+            logout: mutation.mutate,
+            logoutAsync: mutation.mutateAsync
+        },
+        status: {
+            value: mutation.status,
+            isPending: mutation.isPending,
+            isError: mutation.isError,
+            error: mutation.error
+        }
     }
 }
