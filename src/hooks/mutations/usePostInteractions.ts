@@ -123,12 +123,16 @@ export const usePostInteractions = ({
     }
 
     return {
-        liked,
-        likeCount,
-        saved,
-        toggleLike,
-        toggleSave,
-        isLiking: likeMutation.isPending,
-        isSaving: saveMutation.isPending
+        like: {
+            isActive: liked,
+            count: likeCount,
+            isPending: likeMutation.isPending,
+            toggle: toggleLike
+        },
+        save: {
+            isActive: saved,
+            isPending: saveMutation.isPending,
+            toggle: toggleSave
+        }
     }
 }

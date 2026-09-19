@@ -42,13 +42,7 @@ export const PostDetailActions = ({
     const { deletePost } = useForumPostMutations({ postId })
     const { share, shareCount } =
         useSharePost(postId, post?.shareCount ?? 0)
-    const {
-        liked,
-        likeCount,
-        saved,
-        toggleLike,
-        toggleSave
-    } = usePostInteractions({
+    const interactions = usePostInteractions({
         postId,
         initialLikes: post?._count?.likes ?? 0
     })
@@ -64,10 +58,10 @@ export const PostDetailActions = ({
 
     const solidarityText = t(
         communityLocales.postActions.solidarity,
-        { count: likeCount }
+        { count: interactions.like.count }
     )
 
-    const saveText = saved
+    const saveText = interactions.save.isActive
         ? t(communityLocales.posts.saved)
         : t(communityLocales.posts.save)
 
@@ -97,10 +91,10 @@ export const PostDetailActions = ({
             <PostActionButton
                 icon={Heart}
                 text={solidarityText}
-                count={likeCount}
-                isActive={liked}
+                count={interactions.like.count}
+                isActive={interactions.like.isActive}
                 activeClassName={'bg-rose-100 text-rose-600 hover:bg-rose-100 hover:text-rose-600 rounded-full px-3'}
-                onClick={toggleLike}
+                onClick={interactions.like.toggle}
             />
             <PostActionButton
                 icon={Share2}
@@ -111,8 +105,8 @@ export const PostDetailActions = ({
             <PostActionButton
                 icon={Bookmark}
                 text={saveText}
-                isActive={saved}
-                onClick={toggleSave}
+                isActive={interactions.save.isActive}
+                onClick={interactions.save.toggle}
             />
             {isPostOwner && (
                 <div className={'absolute top-3 right-3'}>
