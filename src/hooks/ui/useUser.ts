@@ -14,11 +14,7 @@ type UseUserReturn = {
 }
 
 export const useUser = (): UseUserReturn => {
-    const {
-        user,
-        isLoading: userLoading,
-        error: userError
-    } = useGetMe()
+    const me = useGetMe()
 
     const {
         profile,
@@ -26,15 +22,15 @@ export const useUser = (): UseUserReturn => {
         isError: profileError
     } = useProfile()
 
-    const completeUser = user && profile
-        ? { ...user, profile }
-        : user
+    const completeUser = me.user && profile
+        ? { ...me.user, profile }
+        : me.user
 
     return {
         user: completeUser ?? null,
-        isLoading: userLoading || profileLoading,
-        isError: !!userError || profileError,
-        error: userError,
+        isLoading: me.status.isLoading || profileLoading,
+        isError: !!me.status.error || profileError,
+        error: me.status.error,
         isAuthenticated: !!completeUser
     }
 }
