@@ -32,10 +32,14 @@ export const useProfile = (
 
     return {
         profile: query.data ?? null,
-        isLoading: query.isLoading,
-        isError: query.isError,
-        error: query.error,
-        refetch: query.refetch,
-        status: query.status
+        status: {
+            value: query.status,
+            isLoading: query.isLoading,
+            isError: query.isError,
+            error: query.error
+        },
+        actions: {
+            refetch: query.refetch
+        }
     }
 }

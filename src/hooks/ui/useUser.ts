@@ -16,20 +16,16 @@ type UseUserReturn = {
 export const useUser = (): UseUserReturn => {
     const me = useGetMe()
 
-    const {
-        profile,
-        isLoading: profileLoading,
-        isError: profileError
-    } = useProfile()
+    const profileQuery = useProfile()
 
-    const completeUser = me.user && profile
-        ? { ...me.user, profile }
+    const completeUser = me.user && profileQuery.profile
+        ? { ...me.user, profile: profileQuery.profile }
         : me.user
 
     return {
         user: completeUser ?? null,
-        isLoading: me.status.isLoading || profileLoading,
-        isError: !!me.status.error || profileError,
+        isLoading: me.status.isLoading || profileQuery.status.isLoading,
+        isError: !!me.status.error || profileQuery.status.isError,
         error: me.status.error,
         isAuthenticated: !!completeUser
     }
