@@ -15,12 +15,7 @@ import { useLanguageSwitcher } from '@/hooks/ui/useLanguageSwitcher'
 import { cn } from '@/lib/utils'
 
 export const LanguageSwitcher = () => {
-    const {
-        locale,
-        currentLanguage,
-        languageList,
-        changeLanguage
-    } = useLanguageSwitcher()
+    const languageSwitcher = useLanguageSwitcher()
 
     return (
         <DropdownMenu>
@@ -31,20 +26,20 @@ export const LanguageSwitcher = () => {
                     className={'gap-2 border data-[state=open]:border-primary no-focus'}
                 >
                     <Globe className={'h-4 w-4'}/>
-                    <span>{currentLanguage?.shortCode}</span>
+                    <span>{languageSwitcher.language.currentLanguage?.shortCode}</span>
                 </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent
                 align={'end'}
                 className={'bg-surface-page'}
             >
-                {languageList.map((lang) => {
-                    const isActive = locale === lang.code
+                {languageSwitcher.language.languageList.map((lang) => {
+                    const isActive = languageSwitcher.language.locale === lang.code
 
                     return (
                         <DropdownMenuItem
                             key={lang.code}
-                            onClick={() => changeLanguage(lang.code)}
+                            onClick={() => languageSwitcher.switching.changeLanguage(lang.code)}
                             className={cn(
                                 'cursor-pointer flex items-center gap-3 px-3 py-2 rounded-sm',
                                 isActive

@@ -18,12 +18,7 @@ import { settingsLocales } from '@/locales/settingsLocales'
 
 export const LanguageSelector = () => {
     const t = useTranslations()
-    const {
-        locale,
-        currentLanguage,
-        languageList,
-        changeLanguage
-    } = useLanguageSwitcher()
+    const languageSwitcher = useLanguageSwitcher()
 
     return (
         <div className={'flex items-center justify-between'}>
@@ -41,15 +36,15 @@ export const LanguageSelector = () => {
                         variant={'outline'}
                         className={'gap-2'}
                     >
-                        {currentLanguage?.nativeName ?? locale}
+                        {languageSwitcher.language.currentLanguage?.nativeName ?? languageSwitcher.language.locale}
                         <ChevronDown className={'h-4 w-4 opacity-50'}/>
                     </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align={'end'}>
-                    {languageList.map((lang) => (
+                    {languageSwitcher.language.languageList.map((lang) => (
                         <DropdownMenuItem
                             key={lang.code}
-                            onClick={() => changeLanguage(lang.code)}
+                            onClick={() => languageSwitcher.switching.changeLanguage(lang.code)}
                         >
                             {lang.nativeName}
                         </DropdownMenuItem>
