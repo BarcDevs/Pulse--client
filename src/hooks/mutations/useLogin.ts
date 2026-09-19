@@ -30,11 +30,15 @@ export const useLogin = () => {
     })
 
     return {
-        login: mutation.mutate,
-        loginAsync: mutation.mutateAsync,
-        isPending: mutation.isPending,
-        isError: mutation.isError,
-        error: mutation.error,
-        status: mutation.status
+        actions: {
+            login: mutation.mutate,
+            loginAsync: mutation.mutateAsync
+        },
+        status: {
+            value: mutation.status,
+            isPending: mutation.isPending,
+            isError: mutation.isError,
+            error: mutation.error
+        }
     }
 }
