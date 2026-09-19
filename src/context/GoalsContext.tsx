@@ -82,16 +82,7 @@ const GoalsStateProvider = ({
 }: GoalsStateProviderProps) => {
     const [isPending, startTransition] = useTransition()
     const t = useTranslations()
-    const {
-        createGoal,
-        updateGoal,
-        activateGoal,
-        pauseGoal,
-        abandonGoal,
-        reopenGoal,
-        restoreGoal,
-        deleteGoal
-    } = useGoalMutations()
+    const goalMutations = useGoalMutations()
 
     const tempIdRef = useRef(0)
 
@@ -138,7 +129,7 @@ const GoalsStateProvider = ({
                 goal: tempGoal
             })
             await withOptimisticToast({
-                action: createGoal.mutateAsync(data).then((realGoal) => {
+                action: goalMutations.goal.create.mutateAsync(data).then((realGoal) => {
                     addOptimistic({
                         type: 'replace',
                         tempId,
@@ -164,7 +155,7 @@ const GoalsStateProvider = ({
                 partial: data
             })
             await withOptimisticToast({
-                action: updateGoal.mutateAsync({
+                action: goalMutations.goal.update.mutateAsync({
                     goalId,
                     data
                 }).then((realGoal) => {
@@ -191,7 +182,7 @@ const GoalsStateProvider = ({
                 goalId
             })
             await withOptimisticToast({
-                action: deleteGoal.mutateAsync(goalId),
+                action: goalMutations.goal.delete.mutateAsync(goalId),
                 successMsg: t(goalsLocales.toasts.deleted),
                 errorMsg: t(goalsLocales.toasts.deleteFailed),
                 retryLabel: t(globalLocales.shared.retry),
@@ -234,31 +225,31 @@ const GoalsStateProvider = ({
     }
 
     const handleActivateGoal = (goalId: string): Promise<void> =>
-        handleStatusChange(goalId, GoalStatus.ACTIVE, activateGoal, {
+        handleStatusChange(goalId, GoalStatus.ACTIVE, goalMutations.goal.activate, {
             successMsg: t(goalsLocales.toasts.activated),
             errorMsg: t(goalsLocales.toasts.activateFailed)
         })
 
     const handlePauseGoal = (goalId: string): Promise<void> =>
-        handleStatusChange(goalId, GoalStatus.PAUSED, pauseGoal, {
+        handleStatusChange(goalId, GoalStatus.PAUSED, goalMutations.goal.pause, {
             successMsg: t(goalsLocales.toasts.paused),
             errorMsg: t(goalsLocales.toasts.pauseFailed)
         })
 
     const handleAbandonGoal = (goalId: string): Promise<void> =>
-        handleStatusChange(goalId, GoalStatus.ABANDONED, abandonGoal, {
+        handleStatusChange(goalId, GoalStatus.ABANDONED, goalMutations.goal.abandon, {
             successMsg: t(goalsLocales.toasts.abandoned),
             errorMsg: t(goalsLocales.toasts.abandonFailed)
         })
 
     const handleReopenGoal = (goalId: string): Promise<void> =>
-        handleStatusChange(goalId, GoalStatus.ACTIVE, reopenGoal, {
+        handleStatusChange(goalId, GoalStatus.ACTIVE, goalMutations.goal.reopen, {
             successMsg: t(goalsLocales.toasts.reopened),
             errorMsg: t(goalsLocales.toasts.reopenFailed)
         })
 
     const handleRestoreGoal = (goalId: string): Promise<void> =>
-        handleStatusChange(goalId, GoalStatus.ACTIVE, restoreGoal, {
+        handleStatusChange(goalId, GoalStatus.ACTIVE, goalMutations.goal.restore, {
             successMsg: t(goalsLocales.toasts.restored),
             errorMsg: t(goalsLocales.toasts.restoreFailed)
         })

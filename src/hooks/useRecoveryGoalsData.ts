@@ -36,7 +36,7 @@ export const useRecoveryGoalsData =
             error,
             refetch
         } = useGoals()
-        const { updateMilestone } = useGoalMutations()
+        const goalMutations = useGoalMutations()
 
         const goals = sortGoalsByStatus(goalsResponse || [])
         const activeGoal = goals[0]
@@ -49,7 +49,7 @@ export const useRecoveryGoalsData =
             milestoneId: string,
             isCompleted: boolean
         ) => {
-            updateMilestone.mutate({
+            goalMutations.milestone.update.mutate({
                 goalId,
                 milestoneId,
                 data: {

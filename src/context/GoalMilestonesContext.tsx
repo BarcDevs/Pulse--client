@@ -52,10 +52,7 @@ export const GoalMilestonesProvider = ({
     initialMilestones
 }: GoalMilestonesProviderProps) => {
     const [, startTransition] = useTransition()
-    const {
-        createMilestone,
-        completeMilestone
-    } = useGoalMutations()
+    const goalMutations = useGoalMutations()
 
     const tempIdCounterRef = useRef(0)
 
@@ -137,7 +134,7 @@ export const GoalMilestonesProvider = ({
                 const tempId = `temp-${goalId}-${++tempIdCounterRef.current}`
                 addOptimisticMilestone({ type: 'add', data })
                 try {
-                    const realMilestone = await createMilestone.mutateAsync({
+                    const realMilestone = await goalMutations.milestone.create.mutateAsync({
                         goalId,
                         data
                     })
@@ -163,7 +160,7 @@ export const GoalMilestonesProvider = ({
         startTransition(async () => {
             addOptimisticMilestone({ type: 'complete', milestoneId })
             try {
-                await completeMilestone.mutateAsync({
+                await goalMutations.milestone.complete.mutateAsync({
                     goalId,
                     milestoneId
                 })

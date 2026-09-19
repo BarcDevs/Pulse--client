@@ -220,17 +220,21 @@ export const useGoalMutations = () => {
         })
 
     return {
-        createGoal: createGoalMutation,
-        updateGoal: updateGoalMutation,
-        activateGoal: activateGoalMutation,
-        pauseGoal: pauseGoalMutation,
-        abandonGoal: abandonGoalMutation,
-        reopenGoal: setGoalActiveMutation,
-        restoreGoal: setGoalActiveMutation,
-        deleteGoal: deleteGoalMutation,
-        createMilestone: createMilestoneMutation,
-        updateMilestone: updateMilestoneMutation,
-        deleteMilestone: deleteMilestoneMutation,
-        completeMilestone: completeMilestoneMutation
+        goal: {
+            create: createGoalMutation,
+            update: updateGoalMutation,
+            activate: activateGoalMutation,
+            pause: pauseGoalMutation,
+            abandon: abandonGoalMutation,
+            reopen: setGoalActiveMutation,
+            restore: setGoalActiveMutation,
+            delete: deleteGoalMutation
+        },
+        milestone: {
+            create: createMilestoneMutation,
+            update: updateMilestoneMutation,
+            delete: deleteMilestoneMutation,
+            complete: completeMilestoneMutation
+        }
     }
 }
