@@ -20,6 +20,8 @@
 - Don't make line-breaking too strict
 - Always provide informative and self-explanatory filenames and variable names
 - Hooks that return 5+ values (e.g. a form hook returning its form, handlers and dialog state): keep the return value as one object named after the feature (`const addItem = useAddItemForm()`) and use `addItem.field` at the usage site - don't destructure the whole return into individual local names. Destructure only 1-4 values you genuinely need, or nested helpers such as `form`
+- A hook that returns 5+ values returns a small number of feature-named nested objects, never a flat list of 5+ keys. Group by kind, e.g. `{ values, suggestion: { value, isSuggesting, failed, request, refresh }, buildPatch }`. Call sites use `hook.group.field` directly and don't destructure groups back into local names. A hook that returns react-hook-form's `form` already satisfies this
+- State that is only form-like fields (several `useState` pairs) is held in ONE `values` object with a single typed `setField(key, value)` setter using functional updates (`setValues((current) => ...)`), so async callbacks never read stale closures
 
 ## Language & Format
 - Quotes: Single quotes (') for all strings, imports, JSX props, backtick allowed for template strings
