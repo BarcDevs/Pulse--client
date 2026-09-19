@@ -3,12 +3,16 @@
 import { useState } from 'react'
 
 type UseRecoveryGoalsModalReturn = {
-    isModalOpen: boolean
-    editingGoalId?: string
-    modalMode: 'create' | 'edit'
-    onOpenEditModal: (goalId: string) => void
-    onOpenCreateModal: () => void
-    onCloseModal: () => void
+    modal: {
+        isOpen: boolean
+        editingGoalId?: string
+        mode: 'create' | 'edit'
+    }
+    actions: {
+        onOpenEditModal: (goalId: string) => void
+        onOpenCreateModal: () => void
+        onCloseModal: () => void
+    }
 }
 
 export const useRecoveryGoalsModal =
@@ -40,11 +44,15 @@ export const useRecoveryGoalsModal =
         }
 
         return {
-            isModalOpen,
-            editingGoalId,
-            modalMode,
-            onOpenEditModal,
-            onOpenCreateModal,
-            onCloseModal
+            modal: {
+                isOpen: isModalOpen,
+                editingGoalId,
+                mode: modalMode
+            },
+            actions: {
+                onOpenEditModal,
+                onOpenCreateModal,
+                onCloseModal
+            }
         }
     }
