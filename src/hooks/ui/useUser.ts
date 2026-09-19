@@ -7,10 +7,12 @@ import { useProfile } from '@/hooks/queries/useProfile'
 
 type UseUserReturn = {
     user: User | null
-    isLoading: boolean
-    isError: boolean
-    error: unknown | null
     isAuthenticated: boolean
+    status: {
+        isLoading: boolean
+        isError: boolean
+        error: unknown | null
+    }
 }
 
 export const useUser = (): UseUserReturn => {
@@ -24,9 +26,11 @@ export const useUser = (): UseUserReturn => {
 
     return {
         user: completeUser ?? null,
-        isLoading: me.status.isLoading || profileQuery.status.isLoading,
-        isError: !!me.status.error || profileQuery.status.isError,
-        error: me.status.error,
-        isAuthenticated: !!completeUser
+        isAuthenticated: !!completeUser,
+        status: {
+            isLoading: me.status.isLoading || profileQuery.status.isLoading,
+            isError: !!me.status.error || profileQuery.status.isError,
+            error: me.status.error
+        }
     }
 }

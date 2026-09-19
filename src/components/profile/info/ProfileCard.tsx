@@ -19,14 +19,14 @@ import { ProfileCardSkeleton } from './ProfileCardSkeleton'
 import { ProfileInfo } from './ProfileInfo'
 
 export const ProfileCard = () => {
-    const { user, isLoading } = useUser()
+    const currentUser = useUser()
 
-    if (isLoading) return <ProfileCardSkeleton/>
-    if (!user) return null
+    if (currentUser.status.isLoading) return <ProfileCardSkeleton/>
+    if (!currentUser.user) return null
 
     const initials = getUserFallback(
-        user.firstName,
-        user.lastName
+        currentUser.user.firstName,
+        currentUser.user.lastName
     )
 
     return (
@@ -35,7 +35,7 @@ export const ProfileCard = () => {
                 <div className={'relative'}>
                     <UserAvatar
                         initials={initials}
-                        imageSrc={user.profile?.image ?? undefined}
+                        imageSrc={currentUser.user.profile?.image ?? undefined}
                         className={{
                             wrapper: 'size-24 border-4 border-primary-light',
                             fallback: 'bg-primary text-2xl text-white'
@@ -55,9 +55,9 @@ export const ProfileCard = () => {
                 </div>
 
                 <ProfileInfo
-                    firstName={user.firstName}
-                    lastName={user.lastName}
-                    createdAt={user.createdAt}
+                    firstName={currentUser.user.firstName}
+                    lastName={currentUser.user.lastName}
+                    createdAt={currentUser.user.createdAt}
                 />
 
                 {FEATURES.profileLevel && <ProfileLevel/>}

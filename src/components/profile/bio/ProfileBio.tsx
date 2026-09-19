@@ -25,16 +25,16 @@ import { ProfileBioSkeleton } from './ProfileBioSkeleton'
 
 export const ProfileBio = () => {
     const t = useTranslations()
-    const { user, isLoading } = useUser()
+    const currentUser = useUser()
     const {
         isEditing,
         profileFields,
         updateProfileField
     } = useProfileEditContext()
 
-    if (isLoading) return <ProfileBioSkeleton/>
+    if (currentUser.status.isLoading) return <ProfileBioSkeleton/>
 
-    const bio = user?.profile?.bio
+    const bio = currentUser.user?.profile?.bio
     const bioValue = profileFields.bio
 
     return (

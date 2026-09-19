@@ -21,10 +21,10 @@ import { DailyActivityPreferencesSkeleton } from './DailyActivityPreferencesSkel
 export const DailyActivityPreferences = () => {
     const t = useTranslations()
     const locale = useLocale()
-    const { user, isLoading } = useUser()
+    const currentUser = useUser()
     const { isEditing } = useProfileEditContext()
 
-    const selected = user?.profile?.activityPreferences ?? []
+    const selected = currentUser.user?.profile?.activityPreferences ?? []
 
     return (
         <div className={'card-base h-full'}>
@@ -38,7 +38,7 @@ export const DailyActivityPreferences = () => {
                 }
             </p>
 
-            {isLoading && !isEditing ? (
+            {currentUser.status.isLoading && !isEditing ? (
                 <DailyActivityPreferencesSkeleton/>
             ) : isEditing ? (
                 <DailyActivityPicker/>
