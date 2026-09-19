@@ -39,7 +39,7 @@ export const PostDetailActions = ({
     const t = useTranslations()
     const { user } = useAuth()
     const { setIsEditingPost } = usePostDetail()
-    const { deletePost } = useForumPostMutations({ postId })
+    const forumMutations = useForumPostMutations({ postId })
     const { share, shareCount } =
         useSharePost(postId, post?.shareCount ?? 0)
     const interactions = usePostInteractions({
@@ -52,7 +52,7 @@ export const PostDetailActions = ({
         : false
 
     const handleDeletePost = async () => {
-        await deletePost.mutateAsync()
+        await forumMutations.post.delete.mutateAsync()
         router.push(ROUTES.COMMUNITY)
     }
 
@@ -115,7 +115,7 @@ export const PostDetailActions = ({
                             setIsEditingPost(true)
                         }
                         onDeleteAction={handleDeletePost}
-                        isLoading={deletePost.isPending}
+                        isLoading={forumMutations.post.delete.isPending}
                         editLabel={editPostLabel}
                         deleteLabel={deletePostLabel}
                         cancelLabel={cancelLabel}

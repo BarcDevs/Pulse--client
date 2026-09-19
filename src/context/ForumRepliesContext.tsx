@@ -79,11 +79,7 @@ const ForumRepliesStateProvider = ({
         showSessionExpired,
         showAuthExpiredWithDraft
     } = useAuthExpiredToast()
-    const {
-        createReply,
-        updateReply,
-        deleteReply
-    } = useForumPostMutations({ postId })
+    const forumMutations = useForumPostMutations({ postId })
     const tempIdRef = useRef(0)
 
     /** Optimistic delta — separate from server state so initialReplies updates
@@ -111,9 +107,9 @@ const ForumRepliesStateProvider = ({
     ])
 
     const isPending =
-        createReply.isPending
-        || updateReply.isPending
-        || deleteReply.isPending
+        forumMutations.reply.create.isPending
+        || forumMutations.reply.update.isPending
+        || forumMutations.reply.delete.isPending
 
     const handleAddReply = (
         data: PostFormSchema
@@ -140,7 +136,7 @@ const ForumRepliesStateProvider = ({
         setPendingAdds((prev) => [tempReply, ...prev])
 
         return withOptimisticToast({
-            action: createReply.mutateAsync(data).then((reply) => {
+            action: forumMutations.reply.create.mutateAsync(data).then((reply) => {
                 setPendingAdds((prev) => prev.map((r) =>
                     r.id === tempId
                         ? { ...reply, author: tempReply.author }
@@ -178,7 +174,7 @@ const ForumRepliesStateProvider = ({
         setPendingBodies((prev) => ({ ...prev, [replyId]: data.body }))
 
         return withOptimisticToast({
-            action: updateReply.mutateAsync({ replyId, data }),
+            action: forumMutations.reply.update.mutateAsync({ replyId, data }),
             successMsg: t(communityLocales.toasts.replyUpdated),
             errorMsg: t(communityLocales.toasts.replyUpdateFailed),
             retryLabel: t(globalLocales.shared.retry),
@@ -217,7 +213,7 @@ const ForumRepliesStateProvider = ({
         setDeletedIds((prev) => new Set([...prev, replyId]))
 
         return withOptimisticToast({
-            action: deleteReply.mutateAsync(replyId),
+            action: forumMutations.reply.delete.mutateAsync(replyId),
             successMsg: t(communityLocales.toasts.replyDeleted),
             errorMsg: t(communityLocales.toasts.replyDeleteFailed),
             retryLabel: t(globalLocales.shared.retry),

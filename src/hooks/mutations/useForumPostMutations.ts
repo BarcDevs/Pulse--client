@@ -135,10 +135,14 @@ export const useForumPostMutations = ({
     })
 
     return {
-        createReply: createReplyMutation,
-        updateReply: updateReplyMutation,
-        deleteReply: deleteReplyMutation,
-        updatePost: updatePostMutation,
-        deletePost: deletePostMutation
+        post: {
+            update: updatePostMutation,
+            delete: deletePostMutation
+        },
+        reply: {
+            create: createReplyMutation,
+            update: updateReplyMutation,
+            delete: deleteReplyMutation
+        }
     }
 }
