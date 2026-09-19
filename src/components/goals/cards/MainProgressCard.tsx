@@ -21,29 +21,26 @@ export const MainProgressCard = ({
     onEditGoal
 }: MainProgressCardProps) => {
     const t = useTranslations()
-    const {
-        activeGoal,
-        overallPercentage
-    } = useRecoveryGoalsData()
+    const recoveryGoals = useRecoveryGoalsData()
 
-    if (!activeGoal) return null
+    if (!recoveryGoals.progress.activeGoal) return null
 
-    const badgeKey = getBadge(overallPercentage)
+    const badgeKey = getBadge(recoveryGoals.progress.overallPercentage)
     const badge = getBadgeLabel(badgeKey, t)
 
     return (
         <div className={'md:col-span-8 bg-white rounded-xl overflow-hidden relative'}>
             {onEditGoal && (
                 <EditGoalButton
-                    goalId={activeGoal.id}
+                    goalId={recoveryGoals.progress.activeGoal.id}
                     onEdit={onEditGoal}
                 />
             )}
             <div className={'flex flex-col md:flex-row gap-0'}>
-                <GoalProgressSection percentage={overallPercentage}/>
+                <GoalProgressSection percentage={recoveryGoals.progress.overallPercentage}/>
 
                 <GoalDetailsSection
-                    goal={activeGoal}
+                    goal={recoveryGoals.progress.activeGoal}
                     badge={badge}
                     onCompleteToday={onCompleteToday}
                 />

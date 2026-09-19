@@ -9,13 +9,17 @@ import { getProgressPercentage }
 import { sortGoalsByStatus } from '@/lib/goals/sortGoalsByStatus'
 
 type UseRecoveryGoalsDataReturn = {
-    goals: Goal[]
-    activeGoal: Goal | undefined
-    overallPercentage: number
-    isLoading: boolean
-    isError: boolean
-    error: Error | null
-    refetch: () => void
+    progress: {
+        goals: Goal[]
+        activeGoal: Goal | undefined
+        overallPercentage: number
+    }
+    status: {
+        isLoading: boolean
+        isError: boolean
+        error: Error | null
+        refetch: () => void
+    }
     handleToggleMilestone: (
         goalId: string,
         milestoneId: string,
@@ -57,13 +61,17 @@ export const useRecoveryGoalsData =
         }
 
         return {
-            goals,
-            activeGoal,
-            overallPercentage,
-            isLoading,
-            isError,
-            error,
-            refetch,
+            progress: {
+                goals,
+                activeGoal,
+                overallPercentage
+            },
+            status: {
+                isLoading,
+                isError,
+                error,
+                refetch
+            },
             handleToggleMilestone
         }
     }
