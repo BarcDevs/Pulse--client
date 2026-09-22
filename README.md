@@ -53,7 +53,7 @@ Lightweight, supportive insights generated from check-in patterns help detect tr
 | **Forms** | react-hook-form, Zod                                  |
 | **HTTP** | Axios with CSRF interceptors                          |
 | **State** | TanStack Query, Next.js Context                       |
-| **Deployment** | AWS EC2 + Docker                                      |
+| **Deployment** | AWS EC2+Docker (production, auto-deploy CI/CD), Vercel (preview/staging) |
 
 **Note**: This is a frontend-only repository. The backend API runs separately.
 
@@ -183,7 +183,17 @@ Both methods use the same session system:
 
 ## Deployment
 
-Production runs on **AWS EC2 + Docker**, public at [pulserehab.app](https://pulserehab.app), with automatic builds from `main`.
+Production runs on **AWS EC2+Docker** at https://pulserehab.app, on a separate instance from the server (blast-radius isolation). The client is the sole public front door — `next.config.mjs` proxies `/api/:path*` to the server over a private VPC connection, so browsers only ever talk to one origin (no CORS).
+
+**CI/CD** — every push to `main` that passes CI (`.github/workflows/ci.yml`) triggers `.github/workflows/deploy.yml`:
+1. Build the `runner` Docker target, tag with the commit SHA, push to ECR (`pulse-client-app`).
+2. Trigger `scripts/deploy/ec2-redeploy.sh` on the EC2 box via AWS SSM (no SSH/git access needed on the box).
+3. Blue/green swap: new image starts on a staging port, health-checked (`GET /`), then swapped onto port 80. Failed health check rolls back to the previous container automatically.
+4. Verify the live site (`/` and `/api/status`) before the workflow reports success.
+
+Can also be triggered manually: `gh workflow run deploy.yml --ref main`.
+
+Also mirrored to **Vercel** at https://pulse-rehab.vercel.app (automatic builds from `main`) for preview/staging convenience — not the production origin.
 
 ---
 
