@@ -1,0 +1,29 @@
+# Corrections — index
+
+**Why this file exists:** corrections and confirmed preferences given to Claude during sessions
+in this repo, so the same correction never needs repeating.
+
+⚠️ **Load on demand.** This is a log of past mistakes/preferences, grouped by topic so a session
+only opens the one file it actually needs, not every dated entry ever written. Full spec:
+`~/Claude/work/projects/RULES.md`.
+
+## Date Handling — [[corrections/date-handling]]
+Date-only string logic bugs from timezone-unsafe conversions.
+
+| Date | Entry |
+|---|---|
+| 12/09/2026 | Date-only strings must use local date components, never `toISOString()` |
+
+## RTL & Mobile UI — [[corrections/rtl-mobile-ui]]
+Conventions from the responsive/RTL layout pass — physical-direction classes and zoom-based scaling break on Hebrew RTL + iOS Safari.
+
+| Date | Entry |
+|---|---|
+| 12/09/2026 | Mobile/RTL UI conventions (iOS zoom-on-focus, `em` scaling, logical positioning) |
+
+## Verification Process — [[corrections/verification-process]]
+Guessing at a spec instead of checking the actual rules/examples first.
+
+| Date | Entry |
+|---|---|
+| 12/09/2026 | When told to "read carefully" or "follow the template exactly," inspect the actual spec/system before guessing |

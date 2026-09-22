@@ -26,6 +26,15 @@ Live at https://pulserehab.app — AWS EC2+Docker, separate instance from the se
 **Learn from mistakes:** Log any correction or confirmed non-obvious choice immediately, same turn — to `corrections/log.md` (or `decisions/log.md`) in **this repo**, never a sibling repo and never Claude Code's own cross-session memory. Don't wait to be asked or reminded — a repeated pushback on the same thing within a session is itself a correction to log. End the turn with "logged: X" or "nothing to log." Full log format/rules (topic-split once it grows): `~/Claude/work/projects/.sources/RULES.md` § Context Log. Superseded entries move to `archive/` with their original heading and full text intact plus a one-line "archived <date> — why" tag (never just the reason). Check `corrections/log.md` before similar work.
 **Goal-driven:** Define success criteria before starting. For multi-step tasks, state a plan: `1. [step] → verify: [check]`. Loop until verified.
 
+## Repo-Visible Decisions & Corrections Log
+Alongside auto-memory (cross-session, not repo-visible), this repo tracks two parallel logs any
+collaborator/agent can read: `decisions/` (architecture/technical decisions, with reasoning) and
+`corrections/` (corrections or confirmed preferences given to Claude during sessions). Each is
+shaped `index.md` + per-topic files + `archive/<topic>.md` for superseded entries.
+**Read both `decisions/index.md` and `corrections/index.md` at the start of every new session** —
+they are load-bearing context, same tier as this file. Load a topic file only when the task
+matches it.
+
 ## Docs Sync
 New feature added → update client README, server PRD, AND server README same time, every time.
 
