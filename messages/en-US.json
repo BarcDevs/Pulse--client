@@ -1028,8 +1028,7 @@
         },
         "legal": {
           "privacyPolicy": "Privacy Policy",
-          "termsOfService": "Terms of Service",
-          "cookiePolicy": "Cookie Policy"
+          "termsOfService": "Terms of Service"
         }
       }
     },

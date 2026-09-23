@@ -34,8 +34,7 @@ export const globalLocales = {
             },
             legal: {
                 privacyPolicy: 'global.footer.links.legal.privacyPolicy',
-                termsOfService: 'global.footer.links.legal.termsOfService',
-                cookiePolicy: 'global.footer.links.legal.cookiePolicy'
+                termsOfService: 'global.footer.links.legal.termsOfService'
             }
         }
     },

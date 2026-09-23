@@ -35,9 +35,5 @@ export const footerLegalLinks = [
     {
         titleKey: footerLocales.links.legal.termsOfService,
         href: ROUTES.TERMS
-    },
-    {
-        titleKey: footerLocales.links.legal.cookiePolicy,
-        href: ROUTES.COOKIES
     }
 ]

@@ -1021,8 +1021,7 @@
         },
         "legal": {
           "privacyPolicy": "מדיניות פרטיות",
-          "termsOfService": "תנאי שימוש",
-          "cookiePolicy": "מדיניות עוגיות"
+          "termsOfService": "תנאי שימוש"
         }
       }
     },

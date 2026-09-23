@@ -25,7 +25,6 @@ export const ROUTES = {
     SUPPORT: '/support',
     PRIVACY: '/privacy',
     TERMS: '/terms',
-    COOKIES: '/cookies',
     loginWithRedirect: (redirect: string) =>
         `/login?redirect=${encodeURIComponent(redirect)}`,
     communityPost: (postId: string) =>
