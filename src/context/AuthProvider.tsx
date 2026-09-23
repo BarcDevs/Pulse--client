@@ -28,7 +28,7 @@ import {
 import { protectedRoutes } from '@/constants/proxyRoutes'
 import { authQueryKeys } from '@/constants/queryKeys'
 import { ROUTES } from '@/constants/routes'
-import { minuteInMs } from '@/constants/time'
+import { networkRetryMs } from '@/constants/time'
 
 import { AuthContext } from './AuthContext'
 
@@ -114,7 +114,7 @@ export const AuthProvider = ({
 
     useEffect(() => {
         if (me.status.error && isNetworkError(me.status.error)) {
-            const timer = setTimeout(me.actions.refetch, 2 * minuteInMs)
+            const timer = setTimeout(me.actions.refetch, networkRetryMs)
             return () => clearTimeout(timer)
         }
     }, [me.status.error, me.actions.refetch])

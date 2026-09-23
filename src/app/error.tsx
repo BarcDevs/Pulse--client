@@ -4,13 +4,11 @@ import { useEffect } from 'react'
 
 import { ErrorPageContent } from '@/components/shared/error/ErrorPageContent'
 
-import { secondInMs } from '@/constants/time'
+import { networkRetryMs } from '@/constants/time'
 
 import { useAuth } from '@/context/AuthContext'
 
 import { appSettings } from '@/config/appSettings'
-
-const NETWORK_RETRY_MS = 10 * secondInMs
 
 type ErrorProps = {
     error: Error & { digest?: string }
@@ -40,7 +38,7 @@ const ErrorPage = ({
         if (!isNetworkError) return
 
         setNetworkError(error)
-        const timer = setTimeout(reset, NETWORK_RETRY_MS)
+        const timer = setTimeout(reset, networkRetryMs)
         window.addEventListener('online', reset)
 
         return () => {

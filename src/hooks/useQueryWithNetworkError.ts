@@ -11,11 +11,9 @@ import {
 
 import { isNetworkError } from '@/utils/error'
 
-import { minuteInMs } from '@/constants/time'
+import { networkRetryMs } from '@/constants/time'
 
 import { useAuth } from '@/context/AuthContext'
-
-const RETRY_TIMEOUT_MS = minuteInMs
 
 export const useQueryWithNetworkError = <TData,>(
     options: UseQueryOptions<TData>
@@ -29,7 +27,7 @@ export const useQueryWithNetworkError = <TData,>(
 
             const timer = setTimeout(
                 query.refetch,
-                RETRY_TIMEOUT_MS
+                networkRetryMs
             )
 
             return () => clearTimeout(timer)

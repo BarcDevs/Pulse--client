@@ -2,8 +2,6 @@
 
 import { useRouter } from 'next/navigation'
 
-import { useTranslations } from 'next-intl'
-
 import { useQueryClient } from '@tanstack/react-query'
 
 import {
@@ -17,8 +15,6 @@ import { ROUTES } from '@/constants/routes'
 
 import { useAuth } from '@/context/AuthContext'
 
-import { globalLocales } from '@/locales/globalLocales'
-
 import {
     login,
     logout,
@@ -28,18 +24,24 @@ import type { LoginSchema } from '@/validations/forms/loginSchema'
 import type { SignupSchema } from '@/validations/forms/signupSchema'
 
 export const useAuthHandlers = () => {
-    const { setIsLoading } = useAuth()
+    const {
+        setIsLoading,
+        setNetworkError
+    } = useAuth()
     const router = useRouter()
     const queryClient = useQueryClient()
-    const t = useTranslations()
 
     const getAuthErrorMessage = (
         error: unknown,
         fallback: string
-    ): string =>
-        error instanceof Error && isNetworkError(error)
-            ? t(globalLocales.errors.inline.network)
-            : getApiErrorMessage(error, fallback)
+    ): string | null => {
+        if (error instanceof Error && isNetworkError(error)) {
+            setNetworkError(error)
+            return null
+        }
+
+        return getApiErrorMessage(error, fallback)
+    }
 
     const handleLogin = async (
         credentials: LoginSchema
