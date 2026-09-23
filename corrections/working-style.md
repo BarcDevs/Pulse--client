@@ -34,3 +34,11 @@ Fixed "offline logout does nothing, no error" by showing the banner but keeping 
 Committed `refactor(auth)`, `refactor(config)` ×2 (5a7e47b, 5fa3d98, 8f3d2df) despite `GIT_RULES.md`: "refactor job - always name `rfc` instead of `refactor`". User noticed; the commits are numerous/already made so they are **not** renamed.
 
 **Lesson:** re-read the type rules in `GIT_RULES.md` before every commit message, not just the "ask before commit" part. Refactor = `rfc`. Never rename the existing `refactor(...)` commits; just use `rfc` going forward.
+
+---
+
+## 23/09/2026 — Pushed a branch without its tags
+
+Pushed to `development` with `git push origin HEAD:development` and left the version-bump tags (local `v1.0.31`–`v1.0.33`; remote stuck at `v1.0.7`) unpushed, then argued for withholding them. User: "ALWAYS PUSH TAGS".
+
+**Lesson:** every push includes `git push origin --tags`. Don't reason about whether tags are "meaningful" — the hook makes them, they go up. Added to `GIT_RULES.md`.
