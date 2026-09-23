@@ -1340,7 +1340,7 @@
         "description": "צוות התמיכה שלנו משיב לכל פנייה משפטית תוך 30 ימים.",
         "contactSupport": "פנייה לתמיכה",
         "emailLabel": "שליחת מייל אל {email}",
-        "downloadPdf": "הורדת PDF"
+        "downloadPdf": "הורד כPDF"
       }
     },
     "privacy": {
