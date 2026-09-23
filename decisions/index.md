@@ -27,3 +27,10 @@ Trend-chart ordering and no-data rendering rules.
 |---|---|
 | 18/09/2026 | Trend charts never reverse day order by locale |
 | 18/09/2026 | No-data days: grey fill for leading/trailing gaps; dashed bridge only between two visible points |
+
+## Error Handling — [[decisions/error-handling]]
+How network/unexpected errors surface to the user.
+
+| Date | Entry |
+|---|---|
+| 23/09/2026 | Network errors never redirect to `/network-error`; use the gentle network bar |

@@ -2,11 +2,9 @@
 
 import { useEffect } from 'react'
 
-import { redirect } from 'next/navigation'
-
 import { ErrorPageContent } from '@/components/shared/error/ErrorPageContent'
 
-import { ROUTES } from '@/constants/routes'
+import { useAuth } from '@/context/AuthContext'
 
 import { appSettings } from '@/config/appSettings'
 
@@ -19,6 +17,7 @@ const ErrorPage = ({
     error,
     reset
 }: ErrorProps) => {
+    const { setNetworkError } = useAuth()
     const axiosError = error as any
     const isNetworkError = (
         axiosError?.code === 'ERR_NETWORK'
@@ -33,8 +32,15 @@ const ErrorPage = ({
         document.title = `Something went wrong | ${appSettings.brandName}`
     }, [])
 
-    if (isNetworkError)
-        redirect(ROUTES.NETWORK_ERROR)
+    useEffect(() => {
+        if (!isNetworkError) return
+
+        setNetworkError(error)
+        window.addEventListener('online', reset)
+        return () => window.removeEventListener('online', reset)
+    }, [isNetworkError, error, reset, setNetworkError])
+
+    if (isNetworkError) return null
 
     return (
         <ErrorPageContent
