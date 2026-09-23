@@ -50,7 +50,7 @@ export const PageHeader = ({
                 onClick={handleBack}
                 size={'sm'}
                 variant={'ghost'}
-                className={'mb-8 gap-2 text-primary hover:bg-primary hover:text-white'}
+                className={'mb-8 gap-2 text-primary hover:bg-primary hover:text-white print:hidden'}
             >
                 <ArrowLeft size={16}/>
                 {backLabel}

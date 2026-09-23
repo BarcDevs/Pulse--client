@@ -9,11 +9,15 @@ import { appSettings } from '@/config/appSettings'
 
 import { legalLocales } from '@/locales/legalLocales'
 
-export const LegalFooterCta = () => {
+type LegalFooterCtaProps = {
+    pdfHref: string
+}
+
+export const LegalFooterCta = ({ pdfHref }: LegalFooterCtaProps) => {
     const t = useTranslations()
 
     return (
-        <div className={'mb-12 mt-6 rounded-2xl border border-border bg-muted p-6'}>
+        <div className={'mb-12 mt-6 rounded-2xl border border-border bg-muted p-6 print:hidden'}>
             <p className={'mb-1.5 text-sm font-semibold text-on-surface'}>
                 {t(legalLocales.common.footerCta.question)}
             </p>
@@ -37,10 +41,15 @@ export const LegalFooterCta = () => {
                     </Button>
                 )}
                 <Button
+                    asChild
                     variant={'outline'}
-                    disabled
                 >
-                    {t(legalLocales.common.footerCta.downloadPdf)}
+                    <a
+                        href={pdfHref}
+                        download
+                    >
+                        {t(legalLocales.common.footerCta.downloadPdf)}
+                    </a>
                 </Button>
             </div>
         </div>

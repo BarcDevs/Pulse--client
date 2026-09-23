@@ -69,6 +69,7 @@ export const useLegalPageContent = (docKey: LegalDocKey) => {
         content,
         sections,
         tabs,
+        pdfHref: `/legal/${docKey}-${locale}.pdf`,
         updated: new Intl.DateTimeFormat(
             locale,
             { dateStyle: 'long' }

@@ -8,6 +8,7 @@ const TermsPage = () => {
     const {
         content,
         sections,
+        pdfHref,
         tabs,
         updated
     } = useLegalPageContent('terms')
@@ -17,6 +18,7 @@ const TermsPage = () => {
             content={content}
             sections={sections}
             updated={updated}
+            pdfHref={pdfHref}
             tabs={tabs}
         />
     )

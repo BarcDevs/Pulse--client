@@ -1,6 +1,6 @@
 {
   "name": "pulse",
-  "version": "1.0.36",
+  "version": "1.1.0",
   "type": "module",
   "private": true,
   "scripts": {
@@ -8,6 +8,7 @@
     "dev": "cross-env NODE_OPTIONS=--max-old-space-size=8192 node scripts/dev.mjs",
     "dev:webpack": "cross-env NODE_OPTIONS=--max-old-space-size=8192 node scripts/dev.mjs --webpack",
     "dev:heapdump": "cross-env NODE_OPTIONS=\"--max-old-space-size=8192 --heapsnapshot-near-heap-limit=1\" node scripts/dev.mjs",
+    "legal:pdf": "node scripts/generate-legal-pdfs.mjs",
     "analyze": "set ANALYZE=true && next build",
     "build": "next build",
     "start": "next start -p $PORT",

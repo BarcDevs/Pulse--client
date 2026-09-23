@@ -15,7 +15,7 @@ export const PageHeaderTabs = ({
     const pathname = usePathname()
 
     return (
-        <div className={'flex flex-wrap gap-2'}>
+        <div className={'flex flex-wrap gap-2 print:hidden'}>
             {tabs.map((tab) => (
                 <Link
                     key={tab.href}
