@@ -23,6 +23,7 @@
 - *IMPORTANT:* refactor job - always name `rfc` instead of `refactor`!
 - Hiding/gating unimplemented UI behind a feature flag = `chore`, not `feat`. Restructuring/redesigning existing UI (even adding new sub-components as part of it) = `rfc`, not `feat` — `feat` implies net-new user-visible capability, a redesign reorganizes what already exists. Wiring an already-existing data field into an edit form is `rfc`, not `feat`, if the field already existed in view mode.
 - If you're not sure, read `../../.resources/conventional-commits-cheatsheet.md` for more info
+- **Always push tags** — whenever pushing a branch, also push tags (`git push origin --tags`). The version-bump hook tags every bumped commit locally; unpushed tags leave the remote's versions stale.
 - Atomic commits — one change or fix per commit
 - Claude's plans must never be committed
 - *IMPORTANT:* Use /commit skill only when user explicitly invokes it — never on plain "commit"
