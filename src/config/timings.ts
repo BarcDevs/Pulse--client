@@ -14,6 +14,9 @@ export const timings = {
     ANIMATION_DURATION_NORMAL: 500,
     ANIMATION_DURATION_SLOW: 1000,
 
+    // Retry delay while the backend/network is unreachable
+    NETWORK_RETRY_DELAY: 10000,
+
     // Debounce and throttle delays
     DEBOUNCE_DELAY: 300,
     THROTTLE_DELAY: 500
