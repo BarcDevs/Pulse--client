@@ -22,11 +22,13 @@ import '@/styles/globals.css'
 
 const inter = Inter({
     subsets: ['latin'],
+    adjustFontFallback: false,
     variable: '--font-inter'
 })
 
 const notoSansHebrew = Noto_Sans_Hebrew({
     subsets: ['hebrew'],
+    adjustFontFallback: false,
     variable: '--font-noto-sans-hebrew'
 })
 
