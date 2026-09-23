@@ -21,16 +21,16 @@ Corrections were logged into `pulse--server/corrections/` instead of this repo, 
 
 ---
 
-## 23/09/2026 — Built new MCP wiring instead of checking why an existing shared server wasn't loading; ignored the working example and the "symlink it" instruction
-
-Asked to get the shared `chrome-devtools` MCP working in this repo, then told twice to "set it like the skills and agents" / symlink it. Instead created a standalone `.mcp.json`, then a hard link, then a `.gitignore` entry, and explained that Claude Code has no `.claude/mcp`. The real cause was in `.claude/settings.local.json`: `chrome-devtools` sat in `disabledMcpjsonServers` (disabled overrides enabled). The parent `work/projects/.mcp.json` already provides the server, and the working sibling `claude-rtl-extention` uses no link at all, only `enabledMcpjsonServers` in its own settings. The user had to point at that project by name.
-
-**Lesson:** when a shared resource "isn't loading" in one project, diff that project's config against a sibling where it works (settings, disabled/enabled lists) before creating files. If the user names a working reference, read it first. `enabledMcpjsonServers` / `disabledMcpjsonServers` in `.claude/settings.local.json` are the per-project MCP switches.
-
----
-
 ## 23/09/2026 — Tied logout to network success
 
 Fixed "offline logout does nothing, no error" by showing the banner but keeping the user signed in when the request failed. User: sign-out shouldn't depend on network — log out locally, then show the banner.
 
 **Lesson:** logout is a local state change first (clear queries, navigate), server call is best-effort; network failure adds the banner, never blocks the sign-out.
+
+---
+
+## 23/09/2026 — Used `refactor` commit type instead of `rfc`
+
+Committed `refactor(auth)`, `refactor(config)` ×2 (5a7e47b, 5fa3d98, 8f3d2df) despite `GIT_RULES.md`: "refactor job - always name `rfc` instead of `refactor`". User noticed; the commits are numerous/already made so they are **not** renamed.
+
+**Lesson:** re-read the type rules in `GIT_RULES.md` before every commit message, not just the "ask before commit" part. Refactor = `rfc`. Never rename the existing `refactor(...)` commits; just use `rfc` going forward.
