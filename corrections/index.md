@@ -38,6 +38,7 @@ How to act on bug reports and where to log — state the fix before broad edits,
 | 18/09/2026 | Wrote corrections into the sibling repo; asserted local log didn't exist without checking other branches |
 | 23/09/2026 | Used `refactor` commit type instead of `rfc` (GIT_RULES); existing commits not renamed |
 | 23/09/2026 | Pushed a branch without its tags and argued for withholding them; always push tags |
+| 23/09/2026 | Ran Python scripts to edit files instead of the Edit tool |
 
 ## Code Placement — [[corrections/code-placement]]
 Where new constants/config values belong.
