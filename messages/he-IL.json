@@ -1324,25 +1324,23 @@
   },
   "legal": {
     "tabs": {
-      "privacy": "Privacy",
-      "terms": "Terms"
+      "privacy": "פרטיות",
+      "terms": "תנאי שימוש"
     },
     "common": {
-      "backLabel": "Back",
+      "backLabel": "חזרה",
       "metaBar": {
-        "lastUpdated": "Last updated: ",
-        "effectiveIn": "Effective in: ",
-        "effectiveInValue": "Global"
+        "lastUpdated": "עודכן לאחרונה: "
       },
       "toc": {
-        "onThisPage": "On this page"
+        "onThisPage": "בעמוד זה"
       },
       "footerCta": {
-        "question": "Questions about this document?",
-        "description": "Our support team responds to every legal inquiry within 30 days.",
-        "contactSupport": "Contact support",
-        "emailLabel": "Email {email}",
-        "downloadPdf": "Download PDF"
+        "question": "שאלות על המסמך הזה?",
+        "description": "צוות התמיכה שלנו משיב לכל פנייה משפטית תוך 30 ימים.",
+        "contactSupport": "פנייה לתמיכה",
+        "emailLabel": "שליחת מייל אל {email}",
+        "downloadPdf": "הורדת PDF"
       }
     },
     "privacy": {

@@ -1337,9 +1337,7 @@
     "common": {
       "backLabel": "Back",
       "metaBar": {
-        "lastUpdated": "Last updated: ",
-        "effectiveIn": "Effective in: ",
-        "effectiveInValue": "Global"
+        "lastUpdated": "Last updated: "
       },
       "toc": {
         "onThisPage": "On this page"

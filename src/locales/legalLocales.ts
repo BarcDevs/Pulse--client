@@ -6,9 +6,7 @@ export const legalLocales = {
     common: {
         backLabel: 'legal.common.backLabel',
         metaBar: {
-            lastUpdated: 'legal.common.metaBar.lastUpdated',
-            effectiveIn: 'legal.common.metaBar.effectiveIn',
-            effectiveInValue: 'legal.common.metaBar.effectiveInValue'
+            lastUpdated: 'legal.common.metaBar.lastUpdated'
         },
         toc: {
             onThisPage: 'legal.common.toc.onThisPage'
