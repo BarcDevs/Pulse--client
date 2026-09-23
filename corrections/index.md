@@ -28,6 +28,7 @@ Guessing at a spec instead of checking the actual rules/examples first.
 |---|---|
 | 12/09/2026 | When told to "read carefully" or "follow the template exactly," inspect the actual spec/system before guessing |
 | 18/09/2026 | Claimed a Firefox-only font fix "fixed" it with no way to test in Firefox |
+| 23/09/2026 | Font fix committed twice without checking the served CSS; Turbopack ignored `adjustFontFallback` and `.next/dev` served stale CSS |
 
 ## Working Style — [[corrections/working-style]]
 How to act on bug reports and where to log — state the fix before broad edits, log in this repo, check other branches before claiming a file doesn't exist.
