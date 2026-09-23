@@ -34,3 +34,10 @@ How network/unexpected errors surface to the user.
 | Date | Entry |
 |---|---|
 | 23/09/2026 | Network errors never redirect to `/network-error`; use the gentle network bar |
+
+## Privacy & Consent — [[decisions/privacy-and-consent]]
+Cookie/storage consent and privacy-disclosure decisions.
+
+| Date | Entry |
+|---|---|
+| 23/09/2026 | No cookie/cache consent popup — no non-essential storage written; disclose on the Privacy page |
