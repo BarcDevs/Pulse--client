@@ -19,3 +19,11 @@ Error tracking and performance-monitoring tooling decisions.
 | Date | Entry |
 |---|---|
 | 12/09/2026 | Sentry (`@sentry/nextjs`) added for error tracking + perf monitoring |
+
+## Charts & RTL — [[decisions/charts-and-rtl]]
+Trend-chart ordering and no-data rendering rules.
+
+| Date | Entry |
+|---|---|
+| 18/09/2026 | Trend charts never reverse day order by locale |
+| 18/09/2026 | No-data days: grey fill for leading/trailing gaps; dashed bridge only between two visible points |

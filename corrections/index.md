@@ -27,3 +27,12 @@ Guessing at a spec instead of checking the actual rules/examples first.
 | Date | Entry |
 |---|---|
 | 12/09/2026 | When told to "read carefully" or "follow the template exactly," inspect the actual spec/system before guessing |
+| 18/09/2026 | Claimed a Firefox-only font fix "fixed" it with no way to test in Firefox |
+
+## Working Style — [[corrections/working-style]]
+How to act on bug reports and where to log — state the fix before broad edits, log in this repo, check other branches before claiming a file doesn't exist.
+
+| Date | Entry |
+|---|---|
+| 18/09/2026 | Jumped to a broad code change on a bug report instead of stating the fix first |
+| 18/09/2026 | Wrote corrections into the sibling repo; asserted local log didn't exist without checking other branches |
