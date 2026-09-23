@@ -30,6 +30,23 @@ describe(
                 expect(result.success).toBe(true)
             })
 
+        it.each([
+            'Pass-word_1+=',
+            "Pass.word1?(x)[y]{z}'\";:/~",
+            'Pass word 1<>&',
+            'Pässword1!'
+        ])(
+            'should accept password with special characters: %s',
+            (password) => {
+                const result = signupSchema
+                    .safeParse({
+                        ...validSignup,
+                        password,
+                        confirmPassword: password
+                    })
+                expect(result.success).toBe(true)
+            })
+
         it(
             'should reject first name shorter than 2 chars',
             () => {
