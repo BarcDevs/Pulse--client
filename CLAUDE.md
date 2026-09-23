@@ -23,7 +23,6 @@ Live at https://pulserehab.app — AWS EC2+Docker, separate instance from the se
 **Before coding:** State assumptions. Ask when uncertain (95% rule). Surface tradeoffs. Don't implement until 95% confident — ask until there.
 **Simplicity:** Minimum code that solves the problem. No extra features, abstractions, flexibility, or impossible-scenario handling. 200 lines that could be 50 → rewrite.
 **Surgical:** Touch only what you must. Don't improve adjacent code. Match existing style. Mention unrelated dead code — don't delete it. Remove only imports/vars YOUR changes made unused.
-**Learn from mistakes:** Log any correction or confirmed non-obvious choice immediately, same turn — to `corrections/log.md` (or `decisions/log.md`) in **this repo**, never a sibling repo and never Claude Code's own cross-session memory. Don't wait to be asked or reminded — a repeated pushback on the same thing within a session is itself a correction to log. End the turn with "logged: X" or "nothing to log." Full log format/rules (topic-split once it grows): `~/Claude/work/projects/.sources/RULES.md` § Context Log. Superseded entries move to `archive/` with their original heading and full text intact plus a one-line "archived <date> — why" tag (never just the reason). Check `corrections/log.md` before similar work.
 **Goal-driven:** Define success criteria before starting. For multi-step tasks, state a plan: `1. [step] → verify: [check]`. Loop until verified.
 
 ## Repo-Visible Decisions & Corrections Log
@@ -32,7 +31,7 @@ collaborator/agent can read: `decisions/` (architecture/technical decisions, wit
 `corrections/` (corrections or confirmed preferences given to Claude during sessions). Each is
 shaped `index.md` + per-topic files + `archive/<topic>.md` for superseded entries.
 **Read both `decisions/index.md` and `corrections/index.md` at the start of every new session** —
-they are load-bearing context, same tier as this file. Load a topic file only when the task
+they are load-bearing context, same tier as this file. **Write immediately, same turn as the correction/decision** — don't wait to be asked, and commit the record right away as its own `docs` commit (records exception under Git & Commits). Load a topic file only when the task
 matches it.
 
 ## Docs Sync
@@ -58,6 +57,8 @@ SOLID principles | Industry standards | Type-safe forms
 ## Git & Commits
 **Read `GIT_RULES.md` before committing or when instructed to commit.** Do not skip it.
 Full rules there. Key constraint: never invoke `/commit` skill on small fixes, formatting, or docs changes — use plain `git commit` for those.
+
+**Exception - records (user decision 2026-09-21):** a record of a correction or decision (files under `corrections/` or `decisions/` and their `index.md` rows) is committed in the same turn as the correction, as its own `docs` commit, WITHOUT asking and without waiting for a "commit" instruction. Saying "I will commit those from now on" in chat is worthless - this rule is what makes it stick. It applies to every session and does not extend to any other change.
 
 ## graphify
 
