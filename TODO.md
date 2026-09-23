@@ -154,3 +154,6 @@ Behavioral intelligence systems require medical/legal caution, behavioral tuning
 | ~~4~~ | ~~**[Bug]** Raw axios error message (e.g. "Request failed with status code 500") shown in English regardless of active locale~~ | ~~Medium~~ | ~~Not pulled from translations — same class of bug as the ErrorBanner/ErrorStateCard/ErrorDisplay hardcoded-English issue already fixed~~ |
 | ~~5~~ | ~~**[Bug]** ECONNREFUSED / 500 from backend being unreachable should render a dedicated "network error / offline" state, not the generic auth/query error~~ | ~~Medium~~ | ~~Currently surfaces as a raw failed-request error instead of a distinct offline UI~~ |
 | 6 | Fix favicon on deployed client (`pulserehab.app`) | Low | Favicon not showing correctly on production — check `app/favicon.ico` / `app/icon.*` gets bundled into standalone Docker output |
+| 7 | Privacy page | High | Required before launch |
+| 8 | Cache consent popup | High | Required before launch |
+| 7 | **[Bug]** Login page loops when reloaded in offline mode | Medium | Reported, not yet reproduced: backend-down `/login` load and an API-only simulated network failure both stay stable. Need exact steps (browser offline toggle vs. backend stopped, dev vs. deployed, URL/redirect param at the time) |
