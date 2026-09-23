@@ -26,3 +26,11 @@ Corrections were logged into `pulse--server/corrections/` instead of this repo, 
 Asked to get the shared `chrome-devtools` MCP working in this repo, then told twice to "set it like the skills and agents" / symlink it. Instead created a standalone `.mcp.json`, then a hard link, then a `.gitignore` entry, and explained that Claude Code has no `.claude/mcp`. The real cause was in `.claude/settings.local.json`: `chrome-devtools` sat in `disabledMcpjsonServers` (disabled overrides enabled). The parent `work/projects/.mcp.json` already provides the server, and the working sibling `claude-rtl-extention` uses no link at all, only `enabledMcpjsonServers` in its own settings. The user had to point at that project by name.
 
 **Lesson:** when a shared resource "isn't loading" in one project, diff that project's config against a sibling where it works (settings, disabled/enabled lists) before creating files. If the user names a working reference, read it first. `enabledMcpjsonServers` / `disabledMcpjsonServers` in `.claude/settings.local.json` are the per-project MCP switches.
+
+---
+
+## 23/09/2026 — Tied logout to network success
+
+Fixed "offline logout does nothing, no error" by showing the banner but keeping the user signed in when the request failed. User: sign-out shouldn't depend on network — log out locally, then show the banner.
+
+**Lesson:** logout is a local state change first (clear queries, navigate), server call is best-effort; network failure adds the banner, never blocks the sign-out.
