@@ -39,6 +39,7 @@ New feature added → update client README, server PRD, AND server README same t
 
 ## Design Files
 `docs/design/` — design system, JSX screen specs and OTP emails from Claude Design (reference when building UI). Older sessions/skills may still say `.claude/design/`; same content.
+Design-system elements with their own reusable look (buttons, badges; even one variant) get one base in `src/components/shared/<group>/` (look variants like primary/secondary/ghost are a variant style object on it) plus a separate component per distinct type (e.g. `TextButton`, `IconButton`), built from tokens. Plain primitive usage stays a direct `ui/` import, no wrapper, no bulk migration. Read `workflow/12-design-system-variants.md` before adding one.
 
 ## Code Style
 Rules in `CORE_RULES.md`. Non-negotiable — follow exactly.
