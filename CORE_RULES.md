@@ -40,7 +40,7 @@
 - One function/component per file
 - Extract reusable logic
 - Use reusable components from shadcn/ui
-- Design-system elements with their own reusable look (e.g. buttons, badges, even a single variant): one base in `src/components/shared/<group>/` whose look variants (primary/secondary/ghost/destructive) are a variant style object (cva-style className map) on the base, plus one purpose-made component per element *type* (e.g. `TextButton`, `IconButton`) that wraps the base; call sites never use the base directly or override with ad hoc `className`. Colors etc. are tokens (`--color-x`). Plain primitive usage needs no wrapper: not one wrapper per `ui/` primitive. See `workflow/12-design-system-variants.md`
+- Design-system elements with their own reusable look (e.g. buttons, badges, even a single variant): one base in `src/components/shared/<group>/` whose look variants (primary/secondary/ghost/destructive) are a variant style object (cva-style className map) on the base, plus one purpose-made component per element *type* (e.g. `TextButton`, `IconButton`) that wraps the base; call sites never use the base directly or override with ad hoc `className`. Colors etc. are tokens (`--color-x`). Every instance of such an element uses a type, even with no `className` today (a later design change is one edit). Primitives the design does not style need no wrapper: not one wrapper per `ui/` primitive. See `workflow/12-design-system-variants.md`
 - No hardcoded values — use constants or config
 - Time values: Always use `src/constants/time` (minuteInMs, hourInMs, etc.) instead of hardcoding milliseconds
 - No backwards-compatibility shims for removed code
