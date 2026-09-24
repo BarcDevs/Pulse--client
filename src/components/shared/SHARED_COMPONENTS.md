@@ -1,4 +1,4 @@
-# shared/ — index
+# Shared Components
 
 Reusable components that aren't raw shadcn primitives (those live in `src/components/ui/`,
 read-only — see project `CLAUDE.md`). Check here before creating new UI, after confirming shadcn

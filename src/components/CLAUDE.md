@@ -57,4 +57,4 @@
 - ❌ Never use plain `<button>`, `<input>`, `<select>` when shadcn equivalent available
 - shadcn components live in `src/components/ui/` — read-only, never edit them
 - **Wrapper pattern:** when a `ui/` primitive needs project-specific behavior, build exactly one `src/components/shared/` wrapper as its sole consumer, and drive every variation through that wrapper's props — don't reach into `ui/` from multiple call sites with ad hoc overrides
-- After shadcn, check `src/components/shared/index.md` before creating new UI — add a row there in the same turn you add a new shared file/subfolder
+- After shadcn, check `src/components/shared/SHARED_COMPONENTS.md` before creating new UI — add a row there in the same turn you add a new shared file/subfolder
