@@ -56,3 +56,4 @@ Where new constants/config values belong.
 |---|---|
 | 23/09/2026 | Tunable delays go in `src/config/timings.ts`, not `src/constants/time.ts` (which is unit conversions only) |
 | 23/09/2026 | Durations must use `*InMs` constants, not magic numbers, even when the surrounding file doesn't |
+| 25/09/2026 | Dead code is removed in a separate cleanup commit, not left marked or noted |

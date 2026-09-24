@@ -50,3 +50,11 @@ Pushed to `development` with `git push origin HEAD:development` and left the ver
 Used `python - <<EOF` string-replace scripts for small edits (one word in a JSON file, a line in TODO.md, config tweaks). User: "are you running python to edit one word?" Contradicts this repo's "Edit over Write" rule and the harness guidance to use dedicated tools; scripts also hide what changed, and a failed script half-applied a multi-file change (he-IL.json / layout.tsx ended up edited twice).
 
 **Lesson:** edit files with the Edit tool, even Hebrew/UTF-8 JSON, even several files in a row (parallel Edit calls). Bash/Python only for things no dedicated tool does (running tests, git, bulk generation).
+
+---
+
+## 25/09/2026 — Dead code is removed, not marked
+
+Found unused components (`MainProgressCard` and its children) and offered to leave them alone and note them. User: "Dead code is dead, should be removed not marked. Remove on sep commit - cleanup commit (maybe do it with a complete dead-code run after the rfc)".
+
+**Lesson:** never leave dead code in place with a note. Remove it in its own cleanup commit, separate from the feature/rfc, ideally with a full dead-code run after the rfc. (CLAUDE.md's "mention unrelated dead code, don't delete it" still governs deleting it inside an unrelated change.)

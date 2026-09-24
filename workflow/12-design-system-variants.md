@@ -62,7 +62,9 @@ Design: `b-primary/secondary/accent/success/warning/destructive/neutral` (varian
 | Chip | r99, pad 5-12 x 12, 12px, muted or foreground text, selected state | check-in prompts, filters, "Backfill this day" |
 | Option tile | r10, pad ~11 x 14, icon + label, bordered | check-in actions, social login |
 | Small secondary | r6-8, pad 5-6 x 12-14, 12px | community Chat/Reply toolbar |
-| On-gradient white | white bg on the gradient hero, `primaryGradStart` text, r10, pad 13 x 32 | landing "Get Started for Free" |
+| Chat send | 40px circle, primary gradient + glow, white icon, muted grey when disabled | chat send (separate from FAB and bare Icon) |
+
+Variant, not a type: **Primary, on-gradient** (white bg, `primaryGradStart` text, r10, pad 13 x 32) for buttons on the gradient hero: landing "Get Started for Free", dashboard "Start Check-In".
 
 ### Mapping app buttons to design types
 
@@ -72,18 +74,21 @@ Design: `b-primary/secondary/accent/success/warning/destructive/neutral` (varian
 | `variant='outline'` (42, mostly Cancel/Back/Edit/dialog actions) | Secondary |
 | `variant='destructive'` (2) | Destructive |
 | `variant='ghost'` with `text-muted-foreground` / `p-0`, `variant='link'` | Text link |
-| `size='icon'` ghost/outline, password toggle, goals card corner | Icon (chat send is Icon with primary fill, decide) |
+| `size='icon'` ghost/outline, password toggle, goals card corner | Icon |
+| chat send (`ChatInputField`) | Chat send |
 | `fixed bottom-24 end-4 ... size-14 rounded-full` (community, goals) | FAB |
 | `rounded-full` with a selected state (chat suggestions, community tags, goals category, insights range) | Chip |
 | `w-full h-auto justify-between/start` rows (community categories, filters) | Option tile |
-| `border-white/30 bg-white text-primary` (dashboard) | On-gradient white |
-| `from-orange-400 to-pink-500`, `shadow-blue-500/30`, raw `text-white` | Off-design: map to Primary/FAB tokens, verify with the design before changing |
+| `border-white/30 bg-white text-primary` (dashboard "Start Check-In") | Primary, on-gradient variant |
+| `from-orange-400 to-pink-500` ("Complete Today", `GoalActionButtons`) | Dead code: `MainProgressCard` -> `GoalDetailsSection` -> `GoalActionButtons` is never imported. Not mapped, removed in the cleanup commit |
+| `shadow-blue-500/30`, raw `text-white` | Off-design: map to Primary/FAB tokens, verify with the design before changing |
 | `outline` with `size='sm'` (37 `size='sm'`) | Small secondary |
 
 Open decision: the design's secondary (white + border) matches `outline`, so `outline` = Secondary; the single `secondary` use folds into it or Small secondary.
 
 ### Next
 
-1. Confirm the design type table and mapping above (chip vs tab, chat send as Icon or primary icon, off-design gradients).
+1. Confirm the design type table and mapping above (chip vs tab).
 2. Audit badges and cards the same way.
 3. Implement all button types and migrate every button (93 files, including the 37 plain ones) in per-type `rfc` commits.
+4. Separate `chore` cleanup commit after the rfc: remove dead code found along the way (`MainProgressCard`, `GoalDetailsSection`, `GoalActionButtons`) plus a full dead-code run.
