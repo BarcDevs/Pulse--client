@@ -6,8 +6,8 @@ import { ChevronDown, PlusCircle } from 'lucide-react'
 
 import { Goal, GoalStatus } from '@/types/goals'
 
+import { FoldablePanel } from '@/components/shared/content/FoldablePanel'
 import {
-    AccordionContent,
     AccordionItem,
     AccordionTrigger
 } from '@/components/ui/accordion'
@@ -22,6 +22,8 @@ import { GoalCard } from './cards/GoalCard'
 type GoalStatusSectionProps = {
     status: GoalStatus
     goals: Goal[]
+    isOpen: boolean
+    onFound: () => void
     onEditAction: (goalId: string) => void
     onCreateAction?: () => void
 }
@@ -29,6 +31,8 @@ type GoalStatusSectionProps = {
 export const GoalStatusSection = ({
     status,
     goals,
+    isOpen,
+    onFound,
     onEditAction,
     onCreateAction
 }: GoalStatusSectionProps) => {
@@ -53,7 +57,11 @@ export const GoalStatusSection = ({
                     <ChevronDown className={'ms-auto h-4 w-4 shrink-0 text-on-surface-variant transition-transform duration-200 [[data-state=open]_&]:rotate-180'} />
                 </div>
             </AccordionTrigger>
-            <AccordionContent className={'px-4 pb-4 pt-2'}>
+            <FoldablePanel
+                open={isOpen}
+                onFound={onFound}
+                className={'px-4 pb-4 pt-2'}
+            >
                 <div className={cn('grid gap-4', goals.length === 0 ? 'grid-cols-1' : 'grid-cols-1 md:grid-cols-2 xl:grid-cols-3')}>
                     {goals.map((goal) => (
                         <GoalCard
@@ -79,7 +87,7 @@ export const GoalStatusSection = ({
                         </div>
                     )}
                 </div>
-            </AccordionContent>
+            </FoldablePanel>
         </AccordionItem>
     )
 }

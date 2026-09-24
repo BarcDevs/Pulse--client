@@ -1,5 +1,7 @@
 'use client'
 
+import { useState } from 'react'
+
 import { useTranslations } from 'next-intl'
 
 import { Goal, GoalStatus } from '@/types/goals'
@@ -30,6 +32,7 @@ export const GoalsGrid = ({
     onCreateAction
 }: GoalsGridProps) => {
     const t = useTranslations()
+    const [openStatuses, setOpenStatuses] = useState<string[]>([GoalStatus.ACTIVE])
 
     if (goals.length === 0) {
         return (
@@ -52,7 +55,8 @@ export const GoalsGrid = ({
     return (
         <Accordion
             type={'multiple'}
-            defaultValue={[GoalStatus.ACTIVE]}
+            value={openStatuses}
+            onValueChange={setOpenStatuses}
             className={'space-y-3'}
         >
             {visibleSections.map((status) => (
@@ -60,6 +64,8 @@ export const GoalsGrid = ({
                     key={status}
                     status={status}
                     goals={goalsByStatus[status]}
+                    isOpen={openStatuses.includes(status)}
+                    onFound={() => setOpenStatuses((prev) => [...prev, status])}
                     onEditAction={onEditAction}
                     onCreateAction={onCreateAction}
                 />

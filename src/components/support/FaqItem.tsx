@@ -2,9 +2,9 @@ import { useTranslations } from 'next-intl'
 
 import { ChevronDown } from 'lucide-react'
 
+import { FoldablePanel } from '@/components/shared/content/FoldablePanel'
 import { RichText } from '@/components/shared/content/RichText'
 import {
-    AccordionContent,
     AccordionItem,
     AccordionTrigger
 } from '@/components/ui/accordion'
@@ -15,9 +15,15 @@ import { supportLocales } from '@/locales/supportLocales'
 
 type FaqItemProps = {
     id: typeof SUPPORT_FAQ_IDS[number]
+    isOpen: boolean
+    onFound: () => void
 }
 
-export const FaqItem = ({ id }: FaqItemProps) => {
+export const FaqItem = ({
+    id,
+    isOpen,
+    onFound
+}: FaqItemProps) => {
     const t = useTranslations()
     const item = supportLocales.faq.items[id]
 
@@ -34,11 +40,15 @@ export const FaqItem = ({ id }: FaqItemProps) => {
                     <ChevronDown className={'size-3 transition-transform duration-200 group-data-[state=open]:rotate-180'}/>
                 </div>
             </AccordionTrigger>
-            <AccordionContent className={'px-[22px]'}>
+            <FoldablePanel
+                open={isOpen}
+                onFound={onFound}
+                className={'px-[22px]'}
+            >
                 <p className={'max-w-[720px] pb-[22px] text-sm leading-[1.7] text-muted-foreground'}>
                     <RichText text={t.raw(item.a) as string}/>
                 </p>
-            </AccordionContent>
+            </FoldablePanel>
         </AccordionItem>
     )
 }
