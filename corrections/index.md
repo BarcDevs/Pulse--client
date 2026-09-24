@@ -48,6 +48,7 @@ How to act on bug reports and where to log — state the fix before broad edits,
 | 23/09/2026 | Used `refactor` commit type instead of `rfc` (GIT_RULES); existing commits not renamed |
 | 23/09/2026 | Pushed a branch without its tags and argued for withholding them; always push tags |
 | 23/09/2026 | Ran Python scripts to edit files instead of the Edit tool |
+| 25/09/2026 | Dead code is removed in a separate cleanup commit, not left marked or noted |
 
 ## Code Placement — [[corrections/code-placement]]
 Where new constants/config values belong.
@@ -56,4 +57,3 @@ Where new constants/config values belong.
 |---|---|
 | 23/09/2026 | Tunable delays go in `src/config/timings.ts`, not `src/constants/time.ts` (which is unit conversions only) |
 | 23/09/2026 | Durations must use `*InMs` constants, not magic numbers, even when the surrounding file doesn't |
-| 25/09/2026 | Dead code is removed in a separate cleanup commit, not left marked or noted |
