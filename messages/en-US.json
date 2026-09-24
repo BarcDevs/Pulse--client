@@ -46,7 +46,7 @@
     },
     "forgotPassword": {
       "title": "Reset your password",
-      "description": "Forgot your password? It happens. Enter your email and we’ll send you a secure reset link.",
+      "description": "Forgot your password? It happens. Enter your email and we'll send you a secure reset link.",
       "submitButton": "Send reset link",
       "sendingButton": "Sending...",
       "checkEmailTitle": "Check your email",
@@ -69,7 +69,7 @@
     }
   },
   "chat": {
-    "inputPlaceholder": "Share what’s on your mind...",
+    "inputPlaceholder": "Share what's on your mind...",
     "pageTitle": "Support Chat",
     "pageSubtitle": "A space to reflect, ask questions, and feel supported",
     "badge": "Private and supportive",
@@ -77,14 +77,14 @@
     "messages": {
       "assistantLabel": "Support Chat",
       "youLabel": "You",
-      "openingMessage": "Hi {name}. I’m here with you today. How are you feeling right now?",
-      "exampleUserRestlessness": "I’ve been feeling a bit restless today...",
+      "openingMessage": "Hi {name}. I'm here with you today. How are you feeling right now?",
+      "exampleUserRestlessness": "I've been feeling a bit restless today...",
       "aiResponse1": "That can happen during recovery, especially when your mind or body feels unsettled. Sometimes it helps to slow things down and focus on what feels manageable right now.",
       "suggestions": [
         "Try a grounding exercise",
         "Improve your sleep environment"
       ],
-      "aiResponse2": "Let’s begin with a grounding exercise. It can help bring your attention back to the present moment and create a sense of stability."
+      "aiResponse2": "Let's begin with a grounding exercise. It can help bring your attention back to the present moment and create a sense of stability."
     },
     "sidebar": {
       "nextMilestoneLabel": "Next milestone",
@@ -102,7 +102,7 @@
   "checkIn": {
     "headerTitle": "Your current state",
     "pageTitle": "Daily check-in",
-    "pageSubtitle": "Take a moment to pause, reflect, and notice how you’re doing today.",
+    "pageSubtitle": "Take a moment to pause, reflect, and notice how you're doing today.",
     "submitButton": "Save check-in",
     "submittedFeedback": "Check-in saved! Taking you to your progress...",
     "mood": {
@@ -143,7 +143,7 @@
     },
     "journal": {
       "title": "Journal",
-      "placeholder": "Write about how today feels, what’s been difficult, or anything else on your mind."
+      "placeholder": "Write about how today feels, what's been difficult, or anything else on your mind."
     },
     "submitError": "We couldn't save your daily update right now. Please try again in a moment.",
     "submitPendingMessage": "Processing your check-in…",
@@ -251,7 +251,7 @@
       "category": "Category",
       "categoryPlaceholder": "Choose a category",
       "bodyPlaceholderReply": "Write your reply here...",
-      "bodyPlaceholderPost": "Share what’s on your mind, ask a question, or offer support to others...",
+      "bodyPlaceholderPost": "Share what's on your mind, ask a question, or offer support to others...",
       "tags": "Tags",
       "tagsPlaceholder": "Add a topic like recovery, anxiety, sleep...",
       "tagsPlaceholderMore": "Add another topic...",
@@ -312,7 +312,7 @@
     "greeting": "Welcome back, {name}",
     "checkIn": {
       "badge": "Daily reflection",
-      "title": "Ready for today’s check-in?",
+      "title": "Ready for today's check-in?",
       "description": "Regular check-ins can help you better understand patterns in how you feel over time.",
       "button": "Start check-in"
     },
@@ -470,7 +470,7 @@
         "label": "Goal steps",
         "unit": "milestones",
         "outOf": "of {total}",
-        "acrossGoals": "Across {count} goals you’re working on",
+        "acrossGoals": "Across {count} goals you're working on",
         "percentComplete": "{percent}% complete",
         "completedCount": "{count} completed",
         "inProgressCount": "{count} in progress",
@@ -559,7 +559,7 @@
     },
     "recoveryIdentity": {
       "title": "Recovery focus",
-      "subtitle": "Areas you’re focusing on right now",
+      "subtitle": "Areas you're focusing on right now",
       "empty": "No focus areas added yet",
       "edit": "Edit focus",
       "done": "Finish editing"
@@ -1029,6 +1029,10 @@
         "legal": {
           "privacyPolicy": "Privacy Policy",
           "termsOfService": "Terms of Service"
+        },
+        "support": {
+          "helpCenter": "Help Center",
+          "contactUs": "Contact Us"
         }
       }
     },
@@ -1329,6 +1333,124 @@
       "sharedPost": "shared an update"
     }
   },
+  "support": {
+    "header": {
+      "kicker": "Support Center",
+      "title": "We're here to help",
+      "subtitle": "Find answers to common questions or reach out to our team. If you need help with something, we'll do our best to guide you through it."
+    },
+    "search": {
+      "placeholder": "Try \"backfill a check-in\", \"connect a therapist\", \"export my data\"…"
+    },
+    "quickHelp": {
+      "chat": {
+        "title": "Chat with support",
+        "desc": "Avg reply 4 min · 6am–10pm",
+        "action": "Start a chat"
+      },
+      "careTeam": {
+        "title": "Talk to your care team",
+        "desc": "Secure clinical channel",
+        "action": "Open channel"
+      },
+      "crisis": {
+        "title": "Crisis support",
+        "desc": "Call ERAN at 1201, available 24/7",
+        "action": "Get help now"
+      }
+    },
+    "topics": {
+      "title": "Explore support topics",
+      "articles": "{count} articles",
+      "gettingStarted": {
+        "title": "Getting Started",
+        "desc": "Set up your profile, find your way around HealEase, and create your first recovery goal."
+      },
+      "tracking": {
+        "title": "Tracking & Check-Ins",
+        "desc": "Learn how check-ins, streaks, and activities work."
+      },
+      "goals": {
+        "title": "Goals & Milestones",
+        "desc": "Create, update, and keep track of your recovery goals and milestones."
+      },
+      "community": {
+        "title": "Community & Sharing",
+        "desc": "Learn about the community, sharing your experience, and sharing your progress."
+      },
+      "careTeam": {
+        "title": "Care Team",
+        "desc": "Connect with your care team and share information securely."
+      },
+      "privacy": {
+        "title": "Privacy & Security",
+        "desc": "Learn how we protect your data and help keep your account secure."
+      }
+    },
+    "faq": {
+      "title": "Common questions",
+      "items": {
+        "privacy": {
+          "q": "Is my health data private?",
+          "a": "Your data is protected with industry-standard encryption in transit and at rest, and access is limited to authorized personnel when necessary. We never sell your personal information. You can read the full details in our <privacy>Privacy Policy</privacy>."
+        },
+        "missedCheckIn": {
+          "q": "What happens if I miss a check-in?",
+          "a": "Nothing. Missing a day does not erase your progress or history. You can simply check in when you're ready. Recovery is not about being perfect. It's about continuing at your own pace."
+        },
+        "shareProgress": {
+          "q": "Can I share my progress?",
+          "a": "Yes. From the Progress page, you can create a progress card as an image and choose exactly what you want to share and who you share it with."
+        },
+        "ai": {
+          "q": "How does AI help in HealEase?",
+          "a": "AI can help surface patterns in your check-ins and suggest supportive activities. It does not make clinical decisions, and its suggestions are not medical advice."
+        },
+        "crisis": {
+          "q": "What if I am in crisis?",
+          "a": "If you are in immediate danger, call 101 (Magen David Adom) or 100 (police). For emotional support in Israel, ERAN is available 24/7 at 1201. HealEase is not an emergency service."
+        },
+        "deleteData": {
+          "q": "Can I export or delete my data?",
+          "a": "You can deactivate your account from <settings>Settings</settings>. To request deletion of your data, send us a message using <contact>the form below</contact> and we'll help you with the next steps."
+        }
+      }
+    },
+    "contact": {
+      "title": "Still need a hand?",
+      "description": "Send us a message and someone from our team will get back to you as soon as we can.",
+      "info": {
+        "languages": "Support available in Hebrew and English"
+      },
+      "topicLabel": "Topic",
+      "topics": {
+        "account": "Account & sign-in",
+        "billing": "Billing",
+        "technical": "Technical issue",
+        "privacy": "Privacy & data",
+        "careTeam": "Care team access",
+        "feedback": "Feedback",
+        "other": "Other"
+      },
+      "emailLabel": "Your email",
+      "messageLabel": "Your message",
+      "messagePlaceholder": "Tell us what you're running into. Any details you can share will help us understand how to help.",
+      "privacyNote": "Your message is only used to help with your request and is not shared with third parties.",
+      "send": "Send message",
+      "sending": "Sending…",
+      "sent": {
+        "title": "Message sent",
+        "description": "Thanks for reaching out. We'll reply to the email address you provided as soon as we can.",
+        "another": "Send another message"
+      },
+      "errors": {
+        "messageRequired": "Please tell us how we can help.",
+        "messageTooLong": "Your message is too long (2000 characters max).",
+        "rateLimited": "You've sent several messages in a short time. Please try again in a few minutes.",
+        "generic": "We couldn't send your message right now. Please try again."
+      }
+    }
+  },
   "legal": {
     "tabs": {
       "privacy": "Privacy",
@@ -1524,7 +1646,7 @@
                 },
                 {
                   "label": "Questions",
-                  "text": "Contact us anytime if you have questions about your privacy."
+                  "text": "<contact>Contact us</contact> anytime if you have questions about your privacy."
                 }
               ]
             }
@@ -1539,7 +1661,7 @@
         {
           "title": "Children's privacy",
           "body": [
-            "Pulse is not intended for children under the minimum age required by applicable law. If you believe a child has created an account, please contact us and we will investigate and take appropriate action."
+            "Pulse is not intended for children under the minimum age required by applicable law. If you believe a child has created an account, please <contact>contact us</contact> and we will investigate and take appropriate action."
           ]
         },
         {
@@ -1558,7 +1680,7 @@
         {
           "title": "Agreement",
           "body": [
-            "By creating an account or using Pulse, you agree to these Terms and our Privacy Policy. If you do not agree, please do not use the service.",
+            "By creating an account or using Pulse, you agree to these Terms and our <privacy>Privacy Policy</privacy>. If you do not agree, please do not use the service.",
             {
               "callout": "Pulse supports your recovery journey, but it does not replace professional medical or mental health care."
             }
@@ -1586,7 +1708,7 @@
                 },
                 {
                   "label": "Account security",
-                  "text": "Choose a strong password and contact us if you believe your account has been compromised."
+                  "text": "Choose a strong password and <contact>contact us</contact> if you believe your account has been compromised."
                 }
               ]
             }
@@ -1658,7 +1780,7 @@
         {
           "title": "Contact",
           "body": [
-            "If you have any questions about these Terms, please contact our support team."
+            "If you have any questions about these Terms, please <contact>contact our support team</contact>."
           ]
         }
       ]

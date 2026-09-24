@@ -1,5 +1,7 @@
 import { LegalListBlock } from '@/types/legal'
 
+import { RichText } from '@/components/shared/content/RichText'
+
 type LegalBlockListProps = {
     block: LegalListBlock
 }
@@ -16,10 +18,10 @@ export const LegalBlockList = ({ block }: LegalBlockListProps) => {
                     <span>
                         {item.label && (
                             <strong className={'text-on-surface'}>
-                                {`${item.label} — `}
+                                {`${item.label} - `}
                             </strong>
                         )}
-                        {item.text}
+                        <RichText text={item.text}/>
                     </span>
                 </li>
             ))}

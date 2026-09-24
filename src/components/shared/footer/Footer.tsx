@@ -15,6 +15,7 @@ import { FooterBrand } from './FooterBrand'
 import { FooterLegal } from './FooterLegal'
 import { FooterLinks } from './FooterLinks'
 import { FooterSocial } from './FooterSocial'
+import { FooterSupport } from './FooterSupport'
 
 type FooterProps = {
     className?: ClassName
@@ -37,6 +38,7 @@ export const Footer = ({
                     <div className={'mb-8 grid grid-cols-1 gap-8 md:grid-cols-4'}>
                         <FooterBrand/>
                         <FooterLinks/>
+                        <FooterSupport/>
                         <FooterLegal/>
                         {FEATURES.socialLinks && <FooterSocial/>}
                     </div>

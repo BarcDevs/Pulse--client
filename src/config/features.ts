@@ -33,13 +33,19 @@ export const FEATURES = {
     profileLevel: false,
     // Profile image upload - deferred to scaling phase
     profileImageUpload: false,
-    // Settings tabs — gated individually
+    // Settings tabs - gated individually
     settingsNotifications: false,
     settingsPrivacy: false,
     settingsSecurity: true,
     settingsPreferences: true,
     // Footer social media links - hidden until real accounts are ready
-    socialLinks: false
+    socialLinks: false,
+    // Support page - article search (no help articles yet)
+    supportSearch: false,
+    // Support page - chat / care team / crisis quick-help cards (features not built)
+    supportQuickHelp: false,
+    // Support page - browse-by-topic cards (no help articles yet)
+    supportTopics: false
 } as const
 
 export type FeatureFlags = typeof FEATURES

@@ -9,6 +9,9 @@ export const ENDPOINTS = {
         changeEmail: '/auth/change-email',
         confirmEmailChange: '/auth/confirm-email-change'
     },
+    support: {
+        contact: '/support/contact'
+    },
     users: {
         me: '/users/me',
         password: '/users/password'
