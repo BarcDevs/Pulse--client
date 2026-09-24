@@ -51,6 +51,19 @@ review
 .codex
 designs
 docs/plans
+# Design reference: commit only the curated subset (see docs/design/README.md)
+docs/design/uploads/
+docs/design/screenshots/
+docs/design/community_export/
+docs/design/design_handoff_pulse/
+docs/design/Pulse*.html
+docs/design/OTP Emails.html
+docs/design/_debug_upload.html
+docs/design/spark.png
+docs/design/pulse-logo.webp
+docs/design/emails/healease-logo.webp
+docs/design/pages/auth/OTP Emails.html
+docs/design/pages/**/*-bundle.jsx
 .browsertest
 .vercel
 graphify-out/

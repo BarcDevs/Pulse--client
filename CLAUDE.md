@@ -38,7 +38,7 @@ matches it.
 New feature added → update client README, server PRD, AND server README same time, every time.
 
 ## Design Files
-`.claude/design/` — JSX design files from Claude Design (reference when building UI).
+`docs/design/` — design system, JSX screen specs and OTP emails from Claude Design (reference when building UI). Older sessions/skills may still say `.claude/design/`; same content.
 
 ## Code Style
 Rules in `CORE_RULES.md`. Non-negotiable — follow exactly.
