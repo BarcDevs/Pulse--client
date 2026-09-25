@@ -51,6 +51,8 @@ Used `python - <<EOF` string-replace scripts for small edits (one word in a JSON
 
 **Lesson:** edit files with the Edit tool, even Hebrew/UTF-8 JSON, even several files in a row (parallel Edit calls). Bash/Python only for things no dedicated tool does (running tests, git, bulk generation).
 
+**Repeated 25/09/2026:** in a later session the correction files were never read at session start (CLAUDE.md requires `corrections/index.md` first), and Python string-replace scripts were used again for rule/doc edits. One script failed midway and half-applied a multi-file change (a `.sources` commit went out incomplete and needed a follow-up). User: "you should've read that correction to prevent that from happening - and here you got a live example to why it exists". Reading the index at session start is the fix; the rule is not optional.
+
 ---
 
 ## 25/09/2026 — Dead code is removed, not marked

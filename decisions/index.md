@@ -35,6 +35,13 @@ How network/unexpected errors surface to the user.
 |---|---|
 | 23/09/2026 | Network errors never redirect to `/network-error`; use the gentle network bar |
 
+## Design System Components — [[decisions/design-system-components]]
+How design-system elements are built as components.
+
+| Date | Entry |
+|---|---|
+| 25/09/2026 | Every design-system element is a component: base + type components, variants as a style object, buttons first |
+
 ## Privacy & Consent — [[decisions/privacy-and-consent]]
 Cookie/storage consent and privacy-disclosure decisions.
 
