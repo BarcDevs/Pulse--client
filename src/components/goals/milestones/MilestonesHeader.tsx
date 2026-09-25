@@ -4,7 +4,7 @@ import { useTranslations } from 'next-intl'
 
 import { ChevronRight } from 'lucide-react'
 
-import { Button } from '@/components/ui/button'
+import { TextButton } from '@/components/shared/buttons/TextButton'
 
 import { goalsLocales } from '@/locales/goalsLocales'
 
@@ -26,16 +26,15 @@ export const MilestonesHeader = ({
                 subtitle={t(goalsLocales.milestones.subtitle)}
             />
 
-            <Button
-                variant={'ghost'}
+            <TextButton
+                tone={'onDark'}
                 onClick={onViewAll}
-                className={'text-white/70 hover:text-white'}
             >
                 {t(goalsLocales.milestones
                     .viewAll)}
 
             <ChevronRight className={'ms-2 h-4 w-4'}/>
-            </Button>
+            </TextButton>
         </div>
     )
 }

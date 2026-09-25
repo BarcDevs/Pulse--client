@@ -12,6 +12,7 @@ import { Sparkles } from 'lucide-react'
 
 import { ClassName } from '@/types/react'
 
+import { TextButton } from '@/components/shared/buttons/TextButton'
 import {
     Card,
     CardContent,
@@ -97,15 +98,12 @@ export const DashboardAIInsight = ({
                             {insightText}
                         </blockquote>
                         {isTruncated && (
-                            <button
-                                onClick={() => setIsExpanded(!isExpanded)}
-                                className={'text-sm text-primary hover:underline cursor-pointer'}
-                            >
+                            <TextButton onClick={() => setIsExpanded(!isExpanded)}>
                                 {t(isExpanded
                                     ? dashboardLocales.aiInsight.seeLess
                                     : dashboardLocales.aiInsight.seeMore
                                 )}
-                            </button>
+                            </TextButton>
                         )}
                     </>
                 )}

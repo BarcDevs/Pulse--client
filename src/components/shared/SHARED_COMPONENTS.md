@@ -50,6 +50,14 @@ The design system's `.btn` element, wrapping `ui/button` (`docs/design/designsys
 <Button variant={'secondary'} size={'sm'} onClick={onCancel}>{label}</Button>
 ```
 
+### `TextButton`
+
+Text-style action with no padding or background (inline links like "see more", "view all", back link, retry). Wraps `Button` (`ghost`) with a `tone` prop (`'primary'` default with hover underline, `'muted'`, `'onDark'`, `'inherit'` when the caller sets the color) and a `size` prop (`'sm'` default, `'xs'`).
+
+```tsx
+<TextButton tone={'muted'} size={'xs'} onClick={onRetry}>{label}</TextButton>
+```
+
 ## Convention
 
 One `shared/` wrapper is the sole consumer of a given `ui/` (shadcn) primitive when that primitive

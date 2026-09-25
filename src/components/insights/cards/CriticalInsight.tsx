@@ -30,7 +30,7 @@ export const CriticalInsight = () => {
                 <Button>
                     {t(insightsLocales.criticalInsight.buttonPrimary)}
                 </Button>
-                <Button variant={'ghost'} className={'text-muted-foreground'}>
+                <Button variant={'secondary'}>
                     <BarChart3 className={'mr-2 h-4 w-4'}/>
                     {t(insightsLocales.criticalInsight.buttonSecondary)}
                 </Button>
