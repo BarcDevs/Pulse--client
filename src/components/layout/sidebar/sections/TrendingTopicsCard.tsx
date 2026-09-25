@@ -2,11 +2,9 @@
 
 import { useLocale, useTranslations } from 'next-intl'
 
-import { Button } from '@/components/ui/button'
+import { ChipButton } from '@/components/shared/buttons/ChipButton'
 
 import { useForumTags } from '@/hooks/queries/useForumTags'
-
-import { cn } from '@/lib/utils'
 
 import { getTagName } from '@/utils/tag'
 
@@ -62,28 +60,15 @@ export const TrendingTopicsCard = ({
                             )
                         )
                         return (
-                            <Button
+                            <ChipButton
                                 key={topic.id}
+                                solid
+                                size={'md'}
+                                isSelected={isSelected}
                                 onClick={onSelect}
-                                variant={'ghost'}
-                                size={'sm'}
-                                className={cn(
-                                    'rounded-full text-sm',
-                                    'transition-colors',
-                                    isSelected
-                                        ? 'bg-primary'
-                                        : 'bg-surface-section',
-                                    isSelected
-                                        ? 'text-primary-foreground'
-                                        : 'text-muted-foreground',
-                                    !isSelected
-                                    && 'hover:bg-primary',
-                                    !isSelected
-                                    && 'hover:text-primary-foreground'
-                                )}
                             >
                                 {getTagName(topic, lang)}
-                            </Button>
+                            </ChipButton>
                         )
                     })}
                 </div>

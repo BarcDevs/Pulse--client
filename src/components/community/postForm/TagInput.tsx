@@ -9,9 +9,9 @@ import { useLocale, useTranslations } from 'next-intl'
 
 import { X } from 'lucide-react'
 
-import { Badge } from '@/components/ui/badge'
+import { ChipButton } from '@/components/shared/buttons/ChipButton'
 import { IconButton } from '@/components/shared/buttons/IconButton'
-import { Button } from '@/components/ui/button'
+import { Badge } from '@/components/ui/badge'
 
 import { useForumTags } from '@/hooks/queries/useForumTags'
 
@@ -150,15 +150,13 @@ export const TagInput = ({
                     </p>
                     <div className={'flex flex-wrap gap-1.5'}>
                         {suggestions.map(tag => (
-                            <Button
+                            <ChipButton
                                 key={tag.id}
                                 type={'button'}
-                                variant={'outline'}
                                 onClick={() => addTag(tag.slug)}
-                                className={'h-auto px-3 py-1 rounded-full text-xs text-muted-foreground hover:text-foreground hover:border-primary'}
                             >
                                 {`+ ${getTagName(tag, lang)}`}
-                            </Button>
+                            </ChipButton>
                         ))}
                     </div>
                 </div>

@@ -82,6 +82,14 @@ Round send button for the chat input, icon included. Wraps `Button` (`primary`) 
 <ChatSendButton onClick={onSend} className={'absolute right-1.5 top-1/2 -translate-y-1/2'}/>
 ```
 
+### `ChipButton`
+
+Pill-shaped selectable option (suggestions, tags, filters, category pickers, topic chips). Wraps `Button` (`secondary`) with `isSelected` (soft primary tint), `solid` (filled primary when selected), `size` (`'sm'` default, `'md'`) and `selectedClassName` for data-driven selected colors (goal category, recovery identity).
+
+```tsx
+<ChipButton isSelected={value === id} onClick={() => onChange(id)}>{label}</ChipButton>
+```
+
 ## Convention
 
 One `shared/` wrapper is the sole consumer of a given `ui/` (shadcn) primitive when that primitive

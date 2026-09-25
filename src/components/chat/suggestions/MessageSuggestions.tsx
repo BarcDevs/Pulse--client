@@ -1,4 +1,4 @@
-import { Button } from '@/components/ui/button'
+import { ChipButton } from '@/components/shared/buttons/ChipButton'
 
 type MessageSuggestionsProps = {
     suggestions: string[]
@@ -9,14 +9,12 @@ export const MessageSuggestions = ({
 }: MessageSuggestionsProps) => (
     <div className={'mt-3 flex flex-wrap gap-2'}>
         {suggestions.map((suggestion) => (
-            <Button
+            <ChipButton
                 key={suggestion}
-                variant={'outline'}
-                size={'sm'}
-                className={'h-auto rounded-full border-primary bg-transparent px-3 py-1.5 text-xs text-primary hover:bg-primary-light'}
+                isSelected
             >
                 {suggestion}
-            </Button>
+            </ChipButton>
         ))}
     </div>
 )

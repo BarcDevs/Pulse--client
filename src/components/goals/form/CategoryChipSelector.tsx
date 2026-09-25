@@ -6,7 +6,7 @@ import { Control } from 'react-hook-form'
 
 import { GoalCategory } from '@/types/goals'
 
-import { Button } from '@/components/ui/button'
+import { ChipButton } from '@/components/shared/buttons/ChipButton'
 import {
     FormControl,
     FormField,
@@ -16,7 +16,6 @@ import {
 } from '@/components/ui/form'
 
 import { getCategoryColor } from '@/lib/goals/getCategoryColor'
-import { cn } from '@/lib/utils'
 
 import { goalsLocales } from '@/locales/goalsLocales'
 import { GoalSchema }
@@ -48,20 +47,16 @@ export const CategoryChipSelector = ({
                                 const categoryColor = getCategoryColor(cat)
 
                                 return (
-                                    <Button
+                                    <ChipButton
                                         key={cat}
                                         type={'button'}
+                                        size={'md'}
+                                        isSelected={isSelected}
+                                        selectedClassName={categoryColor}
                                         onClick={() => field.onChange(cat)}
-                                        className={cn(
-                                            'px-4 py-2 rounded-full text-sm font-medium transition-all',
-                                            isSelected
-                                                ? `${categoryColor} shadow-md hover:shadow-lg`
-                                                : 'bg-surface-container-low text-on-surface-variant hover:bg-surface-container hover:shadow-sm [&:hover]:text-on-surface-variant'
-                                        )}
-                                        variant={'ghost'}
                                     >
                                         {t(goalsLocales.categoryLabels[cat])}
-                                    </Button>
+                                    </ChipButton>
                                 )
                             }
                         )}

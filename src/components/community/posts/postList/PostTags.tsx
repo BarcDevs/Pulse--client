@@ -4,12 +4,10 @@ import { useLocale } from 'next-intl'
 
 import type { PartialTag, Tag } from '@/types/community'
 
+import { ChipButton } from '@/components/shared/buttons/ChipButton'
 import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
 
 import { useForumTags } from '@/hooks/queries/useForumTags'
-
-import { cn } from '@/lib/utils'
 
 import { getTagName } from '@/utils/tag'
 
@@ -37,18 +35,13 @@ export const PostTags = ({
                 const name = getTagName(enriched, lang)
 
                 return onTagSelectAction ? (
-                    <Button
+                    <ChipButton
                         key={tag.id}
-                        variant={'outline'}
+                        isSelected={activeTag === tag.slug}
                         onClick={() => onTagSelectAction(tag.slug)}
-                        className={cn('h-auto px-2 py-0.5 text-xs font-normal rounded-full',
-                            activeTag === tag.slug
-                                ? 'bg-primary/10 text-primary border-primary'
-                                : 'text-muted-foreground hover:bg-accent hover:text-accent-foreground'
-                        )}
                     >
                         {name}
-                    </Button>
+                    </ChipButton>
                 ) : (
                     <Badge
                         key={tag.id}

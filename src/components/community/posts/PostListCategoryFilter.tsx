@@ -10,6 +10,7 @@ import {
     SlidersHorizontal
 } from 'lucide-react'
 
+import { ChipButton } from '@/components/shared/buttons/ChipButton'
 import { Button } from '@/components/ui/button'
 import {
     Popover,
@@ -104,20 +105,17 @@ export const PostListCategoryFilter = ({
             onOpenChange={setOpen}
         >
             <PopoverTrigger asChild>
-                <Button
-                    variant={'outline'}
-                    size={'sm'}
-                    className={cn(
-                        'gap-1.5 text-sm font-semibold',
-                        selected && 'border-primary text-primary'
-                    )}
+                <ChipButton
+                    size={'md'}
+                    isSelected={!!selected}
+                    className={'gap-1.5 font-semibold'}
                 >
                     <SlidersHorizontal className={'h-3.5 w-3.5'}/>
                     {selected
                         ? tCategoryNames(selected.key)
                         : t(communityLocales.posts.allCategories)}
                     <ChevronDown className={'h-3.5 w-3.5'}/>
-                </Button>
+                </ChipButton>
             </PopoverTrigger>
             <PopoverContent
                 align={'end'}
