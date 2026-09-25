@@ -2,14 +2,13 @@
 
 import { useTranslations } from 'next-intl'
 
-import { Send } from 'lucide-react'
 import type { KeyboardEvent } from 'react'
 
 import type { SetState } from '@/types/react'
 
 import { FormInput } from '@/components/shared/inputs/FormInput'
 import { UserAvatar } from '@/components/shared/UserAvatar'
-import { Button } from '@/components/ui/button'
+import { ChatSendButton } from '@/components/shared/buttons/ChatSendButton'
 
 import { chatLocales } from '@/locales/chatLocales'
 
@@ -45,13 +44,10 @@ export const ChatInputField = ({
                     className={'w-full rounded-full border border-border bg-muted px-4 py-3 pr-12 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20'}
                     required={false}
                 />
-                <Button
+                <ChatSendButton
                     onClick={onSend}
-                    size={'icon'}
-                    className={'absolute right-1.5 top-1/2 size-8 -translate-y-1/2 rounded-full bg-primary hover:bg-primary/90'}
-                >
-                    <Send className={'size-4 text-white'}/>
-                </Button>
+                    className={'absolute right-1.5 top-1/2 -translate-y-1/2'}
+                />
             </div>
         </div>
     )

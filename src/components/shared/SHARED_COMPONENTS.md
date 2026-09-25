@@ -74,6 +74,14 @@ Floating action button, mobile only (`sm:hidden`), fixed bottom-end, round 56px,
 <FabButton onClick={onNew} aria-label={label}><Plus className={'size-6'}/></FabButton>
 ```
 
+### `ChatSendButton`
+
+Round send button for the chat input, icon included. Wraps `Button` (`primary`) at 32px. Position it with `className` (`absolute` inside the input).
+
+```tsx
+<ChatSendButton onClick={onSend} className={'absolute right-1.5 top-1/2 -translate-y-1/2'}/>
+```
+
 ## Convention
 
 One `shared/` wrapper is the sole consumer of a given `ui/` (shadcn) primitive when that primitive
