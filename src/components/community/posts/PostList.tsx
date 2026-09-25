@@ -16,11 +16,9 @@ import type {
 
 import { EmptyState } from '@/components/shared/EmptyState'
 import { ErrorDisplay } from '@/components/shared/ErrorDisplay'
-import { Button } from '@/components/ui/button'
+import { TabButton } from '@/components/shared/buttons/TabButton'
 
 import { useForumPosts } from '@/hooks/queries/useForumPosts'
-
-import { cn } from '@/lib/utils'
 
 import { communityLocales } from '@/locales/communityLocales'
 
@@ -140,23 +138,13 @@ export const PostList = ({
             <div className={'flex flex-wrap items-center border-b border-border'}>
                 <div className={'flex flex-1'}>
                     {tabs.map((tab) => (
-                        <Button
+                        <TabButton
                             key={tab}
+                            isActive={activeFilter === tab}
                             onClick={() => handleFilterChange(tab)}
-                            variant={
-                                activeFilter === tab
-                                    ? 'default'
-                                    : 'ghost'
-                            }
-                            className={cn(
-                                'px-4 py-3 text-xs font-medium rounded-none border-b-2',
-                                activeFilter === tab
-                                    ? 'text-white border-primary'
-                                    : 'text-muted-foreground hover:text-foreground border-transparent'
-                            )}
                         >
                             {t(communityLocales.posts.filterLabels[tab])}
-                        </Button>
+                        </TabButton>
                     ))}
                 </div>
                 <div className={'px-2 py-1.5 shrink-0'}>

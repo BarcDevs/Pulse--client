@@ -98,6 +98,14 @@ Navigation row (sidebar, settings tabs, drawer, user menu, mobile bar "more"). W
 <NavItemButton isActive={isActive} onClick={onNavigate}><Icon className={'size-5'}/>{label}</NavItemButton>
 ```
 
+### `TabButton`
+
+Tab/segment control button. Wraps `Button` (`ghost`) with `isActive` and `variant`: `'underline'` (default, list filter tabs with bottom border), `'segmented'` (pill segments inside a tinted track), `'side'` (vertical table-of-contents rows with a start border).
+
+```tsx
+<TabButton variant={'segmented'} isActive={tab === '7days'} onClick={onSelect}>{label}</TabButton>
+```
+
 ## Convention
 
 One `shared/` wrapper is the sole consumer of a given `ui/` (shadcn) primitive when that primitive
