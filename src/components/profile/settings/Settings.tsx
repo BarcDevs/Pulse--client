@@ -1,6 +1,6 @@
 import { useTranslations } from 'next-intl'
 
-import { Button } from '@/components/ui/button'
+import { TileButton } from '@/components/shared/buttons/TileButton'
 import {
     Card,
     CardContent,
@@ -25,11 +25,7 @@ export const ProfileSettings = () => {
             <CardContent>
                 <div className={'grid gap-4 sm:grid-cols-2 lg:grid-cols-4'}>
                     {profileSettingsWithIcons.map((setting) => (
-                        <Button
-                            key={setting.title}
-                            variant={'ghost'}
-                            className={'flex flex-col items-center rounded-xl bg-surface-section p-6 text-center h-auto hover:bg-muted'}
-                        >
+                        <TileButton key={setting.title}>
                             <div className={'flex size-12 items-center justify-center rounded-xl bg-primary-light'}>
                                 <setting.icon className={'size-6 text-primary'}/>
                             </div>
@@ -39,7 +35,7 @@ export const ProfileSettings = () => {
                             <p className={'mt-1 text-sm text-muted-foreground'}>
                                 {setting.description}
                             </p>
-                        </Button>
+                        </TileButton>
                     ))}
                 </div>
             </CardContent>

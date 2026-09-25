@@ -122,6 +122,14 @@ Button that looks and sits like a form field (select and date-picker triggers, t
 <FieldButton isPlaceholder={!value}>{label}<ChevronDown className={'h-4 w-4 opacity-50'}/></FieldButton>
 ```
 
+### `TileButton`
+
+Whole-card clickable tile (profile settings tiles, support topic cards). Wraps `Button` (`ghost`, `secondary` when `outlined`) with `align` (`'center'` default, `'start'`) and `outlined`. The card content is the children; a per-item hover style may be passed in `className`.
+
+```tsx
+<TileButton outlined align={'start'} onClick={onOpen}>{content}</TileButton>
+```
+
 ## Convention
 
 One `shared/` wrapper is the sole consumer of a given `ui/` (shadcn) primitive when that primitive
