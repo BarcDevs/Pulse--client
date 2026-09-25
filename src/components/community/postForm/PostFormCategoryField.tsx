@@ -7,8 +7,8 @@ import { useTranslations } from 'next-intl'
 import { Check, ChevronDown } from 'lucide-react'
 import { UseFormReturn } from 'react-hook-form'
 
+import { FieldButton } from '@/components/shared/buttons/FieldButton'
 import { OptionButton } from '@/components/shared/buttons/OptionButton'
-import { Button } from '@/components/ui/button'
 import {
     FormField,
     FormItem,
@@ -61,13 +61,9 @@ export const PostFormCategoryField = ({
                             onOpenChange={setOpen}
                         >
                             <PopoverTrigger asChild>
-                                <Button
+                                <FieldButton
                                     type={'button'}
-                                    variant={'outline'}
-                                    className={cn(
-                                        'w-full h-auto py-2.5 px-3 justify-between text-start font-normal',
-                                        !selectedCat && 'text-muted-foreground'
-                                    )}
+                                    isPlaceholder={!selectedCat}
                                 >
                                     {selectedCat ? (
                                         <div className={'flex items-center gap-2.5'}>
@@ -90,7 +86,7 @@ export const PostFormCategoryField = ({
                                         </span>
                                     )}
                                     <ChevronDown className={'h-4 w-4 opacity-50 shrink-0'}/>
-                                </Button>
+                                </FieldButton>
                             </PopoverTrigger>
                             <PopoverContent
                                 align={'start'}

@@ -114,6 +114,14 @@ Selectable option in a list or group (category rows in a popover, theme choice).
 <OptionButton layout={'bordered'} isSelected={theme === 'dark'} onClick={onDark}>{label}</OptionButton>
 ```
 
+### `FieldButton`
+
+Button that looks and sits like a form field (select and date-picker triggers, the reply prompt bar). Wraps `Button` (`secondary`) with `isPlaceholder` (muted text when nothing is chosen) and `size` (`'md'` default, `'lg'` for the larger prompt bar). Full width by default, content justified between; pass `w-auto` to shrink.
+
+```tsx
+<FieldButton isPlaceholder={!value}>{label}<ChevronDown className={'h-4 w-4 opacity-50'}/></FieldButton>
+```
+
 ## Convention
 
 One `shared/` wrapper is the sole consumer of a given `ui/` (shadcn) primitive when that primitive

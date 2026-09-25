@@ -4,7 +4,7 @@ import { useTranslations } from 'next-intl'
 
 import { ChevronDown } from 'lucide-react'
 
-import { Button } from '@/components/ui/button'
+import { FieldButton } from '@/components/shared/buttons/FieldButton'
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -32,13 +32,10 @@ export const LanguageSelector = () => {
             </div>
             <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                    <Button
-                        variant={'outline'}
-                        className={'gap-2'}
-                    >
+                    <FieldButton className={'w-auto'}>
                         {languageSwitcher.language.currentLanguage?.nativeName ?? languageSwitcher.language.locale}
                         <ChevronDown className={'h-4 w-4 opacity-50'}/>
-                    </Button>
+                    </FieldButton>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align={'end'}>
                     {languageSwitcher.language.languageList.map((lang) => (
