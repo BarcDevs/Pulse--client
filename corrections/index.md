@@ -49,6 +49,8 @@ How to act on bug reports and where to log — state the fix before broad edits,
 | 23/09/2026 | Pushed a branch without its tags and argued for withholding them; always push tags |
 | 23/09/2026 | Ran Python scripts to edit files instead of the Edit tool |
 | 25/09/2026 | Dead code is removed in a separate cleanup commit, not left marked or noted |
+| 25/09/2026 | Branched and upgraded deps in the shared checkout while another session was in it; create the worktree first |
+| 25/09/2026 | Swapped "Claude routines" for a session cron and never said where scheduled output lands |
 
 ## Code Placement — [[corrections/code-placement]]
 Where new constants/config values belong.
