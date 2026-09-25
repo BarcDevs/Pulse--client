@@ -90,6 +90,14 @@ Pill-shaped selectable option (suggestions, tags, filters, category pickers, top
 <ChipButton isSelected={value === id} onClick={() => onChange(id)}>{label}</ChipButton>
 ```
 
+### `NavItemButton`
+
+Navigation row (sidebar, settings tabs, drawer, user menu, mobile bar "more"). Wraps `Button` (`ghost`) with `isActive` (solid primary), `soft` (tinted active, drawer), `tone` (`'default'`, `'destructive'` for logout) and `layout` (`'row'` default, `'compact'` for menus, `'stacked'` for the mobile bar). Use `asChild` around a `Link`.
+
+```tsx
+<NavItemButton isActive={isActive} onClick={onNavigate}><Icon className={'size-5'}/>{label}</NavItemButton>
+```
+
 ## Convention
 
 One `shared/` wrapper is the sole consumer of a given `ui/` (shadcn) primitive when that primitive
