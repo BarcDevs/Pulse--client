@@ -2,7 +2,7 @@
 
 import { useTranslations } from 'next-intl'
 
-import { Button } from '@/components/ui/button'
+import { Button } from '@/components/shared/buttons/Button'
 
 import { useSettings } from '@/context/SettingsContext'
 
@@ -22,7 +22,7 @@ export const SettingsFooter = () => {
     return (
         <div className={'flex items-center justify-end gap-3 pt-4 border-t border-border'}>
             <Button
-                variant={'outline'}
+                variant={'secondary'}
                 disabled={isDisabled}
                 onClick={onDiscard}
             >

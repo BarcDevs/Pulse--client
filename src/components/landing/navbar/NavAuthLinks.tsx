@@ -3,8 +3,8 @@ import { useTranslations } from 'next-intl'
 
 import { ClassName } from '@/types/react'
 
+import { Button } from '@/components/shared/buttons/Button'
 import { LanguageSwitcher } from '@/components/shared/LanguageSwitcher'
-import { Button } from '@/components/ui/button'
 
 import { cn } from '@/lib/utils'
 
@@ -32,7 +32,7 @@ export const NavAuthLinks = ({
                 className={cn(mobile && 'w-full')}
             >
                 <Button
-                    variant={'outline'}
+                    variant={'secondary'}
                     size={'sm'}
                     className={cn(mobile && 'w-full')}
                 >

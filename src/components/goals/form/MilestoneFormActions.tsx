@@ -2,7 +2,7 @@
 
 import { useTranslations } from 'next-intl'
 
-import { Button } from '@/components/ui/button'
+import { Button } from '@/components/shared/buttons/Button'
 
 import { goalsLocales } from '@/locales/goalsLocales'
 
@@ -31,7 +31,7 @@ export const MilestoneFormActions = ({
             {onCloseAction && (
                 <Button
                     type={'button'}
-                    variant={'outline'}
+                    variant={'secondary'}
                     disabled={isSubmitting}
                     onClick={onCloseAction}
                     className={'flex-1'}

@@ -10,7 +10,7 @@ import { Plus } from 'lucide-react'
 
 import { Goal, MilestoneStatus } from '@/types/goals'
 
-import { Button } from '@/components/ui/button'
+import { Button } from '@/components/shared/buttons/Button'
 
 import { useGoalMilestones } from '@/hooks/context/useGoalMilestones'
 

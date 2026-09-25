@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 
-import { Button, buttonVariants } from '@/components/ui/button'
+import { Button } from '@/components/shared/buttons/Button'
 
 import { useLogout } from '@/hooks/mutations/useLogout'
 
@@ -22,16 +22,17 @@ export const SystemPrivacy = () => {
             </h3>
 
             <div className={'flex gap-3'}>
-                <Link
-                    href={ROUTES.PROFILE_SETTINGS}
-                    className={buttonVariants({ variant: 'outline' })}
+                <Button
+                    asChild
+                    variant={'secondary'}
                 >
-                    {t(profileLocales.systemPrivacy.manageSettings)}
-                </Link>
+                    <Link href={ROUTES.PROFILE_SETTINGS}>
+                        {t(profileLocales.systemPrivacy.manageSettings)}
+                    </Link>
+                </Button>
 
                 <Button
-                    variant={'outline'}
-                    className={'border-destructive text-destructive hover:bg-destructive/10 hover:text-destructive'}
+                    variant={'secondary'}
                     onClick={() => logout.actions.logout()}
                     disabled={logout.status.isPending}
                 >

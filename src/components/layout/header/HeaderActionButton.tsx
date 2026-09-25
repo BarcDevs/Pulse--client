@@ -3,9 +3,7 @@
 import { useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 
-import { Button } from '@/components/ui/button'
-
-import { cn } from '@/lib/utils'
+import { Button } from '@/components/shared/buttons/Button'
 
 import type { ActionConfig } from '@/constants/config/headerPageConfigs'
 import { ROUTES } from '@/constants/routes'
@@ -21,6 +19,7 @@ export const HeaderActionButton = ({
     const router = useRouter()
     const isOutline = action.variant === 'outline'
     const isPrimaryAction = action.type === 'newPost'
+    const variant = isOutline && !isPrimaryAction ? 'secondary' : 'primary'
 
     const handleClick = () => {
         if (action.type === 'newPost') {
@@ -36,12 +35,8 @@ export const HeaderActionButton = ({
     return (
         <Button
             onClick={handleClick}
-            variant={isOutline ? 'outline' : 'default'}
+            variant={variant}
             aria-label={t(action.label)}
-            className={cn(
-                isPrimaryAction && 'bg-primary hover:bg-primary/90 text-primary-foreground',
-                isOutline && !isPrimaryAction && 'text-muted-foreground'
-            )}
         >
             {action.icon && (
                 <action.icon className={'sm:mr-2 h-4 w-4'}/>

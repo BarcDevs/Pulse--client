@@ -5,7 +5,7 @@ import { useTranslations } from 'next-intl'
 
 import { Headphones } from 'lucide-react'
 
-import { Button } from '@/components/ui/button'
+import { Button } from '@/components/shared/buttons/Button'
 
 import { ROUTES } from '@/constants/routes'
 

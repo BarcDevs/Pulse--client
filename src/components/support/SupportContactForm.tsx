@@ -4,7 +4,7 @@ import { useTranslations } from 'next-intl'
 
 import { Shield } from 'lucide-react'
 
-import { Button } from '@/components/ui/button'
+import { Button } from '@/components/shared/buttons/Button'
 import {
     Form,
     FormField,
@@ -16,8 +16,6 @@ import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
 
 import { useSupportForm } from '@/hooks/forms/useSupportForm'
-
-import { cn } from '@/lib/utils'
 
 import { SUPPORT_EMAIL_PLACEHOLDER } from '@/constants/support'
 
@@ -119,12 +117,6 @@ export const SupportContactForm = ({
                     <Button
                         type={'submit'}
                         disabled={!canSend || isSubmitting}
-                        className={cn(
-                            'h-auto rounded-[10px] px-[22px] py-[11px] text-[13px] font-bold leading-tight',
-                            canSend
-                                ? 'bg-linear-to-br from-primary-gradient-end to-primary-gradient-start text-primary-foreground shadow-lg shadow-primary/25'
-                                : 'bg-muted text-muted-foreground shadow-none hover:bg-muted disabled:pointer-events-auto disabled:cursor-not-allowed disabled:opacity-100'
-                        )}
                     >
                         {t(isSubmitting ? supportLocales.contact.sending : supportLocales.contact.send)}
                     </Button>

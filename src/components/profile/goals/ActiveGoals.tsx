@@ -6,12 +6,10 @@ import { useTranslations } from 'next-intl'
 import { GoalStatus } from '@/types/goals'
 
 import { GoalProgressBar } from '@/components/shared/bars/GoalProgressBar'
+import { Button } from '@/components/shared/buttons/Button'
 import { EmptyState } from '@/components/shared/EmptyState'
-import { buttonVariants } from '@/components/ui/button'
 
 import { useGoals } from '@/hooks/queries/useGoals'
-
-import { cn } from '@/lib/utils'
 
 import { ROUTES } from '@/constants/routes'
 
@@ -60,19 +58,15 @@ export const ActiveGoals = () => {
                 ))}
             </div>
 
-            <Link
-                href={ROUTES.RECOVERY_GOALS}
-                className={cn(
-                    buttonVariants({
-                        variant: 'secondary'
-                    }),
-                    'w-full mt-6 bg-white/20',
-                    'hover:bg-white/30 text-primary-foreground',
-                    'border-0'
-                )}
+            <Button
+                asChild
+                variant={'onGradient'}
+                className={'w-full mt-6'}
             >
-                {t(profileLocales.goals.viewRoadmap)}
-            </Link>
+                <Link href={ROUTES.RECOVERY_GOALS}>
+                    {t(profileLocales.goals.viewRoadmap)}
+                </Link>
+            </Button>
         </div>
     )
 }

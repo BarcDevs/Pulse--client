@@ -5,8 +5,8 @@ import { useTranslations } from 'next-intl'
 
 import { RotateCcw } from 'lucide-react'
 
+import { Button } from '@/components/shared/buttons/Button'
 import { Icon } from '@/components/shared/ui/Icon'
-import { Button } from '@/components/ui/button'
 
 import { ROUTES } from '@/constants/routes'
 
@@ -32,7 +32,7 @@ export const ErrorActions = ({
             </Button>
             <Button
                 asChild
-                variant={'outline'}
+                variant={'secondary'}
             >
                 <Link href={ROUTES.CONTACT_SUPPORT}>
                     <Icon

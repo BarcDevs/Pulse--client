@@ -2,7 +2,7 @@
 
 import { Check, Globe } from 'lucide-react'
 
-import { Button } from '@/components/ui/button'
+import { Button } from '@/components/shared/buttons/Button'
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -21,9 +21,9 @@ export const LanguageSwitcher = () => {
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
                 <Button
-                    variant={'outline'}
+                    variant={'secondary'}
                     size={'sm'}
-                    className={'gap-2 border data-[state=open]:border-primary no-focus'}
+                    className={'gap-2 data-[state=open]:border-primary no-focus'}
                 >
                     <Globe className={'h-4 w-4'}/>
                     <span>{languageSwitcher.language.currentLanguage?.shortCode}</span>

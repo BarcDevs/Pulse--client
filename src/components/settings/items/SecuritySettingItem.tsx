@@ -2,7 +2,7 @@ import { ReactNode } from 'react'
 
 import { Edit2 } from 'lucide-react'
 
-import { Button } from '@/components/ui/button'
+import { Button } from '@/components/shared/buttons/Button'
 
 import { securitySettingStyles } from '@/constants/securitySettings'
 

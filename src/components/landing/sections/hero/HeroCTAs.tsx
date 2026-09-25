@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 
-import { Button } from '@/components/ui/button'
+import { Button } from '@/components/shared/buttons/Button'
 
 import { ROUTES } from '@/constants/routes'
 
@@ -15,10 +15,7 @@ export const HeroCTAs = () => {
     return (
         <div className={'flex items-center gap-4'}>
             <Link href={ROUTES.SIGNUP}>
-                <Button
-                    size={'lg'}
-                    className={'transition-all duration-200'}
-                >
+                <Button size={'lg'}>
                     {t(landingLocales.hero.startJourney)}
                 </Button>
             </Link>

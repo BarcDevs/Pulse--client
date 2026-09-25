@@ -6,7 +6,7 @@ import { useTranslations } from 'next-intl'
 
 import { AlertTriangle } from 'lucide-react'
 
-import { Button } from '@/components/ui/button'
+import { Button } from '@/components/shared/buttons/Button'
 import {
     Dialog,
     DialogContent,
@@ -52,7 +52,7 @@ export const DeactivateSection = () => {
                     </DialogHeader>
                     <div className={'flex justify-end gap-3 mt-4'}>
                         <Button
-                            variant={'outline'}
+                            variant={'secondary'}
                             onClick={() => setOpen(false)}
                             disabled={isPending}
                         >

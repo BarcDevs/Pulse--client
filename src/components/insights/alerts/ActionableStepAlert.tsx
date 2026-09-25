@@ -2,7 +2,7 @@ import { useTranslations } from 'next-intl'
 
 import { Lightbulb } from 'lucide-react'
 
-import { Button } from '@/components/ui/button'
+import { Button } from '@/components/shared/buttons/Button'
 
 import { insightsLocales } from '@/locales/insightsLocales'
 
@@ -23,10 +23,7 @@ export const ActionableStepAlert = () => {
                         {t(insightsLocales.actionableStep.description)}
                     </p>
                     <div className={'mt-4'}>
-                        <Button
-                            size={'sm'}
-                            className={'bg-secondary hover:bg-secondary/90 text-secondary-foreground'}
-                        >
+                        <Button size={'sm'}>
                             {t(insightsLocales.actionableStep.button)}
                         </Button>
                     </div>

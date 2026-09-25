@@ -2,7 +2,7 @@ import { useTranslations } from 'next-intl'
 
 import { FileText } from 'lucide-react'
 
-import { Button } from '@/components/ui/button'
+import { Button } from '@/components/shared/buttons/Button'
 import {
     Card,
     CardHeader,
@@ -28,7 +28,7 @@ export const InsightsSummary = () => {
         </p>
             </div>
             <Button
-                variant={'outline'}
+                variant={'secondary'}
                 className={'gap-2'}
             >
                 <FileText className={'size-4'}/>

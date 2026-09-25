@@ -5,8 +5,8 @@ import { useTranslations } from 'next-intl'
 
 import { Home } from 'lucide-react'
 
+import { Button } from '@/components/shared/buttons/Button'
 import { Icon } from '@/components/shared/ui/Icon'
-import { Button } from '@/components/ui/button'
 
 import { ROUTES } from '@/constants/routes'
 
@@ -48,7 +48,7 @@ export const NotFoundContent = ({
                 </Button>
                 <Button
                     onClick={onGoBackAction}
-                    variant={'outline'}
+                    variant={'secondary'}
                 >
                     <Icon
                         name={'error/arrow-back'}

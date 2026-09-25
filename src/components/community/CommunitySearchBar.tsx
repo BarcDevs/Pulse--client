@@ -4,7 +4,7 @@ import { useTranslations } from 'next-intl'
 
 import { Plus, Search } from 'lucide-react'
 
-import { Button } from '@/components/ui/button'
+import { Button } from '@/components/shared/buttons/Button'
 import { Input } from '@/components/ui/input'
 
 import { communityLocales } from '@/locales/communityLocales'

@@ -8,8 +8,8 @@ import {
     UserX
 } from 'lucide-react'
 
+import { Button } from '@/components/shared/buttons/Button'
 import { GuidelineItem } from '@/components/shared/content/GuidelineItem'
-import { Button } from '@/components/ui/button'
 
 import { appSettings } from '@/config/appSettings'
 
@@ -43,7 +43,7 @@ export const GuidelinesCard = () => {
                 />
             </div>
             <Button
-                variant={'outline'}
+                variant={'secondary'}
                 size={'sm'}
                 className={'mt-4 w-full'}
             >

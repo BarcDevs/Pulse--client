@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 
-import { Button } from '@/components/ui/button'
+import { Button } from '@/components/shared/buttons/Button'
 
 import { ROUTES } from '@/constants/routes'
 
@@ -33,7 +33,7 @@ export const LegalFooterCta = ({ pdfHref }: LegalFooterCtaProps) => {
                 {appSettings.supportEmail && (
                     <Button
                         asChild
-                        variant={'outline'}
+                        variant={'secondary'}
                     >
                         <a href={`mailto:${appSettings.supportEmail}`}>
                             {t(legalLocales.common.footerCta.emailLabel, { email: appSettings.supportEmail })}
@@ -42,7 +42,7 @@ export const LegalFooterCta = ({ pdfHref }: LegalFooterCtaProps) => {
                 )}
                 <Button
                     asChild
-                    variant={'outline'}
+                    variant={'secondary'}
                 >
                     <a
                         href={pdfHref}

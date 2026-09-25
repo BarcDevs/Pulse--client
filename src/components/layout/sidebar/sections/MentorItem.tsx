@@ -2,7 +2,7 @@
 
 import { useTranslations } from 'next-intl'
 
-import { Button } from '@/components/ui/button'
+import { Button } from '@/components/shared/buttons/Button'
 
 type MentorItemProps = {
     id: string
@@ -42,7 +42,7 @@ export const MentorItem = ({
             </div>
             <Button
                 size={'sm'}
-                variant={'outline'}
+                variant={'secondary'}
                 className={'text-xs'}
             >
                 {t('community.mentors.chatButton')}

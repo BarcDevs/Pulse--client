@@ -38,6 +38,18 @@ has nothing that fits.
 | `lists/` | List-item/tag renderers |
 | `nav/` | Navigation menus (e.g. `SidebarNavMenu`) |
 
+## `buttons/`
+
+Every button in the app comes from here. Never import `@/components/ui/button` (only this folder does) and never a raw `<button>`. Types are separate components; looks of the same element are variants (a style object on `Button`). Layout classes (`w-full`, `flex-1`, `mt-4`) may be passed as `className`; look overrides may not.
+
+### `Button`
+
+The design system's `.btn` element, wrapping `ui/button` (`docs/design/designsystem.html`). Variants: `primary` (default, gradient + glow), `secondary` (white, bordered), `ghost` (primary text), `destructive`, `onGradient` (white, for buttons on the gradient hero/card). Sizes: `default`, `sm`, `lg`, `xl` (h-11 form CTA). Other button types wrap this.
+
+```tsx
+<Button variant={'secondary'} size={'sm'} onClick={onCancel}>{label}</Button>
+```
+
 ## Convention
 
 One `shared/` wrapper is the sole consumer of a given `ui/` (shadcn) primitive when that primitive
