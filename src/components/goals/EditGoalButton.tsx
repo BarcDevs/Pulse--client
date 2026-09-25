@@ -4,7 +4,7 @@ import { useTranslations } from 'next-intl'
 
 import { Pencil } from 'lucide-react'
 
-import { Button } from '@/components/ui/button'
+import { IconButton } from '@/components/shared/buttons/IconButton'
 
 import { goalsLocales } from '@/locales/goalsLocales'
 
@@ -20,14 +20,13 @@ export const EditGoalButton = ({
     const t = useTranslations()
 
     return (
-        <Button
+        <IconButton
+            outlined
             onClick={() => onEdit(goalId)}
-            variant={'outline'}
-            size={'icon'}
-            className={'absolute top-4 end-4 h-9 w-9'}
+            className={'absolute top-4 end-4'}
             title={t(goalsLocales.actions.editPlan)}
         >
             <Pencil size={16} />
-        </Button>
+        </IconButton>
     )
 }

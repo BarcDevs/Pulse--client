@@ -6,7 +6,7 @@ import { useTranslations } from 'next-intl'
 
 import { X } from 'lucide-react'
 
-import { Button } from '@/components/ui/button'
+import { IconButton } from '@/components/shared/buttons/IconButton'
 
 import {
     getApiErrorMessage,
@@ -48,14 +48,13 @@ export const ErrorBanner = ({
                 </p>
             </div>
             {/*todo: replace with CloseButton*/}
-            <Button
+            <IconButton
+                size={'sm'}
                 onClick={() => setDismissed(true)}
-                variant={'ghost'}
-                size={'icon'}
-                className={'ml-4 h-8 w-8'}
+                className={'ml-4'}
             >
                 <X className={'w-4 h-4'}/>
-            </Button>
+            </IconButton>
         </div>
     )
 }

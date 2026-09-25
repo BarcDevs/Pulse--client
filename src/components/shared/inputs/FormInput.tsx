@@ -6,7 +6,7 @@ import {
 
 import { Eye, EyeOff } from 'lucide-react'
 
-import { Button } from '@/components/ui/button'
+import { IconButton } from '@/components/shared/buttons/IconButton'
 import { FormLabel } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 
@@ -67,18 +67,17 @@ export const FormInput = ({
                     {...rest}
                 />
                 {isPasswordField && (
-                    <Button
+                    <IconButton
                         type={'button'}
-                        variant={'ghost'}
                         size={'sm'}
                         onClick={() => setShowPassword(!showPassword)}
-                        className={'absolute right-1 top-1/2 h-8 w-8 -translate-y-1/2 p-0 text-muted-foreground hover:bg-transparent'}
+                        className={'absolute right-1 top-1/2 -translate-y-1/2'}
                     >
                         {showPassword
                             ? <EyeOff className={'size-5'}/>
                             : <Eye className={'size-5'}/>
                         }
-                    </Button>
+                    </IconButton>
                 )}
             </div>
         </div>

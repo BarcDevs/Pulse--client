@@ -14,7 +14,7 @@ import type { FieldValues } from 'react-hook-form'
 
 import { FieldConfig } from '@/types/forms'
 
-import { Button } from '@/components/ui/button'
+import { IconButton } from '@/components/shared/buttons/IconButton'
 import {
     FormControl,
     FormDescription,
@@ -53,18 +53,17 @@ export const PasswordInput = <T extends FieldValues>({
                         data-testid={field.name}
                         {...field}
                     />
-                    <Button
+                    <IconButton
                         type={'button'}
-                        variant={'ghost'}
                         size={'sm'}
                         onClick={() => setShowPassword(!showPassword)}
-                        className={'absolute right-1 top-1/2 h-8 w-8 -translate-y-1/2 p-0 text-muted-foreground hover:bg-muted/50 hover:text-muted-foreground'}
+                        className={'absolute right-1 top-1/2 -translate-y-1/2'}
                     >
                         {showPassword
                             ? <EyeOff className={'size-5'}/>
                             : <Eye className={'size-5'}/>
                         }
-                    </Button>
+                    </IconButton>
                 </div>
             </FormControl>
             {config.description && (

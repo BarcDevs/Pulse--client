@@ -3,6 +3,7 @@ import { ReactNode } from 'react'
 import { Edit2 } from 'lucide-react'
 
 import { Button } from '@/components/shared/buttons/Button'
+import { IconButton } from '@/components/shared/buttons/IconButton'
 
 import { securitySettingStyles } from '@/constants/securitySettings'
 
@@ -44,17 +45,22 @@ export const SecuritySettingItem = ({
                     </p>
                 </div>
             </div>
-            <Button
-                variant={isDestructive ? 'destructive' : 'ghost'}
-                size={'sm'}
-                className={styles.button}
-                onClick={onClickAction}
-            >
-                {isDestructive
-                    ? buttonText
-                    : <Edit2 className={'h-4 w-4 text-muted-foreground'}/>
-                }
-            </Button>
+            {isDestructive ? (
+                <Button
+                    variant={'destructive'}
+                    size={'sm'}
+                    onClick={onClickAction}
+                >
+                    {buttonText}
+                </Button>
+            ) : (
+                <IconButton
+                    size={'sm'}
+                    onClick={onClickAction}
+                >
+                    <Edit2 className={'h-4 w-4'}/>
+                </IconButton>
+            )}
         </div>
     )
 }

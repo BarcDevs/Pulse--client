@@ -11,7 +11,7 @@ import {
 import { AdditionalAction } from '@/types/actionMenu'
 
 import { ConfirmationDialog } from '@/components/shared/ConfirmationDialog'
-import { Button } from '@/components/ui/button'
+import { IconButton } from '@/components/shared/buttons/IconButton'
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -85,15 +85,13 @@ export const ActionsMenu = ({
         <>
             <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                    <Button
-                        variant={'ghost'}
+                    <IconButton
                         size={'sm'}
                         disabled={isLoading}
-                        className={'h-8 w-8 p-0'}
                         onClick={stopPropagation}
                     >
                         <MoreVertical size={iconSize}/>
-                    </Button>
+                    </IconButton>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align={'end'}>
                     <DropdownMenuItem

@@ -58,6 +58,14 @@ Text-style action with no padding or background (inline links like "see more", "
 <TextButton tone={'muted'} size={'xs'} onClick={onRetry}>{label}</TextButton>
 ```
 
+### `IconButton`
+
+Icon-only control (close X, menu, password toggle, bell, edit pencil). Wraps `Button` (`ghost`, `secondary` when `outlined`) with `size` (`'xs'` size-5, `'sm'` size-8, `'md'` size-9 default), `tone` (`'muted'` default, `'primary'`, `'destructive'`), `outlined` and `round` props. Positioning (`absolute`, `end-4`) goes in `className`.
+
+```tsx
+<IconButton size={'sm'} onClick={onToggle}><Eye className={'size-5'}/></IconButton>
+```
+
 ## Convention
 
 One `shared/` wrapper is the sole consumer of a given `ui/` (shadcn) primitive when that primitive

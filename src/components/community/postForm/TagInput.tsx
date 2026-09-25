@@ -10,6 +10,7 @@ import { useLocale, useTranslations } from 'next-intl'
 import { X } from 'lucide-react'
 
 import { Badge } from '@/components/ui/badge'
+import { IconButton } from '@/components/shared/buttons/IconButton'
 import { Button } from '@/components/ui/button'
 
 import { useForumTags } from '@/hooks/queries/useForumTags'
@@ -113,15 +114,14 @@ export const TagInput = ({
                         className={'gap-1 pr-1 bg-primary-light text-primary hover:bg-primary-light'}
                     >
                         {displayName}
-                        <Button
+                        <IconButton
                             type={'button'}
-                            variant={'ghost'}
+                            size={'xs'}
                             onClick={() => removeTag(tag)}
                             aria-label={`Remove tag ${tag}`}
-                            className={'h-4 w-4 p-0 text-muted-foreground hover:text-foreground'}
                         >
                             <X className={'h-3 w-3'}/>
-                        </Button>
+                        </IconButton>
                     </Badge>
                     )
                 })}

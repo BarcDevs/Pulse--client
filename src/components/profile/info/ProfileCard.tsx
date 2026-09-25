@@ -4,7 +4,7 @@ import { Camera } from 'lucide-react'
 
 import { ProfileLevel } from '@/components/profile/info/ProfileLevel'
 import { UserAvatar } from '@/components/shared/UserAvatar'
-import { Button } from '@/components/ui/button'
+import { IconButton } from '@/components/shared/buttons/IconButton'
 import { Card, CardContent } from '@/components/ui/card'
 
 import { useUser } from '@/hooks/ui/useUser'
@@ -44,13 +44,13 @@ export const ProfileCard = () => {
 
                     {/* TODO: profile image upload — deferred to scaling phase */}
                     {FEATURES.profileImageUpload && (
-                        <Button
-                            size={'icon'}
-                            variant={'ghost'}
-                            className={'absolute -bottom-1 -left-1 size-7 rounded-full border-2 border-white bg-muted text-muted-foreground hover:bg-muted/80'}
+                        <IconButton
+                            outlined
+                            round
+                            className={'absolute -bottom-1 -left-1 size-7'}
                         >
                             <Camera className={'size-3.5'}/>
-                        </Button>
+                        </IconButton>
                     )}
                 </div>
 

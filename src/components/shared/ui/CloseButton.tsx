@@ -1,19 +1,18 @@
 import { X } from 'lucide-react'
 
-import { Button } from '@/components/ui/button'
+import { IconButton } from '@/components/shared/buttons/IconButton'
 
 type CloseButtonProps = {
     className?: string
 }
 
 export const CloseButton = ({
-    className = 'h-6 w-6 p-0 text-muted-foreground hover:text-foreground'
+    className
 }: CloseButtonProps) => (
-    <Button
-        variant={'ghost'}
-        size={'sm'}
+    <IconButton
+        size={'xs'}
         className={className}
     >
         <X className={'size-5'}/>
-    </Button>
+    </IconButton>
 )
