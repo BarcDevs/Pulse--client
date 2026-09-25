@@ -11,7 +11,7 @@ import {
 } from 'lucide-react'
 
 import { ChipButton } from '@/components/shared/buttons/ChipButton'
-import { Button } from '@/components/ui/button'
+import { OptionButton } from '@/components/shared/buttons/OptionButton'
 import {
     Popover,
     PopoverContent,
@@ -19,8 +19,6 @@ import {
 } from '@/components/ui/popover'
 
 import { useForumCategoryCounts } from '@/hooks/queries/useForumCategoryCounts'
-
-import { cn } from '@/lib/utils'
 
 import categories from '@/data/forum/categories'
 import { communityLocales } from '@/locales/communityLocales'
@@ -42,13 +40,9 @@ const CategoryOption = ({
     label,
     onSelect
 }: CategoryOptionProps) => (
-    <Button
-        variant={'ghost'}
+    <OptionButton
+        isSelected={isSelected}
         onClick={onSelect}
-        className={cn(
-            'w-full justify-start gap-2.5 text-sm font-normal',
-            isSelected && 'bg-primary/10 font-semibold text-primary hover:bg-primary/15 hover:text-primary'
-        )}
     >
         {category
             ? <span
@@ -68,7 +62,7 @@ const CategoryOption = ({
         {isSelected && (
             <Check className={'h-4 w-4'}/>
         )}
-    </Button>
+    </OptionButton>
 )
 
 type PostListCategoryFilterProps = {

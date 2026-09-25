@@ -106,6 +106,14 @@ Tab/segment control button. Wraps `Button` (`ghost`) with `isActive` and `varian
 <TabButton variant={'segmented'} isActive={tab === '7days'} onClick={onSelect}>{label}</TabButton>
 ```
 
+### `OptionButton`
+
+Selectable option in a list or group (category rows in a popover, theme choice). Wraps `Button` (`ghost`) with `isSelected` and `layout`: `'row'` (default, full-width borderless row with a tinted selected state) or `'bordered'` (compact bordered choice).
+
+```tsx
+<OptionButton layout={'bordered'} isSelected={theme === 'dark'} onClick={onDark}>{label}</OptionButton>
+```
+
 ## Convention
 
 One `shared/` wrapper is the sole consumer of a given `ui/` (shadcn) primitive when that primitive

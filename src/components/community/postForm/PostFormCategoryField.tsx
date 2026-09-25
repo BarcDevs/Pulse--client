@@ -7,6 +7,7 @@ import { useTranslations } from 'next-intl'
 import { Check, ChevronDown } from 'lucide-react'
 import { UseFormReturn } from 'react-hook-form'
 
+import { OptionButton } from '@/components/shared/buttons/OptionButton'
 import { Button } from '@/components/ui/button'
 import {
     FormField,
@@ -98,15 +99,12 @@ export const PostFormCategoryField = ({
                                 {categories.map(cat => {
                                     const isSelected = field.value === cat.key
                                     return (
-                                        <Button
+                                        <OptionButton
                                             key={cat.key}
                                             type={'button'}
-                                            variant={'ghost'}
+                                            isSelected={isSelected}
                                             onClick={() => { field.onChange(cat.key); setOpen(false) }}
-                                            className={cn(
-                                                'w-full h-auto flex items-start justify-between gap-2.5 px-3 py-2.5 text-start',
-                                                isSelected && 'bg-primary/10'
-                                            )}
+                                            className={'items-start justify-between'}
                                         >
                                             <div className={'flex items-start gap-2.5'}>
                                                 <span
@@ -128,7 +126,7 @@ export const PostFormCategoryField = ({
                                             {isSelected && (
                                                 <Check className={'h-4 w-4 text-primary shrink-0 mt-0.5'}/>
                                             )}
-                                        </Button>
+                                        </OptionButton>
                                     )
                                 })}
                             </PopoverContent>
