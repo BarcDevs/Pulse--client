@@ -16,7 +16,8 @@ Use when the design system (`docs/design/designsystem.html`) gives an element it
 - Call sites import a type component, never the base, never the raw `ui/` primitive, never an ad hoc `className` override for something the design defines.
 - Tokens first: check `globals.css` for an existing token before adding one. No hex/rgb literals in components.
 - Every instance of a design-system element uses a type, even one with no `className` today (one edit instead of N).
-- Scope guard: no wrapper for a primitive the design does not style. Buttons are migrated in full once their types exist.
+- Applies to every design-system element, not only buttons: each gets a base plus a component per type, and every existing instance is migrated once the types exist. Buttons go first, one commit per type.
+- Scope guard: no wrapper for a primitive the design does not style.
 - Verify: `grep -rln "from '@/components/ui/<thing>'" src --include="*.tsx"` and `grep -rln "from '@/components/shared/<group>/<Base>'" src --include="*.tsx"` list nothing outside the group.
 - `npm run typecheck && npm run lint:check && npm test` before done.
 
@@ -90,5 +91,5 @@ Open decision: the design's secondary (white + border) matches `outline`, so `ou
 
 1. Confirm the design type table and mapping above (chip vs tab).
 2. Audit badges and cards the same way.
-3. Implement all button types and migrate every button (93 files, including the 37 plain ones) in per-type `rfc` commits.
-4. Separate `chore` cleanup commit after the rfc: remove dead code found along the way (`MainProgressCard`, `GoalDetailsSection`, `GoalActionButtons`) plus a full dead-code run.
+3. Implement all button types and migrate every button (93 files, including the 37 plain ones), one `rfc` commit per button type. Buttons come first; every other design element (badges, tags, pills, cards, inputs, avatars, and so on) then gets the same treatment, one commit per type.
+4. Separate `chore` cleanup commit after the rfc: remove dead code found along the way (`MainProgressCard`, `GoalDetailsSection`, `GoalActionButtons`) using the `/dead-code` skill for a full run.
