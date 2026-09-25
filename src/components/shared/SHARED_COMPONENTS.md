@@ -10,8 +10,6 @@ has nothing that fits.
 |---|---|
 | `ActionsMenu.tsx` | Dropdown/menu of row/item actions |
 | `ConfirmationDialog.tsx` | Generic confirm/cancel modal |
-| `DeleteButton.tsx` | Button that triggers a delete action |
-| `DeleteMenu.tsx` | Menu variant of the delete action |
 | `EmptyState.tsx` | Placeholder for an empty list/section |
 | `ErrorBanner.tsx` | Dismissible inline error banner |
 | `ErrorBannerWrapper.tsx` | Wraps `ErrorBanner` with state/positioning |
@@ -27,7 +25,7 @@ has nothing that fits.
 
 | Folder | Purpose |
 |---|---|
-| `ui/` | Small shared atoms not tied to shadcn — `CloseButton`, `Icon`, `FormError`, `RetryButton` |
+| `ui/` | Small shared atoms not tied to shadcn — `Icon`, `FormError`, `RetryButton` |
 | `bars/` | Progress bars (e.g. `GoalProgressBar`) |
 | `brand/` | Logo/brand marks (`Logo`) |
 | `charts/` | Chart cards, legends, tooltips, tabs, skeletons |
@@ -35,8 +33,6 @@ has nothing that fits.
 | `error/` | Full error-page building blocks (illustrations, recovery/crisis cards, debug/health cards) + `network/`, `notFound/` subfolders |
 | `footer/` | Footer sections (brand/legal/links/social) |
 | `inputs/` | Form-adjacent controls beyond raw shadcn (toggles, date picker, dropdown, slider) |
-| `lists/` | List-item/tag renderers |
-| `nav/` | Navigation menus (e.g. `SidebarNavMenu`) |
 
 ## `buttons/`
 

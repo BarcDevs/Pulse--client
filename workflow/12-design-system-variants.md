@@ -81,7 +81,7 @@ Variant, not a type: **Primary, on-gradient** (white bg, `primaryGradStart` text
 | `rounded-full` with a selected state (chat suggestions, community tags, goals category, insights range) | Chip |
 | `w-full h-auto justify-between/start` rows (community categories, filters) | Option tile |
 | `border-white/30 bg-white text-primary` (dashboard "Start Check-In") | Primary, on-gradient variant |
-| `from-orange-400 to-pink-500` ("Complete Today", `GoalActionButtons`) | Dead code: `MainProgressCard` -> `GoalDetailsSection` -> `GoalActionButtons` is never imported. Not mapped, removed in the cleanup commit |
+| `from-orange-400 to-pink-500` ("Complete Today", `GoalActionButtons`) | Was dead code (`MainProgressCard` chain never imported), removed in the cleanup commit |
 | `shadow-blue-500/30`, raw `text-white` | Off-design: map to Primary/FAB tokens, verify with the design before changing |
 | `outline` with `size='sm'` (37 `size='sm'`) | Small secondary |
 
@@ -92,4 +92,4 @@ Open decision: the design's secondary (white + border) matches `outline`, so `ou
 1. Confirm the design type table and mapping above (chip vs tab).
 2. Audit badges and cards the same way.
 3. Implement all button types and migrate every button (93 files, including the 37 plain ones), one `rfc` commit per button type. Buttons come first; every other design element (badges, tags, pills, cards, inputs, avatars, and so on) then gets the same treatment, one commit per type.
-4. Separate `chore` cleanup commit after the rfc: remove dead code found along the way (`MainProgressCard`, `GoalDetailsSection`, `GoalActionButtons`) using the `/dead-code` skill for a full run.
+4. Done for buttons: all button types and migrations landed as `rfc(buttons)` commits, then a separate `chore` cleanup commit removed dead code via `/dead-code`. Repeat steps 3 and 4 for the next element (badges, tags, pills, cards, inputs, avatars).
