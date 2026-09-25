@@ -66,6 +66,14 @@ Icon-only control (close X, menu, password toggle, bell, edit pencil). Wraps `Bu
 <IconButton size={'sm'} onClick={onToggle}><Eye className={'size-5'}/></IconButton>
 ```
 
+### `FabButton`
+
+Floating action button, mobile only (`sm:hidden`), fixed bottom-end, round 56px, primary gradient. Wraps `Button` (`primary`). Pass the icon as children and an `aria-label`.
+
+```tsx
+<FabButton onClick={onNew} aria-label={label}><Plus className={'size-6'}/></FabButton>
+```
+
 ## Convention
 
 One `shared/` wrapper is the sole consumer of a given `ui/` (shadcn) primitive when that primitive
