@@ -48,3 +48,10 @@ Cookie/storage consent and privacy-disclosure decisions.
 | Date | Entry |
 |---|---|
 | 23/09/2026 | No cookie/cache consent popup — no non-essential storage written; disclose on the Privacy page |
+
+## Agent Models — [[decisions/agent-models]]
+Which model each custom agent runs on, and why.
+
+| Date | Entry |
+|---|---|
+| 26/09/2026 | style-enforcer runs on Sonnet, not Haiku |
