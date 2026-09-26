@@ -40,6 +40,7 @@ How to act on bug reports and where to log — state the fix before broad edits,
 | 23/09/2026 | Used `refactor` commit type instead of `rfc` (GIT_RULES); existing commits not renamed |
 | 23/09/2026 | Pushed a branch without its tags and argued for withholding them; always push tags |
 | 23/09/2026 | Ran Python scripts to edit files instead of the Edit tool |
+| 26/09/2026 | Opened a PR from a feature branch into `development` (direct push is the rule), pushed without tags, and read files via Bash instead of Read/Grep |
 
 ## Code Placement — [[corrections/code-placement]]
 Where new constants/config values belong.
