@@ -2,12 +2,12 @@ import { FieldValues } from 'react-hook-form'
 
 import { FieldConfig } from '@/types/forms'
 
+import { Slider } from '@/components/shared/inputs/Slider'
 import {
     FormControl,
     FormDescription,
     FormLabel
 } from '@/components/ui/form'
-import { Slider } from '@/components/ui/slider'
 
 type SliderInputProps<T extends FieldValues> = {
     field: T
@@ -33,7 +33,6 @@ export const SliderInput = <T extends FieldValues>({
                 min={config.min ?? 0}
                 max={config.max ?? 100}
                 step={config.step ?? 1}
-                className={'w-full'}
             />
         </FormControl>
         {config.description && (

@@ -360,6 +360,7 @@
     --color-primary-gradient-start: var(--primary-gradient-start);
     --color-primary-gradient-end: var(--primary-gradient-end);
     --shadow-button: 0 4px 12px rgb(0 93 167 / 0.25);
+    --shadow-slider-thumb: 0 1px 4px rgb(74 144 226 / 0.4);
     --color-primary-deep: var(--primary-deep);
     --color-chart-highlight: var(--chart-highlight);
     --color-accent-ai: var(--accent-ai);

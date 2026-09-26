@@ -205,6 +205,14 @@ Multi-line counterpart of `Input`, wrapping `ui/textarea`; only that file import
 <TextArea variant={'card'} resize={'none'} className={'min-h-30'} value={notes} onChange={onChange}/>
 ```
 
+### `Slider`
+
+The design system's mood slider (`docs/design/designsystem.html`): 4px track, 18px thumb filled with the slider colour and a 2.5px white ring, soft blue thumb shadow (`--shadow-slider-thumb`). Wraps `ui/slider`; only that file imports it. The look is applied through descendant selectors on the `ui/slider` parts (the `ui` file is read-only), so the `data-slot` attributes there must stay. `color` sets the range and thumb colour (default primary). Full width by default.
+
+```tsx
+<Slider value={[value]} onValueChange={onChange} min={1} max={10} color={color}/>
+```
+
 ### `SearchInput`
 
 Search field with its leading icon, wrapping `Input`. Owns the icon size and offset and the input padding, using logical `start`/`ps` so it mirrors in RTL. `variant`: `card` (default, community search), `header` (taller, rounded-lg, focus ring, app header), `pill` (large rounded search on the support page). `className` applies to the wrapper (`flex-1`, `w-64`, `mb-7`).
