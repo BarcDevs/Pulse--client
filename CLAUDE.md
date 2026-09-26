@@ -7,8 +7,8 @@ Server: `../pulse--server`.
 Live at https://pulserehab.app — AWS EC2+Docker, separate instance from the server. Client is the sole public front door (`next.config.mjs` proxies `/api/:path*` to the server over private VPC). Push to `main` passing CI auto-deploys via `.github/workflows/deploy.yml` (blue/green swap over SSM, see `scripts/deploy/ec2-redeploy.sh`). Vercel deploy still runs in parallel for preview/staging — not production.
 
 ## Model Selection
-- **Haiku**: sub-agents, file lookups, search queries, simple edits (<50 lines), code explanation, formatting fixes, style enforcement
-- **Sonnet/Opus**: complex debugging, architecture decisions, multi-file refactors, reasoning-heavy tasks
+- **Haiku**: sub-agents, file lookups, search queries, simple edits (<50 lines), code explanation, formatting fixes
+- **Sonnet/Opus**: complex debugging, architecture decisions, multi-file refactors, reasoning-heavy tasks, style enforcement
 
 ## Token Efficiency
 - Grep/Glob over Bash find/ls/grep. Read with offset+limit when line known.
