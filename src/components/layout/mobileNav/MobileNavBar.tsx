@@ -43,10 +43,7 @@ export const MobileNavBar = () => {
                         layout={'stacked'}
                         onClick={() => setDrawerOpen(true)}
                     >
-                        <MoreHorizontal
-                            size={20}
-                            className={'shrink-0'}
-                        />
+                        <MoreHorizontal className={'size-5 shrink-0'}/>
                         <span className={'w-full text-[10px] font-medium text-center leading-tight'}>
                             {t(globalLocales.nav.sidebar.more)}
                         </span>
