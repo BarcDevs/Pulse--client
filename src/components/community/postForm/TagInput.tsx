@@ -9,9 +9,9 @@ import { useLocale, useTranslations } from 'next-intl'
 
 import { X } from 'lucide-react'
 
+import { Badge } from '@/components/shared/badges/Badge'
 import { ChipButton } from '@/components/shared/buttons/ChipButton'
 import { IconButton } from '@/components/shared/buttons/IconButton'
-import { Badge } from '@/components/ui/badge'
 
 import { useForumTags } from '@/hooks/queries/useForumTags'
 
@@ -111,7 +111,7 @@ export const TagInput = ({
                     return (
                     <Badge
                         key={tag}
-                        className={'gap-1 pr-1 bg-primary-light text-primary hover:bg-primary-light'}
+                        className={'gap-1 pr-1'}
                     >
                         {displayName}
                         <IconButton

@@ -4,8 +4,8 @@ import { useLocale } from 'next-intl'
 
 import type { PartialTag, Tag } from '@/types/community'
 
+import { Badge } from '@/components/shared/badges/Badge'
 import { ChipButton } from '@/components/shared/buttons/ChipButton'
-import { Badge } from '@/components/ui/badge'
 
 import { useForumTags } from '@/hooks/queries/useForumTags'
 
@@ -45,8 +45,7 @@ export const PostTags = ({
                 ) : (
                     <Badge
                         key={tag.id}
-                        variant={'outline'}
-                        className={'text-xs text-muted-foreground font-normal'}
+                        variant={'neutral'}
                     >
                         {name}
                     </Badge>

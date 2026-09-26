@@ -5,8 +5,8 @@ import { useTranslations } from 'next-intl'
 
 import { ArrowRight, ClipboardCheck } from 'lucide-react'
 
+import { Badge } from '@/components/shared/badges/Badge'
 import { Button } from '@/components/shared/buttons/Button'
-import { Badge } from '@/components/ui/badge'
 
 import { ROUTES } from '@/constants/routes'
 
@@ -21,7 +21,10 @@ export const DashboardCheckInCard = () => {
             data-testid={'check-in-prompt'}
         >
             <div className={'relative z-10'}>
-                <Badge className={'mb-4 border-0 bg-white/20 text-white hover:bg-white/30'}>
+                <Badge
+                    variant={'onGradient'}
+                    className={'mb-4'}
+                >
                     {t(dashboardLocales.checkIn.badge)}
                 </Badge>
                 <h2 className={'mb-2 text-2xl font-semibold'}>

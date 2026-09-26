@@ -12,7 +12,7 @@ import { PostForm } from '@/components/community/postForm/PostForm'
 import { PostActionButton } from '@/components/community/posts/postList/PostActionButton'
 import { ActionsMenu } from '@/components/shared/ActionsMenu'
 import { UserAvatar } from '@/components/shared/UserAvatar'
-import { Badge } from '@/components/ui/badge'
+import { Badge } from '@/components/shared/badges/Badge'
 
 import { useReplyInteractions } from '@/hooks/mutations/useReplyInteractions'
 import { useDateLocale } from '@/hooks/ui/useDateLocale'
@@ -131,7 +131,7 @@ export const ReplyCard = ({
                             {authorName}
                         </span>
                         {isPostAuthor && (
-                            <Badge className={'bg-primary-light text-primary hover:bg-primary-light text-xs px-1.5 py-0 font-medium'}>
+                            <Badge>
                                 {t(communityLocales.postDetail.authorBadge)}
                             </Badge>
                         )}

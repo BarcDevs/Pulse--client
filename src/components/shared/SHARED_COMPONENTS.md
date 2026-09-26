@@ -126,6 +126,18 @@ Whole-card clickable tile (profile settings tiles, support topic cards). Wraps `
 <TileButton outlined align={'start'} onClick={onOpen}>{content}</TileButton>
 ```
 
+## `badges/`
+
+Every badge comes from here. Never import `@/components/ui/badge` (only this folder does) and never restyle a badge with `bg-*`/`text-*` classes at the call site. Tinted colors are the `--color-*-light` / `-deep` tokens.
+
+### `Badge`
+
+The design system's `.badge`: pill, 11px / 600, tinted background. Wraps `ui/badge`. Variants: `primary` (default), `secondary`, `accent`, `success`, `warning`, `destructive`, `neutral`, `onGradient` (translucent white, for use on the gradient hero/card). `badgeVariantStyles` is exported so other badge types reuse the same colors.
+
+```tsx
+<Badge variant={'success'}>{label}</Badge>
+```
+
 ## Convention
 
 One `shared/` wrapper is the sole consumer of a given `ui/` (shadcn) primitive when that primitive
