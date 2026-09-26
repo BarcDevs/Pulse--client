@@ -5,7 +5,8 @@ import { useTranslations } from 'next-intl'
 
 import { ArrowLeft, Mail } from 'lucide-react'
 
-import { Card, CardContent } from '@/components/ui/card'
+import { Card } from '@/components/shared/cards/Card'
+import { CardContent } from '@/components/ui/card'
 
 import { ROUTES } from '@/constants/routes'
 
@@ -21,7 +22,10 @@ export const EmailVerificationView = ({
     const t = useTranslations()
 
     return (
-        <Card className={'w-full max-w-md border-0 shadow-lg'}>
+        <Card
+            variant={'elevated'}
+            className={'w-full max-w-md'}
+        >
             <CardContent className={'pt-8 text-center'}>
                 <div className={'mx-auto flex size-16 items-center justify-center rounded-full bg-secondary-light'}>
                     <Mail className={'size-8 text-secondary'}/>

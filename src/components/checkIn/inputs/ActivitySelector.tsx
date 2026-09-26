@@ -8,10 +8,10 @@ import { Trophy } from 'lucide-react'
 
 import type { FormControlProps } from '@/types/forms'
 
+import { Card } from '@/components/shared/cards/Card'
 import { ActivityToggleButton } from '@/components/shared/inputs/ActivityToggleButton'
 import { FormInput } from '@/components/shared/inputs/FormInput'
 import {
-    Card,
     CardContent,
     CardHeader,
     CardTitle
@@ -76,7 +76,7 @@ export const CheckInActivities = ({
     }
 
     return (
-        <Card className={'mt-6 border-0 shadow-sm'}>
+        <Card className={'mt-6'}>
             <CardHeader className={'pb-3'}>
                 <div className={'flex items-center gap-2'}>
                     <Trophy className={'size-5 text-warning'}/>

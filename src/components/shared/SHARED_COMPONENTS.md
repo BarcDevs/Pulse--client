@@ -173,6 +173,18 @@ Round user image with initials fallback. Wraps `ui/avatar` with `size` (`'sm'` 3
 <UserAvatar initials={initials} imageSrc={image} size={'xl'} tone={'solid'}/>
 ```
 
+## `cards/`
+
+Every card surface comes from here; never use `Card` from `@/components/ui/card`. The unstyled parts (`CardHeader`, `CardContent`, `CardTitle`, `CardDescription`) have no design-specific look and stay a direct `ui/card` import.
+
+### `Card`
+
+Wraps `ui/card` with `variant`: `default` (borderless, soft shadow), `elevated` (large shadow, auth forms), `section` (tinted section background, no shadow), `primary` (filled primary, white text). Layout classes (`mt-6`, `h-full`, `w-full max-w-md`) go in `className`.
+
+```tsx
+<Card variant={'elevated'} className={'w-full max-w-md'}>{content}</Card>
+```
+
 ## Convention
 
 One `shared/` wrapper is the sole consumer of a given `ui/` (shadcn) primitive when that primitive

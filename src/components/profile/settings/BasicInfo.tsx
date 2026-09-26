@@ -2,8 +2,8 @@
 
 import { useTranslations } from 'next-intl'
 
+import { Card } from '@/components/shared/cards/Card'
 import {
-    Card,
     CardContent,
     CardHeader,
     CardTitle
@@ -21,7 +21,7 @@ export const ProfileBasicInfo = () => {
     const { isEditing } = useProfileEditContext()
 
     return (
-        <Card className={'border-0 shadow-sm'}>
+        <Card>
             <CardHeader className={'pb-0'}>
                 <CardTitle className={'text-base font-semibold'}>
                     {t(profileLocales.basicInfo.title)}

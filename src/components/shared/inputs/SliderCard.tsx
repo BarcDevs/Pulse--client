@@ -1,9 +1,7 @@
 import { LucideIcon } from 'lucide-react'
 
-import {
-    Card,
-    CardContent
-} from '@/components/ui/card'
+import { Card } from '@/components/shared/cards/Card'
+import { CardContent } from '@/components/ui/card'
 import { Slider } from '@/components/ui/slider'
 
 import { checkInFormSchema } from '@/config/schema/checkInForm'
@@ -29,7 +27,7 @@ export const SliderCard = ({
     color,
     tintColor
 }: SliderCardProps) => (
-    <Card className={'border-0 shadow-sm'}>
+    <Card>
         <CardContent className={'pt-6'}>
             <div className={'mb-4 flex items-center justify-between'}>
                 <div className={'flex items-center gap-3'}>

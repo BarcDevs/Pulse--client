@@ -3,8 +3,8 @@ import { useTranslations } from 'next-intl'
 import { FileText } from 'lucide-react'
 
 import { Button } from '@/components/shared/buttons/Button'
+import { Card } from '@/components/shared/cards/Card'
 import {
-    Card,
     CardHeader,
     CardTitle
 } from '@/components/ui/card'
@@ -17,7 +17,7 @@ export const InsightsSummary = () => {
     const t = useTranslations()
 
     return (
-    <Card className={'mt-6 border-0 shadow-sm'}>
+    <Card className={'mt-6'}>
         <CardHeader className={'flex flex-row items-center justify-between'}>
             <div>
         <CardTitle className={'text-lg font-semibold'}>

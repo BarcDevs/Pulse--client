@@ -1,8 +1,9 @@
-import { Card, CardContent } from '@/components/ui/card'
+import { Card } from '@/components/shared/cards/Card'
+import { CardContent } from '@/components/ui/card'
 import { Skeleton } from '@/components/ui/skeleton'
 
 export const ProfileCardSkeleton = () => (
-    <Card className={'border-0 shadow-sm'}>
+    <Card>
         <CardContent className={'flex flex-col items-center pt-8 text-center'}>
             <Skeleton className={'size-24 rounded-full'}/>
             <Skeleton className={'mt-4 h-6 w-32'}/>

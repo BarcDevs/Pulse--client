@@ -9,8 +9,8 @@ import { useTranslations } from 'next-intl'
 import { PasswordRequirementsList } from '@/components/auth/password/PasswordRequirementsList'
 import { AuthForm } from '@/components/form/AuthForm'
 import { Logo } from '@/components/shared/brand/Logo'
+import { Card } from '@/components/shared/cards/Card'
 import {
-    Card,
     CardContent,
     CardDescription,
     CardHeader,
@@ -42,7 +42,7 @@ const ResetPasswordPage = () => {
         <div className={'w-full max-w-md'}>
             <Logo/>
 
-            <Card className={'border-0 shadow-lg'}>
+            <Card variant={'elevated'}>
                 <CardHeader>
                     <CardTitle className={'text-2xl font-semibold'}>
                         {t(authLocales.resetPassword.title)}

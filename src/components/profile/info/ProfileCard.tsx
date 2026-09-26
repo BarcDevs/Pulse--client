@@ -5,7 +5,8 @@ import { Camera } from 'lucide-react'
 import { ProfileLevel } from '@/components/profile/info/ProfileLevel'
 import { UserAvatar } from '@/components/shared/avatars/UserAvatar'
 import { IconButton } from '@/components/shared/buttons/IconButton'
-import { Card, CardContent } from '@/components/ui/card'
+import { Card } from '@/components/shared/cards/Card'
+import { CardContent } from '@/components/ui/card'
 
 import { useUser } from '@/hooks/ui/useUser'
 
@@ -30,7 +31,7 @@ export const ProfileCard = () => {
     )
 
     return (
-        <Card className={'border-0 shadow-sm'}>
+        <Card>
             <CardContent className={'flex flex-col items-center px-6 text-center'}>
                 <div className={'relative'}>
                     <UserAvatar

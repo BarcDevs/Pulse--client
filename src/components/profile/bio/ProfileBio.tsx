@@ -2,9 +2,9 @@
 
 import { useTranslations } from 'next-intl'
 
+import { Card } from '@/components/shared/cards/Card'
 import { EmptyState } from '@/components/shared/EmptyState'
 import {
-    Card,
     CardContent,
     CardHeader,
     CardTitle
@@ -38,7 +38,7 @@ export const ProfileBio = () => {
     const bioValue = profileFields.bio
 
     return (
-        <Card className={'border-0 shadow-sm'}>
+        <Card>
             <CardHeader>
                 <div className={'flex items-center justify-between'}>
                     <CardTitle className={'text-lg font-semibold'}>

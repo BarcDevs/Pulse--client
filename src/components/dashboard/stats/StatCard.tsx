@@ -1,6 +1,7 @@
 import { ReactNode } from 'react'
 
-import { Card, CardContent } from '@/components/ui/card'
+import { Card } from '@/components/shared/cards/Card'
+import { CardContent } from '@/components/ui/card'
 
 import { cn } from '@/lib/utils'
 
@@ -23,7 +24,7 @@ export const StatCard = ({
     iconBg,
     descriptionColor
 }: StatCardProps) => (
-    <Card className={'border-0 shadow-sm'}>
+    <Card>
         <CardContent className={'pt-6'}>
             <div className={'flex items-center gap-4'}>
                 <div className={cn(

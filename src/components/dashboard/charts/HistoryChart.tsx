@@ -6,9 +6,9 @@ import { useTranslations } from 'next-intl'
 
 import { MoodPainSeriesPoint } from '@/types/checkIn'
 
+import { Card } from '@/components/shared/cards/Card'
 import { TrendChart } from '@/components/shared/charts/TrendChart'
 import {
-    Card,
     CardContent,
     CardHeader,
     CardTitle
@@ -63,7 +63,7 @@ export const DashboardHistoryChart = () => {
         : undefined
 
     return (
-        <Card className={'border-0 shadow-sm h-full'}>
+        <Card className={'h-full'}>
             <CardHeader className={'flex flex-row items-center justify-between pb-6'}>
                 <CardTitle className={'text-lg font-semibold'}>
                     {t(dashboardLocales.historyChart.title)}

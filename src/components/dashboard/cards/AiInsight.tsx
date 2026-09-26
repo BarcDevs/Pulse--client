@@ -13,8 +13,8 @@ import { Sparkles } from 'lucide-react'
 import { ClassName } from '@/types/react'
 
 import { TextButton } from '@/components/shared/buttons/TextButton'
+import { Card } from '@/components/shared/cards/Card'
 import {
-    Card,
     CardContent,
     CardHeader,
     CardTitle
@@ -63,10 +63,7 @@ export const DashboardAIInsight = ({
     }, [insightText, isExpanded])
 
     return (
-        <Card className={cn(
-            'border-0 shadow-sm',
-            className
-        )}>
+        <Card className={className}>
             <CardHeader>
                 <div className={'flex items-center gap-2'}>
                     <Sparkles className={'size-4 text-purple'}/>

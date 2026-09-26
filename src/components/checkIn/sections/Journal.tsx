@@ -5,8 +5,8 @@ import type { ChangeEvent } from 'react'
 
 import type { FormControlProps } from '@/types/forms'
 
+import { Card } from '@/components/shared/cards/Card'
 import {
-    Card,
     CardContent,
     CardHeader,
     CardTitle
@@ -28,7 +28,7 @@ export const CheckInJournal = ({
     const handleNotesChange = (e: ChangeEvent<HTMLTextAreaElement>) => setValueAction('notes', e.target.value)
 
     return (
-        <Card className={'mt-6 border-0 shadow-sm'}>
+        <Card className={'mt-6'}>
             <CardHeader className={'pb-3'}>
                 <div className={'flex items-center gap-2'}>
                     <PenLine className={'size-5 text-primary'}/>

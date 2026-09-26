@@ -8,8 +8,8 @@ import { useTranslations } from 'next-intl'
 import { GoogleLoginButton } from '@/components/auth/forms/GoogleLoginButton'
 import { LoginSecurityFooter } from '@/components/auth/sections/LoginSecurityFooter'
 import { AuthForm } from '@/components/form/AuthForm'
+import { Card } from '@/components/shared/cards/Card'
 import {
-    Card,
     CardContent,
     CardDescription,
     CardHeader,
@@ -54,7 +54,10 @@ const LoginPage = () => {
     }
 
     return (
-        <Card className={'w-full max-w-md border-0 shadow-lg'}>
+        <Card
+            variant={'elevated'}
+            className={'w-full max-w-md'}
+        >
             <CardHeader className={'text-center'}>
                 <CardTitle className={'text-2xl font-semibold'}>
                     {t(authLocales.login.title)}
