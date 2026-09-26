@@ -45,6 +45,7 @@ How to act on bug reports and where to log — state the fix before broad edits,
 |---|---|
 | 18/09/2026 | Jumped to a broad code change on a bug report instead of stating the fix first |
 | 18/09/2026 | Wrote corrections into the sibling repo; asserted local log didn't exist without checking other branches |
+| 26/09/2026 | Merged into a branch another session was using without coordinating with it first |
 | 23/09/2026 | Used `refactor` commit type instead of `rfc` (GIT_RULES); existing commits not renamed |
 | 23/09/2026 | Pushed a branch without its tags and argued for withholding them; always push tags |
 | 23/09/2026 | Ran Python scripts to edit files instead of the Edit tool |
@@ -59,4 +60,3 @@ Where new constants/config values belong.
 |---|---|
 | 23/09/2026 | Tunable delays go in `src/config/timings.ts`, not `src/constants/time.ts` (which is unit conversions only) |
 | 23/09/2026 | Durations must use `*InMs` constants, not magic numbers, even when the surrounding file doesn't |
-| 26/09/2026 | Merged into a branch another session was using without coordinating with it first |
