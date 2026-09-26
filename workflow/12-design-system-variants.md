@@ -87,6 +87,18 @@ Variant, not a type: **Primary, on-gradient** (white bg, `primaryGradStart` text
 
 Open decision: the design's secondary (white + border) matches `outline`, so `outline` = Secondary; the single `secondary` use folds into it or Small secondary.
 
+### Implemented on `rfc/design-system-components`
+
+The catalog of record is `SHARED_COMPONENTS.md`; this is the status by group.
+
+- `shared/buttons/`: `Button` (base, variants + sizes `default/xs/sm/lg/xl`), `TextButton`, `IconButton`, `FabButton`, `ChatSendButton`, `ChipButton`, `NavItemButton`, `TabButton`, `OptionButton`, `FieldButton`, `TileButton`, `MenuTriggerButton`, plus `selectedStyles.ts` (soft selected string shared by nav and chip).
+- `shared/badges/`: `Badge` (base), `StatusBadge`, `LabelBadge`, `CountBadge`.
+- `shared/avatars/`: `UserAvatar`.
+- `shared/cards/`: `Card` (base), `GradientCard`, `StatCard`; `auth/AuthCard`.
+- `shared/inputs/`: `Input` (base, incl. pill and chat variants), `TextArea`, `SearchInput`, `Slider`, `FormInput`, `SliderCard`.
+
+Primitives the design does not style (checkbox, select, label, dialog, popover and similar) stay direct `ui/` imports.
+
 ### Next
 
 1. Confirm the design type table and mapping above (chip vs tab).
