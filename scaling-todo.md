@@ -92,3 +92,18 @@ Deferred items — not required for MVP. See `TODO.md` for active work.
 | 9 | —                                                           | — | Improve daily observation according to AI recommendations                                                                                                                                                      |
 | 10 | `src/components/community/`                                 | — | Author profile view — read-only profile page when clicking a community member's name (design in `.claude/design/pages/profile/profile.jsx` - `AuthorProfileView`)                                              |
 | 11 | — | — | Changelog popup — show users what's new after a release |
+
+---
+
+## Framework (Next 16.3 / React 19.3)
+
+Deferred after the 16.3 upgrade. All are opt-in or experimental; none block launch.
+
+| # | Feature | Note |
+|---|---------|------|
+| 1 | Instant Navigations (`cacheComponents`, `partialPrefetching`) | Changes the rendering and caching model (dynamic by default, explicit `'use cache'`). Big migration, revisit after launch. Guide: `/docs/app/guides/migrating-to-cache-components` |
+| 2 | Root params (`next/root-params`) | Only useful if the locale becomes a `[lang]` route segment. Pulse uses next-intl with a cookie locale, so no fit today |
+| 3 | Rust React Compiler (`experimental.turbopackRustReactCompiler`) | Experimental. Would remove manual memoization and speed up dev startup |
+| 4 | `useOffline` (`experimental.useOffline`) | Experimental, and it only covers soft navigations, RSC fetches and Server Actions. Pulse data goes through TanStack Query, which stays under its own retry policy, and `error.tsx` already handles network errors. Revisit if it stabilizes |
+| 5 | `catchError` custom boundaries | Pulse has almost no Server Component data fetching, so a retry that refetches server components has nothing to refetch. Revisit if pages move to server-side data |
+| 6 | Trusted Types CSP | React 19.3 passes Trusted Types objects through. Adding `require-trusted-types-for 'script'` needs a review of Sentry, Quill and Analytics first |
