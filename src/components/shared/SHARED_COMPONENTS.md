@@ -221,6 +221,14 @@ Search field with its leading icon, wrapping `Input`. Owns the icon size and off
 <SearchInput variant={'pill'} value={query} onChange={onChange} placeholder={label} className={'mb-7'}/>
 ```
 
+### `StatCard`
+
+The design system's stat card (`docs/design/designsystem.html`): a `Card` holding a tinted icon, an uppercase label, the value (with an optional smaller `subValue`) and a description line. `iconBg` and `descriptionColor` are caller-supplied class strings because they are data-driven per stat. Used by the dashboard stats row. `insights/stats/StatCard` is a different element (a borderless tinted tile with a trend indicator and feature helpers), so it stays in `insights/`. The app's icon is 48px and left-aligned; the design's is a 32px icon above the value.
+
+```tsx
+<StatCard label={label} value={value} description={text} icon={<Flame/>} iconBg={'bg-warning-light'}/>
+```
+
 ### `GradientCard`
 
 The design system's gradient CTA surface ("Gradient CTA" in `docs/design/designsystem.html`): white text on the brand gradient. A plain `div`, separate from `Card` (no border or card padding). `variant`: `default` (rounded-2xl, p-6, left-to-right gradient; dashboard check-in prompt, progress insight) and `hero` (rounded-3xl, large padding, centered, deep-blue end, shadow; landing CTA). Layout (`relative overflow-hidden`, `mx-auto max-w-2xl`) goes in `className`. Buttons and badges placed on it use the `onGradient` variants.
