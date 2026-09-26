@@ -7,7 +7,7 @@
 ## Files & Naming
 - PascalCase filenames and components
 - One component per file
-- Export inline, never default except for app router pages
+- Named exports everywhere. Default exports only in app router files (pages, layouts), at the bottom, per Next.js convention
 
 ## JSX Style
 - Nested content or content wrapped with a jsx/html, ALWAYS on new line

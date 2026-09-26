@@ -46,13 +46,13 @@ Rules in `CORE_RULES.md`. Non-negotiable — follow exactly.
 
 ### Quick Checklist
 Arrow functions | Single quotes | No semicolons | 4-space indent | Nested content on new lines
-JSX props: `prop={'value'}` | Export at bottom | Keep components ~40 lines
+JSX props: `prop={'value'}` | Keep components ~40 lines
 Use `api` from `@/api` | Access env via config | Use shadcn/ui components
 Avoid prop drilling | Clean imports | Delete unused code
 SOLID principles | Industry standards | Type-safe forms
 
 **Never:** `React.*` types | Function declarations | Double quotes | `import.meta.env` outside config
-**Never:** Direct fetch/axios | Inline exports | Commented code | `window.location` for navigation
+**Never:** Direct fetch/axios | Commented code | `window.location` for navigation
 **Never:** Multiple components per file | NEXT_PUBLIC_ prefix | Server directives
 
 ## Git & Commits
