@@ -7,6 +7,7 @@ import { ArrowRight, ClipboardCheck } from 'lucide-react'
 
 import { Badge } from '@/components/shared/badges/Badge'
 import { Button } from '@/components/shared/buttons/Button'
+import { GradientCard } from '@/components/shared/cards/GradientCard'
 
 import { ROUTES } from '@/constants/routes'
 
@@ -16,8 +17,8 @@ export const DashboardCheckInCard = () => {
     const t = useTranslations()
 
     return (
-        <div
-            className={'relative overflow-hidden rounded-2xl bg-linear-to-r from-primary-gradient-start to-primary-gradient-end p-6 text-white'}
+        <GradientCard
+            className={'relative overflow-hidden'}
             data-testid={'check-in-prompt'}
         >
             <div className={'relative z-10'}>
@@ -47,6 +48,6 @@ export const DashboardCheckInCard = () => {
             <div className={'absolute -right-4 -bottom-4 opacity-20'}>
                 <ClipboardCheck className={'size-48'}/>
             </div>
-        </div>
+        </GradientCard>
     )
 }

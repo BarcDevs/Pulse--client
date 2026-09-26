@@ -213,6 +213,14 @@ Search field with its leading icon, wrapping `Input`. Owns the icon size and off
 <SearchInput variant={'pill'} value={query} onChange={onChange} placeholder={label} className={'mb-7'}/>
 ```
 
+### `GradientCard`
+
+The design system's gradient CTA surface ("Gradient CTA" in `docs/design/designsystem.html`): white text on the brand gradient. A plain `div`, separate from `Card` (no border or card padding). `variant`: `default` (rounded-2xl, p-6, left-to-right gradient; dashboard check-in prompt, progress insight) and `hero` (rounded-3xl, large padding, centered, deep-blue end, shadow; landing CTA). Layout (`relative overflow-hidden`, `mx-auto max-w-2xl`) goes in `className`. Buttons and badges placed on it use the `onGradient` variants.
+
+```tsx
+<GradientCard variant={'hero'} className={'relative mx-auto max-w-2xl overflow-hidden'}>{content}</GradientCard>
+```
+
 ## Convention
 
 One `shared/` wrapper is the sole consumer of a given `ui/` (shadcn) primitive when that primitive
