@@ -8,6 +8,7 @@
     "dev": "cross-env NODE_OPTIONS=--max-old-space-size=8192 node scripts/dev.mjs",
     "dev:webpack": "cross-env NODE_OPTIONS=--max-old-space-size=8192 node scripts/dev.mjs --webpack",
     "dev:heapdump": "cross-env NODE_OPTIONS=\"--max-old-space-size=8192 --heapsnapshot-near-heap-limit=1\" node scripts/dev.mjs",
+    "clear-cache": "node -e \"require('fs').rmSync('.next', { recursive: true, force: true })\"",
     "legal:pdf": "node scripts/generate-legal-pdfs.mjs",
     "analyze": "set ANALYZE=true && next build",
     "build": "next build",
