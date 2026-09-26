@@ -16,7 +16,7 @@ import {
 } from '@/types/goals'
 
 import { ActionsMenu } from '@/components/shared/ActionsMenu'
-import { Badge } from '@/components/ui/badge'
+import { LabelBadge } from '@/components/shared/badges/LabelBadge'
 
 import { getGoalCardAdditionalActions } from '@/lib/goals/buildGoalAdditionalActions'
 import { getCategoryColor } from '@/lib/goals/getCategoryColor'
@@ -95,19 +95,13 @@ export const GoalCard = ({
             <div className={'py-5 ps-5 pe-3 flex flex-col h-full'}>
                 <div className={'flex justify-between items-start mb-4'}>
                     <div className={'flex flex-wrap items-center gap-2'}>
-                        <Badge className={cn(
-                            getCategoryColor(goal.category),
-                            'px-3 py-1 text-xs font-bold rounded-full uppercase tracking-widest'
-                        )}>
+                        <LabelBadge className={getCategoryColor(goal.category)}>
                             {t(goalsLocales.categoryLabels[goal.category])}
-                        </Badge>
-                        <Badge className={cn(
-                            statusTokens.ribbonCn,
-                            'flex items-center gap-1.5 px-3 py-1 text-xs font-bold rounded-full uppercase tracking-widest'
-                        )}>
+                        </LabelBadge>
+                        <LabelBadge className={statusTokens.ribbonCn}>
                             <RibbonIcon className={'w-3 h-3'} />
                             {t(goalsLocales.statusLabels[goal.status])}
-                        </Badge>
+                        </LabelBadge>
                     </div>
                     <ActionsMenu
                         onEditAction={() => onEditAction(goal.id)}

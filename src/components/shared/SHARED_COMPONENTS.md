@@ -146,6 +146,14 @@ Badge with the design's dot prefix (status pills like "On track", live indicator
 <StatusBadge variant={'warning'}>{label}</StatusBadge>
 ```
 
+### `LabelBadge`
+
+Uppercase, wide-tracked label pill (goal category, goal status ribbon). Wraps `Badge` with `size` (`'md'` default, `'sm'`). The data-driven color from `getCategoryColor` / status tokens is passed as `className`.
+
+```tsx
+<LabelBadge size={'sm'} className={getCategoryColor(goal.category)}>{label}</LabelBadge>
+```
+
 ## Convention
 
 One `shared/` wrapper is the sole consumer of a given `ui/` (shadcn) primitive when that primitive
