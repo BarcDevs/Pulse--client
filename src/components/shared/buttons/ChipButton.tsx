@@ -3,6 +3,7 @@ import { ComponentProps } from 'react'
 import { ClassName } from '@/types/react'
 
 import { Button } from '@/components/shared/buttons/Button'
+import { selectedSoftStyles } from '@/components/shared/buttons/selectedStyles'
 
 import { cn } from '@/lib/utils'
 
@@ -21,7 +22,7 @@ const sizeStyles: Record<ChipButtonSize, string> = {
 }
 
 const idleStyles = 'border-border bg-card text-muted-foreground hover:bg-muted hover:text-foreground'
-const softStyles = 'border-primary bg-primary-light text-primary hover:bg-primary-light hover:text-primary'
+const softStyles = cn('border-primary', selectedSoftStyles)
 const solidStyles = 'border-primary bg-primary text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground'
 
 export const ChipButton = ({

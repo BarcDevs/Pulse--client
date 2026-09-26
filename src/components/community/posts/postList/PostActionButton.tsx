@@ -22,10 +22,10 @@ export const PostActionButton = ({
     activeClassName = 'text-primary'
 }: PostActionButtonProps) => (
     <TextButton
-        tone={isActive ? 'inherit' : 'muted'}
+        tone={'action'}
         size={'xs'}
         className={cn(
-            'gap-1.5 p-1.5 hover:text-primary',
+            'gap-1.5 p-1.5',
             isActive && activeClassName
         )}
         onClick={onClick}

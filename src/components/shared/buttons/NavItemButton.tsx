@@ -1,6 +1,7 @@
 import { ComponentProps } from 'react'
 
 import { Button } from '@/components/shared/buttons/Button'
+import { selectedSoftStyles } from '@/components/shared/buttons/selectedStyles'
 
 import { cn } from '@/lib/utils'
 
@@ -21,7 +22,6 @@ const layoutStyles: Record<NavItemButtonLayout, string> = {
 }
 
 const activeStyles = 'bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground'
-const softActiveStyles = 'bg-primary-light text-primary hover:bg-primary-light hover:text-primary'
 const idleStyles = 'text-muted-foreground hover:bg-surface-section hover:text-foreground'
 const destructiveStyles = 'text-destructive hover:text-destructive'
 
@@ -39,7 +39,7 @@ export const NavItemButton = ({
             'h-auto text-sm font-medium',
             layoutStyles[layout],
             isActive
-                ? (soft ? softActiveStyles : activeStyles)
+                ? (soft ? selectedSoftStyles : activeStyles)
                 : idleStyles,
             !isActive && tone === 'destructive' && destructiveStyles,
             className

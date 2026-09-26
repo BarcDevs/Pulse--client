@@ -4,7 +4,7 @@ import { Button } from '@/components/shared/buttons/Button'
 
 import { cn } from '@/lib/utils'
 
-type TextButtonTone = 'primary' | 'muted' | 'onDark' | 'inherit'
+type TextButtonTone = 'primary' | 'muted' | 'action' | 'onDark' | 'inherit'
 type TextButtonSize = 'xs' | 'sm'
 
 type TextButtonProps = Omit<ComponentProps<typeof Button>, 'variant' | 'size'> & {
@@ -15,6 +15,7 @@ type TextButtonProps = Omit<ComponentProps<typeof Button>, 'variant' | 'size'> &
 const toneStyles: Record<TextButtonTone, string> = {
     primary: 'text-primary hover:text-primary hover:underline',
     muted: 'text-muted-foreground hover:text-foreground',
+    action: 'text-muted-foreground hover:text-primary',
     onDark: 'text-white/70 hover:text-white',
     inherit: ''
 }

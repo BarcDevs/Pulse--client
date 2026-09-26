@@ -41,9 +41,8 @@ export const MentorItem = ({
                 </div>
             </div>
             <Button
-                size={'sm'}
+                size={'xs'}
                 variant={'secondary'}
-                className={'text-xs'}
             >
                 {t('community.mentors.chatButton')}
             </Button>

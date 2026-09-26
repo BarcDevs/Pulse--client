@@ -39,15 +39,23 @@ Every button in the app comes from here. Never import `@/components/ui/button` (
 
 ### `Button`
 
-The design system's `.btn` element, wrapping `ui/button` (`docs/design/designsystem.html`). Variants: `primary` (default, gradient + glow), `secondary` (white, bordered), `ghost` (primary text), `destructive`, `onGradient` (white, for buttons on the gradient hero/card). Sizes: `default`, `sm`, `lg`, `xl` (h-11 form CTA). Other button types wrap this.
+The design system's `.btn` element, wrapping `ui/button` (`docs/design/designsystem.html`). Variants: `primary` (default, gradient + glow), `secondary` (white, bordered), `ghost` (primary text), `destructive`, `onGradient` (white, for buttons on the gradient hero/card). Sizes: `default`, `xs` (sm height, small text), `sm`, `lg`, `xl` (h-11 form CTA). Other button types wrap this. `selectedStyles.ts` holds the soft-primary "selected" class string shared by `NavItemButton` and `ChipButton`.
 
 ```tsx
 <Button variant={'secondary'} size={'sm'} onClick={onCancel}>{label}</Button>
 ```
 
+### `MenuTriggerButton`
+
+Small secondary button that opens a dropdown or menu (language switcher). Wraps `Button` (`secondary`, `sm`) with a gap, no focus ring and a primary border while the menu is open (`data-[state=open]`). Use it as the child of a Radix `Trigger asChild`.
+
+```tsx
+<DropdownMenuTrigger asChild><MenuTriggerButton><Globe/>{code}</MenuTriggerButton></DropdownMenuTrigger>
+```
+
 ### `TextButton`
 
-Text-style action with no padding or background (inline links like "see more", "view all", back link, retry). Wraps `Button` (`ghost`) with a `tone` prop (`'primary'` default with hover underline, `'muted'`, `'onDark'`, `'inherit'` when the caller sets the color) and a `size` prop (`'sm'` default, `'xs'`).
+Text-style action with no padding or background (inline links like "see more", "view all", back link, retry). Wraps `Button` (`ghost`) with a `tone` prop (`'primary'` default with hover underline, `'muted'`, `'action'` muted that turns primary on hover (post reactions), `'onDark'`, `'inherit'` when the caller sets the color) and a `size` prop (`'sm'` default, `'xs'`).
 
 ```tsx
 <TextButton tone={'muted'} size={'xs'} onClick={onRetry}>{label}</TextButton>

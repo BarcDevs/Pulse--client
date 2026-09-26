@@ -7,7 +7,7 @@ import { cn } from '@/lib/utils'
 type UiButtonProps = ComponentProps<typeof UiButton>
 
 type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'destructive' | 'onGradient'
-type ButtonSize = 'default' | 'sm' | 'lg' | 'xl'
+type ButtonSize = 'default' | 'xs' | 'sm' | 'lg' | 'xl'
 
 type ButtonProps = Omit<UiButtonProps, 'variant' | 'size'> & {
     variant?: ButtonVariant
@@ -39,6 +39,7 @@ const variantStyles: Record<ButtonVariant, { uiVariant: UiButtonProps['variant']
 
 const sizeStyles: Record<ButtonSize, { uiSize: UiButtonProps['size'], className: string }> = {
     default: { uiSize: 'default', className: '' },
+    xs: { uiSize: 'sm', className: 'text-xs' },
     sm: { uiSize: 'sm', className: '' },
     lg: { uiSize: 'lg', className: '' },
     xl: { uiSize: 'lg', className: 'h-11' }
