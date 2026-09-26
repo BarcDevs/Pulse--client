@@ -691,3 +691,18 @@
     border-color: #498edf !important;
 }
 /*endregion*/
+
+/*region view transitions*/
+::view-transition {
+    pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    ::view-transition-old(*),
+    ::view-transition-new(*),
+    ::view-transition-group(*) {
+        animation-duration: 0s !important;
+        animation-delay: 0s !important;
+    }
+}
+/*endregion*/
