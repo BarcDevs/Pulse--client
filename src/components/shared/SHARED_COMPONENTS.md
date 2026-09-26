@@ -154,6 +154,14 @@ Uppercase, wide-tracked label pill (goal category, goal status ribbon). Wraps `B
 <LabelBadge size={'sm'} className={getCategoryColor(goal.category)}>{label}</LabelBadge>
 ```
 
+### `CountBadge`
+
+Round 20px count bubble (notification count). Wraps `Badge`; takes the same `variant` prop. Position it with `className` (`absolute -right-1 -top-1`).
+
+```tsx
+<CountBadge className={'absolute -right-1 -top-1'}>{count}</CountBadge>
+```
+
 ## Convention
 
 One `shared/` wrapper is the sole consumer of a given `ui/` (shadcn) primitive when that primitive
