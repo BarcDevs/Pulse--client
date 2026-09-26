@@ -7,7 +7,7 @@ import type { KeyboardEvent } from 'react'
 import type { SetState } from '@/types/react'
 
 import { FormInput } from '@/components/shared/inputs/FormInput'
-import { UserAvatar } from '@/components/shared/UserAvatar'
+import { UserAvatar } from '@/components/shared/avatars/UserAvatar'
 import { ChatSendButton } from '@/components/shared/buttons/ChatSendButton'
 
 import { chatLocales } from '@/locales/chatLocales'

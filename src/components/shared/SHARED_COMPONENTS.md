@@ -19,7 +19,6 @@ has nothing that fits.
 | `PageHeader.tsx` | Page-level header (title/actions/tabs) |
 | `PageHeaderTabs.tsx` | Tab strip used inside `PageHeader` |
 | `SavingBanner.tsx` | "Saving..." status banner |
-| `UserAvatar.tsx` | User avatar image/initials |
 
 ## Subfolders
 
@@ -160,6 +159,18 @@ Round 20px count bubble (notification count). Wraps `Badge`; takes the same `var
 
 ```tsx
 <CountBadge className={'absolute -right-1 -top-1'}>{count}</CountBadge>
+```
+
+## `avatars/`
+
+Every user avatar comes from here; never use `@/components/ui/avatar` elsewhere.
+
+### `UserAvatar`
+
+Round user image with initials fallback. Wraps `ui/avatar` with `size` (`'sm'` 32px, `'md'` 36px default, `'xl'` 96px with primary border for the profile card) and `tone` (`'soft'` tinted default, `'solid'` filled primary for chat and profile). Layout goes in `className` (`shrink-0`, `cursor-pointer`).
+
+```tsx
+<UserAvatar initials={initials} imageSrc={image} size={'xl'} tone={'solid'}/>
 ```
 
 ## Convention

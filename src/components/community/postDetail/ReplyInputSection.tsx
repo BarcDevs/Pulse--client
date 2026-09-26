@@ -4,7 +4,7 @@ import { useTranslations } from 'next-intl'
 
 import { MessageSquare } from 'lucide-react'
 
-import { UserAvatar } from '@/components/shared/UserAvatar'
+import { UserAvatar } from '@/components/shared/avatars/UserAvatar'
 import { FieldButton } from '@/components/shared/buttons/FieldButton'
 
 import { getUserFallback } from '@/lib/utils'

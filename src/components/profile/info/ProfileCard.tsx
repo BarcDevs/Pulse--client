@@ -3,7 +3,7 @@
 import { Camera } from 'lucide-react'
 
 import { ProfileLevel } from '@/components/profile/info/ProfileLevel'
-import { UserAvatar } from '@/components/shared/UserAvatar'
+import { UserAvatar } from '@/components/shared/avatars/UserAvatar'
 import { IconButton } from '@/components/shared/buttons/IconButton'
 import { Card, CardContent } from '@/components/ui/card'
 
@@ -36,10 +36,8 @@ export const ProfileCard = () => {
                     <UserAvatar
                         initials={initials}
                         imageSrc={currentUser.user.profile?.image ?? undefined}
-                        className={{
-                            wrapper: 'size-24 border-4 border-primary-light',
-                            fallback: 'bg-primary text-2xl text-white'
-                        }}
+                        size={'xl'}
+                        tone={'solid'}
                     />
 
                     {/* TODO: profile image upload — deferred to scaling phase */}

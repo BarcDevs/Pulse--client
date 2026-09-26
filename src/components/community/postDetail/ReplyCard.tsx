@@ -11,7 +11,7 @@ import type { Reply } from '@/types/community'
 import { PostForm } from '@/components/community/postForm/PostForm'
 import { PostActionButton } from '@/components/community/posts/postList/PostActionButton'
 import { ActionsMenu } from '@/components/shared/ActionsMenu'
-import { UserAvatar } from '@/components/shared/UserAvatar'
+import { UserAvatar } from '@/components/shared/avatars/UserAvatar'
 import { Badge } from '@/components/shared/badges/Badge'
 
 import { useReplyInteractions } from '@/hooks/mutations/useReplyInteractions'
