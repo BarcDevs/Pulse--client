@@ -1,5 +1,6 @@
 import { expect, test } from '@playwright/test'
 
+import { API_BASE } from '../helpers/apiBase'
 import {
     mockApiFallback,
     mockAuth,
@@ -7,7 +8,7 @@ import {
     setEnglishLocale
 } from '../helpers/mockApi'
 
-const API = '**/api/v1'
+const API = API_BASE
 
 test.describe('Profile Edit', () => {
     test.beforeEach(async ({ page }) => {

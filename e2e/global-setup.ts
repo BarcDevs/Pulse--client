@@ -1,5 +1,6 @@
 import { chromium } from '@playwright/test'
 
+import { API_BASE } from './helpers/apiBase'
 import { secondInMs } from './helpers/time'
 
 const mockUser = {
@@ -62,42 +63,42 @@ export default async function globalSetup() {
                 body: ok(null)
             })
         )
-        await page.route('**/api/v1/auth/me', (route) =>
+        await page.route(`${API_BASE}/auth/me`, (route) =>
             route.fulfill({
                 status: 200,
                 contentType: 'application/json',
                 body: ok({ user: mockUser, _csrf: 'warmup-csrf' })
             })
         )
-        await page.route('**/api/v1/auth/refresh', (route) =>
+        await page.route(`${API_BASE}/auth/refresh`, (route) =>
             route.fulfill({
                 status: 200,
                 contentType: 'application/json',
                 body: ok({ _csrf: 'warmup-csrf' })
             })
         )
-        await page.route('**/api/v1/check-in**', (route) =>
+        await page.route(`${API_BASE}/check-in**`, (route) =>
             route.fulfill({
                 status: 200,
                 contentType: 'application/json',
                 body: ok([])
             })
         )
-        await page.route('**/api/v1/recovery-goals**', (route) =>
+        await page.route(`${API_BASE}/recovery-goals**`, (route) =>
             route.fulfill({
                 status: 200,
                 contentType: 'application/json',
                 body: ok([])
             })
         )
-        await page.route('**/api/v1/profile**', (route) =>
+        await page.route(`${API_BASE}/profile**`, (route) =>
             route.fulfill({
                 status: 200,
                 contentType: 'application/json',
                 body: ok(null)
             })
         )
-        await page.route('**/api/v1/insight**', (route) =>
+        await page.route(`${API_BASE}/insight**`, (route) =>
             route.fulfill({
                 status: 200,
                 contentType: 'application/json',
