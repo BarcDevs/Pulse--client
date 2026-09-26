@@ -51,6 +51,7 @@ How to act on bug reports and where to log — state the fix before broad edits,
 | 23/09/2026 | Ran Python scripts to edit files instead of the Edit tool |
 | 25/09/2026 | Dead code is removed in a separate cleanup commit, not left marked or noted |
 | 25/09/2026 | Branched and upgraded deps in the shared checkout while another session was in it; create the worktree first |
+| 26/09/2026 | Did a whole rfc series on whatever branch was checked out (the upgrade branch); every separate piece of work gets its own branch, created by Claude without being asked |
 | 25/09/2026 | Swapped "Claude routines" for a session cron and never said where scheduled output lands |
 
 ## Code Placement — [[corrections/code-placement]]

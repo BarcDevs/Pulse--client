@@ -84,3 +84,11 @@ Asked for a weekly check "in a claude scheduled task" and later "claude routines
 Told to merge the `pulse--client-next163` worktree "into dev", I ran `git merge` in `pulse--client` on `chore/upgrade-next-react` while the `design` session was busy on that same branch, and left an unresolved merge in the shared tree for ~2 minutes. `design` was only told afterwards. User: "you shoul've coordinate with @design before doing that are u dumb???", then "ok dont do that again".
 
 **Lesson:** before any merge, rebase, checkout, reset, or branch/worktree deletion in a checkout another session may be using, message that session first and wait for its reply. Path-scoped commits are fine; anything that moves the branch or leaves the tree in a mid-operation state is not. Check `ListAgents` for a busy session on the repo before starting.
+
+---
+
+## 26/09/2026 — Ran the whole design-system rfc series on the branch that happened to be checked out
+
+The session started on `chore/upgrade-next-react` (the Next/React upgrade branch) and I made ten-plus rfc commits (buttons, badges, avatars, cards, AuthCard, inputs) there without noting it was the wrong branch or creating one. A peer session then merged unrelated work into it, mixing the two. User: "u shoul've done it by yourself. a separate branch for every separate work needed." The user renamed the branch to `rfc/design-system-components` afterwards.
+
+**Lesson:** at the start of any new piece of work, check `git branch --show-current`; if it is not a branch for that work, create one (`rfc/<topic>`, `feat/<topic>`, etc.) before the first commit, without waiting to be asked. One branch per separate piece of work, never piled onto whatever is checked out.
