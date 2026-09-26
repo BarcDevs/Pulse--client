@@ -91,3 +91,16 @@ Deferred items — not required for MVP. See `TODO.md` for active work.
 | 8 | `src/components/progress/share/ShareProgressCard.tsx` | — | Share progress in community — wire share action to community post creation. Forum has no image-attachment support; needs a design session to define post format (text summary vs. image) before implementation |
 | 9 | —                                                           | — | Improve daily observation according to AI recommendations                                                                                                                                                      |
 | 10 | `src/components/community/`                                 | — | Author profile view — read-only profile page when clicking a community member's name (design in `.claude/design/pages/profile/profile.jsx` - `AuthorProfileView`)                                              |
+
+---
+
+## Separate branches
+
+Found in the design-system rfc review. Each is its own branch, not part of `rfc/design-system-components`.
+
+| # | Branch (suggested) | Note |
+|---|--------------------|------|
+| 1 | `fix/icon-button-aria-labels` | Icon-only buttons have no accessible name. Add `aria-label` from i18n keys (en + he) |
+| 2 | `fix/server-route-guard` | Route protection is client-side only and `protectedRoutes` is orphaned. Needs a server-side guard design decision (proxy/middleware) before implementing |
+| 3 | `chore/fix-regex-test-lint` | `src/config/__tests__/regex.test.ts` line 12: `no-useless-escape` error, already on main |
+| 4 | `fix/icon-size-16px` | `ui/button` forces svg without a `size-*` class to 16px, so `size={N}` icons may render smaller than intended. Pre-existing, unverified visually |
