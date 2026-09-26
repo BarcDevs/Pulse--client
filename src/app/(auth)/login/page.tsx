@@ -5,16 +5,10 @@ import { useEffect, useState } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 
+import { AuthCard } from '@/components/auth/AuthCard'
 import { GoogleLoginButton } from '@/components/auth/forms/GoogleLoginButton'
 import { LoginSecurityFooter } from '@/components/auth/sections/LoginSecurityFooter'
 import { AuthForm } from '@/components/form/AuthForm'
-import { Card } from '@/components/shared/cards/Card'
-import {
-    CardContent,
-    CardDescription,
-    CardHeader,
-    CardTitle
-} from '@/components/ui/card'
 
 import { useGetMe } from '@/hooks/queries/useGetMe'
 import { useAuthHandlers } from '@/hooks/useAuthHandlers'
@@ -54,31 +48,23 @@ const LoginPage = () => {
     }
 
     return (
-        <Card
-            variant={'elevated'}
+        <AuthCard
+            isCentered
+            title={t(authLocales.login.title)}
+            description={t(authLocales.login.description)}
             className={'w-full max-w-md'}
         >
-            <CardHeader className={'text-center'}>
-                <CardTitle className={'text-2xl font-semibold'}>
-                    {t(authLocales.login.title)}
-                </CardTitle>
-                <CardDescription>
-                    {t(authLocales.login.description)}
-                </CardDescription>
-            </CardHeader>
-            <CardContent>
-                <AuthForm
-                    formType={'login'}
-                    onSuccessAction={handleLoginSuccess}
-                    isLoading={isLoading}
-                    error={error}
-                />
+            <AuthForm
+                formType={'login'}
+                onSuccessAction={handleLoginSuccess}
+                isLoading={isLoading}
+                error={error}
+            />
 
-                <GoogleLoginButton redirect={redirect}/>
+            <GoogleLoginButton redirect={redirect}/>
 
-                <LoginSecurityFooter/>
-            </CardContent>
-        </Card>
+            <LoginSecurityFooter/>
+        </AuthCard>
     )
 }
 

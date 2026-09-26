@@ -6,16 +6,10 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 
+import { AuthCard } from '@/components/auth/AuthCard'
 import { PasswordRequirementsList } from '@/components/auth/password/PasswordRequirementsList'
 import { AuthForm } from '@/components/form/AuthForm'
 import { Logo } from '@/components/shared/brand/Logo'
-import { Card } from '@/components/shared/cards/Card'
-import {
-    CardContent,
-    CardDescription,
-    CardHeader,
-    CardTitle
-} from '@/components/ui/card'
 
 import { ROUTES } from '@/constants/routes'
 
@@ -42,36 +36,29 @@ const ResetPasswordPage = () => {
         <div className={'w-full max-w-md'}>
             <Logo/>
 
-            <Card variant={'elevated'}>
-                <CardHeader>
-                    <CardTitle className={'text-2xl font-semibold'}>
-                        {t(authLocales.resetPassword.title)}
-                    </CardTitle>
-                    <CardDescription>
-                        {t(authLocales.resetPassword.description)}
-                    </CardDescription>
-                </CardHeader>
-                <CardContent>
-                    <AuthForm
-                        formType={'resetPassword'}
-                        onSuccessAction={handleResetSuccess}
-                        isLoading={isLoading}
-                        onPasswordChangeAction={setPassword}
-                    />
+            <AuthCard
+                title={t(authLocales.resetPassword.title)}
+                description={t(authLocales.resetPassword.description)}
+            >
+                <AuthForm
+                    formType={'resetPassword'}
+                    onSuccessAction={handleResetSuccess}
+                    isLoading={isLoading}
+                    onPasswordChangeAction={setPassword}
+                />
 
-                    <PasswordRequirementsList password={password}/>
+                <PasswordRequirementsList password={password}/>
 
-                    <p className={'mt-6 text-center text-xs text-muted-foreground'}>
-                        {`${t(authLocales.resetPassword.troubleText)} `}
-                        <Link
-                            href={ROUTES.SUPPORT}
-                            className={'text-primary hover:underline'}
-                        >
-                            {t(authLocales.resetPassword.supportLink)}
-                        </Link>
-                    </p>
-                </CardContent>
-            </Card>
+                <p className={'mt-6 text-center text-xs text-muted-foreground'}>
+                    {`${t(authLocales.resetPassword.troubleText)} `}
+                    <Link
+                        href={ROUTES.SUPPORT}
+                        className={'text-primary hover:underline'}
+                    >
+                        {t(authLocales.resetPassword.supportLink)}
+                    </Link>
+                </p>
+            </AuthCard>
         </div>
     )
 }
