@@ -138,6 +138,14 @@ The design system's `.badge`: pill, 11px / 600, tinted background. Wraps `ui/bad
 <Badge variant={'success'}>{label}</Badge>
 ```
 
+### `StatusBadge`
+
+Badge with the design's dot prefix (status pills like "On track", live indicators). Wraps `Badge` with a 6px currentColor dot and a `pulse` prop for a live/pulsing dot. Takes the same `variant` prop.
+
+```tsx
+<StatusBadge variant={'warning'}>{label}</StatusBadge>
+```
+
 ## Convention
 
 One `shared/` wrapper is the sole consumer of a given `ui/` (shadcn) primitive when that primitive
