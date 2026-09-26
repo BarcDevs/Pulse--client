@@ -6,6 +6,7 @@ import { Shield } from 'lucide-react'
 
 import { Button } from '@/components/shared/buttons/Button'
 import { Input } from '@/components/shared/inputs/Input'
+import { TextArea } from '@/components/shared/inputs/TextArea'
 import {
     Form,
     FormField,
@@ -13,7 +14,6 @@ import {
     FormMessage
 } from '@/components/ui/form'
 import { Label } from '@/components/ui/label'
-import { Textarea } from '@/components/ui/textarea'
 
 import { useSupportForm } from '@/hooks/forms/useSupportForm'
 
@@ -92,10 +92,11 @@ export const SupportContactForm = ({
                             <Label className={labelClass}>
                                 {t(supportLocales.contact.messageLabel)}
                             </Label>
-                            <Textarea
+                            <TextArea
                                 {...field}
                                 placeholder={t(supportLocales.contact.messagePlaceholder)}
-                                className={'min-h-[130px] resize-y rounded-[10px] border-[1.5px] border-border bg-surface-page p-3.5 text-sm leading-[1.6] focus-visible:border-primary focus-visible:ring-0'}
+                                variant={'support'}
+                                resize={'vertical'}
                             />
                             <FormMessage/>
                         </FormItem>

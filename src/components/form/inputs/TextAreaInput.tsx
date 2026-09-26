@@ -6,12 +6,12 @@ import { FieldValues } from 'react-hook-form'
 
 import { FieldConfig } from '@/types/forms'
 
+import { TextArea } from '@/components/shared/inputs/TextArea'
 import {
     FormControl,
     FormDescription,
     FormLabel
 } from '@/components/ui/form'
-import { Textarea } from '@/components/ui/textarea'
 
 type TextAreaInputProps<T extends FieldValues> = {
     field: T
@@ -32,7 +32,7 @@ export const TextAreaInput = <T extends FieldValues>({
                 </FormLabel>
             }
             <FormControl>
-                <Textarea
+                <TextArea
                     placeholder={config.placeholder ? t(config.placeholder) : ''}
                     maxLength={config.maxLength}
                     disabled={config.disabled}

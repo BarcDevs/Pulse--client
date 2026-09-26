@@ -4,7 +4,7 @@ import { Input as UiInput } from '@/components/ui/input'
 
 import { cn } from '@/lib/utils'
 
-export type InputVariant = 'default' | 'muted' | 'card' | 'support' | 'search'
+type InputVariant = 'default' | 'muted' | 'card' | 'support' | 'search'
 type InputSize = 'md' | 'lg'
 
 type InputProps = Omit<ComponentProps<typeof UiInput>, 'size'> & {
@@ -13,7 +13,7 @@ type InputProps = Omit<ComponentProps<typeof UiInput>, 'size'> & {
     isInvalid?: boolean
 }
 
-export const inputVariantStyles: Record<InputVariant, string> = {
+const inputVariantStyles: Record<InputVariant, string> = {
     default: '',
     muted: 'bg-muted',
     card: 'bg-surface-card',

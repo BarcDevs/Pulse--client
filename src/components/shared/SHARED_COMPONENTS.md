@@ -191,10 +191,18 @@ Every single-line text field comes from `shared/inputs/Input`; only that file im
 
 ### `Input`
 
-The design system's `.field-input` (`docs/design/designsystem.html`). Wraps `ui/input` with `variant` (`default`, `muted` tinted background, `card` white surface, `support` bordered 1.5px rounded form field, `search` rounded-xl search pill), `size` (`'md'` default, `'lg'` h-11) and `isInvalid` (destructive border). Icon padding (`pl-9`, `ps-11`) goes in `className`. `inputVariantStyles` is exported so other field types (`TextArea`) reuse the looks.
+The design system's `.field-input` (`docs/design/designsystem.html`). Wraps `ui/input` with `variant` (`default`, `muted` tinted background, `card` white surface, `support` bordered 1.5px rounded form field, `search` rounded-xl search pill), `size` (`'md'` default, `'lg'` h-11) and `isInvalid` (destructive border). Icon padding (`pl-9`, `ps-11`) goes in `className`.
 
 ```tsx
 <Input variant={'muted'} isInvalid={!!error} value={value} onChange={onChange}/>
+```
+
+### `TextArea`
+
+Multi-line counterpart of `Input`, wrapping `ui/textarea`; only that file imports it. `variant`: `default`, `muted`, `card`, `soft` (container-low tint), `support` (bordered 1.5px, rounded, taller); `resize`: `'none'` or `'vertical'` (unset keeps the browser default). Min-height for a specific form goes in `className`.
+
+```tsx
+<TextArea variant={'card'} resize={'none'} className={'min-h-30'} value={notes} onChange={onChange}/>
 ```
 
 ## Convention

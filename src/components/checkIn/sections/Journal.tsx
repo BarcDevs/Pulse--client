@@ -6,12 +6,12 @@ import type { ChangeEvent } from 'react'
 import type { FormControlProps } from '@/types/forms'
 
 import { Card } from '@/components/shared/cards/Card'
+import { TextArea } from '@/components/shared/inputs/TextArea'
 import {
     CardContent,
     CardHeader,
     CardTitle
 } from '@/components/ui/card'
-import { Textarea } from '@/components/ui/textarea'
 
 import { checkInLocales } from '@/locales/checkInLocales'
 import type { CheckInSchema } from '@/validations/forms/checkInSchema'
@@ -38,11 +38,13 @@ export const CheckInJournal = ({
                 </div>
             </CardHeader>
             <CardContent>
-                <Textarea
+                <TextArea
                     placeholder={t(checkInLocales.journal.placeholder)}
                     value={notes}
                     onChange={handleNotesChange}
-                    className={'min-h-30 resize-none border-border bg-surface-card placeholder:text-muted-foreground'}
+                    variant={'card'}
+                    resize={'none'}
+                    className={'min-h-30'}
                 />
             </CardContent>
         </Card>
