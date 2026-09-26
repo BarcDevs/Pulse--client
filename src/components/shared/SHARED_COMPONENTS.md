@@ -205,6 +205,14 @@ Multi-line counterpart of `Input`, wrapping `ui/textarea`; only that file import
 <TextArea variant={'card'} resize={'none'} className={'min-h-30'} value={notes} onChange={onChange}/>
 ```
 
+### `SearchInput`
+
+Search field with its leading icon, wrapping `Input`. Owns the icon size and offset and the input padding, using logical `start`/`ps` so it mirrors in RTL. `variant`: `card` (default, community search), `header` (taller, rounded-lg, focus ring, app header), `pill` (large rounded search on the support page). `className` applies to the wrapper (`flex-1`, `w-64`, `mb-7`).
+
+```tsx
+<SearchInput variant={'pill'} value={query} onChange={onChange} placeholder={label} className={'mb-7'}/>
+```
+
 ## Convention
 
 One `shared/` wrapper is the sole consumer of a given `ui/` (shadcn) primitive when that primitive
