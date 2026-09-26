@@ -34,7 +34,6 @@ export const FormInput = ({
 }: FormInputProps) => {
     const [showPassword, setShowPassword] = useState(false)
     const isPasswordField = type === 'password'
-    const isCustom = !!className
 
     const inputType =
         isPasswordField && showPassword
@@ -58,10 +57,10 @@ export const FormInput = ({
                     placeholder={placeholder}
                     value={value}
                     onChange={onChange}
-                    variant={isCustom ? 'default' : 'muted'}
-                    size={isCustom ? 'md' : 'lg'}
+                    variant={'muted'}
+                    size={'lg'}
                     className={cn(
-                        isPasswordField && !isCustom && 'pr-10',
+                        isPasswordField && 'pr-10',
                         className
                     )}
                     required={required}

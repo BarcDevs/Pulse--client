@@ -6,9 +6,9 @@ import type { KeyboardEvent } from 'react'
 
 import type { SetState } from '@/types/react'
 
-import { FormInput } from '@/components/shared/inputs/FormInput'
 import { UserAvatar } from '@/components/shared/avatars/UserAvatar'
 import { ChatSendButton } from '@/components/shared/buttons/ChatSendButton'
+import { Input } from '@/components/shared/inputs/Input'
 
 import { chatLocales } from '@/locales/chatLocales'
 
@@ -32,17 +32,17 @@ export const ChatInputField = ({
             <UserAvatar initials={'AR'}/>
 
             <div className={'relative flex-1'}>
-                <FormInput
+                <Input
                     id={'chatInput'}
                     type={'text'}
+                    variant={'chat'}
+                    className={'pr-12'}
                     value={value}
                     onChange={(e) =>
                         onChange(e.target.value)
                     }
                     onKeyDown={onKeyDown}
                     placeholder={t(chatLocales.inputPlaceholder)}
-                    className={'w-full rounded-full border border-border bg-muted px-4 py-3 pr-12 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20'}
-                    required={false}
                 />
                 <ChatSendButton
                     onClick={onSend}

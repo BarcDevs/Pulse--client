@@ -191,7 +191,7 @@ Every single-line text field comes from `shared/inputs/Input`; only that file im
 
 ### `Input`
 
-The design system's `.field-input` (`docs/design/designsystem.html`). Wraps `ui/input` with `variant` (`default`, `muted` tinted background, `card` white surface, `support` bordered 1.5px rounded form field, `search` rounded-xl search pill), `size` (`'md'` default, `'lg'` h-11) and `isInvalid` (destructive border). Icon padding (`pl-9`, `ps-11`) goes in `className`.
+The design system's `.field-input` (`docs/design/designsystem.html`). Wraps `ui/input` with `variant` (`default`, `muted` tinted background, `card` white surface, `pill` fully rounded on a white surface (check-in custom activity), `chat` fully rounded muted field with a primary focus ring (the right padding for the send button goes in `className`), `support` bordered 1.5px rounded form field, `search` rounded-xl search pill), `size` (`'md'` default, `'lg'` h-11) and `isInvalid` (destructive border). Icon padding (`pl-9`, `ps-11`) goes in `className`.
 
 ```tsx
 <Input variant={'muted'} isInvalid={!!error} value={value} onChange={onChange}/>

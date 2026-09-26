@@ -10,7 +10,7 @@ import type { FormControlProps } from '@/types/forms'
 
 import { Card } from '@/components/shared/cards/Card'
 import { ActivityToggleButton } from '@/components/shared/inputs/ActivityToggleButton'
-import { FormInput } from '@/components/shared/inputs/FormInput'
+import { Input } from '@/components/shared/inputs/Input'
 import {
     CardContent,
     CardHeader,
@@ -134,8 +134,9 @@ export const CheckInActivities = ({
                         ))}
 
                         <div className={'flex items-center gap-2'}>
-                            <FormInput
+                            <Input
                                 id={'customActivity'}
+                                variant={'pill'}
                                 placeholder={t(checkInLocales.activities.placeholder)}
                                 value={customActivity}
                                 onChange={(e) => setCustomActivity(e.target.value)}
@@ -145,8 +146,7 @@ export const CheckInActivities = ({
                                         addCustomActivity()
                                     }
                                 }}
-                                className={'h-9 w-32 rounded-full border-border bg-surface-card'}
-                                required={false}
+                                className={'w-32'}
                                 type={'text'}
                             />
                         </div>
