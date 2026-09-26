@@ -185,6 +185,18 @@ Wraps `ui/card` with `variant`: `default` (borderless, soft shadow), `elevated` 
 <Card variant={'elevated'} className={'w-full max-w-md'}>{content}</Card>
 ```
 
+## `inputs/` design-system fields
+
+Every single-line text field comes from `shared/inputs/Input`; only that file imports `@/components/ui/input`.
+
+### `Input`
+
+The design system's `.field-input` (`docs/design/designsystem.html`). Wraps `ui/input` with `variant` (`default`, `muted` tinted background, `card` white surface, `support` bordered 1.5px rounded form field, `search` rounded-xl search pill), `size` (`'md'` default, `'lg'` h-11) and `isInvalid` (destructive border). Icon padding (`pl-9`, `ps-11`) goes in `className`. `inputVariantStyles` is exported so other field types (`TextArea`) reuse the looks.
+
+```tsx
+<Input variant={'muted'} isInvalid={!!error} value={value} onChange={onChange}/>
+```
+
 ## Convention
 
 One `shared/` wrapper is the sole consumer of a given `ui/` (shadcn) primitive when that primitive

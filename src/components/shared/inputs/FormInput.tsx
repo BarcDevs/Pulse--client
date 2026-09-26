@@ -7,14 +7,14 @@ import {
 import { Eye, EyeOff } from 'lucide-react'
 
 import { IconButton } from '@/components/shared/buttons/IconButton'
+import { Input } from '@/components/shared/inputs/Input'
 import { FormLabel } from '@/components/ui/form'
-import { Input } from '@/components/ui/input'
 
 import { cn } from '@/lib/utils'
 
 type FormInputProps = Omit<
     InputHTMLAttributes<HTMLInputElement>,
-    'onChange'
+    'onChange' | 'size'
 > & {
     id: string
     label?: string
@@ -34,6 +34,7 @@ export const FormInput = ({
 }: FormInputProps) => {
     const [showPassword, setShowPassword] = useState(false)
     const isPasswordField = type === 'password'
+    const isCustom = !!className
 
     const inputType =
         isPasswordField && showPassword
@@ -57,11 +58,11 @@ export const FormInput = ({
                     placeholder={placeholder}
                     value={value}
                     onChange={onChange}
-                    className={className || cn(
-                        'h-11 border-border bg-muted',
-                        isPasswordField
-                            ? 'pr-10'
-                            : ''
+                    variant={isCustom ? 'default' : 'muted'}
+                    size={isCustom ? 'md' : 'lg'}
+                    className={cn(
+                        isPasswordField && !isCustom && 'pr-10',
+                        className
                     )}
                     required={required}
                     {...rest}

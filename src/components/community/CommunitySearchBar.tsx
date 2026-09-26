@@ -5,7 +5,7 @@ import { useTranslations } from 'next-intl'
 import { Plus, Search } from 'lucide-react'
 
 import { Button } from '@/components/shared/buttons/Button'
-import { Input } from '@/components/ui/input'
+import { Input } from '@/components/shared/inputs/Input'
 
 import { communityLocales } from '@/locales/communityLocales'
 
@@ -33,7 +33,8 @@ export const CommunitySearchBar = ({
                 />
                 <Input
                     value={searchValue}
-                    className={'pl-9 bg-surface-card'}
+                    variant={'card'}
+                    className={'pl-9'}
                     placeholder={t(communityLocales.posts.searchPlaceholder)}
                     onChange={e => onSearchAction(e.target.value)}
                 />

@@ -6,6 +6,7 @@ import { UseFormReturn } from 'react-hook-form'
 
 import { PostFormCategoryField } from '@/components/community/postForm/PostFormCategoryField'
 import { TagInput } from '@/components/community/postForm/TagInput'
+import { Input } from '@/components/shared/inputs/Input'
 import {
     FormControl,
     FormField,
@@ -13,7 +14,6 @@ import {
     FormLabel,
     FormMessage
 } from '@/components/ui/form'
-import { Input } from '@/components/ui/input'
 
 import { cn } from '@/lib/utils'
 

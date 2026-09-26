@@ -5,13 +5,13 @@ import { useTranslations } from 'next-intl'
 import { Shield } from 'lucide-react'
 
 import { Button } from '@/components/shared/buttons/Button'
+import { Input } from '@/components/shared/inputs/Input'
 import {
     Form,
     FormField,
     FormItem,
     FormMessage
 } from '@/components/ui/form'
-import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
 
@@ -77,7 +77,7 @@ export const SupportContactForm = ({
                                     {...field}
                                     type={'email'}
                                     placeholder={SUPPORT_EMAIL_PLACEHOLDER}
-                                    className={'h-auto rounded-[10px] border-[1.5px] border-border bg-surface-page p-3.5 text-sm focus-visible:border-primary focus-visible:ring-0'}
+                                    variant={'support'}
                                 />
                                 <FormMessage/>
                             </FormItem>

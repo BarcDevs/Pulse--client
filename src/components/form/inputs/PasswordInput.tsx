@@ -15,12 +15,12 @@ import type { FieldValues } from 'react-hook-form'
 import { FieldConfig } from '@/types/forms'
 
 import { IconButton } from '@/components/shared/buttons/IconButton'
+import { Input } from '@/components/shared/inputs/Input'
 import {
     FormControl,
     FormDescription,
     FormLabel
 } from '@/components/ui/form'
-import { Input } from '@/components/ui/input'
 
 import { cn } from '@/lib/utils'
 
