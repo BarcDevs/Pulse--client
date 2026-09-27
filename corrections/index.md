@@ -54,6 +54,7 @@ How to act on bug reports and where to log — state the fix before broad edits,
 | 26/09/2026 | Did a whole rfc series on whatever branch was checked out (the upgrade branch); every separate piece of work gets its own branch, created by Claude without being asked |
 | 25/09/2026 | Swapped "Claude routines" for a session cron and never said where scheduled output lands |
 | 26/09/2026 | Opened a PR from a feature branch into `development` (direct push is the rule), pushed without tags, and read files via Bash instead of Read/Grep |
+| 23/09/2026 | Built new MCP wiring instead of checking `disabledMcpjsonServers` / a working sibling project's settings |
 
 ## Code Placement — [[corrections/code-placement]]
 Where new constants/config values belong.
