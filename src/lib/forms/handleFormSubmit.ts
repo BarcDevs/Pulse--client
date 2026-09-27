@@ -7,9 +7,12 @@ import type {
 
 import { getErrorDetail } from '@/lib/errors'
 
+import { getLocalizedApiErrorMessage } from '@/utils/error'
+
 type Options = {
     resetOnSuccess?: boolean
     fallbackMessage?: string
+    t?: (key: string, params?: Record<string, string>) => string
 }
 
 // todo: wrap all form submits with this one
@@ -29,11 +32,18 @@ export const wrapFormSubmit = <T extends FieldValues>(
             await onSubmit(data)
             if (options?.resetOnSuccess) form.reset()
         } catch (error) {
+            const fallback = options?.fallbackMessage ?? 'Submission failed'
             const message = axios.isAxiosError(error)
-                ? (error.response?.data?.message ?? options?.fallbackMessage ?? 'Submission failed')
+                ? options?.t
+                    ? getLocalizedApiErrorMessage(
+                        options.t,
+                        error,
+                        fallback
+                    )
+                    : (error.response?.data?.message ?? fallback)
                 : error instanceof Error
                     ? error.message
-                    : (options?.fallbackMessage ?? 'Submission failed')
+                    : fallback
 
             const detail = getErrorDetail(error)
             if (detail?.property && detail.property in data) {

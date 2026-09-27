@@ -1,11 +1,12 @@
 'use client'
 
 import { useRouter } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 
 import { useQueryClient } from '@tanstack/react-query'
 
 import {
-    getApiErrorMessage,
+    getLocalizedApiErrorMessage,
     isNetworkError
 } from '@/utils/error'
 import { getSafeRedirectUrl } from '@/utils/redirect'
@@ -30,6 +31,7 @@ export const useAuthHandlers = () => {
     } = useAuth()
     const router = useRouter()
     const queryClient = useQueryClient()
+    const t = useTranslations()
 
     const getAuthErrorMessage = (
         error: unknown,
@@ -40,7 +42,11 @@ export const useAuthHandlers = () => {
             return null
         }
 
-        return getApiErrorMessage(error, fallback)
+        return getLocalizedApiErrorMessage(
+            t,
+            error,
+            fallback
+        )
     }
 
     const handleLogin = async (
