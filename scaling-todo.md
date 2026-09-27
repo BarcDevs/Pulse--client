@@ -14,8 +14,10 @@ Deferred items — not required for MVP. See `TODO.md` for active work.
 | 4 | `src/components/insights/InsightsPageContent.tsx` | 8 | Implement real data fetching + error cards (page currently behind feature flag) |
 | 5 | `src/components/community/postForm/TagInput.tsx` | — | AI tag normalization: map typos/variations to canonical tags, surface candidates, auto-correct on high confidence. Triggered via `POST /forum/tags/unknown` data. |
 | 6 | `src/components/profile/RecoveryIdentity.tsx` | — | AI-powered interest suggestions — surface relevant health interests based on user activity patterns (drives: community discovery, personalization, recovery identity) |
-| 7 | — | — | AI agent for onboarding/check-in flow |
-| 8 | — | — | RAG implementation |
+| 7 | — | — | Wire up personal assistant (AI agent) |
+| 8 | — | — | Chatty check-in flow — conversational check-in driven by the personal assistant |
+| 9 | — | — | Onboarding flow wired to the personal assistant |
+| 10 | — | — | RAG implementation |
 
 ---
 
