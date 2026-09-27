@@ -35,6 +35,10 @@ export const globalLocales = {
             legal: {
                 privacyPolicy: 'global.footer.links.legal.privacyPolicy',
                 termsOfService: 'global.footer.links.legal.termsOfService'
+            },
+            support: {
+                helpCenter: 'global.footer.links.support.helpCenter',
+                contactUs: 'global.footer.links.support.contactUs'
             }
         }
     },

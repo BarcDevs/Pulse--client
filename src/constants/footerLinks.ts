@@ -1,4 +1,5 @@
 import { ROUTES } from '@/constants/routes'
+import { SUPPORT_CONTACT_ANCHOR } from '@/constants/support'
 
 import { FEATURES } from '@/config/features'
 
@@ -25,6 +26,17 @@ export const footerQuickLinks = [
             href: ROUTES.INSIGHTS
         }]
         : [])
+]
+
+export const footerSupportLinks = [
+    {
+        titleKey: footerLocales.links.support.helpCenter,
+        href: ROUTES.SUPPORT
+    },
+    {
+        titleKey: footerLocales.links.support.contactUs,
+        href: `${ROUTES.SUPPORT}#${SUPPORT_CONTACT_ANCHOR}`
+    }
 ]
 
 export const footerLegalLinks = [

@@ -12,7 +12,7 @@
 - Never use array index as key - use the current element as an index
 - Braces around values inside: Object literal braces, component props and import/export braces
 - Text blocks: Don't break unless really long (120–150 chars OK)
-- Text: never use `—` character. only the simple hyphen `-` for all text, including classnames and config keys. This avoids encoding issues and ensures consistency across all contexts (JSX, CSS, config, etc.)
+- Text: in ALL user-facing code (translation files, JSX, emails, API/error messages, placeholders, config) never use em/en dashes (`—` `–`) or typographic quotes/apostrophes (`“ ” ‘ ’ „`, Hebrew `״` `׳`). Use only keyboard characters: the simple hyphen `-`, plain `'` and `"` (escaped `\"` in JSON), e.g. ער"ן. Also applies to classnames and config keys. This avoids encoding issues and ensures consistency across all contexts (JSX, CSS, config, etc.). Only docs (README, `docs/`, markdown) may use them
 - Use unified imports for module that has many imports
 - Short conditional blocks - never use `{`
 - Don't break single imports to multiple lines unless very long (50+ chars)

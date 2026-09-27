@@ -41,6 +41,12 @@ Profiles capture bio, location, timezone, and emerging personalization through h
 **Insights**
 Lightweight, supportive insights generated from check-in patterns help detect trends and maintain motivation. Insights are explicitly labeled as AI-assisted suggestions, not medical advice.
 
+**Support**
+`/support` is the help center: an FAQ and a contact form (topic + message, plus an email field for logged-out visitors) that posts to `POST /support/contact`, which emails `support@pulserehab.app`. `/contact-support` redirects to the form (`/support#contact`). Search, quick-help cards and browse-by-topic cards are built but hidden behind the `supportSearch`, `supportQuickHelp` and `supportTopics` flags in `src/config/features.ts` until the help articles, chat and care-team features exist.
+
+**Legal Pages**
+`/privacy` and `/terms` (English and Hebrew) with a table of contents and a localized last-updated date. Each page has a "Download PDF" button that links to a pre-generated PDF in `public/legal/` (`{privacy,terms}-{en-US,he-IL}.pdf`). The privacy policy discloses the essential cookies, on-device storage and service providers; Pulse sets no tracking cookies, so there is no cookie-consent popup.
+
 ---
 
 ## Technology Stack
@@ -100,7 +106,10 @@ npm run start     # Run production server
 npm run lint      # Check ESLint violations
 npm run lint:fix  # Auto-fix formatting and linting
 npm run typecheck # TypeScript type checking
+npm run legal:pdf # Regenerate public/legal/*.pdf from the running dev server (localhost:5173)
 ```
+
+The legal PDFs are generated, not built on the fly. After changing legal copy in `messages/*.json` (or the page layout), start `npm run dev`, run `npm run legal:pdf`, and commit the updated PDFs.
 
 ---
 

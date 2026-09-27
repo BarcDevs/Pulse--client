@@ -21,6 +21,14 @@ Conventions from the responsive/RTL layout pass — physical-direction classes a
 |---|---|
 | 12/09/2026 | Mobile/RTL UI conventions (iOS zoom-on-focus, `em` scaling, logical positioning) |
 
+## Hebrew Copy — [[corrections/hebrew-copy]]
+Terminology and wording rules for `messages/he-IL.json` — established Hebrew terms over transliterations.
+
+| Date | Entry |
+|---|---|
+| 24/09/2026 | "check-in" is דיווח יומי, never the transliteration צ'ק-אין |
+| 24/09/2026 | Copy uses plain keyboard punctuation: no em-dashes, curly quotes/apostrophes, gershayim or low-9 quotes |
+
 ## Verification Process — [[corrections/verification-process]]
 Guessing at a spec instead of checking the actual rules/examples first.
 
