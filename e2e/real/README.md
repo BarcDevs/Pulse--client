@@ -9,8 +9,9 @@ suite structurally can't (see DECIDE #1 in `docs/review/01-fix-plan.md`).
 - `profile.spec.ts` — edit and save profile fields
 
 **Community is not covered yet.** Creating a post requires an existing forum
-tag, and a fresh test DB has none — see the `TODO.md` entry on seeding forum
-tags via a `pulse--server` Prisma seed script.
+tag, and a fresh test DB has none — run `npm run db:seed:tags` in
+`pulse--server` (see "Running locally" below) before writing/running a
+community spec.
 
 Not run by `npm run test:e2e` — `playwright.config.ts` ignores `**/real/**`.
 Not wired into CI yet (needs cross-repo checkout + a Postgres service
@@ -26,6 +27,7 @@ with a raw network error.
 # from pulse--server/
 docker compose -f docker-compose.test.yml up -d
 DATABASE_URL=postgresql://postgres:postgres@localhost:5433/pulse_test npm run prisma:deploy
+DATABASE_URL=postgresql://postgres:postgres@localhost:5433/pulse_test npm run db:seed:tags
 NODE_ENV=test PORT=4001 DATABASE_URL=postgresql://postgres:postgres@localhost:5433/pulse_test npm run start:dev
 ```
 
