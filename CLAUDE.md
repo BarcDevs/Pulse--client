@@ -7,8 +7,8 @@ Server: `../pulse--server`.
 Live at https://pulserehab.app — AWS EC2+Docker, separate instance from the server. Client is the sole public front door (`next.config.mjs` proxies `/api/:path*` to the server over private VPC). Push to `main` passing CI auto-deploys via `.github/workflows/deploy.yml` (blue/green swap over SSM, see `scripts/deploy/ec2-redeploy.sh`). Vercel deploy still runs in parallel for preview/staging — not production.
 
 ## Model Selection
-- **Haiku**: sub-agents, file lookups, search queries, simple edits (<50 lines), code explanation, formatting fixes, style enforcement
-- **Sonnet/Opus**: complex debugging, architecture decisions, multi-file refactors, reasoning-heavy tasks
+- **Haiku**: sub-agents, file lookups, search queries, simple edits (<50 lines), code explanation, formatting fixes
+- **Sonnet/Opus**: complex debugging, architecture decisions, multi-file refactors, reasoning-heavy tasks, style enforcement
 
 ## Token Efficiency
 - Grep/Glob over Bash find/ls/grep. Read with offset+limit when line known.
@@ -25,6 +25,10 @@ Live at https://pulserehab.app — AWS EC2+Docker, separate instance from the se
 **Surgical:** Touch only what you must. Don't improve adjacent code. Match existing style. Mention unrelated dead code — don't delete it. Remove only imports/vars YOUR changes made unused.
 **Goal-driven:** Define success criteria before starting. For multi-step tasks, state a plan: `1. [step] → verify: [check]`. Loop until verified.
 
+## Shared Checkouts & Other Sessions
+Another Claude session may be working in this repo, on the same branch or in a sibling worktree. Check `ListAgents` for a busy session before touching git state.
+**Before any merge, rebase, checkout, reset, stash, or branch/worktree deletion in a checkout another session may be using, message that session first and wait for its reply.** Never leave the shared tree mid-operation (unresolved merge, mid-rebase). Path-scoped commits (`git commit -- <paths>`) of files you changed are fine without asking. The user naming a session to coordinate with is not the same as it owning the work: confirm who actually owns a worktree before merging or pruning it.
+
 ## Repo-Visible Decisions & Corrections Log
 Alongside auto-memory (cross-session, not repo-visible), this repo tracks two parallel logs any
 collaborator/agent can read: `decisions/` (architecture/technical decisions, with reasoning) and
@@ -38,20 +42,21 @@ matches it.
 New feature added → update client README, server PRD, AND server README same time, every time.
 
 ## Design Files
-`.claude/design/` — JSX design files from Claude Design (reference when building UI).
+`docs/design/` — design system, JSX screen specs and OTP emails from Claude Design (reference when building UI). Older sessions/skills may still say `.claude/design/`; same content.
+Design-system elements with their own reusable look (buttons, badges; even one variant) get one base in `src/components/shared/<group>/` (look variants like primary/secondary/ghost are a variant style object on it) plus a separate component per distinct type (e.g. `TextButton`, `IconButton`), built from tokens. Every button uses a type, even with no `className` today. Primitives the design does not style stay a direct `ui/` import, no wrapper. Read `workflow/12-design-system-variants.md` before adding one.
 
 ## Code Style
 Rules in `CORE_RULES.md`. Non-negotiable — follow exactly.
 
 ### Quick Checklist
 Arrow functions | Single quotes | No semicolons | 4-space indent | Nested content on new lines
-JSX props: `prop={'value'}` | Export at bottom | Keep components ~40 lines
+JSX props: `prop={'value'}` | Keep components ~40 lines
 Use `api` from `@/api` | Access env via config | Use shadcn/ui components
 Avoid prop drilling | Clean imports | Delete unused code
 SOLID principles | Industry standards | Type-safe forms
 
 **Never:** `React.*` types | Function declarations | Double quotes | `import.meta.env` outside config
-**Never:** Direct fetch/axios | Inline exports | Commented code | `window.location` for navigation
+**Never:** Direct fetch/axios | Commented code | `window.location` for navigation
 **Never:** Multiple components per file | NEXT_PUBLIC_ prefix | Server directives
 
 ## Git & Commits

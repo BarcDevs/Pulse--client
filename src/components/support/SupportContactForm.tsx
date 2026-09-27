@@ -4,20 +4,18 @@ import { useTranslations } from 'next-intl'
 
 import { Shield } from 'lucide-react'
 
-import { Button } from '@/components/ui/button'
+import { Button } from '@/components/shared/buttons/Button'
+import { Input } from '@/components/shared/inputs/Input'
+import { TextArea } from '@/components/shared/inputs/TextArea'
 import {
     Form,
     FormField,
     FormItem,
     FormMessage
 } from '@/components/ui/form'
-import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import { Textarea } from '@/components/ui/textarea'
 
 import { useSupportForm } from '@/hooks/forms/useSupportForm'
-
-import { cn } from '@/lib/utils'
 
 import { SUPPORT_EMAIL_PLACEHOLDER } from '@/constants/support'
 
@@ -79,7 +77,7 @@ export const SupportContactForm = ({
                                     {...field}
                                     type={'email'}
                                     placeholder={SUPPORT_EMAIL_PLACEHOLDER}
-                                    className={'h-auto rounded-[10px] border-[1.5px] border-border bg-surface-page p-3.5 text-sm focus-visible:border-primary focus-visible:ring-0'}
+                                    variant={'support'}
                                 />
                                 <FormMessage/>
                             </FormItem>
@@ -94,10 +92,11 @@ export const SupportContactForm = ({
                             <Label className={labelClass}>
                                 {t(supportLocales.contact.messageLabel)}
                             </Label>
-                            <Textarea
+                            <TextArea
                                 {...field}
                                 placeholder={t(supportLocales.contact.messagePlaceholder)}
-                                className={'min-h-[130px] resize-y rounded-[10px] border-[1.5px] border-border bg-surface-page p-3.5 text-sm leading-[1.6] focus-visible:border-primary focus-visible:ring-0'}
+                                variant={'support'}
+                                resize={'vertical'}
                             />
                             <FormMessage/>
                         </FormItem>
@@ -119,12 +118,6 @@ export const SupportContactForm = ({
                     <Button
                         type={'submit'}
                         disabled={!canSend || isSubmitting}
-                        className={cn(
-                            'h-auto rounded-[10px] px-[22px] py-[11px] text-[13px] font-bold leading-tight',
-                            canSend
-                                ? 'bg-linear-to-br from-primary-gradient-end to-primary-gradient-start text-primary-foreground shadow-lg shadow-primary/25'
-                                : 'bg-muted text-muted-foreground shadow-none hover:bg-muted disabled:pointer-events-auto disabled:cursor-not-allowed disabled:opacity-100'
-                        )}
                     >
                         {t(isSubmitting ? supportLocales.contact.sending : supportLocales.contact.send)}
                     </Button>

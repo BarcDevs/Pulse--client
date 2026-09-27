@@ -1,6 +1,4 @@
-import { Button } from '@/components/ui/button'
-
-import { cn } from '@/lib/utils'
+import { ChipButton } from '@/components/shared/buttons/ChipButton'
 
 type ActivityToggleButtonProps = {
     activity: string
@@ -15,21 +13,16 @@ export const ActivityToggleButton = ({
     isSelected,
     onToggle
 }: ActivityToggleButtonProps) => (
-    <Button
+    <ChipButton
         key={activity}
         type={'button'}
+        solid
+        size={'md'}
+        isSelected={isSelected}
         onClick={() => onToggle(activity)}
-        variant={isSelected ? 'default' : 'secondary'}
-        size={'sm'}
-        className={cn(
-            'rounded-full text-sm font-medium',
-            isSelected
-                ? 'bg-primary text-white'
-                : 'bg-muted text-foreground hover:bg-muted/80'
-        )}
     >
         {isSelected
             && <span className={'mr-1'}>{'+'}</span>}
         {label || activity}
-    </Button>
+    </ChipButton>
 )

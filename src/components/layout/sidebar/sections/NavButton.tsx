@@ -3,11 +3,9 @@
 import { usePathname, useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 
-import { Button } from '@/components/ui/button'
+import { NavItemButton } from '@/components/shared/buttons/NavItemButton'
 
 import { useLogout } from '@/hooks/mutations/useLogout'
-
-import { cn } from '@/lib/utils'
 
 import { NavItem } from '@/constants/navigationItems'
 
@@ -32,20 +30,16 @@ export const NavButton = ({
         isLogout ? logout.actions.logout() : router.push(item.href)
 
     return (
-        <Button
+        <NavItemButton
             key={item.href}
+            isActive={isActive}
+            tone={isLogout ? 'destructive' : 'default'}
             onClick={handleNavigation}
-            variant={'ghost'}
-            className={cn(
-                'w-full justify-start gap-3',
-                isActive && 'bg-primary text-primary-foreground',
-                !isActive && item.href === '/logout' && 'text-destructive'
-            )}
         >
             <Icon className={'size-5'}/>
             <span>
                 {t(item.labelKey)}
             </span>
-        </Button>
+        </NavItemButton>
     )
 }

@@ -1,11 +1,9 @@
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 
-import { Button } from '@/components/ui/button'
+import { NavItemButton } from '@/components/shared/buttons/NavItemButton'
 
 import { useLogout } from '@/hooks/mutations/useLogout'
-
-import { cn } from '@/lib/utils'
 
 import { mainNavItems } from '@/constants/navigationItems'
 import { ROUTES } from '@/constants/routes'
@@ -26,14 +24,7 @@ export const DrawerNavItem = ({
     const Icon = item.icon
     const isLogout = item.href === ROUTES.LOGOUT
 
-    const className = cn(
-        'flex w-full items-center justify-start gap-3 px-4 py-3 rounded-md transition-colors text-start',
-        isLogout
-            ? 'text-destructive hover:text-destructive hover:bg-surface-muted'
-            : isActive
-                ? 'bg-primary-50 text-primary-600 font-medium'
-                : 'text-muted-700 hover:bg-surface-muted hover:text-muted-900'
-    )
+    const tone = isLogout ? 'destructive' : 'default'
 
     const content = (
         <>
@@ -51,21 +42,22 @@ export const DrawerNavItem = ({
         }
 
         return (
-            <Button
+            <NavItemButton
+                soft
+                tone={tone}
                 onClick={handleLogout}
-                variant={'ghost'}
-                className={className}
             >
                 {content}
-            </Button>
+            </NavItemButton>
         )
     }
 
     return (
-        <Button
+        <NavItemButton
             asChild
-            variant={'ghost'}
-            className={className}
+            soft
+            isActive={isActive}
+            tone={tone}
         >
             <Link
                 href={item.href}
@@ -73,6 +65,6 @@ export const DrawerNavItem = ({
             >
                 {content}
             </Link>
-        </Button>
+        </NavItemButton>
     )
 }

@@ -4,9 +4,7 @@ import { useState } from 'react'
 
 import { useTranslations } from 'next-intl'
 
-import { Search } from 'lucide-react'
-
-import { Input } from '@/components/ui/input'
+import { SearchInput } from '@/components/shared/inputs/SearchInput'
 
 import { supportLocales } from '@/locales/supportLocales'
 
@@ -15,14 +13,12 @@ export const SupportSearch = () => {
     const [query, setQuery] = useState('')
 
     return (
-        <div className={'relative mb-7'}>
-            <Search className={'absolute start-4 top-1/2 size-[18px] -translate-y-1/2 text-muted-foreground'}/>
-            <Input
-                value={query}
-                onChange={(event) => setQuery(event.target.value)}
-                placeholder={t(supportLocales.search.placeholder)}
-                className={'h-auto rounded-xl border-[1.5px] border-border bg-card py-3.5 pe-4 ps-11 text-sm shadow-sm focus-visible:border-primary focus-visible:ring-0'}
-            />
-        </div>
+        <SearchInput
+            variant={'pill'}
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
+            placeholder={t(supportLocales.search.placeholder)}
+            className={'mb-7'}
+        />
     )
 }

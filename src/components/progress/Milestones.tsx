@@ -5,9 +5,9 @@ import { useTranslations } from 'next-intl'
 
 import { GoalStatus } from '@/types/goals'
 
+import { Card } from '@/components/shared/cards/Card'
 import { ErrorStateCard } from '@/components/shared/ErrorStateCard'
 import {
-    Card,
     CardContent,
     CardHeader,
     CardTitle
@@ -40,7 +40,7 @@ export const ProgressMilestones = () => {
         .slice(0, topGoalsCount)
 
     return (
-        <Card className={'mt-6 border-0 shadow-sm'}>
+        <Card className={'mt-6'}>
             <CardHeader className={'flex flex-row items-center justify-between'}>
                 <CardTitle className={'text-lg font-semibold'}>
                     {t(progressLocales.milestones.title)}

@@ -61,7 +61,7 @@ Add extra screenshots for meaningful interactions (open modal, filled form, etc.
 
 ## Design Audit Checklist
 
-After capturing screenshots, review each against the design files in `.claude/design/`:
+After capturing screenshots, review each against the design files in `docs/design/` (or `.claude/design/` if present):
 
 - [ ] Spacing and layout match design intent
 - [ ] Typography (size, weight, color) correct

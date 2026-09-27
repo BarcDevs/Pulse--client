@@ -7,7 +7,7 @@ import { useTranslations } from 'next-intl'
 
 import { MoreHorizontal } from 'lucide-react'
 
-import { Button } from '@/components/ui/button'
+import { NavItemButton } from '@/components/shared/buttons/NavItemButton'
 
 import {
     filterNavItemsByFeatures,
@@ -39,19 +39,15 @@ export const MobileNavBar = () => {
                             isActive={isRouteActive(pathname, item.href)}
                         />
                     ))}
-                    <Button
+                    <NavItemButton
+                        layout={'stacked'}
                         onClick={() => setDrawerOpen(true)}
-                        variant={'ghost'}
-                        className={'flex flex-1 min-w-0 flex-col items-center justify-center py-2 px-1 h-auto rounded-lg text-muted-600 hover:text-muted-700 hover:bg-transparent gap-0.5'}
                     >
-                        <MoreHorizontal
-                            size={20}
-                            className={'shrink-0'}
-                        />
+                        <MoreHorizontal className={'size-5 shrink-0'}/>
                         <span className={'w-full text-[10px] font-medium text-center leading-tight'}>
                             {t(globalLocales.nav.sidebar.more)}
                         </span>
-                    </Button>
+                    </NavItemButton>
                 </div>
             </nav>
             <MobileNavDrawer

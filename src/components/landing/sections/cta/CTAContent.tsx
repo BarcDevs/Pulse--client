@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 
-import { Button } from '@/components/ui/button'
+import { Button } from '@/components/shared/buttons/Button'
 
 import { ROUTES } from '@/constants/routes'
 
@@ -26,9 +26,8 @@ export const CTAContent = () => {
                 className={'relative'}
             >
                 <Button
-                    variant={'secondary'}
+                    variant={'onGradient'}
                     size={'lg'}
-                    className={'bg-white text-primary-gradient-start transition-all duration-200 hover:bg-white/90 hover:shadow-lg hover:shadow-white/30 hover:text-primary-gradient-start'}
                 >
                     {t(landingLocales.cta.button)}
                 </Button>

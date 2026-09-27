@@ -1,6 +1,6 @@
 import { useTranslations } from 'next-intl'
 
-import { Button } from '@/components/ui/button'
+import { TextButton } from '@/components/shared/buttons/TextButton'
 
 import { cn } from '@/lib/utils'
 
@@ -27,12 +27,13 @@ export const QuickHelpCards = () => {
                             {t(item.descKey)}
                         </p>
                     </div>
-                    <Button
-                        variant={'ghost'}
-                        className={cn('h-auto whitespace-nowrap p-0 text-xs font-bold hover:bg-transparent', item.textClass)}
+                    <TextButton
+                        tone={'inherit'}
+                        size={'xs'}
+                        className={cn('whitespace-nowrap font-bold', item.textClass)}
                     >
                         {`${t(item.actionKey)} →`}
-                    </Button>
+                    </TextButton>
                 </div>
             ))}
         </div>

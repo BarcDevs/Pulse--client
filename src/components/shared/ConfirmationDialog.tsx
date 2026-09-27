@@ -4,7 +4,7 @@ import { MouseEvent } from 'react'
 
 import { LucideIcon, Trash2 } from 'lucide-react'
 
-import { Button } from '@/components/ui/button'
+import { Button } from '@/components/shared/buttons/Button'
 import {
     Dialog,
     DialogContent,
@@ -78,7 +78,7 @@ export const ConfirmationDialog = ({
                 </DialogHeader>
                 <div className={'flex justify-center gap-2 mt-2'}>
                     <Button
-                        variant={'outline'}
+                        variant={'secondary'}
                         onClick={handleCancel}
                     >
                         {cancelLabel}

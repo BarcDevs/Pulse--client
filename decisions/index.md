@@ -35,9 +35,23 @@ How network/unexpected errors surface to the user.
 |---|---|
 | 23/09/2026 | Network errors never redirect to `/network-error`; use the gentle network bar |
 
+## Design System Components — [[decisions/design-system-components]]
+How design-system elements are built as components.
+
+| Date | Entry |
+|---|---|
+| 25/09/2026 | Every design-system element is a component: base + type components, variants as a style object, buttons first |
+
 ## Privacy & Consent — [[decisions/privacy-and-consent]]
 Cookie/storage consent and privacy-disclosure decisions.
 
 | Date | Entry |
 |---|---|
 | 23/09/2026 | No cookie/cache consent popup — no non-essential storage written; disclose on the Privacy page |
+
+## Agent Models — [[decisions/agent-models]]
+Which model each custom agent runs on, and why.
+
+| Date | Entry |
+|---|---|
+| 26/09/2026 | style-enforcer runs on Sonnet, not Haiku |

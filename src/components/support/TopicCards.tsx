@@ -1,6 +1,6 @@
 import { useTranslations } from 'next-intl'
 
-import { Button } from '@/components/ui/button'
+import { TileButton } from '@/components/shared/buttons/TileButton'
 
 import { cn } from '@/lib/utils'
 
@@ -18,10 +18,11 @@ export const TopicCards = () => {
             </h3>
             <div className={'mb-10 grid grid-cols-2 gap-3.5 md:grid-cols-3'}>
                 {TOPIC_ITEMS.map((item) => (
-                    <Button
+                    <TileButton
                         key={item.id}
-                        variant={'outline'}
-                        className={cn('h-auto flex-col items-start whitespace-normal rounded-[14px] border-border bg-card p-[22px] text-start transition-all hover:bg-card', item.hoverClass)}
+                        outlined
+                        align={'start'}
+                        className={item.hoverClass}
                     >
                         <div className={cn('mb-3.5 flex size-[38px] items-center justify-center rounded-[10px]', item.bgClass)}>
                             <item.icon className={cn('size-[18px]', item.textClass)}/>
@@ -35,7 +36,7 @@ export const TopicCards = () => {
                         <span className={cn('text-[11px] font-semibold', item.textClass)}>
                             {`${t(supportLocales.topics.articles, { count: item.count })} →`}
                         </span>
-                    </Button>
+                    </TileButton>
                 ))}
             </div>
         </>

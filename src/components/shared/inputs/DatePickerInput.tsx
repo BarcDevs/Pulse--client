@@ -11,7 +11,7 @@ import { format, parseISO } from 'date-fns'
 import { he } from 'date-fns/locale'
 import { CalendarIcon } from 'lucide-react'
 
-import { Button } from '@/components/ui/button'
+import { FieldButton } from '@/components/shared/buttons/FieldButton'
 import { Calendar } from '@/components/ui/calendar'
 import {
     Popover,
@@ -20,7 +20,6 @@ import {
 } from '@/components/ui/popover'
 
 import { formatByUserPreference } from '@/lib/time'
-import { cn } from '@/lib/utils'
 
 import { globalLocales } from '@/locales/globalLocales'
 
@@ -67,13 +66,10 @@ export const DatePickerInput = ({
             onOpenChange={handleOpenChange}
         >
             <PopoverTrigger asChild>
-                <Button
-                    variant={'outline'}
+                <FieldButton
                     disabled={disabled}
-                    className={cn(
-                        'w-full justify-start text-left font-normal bg-surface-container-low border-input',
-                        !selected && 'text-muted-foreground'
-                    )}
+                    isPlaceholder={!selected}
+                    className={'justify-start'}
                 >
                     <CalendarIcon className={'mr-2 size-4'}/>
                     {selected
@@ -85,7 +81,7 @@ export const DatePickerInput = ({
                         )
                         : (placeholder ?? t(globalLocales.shared.pickDate))
                     }
-                </Button>
+                </FieldButton>
             </PopoverTrigger>
             <PopoverContent
                 className={'w-auto p-0'}

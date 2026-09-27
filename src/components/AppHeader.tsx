@@ -5,8 +5,6 @@ import { ChangeEvent, useState } from 'react'
 import { usePathname } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 
-import { Search } from 'lucide-react'
-
 import { useQueryClient } from '@tanstack/react-query'
 
 import type { Post } from '@/types/community'
@@ -20,7 +18,7 @@ import { HeaderNotificationButton }
     from '@/components/layout/header/HeaderNotificationButton'
 import { HeaderTitle } from '@/components/layout/header/HeaderTitle'
 import { UserMenu } from '@/components/layout/header/UserMenu'
-import { FormInput } from '@/components/shared/inputs/FormInput'
+import { SearchInput } from '@/components/shared/inputs/SearchInput'
 import { LanguageSwitcher } from '@/components/shared/LanguageSwitcher'
 
 import { getHeaderConfig } from '@/constants/config/getHeaderConfig'
@@ -94,18 +92,15 @@ export const AppHeader = () => {
                 )}
 
                 {showSearch && (
-                    <div className={'relative'}>
-                        <Search className={'absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground'}/>
-                        <FormInput
-                            id={'headerSearch'}
-                            placeholder={t(globalLocales.layout.header.searchPlaceholder)}
-                            value={searchValue}
-                            onChange={handleSearchChange}
-                            type={'text'}
-                            className={'h-10 w-64 rounded-lg bg-surface-card pl-10 pr-4 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/20'}
-                            required={false}
-                        />
-                    </div>
+                    <SearchInput
+                        variant={'header'}
+                        id={'headerSearch'}
+                        placeholder={t(globalLocales.layout.header.searchPlaceholder)}
+                        value={searchValue}
+                        onChange={handleSearchChange}
+                        type={'text'}
+                        className={'w-64'}
+                    />
                 )}
 
                 {actions?.map((action) => (

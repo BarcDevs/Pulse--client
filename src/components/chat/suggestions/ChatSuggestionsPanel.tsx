@@ -4,7 +4,7 @@ import { useTranslations } from 'next-intl'
 
 import type { SetState } from '@/types/react'
 
-import { Button } from '@/components/ui/button'
+import { ChipButton } from '@/components/shared/buttons/ChipButton'
 
 import { chatLocales } from '@/locales/chatLocales'
 
@@ -30,17 +30,15 @@ export const ChatSuggestionsPanel = ({
             <div className={'flex--wrap gap-2'}>
                 {suggestions.map(
                     (suggestion) => (
-                        <Button
+                        <ChipButton
                             key={suggestion}
+                            size={'md'}
                             onClick={() =>
                                 onSuggestionClick(suggestion)
                             }
-                            variant={'outline'}
-                            size={'sm'}
-                            className={'rounded-full border border-border bg-surface-card px-3 py-1.5 text-sm text-foreground hover:bg-muted'}
                         >
                             {suggestion}
-                        </Button>
+                        </ChipButton>
                     )
                 )}
             </div>

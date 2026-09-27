@@ -6,7 +6,7 @@ import { parseISO } from 'date-fns'
 
 import { GoalMilestone, MilestoneStatus } from '@/types/goals'
 
-import { Button } from '@/components/ui/button'
+import { Button } from '@/components/shared/buttons/Button'
 
 import { getMilestoneCardConfig } from '@/lib/milestones'
 import { formatByUserPreference } from '@/lib/time'

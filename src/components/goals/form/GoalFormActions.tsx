@@ -3,7 +3,7 @@
 import { useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 
-import { Button } from '@/components/ui/button'
+import { Button } from '@/components/shared/buttons/Button'
 
 import { ROUTES } from '@/constants/routes'
 
@@ -41,7 +41,6 @@ export const GoalFormActions = ({
 
             <Button
                 type={'submit'}
-                className={'bg-linear-to-br from-primary to-primary/80 text-primary-foreground'}
                 data-testid={'goal-form-submit'}
             >
                 {isUpdate

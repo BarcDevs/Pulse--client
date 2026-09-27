@@ -3,8 +3,8 @@
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 
+import { Button } from '@/components/shared/buttons/Button'
 import { Icon } from '@/components/shared/ui/Icon'
-import { Button } from '@/components/ui/button'
 
 import { ROUTES } from '@/constants/routes'
 
@@ -19,8 +19,9 @@ export const NetworkErrorActions = () => {
     return (
         <div className={'flex flex-col sm:flex-row items-center justify-center gap-4 pt-4'}>
             <Button
+                size={'lg'}
                 onClick={handleTryAgain}
-                className={'px-8 py-4 gap-2 rounded-xl'}
+                className={'gap-2'}
             >
                 <Icon
                     name={'error/refresh'}
@@ -30,8 +31,9 @@ export const NetworkErrorActions = () => {
             </Button>
             <Button
                 asChild
-                variant={'outline'}
-                className={'px-8 py-4 gap-2 rounded-xl'}
+                variant={'secondary'}
+                size={'lg'}
+                className={'gap-2'}
             >
                 <Link href={ROUTES.STATUS}>
                     <Icon

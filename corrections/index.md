@@ -45,9 +45,14 @@ How to act on bug reports and where to log — state the fix before broad edits,
 |---|---|
 | 18/09/2026 | Jumped to a broad code change on a bug report instead of stating the fix first |
 | 18/09/2026 | Wrote corrections into the sibling repo; asserted local log didn't exist without checking other branches |
+| 26/09/2026 | Merged into a branch another session was using without coordinating with it first |
 | 23/09/2026 | Used `refactor` commit type instead of `rfc` (GIT_RULES); existing commits not renamed |
 | 23/09/2026 | Pushed a branch without its tags and argued for withholding them; always push tags |
 | 23/09/2026 | Ran Python scripts to edit files instead of the Edit tool |
+| 25/09/2026 | Dead code is removed in a separate cleanup commit, not left marked or noted |
+| 25/09/2026 | Branched and upgraded deps in the shared checkout while another session was in it; create the worktree first |
+| 26/09/2026 | Did a whole rfc series on whatever branch was checked out (the upgrade branch); every separate piece of work gets its own branch, created by Claude without being asked |
+| 25/09/2026 | Swapped "Claude routines" for a session cron and never said where scheduled output lands |
 | 26/09/2026 | Opened a PR from a feature branch into `development` (direct push is the rule), pushed without tags, and read files via Bash instead of Read/Grep |
 
 ## Code Placement — [[corrections/code-placement]]

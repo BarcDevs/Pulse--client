@@ -68,6 +68,12 @@
     --milestone-inprogress: rgba(124, 77, 255, 0.45);
     --success: #10b981;
     --success-foreground: #ffffff;
+    --success-light: #d1fae5;
+    --success-deep: #047857;
+    --warning-light: #fef3c7;
+    --warning-deep: #b45309;
+    --destructive-light: #fee2e2;
+    --destructive-deep: #b91c1c;
 
     /* Borders & Inputs */
     --border: #e2e8f0;
@@ -197,6 +203,12 @@
     --milestone-icon-bg: rgba(167, 139, 250, 0.15);
     --milestone-inprogress: rgba(124, 77, 255, 0.35);
     --success: #10b981;
+    --success-light: rgba(16, 185, 129, 0.15);
+    --success-deep: #6ee7b7;
+    --warning-light: rgba(245, 158, 11, 0.15);
+    --warning-deep: #fcd34d;
+    --destructive-light: rgba(239, 68, 68, 0.15);
+    --destructive-deep: #fca5a5;
     --border: #334155;
     --input: #334155;
     --ring: #3b82f6;
@@ -306,6 +318,12 @@
     --color-milestone-icon-bg: var(--milestone-icon-bg);
     --color-milestone-inprogress: var(--milestone-inprogress);
     --color-success: var(--success);
+    --color-success-light: var(--success-light);
+    --color-success-deep: var(--success-deep);
+    --color-warning-light: var(--warning-light);
+    --color-warning-deep: var(--warning-deep);
+    --color-destructive-light: var(--destructive-light);
+    --color-destructive-deep: var(--destructive-deep);
     --color-border: var(--border);
     --color-input: var(--input);
     --color-ring: var(--ring);
@@ -341,6 +359,8 @@
     --color-outline-variant: var(--outline-variant);
     --color-primary-gradient-start: var(--primary-gradient-start);
     --color-primary-gradient-end: var(--primary-gradient-end);
+    --shadow-button: 0 4px 12px rgb(0 93 167 / 0.25);
+    --shadow-slider-thumb: 0 1px 4px rgb(74 144 226 / 0.4);
     --color-primary-deep: var(--primary-deep);
     --color-chart-highlight: var(--chart-highlight);
     --color-accent-ai: var(--accent-ai);
@@ -689,5 +709,20 @@
 /*region language switcher*/
 [data-state="open"] > button {
     border-color: #498edf !important;
+}
+/*endregion*/
+
+/*region view transitions*/
+::view-transition {
+    pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    ::view-transition-old(*),
+    ::view-transition-new(*),
+    ::view-transition-group(*) {
+        animation-duration: 0s !important;
+        animation-delay: 0s !important;
+    }
 }
 /*endregion*/

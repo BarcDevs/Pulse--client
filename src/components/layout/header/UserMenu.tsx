@@ -1,6 +1,6 @@
 'use client'
 
-import { UserAvatar } from '@/components/shared/UserAvatar'
+import { UserAvatar } from '@/components/shared/avatars/UserAvatar'
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -41,6 +41,7 @@ export const UserMenu = () => {
                 <UserAvatar
                     initials={initials}
                     imageSrc={user.profile?.image ?? undefined}
+                    className={'cursor-pointer'}
                 />
             </DropdownMenuTrigger>
             <DropdownMenuContent

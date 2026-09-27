@@ -1,6 +1,6 @@
 'use client'
 
-import { Input } from '@/components/ui/input'
+import { Input } from '@/components/shared/inputs/Input'
 
 import { cn } from '@/lib/utils'
 
@@ -29,7 +29,8 @@ export const EditTextField = ({
             value={value}
             placeholder={placeholder}
             onChange={(e) => onChangeAction(e.target.value)}
-            className={cn('bg-muted', error && 'border-destructive')}
+            variant={'muted'}
+            isInvalid={!!error}
         />
         {error && (
             <p className={'mt-1 text-xs text-destructive'}>

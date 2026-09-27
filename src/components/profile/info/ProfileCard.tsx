@@ -3,9 +3,10 @@
 import { Camera } from 'lucide-react'
 
 import { ProfileLevel } from '@/components/profile/info/ProfileLevel'
-import { UserAvatar } from '@/components/shared/UserAvatar'
-import { Button } from '@/components/ui/button'
-import { Card, CardContent } from '@/components/ui/card'
+import { UserAvatar } from '@/components/shared/avatars/UserAvatar'
+import { IconButton } from '@/components/shared/buttons/IconButton'
+import { Card } from '@/components/shared/cards/Card'
+import { CardContent } from '@/components/ui/card'
 
 import { useUser } from '@/hooks/ui/useUser'
 
@@ -30,27 +31,25 @@ export const ProfileCard = () => {
     )
 
     return (
-        <Card className={'border-0 shadow-sm'}>
+        <Card>
             <CardContent className={'flex flex-col items-center px-6 text-center'}>
                 <div className={'relative'}>
                     <UserAvatar
                         initials={initials}
                         imageSrc={currentUser.user.profile?.image ?? undefined}
-                        className={{
-                            wrapper: 'size-24 border-4 border-primary-light',
-                            fallback: 'bg-primary text-2xl text-white'
-                        }}
+                        size={'xl'}
+                        tone={'solid'}
                     />
 
                     {/* TODO: profile image upload — deferred to scaling phase */}
                     {FEATURES.profileImageUpload && (
-                        <Button
-                            size={'icon'}
-                            variant={'ghost'}
-                            className={'absolute -bottom-1 -left-1 size-7 rounded-full border-2 border-white bg-muted text-muted-foreground hover:bg-muted/80'}
+                        <IconButton
+                            outlined
+                            round
+                            className={'absolute -bottom-1 -left-1 size-7'}
                         >
                             <Camera className={'size-3.5'}/>
-                        </Button>
+                        </IconButton>
                     )}
                 </div>
 

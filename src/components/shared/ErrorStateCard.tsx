@@ -2,7 +2,7 @@
 
 import { useTranslations } from 'next-intl'
 
-import { Button } from '@/components/ui/button'
+import { Button } from '@/components/shared/buttons/Button'
 
 import { isNetworkError } from '@/utils/error'
 
@@ -36,9 +36,8 @@ export const ErrorStateCard = ({
             <p>{displayMessage}</p>
             <Button
                 onClick={handleRetry}
-                variant={'outline'}
+                variant={'secondary'}
                 size={'sm'}
-                className={'text-destructive border-destructive/30 hover:bg-destructive/5'}
             >
                 {t(globalLocales.errors.inline.tryAgainBtn)}
             </Button>

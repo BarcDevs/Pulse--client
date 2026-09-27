@@ -18,7 +18,6 @@
 | `ErrorDisplay` | Error router (network vs API) | `{isError && <ErrorDisplay error={error}/>}` |
 | `PageHeader` | Page title + description | `<PageHeader title={...} description={...}/>` |
 | `Skeleton` | Loading placeholder | `{isLoading && <Skeleton/>}` |
-| `DeleteButton` | Delete + confirm | `<DeleteButton onDeleteAction={...}/>` |
 | `FormInputText` | Text input (use instead of FormField chains) | Form fields |
 | `FormInputArea` | Textarea (use instead of FormField chains) | Form fields |
 

@@ -4,9 +4,9 @@ import { useTranslations } from 'next-intl'
 
 import { Activity } from 'lucide-react'
 
+import { Card } from '@/components/shared/cards/Card'
 import { RetryButton } from '@/components/shared/ui/RetryButton'
 import {
-    Card,
     CardContent,
     CardHeader
 } from '@/components/ui/card'
@@ -53,7 +53,7 @@ export const DashboardDailyObservation = () => {
         : Activity
 
     return (
-        <Card className={'border-0 shadow-sm'}>
+        <Card>
             <CardHeader className={'pb-2'}>
                 <div className={'flex items-start justify-between gap-3'}>
                     <div>

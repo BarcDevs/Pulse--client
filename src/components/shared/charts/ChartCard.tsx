@@ -7,8 +7,8 @@ import { useTranslations } from 'next-intl'
 import { MoodPainSeriesPoint } from '@/types/checkIn'
 import { TimePeriod } from '@/types/time'
 
+import { Card } from '@/components/shared/cards/Card'
 import {
-    Card,
     CardContent,
     CardHeader,
     CardTitle
@@ -45,7 +45,7 @@ export const ChartCard = ({ title, series }: ChartCardProps) => {
         : undefined
 
     return (
-        <Card className={'border-0 shadow-sm'}>
+        <Card>
             <CardHeader className={'flex flex-row items-center justify-between p-4 pb-2'}>
                 <CardTitle className={'text-base font-semibold'}>
                     {title}

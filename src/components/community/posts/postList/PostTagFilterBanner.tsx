@@ -4,7 +4,7 @@ import { useLocale, useTranslations } from 'next-intl'
 
 import { X } from 'lucide-react'
 
-import { Button } from '@/components/ui/button'
+import { IconButton } from '@/components/shared/buttons/IconButton'
 
 import { useForumTags } from '@/hooks/queries/useForumTags'
 
@@ -37,15 +37,15 @@ export const PostTagFilterBanner = ({
             </span>
             <span className={'inline-flex items-center gap-1 pl-3 pr-1 py-1 rounded-full bg-primary-foreground text-primary border border-border text-sm font-semibold'}>
                 {displayName}
-                <Button
-                    variant={'ghost'}
-                    size={'icon'}
+                <IconButton
+                    size={'xs'}
+                    tone={'primary'}
+                    round
                     onClick={onClear}
                     aria-label={t(communityLocales.posts.clearTagFilter)}
-                    className={'h-5 w-5 rounded-full p-0 hover:bg-primary/20 hover:text-primary'}
                 >
                     <X className={'h-3 w-3'}/>
-                </Button>
+                </IconButton>
             </span>
         </div>
     )

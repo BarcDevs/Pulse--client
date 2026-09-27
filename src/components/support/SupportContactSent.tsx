@@ -2,7 +2,7 @@ import { useTranslations } from 'next-intl'
 
 import { Check } from 'lucide-react'
 
-import { Button } from '@/components/ui/button'
+import { Button } from '@/components/shared/buttons/Button'
 
 import { supportLocales } from '@/locales/supportLocales'
 
@@ -27,10 +27,9 @@ export const SupportContactSent = ({
                 {t(supportLocales.contact.sent.description)}
             </p>
             <Button
-                variant={'outline'}
+                variant={'secondary'}
                 size={'sm'}
                 onClick={onSendAnother}
-                className={'rounded-lg text-xs font-semibold text-on-surface'}
             >
                 {t(supportLocales.contact.sent.another)}
             </Button>

@@ -7,7 +7,7 @@ import {
 
 import { Check } from 'lucide-react'
 
-import { Button } from '@/components/ui/button'
+import { ChipButton } from '@/components/shared/buttons/ChipButton'
 
 import { cn } from '@/lib/utils'
 
@@ -65,24 +65,20 @@ export const RecoveryIdentityPicker = () => {
                                 const IconComponent = healthInterestIconMap[slug]
 
                                 return (
-                                    <Button
+                                    <ChipButton
                                         key={slug}
-                                        variant={'ghost'}
-                                        size={'sm'}
+                                        size={'md'}
+                                        isSelected={isSelected}
+                                        selectedClassName={style?.selected}
                                         onClick={() => toggleProfileItem('healthInterests', slug)}
-                                        className={cn(
-                                            'inline-flex h-auto items-center gap-1.5 rounded-full border px-3.5 py-1.5 text-sm font-medium transition-all',
-                                            isSelected
-                                                ? style?.selected
-                                                : 'border-border bg-card text-muted-foreground hover:bg-muted'
-                                        )}
+                                        className={'gap-1.5'}
                                     >
                                         {IconComponent && (
                                             <IconComponent className={'size-3.5'}/>
                                         )}
                                         {getInterestName(slug, locale)}
                                         {isSelected && <Check className={'size-3'}/>}
-                                    </Button>
+                                    </ChipButton>
                                 )
                             })}
                         </div>
