@@ -2,8 +2,8 @@
 
 import { useRouter } from 'next/navigation'
 
-import { ArrowLeft } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
+import { ArrowLeft } from 'lucide-react'
 
 import { Badge } from '@/components/shared/badges/Badge'
 import { TextButton } from '@/components/shared/buttons/TextButton'
