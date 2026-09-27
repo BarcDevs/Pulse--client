@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Goal Detail - Pulse</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed": "#f8d8ff",
+                        "on-primary-container": "#fdfcff",
+                        "on-background": "#181c1e",
+                        "secondary-fixed-dim": "#5ddbc1",
+                        "on-primary-fixed": "#001c39",
+                        "on-primary-fixed-variant": "#004883",
+                        "background": "#f7fafc",
+                        "secondary": "#006b5b",
+                        "primary": "#005da7",
+                        "primary-container": "#2976c7",
+                        "surface-dim": "#d7dadc",
+                        "surface-container-low": "#f1f4f6",
+                        "surface": "#f7fafc",
+                        "outline": "#717783",
+                        "on-secondary-fixed": "#00201a",
+                        "on-tertiary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed-dim": "#ebb2ff",
+                        "tertiary": "#7d4495",
+                        "primary-fixed-dim": "#a4c9ff",
+                        "on-surface-variant": "#414751",
+                        "tertiary-container": "#985db0",
+                        "on-secondary-fixed-variant": "#005144",
+                        "surface-container": "#ebeef0",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-fixed-variant": "#662e7e",
+                        "surface-bright": "#f7fafc",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed": "#7cf8dd",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-secondary-container": "#007261",
+                        "on-tertiary-container": "#fffbff",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#320047",
+                        "surface-tint": "#0060ac",
+                        "secondary-container": "#7cf8dd",
+                        "inverse-on-surface": "#eef1f3",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed": "#d4e3ff",
+                        "outline-variant": "#c1c7d3",
+                        "on-surface": "#181c1e",
+                        "on-error": "#ffffff",
+                        "inverse-surface": "#2d3133",
+                        "surface-container-high": "#e5e9eb",
+                        "inverse-primary": "#a4c9ff",
+                        "surface-variant": "#e0e3e5",
+                        "on-primary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "display": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bg-gradient-primary {
+            background: linear-gradient(135deg, #005da7 0%, #2976c7 100%);
+        }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface antialiased">
+<!-- SideNavBar Component -->
+<nav class="fixed left-0 top-0 bottom-0 w-64 bg-slate-50 dark:bg-slate-950 flex flex-col py-8 z-50 overflow-y-auto font-headline font-medium">
+<div class="px-8 mb-10">
+<h1 class="text-xl font-extrabold text-blue-600 dark:text-blue-400">Pulse</h1>
+<p class="text-xs text-slate-500 uppercase tracking-widest mt-1">Recovery Sanctuary</p>
+</div>
+<div class="flex flex-col space-y-1">
+<a class="flex items-center px-8 py-3 space-x-3 text-slate-500 hover:bg-slate-100 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="grid_view">grid_view</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center px-8 py-3 space-x-3 text-slate-500 hover:bg-slate-100 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="event_available">event_available</span>
+<span>Daily Check-In</span>
+</a>
+<!-- Progress Active State -->
+<a class="flex items-center px-8 py-3 space-x-3 text-blue-600 dark:text-blue-400 border-r-4 border-blue-600 dark:border-blue-400 bg-blue-50/50 dark:bg-blue-900/10 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="trending_up">trending_up</span>
+<span>Progress</span>
+</a>
+<a class="flex items-center px-8 py-3 space-x-3 text-slate-500 hover:bg-slate-100 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="insights">insights</span>
+<span>Insights</span>
+</a>
+<a class="flex items-center px-8 py-3 space-x-3 text-slate-500 hover:bg-slate-100 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span>Community</span>
+</a>
+<a class="flex items-center px-8 py-3 space-x-3 text-slate-500 hover:bg-slate-100 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="smart_toy">smart_toy</span>
+<span>AI Chat</span>
+</a>
+<div class="pt-10">
+<a class="flex items-center px-8 py-3 space-x-3 text-slate-500 hover:bg-slate-100 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+<span>Profile</span>
+</a>
+<a class="flex items-center px-8 py-3 space-x-3 text-slate-500 hover:bg-slate-100 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span>Settings</span>
+</a>
+</div>
+</div>
+</nav>
+<!-- TopNavBar Component -->
+<header class="fixed top-0 right-0 left-64 h-16 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl flex justify-between items-center px-8 z-40 font-headline antialiased">
+<div class="flex items-center bg-surface-container-low px-4 py-2 rounded-full w-96">
+<span class="material-symbols-outlined text-outline mr-2 text-lg" data-icon="search">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-full p-0" placeholder="Search progress, exercises..." type="text"/>
+</div>
+<div class="flex items-center space-x-6">
+<button class="text-slate-500 hover:text-blue-600 transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="text-slate-500 hover:text-blue-600 transition-colors">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+</button>
+<div class="w-10 h-10 rounded-full overflow-hidden bg-surface-container-high border-2 border-white">
+<img alt="User profile" data-alt="close-up portrait of a serene woman with a soft smile in a professional yet warm environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXUKDBFgUrCmakZb5LMkDZbj1rDVNCU72HhORI0m7h6yw4RDAPSgefVz9dCCg9eADIXmS78Viebyh5Z5ZeIbx89qBTXuLAYONIe4JKqYqEisc-X3brfH4A7hgNGijYBc2RvFJR0d767fdY2Q-r9ySBodMlQpQTMLiixbKs8t4h_GfrBq9iigjQjok86jsHGojf683GOp61c2KUsUr0EjycritX6gLt1uc8lj082J5-rM8I0hkWArnPKDWMOF828TcVijTrNjx46g"/>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="ml-64 pt-16 min-h-screen">
+<div class="p-12 max-w-6xl mx-auto">
+<!-- Goal Header Section -->
+<section class="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-8">
+<div class="flex-1">
+<nav class="flex mb-4 text-sm text-slate-500 font-medium">
+<a class="hover:text-primary transition-colors" href="#">Goals</a>
+<span class="mx-2">/</span>
+<span class="text-on-surface">Return to Running</span>
+</nav>
+<h2 class="text-4xl md:text-5xl font-extrabold font-headline tracking-tight text-on-surface mb-4">Return to Running</h2>
+<p class="text-lg text-on-surface-variant max-w-2xl leading-relaxed">A structured 12-week progression focused on building joint resilience, muscular endurance, and gradual impact loading after ACL reconstruction.</p>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl flex flex-col items-center justify-center min-w-[180px]">
+<div class="relative w-24 h-24 mb-3">
+<svg class="w-full h-full transform -rotate-90">
+<circle class="text-surface-container-highest" cx="48" cy="48" fill="transparent" r="40" stroke="currentColor" stroke-width="8"></circle>
+<circle class="text-primary" cx="48" cy="48" fill="transparent" r="40" stroke="currentColor" stroke-dasharray="251.2" stroke-dashoffset="100.48" stroke-width="8"></circle>
+</svg>
+<span class="absolute inset-0 flex items-center justify-center font-bold text-xl font-headline">60%</span>
+</div>
+<span class="text-xs font-bold uppercase tracking-widest text-outline">Overall Progress</span>
+</div>
+</section>
+<!-- Linear Progression Milestones -->
+<section class="space-y-4 mb-16 relative">
+<!-- Vertical Line (Connects milestones) -->
+<div class="absolute left-10 top-8 bottom-8 w-0.5 bg-surface-container-highest z-0"></div>
+<!-- Milestone 1: Completed -->
+<div class="relative z-10 flex items-start group">
+<div class="w-20 h-20 rounded-full bg-secondary flex items-center justify-center shrink-0 border-4 border-surface shadow-sm">
+<span class="material-symbols-outlined text-white text-3xl font-bold" data-icon="check" data-weight="fill">check</span>
+</div>
+<div class="ml-8 mt-2 flex-1 bg-surface-container-low p-6 rounded-xl">
+<div class="flex justify-between items-start">
+<div>
+<span class="text-xs font-bold text-secondary uppercase tracking-tighter mb-1 block">Phase 1 (Completed)</span>
+<h3 class="text-xl font-bold font-headline mb-2">Foundational Strength</h3>
+<p class="text-on-surface-variant text-sm">Focus on isometric exercises, knee extension symmetry, and early weight-bearing mechanics.</p>
+</div>
+<span class="text-xs font-medium text-outline">Mar 12 - Apr 08</span>
+</div>
+</div>
+</div>
+<!-- Milestone 2: Active -->
+<div class="relative z-10 flex items-start group">
+<div class="w-20 h-20 rounded-full bg-primary flex items-center justify-center shrink-0 border-4 border-surface shadow-lg">
+<span class="material-symbols-outlined text-white text-3xl font-bold" data-icon="directions_walk">directions_walk</span>
+</div>
+<div class="ml-8 mt-2 flex-1 bg-surface-container-lowest p-8 rounded-xl border-l-4 border-primary">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+<div class="flex-1">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-primary-fixed text-on-primary-fixed uppercase tracking-tighter mb-3">Active Phase</span>
+<h3 class="text-2xl font-bold font-headline mb-3">Load Introduction</h3>
+<p class="text-on-surface-variant mb-6 leading-relaxed">Transitioning to dynamic loading. Introducing controlled plyometrics and eccentric quad strengthening. You are 80% through this phase.</p>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+<div class="bg-surface p-3 rounded-lg">
+<p class="text-[10px] uppercase text-outline font-bold mb-1">Squat Max</p>
+<p class="font-bold text-lg">85 lbs</p>
+</div>
+<div class="bg-surface p-3 rounded-lg">
+<p class="text-[10px] uppercase text-outline font-bold mb-1">Stability</p>
+<p class="font-bold text-lg">94%</p>
+</div>
+<div class="bg-surface p-3 rounded-lg">
+<p class="text-[10px] uppercase text-outline font-bold mb-1">Symmetry</p>
+<p class="font-bold text-lg">91%</p>
+</div>
+<div class="bg-surface p-3 rounded-lg">
+<p class="text-[10px] uppercase text-outline font-bold mb-1">Pain Level</p>
+<p class="font-bold text-lg">1/10</p>
+</div>
+</div>
+</div>
+<div class="shrink-0 flex flex-col items-center">
+<button class="bg-gradient-primary text-white font-bold py-4 px-8 rounded-lg text-sm shadow-md hover:opacity-90 transition-opacity active:scale-95 duration-200">
+                                    Complete Phase
+                                </button>
+<p class="text-[10px] text-outline mt-3 font-medium">Next: Return to Run Protocol</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Milestone 3: Locked -->
+<div class="relative z-10 flex items-start opacity-50 grayscale">
+<div class="w-20 h-20 rounded-full bg-surface-container-highest flex items-center justify-center shrink-0 border-4 border-surface">
+<span class="material-symbols-outlined text-outline text-3xl" data-icon="lock">lock</span>
+</div>
+<div class="ml-8 mt-2 flex-1 bg-surface-container-low p-6 rounded-xl">
+<div class="flex justify-between items-start">
+<div>
+<span class="text-xs font-bold text-outline uppercase tracking-tighter mb-1 block">Phase 3 (Locked)</span>
+<h3 class="text-xl font-bold font-headline mb-2">Linear Running Initiation</h3>
+<p class="text-on-surface-variant text-sm">Graduated interval training: Walk/Run intervals on a treadmill or flat grass surfaces.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Milestone 4: Locked -->
+<div class="relative z-10 flex items-start opacity-50 grayscale">
+<div class="w-20 h-20 rounded-full bg-surface-container-highest flex items-center justify-center shrink-0 border-4 border-surface">
+<span class="material-symbols-outlined text-outline text-3xl" data-icon="lock">lock</span>
+</div>
+<div class="ml-8 mt-2 flex-1 bg-surface-container-low p-6 rounded-xl">
+<div class="flex justify-between items-start">
+<div>
+<span class="text-xs font-bold text-outline uppercase tracking-tighter mb-1 block">Phase 4 (Locked)</span>
+<h3 class="text-xl font-bold font-headline mb-2">Agility &amp; Return to Sport</h3>
+<p class="text-on-surface-variant text-sm">Multi-directional movements, cutting drills, and final discharge testing.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Support Specialist Card -->
+<section class="mt-20">
+<div class="bg-surface-container-low rounded-xl overflow-hidden flex flex-col md:flex-row items-stretch">
+<div class="md:w-1/3 min-h-[300px] relative">
+<img alt="Support Specialist" class="absolute inset-0 w-full h-full object-cover" data-alt="professional medical specialist wearing scrubs standing in a bright modern clinic with a kind approachable expression" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkjBOuy4JwF9tXi3WQV7VDmioshwIzv3JdQBvcTWhw1B9TFUm729nFQ0jSHNuvMdcnn_NmdqsIiqj8D5BpKM1-7-LB0qR7kFxci6GUdZK80s_gSznHYwWIXfQml46JEla8SLAGns1LqFYMVVwoi_qLyttAVcCmZxmV17CzawbvedRhQ_k9wtmREETVLFuLQuwl2Uv0leGhYAYkxa014sBdDxWtwb0Tn_t_UXbN6kKRvBRBcDE6psuAeNIfGipLfQtr5-jx4cyP0g"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent"></div>
+</div>
+<div class="flex-1 p-10 flex flex-col justify-center">
+<span class="text-xs font-bold text-secondary uppercase tracking-widest mb-2">Your Recovery Team</span>
+<h3 class="text-3xl font-extrabold font-headline mb-4">Dr. Elena Rodriguez</h3>
+<p class="text-on-surface-variant mb-6 leading-relaxed italic">"You've shown incredible consistency in the load introduction phase. Don't rush the process—your tendon adaptation needs this steady pace to ensure long-term health."</p>
+<div class="flex flex-wrap gap-4 items-center">
+<button class="bg-on-background text-white px-6 py-3 rounded-lg font-bold text-sm flex items-center space-x-2 hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined text-lg" data-icon="chat_bubble">chat_bubble</span>
+<span>Message Elena</span>
+</button>
+<button class="bg-surface-container-highest text-on-surface px-6 py-3 rounded-lg font-bold text-sm flex items-center space-x-2 hover:bg-slate-200 transition-colors">
+<span class="material-symbols-outlined text-lg" data-icon="videocam">videocam</span>
+<span>Schedule Review</span>
+</button>
+<div class="ml-auto flex -space-x-2">
+<div class="w-8 h-8 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center text-[10px] font-bold ring-2 ring-surface">PT</div>
+<div class="w-8 h-8 rounded-full bg-tertiary-fixed text-on-tertiary-fixed flex items-center justify-center text-[10px] font-bold ring-2 ring-surface">OT</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+</body></html>

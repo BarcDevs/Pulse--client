@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Pulse — Community</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body, #root { height: 100%; }
+  body { font-family: 'Inter', sans-serif; background: #f5f7fa; overflow: hidden; color: #1a2b3c; }
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 99px; }
+  ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+  input, textarea, button { font-family: 'Inter', sans-serif; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel" src="sidebar.jsx"></script>
+<script type="text/babel" src="app_chrome.jsx"></script>
+<script type="text/babel">
+// Minimal inline TopBar so this export doesn't depend on dashboard.jsx / language_switcher.jsx
+function TopBar({ title, subtitle }) {
+  return (
+    <header style={{
+      position: 'sticky', top: 0, zIndex: 10,
+      display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+      padding: '0 24px', height: 64,
+      backgroundColor: C.card,
+      borderBottom: `1px solid ${C.border}`,
+      flexShrink: 0,
+    }}>
+      <div>
+        <h1 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 600, fontSize: 18, color: C.foreground, margin: 0 }}>{title}</h1>
+        {subtitle && <p style={{ fontFamily: 'Inter, sans-serif', fontSize: 13, color: C.mutedFg, margin: 0 }}>{subtitle}</p>}
+      </div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+        <button style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 8, borderRadius: 8, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <Icon name="bell" size={20} color={C.mutedFg} />
+        </button>
+        <div style={{ width: 32, height: 32, borderRadius: '50%', background: 'linear-gradient(135deg, #005da7, #2976c7)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: 12 }}>AR</div>
+      </div>
+    </header>
+  );
+}
+</script>
+
+<script type="text/babel" src="community.jsx"></script>
+
+<script type="text/babel">
+function App() {
+  const [page, setPage] = React.useState('community');
+  // For pages that don't exist in this export, render a simple placeholder
+  const PlaceholderScreen = ({ title }) => (
+    <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: '#f5f7fa', flexDirection: 'column', gap: 8 }}>
+      <h2 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: 24, color: '#1a2b3c' }}>{title}</h2>
+      <p style={{ fontFamily: 'Inter, sans-serif', fontSize: 14, color: '#64748b' }}>Not included in this export — see the full prototype.</p>
+      <button onClick={() => setPage('community')} style={{ marginTop: 12, padding: '8px 18px', borderRadius: 8, border: 'none', background: 'linear-gradient(to right, #005da7, #2976c7)', color: '#fff', fontFamily: 'Inter, sans-serif', fontWeight: 600, fontSize: 13, cursor: 'pointer' }}>Back to Community</button>
+    </div>
+  );
+
+  return (
+    <div style={{ height: '100vh', display: 'flex', overflow: 'hidden', fontFamily: 'Inter, sans-serif' }}>
+      <Sidebar currentPage={page} onNavigate={setPage} userName="Alex Rivera" />
+      <div style={{ marginLeft: 256, flex: 1, display: 'flex', flexDirection: 'column', overflow: 'hidden', minWidth: 0 }}>
+        {page === 'community'
+          ? <CommunityScreen onNavigate={setPage} />
+          : <PlaceholderScreen title={page.charAt(0).toUpperCase() + page.slice(1)} />}
+      </div>
+    </div>
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);
+</script>
+</body>
+</html>

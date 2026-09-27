@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Pulse — OG Image</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    height: 100%;
+    background: #0c2d56;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Inter', sans-serif;
+    overflow: hidden;
+  }
+
+  /* Fixed OG canvas — 1200×630, the standard Open Graph aspect (1.91:1).
+     Scaled to fit any viewport while preserving exact pixel composition. */
+  #stage {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  #og {
+    position: relative;
+    width: 1200px;
+    height: 630px;
+    flex-shrink: 0;
+    overflow: hidden;
+    background:
+      radial-gradient(1100px 700px at 82% -10%, rgba(73,144,226,0.55), transparent 60%),
+      radial-gradient(900px 700px at 8% 118%, rgba(0,107,91,0.45), transparent 58%),
+      linear-gradient(135deg, #0a3a73 0%, #123a85 48%, #183e9f 100%);
+    color: #fff;
+  }
+
+  /* faint grid / vignette */
+  #og::after {
+    content: "";
+    position: absolute; inset: 0;
+    background: radial-gradient(120% 120% at 50% 50%, transparent 55%, rgba(4,18,42,0.45) 100%);
+    pointer-events: none;
+  }
+
+  /* heartbeat EKG line — anchored along the very bottom edge so it never
+     crosses the feature chips */
+  .ekg {
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    width: 100%; height: 90px;
+    opacity: 0.32;
+  }
+  .ekg path {
+    fill: none;
+    stroke: #b6f24a;
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    filter: drop-shadow(0 0 10px rgba(182,242,74,0.45));
+  }
+
+  .content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 64px;
+    padding: 0 88px;
+  }
+
+  /* Logo medallion */
+  .badge {
+    flex-shrink: 0;
+    width: 320px;
+    height: 320px;
+    border-radius: 48px;
+    background: linear-gradient(160deg, #ffffff, #eef4fb);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow:
+      0 40px 80px -20px rgba(3,16,40,0.55),
+      inset 0 0 0 1px rgba(255,255,255,0.6);
+  }
+  .badge img { width: 248px; height: 248px; object-fit: contain; }
+
+  .copy { display: flex; flex-direction: column; }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 11px;
+    align-self: flex-start;
+    padding: 9px 18px;
+    border-radius: 99px;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.22);
+    backdrop-filter: blur(4px);
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: #d7e8fb;
+    margin-bottom: 26px;
+  }
+  .eyebrow .dot {
+    width: 9px; height: 9px; border-radius: 50%;
+    background: #b6f24a;
+    box-shadow: 0 0 12px rgba(182,242,74,0.9);
+  }
+
+  .wordmark {
+    font-size: 116px;
+    font-weight: 800;
+    letter-spacing: -0.045em;
+    line-height: 0.92;
+    color: #ffffff;
+  }
+  .wordmark .heal { color: #ffffff; }
+  .wordmark .ease {
+    background: linear-gradient(100deg, #8fd0ff, #c9eaff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .tagline {
+    margin-top: 24px;
+    font-size: 34px;
+    font-weight: 500;
+    line-height: 1.32;
+    color: #cfe1f6;
+    max-width: 620px;
+    text-wrap: balance;
+  }
+
+  .chips {
+    display: flex;
+    gap: 14px;
+    margin-top: 38px;
+  }
+  .chip {
+    padding: 11px 22px;
+    border-radius: 99px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.16);
+    font-size: 19px;
+    font-weight: 600;
+    color: #e7f0fb;
+  }
+</style>
+</head>
+<body>
+<template id="__bundler_thumbnail" data-bg-color="#0a3a73">
+  <svg viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <radialGradient id="g1" cx="82%" cy="-10%" r="80%"><stop offset="0%" stop-color="#4990e2" stop-opacity="0.55"/><stop offset="100%" stop-color="transparent"/></radialGradient>
+      <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0a3a73"/><stop offset="100%" stop-color="#183e9f"/></linearGradient>
+    </defs>
+    <rect width="1200" height="630" fill="url(#g2)"/>
+    <rect width="1200" height="630" fill="url(#g1)"/>
+    <rect x="88" y="155" width="320" height="320" rx="48" fill="white" opacity="0.95"/>
+    <path d="M248 395 C 188 355, 175 295, 200 268 C 218 250, 248 264, 248 286 C 248 264, 278 250, 296 268 C 321 295, 308 355, 248 395 Z" fill="#4a90e2"/>
+    <text x="490" y="360" font-family="Inter,sans-serif" font-weight="800" font-size="116" fill="white" letter-spacing="-5">Pulse</text>
+  </svg>
+</template>
+<div id="stage">
+  <div id="og">
+    <svg class="ekg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+      <path d="M0 60 L360 60 L392 60 L410 22 L436 98 L462 38 L482 72 L506 60 L840 60 L872 60 L890 30 L912 90 L934 48 L952 72 L976 60 L1200 60"/>
+    </svg>
+
+    <div class="content">
+      <div class="badge">
+        <img src="pulse-logo.webp" alt="Pulse logo"/>
+      </div>
+      <div class="copy">
+        <span class="eyebrow"><span class="dot"></span>Recovery, gently guided</span>
+        <div class="wordmark"><span class="ease">Pulse</span></div>
+        <p class="tagline">Supporting your recovery journey - one check-in at a time.</p>
+        <div class="chips">
+          <span class="chip">Daily check-ins</span>
+          <span class="chip">AI support</span>
+          <span class="chip">Community</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Scale the fixed 1200×630 canvas to fit any viewport, letterboxing on the
+  // dark backdrop so the OG composition stays pixel-exact.
+  function fit() {
+    const og = document.getElementById('og');
+    const s = Math.min(window.innerWidth / 1200, window.innerHeight / 630);
+    og.style.transform = 'scale(' + s + ')';
+  }
+  window.addEventListener('resize', fit);
+  fit();
+</script>
+</body>
+</html>
