@@ -1,10 +1,10 @@
 {
   "name": "pulse",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "type": "module",
   "private": true,
   "scripts": {
-    "postinstall": "git config core.hooksPath .husky",
+    "postinstall": "git rev-parse --is-inside-work-tree > /dev/null 2>&1 && git config core.hooksPath .husky || true",
     "dev": "cross-env NODE_OPTIONS=--max-old-space-size=8192 node scripts/dev.mjs",
     "dev:webpack": "cross-env NODE_OPTIONS=--max-old-space-size=8192 node scripts/dev.mjs --webpack",
     "dev:heapdump": "cross-env NODE_OPTIONS=\"--max-old-space-size=8192 --heapsnapshot-near-heap-limit=1\" node scripts/dev.mjs",
