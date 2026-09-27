@@ -1320,19 +1320,19 @@
     }
   },
   "apiErrors": {
-    "AUTH_GENERIC": "משהו השתבש בעת ההתחברות. נסה שוב.",
-    "AUTH_CREDENTIALS": "אימייל או סיסמה שגויים.",
-    "AUTH_UNAUTHORIZED": "עליך להתחבר כדי להמשיך.",
-    "AUTH_FORBIDDEN": "אין לך הרשאה לבצע פעולה זו.",
-    "AUTH_RESET_PASSWORD": "לא הצלחנו לאפס את הסיסמה שלך. נסה שוב.",
+    "AUTH_GENERIC": "לא הצלחנו להתחבר. נסה שוב.",
+    "AUTH_CREDENTIALS": "האימייל או הסיסמה שגויים.",
+    "AUTH_UNAUTHORIZED": "כדי להמשיך, יש להתחבר לחשבון.",
+    "AUTH_FORBIDDEN": "אין לכם הרשאה לבצע את הפעולה הזו.",
+    "AUTH_RESET_PASSWORD": "לא הצלחנו לאפס את הסיסמה. נסה שוב.",
     "AUTH_CONFLICT": "האימייל או שם המשתמש כבר בשימוש.",
-    "AUTH_OAUTH": "לא הצלחנו לחבר אותך עם Google. נסה שוב.",
-    "NOT_FOUND": "{resource} לא נמצא/ה.",
-    "CONFLICT": "פריט זה כבר קיים.",
-    "VALIDATION_GENERIC": "בדוק את הפרטים ונסה שוב.",
-    "VALIDATION_OTP": "קוד האימות אינו תקין.",
-    "VALIDATION_ZOD": "בדוק את השדה {property} ונסה שוב.",
-    "INTERNAL_ERROR": "משהו השתבש אצלנו. נסה שוב מאוחר יותר."
+    "AUTH_OAUTH": "לא הצלחנו להתחבר דרך Google. נסה שוב.",
+    "NOT_FOUND": "לא מצאנו את {resource}.",
+    "CONFLICT": "הפריט הזה כבר קיים.",
+    "VALIDATION_GENERIC": "בדקו את הפרטים ונסו שוב.",
+    "VALIDATION_OTP": "קוד האימות לא תואם. בדקו אותו ונסו שוב.",
+    "VALIDATION_ZOD": "בדקו את השדה {property} ונסו שוב.",
+    "INTERNAL_ERROR": "אירעה תקלה זמנית. נסה שוב בעוד כמה דקות."
   },
   "recommendations": {
     "action": {
