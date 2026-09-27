@@ -2,6 +2,8 @@
 
 import { useTranslations } from 'next-intl'
 
+import type { LucideIcon } from 'lucide-react'
+
 import {
     LegalDocumentContent,
     LegalSection as LegalSectionType
@@ -9,6 +11,7 @@ import {
 
 import { Footer } from '@/components/shared/footer/Footer'
 import { PageHeader } from '@/components/shared/PageHeader'
+import { StandalonePageShell } from '@/components/shared/StandalonePageShell'
 
 import { useLegalScrollSpy } from '@/hooks/legal/useLegalScrollSpy'
 
@@ -21,6 +24,7 @@ import { LegalToc } from './LegalToc'
 
 type LegalDocumentProps = {
     content: LegalDocumentContent
+    kickerIcon: LucideIcon
     sections: LegalSectionType[]
     updated: string
     pdfHref: string
@@ -29,6 +33,7 @@ type LegalDocumentProps = {
 
 export const LegalDocument = ({
     content,
+    kickerIcon,
     sections,
     updated,
     pdfHref,
@@ -44,46 +49,49 @@ export const LegalDocument = ({
     } = useLegalScrollSpy(sectionIds)
 
     return (
-        <div
-            ref={scrollerRef}
-            className={'flex flex-1 flex-col overflow-y-auto bg-surface-page print:overflow-visible'}
-        >
-            <div className={'px-4 pt-6 md:px-8'}>
-                <PageHeader
-                    title={content.title}
-                    subtitle={content.subtitle}
-                    kicker={content.kicker}
-                    tabs={tabs}
-                    backLabel={t(legalLocales.common.backLabel)}
-                />
-            </div>
-
-            <LegalMetaBar updated={updated}/>
-
-            <div className={'mx-auto w-full max-w-5xl px-4 pt-8 md:px-8'}>
-                <div className={'grid grid-cols-1 items-start gap-8 md:grid-cols-[220px_1fr] md:gap-10 print:block'}>
-                    <LegalToc
-                        sections={sections}
-                        activeId={activeId}
-                        onJumpTo={jumpTo}
+        <StandalonePageShell>
+            <div
+                ref={scrollerRef}
+                className={'flex min-h-0 flex-1 flex-col overflow-y-auto bg-surface-page print:overflow-visible'}
+            >
+                <div className={'px-4 pt-6 md:px-8'}>
+                    <PageHeader
+                        title={content.title}
+                        subtitle={content.subtitle}
+                        kicker={content.kicker}
+                        kickerIcon={kickerIcon}
+                        tabs={tabs}
+                        backLabel={t(legalLocales.common.backLabel)}
                     />
-
-                    <article className={'max-w-2xl'}>
-                        {sections.map((section, index) => (
-                            <LegalSection
-                                key={section.id}
-                                section={section}
-                                index={index}
-                                registerSection={registerSection(section.id)}
-                            />
-                        ))}
-
-                        <LegalFooterCta pdfHref={pdfHref}/>
-                    </article>
                 </div>
-            </div>
 
-            <Footer className={'print:hidden'}/>
-        </div>
+                <LegalMetaBar updated={updated}/>
+
+                <div className={'mx-auto w-full max-w-5xl px-4 pt-8 md:px-8'}>
+                    <div className={'grid grid-cols-1 items-start gap-8 md:grid-cols-[220px_1fr] md:gap-10 print:block'}>
+                        <LegalToc
+                            sections={sections}
+                            activeId={activeId}
+                            onJumpTo={jumpTo}
+                        />
+
+                        <article className={'max-w-2xl'}>
+                            {sections.map((section, index) => (
+                                <LegalSection
+                                    key={section.id}
+                                    section={section}
+                                    index={index}
+                                    registerSection={registerSection(section.id)}
+                                />
+                            ))}
+
+                            <LegalFooterCta pdfHref={pdfHref}/>
+                        </article>
+                    </div>
+                </div>
+
+                <Footer className={'print:hidden'}/>
+            </div>
+        </StandalonePageShell>
     )
 }

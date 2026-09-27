@@ -32,7 +32,7 @@ export const FaqItem = ({
             value={id}
             className={'border-border'}
         >
-            <AccordionTrigger className={'group items-center px-[22px] py-[18px] text-[14.5px] font-semibold text-on-surface hover:no-underline [&>svg]:hidden'}>
+            <AccordionTrigger className={'group cursor-pointer items-center px-[22px] py-[18px] text-[14.5px] font-semibold text-on-surface hover:no-underline [&>svg]:hidden'}>
                 <span className={'pe-4'}>
                     {t(item.q)}
                 </span>

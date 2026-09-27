@@ -17,7 +17,7 @@ type ButtonProps = Omit<UiButtonProps, 'variant' | 'size'> & {
 const variantStyles: Record<ButtonVariant, { uiVariant: UiButtonProps['variant'], className: string }> = {
     primary: {
         uiVariant: 'default',
-        className: 'bg-linear-to-r from-primary-gradient-start to-primary-gradient-end text-primary-foreground shadow-button hover:opacity-90'
+        className: 'bg-linear-to-r from-primary-gradient-start to-primary-gradient-end text-primary-foreground shadow-button hover:opacity-90 disabled:bg-none disabled:bg-muted disabled:text-muted-foreground disabled:shadow-none disabled:opacity-100'
     },
     secondary: {
         uiVariant: 'outline',

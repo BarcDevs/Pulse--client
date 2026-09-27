@@ -19,6 +19,7 @@ has nothing that fits.
 | `PageHeader.tsx` | Page-level header (title/actions/tabs) |
 | `PageHeaderTabs.tsx` | Tab strip used inside `PageHeader` |
 | `SavingBanner.tsx` | "Saving..." status banner |
+| `StandalonePageShell.tsx` | Wraps a page that sits outside `(dashboard)` (support, legal docs) with the sidebar when signed in, so logged-out visitors still get the bare page |
 
 ## Subfolders
 
