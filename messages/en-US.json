@@ -1327,19 +1327,19 @@
     }
   },
   "apiErrors": {
-    "AUTH_GENERIC": "We couldn't sign you in right now. Please try again.",
-    "AUTH_CREDENTIALS": "That email or password doesn't match our records.",
-    "AUTH_UNAUTHORIZED": "Your session has ended. Please log in again to continue.",
-    "AUTH_FORBIDDEN": "You don't have permission to do that.",
-    "AUTH_RESET_PASSWORD": "That reset link is invalid or has expired. Please request a new one.",
-    "AUTH_CONFLICT": "An account with that email or username already exists.",
-    "AUTH_OAUTH": "We couldn't complete sign-in with Google. Please try again or use your email instead.",
-    "NOT_FOUND": "We couldn't find that {resource}. It may have been removed or the link may be incorrect.",
-    "CONFLICT": "This already exists. Please choose something different.",
-    "VALIDATION_GENERIC": "Some of the details you entered aren't valid. Please review and try again.",
-    "VALIDATION_OTP": "That code is incorrect or has expired. Please request a new one.",
-    "VALIDATION_ZOD": "The {property} field isn't valid. Please check it and try again.",
-    "INTERNAL_ERROR": "Something went wrong on our end. Your information is safe — please try again in a moment."
+    "AUTH_GENERIC": "We couldn't sign you in. Please try again.",
+    "AUTH_CREDENTIALS": "The email or password is incorrect.",
+    "AUTH_UNAUTHORIZED": "Please sign in to continue.",
+    "AUTH_FORBIDDEN": "You don't have permission to do this.",
+    "AUTH_RESET_PASSWORD": "We couldn't reset your password. Please try again.",
+    "AUTH_CONFLICT": "That email or username is already in use.",
+    "AUTH_OAUTH": "We couldn't sign you in with Google. Please try again.",
+    "NOT_FOUND": "We couldn't find {resource}.",
+    "CONFLICT": "This already exists.",
+    "VALIDATION_GENERIC": "Please check the details and try again.",
+    "VALIDATION_OTP": "The verification code doesn't match. Please check it and try again.",
+    "VALIDATION_ZOD": "Please check the {property} field and try again.",
+    "INTERNAL_ERROR": "Something went wrong. Please try again in a few minutes."
   },
   "recommendations": {
     "action": {
