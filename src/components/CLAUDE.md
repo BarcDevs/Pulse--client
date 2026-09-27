@@ -7,7 +7,7 @@
 ## Files & Naming
 - PascalCase filenames and components
 - One component per file
-- Export inline, never default except for app router pages
+- Named exports everywhere. Default exports only in app router files (pages, layouts), at the bottom, per Next.js convention
 
 ## JSX Style
 - Nested content or content wrapped with a jsx/html, ALWAYS on new line
@@ -56,4 +56,5 @@
 - Always use shadcn/ui component if one exists (`Button`, `Input`, `Select`, `Badge`, `Card`, etc.)
 - ❌ Never use plain `<button>`, `<input>`, `<select>` when shadcn equivalent available
 - shadcn components live in `src/components/ui/` — read-only, never edit them
-- After shadcn, check `src/components/shared/` before creating new UI
+- **Wrapper pattern:** when a `ui/` primitive needs project-specific behavior, build exactly one `src/components/shared/` wrapper as its sole consumer, and drive every variation through that wrapper's props — don't reach into `ui/` from multiple call sites with ad hoc overrides
+- After shadcn, check `src/components/shared/SHARED_COMPONENTS.md` before creating new UI — add a row there in the same turn you add a new shared file/subfolder

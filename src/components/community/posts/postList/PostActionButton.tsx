@@ -1,6 +1,6 @@
 import { LucideIcon } from 'lucide-react'
 
-import { Button } from '@/components/ui/button'
+import { TextButton } from '@/components/shared/buttons/TextButton'
 
 import { cn } from '@/lib/utils'
 
@@ -21,12 +21,12 @@ export const PostActionButton = ({
     isActive,
     activeClassName = 'text-primary'
 }: PostActionButtonProps) => (
-    <Button
-        variant={'ghost'}
-        size={'sm'}
+    <TextButton
+        tone={'action'}
+        size={'xs'}
         className={cn(
-            'h-auto gap-1.5 p-1.5 text-xs hover:text-primary',
-            isActive ? activeClassName : 'text-muted-foreground'
+            'gap-1.5 p-1.5',
+            isActive && activeClassName
         )}
         onClick={onClick}
     >
@@ -41,5 +41,5 @@ export const PostActionButton = ({
             </span>
         )}
         {text}
-    </Button>
+    </TextButton>
 )

@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-import { UserAvatar } from '@/components/shared/UserAvatar'
+import { UserAvatar } from '@/components/shared/avatars/UserAvatar'
 
 type CommunityActivityItemProps = {
     userId: string
@@ -23,7 +23,7 @@ export const CommunityActivityItem = ({
     >
         <UserAvatar
             initials={avatar}
-            className={{ wrapper: 'size-8' }}
+            size={'sm'}
         />
         <div className={'flex-1 min-w-0'}>
             <p className={'text-sm text-foreground'}>

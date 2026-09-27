@@ -4,7 +4,7 @@ import { useTranslations } from 'next-intl'
 
 import { Loader2 } from 'lucide-react'
 
-import { Button } from '@/components/ui/button'
+import { Button } from '@/components/shared/buttons/Button'
 
 import { communityLocales } from '@/locales/communityLocales'
 
@@ -29,7 +29,7 @@ export const PostFormActions = ({
         <div className={'flex gap-2 justify-end pt-3.5 border-t border-border'}>
             {onCancelAction && (
                 <Button
-                    variant={'outline'}
+                    variant={'secondary'}
                     type={'button'}
                     onClick={onCancelAction}
                 >

@@ -1,5 +1,7 @@
 import { LegalBlock } from '@/types/legal'
 
+import { RichText } from '@/components/shared/content/RichText'
+
 import { LegalBlockCallout } from './LegalBlockCallout'
 import { LegalBlockList } from './LegalBlockList'
 import { LegalBlockTable } from './LegalBlockTable'
@@ -18,7 +20,7 @@ export const LegalSectionBody = ({ blocks }: LegalSectionBodyProps) => {
                             key={block}
                             className={'mb-3.5 text-[14.5px] leading-relaxed text-on-surface'}
                         >
-                            {block}
+                            <RichText text={block}/>
                         </p>
                     )
                 }

@@ -4,9 +4,8 @@ import { useTranslations } from 'next-intl'
 
 import type { LucideIcon } from 'lucide-react'
 
-import { Badge } from '@/components/ui/badge'
-
-import { cn } from '@/lib/utils'
+import { Badge } from '@/components/shared/badges/Badge'
+import { StatusBadge } from '@/components/shared/badges/StatusBadge'
 
 type HeaderBadgeProps = {
     label: string
@@ -22,20 +21,34 @@ export const HeaderBadge = ({
     pulse
 }: HeaderBadgeProps) => {
     const t = useTranslations()
-
-    return (
-        <Badge className={cn(
-            'gap-2',
-            variant === 'secondary' && 'bg-secondary-light text-secondary',
-            variant === 'live' && 'bg-secondary/10 text-secondary'
-        )}>
+    const badgeVariant = variant === 'default' ? 'primary' : 'secondary'
+    const content = (
+        <>
             {Icon && (
                 <Icon className={'size-3'}/>
             )}
-            {pulse && (
-                <span className={'h-2 w-2 rounded-full bg-secondary animate-pulse'}/>
-            )}
             {t(label)}
+        </>
+    )
+
+    if (pulse) {
+        return (
+            <StatusBadge
+                pulse
+                variant={badgeVariant}
+                className={'gap-2'}
+            >
+                {content}
+            </StatusBadge>
+        )
+    }
+
+    return (
+        <Badge
+            variant={badgeVariant}
+            className={'gap-2'}
+        >
+            {content}
         </Badge>
     )
 }

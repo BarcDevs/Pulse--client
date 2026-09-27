@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 
-import { Button } from '@/components/ui/button'
+import { Button } from '@/components/shared/buttons/Button'
 
 import { ROUTES } from '@/constants/routes'
 
@@ -9,11 +9,15 @@ import { appSettings } from '@/config/appSettings'
 
 import { legalLocales } from '@/locales/legalLocales'
 
-export const LegalFooterCta = () => {
+type LegalFooterCtaProps = {
+    pdfHref: string
+}
+
+export const LegalFooterCta = ({ pdfHref }: LegalFooterCtaProps) => {
     const t = useTranslations()
 
     return (
-        <div className={'mb-12 mt-6 rounded-2xl border border-border bg-muted p-6'}>
+        <div className={'mb-12 mt-6 rounded-2xl border border-border bg-muted p-6 print:hidden'}>
             <p className={'mb-1.5 text-sm font-semibold text-on-surface'}>
                 {t(legalLocales.common.footerCta.question)}
             </p>
@@ -29,7 +33,7 @@ export const LegalFooterCta = () => {
                 {appSettings.supportEmail && (
                     <Button
                         asChild
-                        variant={'outline'}
+                        variant={'secondary'}
                     >
                         <a href={`mailto:${appSettings.supportEmail}`}>
                             {t(legalLocales.common.footerCta.emailLabel, { email: appSettings.supportEmail })}
@@ -37,10 +41,15 @@ export const LegalFooterCta = () => {
                     </Button>
                 )}
                 <Button
-                    variant={'outline'}
-                    disabled
+                    asChild
+                    variant={'secondary'}
                 >
-                    {t(legalLocales.common.footerCta.downloadPdf)}
+                    <a
+                        href={pdfHref}
+                        download
+                    >
+                        {t(legalLocales.common.footerCta.downloadPdf)}
+                    </a>
                 </Button>
             </div>
         </div>

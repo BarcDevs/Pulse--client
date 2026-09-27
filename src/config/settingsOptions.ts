@@ -1,5 +1,3 @@
-export const DEFAULT_LANGUAGE = 'en-US'
-
 export const DEFAULT_VISIBILITY = 'onlyMe'
 
 export const VISIBILITY_OPTIONS = [

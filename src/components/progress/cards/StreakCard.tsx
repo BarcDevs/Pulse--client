@@ -46,7 +46,7 @@ export const StreakCard = () => {
     return (
         <div className={'card-base'}>
             <div className={'flex-start-between mb-3'}>
-                <div>
+                <div className={'transition-transform hover:scale-105'}>
                     <p className={'text-muted-foreground label-uppercase'}>
                         {t(progressLocales.stats.streak.label)}
                     </p>

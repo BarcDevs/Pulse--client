@@ -4,7 +4,7 @@ import { useTranslations } from 'next-intl'
 
 import { Plus } from 'lucide-react'
 
-import { Button } from '@/components/ui/button'
+import { FabButton } from '@/components/shared/buttons/FabButton'
 
 import { useUser } from '@/hooks/ui/useUser'
 
@@ -27,13 +27,11 @@ export const NewPostFloatingButton = ({
     }
 
     return (
-        <Button
+        <FabButton
             onClick={onClickAction}
-            size={'icon'}
             aria-label={t(communityLocales.posts.newPostButton)}
-            className={'fixed bottom-24 end-4 sm:hidden size-14 rounded-full shadow-lg shadow-blue-500/30 z-40'}
         >
             <Plus className={'size-6'}/>
-        </Button>
+        </FabButton>
     )
 }

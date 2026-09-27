@@ -6,15 +6,15 @@ import {
 
 import { Eye, EyeOff } from 'lucide-react'
 
-import { Button } from '@/components/ui/button'
+import { IconButton } from '@/components/shared/buttons/IconButton'
+import { Input } from '@/components/shared/inputs/Input'
 import { FormLabel } from '@/components/ui/form'
-import { Input } from '@/components/ui/input'
 
 import { cn } from '@/lib/utils'
 
 type FormInputProps = Omit<
     InputHTMLAttributes<HTMLInputElement>,
-    'onChange'
+    'onChange' | 'size'
 > & {
     id: string
     label?: string
@@ -57,28 +57,27 @@ export const FormInput = ({
                     placeholder={placeholder}
                     value={value}
                     onChange={onChange}
-                    className={className || cn(
-                        'h-11 border-border bg-muted',
-                        isPasswordField
-                            ? 'pr-10'
-                            : ''
+                    variant={'muted'}
+                    size={'lg'}
+                    className={cn(
+                        isPasswordField && 'pr-10',
+                        className
                     )}
                     required={required}
                     {...rest}
                 />
                 {isPasswordField && (
-                    <Button
+                    <IconButton
                         type={'button'}
-                        variant={'ghost'}
                         size={'sm'}
                         onClick={() => setShowPassword(!showPassword)}
-                        className={'absolute right-1 top-1/2 h-8 w-8 -translate-y-1/2 p-0 text-muted-foreground hover:bg-transparent'}
+                        className={'absolute right-1 top-1/2 -translate-y-1/2'}
                     >
                         {showPassword
                             ? <EyeOff className={'size-5'}/>
                             : <Eye className={'size-5'}/>
                         }
-                    </Button>
+                    </IconButton>
                 )}
             </div>
         </div>

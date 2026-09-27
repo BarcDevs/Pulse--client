@@ -114,10 +114,13 @@ Behavioral intelligence systems require medical/legal caution, behavioral tuning
 | ~~10~~ | ~~`src/components/progress/cards/StreakBars.tsx`~~ | ~~—~~ | ~~**[Bug]** Optimistic streak bar for a new streak (after breaking previous streak) shows previous streak's color instead of active streak color~~ |
 | ~~7~~ | ~~`src/components/goals/`~~ | ~~—~~ | ~~**[Medium, Bug]** Goal RTL layout broken (Hebrew)~~ |
 | ~~8~~ | ~~`src/components/goals/`~~ | ~~—~~ | ~~**[Low, Bug]** Goal due date and graphs display incorrectly in Hebrew locale~~ |
-| 11 | `src/components/dashboard/charts/HistoryChart.tsx` | — | **[Low]** Color null/no-data days (no dashed line) in graph grey |
-| 12 | `src/components/progress/cards/StreakCard.tsx` | — | **[Low]** Add hover effect to current streak stat |
+| ~~11~~ | ~~`src/components/dashboard/charts/HistoryChart.tsx`~~ | ~~—~~ | ~~**[Low]** Color null/no-data days (no dashed line) in graph grey — restored dropped `1e859ee` grey-out fix + lowered bridge-line opacity 0.4→0.2 in `TrendChart.tsx`~~ |
+| ~~12~~ | ~~`src/components/progress/cards/StreakCard.tsx`~~ | ~~—~~ | ~~**[Low]** Add hover effect to current streak stat~~ |
 | ~~13~~ | ~~`src/context/CheckInContext.tsx`~~ | ~~—~~ | ~~**[Bug]** Streak chart still not updating optimistically after check-in submit — bars don't reflect new streak until refetch~~ |
 | ~~14~~ | ~~`src/constants/defaults.ts`, `BasicInfoView.tsx`~~ | ~~—~~ | ~~**[Bug]** Hebrew locale shows date as month-then-day instead of day-then-month (reversed order)~~ |
+| ~~15~~ | ~~`messages/he-IL.json`~~ | ~~`progress.stats.streak.personalBest`~~ | ~~**[Bug]** Dash next to `{days}` number broke Hebrew bidi text ordering ("שיא אישי - 1 ימים" rendered reversed) — changed dash to colon~~ |
+| ~~16~~ | ~~`src/components/shared/charts/TrendChart.tsx`, `ChartTooltip.tsx`~~ | ~~—~~ | ~~**[Bug]** No-data days (leading/trailing, not between two real check-ins) weren't visually distinguished from real data — added grey `ReferenceArea` fill; also fixed tooltip leaking internal `_tail_`/`_bridge_` keys~~ |
+| ~~17~~ | ~~`src/hooks/queries/useCheckInChartData.ts`~~ | ~~—~~ | ~~**[Bug]** Chart data array was reversed for Hebrew locale, making dates run newest→oldest left-to-right inconsistently with English — removed reversal, chronological order (oldest→newest, left-to-right) is now locale-independent~~ |
 
 ---
 
@@ -146,5 +149,14 @@ Behavioral intelligence systems require medical/legal caution, behavioral tuning
 | # | Task | Priority | Note |
 |---|------|----------|------|
 | ~~1~~ | ~~Buy a domain~~ | ~~Medium~~ | ~~Done — `pulserehab.app`~~ |
-| 2 | Deploy MVP + monitor | High | In Progress — wire up monitoring tools |
+| ~~2~~ | ~~Deploy MVP + monitor~~ | ~~High~~ | ~~Done~~ |
 | 3 | Wire up `NEXT_PUBLIC_SENTRY_DSN` for the EC2 client deploy | Medium | Skipped for the initial AWS deploy — get client working end-to-end first, then pull the real DSN (likely only set in Vercel's env config today) and set it on the EC2 container |
+| ~~4~~ | ~~**[Bug]** Raw axios error message (e.g. "Request failed with status code 500") shown in English regardless of active locale~~ | ~~Medium~~ | ~~Not pulled from translations — same class of bug as the ErrorBanner/ErrorStateCard/ErrorDisplay hardcoded-English issue already fixed~~ |
+| ~~5~~ | ~~**[Bug]** ECONNREFUSED / 500 from backend being unreachable should render a dedicated "network error / offline" state, not the generic auth/query error~~ | ~~Medium~~ | ~~Currently surfaces as a raw failed-request error instead of a distinct offline UI~~ |
+| ~~6~~ | ~~Fix favicon on deployed client (`pulserehab.app`)~~ | ~~Low~~ | ~~Done — icon metadata pointed at four files missing from `public/` (light/dark PNGs, `icon.svg`, `apple-icon.png`) plus a missing `site.webmanifest`; now declares only `/favicon.ico`. Verified on production~~ |
+| ~~7~~ | ~~Privacy page~~ | ~~High~~ | ~~Done — `/privacy` exists in en-US and he-IL (9 sections); cookies/storage + service-provider disclosure section added~~ |
+| ~~8~~ | ~~Cache consent popup~~ | ~~High~~ | ~~Not needed — we write no non-essential storage (no cache/service worker; Vercel Web Analytics is cookieless, Sentry sets no cookies by default). Disclosure is covered by the Privacy page instead~~ |
+| ~~9~~ | ~~**[Bug]** Login page loops (and balloons RAM) when reloaded offline, Chrome + Firefox~~ | ~~Medium~~ | ~~Done — `app/error.tsx` no longer redirects to `/network-error`; shows the network bar and retries every `timings.NETWORK_RETRY_DELAY` (10s). Unit-tested in `app/__tests__/error.test.tsx`; no loop confirmed by user~~ |
+| ~~10~~ | ~~Implement support: `/support` and `/contact-support`~~ | ~~Medium~~ | ~~Done — `/support` built from `.claude/design/pages/support/support.jsx` (FAQ + contact form live; search, quick-help cards and topic cards behind `FEATURES.supportSearch/supportQuickHelp/supportTopics`, off until help articles/chat/care team exist). `/contact-support` redirects to `/support#contact`. Form posts to server `POST /support/contact` (public, rate-limited, emails `support@pulserehab.app`). Server side is on `feat/support-contact` — deploy it before the client, or the form returns 404~~ |
+| 11 | Review support page copy | Medium | FAQ answers and the crisis numbers (ERAN 1201, MDA 101, police 100) were written by Claude, not taken from the design (the design's HIPAA/SOC 2/988/"4 hours" claims were removed as untrue). Owner should read/approve both languages before launch |
+| 12 | `watch:` Drop the TypeScript 6 alias once typescript-eslint supports TypeScript 7 | Low | `typescript` is aliased to `@typescript/typescript6` and the native compiler is installed as `@typescript/native` because typescript-eslint needs the TS JavaScript API, which TS 7 does not ship (planned for 7.1). Done when `npm view typescript-eslint peerDependencies.typescript` accepts `^7` (or a release note says TS 7 is supported): then set `typescript` back to `^7`, remove `@typescript/native`, and re-run lint. Checked weekly by the `stack-update-check` skill (watchlist) |

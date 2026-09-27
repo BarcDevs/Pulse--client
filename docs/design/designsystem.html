@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Pulse — Design System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --bg: #f5f7fa;
+    --card: #ffffff;
+    --foreground: #1a2b3c;
+    --muted-fg: #64748b;
+    --muted: #eef1f5;
+    --border: #e2e8f0;
+    --primary: #4a90e2;
+    --primary-grad-start: #005da7;
+    --primary-grad-end: #2976c7;
+    --primary-light: #e8f4fd;
+    --secondary: #006b5b;
+    --secondary-light: #e6f5f2;
+    --accent: #7c4dff;
+    --accent-light: #f3eeff;
+    --logo: #183e9f;
+    --sidebar-accent-fg: #005da7;
+    --success: #10b981;
+    --warning: #f59e0b;
+    --destructive: #ef4444;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: var(--bg); color: var(--foreground); font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+  ::-webkit-scrollbar { width: 8px; height: 8px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 99px; }
+
+  /* Layout */
+  .layout { display: grid; grid-template-columns: 240px minmax(0, 1fr); min-height: 100vh; }
+  aside.toc { position: sticky; top: 0; align-self: start; height: 100vh; padding: 32px 24px; border-right: 1px solid var(--border); background: #fff; overflow-y: auto; }
+  .toc-brand { display: flex; align-items: center; gap: 10px; margin-bottom: 28px; }
+  .toc-brand img { width: 28px; height: 28px; }
+  .toc-brand .name { font-weight: 800; font-size: 15px; color: var(--logo); letter-spacing: -0.3px; }
+  .toc-brand .tag { font-size: 10px; color: var(--muted-fg); margin-top: 1px; letter-spacing: 0.04em; text-transform: uppercase; }
+  .toc-section { margin-bottom: 18px; }
+  .toc-section h4 { font-size: 10px; font-weight: 600; color: var(--muted-fg); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px; }
+  .toc-section a { display: block; padding: 5px 10px; margin: 1px -10px; border-radius: 6px; color: var(--muted-fg); font-size: 13px; text-decoration: none; transition: all 0.12s; }
+  .toc-section a:hover { color: var(--foreground); background: var(--muted); }
+  .toc-back { display: inline-flex; align-items: center; gap: 6px; padding: 7px 10px; margin: 20px -10px 0; border-radius: 6px; color: var(--muted-fg); font-size: 12px; text-decoration: none; transition: all 0.12s; }
+  .toc-back:hover { color: var(--primary); background: var(--primary-light); }
+
+  main { padding: 56px 56px 96px; max-width: 1080px; }
+
+  /* Hero */
+  .hero { padding-bottom: 28px; border-bottom: 1px solid var(--border); margin-bottom: 56px; }
+  .kicker { display: inline-flex; align-items: center; gap: 8px; padding: 5px 12px; border-radius: 99px; background: var(--primary-light); color: var(--sidebar-accent-fg); font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 16px; }
+  .hero h1 { font-size: 40px; font-weight: 800; letter-spacing: -0.025em; line-height: 1.1; margin-bottom: 12px; }
+  .hero p { font-size: 16px; color: var(--muted-fg); line-height: 1.6; max-width: 620px; }
+  .hero code { font-family: 'JetBrains Mono', monospace; font-size: 14px; color: var(--sidebar-accent-fg); background: var(--primary-light); padding: 1px 6px; border-radius: 4px; }
+
+  /* Section */
+  section { margin-bottom: 64px; scroll-margin-top: 24px; }
+  .sec-head { margin-bottom: 24px; }
+  .sec-num { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted-fg); letter-spacing: 0.06em; margin-bottom: 6px; }
+  .sec-head h2 { font-size: 24px; font-weight: 700; letter-spacing: -0.018em; margin-bottom: 6px; }
+  .sec-head p { font-size: 14px; color: var(--muted-fg); max-width: 680px; line-height: 1.55; }
+
+  .eyebrow { font-size: 11px; font-weight: 600; color: var(--muted-fg); letter-spacing: 0.5px; text-transform: uppercase; margin: 24px 0 12px; }
+  .eyebrow:first-child { margin-top: 0; }
+
+  /* Colors */
+  .swatch-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .swatch { background: var(--card); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+  .swatch-chip { height: 72px; }
+  .swatch.bordered .swatch-chip { box-shadow: inset 0 0 0 1px var(--border); }
+  .swatch-meta { padding: 10px 12px 12px; }
+  .swatch-name { font-size: 12px; font-weight: 600; }
+  .swatch-hex { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted-fg); margin-top: 2px; }
+  .swatch-use { font-size: 11px; color: var(--muted-fg); margin-top: 5px; line-height: 1.5; }
+
+  .grad-card { display: flex; gap: 0; background: var(--card); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; margin-top: 8px; }
+  .grad-preview { flex: 1; min-height: 100px; background: linear-gradient(to right, #005da7, #2976c7); display: flex; align-items: center; justify-content: center; }
+  .grad-preview .pill { font-size: 13px; font-weight: 600; color: #fff; padding: 9px 18px; border-radius: 8px; background: linear-gradient(to right, #005da7, #2976c7); border: 1px solid rgba(255,255,255,0.2); box-shadow: 0 4px 12px rgba(0,93,167,0.3); }
+  .grad-meta { width: 280px; padding: 14px 18px; border-left: 1px solid var(--border); display: flex; flex-direction: column; gap: 6px; font-size: 12px; }
+  .grad-meta strong { font-weight: 600; }
+  .grad-meta code { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted-fg); }
+
+  /* Typography */
+  .type-row { display: grid; grid-template-columns: 180px 1fr 180px; gap: 24px; align-items: center; padding: 16px 20px; border: 1px solid var(--border); border-radius: 10px; background: var(--card); margin-bottom: 8px; }
+  .type-name { font-size: 13px; font-weight: 600; }
+  .type-tag { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted-fg); margin-top: 2px; }
+  .type-spec { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted-fg); line-height: 1.7; }
+
+  .font-card { display: grid; grid-template-columns: 160px 1fr; gap: 24px; padding: 22px; border: 1px solid var(--border); border-radius: 10px; background: var(--card); margin-bottom: 16px; align-items: center; }
+  .font-aa { font-size: 80px; font-weight: 800; letter-spacing: -0.03em; line-height: 1; }
+  .font-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 4px; }
+  .font-card .source { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--muted-fg); margin-bottom: 14px; }
+  .weight-row { display: flex; flex-wrap: wrap; gap: 14px 24px; }
+  .weight-item { font-size: 16px; }
+  .weight-item span { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted-fg); margin-left: 6px; }
+
+  /* Spacing tri-col */
+  .three { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .panel { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 20px; }
+  .panel h3 { font-size: 13px; font-weight: 700; margin-bottom: 14px; }
+  .panel .row { display: flex; align-items: center; gap: 12px; }
+  .panel .row + .row { margin-top: 10px; }
+  .panel .row .shape { background: var(--primary-light); border: 1px solid var(--primary); width: 52px; height: 32px; flex-shrink: 0; }
+  .panel .info { font-size: 12px; }
+  .panel .info code { font-family: 'JetBrains Mono', monospace; color: var(--muted-fg); }
+
+  .shadow-shape { background: #fff; width: 52px; height: 32px; flex-shrink: 0; border-radius: 8px; }
+  .shadow-1 { box-shadow: 0 1px 3px rgba(0,0,0,0.04); border: 1px solid var(--border); }
+  .shadow-2 { box-shadow: 0 4px 12px rgba(0,93,167,0.25); background: var(--primary); }
+  .shadow-3 { box-shadow: 0 8px 32px rgba(0,0,0,0.15); }
+
+  /* Icons */
+  .icon-grid { display: grid; grid-template-columns: repeat(8, 1fr); gap: 8px; }
+  .icon-cell { display: flex; flex-direction: column; align-items: center; padding: 16px 6px; background: var(--card); border: 1px solid var(--border); border-radius: 8px; }
+  .icon-cell svg { width: 20px; height: 20px; color: var(--foreground); }
+  .icon-cell .lbl { font-family: 'JetBrains Mono', monospace; font-size: 9.5px; color: var(--muted-fg); margin-top: 7px; text-align: center; }
+
+  /* Components */
+  .comp { background: var(--card); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; margin-bottom: 14px; }
+  .comp-head { padding: 12px 18px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
+  .comp-head .name { font-size: 13px; font-weight: 700; }
+  .comp-head .meta { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted-fg); }
+  .comp-body { padding: 24px 22px; background: var(--bg); display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+  .comp-body.col { flex-direction: column; align-items: stretch; }
+  .comp-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+  /* Buttons */
+  .btn { font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 600; border-radius: 8px; cursor: default; padding: 11px 20px; border: none; }
+  .btn-primary { color: #fff; background: linear-gradient(to right, #005da7, #2976c7); box-shadow: 0 4px 12px rgba(0,93,167,0.25); }
+  .btn-secondary { color: var(--foreground); background: #fff; border: 1px solid var(--border); }
+  .btn-ghost { color: var(--primary); background: transparent; }
+  .btn-destructive { color: #fff; background: var(--destructive); }
+
+  /* Field */
+  .field { display: flex; flex-direction: column; gap: 6px; width: 100%; max-width: 320px; }
+  .field-label { font-size: 13px; font-weight: 500; }
+  .field-input { display: flex; align-items: center; gap: 10px; padding: 10px 14px; background: #fff; border: 1px solid var(--border); border-radius: 8px; }
+  .field-input.focused { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(74,144,226,0.15); }
+  .field-input svg { color: var(--muted-fg); flex-shrink: 0; }
+  .field-input span { flex: 1; font-size: 14px; color: var(--foreground); }
+  .field-input span.placeholder { color: var(--muted-fg); }
+
+  /* Badges */
+  .badge { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 99px; font-size: 11px; font-weight: 600; letter-spacing: 0.04em; }
+  .badge-dot { width: 6px; height: 6px; border-radius: 99px; background: currentColor; }
+  .b-primary { background: var(--primary-light); color: var(--sidebar-accent-fg); }
+  .b-secondary { background: var(--secondary-light); color: var(--secondary); }
+  .b-accent { background: var(--accent-light); color: var(--accent); }
+  .b-success { background: #d1fae5; color: #047857; }
+  .b-warning { background: #fef3c7; color: #b45309; }
+  .b-destructive { background: #fee2e2; color: #b91c1c; }
+  .b-neutral { background: var(--muted); color: var(--muted-fg); }
+
+  /* Stat card */
+  .stat { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 18px; width: 220px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+  .stat-icon { width: 32px; height: 32px; border-radius: 8px; background: var(--primary-light); color: var(--sidebar-accent-fg); display: flex; align-items: center; justify-content: center; margin-bottom: 12px; }
+  .stat .num { font-size: 26px; font-weight: 800; letter-spacing: -0.02em; }
+  .stat .lbl { font-size: 12px; color: var(--muted-fg); margin-top: 2px; }
+
+  /* Nav demo */
+  .nav-demo { width: 100%; max-width: 240px; padding: 12px; background: #fff; border: 1px solid var(--border); border-radius: 10px; display: flex; flex-direction: column; gap: 2px; }
+  .nav-item { display: flex; align-items: center; gap: 12px; padding: 8px 12px; border-radius: 8px; font-size: 13px; font-weight: 500; color: var(--muted-fg); }
+  .nav-item.active { background: var(--primary-light); color: var(--sidebar-accent-fg); font-weight: 600; }
+  .nav-item.hover { background: rgba(232,244,253,0.5); color: var(--sidebar-accent-fg); }
+  .nav-item svg { width: 18px; height: 18px; flex-shrink: 0; }
+
+  /* Avatar */
+  .avatar { width: 36px; height: 36px; border-radius: 99px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px; }
+
+  /* Range */
+  .range-demo { width: 100%; max-width: 320px; }
+  .range-demo input[type=range] { width: 100%; -webkit-appearance: none; appearance: none; height: 4px; border-radius: 99px; background: var(--border); outline: none; cursor: pointer; }
+  .range-demo input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 18px; height: 18px; border-radius: 50%; background: var(--primary); border: 2.5px solid #fff; box-shadow: 0 1px 4px rgba(74,144,226,0.4); cursor: pointer; }
+  .range-scale { display: flex; justify-content: space-between; margin-top: 8px; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--muted-fg); }
+
+  /* Pattern cards */
+  .pattern-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .pattern { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 18px; }
+  .pattern h3 { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+  .pattern p { font-size: 13px; color: var(--muted-fg); line-height: 1.6; }
+  .pattern code { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--foreground); background: var(--muted); padding: 1px 5px; border-radius: 3px; }
+
+  /* Files */
+  .file-list { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+  .file { display: grid; grid-template-columns: 200px 1fr; gap: 14px; padding: 9px 14px; background: var(--card); border: 1px solid var(--border); border-radius: 7px; align-items: baseline; }
+  .file code { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--foreground); }
+  .file span { font-size: 12px; color: var(--muted-fg); line-height: 1.5; }
+
+  /* Assistant */
+.asst-stage{padding:36px 22px;background:var(--bg);display:flex;align-items:flex-end;justify-content:center;gap:12px;flex-wrap:wrap}
+.asst-bubble{max-width:236px;background:#fff;border-radius:16px;padding:14px 30px 14px 16px;box-shadow:0 8px 28px rgba(20,40,70,.16);border:1px solid var(--border);position:relative;font-size:13.5px;line-height:1.55}
+.asst-bubble .x{position:absolute;top:8px;right:8px;width:20px;height:20px;border-radius:50%;border:1px solid var(--border);background:#fff;display:flex;align-items:center;justify-content:center;color:var(--muted-fg)}
+.asst-bubble .caret{color:var(--muted-fg);animation:asst-caret 1s steps(1) infinite}
+@keyframes asst-caret{50%{opacity:0}}
+.asst-orb{position:relative;width:60px;height:60px;flex-shrink:0}
+.asst-orb .ring{position:absolute;inset:-4px;border-radius:50%;animation:la-glow 6s ease-in-out infinite}
+.asst-orb .body{width:60px;height:60px;border-radius:50%;background:linear-gradient(140deg,#005da7,#2976c7);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(0,93,167,.35),inset 0 -3px 6px rgba(0,0,0,.15),inset 0 2px 4px rgba(255,255,255,.25);animation:la-sway 4.5s ease-in-out infinite}
+.asst-orb svg{animation:la-face-tilt 5s ease-in-out infinite}
+.asst-orb .eye{transform-box:fill-box;transform-origin:center;animation:asst-blink 4.2s infinite}
+.asst-orb.still .ring,.asst-orb.still .body,.asst-orb.still svg,.asst-orb.still .eye{animation:none}
+@keyframes asst-blink{0%,94%,100%{transform:scaleY(1)}96%{transform:scaleY(.25)}}
+@keyframes la-sway{0%{transform:rotate(-4deg) translateY(0)}25%{transform:rotate(2deg) translateY(-3px)}50%{transform:rotate(4deg) translateY(0)}75%{transform:rotate(-2deg) translateY(-2px)}100%{transform:rotate(-4deg) translateY(0)}}
+@keyframes la-face-tilt{0%,100%{transform:rotate(0)}40%{transform:rotate(-4deg)}70%{transform:rotate(3deg)}}
+@keyframes la-glow{0%,82%,100%{box-shadow:0 0 0 0 rgba(41,118,199,0)}90%{box-shadow:0 0 0 8px rgba(41,118,199,.22),0 0 22px 6px rgba(41,118,199,.3)}96%{box-shadow:0 0 0 3px rgba(41,118,199,.12),0 0 10px 2px rgba(41,118,199,.18)}}
+.asst-sizes{display:flex;align-items:flex-end;gap:28px}
+.asst-sizes .cap{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted-fg);text-align:center;margin-top:8px}
+.chat-av{width:32px;height:32px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.1);font-weight:700;font-size:12px}
+.chat{display:flex;flex-direction:column;gap:14px;width:100%;max-width:560px}
+.chat-row{display:flex;gap:10px;align-items:flex-end;max-width:78%}
+.chat-row.me{flex-direction:row-reverse;align-self:flex-end}
+.chat-msg{padding:11px 15px;font-size:14px;line-height:1.65;box-shadow:0 1px 3px rgba(0,0,0,.07)}
+.chat-row.ai .chat-msg{background:#fff;border-radius:4px 14px 14px 14px}
+.chat-row.me .chat-msg{background:#005da7;color:#fff;border-radius:14px 4px 14px 14px}
+.chat-meta{font-size:10px;color:var(--muted-fg);margin-top:4px;letter-spacing:.04em}
+.chat-row.me .chat-meta{text-align:right}
+.chat-chips{display:flex;gap:8px;flex-wrap:wrap;margin-left:42px}
+.chat-chip{padding:5px 13px;border-radius:99px;border:1.5px solid var(--border);background:#fff;font-weight:500;font-size:12px;color:var(--primary)}
+.chat-chip.hover{background:var(--primary-light);border-color:var(--primary)}
+.voice{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.voice .pattern h3{display:flex;align-items:center;gap:8px}
+.voice ul{list-style:none;display:flex;flex-direction:column;gap:6px;margin-top:8px}
+.voice li{font-size:13px;line-height:1.55;color:var(--foreground)}
+.voice .do li::before{content:'✓ ';color:var(--success);font-weight:700}
+.voice .dont li::before{content:'✕ ';color:var(--destructive);font-weight:700}
+  /* Email */
+.email-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.email-card{background:#fff;border:1px solid var(--border);border-radius:10px;overflow:hidden;text-decoration:none;color:inherit;display:flex;flex-direction:column}
+.email-card:hover{border-color:var(--primary)}
+.email-card .th{background:#eef2f7;aspect-ratio:4/5;overflow:hidden;border-bottom:1px solid var(--border)}
+.email-card .th img{width:100%;display:block}
+.email-card .m{padding:10px 12px}
+.email-card .m b{font-size:12px;display:block}
+.email-card .m span{font-size:11px;color:var(--muted-fg)}
+.otp-demo{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px;width:100%;max-width:304px}
+.otp-demo div{background:#f5f7fa;border:1.5px solid #e2e8f0;border-radius:10px;padding:14px 0;text-align:center;font-family:'SF Mono',Menlo,Consolas,monospace;font-size:24px;font-weight:700;color:#005da7;line-height:1}
+.email-hero{width:100%;max-width:420px;border-radius:14px;overflow:hidden;background:#fff;box-shadow:0 6px 24px rgba(15,42,96,.08)}
+.email-hero .band{background:linear-gradient(135deg,#005da7 0%,#1e3a8a 100%);color:#fff;padding:22px 26px}
+.email-hero .band small{display:block;font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.72);margin-bottom:4px}
+.email-hero .band b{font-size:20px;letter-spacing:-.4px}
+.email-hero .warn{margin:18px 26px 22px;background:#fef3c7;border-radius:10px;padding:12px 14px;font-size:12px;color:#7c5a09;font-weight:500}
+.email-hero .foot{background:#f8fafc;border-top:1px solid #eef1f5;padding:14px 26px;font-size:11px;color:#64748b}
+  /* Footer */
+  footer.ds-foot { margin-top: 64px; padding-top: 24px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: var(--muted-fg); }
+  footer.ds-foot a { color: var(--primary); text-decoration: none; font-weight: 600; }
+  footer.ds-foot a:hover { text-decoration: underline; }
+
+  @media (max-width: 900px) {
+    .layout { grid-template-columns: 1fr; }
+    aside.toc { position: relative; height: auto; border-right: none; border-bottom: 1px solid var(--border); }
+    main { padding: 32px 24px 64px; }
+    .swatch-grid, .icon-grid { grid-template-columns: repeat(3, 1fr); }
+    .voice,.email-grid{grid-template-columns:1fr 1fr}
+    .three, .comp-row, .pattern-grid, .file-list { grid-template-columns: 1fr; }
+    .grad-card { flex-direction: column; }
+    .grad-meta { width: 100%; border-left: none; border-top: 1px solid var(--border); }
+    .type-row { grid-template-columns: 1fr; }
+  }
+.asst-spark{position:relative;width:60px;height:72px;flex-shrink:0}.asst-spark img{position:relative;height:72px;display:block;margin:0 auto;filter:drop-shadow(0 6px 10px rgba(0,93,167,.28));transform-origin:50% 90%;animation:sp-sway 4.5s ease-in-out infinite}.asst-spark.still img{animation:none}.asst-spark .glow{position:absolute;left:6px;right:6px;bottom:-2px;height:14px;border-radius:50%;animation:sp-glow 6s ease-in-out infinite}@keyframes sp-sway{0%,100%{transform:rotate(-4deg)}25%{transform:rotate(2deg) translateY(-3px)}50%{transform:rotate(4deg)}75%{transform:rotate(-2deg) translateY(-2px)}}@keyframes sp-glow{0%,100%{background:rgba(20,184,166,.18);box-shadow:0 0 10px 2px rgba(20,184,166,.18)}50%{background:rgba(20,184,166,.32);box-shadow:0 0 18px 6px rgba(34,211,238,.35)}}</style>
+</head>
+<body>
+
+<div class="layout">
+
+  <!-- ── TOC ───────────────────────────────────────────────── -->
+  <aside class="toc">
+    <div class="toc-brand">
+      <img src="../../public/logos/PulseLogo.webp" alt="Pulse"/>
+      <div>
+        <div class="name">Pulse</div>
+        <div class="tag">Design System</div>
+      </div>
+    </div>
+
+    <div class="toc-section">
+      <h4>Foundations</h4>
+      <a href="#colors">Color</a>
+      <a href="#type">Typography</a>
+      <a href="#space">Spacing &amp; Shadow</a>
+      <a href="#icons">Iconography</a>
+    </div>
+
+    <div class="toc-section">
+      <h4>Components</h4>
+      <a href="#buttons">Buttons</a>
+      <a href="#inputs">Inputs</a>
+      <a href="#badges">Badges &amp; Avatars</a>
+      <a href="#cards">Cards</a>
+      <a href="#nav">Sidebar Nav</a>
+    </div>
+    <div class="toc-section">
+      <h4>Assistant</h4>
+      <a href="#assistant">Companion Character</a>
+      <a href="#chat">Chat Components</a>
+      <a href="#voice">Voice &amp; Tone</a>
+    </div>
+    <div class="toc-section">
+      <h4>Email</h4>
+      <a href="#email">Email System</a>
+    </div>
+
+    <div class="toc-section">
+      <h4>Patterns</h4>
+      <a href="#patterns">Layout &amp; Behavior</a>
+      <a href="#files">File Map</a>
+    </div>
+
+    <a href="Pulse%20Prototype.html" target="_self" class="toc-back">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+      Back to Prototype
+    </a>
+  </aside>
+
+  <!-- ── Main ──────────────────────────────────────────────── -->
+  <main>
+
+    <header class="hero">
+      <span class="kicker">v1.1 · Reference</span>
+      <h1>Pulse Design System</h1>
+      <p>The exact tokens, type scale, components and patterns used by the Pulse prototype. Every value here mirrors the <code>const C</code> object in <code>sidebar.jsx</code> and is duplicated inline across each screen file.</p>
+    </header>
+
+    <!-- ── Colors ─────────────────────────────────────────── -->
+    <section id="colors">
+      <div class="sec-head">
+        <div class="sec-num">01 · Foundations</div>
+        <h2>Color</h2>
+        <p>A trust-forward blue anchors the brand. Teal supports positive states; purple is reserved for AI moments. Status colors are used sparingly.</p>
+      </div>
+
+      <div class="eyebrow">Surfaces &amp; Text</div>
+      <div class="swatch-grid">
+        <div class="swatch bordered"><div class="swatch-chip" style="background:#f5f7fa"></div><div class="swatch-meta"><div class="swatch-name">bg</div><div class="swatch-hex">#f5f7fa</div><div class="swatch-use">App background</div></div></div>
+        <div class="swatch bordered"><div class="swatch-chip" style="background:#ffffff"></div><div class="swatch-meta"><div class="swatch-name">card</div><div class="swatch-hex">#ffffff</div><div class="swatch-use">Card / surface</div></div></div>
+        <div class="swatch"><div class="swatch-chip" style="background:#1a2b3c"></div><div class="swatch-meta"><div class="swatch-name">foreground</div><div class="swatch-hex">#1a2b3c</div><div class="swatch-use">Primary text</div></div></div>
+        <div class="swatch"><div class="swatch-chip" style="background:#64748b"></div><div class="swatch-meta"><div class="swatch-name">mutedFg</div><div class="swatch-hex">#64748b</div><div class="swatch-use">Secondary text</div></div></div>
+        <div class="swatch bordered"><div class="swatch-chip" style="background:#eef1f5"></div><div class="swatch-meta"><div class="swatch-name">muted</div><div class="swatch-hex">#eef1f5</div><div class="swatch-use">Tags, chips</div></div></div>
+        <div class="swatch bordered"><div class="swatch-chip" style="background:#e2e8f0"></div><div class="swatch-meta"><div class="swatch-name">border</div><div class="swatch-hex">#e2e8f0</div><div class="swatch-use">Borders, dividers</div></div></div>
+        <div class="swatch bordered"><div class="swatch-chip" style="background:#ffffff"></div><div class="swatch-meta"><div class="swatch-name">sidebarBg</div><div class="swatch-hex">#ffffff</div><div class="swatch-use">Sidebar</div></div></div>
+        <div class="swatch"><div class="swatch-chip" style="background:#183e9f"></div><div class="swatch-meta"><div class="swatch-name">logo</div><div class="swatch-hex">#183e9f</div><div class="swatch-use">Wordmark</div></div></div>
+      </div>
+
+      <div class="eyebrow">Primary — Trust Blue</div>
+      <div class="swatch-grid">
+        <div class="swatch"><div class="swatch-chip" style="background:#4a90e2"></div><div class="swatch-meta"><div class="swatch-name">primary</div><div class="swatch-hex">#4a90e2</div><div class="swatch-use">Brand blue, accents</div></div></div>
+        <div class="swatch"><div class="swatch-chip" style="background:#005da7"></div><div class="swatch-meta"><div class="swatch-name">primaryGradStart</div><div class="swatch-hex">#005da7</div><div class="swatch-use">CTA grad start</div></div></div>
+        <div class="swatch"><div class="swatch-chip" style="background:#2976c7"></div><div class="swatch-meta"><div class="swatch-name">primaryGradEnd</div><div class="swatch-hex">#2976c7</div><div class="swatch-use">CTA grad end</div></div></div>
+        <div class="swatch"><div class="swatch-chip" style="background:#e8f4fd"></div><div class="swatch-meta"><div class="swatch-name">primaryLight</div><div class="swatch-hex">#e8f4fd</div><div class="swatch-use">Tint, selected nav</div></div></div>
+      </div>
+
+      <div class="eyebrow">CTA Gradient</div>
+      <div class="grad-card">
+        <div class="grad-preview"><div class="pill">Get Started</div></div>
+        <div class="grad-meta">
+          <strong>Gradient</strong>
+          <code>linear-gradient(to right, #005da7, #2976c7)</code>
+          <strong style="margin-top:6px;">Shadow</strong>
+          <code>0 4px 12px rgba(0,93,167,.25)</code>
+        </div>
+      </div>
+
+      <div class="eyebrow">Secondary &amp; Accent</div>
+      <div class="swatch-grid">
+        <div class="swatch"><div class="swatch-chip" style="background:#006b5b"></div><div class="swatch-meta"><div class="swatch-name">secondary</div><div class="swatch-hex">#006b5b</div><div class="swatch-use">Teal — positives</div></div></div>
+        <div class="swatch"><div class="swatch-chip" style="background:#e6f5f2"></div><div class="swatch-meta"><div class="swatch-name">secondaryLight</div><div class="swatch-hex">#e6f5f2</div><div class="swatch-use">Secondary tint</div></div></div>
+        <div class="swatch"><div class="swatch-chip" style="background:#7c4dff"></div><div class="swatch-meta"><div class="swatch-name">accent</div><div class="swatch-hex">#7c4dff</div><div class="swatch-use">AI moments</div></div></div>
+        <div class="swatch"><div class="swatch-chip" style="background:#f3eeff"></div><div class="swatch-meta"><div class="swatch-name">accentLight</div><div class="swatch-hex">#f3eeff</div><div class="swatch-use">Accent tint</div></div></div>
+      </div>
+
+      <div class="eyebrow">Status</div>
+      <div class="swatch-grid">
+        <div class="swatch"><div class="swatch-chip" style="background:#10b981"></div><div class="swatch-meta"><div class="swatch-name">success</div><div class="swatch-hex">#10b981</div><div class="swatch-use">Streaks, confirmation</div></div></div>
+        <div class="swatch"><div class="swatch-chip" style="background:#f59e0b"></div><div class="swatch-meta"><div class="swatch-name">warning</div><div class="swatch-hex">#f59e0b</div><div class="swatch-use">Caution</div></div></div>
+        <div class="swatch"><div class="swatch-chip" style="background:#ef4444"></div><div class="swatch-meta"><div class="swatch-name">destructive</div><div class="swatch-hex">#ef4444</div><div class="swatch-use">Errors, delete</div></div></div>
+        <div class="swatch"><div class="swatch-chip" style="background:#e8f4fd"></div><div class="swatch-meta"><div class="swatch-name">sidebarAccent</div><div class="swatch-hex">#e8f4fd</div><div class="swatch-use">Active nav bg</div></div></div>
+      </div>
+      <div class="eyebrow">Data Viz — Check-in Metrics</div>
+      <div class="swatch-grid">
+        <div class="swatch"><div class="swatch-chip" style="background:linear-gradient(to right,#6366f1 50%,#c7d2fe 50%)"></div><div class="swatch-meta"><div class="swatch-name">mood / moodLight</div><div class="swatch-hex">#6366f1 · #c7d2fe</div><div class="swatch-use">Mood lines &amp; fills</div></div></div>
+        <div class="swatch"><div class="swatch-chip" style="background:linear-gradient(to right,#f59e0b 50%,#fde68a 50%)"></div><div class="swatch-meta"><div class="swatch-name">pain / painLight</div><div class="swatch-hex">#f59e0b · #fde68a</div><div class="swatch-use">Pain level series</div></div></div>
+        <div class="swatch"><div class="swatch-chip" style="background:linear-gradient(to right,#14b8a6 50%,#99f6e4 50%)"></div><div class="swatch-meta"><div class="swatch-name">energy / energyLight</div><div class="swatch-hex">#14b8a6 · #99f6e4</div><div class="swatch-use">Energy series</div></div></div>
+        <div class="swatch"><div class="swatch-chip" style="background:linear-gradient(135deg,#005da7,#1e3a8a)"></div><div class="swatch-meta"><div class="swatch-name">emailHero</div><div class="swatch-hex">#005da7 → #1e3a8a</div><div class="swatch-use">Email hero band only</div></div></div>
+      </div>
+    </section>
+
+    <!-- ── Typography ─────────────────────────────────────── -->
+    <section id="type">
+      <div class="sec-head">
+        <div class="sec-num">02 · Foundations</div>
+        <h2>Typography</h2>
+        <p>One typeface across the entire product — weight and size do the structural work.</p>
+      </div>
+
+      <div class="font-card">
+        <div class="font-aa">Aa</div>
+        <div>
+          <h3>Inter</h3>
+          <div class="source">Google Fonts · 400 / 500 / 600 / 700 / 800</div>
+          <div class="weight-row">
+            <div class="weight-item" style="font-weight:400;">Regular<span>400</span></div>
+            <div class="weight-item" style="font-weight:500;">Medium<span>500</span></div>
+            <div class="weight-item" style="font-weight:600;">Semibold<span>600</span></div>
+            <div class="weight-item" style="font-weight:700;">Bold<span>700</span></div>
+            <div class="weight-item" style="font-weight:800;">Extrabold<span>800</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="type-row">
+        <div><div class="type-name">Hero / Page Title</div><div class="type-tag">h1</div></div>
+        <div style="font-size:32px; font-weight:800; letter-spacing:-0.02em; line-height:1.15;">A calmer recovery, day by day</div>
+        <div class="type-spec">36–44px · 800<br/>tracking -0.02em<br/>line 1.15</div>
+      </div>
+      <div class="type-row">
+        <div><div class="type-name">Section Heading</div><div class="type-tag">h2</div></div>
+        <div style="font-size:22px; font-weight:700; letter-spacing:-0.018em;">Your recent reflections</div>
+        <div class="type-spec">24–28px · 700<br/>tracking -0.018em</div>
+      </div>
+      <div class="type-row">
+        <div><div class="type-name">Card Title</div><div class="type-tag">h3</div></div>
+        <div style="font-size:17px; font-weight:700;">Today's check-in</div>
+        <div class="type-spec">16–18px · 600–700</div>
+      </div>
+      <div class="type-row">
+        <div><div class="type-name">Body</div><div class="type-tag">p</div></div>
+        <div style="font-size:15px; line-height:1.55;">Track your mood, surface patterns and celebrate small wins.</div>
+        <div class="type-spec">14–15px · 400<br/>line 1.55</div>
+      </div>
+      <div class="type-row">
+        <div><div class="type-name">Small / Meta</div><div class="type-tag">small</div></div>
+        <div style="font-size:13px; color: var(--muted-fg);">Last updated 2 hours ago · Visible to you only</div>
+        <div class="type-spec">12–13px · color mutedFg</div>
+      </div>
+      <div class="type-row">
+        <div><div class="type-name">Eyebrow / Label</div><div class="type-tag">.eyebrow</div></div>
+        <div style="font-size:11px; font-weight:600; color: var(--muted-fg); letter-spacing:0.5px; text-transform:uppercase;">DAILY PRACTICE</div>
+        <div class="type-spec">11px · 600<br/>uppercase, +0.5px</div>
+      </div>
+    </section>
+
+    <!-- ── Spacing ───────────────────────────────────────── -->
+    <section id="space">
+      <div class="sec-head">
+        <div class="sec-num">03 · Foundations</div>
+        <h2>Spacing, Radii &amp; Shadows</h2>
+        <p>A soft, rounded geometry. Shadows are restrained — most surfaces sit on a 1px border instead of a heavy drop.</p>
+      </div>
+
+      <div class="three">
+        <div class="panel">
+          <h3>Radii</h3>
+          <div class="row"><div class="shape" style="border-radius:6px"></div><div class="info">Input small · <code>6px</code></div></div>
+          <div class="row"><div class="shape" style="border-radius:8px"></div><div class="info">Button · Input · <code>8px</code></div></div>
+          <div class="row"><div class="shape" style="border-radius:10px"></div><div class="info">Icon tile · <code>10px</code></div></div>
+          <div class="row"><div class="shape" style="border-radius:12px"></div><div class="info">Card · <code>12px</code></div></div>
+          <div class="row"><div class="shape" style="border-radius:14px"></div><div class="info">Large card · <code>14px</code></div></div>
+          <div class="row"><div class="shape" style="border-radius:99px"></div><div class="info">Pill · avatar · <code>99px</code></div></div>
+        </div>
+
+        <div class="panel">
+          <h3>Shadows</h3>
+          <div class="row"><div class="shadow-shape shadow-1"></div><div class="info">Resting card<br/><code>0 1px 3px rgba(0,0,0,.04)</code></div></div>
+          <div class="row"><div class="shadow-shape shadow-2"></div><div class="info">Primary CTA<br/><code>0 4px 12px rgba(0,93,167,.25)</code></div></div>
+          <div class="row"><div class="shadow-shape shadow-3"></div><div class="info">Floating / modal<br/><code>0 8px 32px rgba(0,0,0,.15)</code></div></div>
+        </div>
+
+        <div class="panel">
+          <h3>Spacing scale</h3>
+          <div class="row"><div class="shape" style="width:8px; height:12px;"></div><div class="info"><code>8px</code> · icon ↔ label</div></div>
+          <div class="row"><div class="shape" style="width:12px; height:12px;"></div><div class="info"><code>12px</code> · chip padding</div></div>
+          <div class="row"><div class="shape" style="width:16px; height:12px;"></div><div class="info"><code>16px</code> · card gap</div></div>
+          <div class="row"><div class="shape" style="width:24px; height:12px;"></div><div class="info"><code>24px</code> · card padding</div></div>
+          <div class="row"><div class="shape" style="width:32px; height:12px;"></div><div class="info"><code>32px</code> · screen edge</div></div>
+          <div class="row"><div class="shape" style="width:48px; height:12px;"></div><div class="info"><code>48px</code> · between sections</div></div>
+          <div style="margin-top:16px; padding-top:12px; border-top:1px solid var(--border); font-size:12px; color:var(--muted-fg); line-height:1.7;">
+            <div><strong style="color:var(--foreground);">Sidebar</strong> · 256px fixed</div>
+            <div><strong style="color:var(--foreground);">Max content</strong> · 880–1280px</div>
+            <div><strong style="color:var(--foreground);">Scrollbar</strong> · 6px, #cbd5e1</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Icons ──────────────────────────────────────────── -->
+    <section id="icons">
+      <div class="sec-head">
+        <div class="sec-num">04 · Foundations</div>
+        <h2>Iconography</h2>
+        <p>Lucide-style line icons. 2px stroke, round caps and joins. Default size 18–20px; inherits text color; never filled.</p>
+      </div>
+
+      <div class="icon-grid">
+        <div class="icon-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg><div class="lbl">layoutDashboard</div></div>
+        <div class="icon-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><polyline points="9 16 11 18 15 14"/></svg><div class="lbl">calendarCheck</div></div>
+        <div class="icon-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg><div class="lbl">trendingUp</div></div>
+        <div class="icon-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="9" y1="18" x2="15" y2="18"/><line x1="10" y1="22" x2="14" y2="22"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"/></svg><div class="lbl">lightbulb</div></div>
+        <div class="icon-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg><div class="lbl">target</div></div>
+        <div class="icon-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><div class="lbl">users</div></div>
+        <div class="icon-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><div class="lbl">messageCircle</div></div>
+        <div class="icon-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8"/><rect x="4" y="8" width="16" height="12" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg><div class="lbl">bot</div></div>
+        <div class="icon-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><div class="lbl">user</div></div>
+        <div class="icon-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg><div class="lbl">settings</div></div>
+        <div class="icon-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg><div class="lbl">bell</div></div>
+        <div class="icon-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg><div class="lbl">send</div></div>
+        <div class="icon-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><div class="lbl">search</div></div>
+        <div class="icon-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg><div class="lbl">plus</div></div>
+        <div class="icon-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg><div class="lbl">arrowRight</div></div>
+        <div class="icon-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg><div class="lbl">flame</div></div>
+        <div class="icon-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg><div class="lbl">smile</div></div>
+        <div class="icon-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3z"/></svg><div class="lbl">sparkles</div></div>
+        <div class="icon-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><div class="lbl">check</div></div>
+        <div class="icon-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><div class="lbl">close</div></div>
+        <div class="icon-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><div class="lbl">lock</div></div>
+        <div class="icon-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg><div class="lbl">eye</div></div>
+        <div class="icon-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><div class="lbl">mail</div></div>
+        <div class="icon-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><div class="lbl">shield</div></div>
+        <div class="icon-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg><div class="lbl">award</div></div>
+        <div class="icon-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg><div class="lbl">leaf</div></div>
+        <div class="icon-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg><div class="lbl">heart</div></div>
+        <div class="icon-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg><div class="lbl">share2</div></div>
+        <div class="icon-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><div class="lbl">globe</div></div>
+        <div class="icon-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg><div class="lbl">logout</div></div>
+        <div class="icon-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg><div class="lbl">phone</div></div>
+        <div class="icon-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg><div class="lbl">helpCircle</div></div>
+      </div>
+      <div style="margin-top: 14px; font-size: 12px; color: var(--muted-fg);">+ 15 more in <code style="font-family:'JetBrains Mono',monospace;">sidebar.jsx → Icon</code>. Replace with <code style="font-family:'JetBrains Mono',monospace;">lucide-react</code> in production.</div>
+    </section>
+
+    <!-- ── Buttons ────────────────────────────────────────── -->
+    <section id="buttons">
+      <div class="sec-head">
+        <div class="sec-num">05 · Components</div>
+        <h2>Buttons</h2>
+        <p>Radius 8, weight 600. The primary CTA carries the brand gradient. Hover shifts opacity; nothing scales.</p>
+      </div>
+
+      <div class="comp">
+        <div class="comp-head"><span class="name">Variants</span><span class="meta">radius 8 · 600 weight</span></div>
+        <div class="comp-body">
+          <button class="btn btn-primary">Get Started</button>
+          <button class="btn btn-secondary">Cancel</button>
+          <button class="btn btn-ghost">Learn more →</button>
+          <button class="btn btn-destructive">Delete account</button>
+        </div>
+      </div>
+
+      <div class="comp">
+        <div class="comp-head"><span class="name">With icon</span><span class="meta">gap 8 between icon &amp; label</span></div>
+        <div class="comp-body">
+          <button class="btn btn-primary" style="display:inline-flex; align-items:center; gap:8px;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            New check-in
+          </button>
+          <button class="btn btn-secondary" style="display:inline-flex; align-items:center; gap:8px;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+            Share progress
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Inputs ──────────────────────────────────────────── -->
+    <section id="inputs">
+      <div class="sec-head">
+        <div class="sec-num">05 · Components</div>
+        <h2>Inputs</h2>
+        <p>Bordered fields with optional leading icon. Focus lifts border to primary with a 3px ring at 15% opacity.</p>
+      </div>
+
+      <div class="comp-row">
+        <div class="comp">
+          <div class="comp-head"><span class="name">Default</span><span class="meta">border #e2e8f0</span></div>
+          <div class="comp-body">
+            <div class="field">
+              <label class="field-label">Email address</label>
+              <div class="field-input">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                <span class="placeholder">you@example.com</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="comp">
+          <div class="comp-head"><span class="name">Focused</span><span class="meta">ring 3px @ 0.15</span></div>
+          <div class="comp-body">
+            <div class="field">
+              <label class="field-label">Email address</label>
+              <div class="field-input focused">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                <span>alex@pulse.app</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="comp">
+        <div class="comp-head"><span class="name">Mood Slider</span><span class="meta">18px thumb · 2.5px white ring</span></div>
+        <div class="comp-body col">
+          <div style="font-size: 12px; color: var(--muted-fg); font-weight: 600;">How are you feeling today?</div>
+          <div class="range-demo">
+            <input type="range" min="1" max="10" value="7"/>
+            <div class="range-scale"><span>1 · Low</span><span>5</span><span>10 · Great</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Badges & Avatars ──────────────────────────────────── -->
+    <section id="badges">
+      <div class="sec-head">
+        <div class="sec-num">05 · Components</div>
+        <h2>Badges &amp; Avatars</h2>
+        <p>Pill radius, 11px / 600, color-tinted backgrounds. Avatars use letter initials on the matching tint.</p>
+      </div>
+
+      <div class="comp">
+        <div class="comp-head"><span class="name">Tinted badges</span><span class="meta">radius 99</span></div>
+        <div class="comp-body">
+          <span class="badge b-primary">PRIMARY</span>
+          <span class="badge b-secondary">SECONDARY</span>
+          <span class="badge b-accent">ACCENT</span>
+          <span class="badge b-neutral">NEUTRAL</span>
+        </div>
+      </div>
+
+      <div class="comp">
+        <div class="comp-head"><span class="name">Status</span><span class="meta">dot prefix</span></div>
+        <div class="comp-body">
+          <span class="badge b-success"><span class="badge-dot"></span>On track</span>
+          <span class="badge b-secondary"><span class="badge-dot"></span>Day 47</span>
+          <span class="badge b-warning"><span class="badge-dot"></span>Action needed</span>
+          <span class="badge b-destructive"><span class="badge-dot"></span>Missed</span>
+        </div>
+      </div>
+
+      <div class="comp">
+        <div class="comp-head"><span class="name">Avatars</span><span class="meta">letter on tint · 36px / 99 radius</span></div>
+        <div class="comp-body">
+          <div class="avatar" style="background:var(--primary-light); color:var(--sidebar-accent-fg);">AR</div>
+          <div class="avatar" style="background:var(--secondary-light); color:var(--secondary);">MK</div>
+          <div class="avatar" style="background:var(--accent-light); color:var(--accent);">JT</div>
+          <div class="avatar" style="background:var(--muted); color:var(--muted-fg);">+4</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Cards ──────────────────────────────────────────── -->
+    <section id="cards">
+      <div class="sec-head">
+        <div class="sec-num">05 · Components</div>
+        <h2>Cards</h2>
+        <p>Default treatment: 1px border + 14px radius + optional resting shadow. Use the gradient surface for primary CTAs only.</p>
+      </div>
+
+      <div class="comp-row">
+        <div class="comp">
+          <div class="comp-head"><span class="name">Stat card</span><span class="meta">card + subtle shadow</span></div>
+          <div class="comp-body">
+            <div class="stat">
+              <div class="stat-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
+              </div>
+              <div class="num">47 days</div>
+              <div class="lbl">Longest streak yet</div>
+            </div>
+          </div>
+        </div>
+        <div class="comp">
+          <div class="comp-head"><span class="name">Gradient CTA</span><span class="meta">primary gradient surface</span></div>
+          <div class="comp-body">
+            <div style="width:220px; padding:18px; border-radius:12px; color:#fff; background:linear-gradient(135deg,#005da7,#2976c7); box-shadow:0 4px 12px rgba(0,93,167,.25);">
+              <div style="font-size:10px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; opacity:0.85;">Today</div>
+              <div style="font-size:18px; font-weight:700; margin-top:6px; line-height:1.3;">How are you feeling?</div>
+              <button style="margin-top:14px; padding:7px 14px; background:#fff; color:var(--sidebar-accent-fg); border-radius:7px; border:none; font-weight:600; font-size:12px;">Start →</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Sidebar Nav ────────────────────────────────────── -->
+    <section id="nav">
+      <div class="sec-head">
+        <div class="sec-num">06 · Components</div>
+        <h2>Sidebar Navigation</h2>
+        <p>256px fixed sidebar on every authenticated screen. Active item gets the accent tint and a heavier weight.</p>
+      </div>
+
+      <div class="comp">
+        <div class="comp-head"><span class="name">Three states</span><span class="meta">default · hover · active</span></div>
+        <div class="comp-body">
+          <div class="nav-demo">
+            <div class="nav-item active">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+              <span>Dashboard</span>
+            </div>
+            <div class="nav-item hover">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><polyline points="9 16 11 18 15 14"/></svg>
+              <span>Daily Check-In</span>
+            </div>
+            <div class="nav-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+              <span>Progress</span>
+            </div>
+            <div class="nav-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+              <span>Recovery Goals</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="assistant">
+      <div class="sec-head">
+        <div class="sec-num">07 · Assistant</div>
+        <h2>Companion Character</h2>
+        <p>Spark — a glowing droplet with a heartbeat line, our AI recovery companion. It floats bottom-right on every authenticated screen (except AI Chat), cycles through typed invitations, and opens the chat on tap. Source: <code style="font-family:'JetBrains Mono',monospace;font-size:12px;">live_agent.jsx</code>.</p>
+      </div>
+      <div class="comp">
+        <div class="comp-head"><span class="name">Live widget</span><span class="meta">bubble 236px · Spark 72px tall · fixed right 24 / bottom 24</span></div>
+        <div class="asst-stage">
+          <div class="asst-bubble"><span class="x"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span>Need someone to talk to? I'm right here for you.<span class="caret">▍</span></div>
+          <div class="asst-spark"><div class="glow"></div><img src="spark.webp" alt="Spark"></div>
+        </div>
+      </div>
+      <div class="three">
+        <div class="panel">
+          <h3>Anatomy</h3>
+          <div class="info" style="line-height:1.8;">
+            <div><strong>Spark</strong> · <code>spark.webp</code>, transparent WebP, blue→teal droplet</div>
+            <div><strong>Depth</strong> · <code>drop-shadow(0 6px 10px rgba(0,93,167,.28))</code></div>
+            <div><strong>Glow pad</strong> · teal ellipse under the tip, breathes on a 6s loop</div>
+            <div><strong>Avatar</strong> · 32px circle, primary-light bg, Spark at 24px</div>
+            <div><strong>Bubble</strong> · white, radius 16, <code>0 8px 28px rgba(20,40,70,.16)</code>, 13.5px text</div>
+          </div>
+        </div>
+        <div class="panel">
+          <h3>Motion</h3>
+          <div class="info" style="line-height:1.8;">
+            <div><strong>Sway</strong> · ±4° rotate, −3px lift · 4.5s loop</div>
+            
+            <div><strong>Glow pad</strong> · breathe, 6s loop</div>
+            <div><strong>Squash</strong> · 150ms, random every 2.2–4.8s</div>
+            <div><strong>Typing</strong> · 26–50ms / char, hold 3.4s, swap 1s</div>
+            <div><strong>Bubble in</strong> · <code>la-pop</code> 0.3s, 6px rise + scale .96</div>
+          </div>
+        </div>
+        <div class="panel">
+          <h3>Sizes</h3>
+          <div class="asst-sizes">
+            <div><div class="chat-av" style="background:var(--primary-light);"><img src="spark.webp" alt="Spark" style="height:24px;display:block;"></div><div class="cap">32 · chat</div></div>
+            <div><div class="asst-spark still"><img src="spark.webp" alt="Spark"></div><div class="cap">72 · floating</div></div>
+          </div>
+          <div style="margin-top:16px;padding-top:12px;border-top:1px solid var(--border);font-size:12px;color:var(--muted-fg);line-height:1.7;">
+            <div>Hidden on the AI Chat page</div>
+            <div>Dismiss (×) hides it for the session</div>
+            <div>Mobile: right 14 / bottom 84, bubble 200px</div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="chat">
+      <div class="sec-head">
+        <div class="sec-num">07 · Assistant</div>
+        <h2>Chat Components</h2>
+        <p>Assistant messages sit on white with a squared top-left corner; the user's sit on primaryGradStart with a squared top-right. Quick-reply chips follow the assistant message, indented past the avatar.</p>
+      </div>
+      <div class="comp">
+        <div class="comp-head"><span class="name">Conversation</span><span class="meta">bubble radius 14 / 4 · 14px · line 1.65</span></div>
+        <div class="comp-body col" style="align-items:center;">
+          <div class="chat">
+            <div>
+              <div class="chat-row ai"><div class="chat-av" style="background:var(--primary-light);"><img src="spark.webp" alt="Spark" style="height:24px;display:block;"></div><div><div class="chat-msg">Hello Alex. How are you feeling in your recovery journey this morning?</div><div class="chat-meta">ASSISTANT • 09:12</div></div></div>
+            </div>
+            <div class="chat-row me"><div class="chat-av" style="background:var(--primary-light);color:var(--primary);">AR</div><div><div class="chat-msg">A bit restless — I didn't sleep well.</div><div class="chat-meta">YOU • 09:13</div></div></div>
+            <div>
+              <div class="chat-row ai"><div class="chat-av" style="background:var(--primary-light);"><img src="spark.webp" alt="Spark" style="height:24px;display:block;"></div><div><div class="chat-msg">That's very common. Would you like to try a quick grounding exercise?</div><div class="chat-meta">ASSISTANT • 09:13</div></div></div>
+              <div class="chat-chips" style="margin-top:8px;"><span class="chat-chip">Grounding exercise</span><span class="chat-chip hover">Talk it through</span><span class="chat-chip">Not now</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="voice">
+      <div class="sec-head">
+        <div class="sec-num">07 · Assistant</div>
+        <h2>Voice &amp; Tone</h2>
+        <p>A compassionate recovery companion — warm, supportive, never clinical. Short replies that end with a gentle next step.</p>
+      </div>
+      <div class="voice">
+        <div class="pattern do"><h3>Do</h3><ul><li>Name the feeling back: "Restlessness is very common."</li><li>Offer one concrete option or a choice of two</li><li>Celebrate small steps</li><li>Point to Crisis / 988 when risk appears</li></ul></div>
+        <div class="pattern dont"><h3>Don't</h3><ul><li>Diagnose or give clinical advice</li><li>Lecture or stack multiple questions</li><li>Use emoji or exclamation-heavy cheer</li><li>Refer to itself as a person or therapist</li></ul></div>
+      </div>
+    </section>
+    <section id="email">
+      <div class="sec-head">
+        <div class="sec-num">08 · Email</div>
+        <h2>Email System</h2>
+        <p>Transactional emails use table layouts, inline styles and a system font stack (Inter doesn't load reliably in mail clients). The Gradient Hero direction is the one in use.</p>
+      </div>
+      <div class="email-grid">
+        <a class="email-card" href="emails/otp-minimal.html" target="_self"><div class="th"><img src="emails/thumbs/minimal.png" alt="Minimal email"></div><div class="m"><b>Minimal</b><span>Typographic, no box</span></div></a>
+        <a class="email-card" href="emails/otp-classic.html" target="_self"><div class="th"><img src="emails/thumbs/classic.png" alt="Classic email"></div><div class="m"><b>Classic</b><span>Boxed code</span></div></a>
+        <a class="email-card" href="emails/otp-bold.html" target="_self"><div class="th"><img src="emails/thumbs/bold.png" alt="Bold email"></div><div class="m"><b>Bold</b><span>High-contrast card</span></div></a>
+        <a class="email-card" href="emails/otp-gradient-hero.html" target="_self" style="border-color:var(--primary);"><div class="th"><img src="emails/thumbs/gradient-hero.png" alt="Gradient Hero email"></div><div class="m"><b>Gradient Hero <span class="badge b-primary" style="padding:2px 7px;font-size:9px;margin-left:4px;">IN USE</span></b><span>Branded hero header</span></div></a>
+      </div>
+      <div class="comp-row" style="margin-top:14px;">
+        <div class="comp">
+          <div class="comp-head"><span class="name">Shell</span><span class="meta">560px · radius 18</span></div>
+          <div class="comp-body" style="background:#eef2f7;justify-content:center;">
+            <div class="email-hero">
+              <div class="band"><small>One-time password</small><b>Here's your code.</b></div>
+              <div class="warn">This code expires in 15 minutes. Do not share it with anyone.</div>
+              <div class="foot">Didn't request this code? Ignore this email.</div>
+            </div>
+          </div>
+        </div>
+        <div class="comp">
+          <div class="comp-head"><span class="name">OTP digits</span><span class="meta">mono 30px / 700 · primaryGradStart</span></div>
+          <div class="comp-body col" style="align-items:center;justify-content:center;">
+            <div class="otp-demo"><div>8</div><div>4</div><div>7</div><div>3</div><div>9</div><div>2</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="panel" style="margin-top:14px;">
+        <h3>Email tokens</h3>
+        <div class="file-list">
+          <div class="file"><code>Canvas</code><span>#eef2f7, 36px / 16px padding</span></div>
+          <div class="file"><code>Card</code><span>#fff, radius 18, 0 6px 24px rgba(15,42,96,.08)</span></div>
+          <div class="file"><code>Hero band</code><span>135deg #005da7 → #1e3a8a, 36 / 44px padding, solid #005da7 fallback</span></div>
+          <div class="file"><code>Logo tile</code><span>44px white tile, radius 11, 36px logo + 20px / 700 wordmark</span></div>
+          <div class="file"><code>Eyebrow</code><span>12px / 600, +0.14em, uppercase, white 72%</span></div>
+          <div class="file"><code>Heading</code><span>26px / 700, −0.4px</span></div>
+          <div class="file"><code>Body</code><span>15px, line 1.65, #475569</span></div>
+          <div class="file"><code>Warning callout</code><span>#fef3c7 bg, #7c5a09 text, radius 10</span></div>
+          <div class="file"><code>Footer</code><span>#f8fafc, border-top #eef1f5, 12px #64748b</span></div>
+          <div class="file"><code>Font stack</code><span>-apple-system, Segoe UI, Roboto, Helvetica, Arial</span></div>
+        </div>
+      </div>
+    </section>
+    <!-- ── Patterns ───────────────────────────────────────── -->
+    <section id="patterns">
+      <div class="sec-head">
+        <div class="sec-num">09 · Patterns</div>
+        <h2>Layout &amp; Behavior</h2>
+        <p>Conventions that thread the prototype together.</p>
+      </div>
+
+      <div class="pattern-grid">
+        <div class="pattern">
+          <h3>App shell</h3>
+          <p>256px fixed sidebar on the left for every authenticated screen. Content area at <code>marginLeft: 256</code> with its own scroll container. Auth screens (landing, login, signup, forgot) are full-bleed.</p>
+        </div>
+        <div class="pattern">
+          <h3>Active nav state</h3>
+          <p>Background <code>sidebarAccent</code>, foreground <code>sidebarAccentFg</code>, weight 600, radius 8. Hover uses the same tint at 50% opacity.</p>
+        </div>
+        <div class="pattern">
+          <h3>Page header</h3>
+          <p>Optional eyebrow pill → h1 (36px / 800 / -0.02em) → subtitle (15px mutedFg). Lives inside a white card with a bottom border.</p>
+        </div>
+        <div class="pattern">
+          <h3>Cards over shadows</h3>
+          <p>Default surface is a 1px border in <code>#e2e8f0</code> with optional resting shadow <code>0 1px 3px rgba(0,0,0,.04)</code>. Heavier drops only for modals.</p>
+        </div>
+        <div class="pattern">
+          <h3>Focus &amp; hover</h3>
+          <p>Inputs lift their border to <code>primary</code> with a 3px ring at 15% opacity. Cards never scale — they only tint or darken borders.</p>
+        </div>
+        <div class="pattern">
+          <h3>Routing</h3>
+          <p>Single-page React. Page state is a string held in root <code>App</code>, persisted to <code>localStorage</code> under <code>pulse_page</code>. Children receive an <code>onNavigate(id)</code> prop.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Files ─────────────────────────────────────────── -->
+    <section id="files">
+      <div class="sec-head">
+        <div class="sec-num">10 · Reference</div>
+        <h2>File Map</h2>
+        <p>Where each piece of the prototype lives. Tokens are duplicated inline in every screen — lift them into one source when porting.</p>
+      </div>
+
+      <div class="file-list">
+        <div class="file"><code>Pulse Prototype.html</code><span>Root HTML · loads React + Babel + every JSX · defines App, routing</span></div>
+        <div class="file"><code>sidebar.jsx</code><span>Sidebar + canonical <code>const C</code> + full Icon set</span></div>
+        <div class="file"><code>app_chrome.jsx</code><span>Shared AppFooter + PageHeader patterns</span></div>
+        <div class="file"><code>responsive.jsx</code><span>useBreakpoint — mobile / tablet / desktop</span></div>
+        <div class="file"><code>language_switcher.jsx</code><span>Language picker</span></div>
+        <div class="file"><code>auth.jsx</code><span>Landing · Login · Sign Up · AuthCard · InputField</span></div>
+        <div class="file"><code>onboarding.jsx</code><span>First-run onboarding flow</span></div>
+        <div class="file"><code>dashboard.jsx</code><span>Dashboard — greeting, metric cards, CTA, activity</span></div>
+        <div class="file"><code>checkin.jsx</code><span>Daily check-in flow — mood slider, feeling chips, journal</span></div>
+        <div class="file"><code>progress.jsx</code><span>Progress, streaks, milestone badges</span></div>
+        <div class="file"><code>insights.jsx</code><span>AI patterns — mood chart, trigger bars, heatmap</span></div>
+        <div class="file"><code>goals.jsx</code><span>Recovery goals — active list, add-goal CTA</span></div>
+        <div class="file"><code>community.jsx</code><span>Anonymous peer support feed with reactions</span></div>
+        <div class="file"><code>aichat.jsx</code><span>AI conversation — prompts, typing indicator</span></div>
+        <div class="file"><code>live_agent.jsx</code><span>Floating companion character + typed invitations</span></div>
+        <div class="file"><code>profile.jsx</code><span>Identity — avatar, bio, recovery start date</span></div>
+        <div class="file"><code>settings.jsx</code><span>Account, notifications, privacy, language</span></div>
+        <div class="file"><code>support.jsx</code><span>Help center — search, FAQ, crisis resources</span></div>
+        <div class="file"><code>legal.jsx</code><span>Privacy · Terms · Cookies · Accessibility</span></div>
+        <div class="file"><code>share_progress.jsx</code><span>Share modal from Profile / Progress</span></div>
+        <div class="file"><code>Pulse Email Designs.html</code><span>Email gallery → emails/otp-*.html</span></div>
+        <div class="file"><code>pulse-logo.webp</code><span>Wordmark / logo image</span></div>
+      </div>
+    </section>
+
+    <footer class="ds-foot">
+      <div>Pulse Design System · v1.1 · 2026</div>
+      <div><a href="Pulse%20Prototype.html" target="_self">Open the prototype →</a></div>
+    </footer>
+
+  </main>
+</div>
+
+<script>
+  // Preserve the preview token (query string) when navigating back to the prototype.
+  var qs = window.location.search;
+  if (qs) {
+    document.querySelectorAll('a[href^="Pulse%20Prototype.html"]').forEach(function (a) {
+      a.href = 'Pulse%20Prototype.html' + qs;
+    });
+  }
+</script>
+
+</body>
+</html>

@@ -7,7 +7,7 @@ import {
     setEnglishLocale
 } from '../helpers/mockApi'
 
-const API = '**/api/v1'
+const API = '**/api/*'
 
 test.describe('Login', () => {
     test.beforeEach(async ({ page }) => {

@@ -28,7 +28,8 @@ import {
 import { protectedRoutes } from '@/constants/proxyRoutes'
 import { authQueryKeys } from '@/constants/queryKeys'
 import { ROUTES } from '@/constants/routes'
-import { minuteInMs } from '@/constants/time'
+
+import { timings } from '@/config/timings'
 
 import { AuthContext } from './AuthContext'
 
@@ -48,12 +49,7 @@ export const AuthProvider = ({
         pathname as typeof PUBLIC_ROUTES[number]
     )
 
-    const {
-        user,
-        isLoading: queryLoading,
-        error,
-        refetch: refetchMe
-    } = useGetMe(!isPublicRoute)
+    const me = useGetMe(!isPublicRoute)
 
     const [mutationLoading, setMutationLoading] = useState(false)
     const [networkError, setNetworkError] =
@@ -118,47 +114,55 @@ export const AuthProvider = ({
     }, [])
 
     useEffect(() => {
-        if (error && isNetworkError(error)) {
-            const timer = setTimeout(refetchMe, 2 * minuteInMs)
+        if (me.status.error && isNetworkError(me.status.error)) {
+            const timer = setTimeout(
+                me.actions.refetch,
+                timings.NETWORK_RETRY_DELAY
+            )
             return () => clearTimeout(timer)
         }
-    }, [error, refetchMe])
+    }, [me.status.error, me.actions.refetch])
 
     useEffect(() => {
         const isProtected = protectedRoutes.some(
             (route) => pathname.startsWith(route)
         )
-        if (error && isUnauthorizedError(error) && isProtected) {
+        if (
+            me.status.error
+            && isUnauthorizedError(me.status.error)
+            && isProtected
+        ) {
             initiateLogout(pathname)
         }
-    }, [error, pathname])
+    }, [me.status.error, pathname])
 
     useEffect(() => {
-        const hasNetworkError = error && isNetworkError(error)
-        const isErrorChanged = error !== lastErrorRef.current
+        const hasNetworkError = me.status.error
+            && isNetworkError(me.status.error)
+        const isErrorChanged = me.status.error !== lastErrorRef.current
 
         if (isErrorChanged) {
-            lastErrorRef.current = error ?? null
+            lastErrorRef.current = me.status.error ?? null
 
             if (hasNetworkError) {
-                setTimeout(() => setNetworkError(error), 0)
-            } else if (!error) {
+                setTimeout(() => setNetworkError(me.status.error), 0)
+            } else if (!me.status.error) {
                 setTimeout(() => setNetworkError(null), 0)
             }
         }
-    }, [error])
+    }, [me.status.error])
 
-    if (error && !isUnauthorizedError(error))
-        console.error('Auth error:', error)
+    if (me.status.error && !isUnauthorizedError(me.status.error))
+        console.error('Auth error:', me.status.error)
 
-    const isLoading = queryLoading || mutationLoading
+    const isLoading = me.status.isLoading || mutationLoading
 
     return (
         <AuthContext.Provider
             value={{
-                user,
+                user: me.user,
                 isLoading,
-                error,
+                error: me.status.error,
                 networkError,
                 setUser,
                 setIsLoading,

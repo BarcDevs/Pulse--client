@@ -2,9 +2,7 @@ import { useTranslations } from 'next-intl'
 
 import { LegalSection } from '@/types/legal'
 
-import { Button } from '@/components/ui/button'
-
-import { cn } from '@/lib/utils'
+import { TabButton } from '@/components/shared/buttons/TabButton'
 
 import { legalLocales } from '@/locales/legalLocales'
 
@@ -22,26 +20,21 @@ export const LegalToc = ({
     const t = useTranslations()
 
     return (
-        <nav className={'sticky top-8 hidden md:block'}>
+        <nav className={'sticky top-8 hidden md:block print:hidden'}>
             <p className={'mb-3 text-[10px] font-bold uppercase tracking-widest text-muted-foreground'}>
                 {t(legalLocales.common.toc.onThisPage)}
             </p>
             <div className={'flex flex-col gap-0.5'}>
                 {sections.map((section, index) => (
-                    <Button
+                    <TabButton
                         key={section.id}
                         type={'button'}
-                        variant={'ghost'}
+                        variant={'side'}
+                        isActive={activeId === section.id}
                         onClick={() => onJumpTo(section.id)}
-                        className={cn(
-                            'h-auto w-full justify-start rounded-none border-s-2 px-3 py-1.5 text-start text-sm font-normal hover:bg-transparent',
-                            activeId === section.id
-                                ? 'border-primary font-semibold text-primary'
-                                : 'border-transparent text-muted-foreground hover:text-on-surface'
-                        )}
                     >
                         {`${index + 1}. ${section.title}`}
-                    </Button>
+                    </TabButton>
                 ))}
             </div>
         </nav>

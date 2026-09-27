@@ -16,11 +16,6 @@ export const LegalMetaBar = ({ updated }: LegalMetaBarProps) => {
                     <strong className={'text-on-surface'}>{t(legalLocales.common.metaBar.lastUpdated)}</strong>
                     {updated}
                 </span>
-                <span>{'·'}</span>
-                <span>
-                    <strong className={'text-on-surface'}>{t(legalLocales.common.metaBar.effectiveIn)}</strong>
-                    {t(legalLocales.common.metaBar.effectiveInValue)}
-                </span>
             </div>
         </div>
     )

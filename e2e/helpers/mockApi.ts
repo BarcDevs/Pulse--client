@@ -41,14 +41,14 @@ export const mockApiFallback = async (page: Page) => {
 }
 
 export const mockAuth = async (page: Page) => {
-    await page.route('**/api/v1/auth/me', (route) =>
+    await page.route('**/api/*/auth/me', (route) =>
         route.fulfill({
             status: 200,
             contentType: 'application/json',
             body: ok({ user: mockUser, _csrf: 'test-csrf' })
         })
     )
-    await page.route('**/api/v1/auth/refresh', (route) =>
+    await page.route('**/api/*/auth/refresh', (route) =>
         route.fulfill({
             status: 200,
             contentType: 'application/json',
@@ -58,26 +58,26 @@ export const mockAuth = async (page: Page) => {
 }
 
 export const mockUnauthenticated = async (page: Page) => {
-    await page.route('**/api/v1/auth/me', (route) =>
+    await page.route('**/api/*/auth/me', (route) =>
         route.fulfill(fail(401))
     )
-    await page.route('**/api/v1/auth/refresh', (route) =>
+    await page.route('**/api/*/auth/refresh', (route) =>
         route.fulfill(fail(401))
     )
-    await page.route('**/api/v1/auth/logout', (route) =>
+    await page.route('**/api/*/auth/logout', (route) =>
         route.fulfill({ status: 200, body: ok(null) })
     )
 }
 
 export const mockCheckIn = async (page: Page) => {
-    await page.route('**/api/v1/check-in', (route) =>
+    await page.route('**/api/*/check-in', (route) =>
         route.fulfill({
             status: 200,
             contentType: 'application/json',
             body: ok([])
         })
     )
-    await page.route('**/api/v1/check-in/stats', (route) =>
+    await page.route('**/api/*/check-in/stats', (route) =>
         route.fulfill({
             status: 200,
             contentType: 'application/json',
@@ -87,14 +87,14 @@ export const mockCheckIn = async (page: Page) => {
 }
 
 export const mockGoals = async (page: Page) => {
-    await page.route('**/api/v1/recovery-goals', (route) =>
+    await page.route('**/api/*/recovery-goals', (route) =>
         route.fulfill({
             status: 200,
             contentType: 'application/json',
             body: ok([])
         })
     )
-    await page.route('**/api/v1/recovery-goals/stats', (route) =>
+    await page.route('**/api/*/recovery-goals/stats', (route) =>
         route.fulfill({
             status: 200,
             contentType: 'application/json',
@@ -121,14 +121,14 @@ export const mockGoals = async (page: Page) => {
 }
 
 export const mockProfile = async (page: Page) => {
-    await page.route('**/api/v1/profile', (route) =>
+    await page.route('**/api/*/profile', (route) =>
         route.fulfill({
             status: 200,
             contentType: 'application/json',
             body: ok(null)
         })
     )
-    await page.route('**/api/v1/profile/list/activities', (route) =>
+    await page.route('**/api/*/profile/list/activities', (route) =>
         route.fulfill({
             status: 200,
             contentType: 'application/json',
@@ -138,7 +138,7 @@ export const mockProfile = async (page: Page) => {
 }
 
 export const mockInsights = async (page: Page) => {
-    await page.route('**/api/v1/insight/observation', (route) =>
+    await page.route('**/api/*/insight/observation', (route) =>
         route.fulfill({
             status: 200,
             contentType: 'application/json',

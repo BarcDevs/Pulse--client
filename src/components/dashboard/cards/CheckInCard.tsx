@@ -5,8 +5,9 @@ import { useTranslations } from 'next-intl'
 
 import { ArrowRight, ClipboardCheck } from 'lucide-react'
 
-import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
+import { Badge } from '@/components/shared/badges/Badge'
+import { Button } from '@/components/shared/buttons/Button'
+import { GradientCard } from '@/components/shared/cards/GradientCard'
 
 import { ROUTES } from '@/constants/routes'
 
@@ -16,12 +17,15 @@ export const DashboardCheckInCard = () => {
     const t = useTranslations()
 
     return (
-        <div
-            className={'relative overflow-hidden rounded-2xl bg-linear-to-r from-primary-gradient-start to-primary-gradient-end p-6 text-white'}
+        <GradientCard
+            className={'relative overflow-hidden'}
             data-testid={'check-in-prompt'}
         >
             <div className={'relative z-10'}>
-                <Badge className={'mb-4 border-0 bg-white/20 text-white hover:bg-white/30'}>
+                <Badge
+                    variant={'onGradient'}
+                    className={'mb-4'}
+                >
                     {t(dashboardLocales.checkIn.badge)}
                 </Badge>
                 <h2 className={'mb-2 text-2xl font-semibold'}>
@@ -32,8 +36,7 @@ export const DashboardCheckInCard = () => {
                 </p>
                 <Button
                     asChild
-                    variant={'outline'}
-                    className={'border-white/30 bg-white text-primary hover:bg-white/90 hover:text-primary'}
+                    variant={'onGradient'}
                 >
                     <Link href={ROUTES.CHECK_IN}>
                         {t(dashboardLocales.checkIn.button)}
@@ -45,6 +48,6 @@ export const DashboardCheckInCard = () => {
             <div className={'absolute -right-4 -bottom-4 opacity-20'}>
                 <ClipboardCheck className={'size-48'}/>
             </div>
-        </div>
+        </GradientCard>
     )
 }

@@ -4,7 +4,10 @@ import { useRouter } from 'next/navigation'
 
 import { useQueryClient } from '@tanstack/react-query'
 
-import { getApiErrorMessage } from '@/utils/error'
+import {
+    getApiErrorMessage,
+    isNetworkError
+} from '@/utils/error'
 import { getSafeRedirectUrl } from '@/utils/redirect'
 
 import { authQueryKeys } from '@/constants/queryKeys'
@@ -21,9 +24,24 @@ import type { LoginSchema } from '@/validations/forms/loginSchema'
 import type { SignupSchema } from '@/validations/forms/signupSchema'
 
 export const useAuthHandlers = () => {
-    const { setIsLoading } = useAuth()
+    const {
+        setIsLoading,
+        setNetworkError
+    } = useAuth()
     const router = useRouter()
     const queryClient = useQueryClient()
+
+    const getAuthErrorMessage = (
+        error: unknown,
+        fallback: string
+    ): string | null => {
+        if (error instanceof Error && isNetworkError(error)) {
+            setNetworkError(error)
+            return null
+        }
+
+        return getApiErrorMessage(error, fallback)
+    }
 
     const handleLogin = async (
         credentials: LoginSchema
@@ -46,7 +64,7 @@ export const useAuthHandlers = () => {
 
             return null
         } catch (error: unknown) {
-            return getApiErrorMessage(error, 'Login failed')
+            return getAuthErrorMessage(error, 'Login failed')
         } finally {
             setIsLoading(false)
         }
@@ -67,7 +85,7 @@ export const useAuthHandlers = () => {
             router.push(ROUTES.DASHBOARD)
             return null
         } catch (error: unknown) {
-            return getApiErrorMessage(error, 'Signup failed')
+            return getAuthErrorMessage(error, 'Signup failed')
         } finally {
             setIsLoading(false)
         }

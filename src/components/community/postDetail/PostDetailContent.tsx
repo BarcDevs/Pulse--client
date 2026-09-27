@@ -55,7 +55,7 @@ export const PostDetailContent = () => {
     const t = useTranslations()
     const dateLocale = useDateLocale()
     const queryClient = useQueryClient()
-    const { updatePost } = useForumPostMutations({ postId })
+    const forumMutations = useForumPostMutations({ postId })
     const { showAuthExpiredWithDraft } = useAuthExpiredToast()
 
     const {
@@ -127,7 +127,7 @@ export const PostDetailContent = () => {
         )
 
         return withOptimisticToast({
-            action: updatePost.mutateAsync(data),
+            action: forumMutations.post.update.mutateAsync(data),
             successMsg,
             errorMsg,
             retryLabel,
@@ -176,7 +176,7 @@ export const PostDetailContent = () => {
                     <PostForm
                         isReply={false}
                         isOpen={true}
-                        isLoading={updatePost.isPending}
+                        isLoading={forumMutations.post.update.isPending}
                         onSubmitAction={handleUpdatePost}
                         onCancelAction={() => setIsEditingPost(false)}
                         defaultValues={editDraft?.data ?? {

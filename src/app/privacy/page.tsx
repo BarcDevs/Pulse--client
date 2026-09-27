@@ -8,6 +8,7 @@ const PrivacyPage = () => {
     const {
         content,
         sections,
+        pdfHref,
         tabs,
         updated
     } = useLegalPageContent('privacy')
@@ -17,6 +18,7 @@ const PrivacyPage = () => {
             content={content}
             sections={sections}
             updated={updated}
+            pdfHref={pdfHref}
             tabs={tabs}
         />
     )

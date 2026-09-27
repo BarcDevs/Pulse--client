@@ -2,8 +2,8 @@ import { useTranslations } from 'next-intl'
 
 import { Moon, TrendingUp } from 'lucide-react'
 
+import { Card } from '@/components/shared/cards/Card'
 import {
-    Card,
     CardContent,
     CardHeader,
     CardTitle
@@ -17,7 +17,7 @@ export const RecentInsightsCard = () => {
     const t = useTranslations()
 
     return (
-        <Card className={'border-0 bg-surface-section shadow-none'}>
+        <Card variant={'section'}>
             <CardHeader className={'pb-2'}>
                 <CardTitle className={'text-sm font-medium text-muted-foreground'}>
                     {t(chatLocales.sidebar.insightsTitle)}

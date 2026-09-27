@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Recovery Goals | Pulse</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<!-- Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed": "#f8d8ff",
+                        "on-primary-container": "#fdfcff",
+                        "on-background": "#181c1e",
+                        "secondary-fixed-dim": "#5ddbc1",
+                        "on-primary-fixed": "#001c39",
+                        "on-primary-fixed-variant": "#004883",
+                        "background": "#f7fafc",
+                        "secondary": "#006b5b",
+                        "primary": "#005da7",
+                        "primary-container": "#2976c7",
+                        "surface-dim": "#d7dadc",
+                        "surface-container-low": "#f1f4f6",
+                        "surface": "#f7fafc",
+                        "outline": "#717783",
+                        "on-secondary-fixed": "#00201a",
+                        "on-tertiary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed-dim": "#ebb2ff",
+                        "tertiary": "#7d4495",
+                        "primary-fixed-dim": "#a4c9ff",
+                        "on-surface-variant": "#414751",
+                        "tertiary-container": "#985db0",
+                        "on-secondary-fixed-variant": "#005144",
+                        "surface-container": "#ebeef0",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-fixed-variant": "#662e7e",
+                        "surface-bright": "#f7fafc",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed": "#7cf8dd",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-secondary-container": "#007261",
+                        "on-tertiary-container": "#fffbff",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#320047",
+                        "surface-tint": "#0060ac",
+                        "secondary-container": "#7cf8dd",
+                        "inverse-on-surface": "#eef1f3",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed": "#d4e3ff",
+                        "outline-variant": "#c1c7d3",
+                        "on-surface": "#181c1e",
+                        "on-error": "#ffffff",
+                        "inverse-surface": "#2d3133",
+                        "surface-container-high": "#e5e9eb",
+                        "inverse-primary": "#a4c9ff",
+                        "surface-variant": "#e0e3e5",
+                        "on-primary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "display": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-icon {
+            font-variation-settings: 'FILL' 1;
+        }
+        .glass-header {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+        }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface selection:bg-primary-fixed antialiased">
+<!-- Sidebar Navigation -->
+<aside class="fixed left-0 top-0 bottom-0 w-64 bg-surface-container-low flex flex-col py-8 z-50 overflow-y-auto font-headline font-medium">
+<div class="px-8 mb-10">
+<h1 class="text-xl font-extrabold text-blue-600 tracking-tight">Pulse</h1>
+<p class="text-xs text-slate-500 uppercase tracking-widest mt-1">Recovery Sanctuary</p>
+</div>
+<nav class="flex-1 space-y-1">
+<!-- Nav Items mapped from JSON -->
+<a class="flex items-center px-8 py-3 text-slate-500 hover:bg-slate-100 transition-all duration-200" href="#">
+<span class="material-symbols-outlined mr-4" data-icon="grid_view">grid_view</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center px-8 py-3 text-slate-500 hover:bg-slate-100 transition-all duration-200" href="#">
+<span class="material-symbols-outlined mr-4" data-icon="event_available">event_available</span>
+<span>Daily Check-In</span>
+</a>
+<!-- Active State: Progress -->
+<a class="flex items-center px-8 py-3 text-blue-600 border-r-4 border-blue-600 bg-blue-50/50 font-semibold transition-all duration-200" href="#">
+<span class="material-symbols-outlined mr-4 active-icon" data-icon="trending_up" style="font-variation-settings: 'FILL' 1;">trending_up</span>
+<span>Progress</span>
+</a>
+<a class="flex items-center px-8 py-3 text-slate-500 hover:bg-slate-100 transition-all duration-200" href="#">
+<span class="material-symbols-outlined mr-4" data-icon="insights">insights</span>
+<span>Insights</span>
+</a>
+<a class="flex items-center px-8 py-3 text-slate-500 hover:bg-slate-100 transition-all duration-200" href="#">
+<span class="material-symbols-outlined mr-4" data-icon="group">group</span>
+<span>Community</span>
+</a>
+<a class="flex items-center px-8 py-3 text-slate-500 hover:bg-slate-100 transition-all duration-200" href="#">
+<span class="material-symbols-outlined mr-4" data-icon="smart_toy">smart_toy</span>
+<span>AI Chat</span>
+</a>
+<div class="pt-8 mt-8 border-t border-slate-200/50">
+<a class="flex items-center px-8 py-3 text-slate-500 hover:bg-slate-100 transition-all duration-200" href="#">
+<span class="material-symbols-outlined mr-4" data-icon="account_circle">account_circle</span>
+<span>Profile</span>
+</a>
+<a class="flex items-center px-8 py-3 text-slate-500 hover:bg-slate-100 transition-all duration-200" href="#">
+<span class="material-symbols-outlined mr-4" data-icon="settings">settings</span>
+<span>Settings</span>
+</a>
+</div>
+</nav>
+</aside>
+<!-- Main Content Shell -->
+<main class="pl-64 min-h-screen">
+<!-- Top App Bar -->
+<header class="fixed top-0 right-0 left-64 h-16 glass-header flex justify-between items-center px-8 z-40 font-headline antialiased">
+<div class="flex items-center gap-4">
+<h2 class="text-lg font-bold tracking-tight text-on-surface">Recovery Goals</h2>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative">
+<span class="material-symbols-outlined text-slate-500 hover:text-blue-600 cursor-pointer transition-colors" data-icon="notifications">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-error rounded-full"></span>
+</div>
+<span class="material-symbols-outlined text-slate-500 hover:text-blue-600 cursor-pointer transition-colors" data-icon="help_outline">help_outline</span>
+<div class="w-8 h-8 rounded-full overflow-hidden bg-slate-200">
+<img alt="User profile" data-alt="Portrait of a serene woman with a soft smile in natural outdoor lighting, high-end professional photography style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNJ-K1SBg6C4bjbNlPQgSr9MJbVI5gN0jzwSAOB2tEIfTe3OBcuU8fpiVUYaXAAtOTMmNrj0OQyGcy0A97FRQo7HsWqUljzKw5PVvC_eHlS0mT59KskwE0MJR2YC3_wzj-zvifb9Oyjdrz33ck2bNkt02YppDwuXZ6P3hZ92M80MtLjdUL8Jr2KvVKd2RlfjprsFCHRrGYSaG2v0kexWw72tipHnDYLayZKYC4IvB4lV7dDyw-bJ6k0FWC2f4885FhthZYqe8kYg"/>
+</div>
+</div>
+</header>
+<!-- Canvas Content -->
+<div class="pt-24 px-8 pb-12 grid grid-cols-12 gap-8"><!-- Left: Goals Grid -->
+<div class="space-y-8 col-span-12 lg:col-span-8">
+<!-- Greeting & Search/CTA Row -->
+<div class="flex justify-between items-end">
+<div>
+<h3 class="text-3xl font-display font-bold tracking-tight text-on-surface">Keep moving forward.</h3>
+<p class="text-on-surface-variant mt-1">You have 4 active milestones this week.</p>
+</div>
+<button class="bg-gradient-to-r from-primary to-primary-container text-white px-6 py-3 rounded-lg font-headline font-semibold flex items-center gap-2 shadow-lg shadow-blue-500/20 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-xl">add</span>
+            New Goal
+        </button>
+</div>
+<!-- Bento-style Goals Grid -->
+<div class="grid gap-6 grid-cols-1 md:grid-cols-2">
+<!-- Goal Card 1: Physical -->
+<div class="bg-surface-container-lowest p-6 rounded-xl group hover:bg-blue-50/30 transition-colors shadow-sm">
+<div class="flex justify-between items-start mb-6">
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-container text-xs font-bold rounded-full uppercase tracking-widest">Physical</span>
+<span class="material-symbols-outlined text-slate-400 group-hover:text-blue-500 cursor-pointer">more_vert</span>
+</div>
+<h4 class="text-xl font-headline font-bold mb-2">Morning Mobility</h4>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-6">Complete a 15-minute gentle stretch routine focused on joints and breathwork.</p>
+<div class="space-y-2">
+<div class="flex justify-between text-xs font-bold uppercase tracking-wider text-slate-400">
+<span>Progress</span>
+<span>80%</span>
+</div>
+<div class="h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[80%] rounded-full"></div>
+</div>
+</div>
+</div>
+<!-- Goal Card 2: Mental -->
+<div class="bg-surface-container-lowest p-6 rounded-xl group hover:bg-blue-50/30 transition-colors shadow-sm">
+<div class="flex justify-between items-start mb-6">
+<span class="px-3 py-1 bg-tertiary-fixed text-on-tertiary-fixed-variant text-xs font-bold rounded-full uppercase tracking-widest">Mental</span>
+<span class="material-symbols-outlined text-slate-400 group-hover:text-blue-500 cursor-pointer">more_vert</span>
+</div>
+<h4 class="text-xl font-headline font-bold mb-2">Mindful Reflection</h4>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-6">Daily 10-minute journaling session to track emotional states and triggers.</p>
+<div class="space-y-2">
+<div class="flex justify-between text-xs font-bold uppercase tracking-wider text-slate-400">
+<span>Progress</span>
+<span>45%</span>
+</div>
+<div class="h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-tertiary w-[45%] rounded-full"></div>
+</div>
+</div>
+</div>
+<!-- Goal Card 4: Social -->
+<div class="bg-surface-container-lowest p-6 rounded-xl group hover:bg-blue-50/30 transition-colors shadow-sm">
+<div class="flex justify-between items-start mb-6">
+<span class="px-3 py-1 bg-surface-container-high text-on-surface-variant text-xs font-bold rounded-full uppercase tracking-widest">Social</span>
+<span class="material-symbols-outlined text-slate-400 group-hover:text-blue-500 cursor-pointer">more_vert</span>
+</div>
+<h4 class="text-xl font-headline font-bold mb-2">Community Engagement</h4>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-6">Participate in at least one peer support group session per week.</p>
+<div class="space-y-2">
+<div class="flex justify-between text-xs font-bold uppercase tracking-wider text-slate-400">
+<span>Progress</span>
+<span>100%</span>
+</div>
+<div class="h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-green-500 w-[100%] rounded-full"></div>
+</div>
+</div>
+</div>
+<!-- Add Goal Placeholder -->
+<div class="border-2 border-dashed border-outline-variant bg-transparent p-6 rounded-xl flex flex-col items-center justify-center text-center cursor-pointer hover:bg-white/50 transition-colors group">
+<div class="w-12 h-12 rounded-full bg-surface-container-low flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-outline">add_circle</span>
+</div>
+<p class="font-headline font-bold text-on-surface-variant">Add New Milestone</p>
+<p class="text-xs text-outline mt-1">Build your path to recovery</p>
+</div>
+</div>
+</div>
+<!-- Right: AI Insights Sidebar -->
+<aside class="col-span-12 lg:col-span-4 space-y-6">
+<div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-primary">auto_awesome</span>
+<h4 class="text-lg font-headline font-bold">AI Insights</h4>
+</div>
+<div class="space-y-4">
+<div class="p-4 bg-blue-50 rounded-lg">
+<p class="text-sm text-blue-800 font-medium mb-1">Consistency Alert</p>
+<p class="text-xs text-blue-600">You've completed Morning Mobility 5 days in a row! Keep up the great work.</p>
+</div>
+<div class="p-4 bg-purple-50 rounded-lg">
+<p class="text-sm text-purple-800 font-medium mb-1">New Suggestion</p>
+<p class="text-xs text-purple-600">Based on your journaling, a 5-minute breathing exercise before bed might improve sleep.</p>
+</div>
+</div>
+</div>
+<div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100">
+<h4 class="text-sm font-headline font-bold text-slate-500 uppercase tracking-widest mb-4">Weekly View</h4>
+<div class="space-y-3">
+<div class="flex items-center justify-between text-sm">
+<span class="text-on-surface-variant">Mon - Wed</span>
+<span class="font-bold text-green-500">High Activity</span>
+</div>
+<div class="flex items-center justify-between text-sm">
+<span class="text-on-surface-variant">Goal completion</span>
+<span class="font-bold text-primary">+12%</span>
+</div>
+</div>
+</div>
+</aside></div>
+</main>
+<!-- Contextual FAB (Restricted to Main Dashboard/Goals) -->
+<button class="fixed bottom-8 right-8 w-14 h-14 bg-primary text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-110 active:scale-95 transition-all z-50">
+<span class="material-symbols-outlined" data-icon="bolt">bolt</span>
+</button>
+</body></html>

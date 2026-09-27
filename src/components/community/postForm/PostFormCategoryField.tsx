@@ -7,7 +7,8 @@ import { useTranslations } from 'next-intl'
 import { Check, ChevronDown } from 'lucide-react'
 import { UseFormReturn } from 'react-hook-form'
 
-import { Button } from '@/components/ui/button'
+import { FieldButton } from '@/components/shared/buttons/FieldButton'
+import { OptionButton } from '@/components/shared/buttons/OptionButton'
 import {
     FormField,
     FormItem,
@@ -60,13 +61,9 @@ export const PostFormCategoryField = ({
                             onOpenChange={setOpen}
                         >
                             <PopoverTrigger asChild>
-                                <Button
+                                <FieldButton
                                     type={'button'}
-                                    variant={'outline'}
-                                    className={cn(
-                                        'w-full h-auto py-2.5 px-3 justify-between text-start font-normal',
-                                        !selectedCat && 'text-muted-foreground'
-                                    )}
+                                    isPlaceholder={!selectedCat}
                                 >
                                     {selectedCat ? (
                                         <div className={'flex items-center gap-2.5'}>
@@ -89,7 +86,7 @@ export const PostFormCategoryField = ({
                                         </span>
                                     )}
                                     <ChevronDown className={'h-4 w-4 opacity-50 shrink-0'}/>
-                                </Button>
+                                </FieldButton>
                             </PopoverTrigger>
                             <PopoverContent
                                 align={'start'}
@@ -98,15 +95,12 @@ export const PostFormCategoryField = ({
                                 {categories.map(cat => {
                                     const isSelected = field.value === cat.key
                                     return (
-                                        <Button
+                                        <OptionButton
                                             key={cat.key}
                                             type={'button'}
-                                            variant={'ghost'}
+                                            isSelected={isSelected}
                                             onClick={() => { field.onChange(cat.key); setOpen(false) }}
-                                            className={cn(
-                                                'w-full h-auto flex items-start justify-between gap-2.5 px-3 py-2.5 text-start',
-                                                isSelected && 'bg-primary/10'
-                                            )}
+                                            className={'items-start justify-between'}
                                         >
                                             <div className={'flex items-start gap-2.5'}>
                                                 <span
@@ -128,7 +122,7 @@ export const PostFormCategoryField = ({
                                             {isSelected && (
                                                 <Check className={'h-4 w-4 text-primary shrink-0 mt-0.5'}/>
                                             )}
-                                        </Button>
+                                        </OptionButton>
                                     )
                                 })}
                             </PopoverContent>

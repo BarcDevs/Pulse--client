@@ -45,7 +45,7 @@ export const performRefresh = async (
     return success
 }
 
-export const rejectAll = (error: AxiosError) => {
+const rejectAll = (error: AxiosError) => {
     authState.requestQueue.forEach((req) => {
         req.reject(error)
     })

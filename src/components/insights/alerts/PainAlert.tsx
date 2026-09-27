@@ -2,7 +2,7 @@ import { useTranslations } from 'next-intl'
 
 import { AlertTriangle } from 'lucide-react'
 
-import { Button } from '@/components/ui/button'
+import { TextButton } from '@/components/shared/buttons/TextButton'
 
 import { insightsLocales } from '@/locales/insightsLocales'
 
@@ -26,12 +26,9 @@ export const PainAlert = () => {
                         <span className={'text-xs font-medium text-destructive'}>
                             {t(insightsLocales.painAlert.status)}
                         </span>
-                        <Button
-                            variant={'link'}
-                            className={'h-auto p-0 text-xs text-primary hover:underline'}
-                        >
+                        <TextButton size={'xs'}>
                             {t(insightsLocales.painAlert.action)}
-                        </Button>
+                        </TextButton>
                     </div>
                 </div>
             </div>

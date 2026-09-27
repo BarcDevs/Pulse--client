@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 
-import { cn } from '@/lib/utils'
+import { NavItemButton } from '@/components/shared/buttons/NavItemButton'
 
 import { MOBILE_NAV_ITEMS } from '@/constants/mobileNavItems'
 
@@ -18,22 +18,18 @@ export const MobileNavItem = ({
     const Icon = item.icon
 
     return (
-        <Link
-            href={item.href}
-            className={cn(
-                'flex flex-1 min-w-0 flex-col items-center justify-center py-2 px-1 rounded-lg transition-colors gap-0.5 cursor-pointer',
-                isActive
-                    ? 'text-primary-600 bg-primary-50'
-                    : 'text-muted-600 hover:text-muted-700'
-            )}
+        <NavItemButton
+            asChild
+            soft
+            layout={'stacked'}
+            isActive={isActive}
         >
-            <Icon
-                size={20}
-                className={'shrink-0'}
-            />
-            <span className={'w-full text-[10px] font-medium text-center leading-tight'}>
-                {t(item.labelKey)}
-            </span>
-        </Link>
+            <Link href={item.href}>
+                <Icon className={'size-5 shrink-0'}/>
+                <span className={'w-full text-[10px] font-medium text-center leading-tight'}>
+                    {t(item.labelKey)}
+                </span>
+            </Link>
+        </NavItemButton>
     )
 }

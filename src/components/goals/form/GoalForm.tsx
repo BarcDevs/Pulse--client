@@ -9,6 +9,7 @@ import { Goal } from '@/types/goals'
 
 import { DatePickerInput } from '@/components/shared/inputs/DatePickerInput'
 import { FormInput } from '@/components/shared/inputs/FormInput'
+import { TextArea } from '@/components/shared/inputs/TextArea'
 import { FormError } from '@/components/shared/ui/FormError'
 import {
     Form,
@@ -18,7 +19,6 @@ import {
     FormLabel,
     FormMessage
 } from '@/components/ui/form'
-import { Textarea } from '@/components/ui/textarea'
 
 import { useGoalForm } from '@/hooks/forms/useGoalForm'
 import { useGoalFormSubmit } from '@/hooks/forms/useGoalFormSubmit'
@@ -113,14 +113,15 @@ export const GoalForm = ({
                                 {t(goalsLocales.goalForm.fields.descriptionLabel)}
                             </FormLabel>
                             <FormControl>
-                                <Textarea
+                                <TextArea
                                     placeholder={t(
                                         goalsLocales
                                             .goalForm
                                             .fields
                                             .descriptionPlaceholder
                                     )}
-                                    className={'resize-none bg-surface-container-low'}
+                                    variant={'soft'}
+                                    resize={'none'}
                                     rows={3}
                                     {...field}
                                     value={field.value || ''}

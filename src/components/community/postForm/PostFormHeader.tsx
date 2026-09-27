@@ -4,7 +4,7 @@ import { useTranslations } from 'next-intl'
 
 import { X } from 'lucide-react'
 
-import { Button } from '@/components/ui/button'
+import { IconButton } from '@/components/shared/buttons/IconButton'
 
 import { appSettings } from '@/config/appSettings'
 
@@ -36,15 +36,13 @@ export const PostFormHeader = ({
                 )}
             </div>
             {onCancelAction && (
-                <Button
+                <IconButton
                     onClick={onCancelAction}
                     type={'button'}
-                    variant={'ghost'}
                     size={'sm'}
-                    className={'text-muted-foreground'}
                 >
                     <X size={18}/>
-                </Button>
+                </IconButton>
             )}
         </div>
     )

@@ -1,7 +1,7 @@
 import { useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 
-import { Button } from '@/components/ui/button'
+import { NavItemButton } from '@/components/shared/buttons/NavItemButton'
 import { DropdownMenuItem } from '@/components/ui/dropdown-menu'
 
 import { useLogout } from '@/hooks/mutations/useLogout'
@@ -18,12 +18,12 @@ export const UserMenuItem = ({
     item
 }: UserMenuItemProps) => {
     const router = useRouter()
-    const { logoutAsync } = useLogout()
+    const logout = useLogout()
     const t = useTranslations()
     const isLogout = item.href === '/logout'
 
     const handleClick = isLogout
-        ? () => logoutAsync()
+        ? () => logout.actions.logoutAsync()
         : () => router.push(item.href)
 
     return (
@@ -32,13 +32,10 @@ export const UserMenuItem = ({
             asChild
             variant={isLogout ? 'destructive' : 'default'}
         >
-            <Button
+            <NavItemButton
+                layout={'compact'}
+                tone={isLogout ? 'destructive' : 'default'}
                 onClick={handleClick}
-                className={cn(
-                    'w-full flex justify-start px-2 py-1.5 text-sm cursor-pointer hover:bg-surface-section transition-colors',
-                    isLogout && 'text-destructive hover:text-destructive'
-                )}
-                variant={'ghost'}
             >
                 <item.icon
                     className={cn(
@@ -51,7 +48,7 @@ export const UserMenuItem = ({
                 <span>
                     {t(item.labelKey)}
                 </span>
-            </Button>
+            </NavItemButton>
         </DropdownMenuItem>
     )
 }

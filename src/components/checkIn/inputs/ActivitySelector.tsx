@@ -8,10 +8,10 @@ import { Trophy } from 'lucide-react'
 
 import type { FormControlProps } from '@/types/forms'
 
+import { Card } from '@/components/shared/cards/Card'
 import { ActivityToggleButton } from '@/components/shared/inputs/ActivityToggleButton'
-import { FormInput } from '@/components/shared/inputs/FormInput'
+import { Input } from '@/components/shared/inputs/Input'
 import {
-    Card,
     CardContent,
     CardHeader,
     CardTitle
@@ -76,7 +76,7 @@ export const CheckInActivities = ({
     }
 
     return (
-        <Card className={'mt-6 border-0 shadow-sm'}>
+        <Card className={'mt-6'}>
             <CardHeader className={'pb-3'}>
                 <div className={'flex items-center gap-2'}>
                     <Trophy className={'size-5 text-warning'}/>
@@ -134,8 +134,9 @@ export const CheckInActivities = ({
                         ))}
 
                         <div className={'flex items-center gap-2'}>
-                            <FormInput
+                            <Input
                                 id={'customActivity'}
+                                variant={'pill'}
                                 placeholder={t(checkInLocales.activities.placeholder)}
                                 value={customActivity}
                                 onChange={(e) => setCustomActivity(e.target.value)}
@@ -145,8 +146,7 @@ export const CheckInActivities = ({
                                         addCustomActivity()
                                     }
                                 }}
-                                className={'h-9 w-32 rounded-full border-border bg-surface-card'}
-                                required={false}
+                                className={'w-32'}
                                 type={'text'}
                             />
                         </div>

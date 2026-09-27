@@ -36,10 +36,14 @@ export const useLanguageSwitcher = () => {
     }
 
     return {
-        locale,
-        currentLanguage,
-        languageList: Object.values(languages),
-        changeLanguage,
-        isPending
+        language: {
+            locale,
+            currentLanguage,
+            languageList: Object.values(languages)
+        },
+        switching: {
+            changeLanguage,
+            isPending
+        }
     }
 }

@@ -7,6 +7,7 @@ import { Controller } from 'react-hook-form'
 import { MilestoneInput } from '@/types/goals'
 
 import { FormInput } from '@/components/shared/inputs/FormInput'
+import { TextArea } from '@/components/shared/inputs/TextArea'
 import { FormError } from '@/components/shared/ui/FormError'
 import {
     Form,
@@ -15,7 +16,6 @@ import {
     FormLabel,
     FormMessage
 } from '@/components/ui/form'
-import { Textarea } from '@/components/ui/textarea'
 
 import { useMilestoneForm } from '@/hooks/forms/useMilestoneForm'
 
@@ -86,7 +86,7 @@ export const MilestoneForm = ({
                                 {t(goalsLocales.milestones.formDescriptionLabel)}
                             </FormLabel>
                             <FormControl>
-                                <Textarea
+                                <TextArea
                                     id={'milestone-description'}
                                     placeholder={t(goalsLocales.milestones.formDescriptionPlaceholder)}
                                     value={field.value}

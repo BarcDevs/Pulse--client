@@ -4,8 +4,8 @@ import { useTranslations } from 'next-intl'
 
 import { MessageSquare } from 'lucide-react'
 
-import { UserAvatar } from '@/components/shared/UserAvatar'
-import { Button } from '@/components/ui/button'
+import { UserAvatar } from '@/components/shared/avatars/UserAvatar'
+import { FieldButton } from '@/components/shared/buttons/FieldButton'
 
 import { getUserFallback } from '@/lib/utils'
 
@@ -27,11 +27,10 @@ export const ReplyInputSection = ({
         : ''
 
     return (
-        <Button
+        <FieldButton
             type={'button'}
-            variant={'outline'}
+            size={'lg'}
             onClick={onOpenAction}
-            className={'flex items-center gap-3 w-full h-auto p-3 rounded-xl border border-border hover:border-primary hover:bg-primary-light/30 transition-colors text-start cursor-pointer'}
         >
             <UserAvatar initials={initials}/>
             <span className={'flex-1 text-sm text-muted-foreground'}>
@@ -41,6 +40,6 @@ export const ReplyInputSection = ({
                 <MessageSquare className={'h-3.5 w-3.5'}/>
                 {t(communityLocales.postActions.reply)}
             </span>
-        </Button>
+        </FieldButton>
     )
 }

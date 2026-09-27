@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 import { LogIn } from 'lucide-react'
 
-import { Button } from '@/components/ui/button'
+import { Button } from '@/components/shared/buttons/Button'
 
 import { ROUTES } from '@/constants/routes'
 

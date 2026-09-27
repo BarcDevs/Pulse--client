@@ -31,12 +31,9 @@ export const PostActions = ({
         share,
         shareCount: liveShareCount
     } = useSharePost(postId, shareCount)
-    const {
-        saved,
-        toggleSave
-    } = usePostInteractions({ postId })
+    const interactions = usePostInteractions({ postId })
 
-    const saveText = saved
+    const saveText = interactions.save.isActive
         ? t(communityLocales.posts.saved)
         : t(communityLocales.posts.save)
 
@@ -55,8 +52,8 @@ export const PostActions = ({
             />
             <PostActionButton
                 text={saveText}
-                isActive={saved}
-                onClick={toggleSave}
+                isActive={interactions.save.isActive}
+                onClick={interactions.save.toggle}
                 icon={Bookmark}
             />
         </div>

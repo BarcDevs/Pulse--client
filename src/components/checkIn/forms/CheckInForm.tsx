@@ -7,7 +7,7 @@ import type {
     CheckInStats
 } from '@/types/checkIn'
 
-import { Button } from '@/components/ui/button'
+import { Button } from '@/components/shared/buttons/Button'
 
 import { useCheckInForm } from '@/hooks/forms/useCheckInForm'
 import { useProfile } from '@/hooks/queries/useProfile'

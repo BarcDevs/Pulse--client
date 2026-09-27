@@ -41,6 +41,12 @@ Profiles capture bio, location, timezone, and emerging personalization through h
 **Insights**
 Lightweight, supportive insights generated from check-in patterns help detect trends and maintain motivation. Insights are explicitly labeled as AI-assisted suggestions, not medical advice.
 
+**Support**
+`/support` is the help center: an FAQ and a contact form (topic + message, plus an email field for logged-out visitors) that posts to `POST /support/contact`, which emails `support@pulserehab.app`. `/contact-support` redirects to the form (`/support#contact`). Search, quick-help cards and browse-by-topic cards are built but hidden behind the `supportSearch`, `supportQuickHelp` and `supportTopics` flags in `src/config/features.ts` until the help articles, chat and care-team features exist.
+
+**Legal Pages**
+`/privacy` and `/terms` (English and Hebrew) with a table of contents and a localized last-updated date. Each page has a "Download PDF" button that links to a pre-generated PDF in `public/legal/` (`{privacy,terms}-{en-US,he-IL}.pdf`). The privacy policy discloses the essential cookies, on-device storage and service providers; Pulse sets no tracking cookies, so there is no cookie-consent popup.
+
 ---
 
 ## Technology Stack
@@ -53,7 +59,7 @@ Lightweight, supportive insights generated from check-in patterns help detect tr
 | **Forms** | react-hook-form, Zod                                  |
 | **HTTP** | Axios with CSRF interceptors                          |
 | **State** | TanStack Query, Next.js Context                       |
-| **Deployment** | Vercel (current), AWS (future production)             |
+| **Deployment** | AWS EC2+Docker (production, auto-deploy CI/CD), Vercel (preview/staging) |
 
 **Note**: This is a frontend-only repository. The backend API runs separately.
 
@@ -100,7 +106,10 @@ npm run start     # Run production server
 npm run lint      # Check ESLint violations
 npm run lint:fix  # Auto-fix formatting and linting
 npm run typecheck # TypeScript type checking
+npm run legal:pdf # Regenerate public/legal/*.pdf from the running dev server (localhost:5173)
 ```
+
+The legal PDFs are generated, not built on the fly. After changing legal copy in `messages/*.json` (or the page layout), start `npm run dev`, run `npm run legal:pdf`, and commit the updated PDFs.
 
 ---
 
@@ -183,7 +192,17 @@ Both methods use the same session system:
 
 ## Deployment
 
-Currently deployed on **Vercel** at https://pulse-rehab.vercel.app with automatic builds from main branch. Future production infrastructure planned on **AWS**.
+Production runs on **AWS EC2+Docker** at https://pulserehab.app, on a separate instance from the server (blast-radius isolation). The client is the sole public front door — `next.config.mjs` proxies `/api/:path*` to the server over a private VPC connection, so browsers only ever talk to one origin (no CORS).
+
+**CI/CD** — every push to `main` that passes CI (`.github/workflows/ci.yml`) triggers `.github/workflows/deploy.yml`:
+1. Build the `runner` Docker target, tag with the commit SHA, push to ECR (`pulse-client-app`).
+2. Trigger `scripts/deploy/ec2-redeploy.sh` on the EC2 box via AWS SSM (no SSH/git access needed on the box).
+3. Blue/green swap: new image starts on a staging port, health-checked (`GET /`), then swapped onto port 80. Failed health check rolls back to the previous container automatically.
+4. Verify the live site (`/` and `/api/status`) before the workflow reports success.
+
+Can also be triggered manually: `gh workflow run deploy.yml --ref main`.
+
+Also mirrored to **Vercel** at https://pulse-rehab.vercel.app (automatic builds from `main`) for preview/staging convenience — not the production origin.
 
 ---
 
@@ -193,12 +212,12 @@ Every push to `development` auto-deploys a staging build, isolated from producti
 
 | Property | Value |
 |---|---|
-| URL | https://pulse-git-development-bar-cohens-projects.vercel.app |
+| URL | [staging.pulserehab.app](https://staging.pulserehab.app) |
 | Branch | `development` |
-| Backend | [Pulse--server-staging](https://github.com/BarcDevs/Pulse--server) on Render (see [server README](https://github.com/BarcDevs/Pulse--server#staging-environment)) |
+| Host | Vercel (production runs on AWS — staging stays on Vercel) |
 | Vercel Authentication | Disabled (publicly reachable) |
 
-**Branch-scoped env vars** — `NEXT_PUBLIC_SERVER_URL` is overridden for `preview` + `development` branch only (`vercel env ls preview`), pointing at the staging server. All other preview branches and production fall back to the default value.
+**Branch-scoped env vars** — `NEXT_PUBLIC_SERVER_URL` is overridden for `preview` + `development` branch only (`vercel env ls preview`), pointing at the staging server. All other preview branches fall back to the default value.
 
 **Gotcha:** `NEXT_PUBLIC_*` vars are inlined into the JS bundle at build time. Adding/changing one does **not** affect already-deployed builds — trigger a rebuild:
 ```bash

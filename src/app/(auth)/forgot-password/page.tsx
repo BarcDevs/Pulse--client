@@ -4,16 +4,10 @@ import { useState } from 'react'
 
 import { useTranslations } from 'next-intl'
 
+import { AuthCard } from '@/components/auth/AuthCard'
 import { EmailVerificationView } from '@/components/auth/views/EmailVerificationView'
 import { AuthForm } from '@/components/form/AuthForm'
 import { Logo } from '@/components/shared/brand/Logo'
-import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardHeader,
-    CardTitle
-} from '@/components/ui/card'
 
 import { timings } from '@/config/timings'
 
@@ -42,23 +36,16 @@ const ForgotPasswordPage = () => {
         <div className={'w-full max-w-md'}>
             <Logo/>
 
-            <Card className={'border-0 shadow-lg'}>
-                <CardHeader>
-                    <CardTitle className={'text-2xl font-semibold'}>
-                        {t(authLocales.forgotPassword.title)}
-                    </CardTitle>
-                    <CardDescription>
-                        {t(authLocales.forgotPassword.description)}
-                    </CardDescription>
-                </CardHeader>
-                <CardContent>
-                    <AuthForm
-                        formType={'forgotPassword'}
-                        onSuccessAction={handleSubmit}
-                        isLoading={isLoading}
-                    />
-                </CardContent>
-            </Card>
+            <AuthCard
+                title={t(authLocales.forgotPassword.title)}
+                description={t(authLocales.forgotPassword.description)}
+            >
+                <AuthForm
+                    formType={'forgotPassword'}
+                    onSuccessAction={handleSubmit}
+                    isLoading={isLoading}
+                />
+            </AuthCard>
         </div>
     )
 }

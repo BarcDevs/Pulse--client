@@ -2,6 +2,8 @@
 
 import { useTranslations } from 'next-intl'
 
+import { StatCard } from '@/components/shared/cards/StatCard'
+
 import { useCheckInStats } from '@/hooks/queries/useCheckInStats'
 import { useRecoveryGoalsStats } from '@/hooks/queries/useRecoveryGoalsStats'
 
@@ -13,7 +15,6 @@ import {
     dashboardStatsStyleMap 
 } from '@/constants/mappings/dashboard'
 
-import { StatCard } from './StatCard'
 import { StatCardSkeleton } from './StatCardSkeleton'
 
 export const DashboardStatsCards = () => {

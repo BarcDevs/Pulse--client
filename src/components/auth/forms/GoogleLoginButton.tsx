@@ -2,8 +2,8 @@
 
 import { useTranslations } from 'next-intl'
 
+import { Button } from '@/components/shared/buttons/Button'
 import { Icon } from '@/components/shared/ui/Icon'
-import { Button } from '@/components/ui/button'
 
 import { redirectToGoogleAuth } from '@/lib/auth'
 
@@ -35,8 +35,9 @@ export const GoogleLoginButton = ({ redirect }: Props) => {
 
             <Button
                 type={'button'}
-                variant={'outline'}
-                className={'h-11 w-full mb-6'}
+                variant={'secondary'}
+                size={'xl'}
+                className={'w-full mb-6'}
                 onClick={handleClick}
             >
                 <Icon

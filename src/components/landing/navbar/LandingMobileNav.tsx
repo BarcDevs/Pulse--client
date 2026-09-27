@@ -6,7 +6,7 @@ import { useTranslations } from 'next-intl'
 
 import { Menu } from 'lucide-react'
 
-import { Button } from '@/components/ui/button'
+import { IconButton } from '@/components/shared/buttons/IconButton'
 import {
     Sheet,
     SheetContent,
@@ -29,14 +29,12 @@ export const LandingMobileNav = () => {
             onOpenChange={setOpen}
         >
             <SheetTrigger asChild>
-                <Button
-                    variant={'ghost'}
-                    size={'icon'}
+                <IconButton
                     aria-label={t(landingLocales.nav.menu)}
                     className={'md:hidden'}
                 >
                     <Menu className={'size-5'}/>
-                </Button>
+                </IconButton>
             </SheetTrigger>
             <SheetContent
                 side={'right'}

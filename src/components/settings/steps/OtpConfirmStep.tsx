@@ -6,8 +6,8 @@ import { toast } from 'sonner'
 
 import { useMutation } from '@tanstack/react-query'
 
+import { Button } from '@/components/shared/buttons/Button'
 import { FormError } from '@/components/shared/ui/FormError'
-import { Button } from '@/components/ui/button'
 import {
     Form,
     FormControl,
@@ -113,7 +113,7 @@ export const OtpConfirmStep = ({
                     <Button
                         type={'button'}
                         size={'sm'}
-                        variant={'outline'}
+                        variant={'secondary'}
                         onClick={onCancelAction}
                         disabled={isPending}
                     >

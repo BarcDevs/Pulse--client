@@ -30,14 +30,7 @@ export const RecoveryGoalsPageContent = () => {
         isPending
     } = useGoalsContext()
 
-    const {
-        isModalOpen,
-        editingGoalId,
-        onCloseModal,
-        onOpenEditModal,
-        modalMode,
-        onOpenCreateModal
-    } = useRecoveryGoalsModal()
+    const goalsModal = useRecoveryGoalsModal()
 
     const {
         selectedStatuses,
@@ -46,7 +39,7 @@ export const RecoveryGoalsPageContent = () => {
     } = useGoalFiltering(goals)
 
     const editingGoal =
-        filteredGoals.find((g) => g.id === editingGoalId)
+        filteredGoals.find((g) => g.id === goalsModal.modal.editingGoalId)
 
     return (
         <>
@@ -68,7 +61,7 @@ export const RecoveryGoalsPageContent = () => {
                     <GoalsFilter
                         selectedStatuses={selectedStatuses}
                         toggleStatusAction={toggleStatus}
-                        onOpenCreateModalAction={onOpenCreateModal}
+                        onOpenCreateModalAction={goalsModal.actions.onOpenCreateModal}
                     />
                 </div>
 
@@ -85,8 +78,8 @@ export const RecoveryGoalsPageContent = () => {
                         <div className={'lg:col-span-8'}>
                             <GoalsGrid
                                 goals={filteredGoals}
-                                onEditAction={onOpenEditModal}
-                                onCreateAction={onOpenCreateModal}
+                                onEditAction={goalsModal.actions.onOpenEditModal}
+                                onCreateAction={goalsModal.actions.onOpenCreateModal}
                             />
                         </div>
 
@@ -99,13 +92,13 @@ export const RecoveryGoalsPageContent = () => {
             </div>
 
             <GoalFormModal
-                isOpen={isModalOpen}
-                onCloseAction={onCloseModal}
-                mode={modalMode}
+                isOpen={goalsModal.modal.isOpen}
+                onCloseAction={goalsModal.actions.onCloseModal}
+                mode={goalsModal.modal.mode}
                 goal={editingGoal}
             />
 
-            <NewGoalFloatingButton onClickAction={onOpenCreateModal}/>
+            <NewGoalFloatingButton onClickAction={goalsModal.actions.onOpenCreateModal}/>
         </>
     )
 }

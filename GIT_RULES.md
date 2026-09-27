@@ -9,6 +9,7 @@
 
 ## Commit Rules
 - **ALWAYS ask before committing** — never auto-commit
+- **Exception - records (user decision 2026-09-21):** a commit that ONLY records a correction or decision (`corrections/`, `decisions/` and their `index.md` rows) is made in the same turn as the correction, as a `docs` commit, without asking and without waiting for a "commit" instruction. Every session, not just this one. It does not extend to any other change.
 - Don't run /commit skill on small fixes or formatting
 - Always ask before invoking /commit
 - Never jump ahead to commit without being asked
@@ -16,11 +17,13 @@
 - Generate messages with /caveman-commit skill
 - **Never claim commit succeeded without running actual `git commit`** — /caveman-commit is drafting only
 - When committing after review fixes: include original work scope, not just the fix
-- Use branches for features/fixes
+- Use branches for features/fixes. **Every separate piece of work gets its own branch.** At the start of any new piece of work, check `git branch --show-current`; if it is not a branch for that work, create one (`rfc/<topic>`, `feat/<topic>`, `fix/<topic>`) before the first commit, without waiting to be asked. Never pile unrelated work onto whatever branch happens to be checked out (see `corrections/working-style.md`, 26/09/2026)
 - Conventional commits: `feat`, `fix`, `docs`, `style`, `rfc`, `test`, `chore`. Breaking changes: `feat!:`
 - Think on what the current commit job is before deciding if it either `feat`, `rfc`, `fix`, etc and REPORT BACK your reasoning - Don't just mechanically label as `feat` for everything.
 - *IMPORTANT:* refactor job - always name `rfc` instead of `refactor`!
-- If you're not sure, read `"C:\Users\66bar\OneDrive\documents\Programming\conventional-commits-cheatsheet.md"` for more info
+- Hiding/gating unimplemented UI behind a feature flag = `chore`, not `feat`. Restructuring/redesigning existing UI (even adding new sub-components as part of it) = `rfc`, not `feat` — `feat` implies net-new user-visible capability, a redesign reorganizes what already exists. Wiring an already-existing data field into an edit form is `rfc`, not `feat`, if the field already existed in view mode.
+- If you're not sure, read `../../.resources/conventional-commits-cheatsheet.md` for more info
+- **Always push tags** — whenever pushing a branch, also push tags (`git push origin --tags`). The version-bump hook tags every bumped commit locally; unpushed tags leave the remote's versions stale.
 - Atomic commits — one change or fix per commit
 - Claude's plans must never be committed
 - *IMPORTANT:* Use /commit skill only when user explicitly invokes it — never on plain "commit"

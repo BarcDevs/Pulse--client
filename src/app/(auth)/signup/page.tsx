@@ -5,15 +5,9 @@ import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 
+import { AuthCard } from '@/components/auth/AuthCard'
 import { GoogleLoginButton } from '@/components/auth/forms/GoogleLoginButton'
 import { AuthForm } from '@/components/form/AuthForm'
-import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardHeader,
-    CardTitle
-} from '@/components/ui/card'
 
 import { useGetMe } from '@/hooks/queries/useGetMe'
 import { useAuthHandlers } from '@/hooks/useAuthHandlers'
@@ -48,26 +42,21 @@ const SignupPage = () => {
     }
 
     return (
-        <Card className={'w-full max-w-md border-0 shadow-lg'}>
-            <CardHeader className={'text-center'}>
-                <CardTitle className={'text-2xl font-semibold'}>
-                    {t(authLocales.signup.title)}
-                </CardTitle>
-                <CardDescription>
-                    {t(authLocales.signup.description)}
-                </CardDescription>
-            </CardHeader>
-            <CardContent>
-                <AuthForm
-                    formType={'signup'}
-                    onSuccessAction={handleSignupSuccess}
-                    isLoading={isLoading}
-                    error={error}
-                />
+        <AuthCard
+            isCentered
+            title={t(authLocales.signup.title)}
+            description={t(authLocales.signup.description)}
+            className={'w-full max-w-md'}
+        >
+            <AuthForm
+                formType={'signup'}
+                onSuccessAction={handleSignupSuccess}
+                isLoading={isLoading}
+                error={error}
+            />
 
-                <GoogleLoginButton/>
-            </CardContent>
-        </Card>
+            <GoogleLoginButton/>
+        </AuthCard>
     )
 }
 

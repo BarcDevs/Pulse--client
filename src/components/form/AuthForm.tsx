@@ -8,7 +8,7 @@ import { useTranslations } from 'next-intl'
 import { AuthFormType } from '@/types/forms'
 import { SetState } from '@/types/react'
 
-import { Button } from '@/components/ui/button'
+import { Button } from '@/components/shared/buttons/Button'
 import { Form } from '@/components/ui/form'
 
 import { useAuthForm } from '@/hooks/forms/useAuthForm'
@@ -87,8 +87,9 @@ export const AuthForm = ({
 
                 <Button
                     type={'submit'}
+                    size={'xl'}
                     disabled={isLoading}
-                    className={'h-11 w-full'}
+                    className={'w-full'}
                     data-testid={`${formType}-submit`}
                 >
                     {isLoading

@@ -23,6 +23,7 @@ type LegalDocumentProps = {
     content: LegalDocumentContent
     sections: LegalSectionType[]
     updated: string
+    pdfHref: string
     tabs: { label: string; href: string }[]
 }
 
@@ -30,6 +31,7 @@ export const LegalDocument = ({
     content,
     sections,
     updated,
+    pdfHref,
     tabs
 }: LegalDocumentProps) => {
     const t = useTranslations()
@@ -44,7 +46,7 @@ export const LegalDocument = ({
     return (
         <div
             ref={scrollerRef}
-            className={'flex flex-1 flex-col overflow-y-auto bg-surface-page'}
+            className={'flex flex-1 flex-col overflow-y-auto bg-surface-page print:overflow-visible'}
         >
             <div className={'px-4 pt-6 md:px-8'}>
                 <PageHeader
@@ -59,7 +61,7 @@ export const LegalDocument = ({
             <LegalMetaBar updated={updated}/>
 
             <div className={'mx-auto w-full max-w-5xl px-4 pt-8 md:px-8'}>
-                <div className={'grid grid-cols-1 items-start gap-8 md:grid-cols-[220px_1fr] md:gap-10'}>
+                <div className={'grid grid-cols-1 items-start gap-8 md:grid-cols-[220px_1fr] md:gap-10 print:block'}>
                     <LegalToc
                         sections={sections}
                         activeId={activeId}
@@ -76,12 +78,12 @@ export const LegalDocument = ({
                             />
                         ))}
 
-                        <LegalFooterCta/>
+                        <LegalFooterCta pdfHref={pdfHref}/>
                     </article>
                 </div>
             </div>
 
-            <Footer/>
+            <Footer className={'print:hidden'}/>
         </div>
     )
 }

@@ -18,29 +18,29 @@ export const BasicInfoView = () => {
     const t = useTranslations()
     const locale = useLocale()
     const dateFnsLocale = locale === 'he-IL' ? he : undefined
-    const { user, isLoading, error } = useUser()
+    const currentUser = useUser()
 
-    if (isLoading) return <BasicInfoSkeleton/>
-    if (!user) return <ErrorStateCard error={error instanceof Error ? error : null}/>
+    if (currentUser.status.isLoading) return <BasicInfoSkeleton/>
+    if (!currentUser.user) return <ErrorStateCard error={currentUser.status.error instanceof Error ? currentUser.status.error : null}/>
 
     const fields = [
         {
             label: t(profileLocales.basicInfo.fullName),
-            value: `${user.firstName} ${user.lastName}`
+            value: `${currentUser.user.firstName} ${currentUser.user.lastName}`
         },
         {
             label: t(profileLocales.basicInfo.username),
-            value: `@${user.username}`
+            value: `@${currentUser.user.username}`
         },
         {
             label: t(profileLocales.basicInfo.emailAddress),
-            value: user.email
+            value: currentUser.user.email
         },
         {
             label: t(profileLocales.basicInfo.dateOfBirth),
-            value: user.dateOfBirth
+            value: currentUser.user.dateOfBirth
                 ? formatByUserPreference(
-                    new Date(user.dateOfBirth),
+                    new Date(currentUser.user.dateOfBirth),
                     false,
                     undefined,
                     dateFnsLocale
@@ -48,15 +48,15 @@ export const BasicInfoView = () => {
         },
         {
             label: t(profileLocales.basicInfo.location),
-            value: user.profile?.location ?? null
+            value: currentUser.user.profile?.location ?? null
         },
         {
             label: t(profileLocales.basicInfo.recoveryType),
-            value: user.recoveryType ?? null
+            value: currentUser.user.recoveryType ?? null
         },
         {
             label: t(profileLocales.basicInfo.careProvider),
-            value: user.careProvider ?? null
+            value: currentUser.user.careProvider ?? null
         }
     ]
 

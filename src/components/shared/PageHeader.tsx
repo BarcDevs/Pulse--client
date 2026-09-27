@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation'
 
 import { ArrowLeft } from 'lucide-react'
 
-import { Button } from '@/components/ui/button'
+import { TextButton } from '@/components/shared/buttons/TextButton'
 
 import { ROUTES } from '@/constants/routes'
 
@@ -46,15 +46,13 @@ export const PageHeader = ({
 
     return (
         <>
-            <Button
+            <TextButton
                 onClick={handleBack}
-                size={'sm'}
-                variant={'ghost'}
-                className={'mb-8 gap-2 text-primary hover:bg-primary hover:text-white'}
+                className={'mb-8 gap-2 print:hidden'}
             >
                 <ArrowLeft size={16}/>
                 {backLabel}
-            </Button>
+            </TextButton>
 
             <header className={'mb-12'}>
                 <div className={'mb-4 flex flex-wrap items-center justify-between gap-4'}>

@@ -8,7 +8,7 @@ import { Plus } from 'lucide-react'
 
 import { GoalStatus } from '@/types/goals'
 
-import { Button } from '@/components/ui/button'
+import { Button } from '@/components/shared/buttons/Button'
 import { Checkbox } from '@/components/ui/checkbox'
 import { Label } from '@/components/ui/label'
 import {
@@ -43,7 +43,7 @@ export const GoalsFilter = ({
             >
                 <PopoverTrigger asChild>
                     <Button
-                        variant={'outline'}
+                        variant={'secondary'}
                         size={'sm'}
                     >
                         {t(goalsLocales.overview.filterButton)}
@@ -77,7 +77,7 @@ export const GoalsFilter = ({
             </Popover>
             <Button
                 onClick={onOpenCreateModalAction}
-                className={'hidden sm:inline-flex bg-linear-to-r from-primary-gradient-start to-primary-gradient-end text-primary-foreground shadow-lg shadow-blue-500/20'}
+                className={'hidden sm:inline-flex'}
             >
                 <Plus className={'size-4 me-2'}/>
                 {t(goalsLocales.overview.newGoalButton)}

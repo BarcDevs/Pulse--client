@@ -6,12 +6,12 @@ import { FieldValues } from 'react-hook-form'
 
 import { FieldConfig } from '@/types/forms'
 
+import { Input } from '@/components/shared/inputs/Input'
 import {
     FormControl,
     FormDescription,
     FormLabel
 } from '@/components/ui/form'
-import { Input } from '@/components/ui/input'
 
 type TextInputProps<T extends FieldValues> = {
     field: T

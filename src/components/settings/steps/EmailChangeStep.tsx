@@ -5,8 +5,8 @@ import { useTranslations } from 'next-intl'
 import { useMutation } from '@tanstack/react-query'
 
 import { DynamicFormField } from '@/components/form/DynamicFormField'
+import { Button } from '@/components/shared/buttons/Button'
 import { FormError } from '@/components/shared/ui/FormError'
-import { Button } from '@/components/ui/button'
 import { Form } from '@/components/ui/form'
 
 import { useChangeEmailForm } from '@/hooks/forms/useChangeEmailForm'
@@ -81,7 +81,7 @@ export const EmailChangeStep = ({
                     <Button
                         type={'button'}
                         size={'sm'}
-                        variant={'outline'}
+                        variant={'secondary'}
                         onClick={onCancelAction}
                         disabled={isPending}
                     >

@@ -9,8 +9,9 @@ import { useLocale, useTranslations } from 'next-intl'
 
 import { X } from 'lucide-react'
 
-import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
+import { Badge } from '@/components/shared/badges/Badge'
+import { ChipButton } from '@/components/shared/buttons/ChipButton'
+import { IconButton } from '@/components/shared/buttons/IconButton'
 
 import { useForumTags } from '@/hooks/queries/useForumTags'
 
@@ -110,18 +111,17 @@ export const TagInput = ({
                     return (
                     <Badge
                         key={tag}
-                        className={'gap-1 pr-1 bg-primary-light text-primary hover:bg-primary-light'}
+                        className={'gap-1 pr-1'}
                     >
                         {displayName}
-                        <Button
+                        <IconButton
                             type={'button'}
-                            variant={'ghost'}
+                            size={'xs'}
                             onClick={() => removeTag(tag)}
                             aria-label={`Remove tag ${tag}`}
-                            className={'h-4 w-4 p-0 text-muted-foreground hover:text-foreground'}
                         >
                             <X className={'h-3 w-3'}/>
-                        </Button>
+                        </IconButton>
                     </Badge>
                     )
                 })}
@@ -150,15 +150,13 @@ export const TagInput = ({
                     </p>
                     <div className={'flex flex-wrap gap-1.5'}>
                         {suggestions.map(tag => (
-                            <Button
+                            <ChipButton
                                 key={tag.id}
                                 type={'button'}
-                                variant={'outline'}
                                 onClick={() => addTag(tag.slug)}
-                                className={'h-auto px-3 py-1 rounded-full text-xs text-muted-foreground hover:text-foreground hover:border-primary'}
                             >
                                 {`+ ${getTagName(tag, lang)}`}
-                            </Button>
+                            </ChipButton>
                         ))}
                     </div>
                 </div>

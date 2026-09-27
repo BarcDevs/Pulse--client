@@ -4,7 +4,7 @@ import { useTranslations } from 'next-intl'
 
 import { WrapperProps } from '@/types/react'
 
-import { Button } from '@/components/ui/button'
+import { Button } from '@/components/shared/buttons/Button'
 import {
     Dialog,
     DialogContent,
@@ -66,14 +66,14 @@ export const ShareProgressModal = ({
 
                 <div className={'flex gap-3 justify-end pt-4'}>
                     <Button
-                        variant={'outline'}
+                        variant={'secondary'}
                         onClick={onShareToCommunityAction}
                         disabled={isCapturing}
                     >
                         {t(progressLocales.share.shareToCommunity)}
                     </Button>
                     <Button
-                        variant={'outline'}
+                        variant={'secondary'}
                         onClick={download}
                         disabled={isCapturing}
                     >

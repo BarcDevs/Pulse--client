@@ -25,21 +25,9 @@ export const ROUTES = {
     SUPPORT: '/support',
     PRIVACY: '/privacy',
     TERMS: '/terms',
-    COOKIES: '/cookies',
     loginWithRedirect: (redirect: string) =>
         `/login?redirect=${encodeURIComponent(redirect)}`,
     communityPost: (postId: string) =>
         `/community/post/${postId}`
 } as const
 
-export const ROUTE_IDS = {
-    LOGIN: '/(auth)/login',
-    SIGNUP: '/(auth)/signup',
-    VERIFY: '/(auth)/verify',
-    FORGOT_PASSWORD: '/(auth)/forgot-password'
-} as const
-
-export type RouteKey = {
-    [K in keyof typeof ROUTES]
-    : typeof ROUTES[K] extends string ? K : never
-}[keyof typeof ROUTES]

@@ -12,13 +12,16 @@
 - Never use array index as key - use the current element as an index
 - Braces around values inside: Object literal braces, component props and import/export braces
 - Text blocks: Don't break unless really long (120–150 chars OK)
-- Text: never use `—` character. only the simple hyphen `-` for all text, including classnames and config keys. This avoids encoding issues and ensures consistency across all contexts (JSX, CSS, config, etc.)
+- Text: in ALL user-facing code (translation files, JSX, emails, API/error messages, placeholders, config) never use em/en dashes (`—` `–`) or typographic quotes/apostrophes (`“ ” ‘ ’ „`, Hebrew `״` `׳`). Use only keyboard characters: the simple hyphen `-`, plain `'` and `"` (escaped `\"` in JSON), e.g. ער"ן. Also applies to classnames and config keys. This avoids encoding issues and ensures consistency across all contexts (JSX, CSS, config, etc.). Only docs (README, `docs/`, markdown) may use them
 - Use unified imports for module that has many imports
 - Short conditional blocks - never use `{`
 - Don't break single imports to multiple lines unless very long (50+ chars)
 - Never break line around single imports - if import is too long, break before the `from` keyword
 - Don't make line-breaking too strict
 - Always provide informative and self-explanatory filenames and variable names
+- Hooks that return 5+ values (e.g. a form hook returning its form, handlers and dialog state): keep the return value as one object named after the feature (`const addItem = useAddItemForm()`) and use `addItem.field` at the usage site - don't destructure the whole return into individual local names. Destructure only 1-4 values you genuinely need, or nested helpers such as `form`
+- A hook that returns 5+ values returns a small number of feature-named nested objects, never a flat list of 5+ keys. Group by kind, e.g. `{ values, suggestion: { value, isSuggesting, failed, request, refresh }, buildPatch }`. Call sites use `hook.group.field` directly and don't destructure groups back into local names. A hook that returns react-hook-form's `form` already satisfies this
+- State that is only form-like fields (several `useState` pairs) is held in ONE `values` object with a single typed `setField(key, value)` setter using functional updates (`setValues((current) => ...)`), so async callbacks never read stale closures
 
 ## Language & Format
 - Quotes: Single quotes (') for all strings, imports, JSX props, backtick allowed for template strings
@@ -37,6 +40,7 @@
 - One function/component per file
 - Extract reusable logic
 - Use reusable components from shadcn/ui
+- Design-system elements with their own reusable look (e.g. buttons, badges, even a single variant): one base in `src/components/shared/<group>/` whose look variants (primary/secondary/ghost/destructive) are a variant style object (cva-style className map) on the base, plus one purpose-made component per element *type* (e.g. `TextButton`, `IconButton`) that wraps the base; call sites never use the base directly or override with ad hoc `className`. Colors etc. are tokens (`--color-x`). Every instance of such an element uses a type, even with no `className` today (a later design change is one edit). Primitives the design does not style need no wrapper: not one wrapper per `ui/` primitive. See `workflow/12-design-system-variants.md`
 - No hardcoded values — use constants or config
 - Time values: Always use `src/constants/time` (minuteInMs, hourInMs, etc.) instead of hardcoding milliseconds
 - No backwards-compatibility shims for removed code

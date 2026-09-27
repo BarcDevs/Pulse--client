@@ -2,7 +2,7 @@ import { useTranslations } from 'next-intl'
 
 import { AlertTriangle, BarChart3 } from 'lucide-react'
 
-import { Button } from '@/components/ui/button'
+import { Button } from '@/components/shared/buttons/Button'
 
 import { insightsLocales } from '@/locales/insightsLocales'
 
@@ -27,10 +27,10 @@ export const CriticalInsight = () => {
             </p>
 
             <div className={'mt-6 flex items-center gap-3'}>
-                <Button className={'bg-primary hover:bg-primary/90 text-primary-foreground'}>
+                <Button>
                     {t(insightsLocales.criticalInsight.buttonPrimary)}
                 </Button>
-                <Button variant={'ghost'} className={'text-muted-foreground'}>
+                <Button variant={'secondary'}>
                     <BarChart3 className={'mr-2 h-4 w-4'}/>
                     {t(insightsLocales.criticalInsight.buttonSecondary)}
                 </Button>

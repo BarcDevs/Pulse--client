@@ -5,7 +5,7 @@ import {
     ChevronDown
 } from 'lucide-react'
 
-import { Button } from '@/components/ui/button'
+import { FieldButton } from '@/components/shared/buttons/FieldButton'
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -41,13 +41,10 @@ export const DropdownSelector = ({
         )}
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
-                <Button
-                    variant={'outline'}
-                    className={'w-full justify-between text-foreground'}
-                >
+                <FieldButton>
                     {options[value] || value}
                     <ChevronDown className={'h-4 w-4 opacity-50'}/>
-                </Button>
+                </FieldButton>
             </DropdownMenuTrigger>
             <DropdownMenuContent
                 align={'start'}

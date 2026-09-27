@@ -9,7 +9,7 @@ import {
     X
 } from 'lucide-react'
 
-import { Button } from '@/components/ui/button'
+import { Button } from '@/components/shared/buttons/Button'
 
 import { useProfileEditContext } from '@/context/ProfileEditContext'
 
@@ -55,7 +55,7 @@ export const EditBanner = () => {
                 {isEditing ? (
                     <>
                         <Button
-                            variant={'outline'}
+                            variant={'secondary'}
                             size={'sm'}
                             onClick={cancelEdit}
                             disabled={isSaving}
@@ -74,9 +74,9 @@ export const EditBanner = () => {
                     </>
                 ) : (
                     <Button
-                        variant={'outline'}
+                        variant={'secondary'}
                         size={'sm'}
-                        className={'gap-1.5 border-primary text-primary hover:bg-primary/5 hover:text-primary'}
+                        className={'gap-1.5'}
                         onClick={startEdit}
                     >
                         <Pencil className={'size-3.5'}/>

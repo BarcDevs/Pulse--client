@@ -107,5 +107,37 @@ describe(
                     () => {
                         expect(isNetworkError(new Error('something unrelated'))).toBe(false)
                     })
+
+                it(
+                    'should return true for an axios ERR_NETWORK code',
+                    () => {
+                        const error = Object.assign(new Error('x'), { code: 'ERR_NETWORK' })
+
+                        expect(isNetworkError(error)).toBe(true)
+                    })
+
+                it(
+                    'should return true for 502/503/504 responses',
+                    () => {
+                        const error = Object.assign(new Error('x'), { response: { status: 503, data: {} } })
+
+                        expect(isNetworkError(error)).toBe(true)
+                    })
+
+                it(
+                    'should return true for an empty-bodied 500 (proxy, backend down)',
+                    () => {
+                        const error = Object.assign(new Error('Request failed with status code 500'), { response: { status: 500, data: '' } })
+
+                        expect(isNetworkError(error)).toBe(true)
+                    })
+
+                it(
+                    'should return false for a 500 carrying an API error message',
+                    () => {
+                        const error = Object.assign(new Error('Request failed with status code 500'), { response: { status: 500, data: { message: 'boom' } } })
+
+                        expect(isNetworkError(error)).toBe(false)
+                    })
             })
     })

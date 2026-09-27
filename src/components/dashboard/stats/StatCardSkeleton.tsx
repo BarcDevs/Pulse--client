@@ -1,11 +1,9 @@
-import {
-    Card,
-    CardContent
-} from '@/components/ui/card'
+import { Card } from '@/components/shared/cards/Card'
+import { CardContent } from '@/components/ui/card'
 import { Skeleton } from '@/components/ui/skeleton'
 
 export const StatCardSkeleton = () => (
-    <Card className={'border-0 shadow-sm'}>
+    <Card>
         <CardContent className={'pt-6'}>
             <div className={'flex items-center gap-4'}>
                 <Skeleton className={'size-12 shrink-0 rounded-xl'}/>

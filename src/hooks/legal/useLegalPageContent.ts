@@ -1,4 +1,7 @@
-import { useTranslations } from 'next-intl'
+import {
+    useLocale,
+    useTranslations
+} from 'next-intl'
 
 import {
     LegalDocumentContent,
@@ -6,11 +9,12 @@ import {
 } from '@/types/legal'
 
 import {
-    LEGAL_UPDATED_DATE,
     PRIVACY_CALLOUT_TONES,
     PRIVACY_SECTION_IDS,
+    PRIVACY_UPDATED_DATE,
     TERMS_CALLOUT_TONES,
-    TERMS_SECTION_IDS
+    TERMS_SECTION_IDS,
+    TERMS_UPDATED_DATE
 } from '@/constants/legal'
 import { ROUTES } from '@/constants/routes'
 
@@ -23,6 +27,11 @@ const SECTION_IDS_BY_DOC = {
     terms: TERMS_SECTION_IDS
 }
 
+const UPDATED_DATE_BY_DOC = {
+    privacy: PRIVACY_UPDATED_DATE,
+    terms: TERMS_UPDATED_DATE
+}
+
 const CALLOUT_TONES_BY_DOC = {
     privacy: PRIVACY_CALLOUT_TONES,
     terms: TERMS_CALLOUT_TONES
@@ -30,6 +39,7 @@ const CALLOUT_TONES_BY_DOC = {
 
 export const useLegalPageContent = (docKey: LegalDocKey) => {
     const t = useTranslations()
+    const locale = useLocale()
     const { sections: sectionContents, ...content } =
         t.raw(`legal.${docKey}`) as LegalDocumentContent & {
         sections: LegalSectionContentRaw[]
@@ -59,6 +69,10 @@ export const useLegalPageContent = (docKey: LegalDocKey) => {
         content,
         sections,
         tabs,
-        updated: LEGAL_UPDATED_DATE
+        pdfHref: `/legal/${docKey}-${locale}.pdf`,
+        updated: new Intl.DateTimeFormat(
+            locale,
+            { dateStyle: 'long' }
+        ).format(new Date(UPDATED_DATE_BY_DOC[docKey]))
     }
 }

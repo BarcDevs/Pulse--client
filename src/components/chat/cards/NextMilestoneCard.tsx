@@ -1,10 +1,8 @@
 import { useTranslations } from 'next-intl'
 
-import { Badge } from '@/components/ui/badge'
-import {
-    Card,
-    CardContent
-} from '@/components/ui/card'
+import { Badge } from '@/components/shared/badges/Badge'
+import { Card } from '@/components/shared/cards/Card'
+import { CardContent } from '@/components/ui/card'
 import { Progress } from '@/components/ui/progress'
 
 import { chatLocales } from '@/locales/chatLocales'
@@ -13,7 +11,7 @@ export const NextMilestoneCard = () => {
     const t = useTranslations()
 
     return (
-        <Card className={'border-0 bg-primary text-white shadow-none'}>
+        <Card variant={'primary'}>
             <CardContent className={'pt-6'}>
                 <p className={'label-uppercase opacity-80'}>
                     {t(chatLocales.sidebar.nextMilestoneLabel)}
@@ -21,7 +19,10 @@ export const NextMilestoneCard = () => {
                 <h3 className={'mt-1 text-lg font-semibold'}>
                     {t(chatLocales.sidebar.nextMilestoneTitle)}
                 </h3>
-                <Badge className={'mt-2 border-0 bg-white/20 text-white'}>
+                <Badge
+                    variant={'onGradient'}
+                    className={'mt-2'}
+                >
                     {t(chatLocales.sidebar.nextMilestoneBadge)}
                 </Badge>
                 <Progress
