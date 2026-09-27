@@ -18,8 +18,7 @@ const nextConfig = {
         unoptimized: true
     },
     experimental: {
-        optimizePackageImports: ['radix-ui'],
-        instrumentationHook: true
+        optimizePackageImports: ['radix-ui']
     },
     async rewrites() {
         const serverUrl = process.env.SERVER_URL
