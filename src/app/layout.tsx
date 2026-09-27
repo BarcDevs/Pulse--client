@@ -22,12 +22,14 @@ import '@/styles/globals.css'
 
 const inter = Inter({
     subsets: ['latin'],
-    variable: '--font-inter'
+    variable: '--font-inter',
+    adjustFontFallback: false
 })
 
 const notoSansHebrew = Noto_Sans_Hebrew({
     subsets: ['hebrew'],
-    variable: '--font-noto-sans-hebrew'
+    variable: '--font-noto-sans-hebrew',
+    adjustFontFallback: false
 })
 
 export const metadata: Metadata = getAppMetadata()
