@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl'
 
 import { LayoutProps } from '@/types/react'
 
+import { FooterCredit } from '@/components/shared/footer/FooterCredit'
 import { LanguageSwitcher } from '@/components/shared/LanguageSwitcher'
 
 import { ROUTES } from '@/constants/routes'
@@ -47,9 +48,7 @@ const AuthLayout = ({ children }: LayoutProps) => {
             </main>
 
             <footer className={'p-4 text-center text-xs text-muted-foreground'}>
-                <p>{t(globalLocales.footer.copyright, {
-                    brandName: appSettings.brandName
-                })}</p>
+                <FooterCredit/>
                 <div className={'mt-2 flex--center gap-4'}>
                     <Link
                         href={ROUTES.SUPPORT}
