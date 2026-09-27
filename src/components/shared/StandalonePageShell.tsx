@@ -12,9 +12,11 @@ export const StandalonePageShell = ({
     const { user } = useAuth()
 
     return (
-        <div className={'flex flex-1 overflow-hidden'}>
-            {user && <Sidebar className={'print:hidden'}/>}
-            {children}
+        <div className={'flex h-screen flex-col'}>
+            <div className={'flex min-h-0 flex-1 overflow-hidden'}>
+                {user && <Sidebar className={'print:hidden'}/>}
+                {children}
+            </div>
         </div>
     )
 }

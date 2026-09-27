@@ -52,7 +52,7 @@ export const LegalDocument = ({
         <StandalonePageShell>
             <div
                 ref={scrollerRef}
-                className={'flex flex-1 flex-col overflow-y-auto bg-surface-page print:overflow-visible'}
+                className={'flex min-h-0 flex-1 flex-col overflow-y-auto bg-surface-page print:overflow-visible'}
             >
                 <div className={'px-4 pt-6 md:px-8'}>
                     <PageHeader

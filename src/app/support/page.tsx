@@ -23,7 +23,7 @@ const SupportPage = () => {
 
     return (
         <StandalonePageShell>
-            <div className={'flex flex-1 flex-col overflow-y-auto bg-surface-page'}>
+            <div className={'flex min-h-0 flex-1 flex-col overflow-y-auto bg-surface-page'}>
                 <div className={'px-4 pt-6 md:px-8'}>
                     <PageHeader
                         title={t(supportLocales.header.title)}
