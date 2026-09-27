@@ -42,7 +42,7 @@ export const usePostForm = ({
     const handleSubmit = wrapFormSubmit(
         form,
         onSubmit,
-        { resetOnSuccess: true }
+        { resetOnSuccess: true, t }
     )
 
     return {
