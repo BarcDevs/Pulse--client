@@ -9,7 +9,7 @@ import {
     passwordSpecialCharPattern
 } from '@/config/regex'
 
-const asciiSpecialChars = [...' !"#$%&\'()*+,-./:;<=>?@[\]^_`{|}~']
+const asciiSpecialChars = [...' !"#$%&\'()*+,-./:;<=>?@[]^_`{|}~']
 
 describe(
     'passwordSpecialCharPattern',
