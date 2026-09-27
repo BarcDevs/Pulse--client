@@ -36,7 +36,7 @@ type CheckInContextType = {
     submitCheckIn: (data: CheckInSchema) => void
 }
 
-export const CheckInContext =
+const CheckInContext =
     createContext<CheckInContextType | null>(null)
 
 export const CheckInProvider = ({

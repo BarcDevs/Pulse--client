@@ -6,7 +6,7 @@ import { hourInMs } from '@/constants/time'
 
 import { getProfileOptions } from '@/api/profile'
 
-export const profileOptionsQueryKey = [
+const profileOptionsQueryKey = [
     'profile',
     'options'
 ] as const

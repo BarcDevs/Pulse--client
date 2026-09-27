@@ -48,7 +48,7 @@ type ForumRepliesContextType = {
     deleteReply: (replyId: string) => Promise<void>
 }
 
-export const ForumRepliesContext =
+const ForumRepliesContext =
     createContext<ForumRepliesContextType | null>(null)
 
 type ForumRepliesStateProviderProps = {

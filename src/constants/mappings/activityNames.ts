@@ -22,8 +22,6 @@ const activityNames: Record<string, ActivityNames> = {
     'medical':     { en: 'Medical Appointment',  he: 'תור רפואי' }
 }
 
-export const activitySlugs = Object.keys(activityNames)
-
 export const getActivityName = (
     slug: string,
     locale: string

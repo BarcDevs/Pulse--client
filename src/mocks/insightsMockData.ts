@@ -5,8 +5,3 @@ export const INSIGHTS_MILESTONE_MOCK = {
 }
 
 export const OBSERVATION_STAT_MOCK = '82%'
-
-export const NEXT_MILESTONE_MOCK = {
-    name: 'Mind and body balance',
-    daysRemaining: 6
-}

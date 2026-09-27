@@ -33,14 +33,6 @@ export type CheckIn = {
     updatedAt: string
 }
 
-export type CheckInInput = {
-    mood: number
-    pain: number
-    energy?: number
-    activities: string[]
-    notes?: string
-}
-
 export type TrendPoint = {
     date: string
     actual: number | null
@@ -62,10 +54,3 @@ export type CheckInStats = {
     milestonesAchieved: number
 }
 
-export type PaginatedResponse<T> = {
-    data: T[]
-    total: number
-    page: number
-    pageSize: number
-    hasMore: boolean
-}

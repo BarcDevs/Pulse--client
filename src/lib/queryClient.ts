@@ -21,7 +21,7 @@ if (typeof window !== 'undefined') {
     })
 }
 
-export const createQueryClient = () =>
+const createQueryClient = () =>
     new QueryClient({
         defaultOptions: {
             queries: {
