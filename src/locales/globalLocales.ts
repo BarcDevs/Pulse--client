@@ -164,3 +164,24 @@ export const globalLocales = {
         }
     }
 } as const
+
+/**
+ * Maps the server's stable error `code` (src/constants/errorCodes.ts on the
+ * server, fixed enum) to its translation key. Never key off `error`/`message`
+ * — those are English diagnostics only and not stable across server changes.
+ */
+export const apiErrorLocales = {
+    AUTH_GENERIC: 'apiErrors.AUTH_GENERIC',
+    AUTH_CREDENTIALS: 'apiErrors.AUTH_CREDENTIALS',
+    AUTH_UNAUTHORIZED: 'apiErrors.AUTH_UNAUTHORIZED',
+    AUTH_FORBIDDEN: 'apiErrors.AUTH_FORBIDDEN',
+    AUTH_RESET_PASSWORD: 'apiErrors.AUTH_RESET_PASSWORD',
+    AUTH_CONFLICT: 'apiErrors.AUTH_CONFLICT',
+    AUTH_OAUTH: 'apiErrors.AUTH_OAUTH',
+    NOT_FOUND: 'apiErrors.NOT_FOUND',
+    CONFLICT: 'apiErrors.CONFLICT',
+    VALIDATION_GENERIC: 'apiErrors.VALIDATION_GENERIC',
+    VALIDATION_OTP: 'apiErrors.VALIDATION_OTP',
+    VALIDATION_ZOD: 'apiErrors.VALIDATION_ZOD',
+    INTERNAL_ERROR: 'apiErrors.INTERNAL_ERROR'
+} as const satisfies Record<string, string>

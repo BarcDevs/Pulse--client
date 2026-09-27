@@ -34,7 +34,7 @@ export const useSupportForm = ({
     const handleSubmit = wrapFormSubmit(
         form,
         onSubmit,
-        { resetOnSuccess: true }
+        { resetOnSuccess: true, t }
     )
 
     return { form, handleSubmit }

@@ -1326,6 +1326,21 @@
       }
     }
   },
+  "apiErrors": {
+    "AUTH_GENERIC": "Something went wrong while signing you in. Please try again.",
+    "AUTH_CREDENTIALS": "Incorrect email or password.",
+    "AUTH_UNAUTHORIZED": "You need to log in to continue.",
+    "AUTH_FORBIDDEN": "You do not have permission to do that.",
+    "AUTH_RESET_PASSWORD": "We couldn't reset your password. Please try again.",
+    "AUTH_CONFLICT": "That email or username is already in use.",
+    "AUTH_OAUTH": "We couldn't sign you in with Google. Please try again.",
+    "NOT_FOUND": "{resource} not found.",
+    "CONFLICT": "This already exists.",
+    "VALIDATION_GENERIC": "Please check your input and try again.",
+    "VALIDATION_OTP": "That verification code isn't valid.",
+    "VALIDATION_ZOD": "Please check the {property} field and try again.",
+    "INTERNAL_ERROR": "Something went wrong on our end. Please try again later."
+  },
   "recommendations": {
     "action": {
       "askedQuestion": "asked the community",

@@ -1,9 +1,39 @@
+import type { ApiErrorDetail } from '@/types/responses'
+
+import { apiErrorLocales } from '@/locales/globalLocales'
+
 export const getApiErrorMessage = (
     error: unknown,
     fallback: string
 ): string =>
     (error as any)?.response?.data?.message
     ?? (error instanceof Error ? error.message : fallback)
+
+const getApiErrorDetail = (
+    error: unknown
+): ApiErrorDetail | undefined =>
+    (error as any)?.response?.data?.error?.[0]
+
+/**
+ * Localizes an API error by its stable `code`, interpolating `params` into
+ * the translated template. Falls back to the raw server/fallback message
+ * when there's no code, or no translation for it yet — additive, never
+ * breaking on unmapped codes.
+ */
+export const getLocalizedApiErrorMessage = (
+    t: (key: string, params?: Record<string, string>) => string,
+    error: unknown,
+    fallback: string
+): string => {
+    const detail = getApiErrorDetail(error)
+    const localeKey = detail?.code
+        ? apiErrorLocales[detail.code as keyof typeof apiErrorLocales]
+        : undefined
+
+    if (localeKey) return t(localeKey, detail?.params)
+
+    return getApiErrorMessage(error, fallback)
+}
 
 export const isUnauthorizedError = (
     error: Error | null
