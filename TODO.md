@@ -114,7 +114,7 @@ Behavioral intelligence systems require medical/legal caution, behavioral tuning
 | ~~10~~ | ~~`src/components/progress/cards/StreakBars.tsx`~~ | ~~—~~ | ~~**[Bug]** Optimistic streak bar for a new streak (after breaking previous streak) shows previous streak's color instead of active streak color~~ |
 | ~~7~~ | ~~`src/components/goals/`~~ | ~~—~~ | ~~**[Medium, Bug]** Goal RTL layout broken (Hebrew)~~ |
 | ~~8~~ | ~~`src/components/goals/`~~ | ~~—~~ | ~~**[Low, Bug]** Goal due date and graphs display incorrectly in Hebrew locale~~ |
-| 11 | `src/components/dashboard/charts/HistoryChart.tsx` | — | **[Low]** Color null/no-data days (no dashed line) in graph grey |
+| ~~11~~ | ~~`src/components/dashboard/charts/HistoryChart.tsx`~~ | ~~—~~ | ~~**[Low]** Color null/no-data days (no dashed line) in graph grey — restored dropped `1e859ee` grey-out fix + lowered bridge-line opacity 0.4→0.2 in `TrendChart.tsx`~~ |
 | 12 | `src/components/progress/cards/StreakCard.tsx` | — | **[Low]** Add hover effect to current streak stat |
 | ~~13~~ | ~~`src/context/CheckInContext.tsx`~~ | ~~—~~ | ~~**[Bug]** Streak chart still not updating optimistically after check-in submit — bars don't reflect new streak until refetch~~ |
 | ~~14~~ | ~~`src/constants/defaults.ts`, `BasicInfoView.tsx`~~ | ~~—~~ | ~~**[Bug]** Hebrew locale shows date as month-then-day instead of day-then-month (reversed order)~~ |
@@ -146,5 +146,6 @@ Behavioral intelligence systems require medical/legal caution, behavioral tuning
 | # | Task | Priority | Note |
 |---|------|----------|------|
 | ~~1~~ | ~~Buy a domain~~ | ~~Medium~~ | ~~Done — `pulserehab.app`~~ |
-| 2 | Deploy MVP + monitor | High | In Progress — wire up monitoring tools |
-| 3 | Wire up `NEXT_PUBLIC_SENTRY_DSN` for the EC2 client deploy | Medium | Skipped for the initial AWS deploy — get client working end-to-end first, then pull the real DSN (likely only set in Vercel's env config today) and set it on the EC2 container |
+| ~~2~~ | ~~Deploy MVP~~ | ~~High~~ | ~~Done — live on AWS~~ |
+| 3 | Wire up monitoring | High | Pending — deploy is up, monitoring tools not yet wired |
+| 4 | Wire up `NEXT_PUBLIC_SENTRY_DSN` for the EC2 client deploy | Medium | Skipped for the initial AWS deploy — get client working end-to-end first, then pull the real DSN (likely only set in Vercel's env config today) and set it on the EC2 container |
