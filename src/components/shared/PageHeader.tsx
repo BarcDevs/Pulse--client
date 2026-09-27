@@ -3,7 +3,9 @@
 import { useRouter } from 'next/navigation'
 
 import { ArrowLeft } from 'lucide-react'
+import type { LucideIcon } from 'lucide-react'
 
+import { Badge } from '@/components/shared/badges/Badge'
 import { TextButton } from '@/components/shared/buttons/TextButton'
 
 import { ROUTES } from '@/constants/routes'
@@ -22,6 +24,7 @@ type PageHeaderProps = {
     subtitle?: string
     backLabel?: string
     kicker?: string
+    kickerIcon?: LucideIcon
     tabs?: PageHeaderTab[]
 }
 
@@ -30,6 +33,7 @@ export const PageHeader = ({
     subtitle,
     backLabel = 'Back',
     kicker,
+    kickerIcon: KickerIcon,
     tabs
 }: PageHeaderProps) => {
     const router = useRouter()
@@ -57,9 +61,10 @@ export const PageHeader = ({
             <header className={'mb-12'}>
                 <div className={'mb-4 flex flex-wrap items-center justify-between gap-4'}>
                     {kicker && (
-                        <p className={'text-sm font-semibold uppercase tracking-wide text-primary'}>
+                        <Badge className={'gap-1.5'}>
+                            {KickerIcon && <KickerIcon className={'size-3'}/>}
                             {kicker}
-                        </p>
+                        </Badge>
                     )}
                     {tabs && <PageHeaderTabs tabs={tabs}/>}
                 </div>
