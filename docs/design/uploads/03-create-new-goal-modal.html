@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Create New Goal | Pulse</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-fixed": "#f8d8ff",
+                    "on-primary-container": "#fdfcff",
+                    "on-background": "#181c1e",
+                    "secondary-fixed-dim": "#5ddbc1",
+                    "on-primary-fixed": "#001c39",
+                    "on-primary-fixed-variant": "#004883",
+                    "background": "#f7fafc",
+                    "secondary": "#006b5b",
+                    "primary": "#005da7",
+                    "primary-container": "#2976c7",
+                    "surface-dim": "#d7dadc",
+                    "surface-container-low": "#f1f4f6",
+                    "surface": "#f7fafc",
+                    "outline": "#717783",
+                    "on-secondary-fixed": "#00201a",
+                    "on-tertiary": "#ffffff",
+                    "error": "#ba1a1a",
+                    "tertiary-fixed-dim": "#ebb2ff",
+                    "tertiary": "#7d4495",
+                    "primary-fixed-dim": "#a4c9ff",
+                    "on-surface-variant": "#414751",
+                    "tertiary-container": "#985db0",
+                    "on-secondary-fixed-variant": "#005144",
+                    "surface-container": "#ebeef0",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-fixed-variant": "#662e7e",
+                    "surface-bright": "#f7fafc",
+                    "on-secondary": "#ffffff",
+                    "secondary-fixed": "#7cf8dd",
+                    "surface-container-highest": "#e0e3e5",
+                    "on-secondary-container": "#007261",
+                    "on-tertiary-container": "#fffbff",
+                    "error-container": "#ffdad6",
+                    "on-tertiary-fixed": "#320047",
+                    "surface-tint": "#0060ac",
+                    "secondary-container": "#7cf8dd",
+                    "inverse-on-surface": "#eef1f3",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-fixed": "#d4e3ff",
+                    "outline-variant": "#c1c7d3",
+                    "on-surface": "#181c1e",
+                    "on-error": "#ffffff",
+                    "inverse-surface": "#2d3133",
+                    "surface-container-high": "#e5e9eb",
+                    "inverse-primary": "#a4c9ff",
+                    "surface-variant": "#e0e3e5",
+                    "on-primary": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "display": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .font-display { font-family: 'Manrope', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface text-on-background antialiased">
+<!-- Background Navigation Shell (Blurred) -->
+<div class="fixed left-0 top-0 bottom-0 w-64 bg-slate-50 flex flex-col py-8 z-10 blur-sm pointer-events-none">
+<div class="px-8 mb-12">
+<div class="text-xl font-extrabold text-blue-600">Pulse</div>
+<div class="text-xs font-medium text-slate-500 uppercase tracking-widest">Recovery Sanctuary</div>
+</div>
+<nav class="flex-1 px-4 space-y-2">
+<div class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-500">
+<span class="material-symbols-outlined">grid_view</span>
+<span class="font-medium">Dashboard</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 rounded-lg text-blue-600 bg-blue-50/50 border-r-4 border-blue-600">
+<span class="material-symbols-outlined">event_available</span>
+<span class="font-medium">Daily Check-In</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-500">
+<span class="material-symbols-outlined">trending_up</span>
+<span class="font-medium">Progress</span>
+</div>
+</nav>
+</div>
+<div class="fixed top-0 right-0 left-64 h-16 bg-white/80 backdrop-blur-xl flex justify-between items-center px-8 z-10 blur-sm pointer-events-none">
+<div class="flex items-center gap-4">
+<div class="w-80 h-10 bg-slate-100 rounded-full flex items-center px-4 gap-2">
+<span class="material-symbols-outlined text-slate-400">search</span>
+<span class="text-slate-400 text-sm italic">Search your wellness...</span>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<span class="material-symbols-outlined text-slate-500">notifications</span>
+<div class="w-8 h-8 rounded-full bg-slate-200"></div>
+</div>
+</div>
+<!-- Main Content Background Canvas (Blurred) -->
+<main class="ml-64 pt-24 px-12 blur-sm pointer-events-none min-h-screen">
+<header class="mb-12">
+<h1 class="text-4xl font-extrabold tracking-tight text-on-background mb-2">My Recovery Journey</h1>
+<p class="text-on-surface-variant text-lg">Define your path to balance and well-being.</p>
+</header>
+<div class="grid grid-cols-12 gap-8">
+<div class="col-span-8 space-y-6">
+<div class="bg-surface-container-lowest p-8 rounded-xl">
+<div class="flex justify-between items-center mb-8">
+<h2 class="text-2xl font-bold">Active Goals</h2>
+<button class="bg-primary text-white px-6 py-2.5 rounded-lg font-semibold shadow-lg">New Goal</button>
+</div>
+<div class="space-y-4">
+<div class="p-6 bg-surface-container-low rounded-xl flex items-center justify-between">
+<div class="flex items-center gap-6">
+<div class="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">spa</span>
+</div>
+<div>
+<h3 class="font-bold text-lg">Morning Yoga Flow</h3>
+<p class="text-on-surface-variant">Daily • Physical</p>
+</div>
+</div>
+<div class="text-right">
+<div class="text-sm font-semibold text-secondary">85% Complete</div>
+<div class="w-32 h-1.5 bg-slate-200 rounded-full mt-2">
+<div class="bg-secondary w-[85%] h-full rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="col-span-4">
+<div class="bg-primary-container/10 p-8 rounded-xl">
+<h3 class="text-xl font-bold mb-4 text-primary">Insight</h3>
+<p class="text-primary/80 leading-relaxed italic">"Consistency is the bedrock of recovery. Setting small, manageable goals creates the momentum for major life changes."</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Modal Overlay -->
+<div class="fixed inset-0 z-[60] flex items-center justify-center p-4">
+<!-- Backdrop Shadow -->
+<div class="absolute inset-0 bg-on-background/20 backdrop-blur-[2px]"></div>
+<!-- Modal Content -->
+<div class="relative bg-surface-container-lowest w-full max-w-xl rounded-xl shadow-[0px_12px_32px_rgba(24,28,30,0.06)] overflow-hidden">
+<!-- Header Image/Banner -->
+<div class="h-32 w-full bg-gradient-to-r from-primary to-primary-container flex items-end p-8">
+<div class="w-16 h-16 bg-white/20 backdrop-blur-md rounded-xl flex items-center justify-center text-white mb-[-32px] shadow-sm">
+<span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">add_task</span>
+</div>
+</div>
+<div class="p-8 pt-12">
+<div class="mb-8">
+<h2 class="text-3xl font-extrabold tracking-tight text-on-background">Create New Goal</h2>
+<p class="text-on-surface-variant mt-1">What's the next step in your recovery sanctuary?</p>
+</div>
+<form class="space-y-6">
+<!-- Title -->
+<div>
+<label class="block text-[0.75rem] font-bold text-on-surface-variant uppercase tracking-widest mb-2" for="goal-title">Title</label>
+<input class="w-full bg-surface-container-low border-none rounded-lg px-4 py-3.5 focus:ring-2 focus:ring-primary/20 focus:bg-surface-container-lowest transition-all text-on-background placeholder:text-outline" id="goal-title" placeholder="e.g., Daily Meditation" type="text"/>
+</div>
+<!-- Description -->
+<div>
+<label class="block text-[0.75rem] font-bold text-on-surface-variant uppercase tracking-widest mb-2" for="goal-desc">Description</label>
+<textarea class="w-full bg-surface-container-low border-none rounded-lg px-4 py-3.5 focus:ring-2 focus:ring-primary/20 focus:bg-surface-container-lowest transition-all text-on-background placeholder:text-outline resize-none" id="goal-desc" placeholder="Explain your intention..." rows="3"></textarea>
+</div>
+<div class="grid grid-cols-2 gap-6">
+<!-- Category -->
+<div>
+<label class="block text-[0.75rem] font-bold text-on-surface-variant uppercase tracking-widest mb-2" for="goal-category">Category</label>
+<div class="relative">
+<select class="w-full appearance-none bg-surface-container-low border-none rounded-lg px-4 py-3.5 focus:ring-2 focus:ring-primary/20 focus:bg-surface-container-lowest transition-all text-on-background" id="goal-category">
+<option>Physical</option>
+<option>Mental</option>
+<option>Lifestyle</option>
+</select>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-outline pointer-events-none">expand_more</span>
+</div>
+</div>
+<!-- Target Date -->
+<div>
+<label class="block text-[0.75rem] font-bold text-on-surface-variant uppercase tracking-widest mb-2" for="goal-date">Target Date</label>
+<div class="relative">
+<input class="w-full bg-surface-container-low border-none rounded-lg px-4 py-3.5 focus:ring-2 focus:ring-primary/20 focus:bg-surface-container-lowest transition-all text-on-background" id="goal-date" type="date"/>
+</div>
+</div>
+</div>
+<!-- Footer Actions -->
+<div class="pt-8 flex items-center justify-end gap-4">
+<button class="px-6 py-3 rounded-lg text-sm font-bold text-primary hover:bg-primary/5 transition-colors" type="button">
+                            Cancel
+                        </button>
+<button class="bg-gradient-to-br from-primary to-primary-container text-white px-10 py-3 rounded-lg text-sm font-bold shadow-md hover:opacity-90 active:scale-95 transition-all" type="submit">
+                            Create Goal
+                        </button>
+</div>
+</form>
+</div>
+</div>
+</div>
+</body></html>

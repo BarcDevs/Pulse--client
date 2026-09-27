@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>OTP Emails — Pulse</title>
+<style>
+  html, body { margin: 0; padding: 0; height: 100%; background: #e9ecef; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+  #root { height: 100%; }
+</style>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel" src="design-canvas.jsx"></script>
+
+<script type="text/babel">
+// ────────────────────────────────────────────────────────────
+// Email preview wrapper — inlines the email body so the design-canvas
+// PNG/HTML export captures the actual content (iframes don't capture).
+// The .html files in /emails remain the source of truth.
+// ────────────────────────────────────────────────────────────
+function EmailFrame({ src, subject, from }) {
+  const [bodyHtml, setBodyHtml] = React.useState('');
+  React.useEffect(() => {
+    let cancelled = false;
+    fetch(src).then(r => r.text()).then(text => {
+      if (cancelled) return;
+      // Extract everything inside <body>…</body>; fall back to whole doc if not present.
+      const m = text.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
+      setBodyHtml(m ? m[1] : text);
+    }).catch(() => setBodyHtml('<p style="padding:24px;color:#94a3b8;font-family:sans-serif">Could not load ' + src + '</p>'));
+    return () => { cancelled = true; };
+  }, [src]);
+
+  return (
+    <div style={{ width: '100%', height: '100%', background: '#ffffff', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
+      {/* Mail-client header strip */}
+      <div style={{ padding: '16px 22px 14px', borderBottom: '1px solid #e6e9ee', background: '#fbfbfd', flexShrink: 0 }}>
+        <p style={{ margin: '0 0 6px', fontFamily: 'inherit', fontSize: 11, fontWeight: 600, letterSpacing: '0.08em', color: '#94a3b8', textTransform: 'uppercase' }}>Subject</p>
+        <p style={{ margin: '0 0 12px', fontFamily: 'inherit', fontSize: 15, fontWeight: 600, color: '#1a2b3c', letterSpacing: '-0.1px' }}>{subject}</p>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+          <div style={{ width: 28, height: 28, borderRadius: '50%', background: '#183e9f', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 12, fontWeight: 700 }}>H</div>
+          <div>
+            <p style={{ margin: 0, fontFamily: 'inherit', fontSize: 12, color: '#1a2b3c' }}><strong style={{ fontWeight: 600 }}>Pulse</strong> &lt;{from}&gt;</p>
+            <p style={{ margin: 0, fontFamily: 'inherit', fontSize: 11, color: '#94a3b8' }}>to you · just now</p>
+          </div>
+        </div>
+      </div>
+      {/* Inlined email body — captured by exports */}
+      <div style={{ flex: 1, overflow: 'auto', background: '#ffffff' }}
+           dangerouslySetInnerHTML={{ __html: bodyHtml }} />
+    </div>
+  );
+}
+
+const SUBJECT = 'Your Pulse verification code';
+const FROM = 'no-reply@pulse.app';
+
+function App() {
+  return (
+    <DesignCanvas
+      title="OTP Verification Emails"
+      subtitle="Static HTML, table-based, inline styles for cross-client compatibility · 600px max width · 6-digit code · 15-min expiry"
+    >
+      <DCSection id="otp" title="One-time password" subtitle="Four directions on tone, layout, and emphasis. The HTML in each artboard is the exact file in /emails — ready to ship.">
+        <DCArtboard id="classic"   label="A · Classic Card"   width={680} height={840}>
+          <EmailFrame src="emails/otp-classic.html"        subject={SUBJECT} from={FROM} />
+        </DCArtboard>
+        <DCArtboard id="hero"      label="B · Gradient Hero" width={680} height={920}>
+          <EmailFrame src="emails/otp-gradient-hero.html"  subject={SUBJECT} from={FROM} />
+        </DCArtboard>
+        <DCArtboard id="minimal"   label="C · Minimal Editorial" width={680} height={980}>
+          <EmailFrame src="emails/otp-minimal.html"        subject={SUBJECT} from={FROM} />
+        </DCArtboard>
+        <DCArtboard id="bold"      label="D · Bold Numeric"  width={680} height={860}>
+          <EmailFrame src="emails/otp-bold.html"           subject={SUBJECT} from={FROM} />
+        </DCArtboard>
+      </DCSection>
+    </DesignCanvas>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>

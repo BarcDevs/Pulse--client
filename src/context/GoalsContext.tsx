@@ -63,7 +63,7 @@ type GoalsContextType = {
     restoreGoal: (goalId: string) => Promise<void>
 }
 
-export const GoalsContext =
+const GoalsContext =
     createContext<GoalsContextType | null>(null)
 
 type GoalsStateProviderProps = {

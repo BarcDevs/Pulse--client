@@ -8,7 +8,7 @@ type ChatMessage = {
     suggestions?: string[]
 }
 
-export const chatMessageLocales = {
+const chatMessageLocales = {
     openingMessage: chatLocales.messages.openingMessage,
     exampleUserRestlessness: chatLocales.messages.exampleUserRestlessness,
     aiResponse1: chatLocales.messages.aiResponse1,

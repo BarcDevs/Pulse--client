@@ -1,17 +1,13 @@
 'use client'
 
-import { useTranslations } from 'next-intl'
-
 import { ClassName } from '@/types/react'
 
 import { cn } from '@/lib/utils'
 
-import { appSettings } from '@/config/appSettings'
 import { FEATURES } from '@/config/features'
 
-import { globalLocales } from '@/locales/globalLocales'
-
 import { FooterBrand } from './FooterBrand'
+import { FooterCredit } from './FooterCredit'
 import { FooterLegal } from './FooterLegal'
 import { FooterLinks } from './FooterLinks'
 import { FooterSocial } from './FooterSocial'
@@ -25,8 +21,6 @@ export const Footer = ({
     className,
     showLinks = true
 }: FooterProps = {}) => {
-    const t = useTranslations()
-
     return (
         <footer className={cn(
             'bg-surface-section border-t border-border',
@@ -48,11 +42,7 @@ export const Footer = ({
                 )}
 
                 <div className={'border-t border-border pt-4 text-center'}>
-                    <p className={'text-sm text-muted-foreground'}>
-                        {t(globalLocales.footer.copyright, {
-                            brandName: appSettings.brandName
-                        })}
-                    </p>
+                    <FooterCredit/>
                 </div>
             </div>
         </footer>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Pulse — Recovery Sanctuary</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body, #root { height: 100%; }
+  body { font-family: 'Inter', sans-serif; background: #f5f7fa; overflow: hidden; color: #1a2b3c; }
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 99px; }
+  ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+  input, textarea, button { font-family: 'Inter', sans-serif; }
+  input[type=range] { -webkit-appearance: none; appearance: none; height: 4px; border-radius: 99px; background: #e2e8f0; outline: none; cursor: pointer; }
+  input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 18px; height: 18px; border-radius: 50%; background: #4a90e2; border: 2.5px solid #fff; box-shadow: 0 1px 4px rgba(74,144,226,0.4); cursor: pointer; }
+</style>
+</head>
+<body>
+<template id="__bundler_thumbnail">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#4A90E2"/>
+      <stop offset="100%" stop-color="#005DA7"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="200" rx="32" fill="url(#bg)"/>
+  <path d="M100 150 C 60 122, 50 90, 70 72 C 84 60, 100 70, 100 86 C 100 70, 116 60, 130 72 C 150 90, 140 122, 100 150 Z" fill="#fff"/>
+</svg>
+</template>
+<div id="root"></div>
+
+<script type="text/babel" src="share_progress.jsx"></script>
+<script type="text/babel" src="sidebar.jsx"></script>
+<script type="text/babel" src="language_switcher.jsx"></script>
+<script type="text/babel" src="app_chrome.jsx"></script>
+<script type="text/babel" src="auth.jsx"></script>
+<script type="text/babel" src="dashboard.jsx"></script>
+<script type="text/babel" src="checkin.jsx"></script>
+<script type="text/babel" src="aichat.jsx"></script>
+<script type="text/babel" src="progress.jsx"></script>
+<script type="text/babel" src="goals.jsx"></script>
+<script type="text/babel" src="community.jsx"></script>
+<script type="text/babel" src="profile.jsx"></script>
+<script type="text/babel" src="settings.jsx"></script>
+<script type="text/babel" src="insights.jsx"></script>
+<script type="text/babel" src="support.jsx"></script>
+<script type="text/babel" src="legal.jsx"></script>
+
+<script type="text/babel">
+
+const APP_PAGES_AUTH = ['landing', 'login', 'signup', 'forgot'];
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{"userName":"Alex Rivera"}/*EDITMODE-END*/;
+
+function App() {
+  const [page, setPage] = React.useState(() => {
+    try { return localStorage.getItem('pulse_page') || 'landing'; } catch(e) { return 'landing'; }
+  });
+  const [tweaks, setTweaks] = React.useState(TWEAK_DEFAULTS);
+  const [tweakOpen, setTweakOpen] = React.useState(false);
+
+  React.useEffect(() => {
+    try { localStorage.setItem('pulse_page', page); } catch(e) {}
+  }, [page]);
+
+  React.useEffect(() => {
+    const handler = (e) => {
+      if (e.data?.type === '__activate_edit_mode') setTweakOpen(true);
+      if (e.data?.type === '__deactivate_edit_mode') setTweakOpen(false);
+    };
+    window.addEventListener('message', handler);
+    window.parent.postMessage({ type: '__edit_mode_available' }, '*');
+    return () => window.removeEventListener('message', handler);
+  }, []);
+
+  const nav = (p) => setPage(p);
+  const isApp = !APP_PAGES_AUTH.includes(page);
+
+  const appScreens = {
+    dashboard: <DashboardScreen onNavigate={nav} />,
+    checkin: <CheckInScreen onNavigate={nav} />,
+    progress: <ProgressScreen onNavigate={nav} />,
+    insights: <InsightsScreen onNavigate={nav} />,
+    goals: <GoalsScreen onNavigate={nav} />,
+    community: <CommunityScreen onNavigate={nav} />,
+    aichat: <AIChatScreen onNavigate={nav} />,
+    profile: <ProfileScreen onNavigate={nav} />,
+    settings: <SettingsScreen onNavigate={nav} />,
+    support: <SupportScreen onNavigate={nav} />,
+    privacy: <PrivacyScreen onNavigate={nav} />,
+    terms: <TermsScreen onNavigate={nav} />,
+    cookies: <CookiesScreen onNavigate={nav} />,
+    accessibility: <AccessibilityScreen onNavigate={nav} />,
+  };
+
+  return (
+    <div style={{ height: '100vh', display: 'flex', overflow: 'hidden', fontFamily: 'Inter, sans-serif' }}>
+      {isApp && (
+        <>
+          <Sidebar currentPage={page} onNavigate={nav} userName={tweaks.userName} />
+          <div style={{ marginLeft: 256, flex: 1, display: 'flex', flexDirection: 'column', overflow: 'hidden', minWidth: 0 }}>
+            {appScreens[page] || <DashboardScreen onNavigate={nav} />}
+          </div>
+        </>
+      )}
+
+      {page === 'landing' && <LandingPage onNavigate={nav} />}
+      {page === 'login' && <LoginPage onNavigate={nav} />}
+      {page === 'signup' && <SignUpPage onNavigate={nav} />}
+      {page === 'forgot' && <ForgotPassword onNavigate={nav} />}
+
+      {tweakOpen && (
+        <div style={{ position: 'fixed', bottom: 20, right: 20, zIndex: 9999, backgroundColor: '#fff', borderRadius: 14, boxShadow: '0 8px 32px rgba(0,0,0,0.15)', padding: 20, width: 260, border: '1px solid #e2e8f0' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
+            <span style={{ fontFamily: 'Inter', fontWeight: 700, fontSize: 14, color: '#1a2b3c' }}>Tweaks</span>
+            <button onClick={() => setTweakOpen(false)} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 2 }}><Icon name="close" size={14} color="#64748b" /></button>
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+            <div>
+              <label style={{ fontFamily: 'Inter', fontSize: 11, fontWeight: 600, color: '#64748b', letterSpacing: '0.5px', display: 'block', marginBottom: 8 }}>NAVIGATE TO</label>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 4, maxHeight: 360, overflowY: 'auto' }}>
+                {['landing','login','signup','forgot','dashboard','checkin','progress','insights','goals','community','aichat','profile','settings','support','privacy','terms','cookies','accessibility'].map(p => (
+                  <button key={p} onClick={() => nav(p)} style={{ padding: '7px 10px', borderRadius: 6, border: `1px solid ${page === p ? '#4a90e2' : '#e2e8f0'}`, backgroundColor: page === p ? '#e8f4fd' : '#fff', fontFamily: 'Inter', fontSize: 12, color: page === p ? '#005da7' : '#475569', cursor: 'pointer', textAlign: 'left', fontWeight: page === p ? 700 : 400 }}>
+                    {p.charAt(0).toUpperCase() + p.slice(1)}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function ForgotPassword({ onNavigate }) {
+  const [email, setEmail] = React.useState('');
+  const [sent, setSent] = React.useState(false);
+  return (
+    <AuthCard title={sent ? 'Check Your Email' : 'Reset Password'} subtitle={sent ? `We sent a reset link to ${email}` : "Enter your email and we'll send you a reset link."}>
+      {!sent ? (
+        <>
+          <InputField label="Email address" type="email" placeholder="you@example.com" icon="mail" value={email} onChange={setEmail} />
+          <button onClick={() => email && setSent(true)} style={{ width: '100%', padding: '12px', fontFamily: 'Inter, sans-serif', fontWeight: 600, fontSize: 15, color: '#fff', background: `linear-gradient(to right, ${C.primaryGradStart}, ${C.primaryGradEnd})`, border: 'none', borderRadius: 8, cursor: 'pointer', marginTop: 4, boxShadow: '0 4px 12px rgba(0,93,167,0.25)' }}>Send Reset Link</button>
+        </>
+      ) : (
+        <div style={{ textAlign: 'center' }}>
+          <div style={{ width: 60, height: 60, borderRadius: '50%', backgroundColor: C.secondaryLight, display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px' }}>
+            <Icon name="mail" size={24} color={C.secondary} />
+          </div>
+          <p style={{ fontFamily: 'Inter, sans-serif', fontSize: 14, color: C.mutedFg, lineHeight: 1.7 }}>Didn't receive it? Check your spam folder or <button onClick={() => setSent(false)} style={{ background: 'none', border: 'none', cursor: 'pointer', color: C.primary, fontWeight: 600, fontFamily: 'Inter, sans-serif', fontSize: 14 }}>try again</button>.</p>
+        </div>
+      )}
+      <p style={{ fontFamily: 'Inter, sans-serif', fontSize: 13, textAlign: 'center', color: C.mutedFg, marginTop: 18 }}>
+        <button onClick={() => onNavigate('login')} style={{ background: 'none', border: 'none', cursor: 'pointer', color: C.primary, fontWeight: 600, fontSize: 13, fontFamily: 'Inter, sans-serif' }}>Back to Sign In</button>
+      </p>
+    </AuthCard>
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);
+</script>
+</body>
+</html>

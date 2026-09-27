@@ -114,7 +114,7 @@ Behavioral intelligence systems require medical/legal caution, behavioral tuning
 | ~~10~~ | ~~`src/components/progress/cards/StreakBars.tsx`~~ | ~~—~~ | ~~**[Bug]** Optimistic streak bar for a new streak (after breaking previous streak) shows previous streak's color instead of active streak color~~ |
 | ~~7~~ | ~~`src/components/goals/`~~ | ~~—~~ | ~~**[Medium, Bug]** Goal RTL layout broken (Hebrew)~~ |
 | ~~8~~ | ~~`src/components/goals/`~~ | ~~—~~ | ~~**[Low, Bug]** Goal due date and graphs display incorrectly in Hebrew locale~~ |
-| ~~11~~ | ~~`src/components/dashboard/charts/HistoryChart.tsx`~~ | ~~—~~ | ~~**[Low]** Color null/no-data days (no dashed line) in graph grey~~ |
+| ~~11~~ | ~~`src/components/dashboard/charts/HistoryChart.tsx`~~ | ~~—~~ | ~~**[Low]** Color null/no-data days (no dashed line) in graph grey — restored dropped `1e859ee` grey-out fix + lowered bridge-line opacity 0.4→0.2 in `TrendChart.tsx`~~ |
 | ~~12~~ | ~~`src/components/progress/cards/StreakCard.tsx`~~ | ~~—~~ | ~~**[Low]** Add hover effect to current streak stat~~ |
 | ~~13~~ | ~~`src/context/CheckInContext.tsx`~~ | ~~—~~ | ~~**[Bug]** Streak chart still not updating optimistically after check-in submit — bars don't reflect new streak until refetch~~ |
 | ~~14~~ | ~~`src/constants/defaults.ts`, `BasicInfoView.tsx`~~ | ~~—~~ | ~~**[Bug]** Hebrew locale shows date as month-then-day instead of day-then-month (reversed order)~~ |

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Pulse — Email Designs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #f5f7fa;
+    color: #1a2b3c;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  header {
+    background: linear-gradient(135deg, #0a3a73 0%, #123a85 50%, #183e9f 100%);
+    color: #fff;
+    padding: 40px 48px 36px;
+  }
+  .back {
+    display: inline-flex; align-items: center; gap: 7px;
+    font-size: 13px; font-weight: 600; color: #bcd6f5;
+    text-decoration: none; margin-bottom: 22px;
+  }
+  .back:hover { color: #fff; }
+  header h1 { font-size: 34px; font-weight: 800; letter-spacing: -0.03em; }
+  header p { margin-top: 8px; font-size: 15px; color: #cfe1f6; font-weight: 500; }
+
+  main {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 44px 48px 80px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 36px;
+  }
+  @media (max-width: 900px) { main { grid-template-columns: 1fr; } }
+
+  .card {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 1px 2px rgba(16,40,80,0.04), 0 12px 32px -16px rgba(16,40,80,0.12);
+    display: flex; flex-direction: column;
+  }
+  .card-head {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px 20px;
+    border-bottom: 1px solid #eef1f5;
+  }
+  .card-head .label { font-size: 15px; font-weight: 700; letter-spacing: -0.01em; }
+  .card-head .sub { font-size: 12px; color: #94a3b8; font-weight: 500; margin-top: 2px; }
+  .open {
+    font-size: 12px; font-weight: 600; color: #005da7;
+    text-decoration: none; display: inline-flex; align-items: center; gap: 5px;
+    padding: 6px 12px; border: 1px solid #d6e2f0; border-radius: 99px;
+  }
+  .open:hover { background: #f0f6fd; }
+
+  .frame-wrap {
+    position: relative;
+    background: #eef2f7;
+    overflow: hidden;
+    border-top: 1px solid #eef1f5;
+  }
+  .frame-wrap img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+</style>
+</head>
+<body>
+<header>
+  <a class="back" href="#" id="backLink">← Back to Prototype</a>
+  <h1>Email Designs</h1>
+  <p>One-time passcode (OTP) verification emails — four directions on the Pulse brand.</p>
+</header>
+
+<main id="grid"></main>
+
+<script>
+  var qs = window.location.search;
+  document.getElementById('backLink').href = 'Pulse%20Prototype.html' + qs;
+
+  var emails = [
+    { file: 'emails/otp-minimal.html',       thumb: 'emails/thumbs/minimal.png',       label: 'Minimal',       sub: 'Typographic, no box' },
+    { file: 'emails/otp-classic.html',       thumb: 'emails/thumbs/classic.png',       label: 'Classic',       sub: 'Boxed code, trusted layout' },
+    { file: 'emails/otp-bold.html',          thumb: 'emails/thumbs/bold.png',          label: 'Bold',          sub: 'High-contrast card' },
+    { file: 'emails/otp-gradient-hero.html', thumb: 'emails/thumbs/gradient-hero.png', label: 'Gradient Hero', sub: 'Branded hero header' },
+  ];
+
+  var grid = document.getElementById('grid');
+  emails.forEach(function (e) {
+    var href = e.file + qs;
+    var card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML =
+      '<div class="card-head">' +
+        '<div><div class="label">' + e.label + '</div><div class="sub">' + e.sub + '</div></div>' +
+        '<a class="open" href="' + href + '" target="_self">Open full →</a>' +
+      '</div>' +
+      '<a class="frame-wrap" href="' + href + '" target="_self"><img src="' + e.thumb + qs + '" alt="' + e.label + ' email preview"></a>';
+    grid.appendChild(card);
+  });
+</script>
+</body>
+</html>

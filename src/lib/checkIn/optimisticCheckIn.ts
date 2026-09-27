@@ -28,7 +28,7 @@ import { CheckInSchema } from '@/validations/forms/checkInSchema'
 const RECENT_DAYS = 14
 const CHART_DAYS = 35
 
-export const buildCheckInQueryKeys = (dateFnsLocale?: Locale) => ({
+const buildCheckInQueryKeys = (dateFnsLocale?: Locale) => ({
     stats: [...checkInQueryKeys.stats, 'weekly'] as const,
     recentHistory: [...checkInQueryKeys.all, 'history', RECENT_DAYS, dateFnsLocale?.code] as const,
     chartHistory: [...checkInQueryKeys.all, 'history', CHART_DAYS, dateFnsLocale?.code] as const,

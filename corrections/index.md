@@ -49,3 +49,10 @@ Where new constants/config values belong.
 |---|---|
 | 23/09/2026 | Tunable delays go in `src/config/timings.ts`, not `src/constants/time.ts` (which is unit conversions only) |
 | 23/09/2026 | Durations must use `*InMs` constants, not magic numbers, even when the surrounding file doesn't |
+
+## Chart No-Data Regions — [[corrections/chart-no-data-regions]]
+Reimplementing a dropped fix from scratch instead of restoring the original commit.
+
+| Date | Entry |
+|---|---|
+| 27/09/2026 | Before reimplementing a "this used to work" fix, `git log --all -S "<symbol>"` to find and restore the original commit instead of re-deriving boundary logic from scratch |

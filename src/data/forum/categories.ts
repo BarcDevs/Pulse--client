@@ -1,11 +1,4 @@
-export const CATEGORY_GROUP = {
-    Recovery: 'Recovery',
-    Health: 'Health',
-    Community: 'Community'
-} as const
-
-export type CategoryGroup =
-    typeof CATEGORY_GROUP[keyof typeof CATEGORY_GROUP]
+type CategoryGroup = 'Recovery' | 'Health' | 'Community'
 
 type CategoryColor = {
     bg: string
@@ -109,11 +102,6 @@ const categories: Category[] = [
     }
 ]
 
-const toGrouped = (
-    categories: Category[]
-) => Object.groupBy(categories, ({ group }) => group)
-
-export const groupedCategories = toGrouped(categories)
 export const getCategory = (
     key: string
 ) => categories.find(category => category.key === key)

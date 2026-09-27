@@ -41,5 +41,3 @@ export const FEATURES = {
     // Footer social media links - hidden until real accounts are ready
     socialLinks: false
 } as const
-
-export type FeatureFlags = typeof FEATURES
