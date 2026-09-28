@@ -16,11 +16,13 @@ import { FooterSupport } from './FooterSupport'
 type FooterProps = {
     className?: ClassName
     showLinks?: boolean
+    showQuickLinks?: boolean
 }
 
 export const Footer = ({
     className,
-    showLinks = true
+    showLinks = true,
+    showQuickLinks = true
 }: FooterProps = {}) => {
     return (
         <footer className={cn(
@@ -29,12 +31,14 @@ export const Footer = ({
         )}>
             <div className={'mx-auto max-w-7xl px-4 py-4 md:py-6'}>
                 {showLinks ? (
-                    <div className={'mb-8 grid grid-cols-1 gap-8 md:grid-cols-4'}>
+                    <div className={'mb-8 flex flex-col gap-8 md:flex-row md:justify-between'}>
                         <FooterBrand/>
-                        <FooterLinks/>
-                        <FooterSupport/>
-                        <FooterLegal/>
-                        {FEATURES.socialLinks && <FooterSocial/>}
+                        <div className={'flex flex-col gap-8 sm:flex-row sm:justify-evenly sm:gap-16 md:grow'}>
+                            {showQuickLinks && <FooterLinks/>}
+                            <FooterSupport/>
+                            <FooterLegal/>
+                            {FEATURES.socialLinks && <FooterSocial/>}
+                        </div>
                     </div>
                 ) : (
                     <div className={'mb-4 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between'}>
