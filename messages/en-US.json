@@ -1015,7 +1015,7 @@
       "quickLinksTitle": "Quick Links",
       "legalTitle": "Legal",
       "socialTitle": "Follow Us",
-      "copyright": "© 2026 {brandName}. All rights reserved.",
+      "copyright": "© 2026 {brandName}. All rights reserved",
       "support": "Support",
       "privacy": "Privacy",
       "terms": "Terms",
@@ -1325,6 +1325,21 @@
         "tooLong": "Keep your bio under {max} characters"
       }
     }
+  },
+  "apiErrors": {
+    "AUTH_GENERIC": "We couldn't sign you in. Please try again.",
+    "AUTH_CREDENTIALS": "The email or password is incorrect.",
+    "AUTH_UNAUTHORIZED": "Please sign in to continue.",
+    "AUTH_FORBIDDEN": "You don't have permission to do this.",
+    "AUTH_RESET_PASSWORD": "We couldn't reset your password. Please try again.",
+    "AUTH_CONFLICT": "That email or username is already in use.",
+    "AUTH_OAUTH": "We couldn't sign you in with Google. Please try again.",
+    "NOT_FOUND": "We couldn't find {resource}.",
+    "CONFLICT": "This already exists.",
+    "VALIDATION_GENERIC": "Please check the details and try again.",
+    "VALIDATION_OTP": "The verification code doesn't match. Please check it and try again.",
+    "VALIDATION_ZOD": "Please check the {property} field and try again.",
+    "INTERNAL_ERROR": "Something went wrong. Please try again in a few minutes."
   },
   "recommendations": {
     "action": {

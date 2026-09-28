@@ -179,6 +179,39 @@ Both methods use the same session system:
 
 ---
 
+## Error Handling & Localization
+
+The server is language-agnostic and always returns English `message` text (diagnostics only —
+logs/dev display). Every error response also carries a stable `code` plus optional `params`,
+meant for the client to drive its own translation table:
+
+```jsonc
+{
+  "message": "Post not found! please check your inputs and try again!",
+  "error": [
+    {
+      "statusType": "Not Found",
+      "statusCode": 404,
+      "code": "NOT_FOUND",
+      "params": { "resource": "Post" },
+      "error": "Post not found! please check your inputs and try again!"
+    }
+  ]
+}
+```
+
+Codes are fixed per server error-factory method (not per resource) — e.g. `NOT_FOUND` covers
+every resource type via `params.resource`, so new server-side resources never require a new
+client translation entry. Full code list and shapes: server `README.md` → Error Responses
+(`../pulse--server/README.md#error-responses`).
+
+**To build the client translation table:** map each `code` in `src/constants/errorCodes.ts`
+(server repo) to a localized string per supported language, interpolating any `params` values
+into the message. Never localize by parsing the English `message` string — it's not stable and
+not meant for that.
+
+---
+
 ## Security
 
 - CSRF protection via Axios interceptors

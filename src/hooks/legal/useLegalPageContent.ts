@@ -4,6 +4,11 @@ import {
 } from 'next-intl'
 
 import {
+    Bookmark,
+    Shield
+} from 'lucide-react'
+
+import {
     LegalDocumentContent,
     LegalSectionContentRaw
 } from '@/types/legal'
@@ -37,6 +42,11 @@ const CALLOUT_TONES_BY_DOC = {
     terms: TERMS_CALLOUT_TONES
 }
 
+const KICKER_ICON_BY_DOC = {
+    privacy: Shield,
+    terms: Bookmark
+}
+
 export const useLegalPageContent = (docKey: LegalDocKey) => {
     const t = useTranslations()
     const locale = useLocale()
@@ -67,6 +77,7 @@ export const useLegalPageContent = (docKey: LegalDocKey) => {
 
     return {
         content,
+        kickerIcon: KICKER_ICON_BY_DOC[docKey],
         sections,
         tabs,
         pdfHref: `/legal/${docKey}-${locale}.pdf`,

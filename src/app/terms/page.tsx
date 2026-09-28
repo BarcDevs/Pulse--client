@@ -7,6 +7,7 @@ import { useLegalPageContent } from '@/hooks/legal/useLegalPageContent'
 const TermsPage = () => {
     const {
         content,
+        kickerIcon,
         sections,
         pdfHref,
         tabs,
@@ -16,6 +17,7 @@ const TermsPage = () => {
     return (
         <LegalDocument
             content={content}
+            kickerIcon={kickerIcon}
             sections={sections}
             updated={updated}
             pdfHref={pdfHref}

@@ -102,3 +102,11 @@ The session started on `chore/upgrade-next-react` (the Next/React upgrade branch
 Finished a `chore(deploy)` branch and ran `gh pr create --base development`, then pushed it without `--tags`. `~/Claude/work/projects/.sources/RULES.md` says a feature branch reaches `development` by a direct push or local merge; only `development` → `main` goes through a PR. User: "you again did a PR to dev????". The same session also read files with `sed`/`tail`/`cat`/`grep` through Bash instead of Read/Grep. User: "are you using commands to read from files???". Both were already covered by existing rules here.
 
 **Lesson:** feature → `development` is a direct push (`git push origin <branch>:development`, fast-forward) plus `git push origin --tags`; never `gh pr create` for it. Open a PR only from `development` to `main`, and only when asked. Read files with Read/Grep/Glob, not Bash text tools.
+
+---
+
+## 28/09/2026 — Blanket-killed every Node process on the machine to free one busy directory
+
+`rm -rf .next` failed with "Device or resource busy" because a local `node server.js` verification process (started to check a Sentry fix) held `.next/standalone` open. Instead of finding and killing that one PID, ran `taskkill //F //IM node.exe`, which killed every Node process system-wide — any other session's dev server, unrelated to the task, with no confirmation. User: "what????? that's a very wrong action of yors worth recording in corrections".
+
+**Lesson:** never kill-by-name (`taskkill /IM`, `pkill <bare process name>`) for cleanup — it has no idea which processes are "mine." Find the specific PID first (`netstat -ano | grep <port>` for a server you started, or the PID printed when you launched it) and kill only that. A blanket process-name kill is a destructive, unscoped action against shared machine state and needs the same care as `rm -rf`/`git reset --hard` — check what's actually running before nuking a whole process class.

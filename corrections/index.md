@@ -55,6 +55,7 @@ How to act on bug reports and where to log — state the fix before broad edits,
 | 25/09/2026 | Swapped "Claude routines" for a session cron and never said where scheduled output lands |
 | 26/09/2026 | Opened a PR from a feature branch into `development` (direct push is the rule), pushed without tags, and read files via Bash instead of Read/Grep |
 | 23/09/2026 | Built new MCP wiring instead of checking `disabledMcpjsonServers` / a working sibling project's settings |
+| 28/09/2026 | Blanket-killed every Node process on the machine (`taskkill /IM node.exe`) to free one busy directory instead of targeting the one PID |
 
 ## Code Placement — [[corrections/code-placement]]
 Where new constants/config values belong.

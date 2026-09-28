@@ -19,6 +19,8 @@ Error tracking and performance-monitoring tooling decisions.
 | Date | Entry |
 |---|---|
 | 12/09/2026 | Sentry (`@sentry/nextjs`) added for error tracking + perf monitoring |
+| 27/09/2026 | EC2 deploy wired to the real Sentry DSN; session replay left off in prod pending a privacy review |
+| 28/09/2026 | Client-side Sentry was dead code (never wired into the bundle) regardless of the DSN — fixed via `instrumentation-client.ts` |
 
 ## Charts & RTL — [[decisions/charts-and-rtl]]
 Trend-chart ordering and no-data rendering rules.

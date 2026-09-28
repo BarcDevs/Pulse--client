@@ -10,6 +10,8 @@ export type ApiErrorDetail = {
     statusCode: number
     error: string
     property?: string
+    code?: string
+    params?: Record<string, string>
 }
 
 /** Shape of error response bodies from the server:

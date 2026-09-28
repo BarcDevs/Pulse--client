@@ -1008,7 +1008,7 @@
       "quickLinksTitle": "קישורים מהירים",
       "legalTitle": "משפטי",
       "socialTitle": "עקבו אחרינו",
-      "copyright": "© 2026 {brandName}. כל הזכויות שמורות.",
+      "copyright": "© 2026 {brandName}. כל הזכויות שמורות",
       "support": "תמיכה",
       "privacy": "פרטיות",
       "terms": "תנאי שימוש",
@@ -1318,6 +1318,21 @@
         "tooLong": "כדאי לקצר מעט את הביוגרפיה"
       }
     }
+  },
+  "apiErrors": {
+    "AUTH_GENERIC": "לא הצלחנו להתחבר. נסה שוב.",
+    "AUTH_CREDENTIALS": "האימייל או הסיסמה שגויים.",
+    "AUTH_UNAUTHORIZED": "כדי להמשיך, יש להתחבר לחשבון.",
+    "AUTH_FORBIDDEN": "אין לכם הרשאה לבצע את הפעולה הזו.",
+    "AUTH_RESET_PASSWORD": "לא הצלחנו לאפס את הסיסמה. נסה שוב.",
+    "AUTH_CONFLICT": "האימייל או שם המשתמש כבר בשימוש.",
+    "AUTH_OAUTH": "לא הצלחנו להתחבר דרך Google. נסה שוב.",
+    "NOT_FOUND": "לא מצאנו את {resource}.",
+    "CONFLICT": "הפריט הזה כבר קיים.",
+    "VALIDATION_GENERIC": "בדקו את הפרטים ונסו שוב.",
+    "VALIDATION_OTP": "קוד האימות לא תואם. בדקו אותו ונסו שוב.",
+    "VALIDATION_ZOD": "בדקו את השדה {property} ונסו שוב.",
+    "INTERNAL_ERROR": "אירעה תקלה זמנית. נסה שוב בעוד כמה דקות."
   },
   "recommendations": {
     "action": {
