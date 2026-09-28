@@ -6,6 +6,16 @@ Server: `../pulse--server`.
 ## Production
 Live at https://pulserehab.app — AWS EC2+Docker, separate instance from the server. Client is the sole public front door (`next.config.mjs` proxies `/api/:path*` to the server over private VPC). Push to `main` passing CI auto-deploys via `.github/workflows/deploy.yml` (blue/green swap over SSM, see `scripts/deploy/ec2-redeploy.sh`). Vercel deploy still runs in parallel for preview/staging — not production.
 
+## MCP Servers
+`.mcp.json` (this repo only, not shared with sibling projects) has:
+- Sentry MCP (`mcp.sentry.dev`) — query real Sentry issues/events for this project instead of guessing from source/SDK-init checks alone. Requires an OAuth login on first use.
+- `chrome-devtools` (official Chrome DevTools MCP, stdio via `npx chrome-devtools-mcp@latest`) — copied from the shared `work/projects/.mcp.json` so it's available even outside `work/projects/`.
+
+## Scheduled Routines (claude.ai)
+Two cloud routines watch this project — not local cron, they run in Anthropic's cloud regardless of whether a session is open. List/manage at https://claude.ai/code/routines.
+- **Pulse Sentry Error Watch** (`trig_01ShV1zJC3hdsQPD1TQiRFak`) — every 6h. Checks Sentry org `barcdevs` / project `pulse-client` for new or regressed issues, cross-checks `decisions/observability.md` + `corrections/` for a known fix before reinventing one, opens a PR into `development` for clear low-risk fixes (never auto-merges), and always logs a dated entry in `decisions/observability.md` — this implements the "Monitor agent for production errors" item from `../pulse--server/TODO.md`.
+- **Pulse Feedback Watch** (`trig_01Ue4TBymyq5EP6WWEQeMprK`) — daily at 8am UTC. Reads the public CSV export of the beta-feedback Google Form's response sheet, diffs against `feedback/seen-responses.md`, and reports + commits only when there's genuinely new feedback (quiet pre-launch runs are expected). Sheet: `docs.google.com/spreadsheets/d/1UZgy7IuWmd513BuAFW8m2ewaCYoJWPLTv5QEF9e-N6A` (public, view-only).
+
 ## Model Selection
 - **Haiku**: sub-agents, file lookups, search queries, simple edits (<50 lines), code explanation, formatting fixes
 - **Sonnet/Opus**: complex debugging, architecture decisions, multi-file refactors, reasoning-heavy tasks, style enforcement
