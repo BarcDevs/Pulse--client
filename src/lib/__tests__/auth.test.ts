@@ -165,6 +165,16 @@ describe(
             })
 
         it(
+            'clears the CSRF token only after logout, which needs it',
+            async () => {
+                await initiateLogout()
+                expect(vi.mocked(logout).mock.invocationCallOrder[0])
+                    .toBeLessThan(
+                        vi.mocked(clearCsrfToken).mock.invocationCallOrder[0]
+                    )
+            })
+
+        it(
             'sets isShuttingDown to true',
             async () => {
                 await initiateLogout()

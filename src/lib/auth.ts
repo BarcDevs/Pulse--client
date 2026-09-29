@@ -79,12 +79,14 @@ export const initiateLogout = async (
     redirectPath?: string
 ) => {
     authState.isRefreshing = false
-    clearCsrfToken()
 
     try {
         const { logout } = await import('@/api/auth')
         await logout()
     } catch {/** Ignore errors during logout */}
+
+    // Cleared after the call, which needs the token
+    clearCsrfToken()
 
     authState.isShuttingDown = true
     rejectAll(new AxiosError('Session expired'))
