@@ -117,15 +117,27 @@ const authFormConfigs: AuthFormConfigs = {
         ]
     },
 
-    resetPassword: {
+    verifyResetCode: {
         fields: {
             otp: {
                 type: 'otp',
                 label: authLocales.resetPassword.codeLabel,
                 placeholder: '123456',
                 maxLength: 6,
+                autoComplete: 'one-time-code',
                 required: true
-            },
+            }
+        },
+        buttons: {
+            primary: {
+                label: authLocales.resetPassword.verifyButton,
+                loadingLabel: authLocales.resetPassword.verifyingButton
+            }
+        }
+    },
+
+    resetPassword: {
+        fields: {
             password: {
                 type: 'password',
                 label: authLocales.resetPassword.passwordLabel,
@@ -144,13 +156,7 @@ const authFormConfigs: AuthFormConfigs = {
                 label: authLocales.resetPassword.submitButton,
                 loadingLabel: authLocales.resetPassword.resettingButton
             }
-        },
-        links: [
-            {
-                label: authLocales.common.backButton,
-                href: ROUTES.LOGIN
-            }
-        ]
+        }
     }
 }
 

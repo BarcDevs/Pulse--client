@@ -4,6 +4,13 @@ import {
     vi
 } from 'vitest'
 
+// jsdom has no ResizeObserver; input-otp (shadcn InputOTP) observes its container
+global.ResizeObserver = class ResizeObserver {
+    observe () {}
+    unobserve () {}
+    disconnect () {}
+}
+
 vi.mock(
     'next/navigation',
     () => ({

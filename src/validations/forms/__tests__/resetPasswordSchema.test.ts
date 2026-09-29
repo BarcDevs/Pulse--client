@@ -11,25 +11,14 @@ import { mockLocales } from './mockLocales'
 const resetPasswordSchema = createResetPasswordSchema(mockLocales)
 
 const valid = {
-    otp: '123456',
     password: 'Password123',
     confirmPassword: 'Password123'
 }
 
 // ==================== resetPasswordSchema ====================
 describe('resetPasswordSchema', () => {
-    it('should accept a 6-digit code and matching valid passwords', () => {
+    it('should accept matching valid passwords', () => {
         expect(resetPasswordSchema.safeParse(valid).success).toBe(true)
-    })
-
-    it('should reject a missing code', () => {
-        expect(resetPasswordSchema.safeParse({ ...valid, otp: '' }).success)
-            .toBe(false)
-    })
-
-    it('should reject a non-numeric code', () => {
-        expect(resetPasswordSchema.safeParse({ ...valid, otp: 'abcdef' }).success)
-            .toBe(false)
     })
 
     it('should reject mismatched passwords on confirmPassword', () => {

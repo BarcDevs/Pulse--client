@@ -12,6 +12,7 @@ type AuthFormType_Union =
     'login' |
     'signup' |
     'forgotPassword' |
+    'verifyResetCode' |
     'resetPassword'
 
 type UseAuthFormProps = {
