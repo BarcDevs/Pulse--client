@@ -227,6 +227,8 @@ not meant for that.
 
 Production runs on **AWS EC2+Docker** at https://pulserehab.app, on a separate instance from the server (blast-radius isolation). The client is the sole public front door — `next.config.mjs` proxies `/api/:path*` to the server over a private VPC connection, so browsers only ever talk to one origin (no CORS).
 
+**Ingress** — Cloudflare reaches the box only through a Cloudflare Tunnel (`cloudflared` container, outbound-only, started by `ec2-redeploy.sh` with the token from Secrets Manager `pulse/client/CLOUDFLARE_TUNNEL_TOKEN`). The app binds to `127.0.0.1:80` and the security group has no public HTTP/HTTPS ingress, so the origin can't be hit directly.
+
 **CI/CD** — every push to `main` that passes CI (`.github/workflows/ci.yml`) triggers `.github/workflows/deploy.yml`:
 1. Build the `runner` Docker target, tag with the commit SHA, push to ECR (`pulse-client-app`).
 2. Trigger `scripts/deploy/ec2-redeploy.sh` on the EC2 box via AWS SSM (no SSH/git access needed on the box).

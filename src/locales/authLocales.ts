@@ -34,15 +34,16 @@ export const authLocales = {
         description: 'auth.forgotPassword.description',
         submitButton: 'auth.forgotPassword.submitButton',
         sendingButton: 'auth.forgotPassword.sendingButton',
-        checkEmailTitle: 'auth.forgotPassword.checkEmailTitle',
-        checkEmailDesc: 'auth.forgotPassword.checkEmailDesc',
-        supportLink: 'auth.forgotPassword.supportLink',
-        supportText: 'auth.forgotPassword.supportText',
-        supportVerification: 'auth.forgotPassword.supportVerification'
+        failed: 'auth.forgotPassword.failed'
     },
     resetPassword: {
         title: 'auth.resetPassword.title',
-        description: 'auth.resetPassword.description',
+        codeLabel: 'auth.resetPassword.codeLabel',
+        codeSentTo: 'auth.resetPassword.codeSentTo',
+        resendText: 'auth.resetPassword.resendText',
+        resendLink: 'auth.resetPassword.resendLink',
+        successToast: 'auth.resetPassword.successToast',
+        failed: 'auth.resetPassword.failed',
         passwordLabel: 'auth.resetPassword.passwordLabel',
         confirmPasswordLabel: 'auth.resetPassword.confirmPasswordLabel',
         minLengthText: 'auth.resetPassword.minLengthText',

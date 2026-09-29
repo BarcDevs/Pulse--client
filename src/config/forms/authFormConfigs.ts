@@ -1,6 +1,8 @@
 import { TranslatorFn } from '@/types/i18n'
 
+import { createEmailInputSchema } from '@/validations/forms/emailInputSchema'
 import { createLoginSchema } from '@/validations/forms/loginSchema'
+import { createResetPasswordSchema } from '@/validations/forms/resetPasswordSchema'
 import { createSignupSchema } from '@/validations/forms/signupSchema'
 
 type AuthFormType =
@@ -37,12 +39,13 @@ export const createAuthFormConfigs = (
         }
     },
     forgotPassword: {
-        schema: createLoginSchema(t),
+        schema: createEmailInputSchema(t),
         defaultValues: { email: '' }
     },
     resetPassword: {
-        schema: createSignupSchema(t),
+        schema: createResetPasswordSchema(t),
         defaultValues: {
+            otp: '',
             password: '',
             confirmPassword: ''
         }

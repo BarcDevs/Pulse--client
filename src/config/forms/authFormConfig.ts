@@ -119,6 +119,13 @@ const authFormConfigs: AuthFormConfigs = {
 
     resetPassword: {
         fields: {
+            otp: {
+                type: 'otp',
+                label: authLocales.resetPassword.codeLabel,
+                placeholder: '123456',
+                maxLength: 6,
+                required: true
+            },
             password: {
                 type: 'password',
                 label: authLocales.resetPassword.passwordLabel,

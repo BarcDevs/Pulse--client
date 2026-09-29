@@ -5,9 +5,6 @@ import { secondInMs } from '@/constants/time'
  */
 
 export const timings = {
-    // Authentication page simulated API call delays
-    AUTH_API_DELAY: secondInMs,
-
     // Toast and notification durations
     TOAST_DURATION: 3 * secondInMs,
 
