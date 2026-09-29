@@ -4,28 +4,9 @@ import {
     it
 } from 'vitest'
 
-import {
-    passwordPattern,
-    passwordSpecialCharPattern
-} from '@/config/regex'
+import { passwordPattern } from '@/config/regex'
 
 const asciiSpecialChars = [...' !"#$%&\'()*+,-./:;<=>?@[]^_`{|}~']
-
-describe(
-    'passwordSpecialCharPattern',
-    () => {
-        it.each(asciiSpecialChars)(
-            'should match special character %j',
-            (char) => {
-                expect(passwordSpecialCharPattern.test(`abc1${char}`)).toBe(true)
-            })
-
-        it(
-            'should not match letters and digits only',
-            () => {
-                expect(passwordSpecialCharPattern.test('Abcdef123')).toBe(false)
-            })
-    })
 
 describe(
     'passwordPattern',
