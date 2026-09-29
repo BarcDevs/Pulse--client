@@ -18,8 +18,8 @@ describe(
             firstName: 'John',
             lastName: 'Doe',
             email: 'john@example.com',
-            password: 'Test@1234',
-            confirmPassword: 'Test@1234'
+            password: 'Test@1357',
+            confirmPassword: 'Test@1357'
         }
 
         it(
@@ -106,6 +106,22 @@ describe(
                     .safeParse({
                         ...validSignup,
                         email: 'not-email'
+                    })
+                expect(result.success).toBe(false)
+            })
+
+        it.each([
+            ['no uppercase', 'test@1357'],
+            ['sequential digits', 'Test@1234'],
+            ['repeated letters', 'Testtttt@1']
+        ])(
+            'should reject a new password with %s',
+            (_label, password) => {
+                const result = signupSchema
+                    .safeParse({
+                        ...validSignup,
+                        password,
+                        confirmPassword: password
                     })
                 expect(result.success).toBe(false)
             })

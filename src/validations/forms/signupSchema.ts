@@ -6,7 +6,7 @@ import { validationLocales } from '@/locales/validationLocales'
 
 import {
     confirmPasswordField,
-    passwordField
+    newPasswordField
 } from './validators'
 
 export const createSignupSchema = (t: TranslatorFn) =>
@@ -18,7 +18,7 @@ export const createSignupSchema = (t: TranslatorFn) =>
         email: z.string()
             .min(1, t(validationLocales.email.required))
             .email(t(validationLocales.email.invalid)),
-        password: passwordField(
+        password: newPasswordField(
             t,
             t(validationLocales.password.required)
         ),

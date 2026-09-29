@@ -42,7 +42,7 @@
       "signingUpButton": "Creating your account...",
       "loginText": "Already have an account?",
       "loginLink": "Sign in",
-      "passwordDescription": "Use at least 8 characters, including one letter and one number"
+      "passwordDescription": "At least 8 characters, with an uppercase letter, a lowercase letter and a number"
     },
     "forgotPassword": {
       "title": "Reset your password",
@@ -1246,7 +1246,9 @@
       },
       "noMatch": "The passwords do not match",
       "tooShort": "Password must contain at least {min} characters",
-      "format": "Use at least 8 characters, including letters and numbers"
+      "format": "Use at least 8 characters, including letters and numbers",
+      "strongFormat": "Use at least 8 characters, with an uppercase letter, a lowercase letter and a number",
+      "simpleRun": "Avoid 4 or more repeated or sequential characters in a row, like 1234, abcd or aaaa"
     },
     "otp": {
       "required": "Enter the verification code we sent you",

@@ -6,12 +6,12 @@ import { validationLocales } from '@/locales/validationLocales'
 
 import {
     confirmPasswordField,
-    passwordField
+    newPasswordField
 } from './validators'
 
 export const createResetPasswordSchema = (t: TranslatorFn) =>
     z.object({
-        password: passwordField(
+        password: newPasswordField(
             t,
             t(validationLocales.password.required)
         ),
