@@ -106,6 +106,10 @@ export const settingsLocales = {
         language: {
             title: 'settings.preferences.language.title',
             description: 'settings.preferences.language.description'
+        },
+        aiNotes: {
+            label: 'settings.preferences.aiNotes.label',
+            description: 'settings.preferences.aiNotes.description'
         }
     }
 } as const
