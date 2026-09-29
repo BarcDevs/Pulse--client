@@ -5,10 +5,12 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 
+import { toast } from 'sonner'
+
 import { AuthCard } from '@/components/auth/AuthCard'
 import { AuthForm } from '@/components/form/AuthForm'
 
-import { getLocalizedApiErrorMessage } from '@/utils/error'
+import { getApiErrorStatus, getLocalizedApiErrorMessage } from '@/utils/error'
 
 import { ROUTES } from '@/constants/routes'
 
@@ -57,15 +59,27 @@ export const VerifyCodeStep = ({
 
     const handleResend = async () => {
         setError(null)
+        // Reset up front: closes the double-click window where two resends
+        // would each burn one of the shared 5-per-15-min rate-limit slots
+        setResendIn(RESEND_COOLDOWN_SECONDS)
 
         try {
             await requestPasswordReset(email)
-            setResendIn(RESEND_COOLDOWN_SECONDS)
+            toast.success(t(authLocales.resetPassword.resendSuccessToast))
         } catch (err) {
+            if (getApiErrorStatus(err) === 429) {
+                // The old code wasn't touched — don't invite a retry that'll just 429 again
+                setError(t(authLocales.resetPassword.resendRateLimited))
+                return
+            }
+
+            // Can't tell whether the old code was replaced before this failed, so
+            // keep the cooldown running either way — repeated failed resends still
+            // count against the per-IP budget shared with verify/reset
             setError(getLocalizedApiErrorMessage(
                 t,
                 err,
-                t(authLocales.resetPassword.codeFailed)
+                t(authLocales.resetPassword.resendFailed)
             ))
         }
     }
