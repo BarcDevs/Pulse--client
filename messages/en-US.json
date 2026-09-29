@@ -1015,6 +1015,10 @@
       "language": {
         "title": "Preferred Language",
         "description": "Select the language used throughout the app"
+      },
+      "aiNotes": {
+        "label": "Use my notes for insights",
+        "description": "Include your check-in notes when our AI providers write your insights. When off, insights use only your scores and activities"
       }
     }
   },
@@ -1570,7 +1574,7 @@
                 ],
                 [
                   "Local storage drafts",
-                  "Saves unsent posts and profile edits on your device so you don't lose them"
+                  "Saves unsent posts and profile edits on your device so you don't lose them. Health details are never saved there, and drafts are cleared when you sign out"
                 ]
               ]
             },
@@ -1589,7 +1593,7 @@
                 },
                 {
                   "label": "Personalize your experience",
-                  "text": "Generate insights and tailor features based on your recovery activity."
+                  "text": "Generate insights and tailor features based on your recovery activity. To write your insights, your recent check-ins, including any notes you add, are sent to our AI providers. You can stop sending your notes at any time in Settings, under App Preferences."
                 },
                 {
                   "label": "Keep the service secure",
@@ -1615,7 +1619,7 @@
                 },
                 {
                   "label": "With trusted service providers",
-                  "text": "We work with carefully selected providers who help us securely operate Pulse: cloud hosting (AWS), error monitoring (Sentry), privacy-friendly page-view analytics (Vercel Web Analytics, no cookies), and Google when you choose to sign in with Google."
+                  "text": "We work with carefully selected providers who help us securely operate Pulse: cloud hosting (AWS), error monitoring (Sentry), privacy-friendly page-view analytics (Vercel Web Analytics, no cookies), AI providers that write your insights (Anthropic, Google and OpenAI), and Google when you choose to sign in with Google."
                 },
                 {
                   "label": "When required by law",

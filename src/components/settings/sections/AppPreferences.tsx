@@ -6,6 +6,7 @@ import { Palette } from 'lucide-react'
 
 import { settingsLocales } from '@/locales/settingsLocales'
 
+import { AiNotesToggle } from './AiNotesToggle'
 import { DarkModeToggle } from './DarkModeToggle'
 import { LanguageSelector } from './LanguageSelector'
 
@@ -24,6 +25,7 @@ export const AppPreferences = () => {
             <div className={'space-y-6'}>
                 <DarkModeToggle/>
                 <LanguageSelector/>
+                <AiNotesToggle/>
             </div>
         </div>
     )
