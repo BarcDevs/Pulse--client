@@ -10,8 +10,8 @@ import {
 
 import { AdditionalAction } from '@/types/actionMenu'
 
-import { ConfirmationDialog } from '@/components/shared/ConfirmationDialog'
 import { IconButton } from '@/components/shared/buttons/IconButton'
+import { ConfirmationDialog } from '@/components/shared/ConfirmationDialog'
 import {
     DropdownMenu,
     DropdownMenuContent,

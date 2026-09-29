@@ -4,10 +4,10 @@ import { useEffect } from 'react'
 
 import { ErrorPageContent } from '@/components/shared/error/ErrorPageContent'
 
-import { useAuth } from '@/context/AuthContext'
-
 import { appSettings } from '@/config/appSettings'
 import { timings } from '@/config/timings'
+
+import { useAuth } from '@/context/AuthContext'
 
 type ErrorProps = {
     error: Error & { digest?: string }
