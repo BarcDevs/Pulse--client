@@ -29,7 +29,10 @@ const draftData = {
     location: 'Tel Aviv',
     bio: 'Recovering one day at a time',
     healthInterests: ['mindfulness'],
-    activityPreferences: ['walking'],
+    activityPreferences: ['walking']
+}
+
+const sensitiveFields = {
     dateOfBirth: '1990-01-01',
     recoveryType: 'outpatient',
     careProvider: 'Dr. Cohen'
@@ -50,6 +53,15 @@ describe('profileDraft', () => {
             saveProfileDraft(userIdA, draftData)
 
             expect(getProfileDraft(userIdA)).toEqual(draftData)
+        })
+
+        it('never writes date of birth, recovery type or care provider', () => {
+            saveProfileDraft(userIdA, { ...draftData, ...sensitiveFields })
+
+            expect(getProfileDraft(userIdA)).toEqual(draftData)
+            const stored = JSON.stringify({ ...localStorage })
+            Object.values(sensitiveFields).forEach((value) =>
+                expect(stored).not.toContain(value))
         })
 
         it('returns null after TTL expires', () => {

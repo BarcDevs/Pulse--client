@@ -39,6 +39,7 @@ import { sanitizeHtml } from '@/utils/sanitizeHtml'
 import { forumQueryKeys } from '@/constants/queryKeys'
 import { ROUTES } from '@/constants/routes'
 
+import { useAuth } from '@/context/AuthContext'
 import { usePostDetail } from '@/context/PostDetailContext'
 
 import { communityLocales } from '@/locales/communityLocales'
@@ -57,6 +58,7 @@ export const PostDetailContent = () => {
     const queryClient = useQueryClient()
     const forumMutations = useForumPostMutations({ postId })
     const { showAuthExpiredWithDraft } = useAuthExpiredToast()
+    const { user } = useAuth()
 
     const {
         data: post,
@@ -132,7 +134,7 @@ export const PostDetailContent = () => {
             errorMsg,
             retryLabel,
             onRetry: () => void handleUpdatePost(data),
-            onSuccess: () => clearDraft(DRAFT_KEYS.updatePost(postId)),
+            onSuccess: () => clearDraft(DRAFT_KEYS.updatePost(user?.id, postId)),
             onError: () => {
                 queryClient.setQueryData(
                     forumQueryKeys.post(postId),
@@ -145,7 +147,7 @@ export const PostDetailContent = () => {
                     snapshot
                 )
                 saveDraft(
-                    DRAFT_KEYS.updatePost(postId),
+                    DRAFT_KEYS.updatePost(user?.id, postId),
                     'updatePost',
                     data,
                     postId
@@ -159,7 +161,7 @@ export const PostDetailContent = () => {
         ? post.tags.map((tag) => tag.slug)
         : []
 
-    const editDraft = getDraft(DRAFT_KEYS.updatePost(postId))
+    const editDraft = getDraft(DRAFT_KEYS.updatePost(user?.id, postId))
 
     return (
         <div className={'space-y-6'}>

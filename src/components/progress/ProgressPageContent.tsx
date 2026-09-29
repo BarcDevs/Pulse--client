@@ -41,7 +41,7 @@ export const ProgressPageContent = () => {
     const handleShareToCommunity = () => {
         if (!stats) return
         saveDraft(
-            DRAFT_KEYS.newPost,
+            DRAFT_KEYS.newPost(user?.id),
             'newPost',
             buildShareProgressDraft(
                 t,
