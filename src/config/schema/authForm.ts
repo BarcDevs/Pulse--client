@@ -1,7 +1,6 @@
 import {
     otpPattern,
     passwordPattern,
-    passwordSpecialCharPattern,
     strongPasswordPattern
 } from '@/config/regex'
 
@@ -9,8 +8,7 @@ export default {
     password: {
         minLength: 8,
         format: passwordPattern,
-        strongFormat: strongPasswordPattern,
-        specialCharPattern: passwordSpecialCharPattern
+        strongFormat: strongPasswordPattern
     },
     otp: {
         length: 6,
