@@ -57,6 +57,21 @@ export const refresh = async ():
     return res.data.data
 }
 
+// Always succeeds, whether or not the email has an account
+export const requestPasswordReset = async (
+    email: string
+): Promise<void> => {
+    await api.post(ENDPOINTS.auth.forgotPassword, { email })
+}
+
+export const resetPassword = async (input: {
+    email: string
+    newPassword: string
+    userOTP: number
+}): Promise<void> => {
+    await api.put(ENDPOINTS.auth.resetPassword, input)
+}
+
 export const changeEmail = async (
     input: ChangeEmailSchema
 ): Promise<void> => {
