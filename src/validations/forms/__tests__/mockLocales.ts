@@ -10,6 +10,8 @@ const messages: Record<string, string> = {
     'validation.password.confirm.please': 'Please confirm your password',
     'validation.password.noMatch': 'Passwords do not match',
     'validation.password.tooShort': 'Password must be at least {min} characters',
+    'validation.password.strongFormat': 'Password needs an uppercase letter, a lowercase letter and a number',
+    'validation.password.simpleRun': 'Password has 4 or more repeated or sequential characters',
     'validation.password.format':
         'Password must be at least 8 characters and contain letters and numbers.',
     'validation.otp.required': 'OTP is required',
