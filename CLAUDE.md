@@ -17,8 +17,8 @@ Two cloud routines watch this project — not local cron, they run in Anthropic'
 - **Pulse Feedback Watch** (`trig_01Ue4TBymyq5EP6WWEQeMprK`) — daily at 8am UTC. Reads the public CSV export of the beta-feedback Google Form's response sheet, diffs against `feedback/seen-responses.md`, and reports + commits only when there's genuinely new feedback (quiet pre-launch runs are expected). Sheet: `docs.google.com/spreadsheets/d/1UZgy7IuWmd513BuAFW8m2ewaCYoJWPLTv5QEF9e-N6A` (public, view-only).
 
 ## Model Selection
-- **Haiku**: sub-agents, file lookups, search queries, simple edits (<50 lines), code explanation, formatting fixes
-- **Sonnet/Opus**: complex debugging, architecture decisions, multi-file refactors, reasoning-heavy tasks, style enforcement
+- **Sonnet**: default for execution and all sub-agents: file lookups, search queries, edits, refactors, tests, style enforcement, code explanation
+- **Opus** (via `/opusplan`): planning, architecture decisions, complex debugging, reasoning-heavy tasks
 
 ## Token Efficiency
 - Grep/Glob over Bash find/ls/grep. Read with offset+limit when line known.
