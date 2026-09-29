@@ -147,7 +147,7 @@ const ForumRepliesStateProvider = ({
             errorMsg: t(communityLocales.toasts.replyPostFailed),
             retryLabel: t(globalLocales.shared.retry),
             onRetry: () => void handleAddReply(data),
-            onSuccess: () => clearDraft(DRAFT_KEYS.newReply(postId)),
+            onSuccess: () => clearDraft(DRAFT_KEYS.newReply(user?.id, postId)),
             onError: () => setPendingAdds((prev) =>
                 prev.filter((r) => r.id !== tempId)
             ),
@@ -156,7 +156,7 @@ const ForumRepliesStateProvider = ({
                     prev.filter((r) => r.id !== tempId)
                 )
                 saveDraft(
-                    DRAFT_KEYS.newReply(postId),
+                    DRAFT_KEYS.newReply(user?.id, postId),
                     'newReply',
                     data,
                     postId
@@ -180,7 +180,7 @@ const ForumRepliesStateProvider = ({
             retryLabel: t(globalLocales.shared.retry),
             onRetry: () => void handleUpdateReply(replyId, data),
             onSuccess: () => clearDraft(
-                DRAFT_KEYS.updateReply(postId, replyId)
+                DRAFT_KEYS.updateReply(user?.id, postId, replyId)
             ),
             onError: () => setPendingBodies((prev) => {
                 const next = { ...prev }
@@ -196,7 +196,7 @@ const ForumRepliesStateProvider = ({
                     return next
                 })
                 saveDraft(
-                    DRAFT_KEYS.updateReply(postId, replyId),
+                    DRAFT_KEYS.updateReply(user?.id, postId, replyId),
                     'updateReply',
                     data,
                     postId,

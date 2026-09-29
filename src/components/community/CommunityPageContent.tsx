@@ -53,7 +53,7 @@ export const CommunityPageContent = () => {
         searchParams.get('tag')
     )
     const [isNewPostOpen, setIsNewPostOpen] = useState(
-        () => !!(getDraft(DRAFT_KEYS.newPost) && user)
+        () => !!(getDraft(DRAFT_KEYS.newPost(user?.id)) && user)
     )
     const [search, setSearch] = useState('')
     const [pendingPosts, setPendingPosts] = useState<Post[]>([])
@@ -61,7 +61,7 @@ export const CommunityPageContent = () => {
     const debouncedSearch = useDebounce(search)
     const createPost = useCreatePostMutation()
 
-    const [postDraft] = useState(() => getDraft(DRAFT_KEYS.newPost)?.data)
+    const [postDraft] = useState(() => getDraft(DRAFT_KEYS.newPost(user?.id))?.data)
 
     const handleOpenNewPost = () => {
         if (!user) {
@@ -117,7 +117,7 @@ export const CommunityPageContent = () => {
             setPendingPosts((prev) =>
                 prev.map((p) => p.id === tempPost.id ? realPost : p)
             )
-            clearDraft(DRAFT_KEYS.newPost)
+            clearDraft(DRAFT_KEYS.newPost(user?.id))
             toast.success(
                 t(communityLocales.toasts.postPublished),
                 { duration: 2.5 * secondInMs }
@@ -127,7 +127,11 @@ export const CommunityPageContent = () => {
                 prev.filter((p) => p.id !== tempPost.id)
             )
             if (isUnauthorizedError(error as Error)) {
-                saveDraft(DRAFT_KEYS.newPost, 'newPost', data)
+                saveDraft(
+                    DRAFT_KEYS.newPost(user?.id),
+                    'newPost',
+                    data
+                )
                 showAuthExpiredWithDraft()
                 return
             }

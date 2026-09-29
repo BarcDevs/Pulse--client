@@ -5,6 +5,8 @@ import {
     useQueryClient
 } from '@tanstack/react-query'
 
+import { clearAllDrafts } from '@/utils/draftStorage'
+
 import { ROUTES } from '@/constants/routes'
 
 import { logout } from '@/api/auth'
@@ -17,6 +19,7 @@ export const useDeactivateAccount = () => {
     return useMutation({
         mutationFn: async () => {
             await deleteUser()
+            clearAllDrafts()
             await logout()
         },
         onSuccess: async () => {

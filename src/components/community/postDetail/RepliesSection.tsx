@@ -50,7 +50,7 @@ export const RepliesSection = ({
         setIsReplyFormOpen
     } = usePostDetail()
 
-    const [replyDraft] = useState(() => getDraft(DRAFT_KEYS.newReply(postId))?.data)
+    const [replyDraft] = useState(() => getDraft(DRAFT_KEYS.newReply(user?.id, postId))?.data)
     const sentinelRef = useRef<HTMLDivElement>(null)
 
     const {
