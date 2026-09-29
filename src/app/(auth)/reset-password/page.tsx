@@ -1,64 +1,64 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
-import Link from 'next/link'
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 
-import { AuthCard } from '@/components/auth/AuthCard'
-import { PasswordRequirementsList } from '@/components/auth/password/PasswordRequirementsList'
-import { AuthForm } from '@/components/form/AuthForm'
+import { toast } from 'sonner'
+
+import { NewPasswordStep } from '@/components/auth/steps/NewPasswordStep'
+import { VerifyCodeStep } from '@/components/auth/steps/VerifyCodeStep'
 import { Logo } from '@/components/shared/brand/Logo'
 
 import { ROUTES } from '@/constants/routes'
 
-import { timings } from '@/config/timings'
-
 import { authLocales } from '@/locales/authLocales'
+
+type Step = 'code' | 'password'
 
 const ResetPasswordPage = () => {
     const t = useTranslations()
     const router = useRouter()
-    const [isLoading, setIsLoading] = useState(false)
-    const [password, setPassword] = useState('')
+    const email = useSearchParams().get('email')
+    const [step, setStep] = useState<Step>('code')
+    const [otp, setOtp] = useState('')
 
-    const handleResetSuccess = async () => {
-        setIsLoading(true)
+    // The code is tied to an email; without one, start from the request step
+    useEffect(() => {
+        if (!email) router.replace(ROUTES.FORGOT_PASSWORD)
+    }, [email, router])
 
-        setTimeout(() => {
-            setIsLoading(false)
-            router.push(ROUTES.LOGIN)
-        }, timings.AUTH_API_DELAY)
+    if (!email) return null
+
+    const handleSuccess = () => {
+        toast.success(t(authLocales.resetPassword.successToast))
+        router.push(ROUTES.LOGIN)
     }
 
     return (
         <div className={'w-full max-w-md'}>
             <Logo/>
 
-            <AuthCard
-                title={t(authLocales.resetPassword.title)}
-                description={t(authLocales.resetPassword.description)}
-            >
-                <AuthForm
-                    formType={'resetPassword'}
-                    onSuccessAction={handleResetSuccess}
-                    isLoading={isLoading}
-                    onPasswordChangeAction={setPassword}
-                />
-
-                <PasswordRequirementsList password={password}/>
-
-                <p className={'mt-6 text-center text-xs text-muted-foreground'}>
-                    {`${t(authLocales.resetPassword.troubleText)} `}
-                    <Link
-                        href={ROUTES.SUPPORT}
-                        className={'text-primary hover:underline'}
-                    >
-                        {t(authLocales.resetPassword.supportLink)}
-                    </Link>
-                </p>
-            </AuthCard>
+            {step === 'code'
+                ? (
+                    <VerifyCodeStep
+                        email={email}
+                        onVerifiedAction={(verifiedOtp) => {
+                            setOtp(verifiedOtp)
+                            setStep('password')
+                        }}
+                    />
+                )
+                : (
+                    <NewPasswordStep
+                        email={email}
+                        otp={otp}
+                        onCodeRejectedAction={() => setStep('code')}
+                        onSuccessAction={handleSuccess}
+                    />
+                )
+            }
         </div>
     )
 }

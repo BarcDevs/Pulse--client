@@ -57,6 +57,29 @@ export const refresh = async ():
     return res.data.data
 }
 
+// Always succeeds, whether or not the email has an account
+export const requestPasswordReset = async (
+    email: string
+): Promise<void> => {
+    await api.post(ENDPOINTS.auth.forgotPassword, { email })
+}
+
+// Does not consume the code; 400 AUTH_RESET_PASSWORD on a wrong/expired code or unknown email
+export const verifyResetCode = async (input: {
+    email: string
+    userOTP: number
+}): Promise<void> => {
+    await api.post(ENDPOINTS.auth.verifyResetCode, input)
+}
+
+export const resetPassword = async (input: {
+    email: string
+    newPassword: string
+    userOTP: number
+}): Promise<void> => {
+    await api.put(ENDPOINTS.auth.resetPassword, input)
+}
+
 export const changeEmail = async (
     input: ChangeEmailSchema
 ): Promise<void> => {

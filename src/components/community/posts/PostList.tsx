@@ -14,9 +14,9 @@ import type {
     Post as PostType
 } from '@/types/community'
 
+import { TabButton } from '@/components/shared/buttons/TabButton'
 import { EmptyState } from '@/components/shared/EmptyState'
 import { ErrorDisplay } from '@/components/shared/ErrorDisplay'
-import { TabButton } from '@/components/shared/buttons/TabButton'
 
 import { useForumPosts } from '@/hooks/queries/useForumPosts'
 

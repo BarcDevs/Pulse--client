@@ -17,6 +17,6 @@ export const LandingPageContent = () => (
             <CTASection/>
         </main>
 
-        <Footer showLinks={false}/>
+        <Footer showQuickLinks={false}/>
     </div>
 )

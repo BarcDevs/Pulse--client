@@ -46,22 +46,31 @@
     },
     "forgotPassword": {
       "title": "Reset your password",
-      "description": "Forgot your password? It happens. Enter your email and we'll send you a secure reset link.",
-      "submitButton": "Send reset link",
+      "description": "Forgot your password? It happens. Enter your email and we'll send you a verification code.",
+      "submitButton": "Send code",
       "sendingButton": "Sending...",
-      "checkEmailTitle": "Check your email",
-      "checkEmailDesc": "We sent a password reset link to",
-      "supportLink": "support team",
-      "supportText": "If you cannot access your email anymore, please contact our",
-      "supportVerification": "for identity verification support."
+      "failed": "We couldn't send the code right now. Please try again."
     },
     "resetPassword": {
       "title": "Create a new password",
-      "description": "Choose a secure password so you can safely return to your account.",
+      "newPasswordDesc": "Choose a new password for your account.",
+      "verifyTitle": "Enter your code",
+      "codeLabel": "Verification code",
+      "codeSentTo": "If an account exists for {email}, we sent it a 6-digit code.",
+      "verifyButton": "Verify code",
+      "verifyingButton": "Verifying...",
+      "codeFailed": "That code is wrong or expired. Please try again.",
+      "resendPrompt": "Didn't receive it? Check your spam folder or",
+      "resendCountdown": "resend in {seconds}s",
+      "resendLink": "resend code",
+      "resendSuccessToast": "A new code was sent - the previous one no longer works",
+      "resendRateLimited": "Too many attempts. Please wait 15 minutes, then request a new code.",
+      "resendFailed": "We couldn't send a new code. If your last code doesn't work, please try resending.",
+      "differentEmailLink": "Use a different email",
+      "successToast": "Your password has been reset. Sign in with your new password.",
+      "failed": "We couldn't reset your password. Check the code and try again.",
       "passwordLabel": "New password",
       "confirmPasswordLabel": "Confirm new password",
-      "minLengthText": "At least 8 characters",
-      "specialCharText": "Include one special character",
       "submitButton": "Reset password",
       "resettingButton": "Resetting password...",
       "troubleText": "Need help?",
@@ -985,13 +994,13 @@
         "successToast": "Your password has been updated"
       },
       "deactivate": {
-        "label": "Deactivate Account",
+        "label": "Delete Account",
         "description": "Permanently remove your account and recovery data",
-        "buttonText": "Deactivate",
-        "confirmTitle": "Deactivate Account",
-        "confirmDescription": "Your account will be deactivated and you will lose access. Your data is kept and the account can be restored by contacting support.",
-        "confirmButton": "Yes, deactivate",
-        "confirmingButton": "Deactivating...",
+        "buttonText": "Delete account",
+        "confirmTitle": "Delete Account",
+        "confirmDescription": "Your account will be deactivated right away and permanently deleted after 30 days, including your check-ins, insights, goals and posts. Log back in within 30 days to cancel. To delete immediately, contact support.",
+        "confirmButton": "Yes, delete",
+        "confirmingButton": "Deleting...",
         "cancelButton": "Cancel"
       }
     },
@@ -1177,10 +1186,9 @@
       "menu": "Menu"
     },
     "hero": {
-      "headline": "Recovery",
-      "headlineLine2": "Refined.",
-      "headlineAccent": "Support",
-      "headlineSuffix": "That Stays.",
+      "headline": "Your recovery",
+      "headlineLine2": "Your journey",
+      "headlineAccent": "Every step counts",
       "subtitle": "Track your recovery, reflect on your progress, and connect with people who understand what you're going through. All in one place designed to support the journey ahead.",
       "startJourney": "Start Your Journey",
       "exploreCommunity": "Join the Community",
@@ -1427,7 +1435,7 @@
         },
         "deleteData": {
           "q": "Can I export or delete my data?",
-          "a": "You can deactivate your account from <settings>Settings</settings>. To request deletion of your data, send us a message using <contact>the form below</contact> and we'll help you with the next steps."
+          "a": "You can delete your account from <settings>Settings</settings>. It's permanently deleted after 30 days, and logging back in before then cancels the deletion. To delete it immediately, send us a message using <contact>the form below</contact>."
         }
       }
     },

@@ -35,21 +35,26 @@ export const getLocalizedApiErrorMessage = (
     return getApiErrorMessage(error, fallback)
 }
 
+export const getApiErrorStatus = (
+    error: unknown
+): number | undefined =>
+    (error as any)?.response?.status
+
 export const isUnauthorizedError = (
     error: Error | null
 ): boolean => {
     if (!error) return false
-    return (error as any).response?.status === 401
+    return getApiErrorStatus(error) === 401
 }
 
 const unreachableStatuses = [502, 503, 504]
 
 const isProxyFailure = (error: Error): boolean => {
-    const response = (error as any).response
-    if (!response) return false
-    if (unreachableStatuses.includes(response.status)) return true
+    const status = getApiErrorStatus(error)
+    if (status === undefined) return false
+    if (unreachableStatuses.includes(status)) return true
     // Next.js proxy answers 500 with an empty body when the backend is down
-    return response.status === 500 && !response.data?.message
+    return status === 500 && !(error as any).response?.data?.message
 }
 
 export const isNetworkError = (

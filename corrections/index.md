@@ -37,6 +37,7 @@ Guessing at a spec instead of checking the actual rules/examples first.
 | 12/09/2026 | When told to "read carefully" or "follow the template exactly," inspect the actual spec/system before guessing |
 | 18/09/2026 | Claimed a Firefox-only font fix "fixed" it with no way to test in Firefox |
 | 23/09/2026 | Font fix committed twice without checking the served CSS; Turbopack ignored `adjustFontFallback` and `.next/dev` served stale CSS |
+| 29/09/2026 | Model Selection in CLAUDE.md said Haiku for sub-agents (stale); Sonnet default, Opus via /opusplan |
 
 ## Working Style — [[corrections/working-style]]
 How to act on bug reports and where to log — state the fix before broad edits, log in this repo, check other branches before claiming a file doesn't exist.
@@ -54,6 +55,7 @@ How to act on bug reports and where to log — state the fix before broad edits,
 | 26/09/2026 | Did a whole rfc series on whatever branch was checked out (the upgrade branch); every separate piece of work gets its own branch, created by Claude without being asked |
 | 25/09/2026 | Swapped "Claude routines" for a session cron and never said where scheduled output lands |
 | 26/09/2026 | Opened a PR from a feature branch into `development` (direct push is the rule), pushed without tags, and read files via Bash instead of Read/Grep |
+| 29/09/2026 | Opened feature → `development` PRs again (#25, #26) from a server session; never read this repo's corrections index before client git work |
 | 23/09/2026 | Built new MCP wiring instead of checking `disabledMcpjsonServers` / a working sibling project's settings |
 | 28/09/2026 | Blanket-killed every Node process on the machine (`taskkill /IM node.exe`) to free one busy directory instead of targeting the one PID |
 

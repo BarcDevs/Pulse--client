@@ -2,35 +2,45 @@
 
 import { useState } from 'react'
 
+import { useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 
 import { AuthCard } from '@/components/auth/AuthCard'
-import { EmailVerificationView } from '@/components/auth/views/EmailVerificationView'
 import { AuthForm } from '@/components/form/AuthForm'
 import { Logo } from '@/components/shared/brand/Logo'
 
-import { timings } from '@/config/timings'
+import { getLocalizedApiErrorMessage } from '@/utils/error'
 
+import { ROUTES } from '@/constants/routes'
+
+import { requestPasswordReset } from '@/api/auth'
 import { authLocales } from '@/locales/authLocales'
+import type { EmailInputSchema } from '@/validations/forms/emailInputSchema'
 
 const ForgotPasswordPage = () => {
     const t = useTranslations()
-    const [email, setEmail] = useState('')
+    const router = useRouter()
     const [isLoading, setIsLoading] = useState(false)
-    const [isSubmitted, setIsSubmitted] = useState(false)
+    const [error, setError] = useState<string | null>(null)
 
-    const handleSubmit = async (data: {email: string}) => {
-        setEmail(data.email)
+    const handleSubmit = async ({ email }: EmailInputSchema) => {
         setIsLoading(true)
+        setError(null)
 
-        setTimeout(() => {
+        try {
+            await requestPasswordReset(email)
+            router.push(
+                `${ROUTES.RESET_PASSWORD}?email=${encodeURIComponent(email)}`
+            )
+        } catch (err) {
+            setError(getLocalizedApiErrorMessage(
+                t,
+                err,
+                t(authLocales.forgotPassword.failed)
+            ))
             setIsLoading(false)
-            setIsSubmitted(true)
-        }, timings.AUTH_API_DELAY)
+        }
     }
-
-    if (isSubmitted)
-        return <EmailVerificationView email={email}/>
 
     return (
         <div className={'w-full max-w-md'}>
@@ -44,6 +54,7 @@ const ForgotPasswordPage = () => {
                     formType={'forgotPassword'}
                     onSuccessAction={handleSubmit}
                     isLoading={isLoading}
+                    error={error}
                 />
             </AuthCard>
         </div>

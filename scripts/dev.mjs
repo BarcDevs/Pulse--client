@@ -1,5 +1,5 @@
-import { createServer } from 'net'
 import { spawn } from 'child_process'
+import { createServer } from 'net'
 
 const basePort = 5173
 const args = process.argv.slice(2)

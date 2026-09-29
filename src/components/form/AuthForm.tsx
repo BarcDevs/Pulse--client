@@ -1,7 +1,5 @@
 'use client'
 
-import { useEffect } from 'react'
-
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 
@@ -21,7 +19,6 @@ type AuthFormProps = {
     formType: AuthFormType
     onSuccessAction: SetState<any>
     isLoading?: boolean
-    onPasswordChangeAction?: SetState<string>
     error?: string | null
 }
 
@@ -29,7 +26,6 @@ export const AuthForm = ({
     formType,
     onSuccessAction,
     isLoading = false,
-    onPasswordChangeAction,
     error
 }: AuthFormProps) => {
     const t = useTranslations()
@@ -37,28 +33,6 @@ export const AuthForm = ({
         formType,
         onSuccessAction
     })
-
-    const isPasswordFormType =
-        formType === 'resetPassword'
-        || formType === 'signup'
-
-    const passwordValue = isPasswordFormType
-        ? (form.watch('password' as any) as string)
-        : undefined
-
-    useEffect(() => {
-        if (
-            onPasswordChangeAction
-            && isPasswordFormType
-            && typeof passwordValue === 'string'
-        ) {
-            onPasswordChangeAction(passwordValue)
-        }
-    }, [
-        passwordValue,
-        onPasswordChangeAction,
-        isPasswordFormType
-    ])
 
     const config = authFormConfigs[formType]
 

@@ -36,6 +36,7 @@ export type FieldConfig = {
     options?: SelectOption[]
     pattern?: string
     className?: string
+    autoComplete?: string
 }
 
 export type FormButtonConfig = {
@@ -64,6 +65,7 @@ export type AuthFormType =
     'login' |
     'signup' |
     'forgotPassword' |
+    'verifyResetCode' |
     'resetPassword'
 
 export type FormControlProps<
