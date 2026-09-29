@@ -64,6 +64,14 @@ export const requestPasswordReset = async (
     await api.post(ENDPOINTS.auth.forgotPassword, { email })
 }
 
+// Does not consume the code; 400 AUTH_RESET_PASSWORD on a wrong/expired code or unknown email
+export const verifyResetCode = async (input: {
+    email: string
+    userOTP: number
+}): Promise<void> => {
+    await api.post(ENDPOINTS.auth.verifyResetCode, input)
+}
+
 export const resetPassword = async (input: {
     email: string
     newPassword: string

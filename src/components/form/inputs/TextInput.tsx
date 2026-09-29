@@ -37,6 +37,7 @@ export const TextInput = <T extends FieldValues>({
                     placeholder={config.placeholder ? t(config.placeholder) : ''}
                     maxLength={config.maxLength}
                     disabled={config.disabled}
+                    autoComplete={config.autoComplete}
                     data-testid={field.name}
                     {...field}
                 />

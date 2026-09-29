@@ -7,6 +7,7 @@ export const ENDPOINTS = {
         me: '/auth/me',
         refresh: '/auth/refresh',
         forgotPassword: '/auth/forgot-password',
+        verifyResetCode: '/auth/verify-reset-code',
         resetPassword: '/auth/reset-password',
         changeEmail: '/auth/change-email',
         confirmEmailChange: '/auth/confirm-email-change'

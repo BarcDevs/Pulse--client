@@ -4,14 +4,13 @@ import { TranslatorFn } from '@/types/i18n'
 
 import { validationLocales } from '@/locales/validationLocales'
 
-import { createOtpSchema } from './otpSchema'
 import {
     confirmPasswordField,
     passwordField
 } from './validators'
 
 export const createResetPasswordSchema = (t: TranslatorFn) =>
-    createOtpSchema(t).extend({
+    z.object({
         password: passwordField(
             t,
             t(validationLocales.password.required)

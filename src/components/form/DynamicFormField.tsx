@@ -14,6 +14,7 @@ import {
 
 import { CheckboxInput } from './inputs/CheckboxInput'
 import { EmailInput } from './inputs/EmailInput'
+import { OtpInput } from './inputs/OtpInput'
 import { PasswordInput } from './inputs/PasswordInput'
 import { RadioInput } from './inputs/RadioInput'
 import { SelectInput } from './inputs/SelectInput'
@@ -36,7 +37,7 @@ const inputComponentMap = {
     select: SelectInput,
     radio: RadioInput,
     slider: SliderInput,
-    otp: TextInput
+    otp: OtpInput
 }
 
 export const DynamicFormField = <T extends FieldValues> ({

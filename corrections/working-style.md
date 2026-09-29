@@ -118,3 +118,11 @@ Finished a `chore(deploy)` branch and ran `gh pr create --base development`, the
 Working from a server session (security audit), I finished the client Cloudflare Tunnel branch and the M2 deletion-copy branch and ran `gh pr create --base development` for both, pushing the feature branches. The 26/09 entry above already forbids exactly this. User: "why a pe from a frature branch AGAINNNNN". Root cause: the session started in `pulse--server`, so only the server `corrections/index.md` was loaded; I never read this repo's index before doing client work, and the server `CLAUDE.md` line "Every feature/fix branch merges into `development` first, via PR" (stale, contradicts `.sources/RULES.md` and this log) pointed the wrong way.
 
 **Lesson:** before the first git action in a repo other than the session's starting one, read that repo's `corrections/index.md`. Feature → `development` is a local merge or fast-forward push plus `--tags`, never a PR; the only PR is `development` → `main`, and only when asked.
+
+---
+
+## 29/09/2026 — Model Selection section in CLAUDE.md still said Haiku for sub-agents
+
+`CLAUDE.md` Model Selection told sessions to use Haiku for sub-agents and lookups, a leftover from before the move to Sonnet. Noticed while checking which model the commit-skill agents run on. The real setup: Sonnet is the default for execution and every sub-agent, Opus via `/opusplan` for planning and hard reasoning.
+
+**Lesson:** when a `CLAUDE.md` line conflicts with the user's global rule (all sub-agents on Sonnet), the repo line is stale, not an override. Fixed in both pulse repos.
