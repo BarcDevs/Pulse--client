@@ -49,16 +49,10 @@
       "description": "Forgot your password? It happens. Enter your email and we'll send you a verification code.",
       "submitButton": "Send code",
       "sendingButton": "Sending...",
-      "failed": "We couldn't send the code right now. Please try again.",
-      "checkEmailTitle": "Check your email",
-      "checkEmailDesc": "We sent a password reset link to",
-      "supportLink": "support team",
-      "supportText": "If you cannot access your email anymore, please contact our",
-      "supportVerification": "for identity verification support."
+      "failed": "We couldn't send the code right now. Please try again."
     },
     "resetPassword": {
       "title": "Create a new password",
-      "description": "Choose a secure password so you can safely return to your account.",
       "codeLabel": "Verification code",
       "codeSentTo": "If an account exists for {email}, we sent it a 6-digit code. Enter it below with your new password.",
       "resendText": "Didn't get a code?",
