@@ -102,4 +102,30 @@ describe(
                     getSafeRedirectUrl(encodeURIComponent('https://evil.com'))
                 ).toBe(ROUTES.HOME)
             })
+
+        it.each([
+            ['backslash', '/\\evil.com'],
+            ['encoded backslash', '%2F%5Cevil.com'],
+            ['tab before slash', '/\t/evil.com'],
+            ['newline before slash', '/\n/evil.com'],
+            ['protocol-relative', '//evil.com'],
+            ['double-encoded protocol-relative', '%252F%252Fevil.com']
+        ])(
+            'rejects the off-site %s trick',
+            (_label, url) => {
+                expect(getSafeRedirectUrl(url)).toBe(ROUTES.HOME)
+            })
+
+        it(
+            'falls back on malformed percent-encoding instead of throwing',
+            () => {
+                expect(getSafeRedirectUrl('%E0%A4%A')).toBe(ROUTES.HOME)
+            })
+
+        it(
+            'keeps query and hash on same-origin paths',
+            () => {
+                expect(getSafeRedirectUrl('/community?tab=new#top'))
+                    .toBe('/community?tab=new#top')
+            })
     })
