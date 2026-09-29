@@ -8,6 +8,8 @@ import {
 
 import { cn } from '@/lib/utils'
 
+import { isTrustedImageUrl } from '@/utils/trustedImages'
+
 type UserAvatarSize = 'sm' | 'md' | 'xl'
 type UserAvatarTone = 'soft' | 'solid'
 
@@ -38,7 +40,7 @@ export const UserAvatar = ({
     className
 }: UserAvatarProps) => (
     <Avatar className={cn(sizeStyles[size].wrapper, className)}>
-        <AvatarImage src={imageSrc}/>
+        <AvatarImage src={isTrustedImageUrl(imageSrc) ? imageSrc : undefined}/>
         <AvatarFallback className={cn(toneStyles[tone], sizeStyles[size].fallback)}>
             {initials}
         </AvatarFallback>
