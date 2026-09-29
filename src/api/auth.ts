@@ -2,6 +2,11 @@ import type { AuthResponse } from '@/types/auth'
 import type { Response } from '@/types/responses'
 import type { Role } from '@/types/user'
 
+import {
+    getCsrfToken,
+    setCsrfToken
+} from '@/lib/csrf'
+
 import { api } from '@/api/index'
 import { ENDPOINTS } from '@/api/routes'
 import type { ChangeEmailSchema } from '@/validations/forms/changeEmailSchema'
@@ -43,9 +48,13 @@ export const getMe = async ():
     return res.data.data
 }
 
+// Logout is a CSRF-protected POST. The token lives in memory only, so after
+// a reload fetch a fresh one first
 export const logout = async ():
     Promise<null> => {
-    await api.get(ENDPOINTS.auth.logout)
+    if (!getCsrfToken())
+        setCsrfToken((await refresh())._csrf)
+    await api.post(ENDPOINTS.auth.logout)
     return null
 }
 
