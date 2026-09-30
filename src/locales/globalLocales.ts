@@ -160,6 +160,7 @@ export const globalLocales = {
             title: 'global.errors.inlineErrorTexts.title',
             generic: 'global.errors.inlineErrorTexts.generic',
             network: 'global.errors.inlineErrorTexts.network',
+            aborted: 'global.errors.inlineErrorTexts.aborted',
             tryAgainBtn: 'global.errors.inlineErrorTexts.tryAgainBtn'
         }
     }
