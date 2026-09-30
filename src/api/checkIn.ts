@@ -95,7 +95,7 @@ export const patchCheckIn = async (
     data: Partial<CheckInSchema>
 ): Promise<CheckIn> => {
     const res = await api.patch<Response<CheckIn>>(
-        `${ENDPOINTS.checkIn.base}/${id}`,
+        ENDPOINTS.checkIn.item(id),
         { ...data }
     )
     return res.data.data
@@ -106,7 +106,7 @@ export const updateCheckIn = async (
     data: Partial<CheckInSchema>
 ): Promise<CheckIn> => {
     const res = await api.patch<Response<CheckIn>>(
-        `${ENDPOINTS.checkIn.base}/${id}`,
+        ENDPOINTS.checkIn.item(id),
         { ...data }
     )
     return res.data.data
@@ -118,7 +118,7 @@ export const getCheckIn = async (
     const res = await api.get<{
         data: CheckIn
     }>(
-        `${ENDPOINTS.checkIn.base}/${id}`
+        ENDPOINTS.checkIn.item(id)
     )
     return res.data.data
 }
