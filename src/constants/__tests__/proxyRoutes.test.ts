@@ -18,7 +18,9 @@ describe('protectedRoutes', () => {
             ROUTES.CHECK_IN,
             ROUTES.INSIGHTS,
             ROUTES.PROGRESS,
-            ROUTES.CHAT
+            ROUTES.CHAT,
+            ROUTES.RECOVERY_GOALS,
+            ROUTES.DAILY_CHECKIN
         ]
         expected.forEach((route) => {
             expect(protectedRoutes).toContain(route)
