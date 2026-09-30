@@ -36,11 +36,7 @@ The cloud routine `trig_01ShV1zJC3hdsQPD1TQiRFak` required Sentry as a claude.ai
 Trade-off: a local routine only runs while this machine is on and the app is open; the cloud one ran regardless. The Sentry project `sentry` server needs its OAuth done once in `pulse--client` (`/mcp`), since an unattended run can't log in.
 
 The `claude.ai Sentry` connector can be disconnected at claude.ai/customize/connectors. The Feedback Watch routine does not use it.
----
 
-## 30/09/2026 — Sentry Error Watch run (automated, ~18:00 UTC)
-
-Searched `pulse-client` for unresolved issues with `lastSeen:-8h`. Zero issues found. No action taken.
 ---
 
 ## 30/09/2026 — Feedback Watch routine needs `docs.google.com` + `*.googleusercontent.com` in its cloud environment's allowed domains
