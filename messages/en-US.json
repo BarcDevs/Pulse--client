@@ -1593,7 +1593,7 @@
                 },
                 {
                   "label": "Personalize your experience",
-                  "text": "Generate insights and tailor features based on your recovery activity. To write your insights, your recent check-ins, including any notes you add, are sent to our AI providers. You can stop sending your notes at any time in Settings, under App Preferences."
+                  "text": "Generate insights and tailor features based on your recovery activity. To write your insights, your recent check-ins, including any notes you add, are sent to our AI providers. You can stop sending your notes at any time in Settings, under <appPreferences>App Preferences</appPreferences>."
                 },
                 {
                   "label": "Keep the service secure",

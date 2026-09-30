@@ -2,6 +2,8 @@
 
 import { useState } from 'react'
 
+import { useSearchParams } from 'next/navigation'
+
 import { SETTINGS_TABS_CONFIG } from '@/config/settingsTabs'
 
 import { SettingsProvider } from '@/context/SettingsContext'
@@ -13,8 +15,13 @@ const firstActiveTab = SETTINGS_TABS_CONFIG
     .find((tab) => tab.active)?.id ?? 'security'
 
 export const SettingsPageContent = () => {
-    const [activeTab, setActiveTab] =
-        useState<string>(firstActiveTab)
+    const tabParam = useSearchParams().get('tab')
+    const isValidTab = SETTINGS_TABS_CONFIG
+        .some((tab) => tab.active && tab.id === tabParam)
+
+    const [activeTab, setActiveTab] = useState<string>(
+        isValidTab && tabParam ? tabParam : firstActiveTab
+    )
 
     return (
         <SettingsProvider>
