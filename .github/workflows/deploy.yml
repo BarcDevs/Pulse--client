@@ -24,6 +24,9 @@ jobs:
   deploy:
     name: Build, push, and roll out to EC2
     runs-on: ubuntu-latest
+    # Each deploy waits for the required reviewer on this environment, and the AWS role's
+    # trust policy only accepts tokens from it, so no other workflow or branch can assume the role
+    environment: aws-production
     # The repo is public and CI also runs on fork pull requests, and a fork branch can be named
     # `main`, so the `branches` filter above is not enough. Only deploy a CI run that was a push
     # to this repository's own main branch.
