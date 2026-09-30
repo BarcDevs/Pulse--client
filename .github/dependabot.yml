@@ -3,5 +3,7 @@ updates:
   # Actions are pinned to commit SHAs; this opens a weekly PR moving the pins
   - package-ecosystem: github-actions
     directory: /
+    # Branch policy: only development is merged into main, so never target main
+    target-branch: development
     schedule:
       interval: weekly
