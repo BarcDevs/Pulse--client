@@ -22,6 +22,7 @@ Error tracking and performance-monitoring tooling decisions.
 | 27/09/2026 | EC2 deploy wired to the real Sentry DSN; session replay left off in prod pending a privacy review |
 | 28/09/2026 | Client-side Sentry was dead code (never wired into the bundle) regardless of the DSN — fixed via `instrumentation-client.ts` |
 | 30/09/2026 | Sentry MCP intentionally connected at both project and claude.ai account scope (routine needs the connector) |
+| 30/09/2026 | Feedback Watch routine needs `docs.google.com` + `*.googleusercontent.com` allowed in its cloud environment |
 
 ## Charts & RTL — [[decisions/charts-and-rtl]]
 Trend-chart ordering and no-data rendering rules.

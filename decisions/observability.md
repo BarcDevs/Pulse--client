@@ -32,3 +32,11 @@ Server/edge init (`sentry.server.config.ts`, `sentry.edge.config.ts` via `src/in
 ## 30/09/2026 — Sentry MCP is intentionally connected at two scopes
 
 Project `.mcp.json` `sentry` serves local interactive sessions in this repo only. The account-level `claude.ai Sentry` connector (claude.ai/customize/connectors) is required by the cloud **Pulse Sentry Error Watch** routine, since cloud routines can't read local `.mcp.json`. Side effect: `claude.ai Sentry` shows in `/mcp` in every local session, in any project, and cannot be scoped to one project. Decision: keep both; disable the connector per session where unwanted. Do NOT remove the connector without pausing the routine first, and don't treat its presence as a stray global override.
+
+---
+
+## 30/09/2026 — Feedback Watch routine needs `docs.google.com` + `*.googleusercontent.com` in its cloud environment's allowed domains
+
+**Pulse Feedback Watch** (`trig_01Ue4TBymyq5EP6WWEQeMprK`) failed 29–30/09 with `EGRESS_BLOCKED`: the routine's environment (`env_01A9QMZipgECw9E5e37T9Lja`) blocked `docs.google.com`. Google's public CSV export then redirects to a rotating `doc-XX-YY-sheets.googleusercontent.com` host, so that domain family must be allowed too (wildcard, since the subdomain changes). Both were added under the environment's Network access; verified by a manual run that fetched the CSV (header-only, zero responses yet).
+
+The failure was silent in the routine list: a blocked fetch is reported as the final message per the prompt, so the run status was still `succeeded`. Check `list_runs` + `get_run_log`, not the status field, when debugging this routine.
