@@ -59,6 +59,7 @@ How to act on bug reports and where to log — state the fix before broad edits,
 | 29/09/2026 | Opened feature → `development` PRs again (#25, #26) from a server session; never read this repo's corrections index before client git work |
 | 23/09/2026 | Built new MCP wiring instead of checking `disabledMcpjsonServers` / a working sibling project's settings |
 | 28/09/2026 | Blanket-killed every Node process on the machine (`taskkill /IM node.exe`) to free one busy directory instead of targeting the one PID |
+| 30/09/2026 | Wrapped `Switch` in an extra `<div dir="ltr">` instead of passing `dir` on the component itself, which it already supports |
 
 ## Code Placement — [[corrections/code-placement]]
 Where new constants/config values belong.
