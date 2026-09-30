@@ -8,6 +8,8 @@ import {
     clearCsrfToken
 } from '@/lib/csrf'
 
+import { getSafeRedirectUrl } from '@/utils/redirect'
+
 import config from '@/config'
 
 export type QueuedRequest = {
@@ -106,6 +108,7 @@ export const redirectToGoogleAuth = async (
         `/api/${config.serverApiVersion}/auth/google`,
         window.location.origin
     )
-    if (redirect) url.searchParams.set('redirect', redirect)
+    const safeRedirect = getSafeRedirectUrl(redirect, '')
+    if (safeRedirect) url.searchParams.set('redirect', safeRedirect)
     window.location.href = url.toString()
 }
