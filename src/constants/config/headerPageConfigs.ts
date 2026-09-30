@@ -13,8 +13,10 @@ import { dashboardLocales } from '@/locales/dashboardLocales'
 import { globalLocales } from '@/locales/globalLocales'
 import { goalsLocales } from '@/locales/goalsLocales'
 import { insightsLocales } from '@/locales/insightsLocales'
+import { legalLocales } from '@/locales/legalLocales'
 import { progressLocales } from '@/locales/progressLocales'
 import { settingsLocales } from '@/locales/settingsLocales'
+import { supportLocales } from '@/locales/supportLocales'
 
 export type ActionConfig = {
     type: 'newPost' | 'export' | 'share'
@@ -115,5 +117,15 @@ export const headerPageConfigs: Record<
     },
     'profile/settings': {
         title: settingsLocales.title
+    },
+    privacy: {
+        title: legalLocales.tabs.privacy
+    },
+    terms: {
+        title: legalLocales.tabs.terms
+    },
+    support: {
+        title: supportLocales.header.title,
+        subtitle: supportLocales.header.subtitle
     }
 }

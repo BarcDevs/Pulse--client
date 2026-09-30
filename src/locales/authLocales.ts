@@ -24,6 +24,7 @@ export const authLocales = {
         lastNameLabel: 'common.fields.lastName',
         lastNamePlaceholder: 'auth.signup.lastNamePlaceholder',
         confirmPasswordLabel: 'auth.signup.confirmPasswordLabel',
+        acceptTerms: 'auth.signup.acceptTerms',
         signupButton: 'auth.signup.signupButton',
         signingUpButton: 'auth.signup.signingUpButton',
         loginText: 'auth.signup.loginText',

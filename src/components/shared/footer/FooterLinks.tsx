@@ -1,7 +1,8 @@
 'use client'
 
-import Link from 'next/link'
 import { useTranslations } from 'next-intl'
+
+import { GuardedLink } from '@/components/shared/content/GuardedLink'
 
 import { footerQuickLinks } from '@/constants/footerLinks'
 
@@ -18,12 +19,13 @@ export const FooterLinks = () => {
             <ul className={'space-y-2'}>
                 {footerQuickLinks.map(link => (
                     <li key={link.href}>
-                        <Link
+                        <GuardedLink
+                            disabledClassName={'text-sm text-muted-foreground'}
                             href={link.href}
                             className={'text-sm text-muted-foreground hover:text-foreground transition-colors'}
                         >
                             {t(link.titleKey)}
-                        </Link>
+                        </GuardedLink>
                     </li>
                 ))}
             </ul>

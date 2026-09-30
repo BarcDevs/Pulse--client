@@ -1,8 +1,12 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import {
+    useEffect,
+    useState,
+    useSyncExternalStore
+} from 'react'
 
-import { useRouter, useSearchParams } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 
 import { toast } from 'sonner'
@@ -11,16 +15,27 @@ import { NewPasswordStep } from '@/components/auth/steps/NewPasswordStep'
 import { VerifyCodeStep } from '@/components/auth/steps/VerifyCodeStep'
 import { Logo } from '@/components/shared/brand/Logo'
 
+import { clearResetEmail, getResetEmail } from '@/utils/resetEmail'
+
 import { ROUTES } from '@/constants/routes'
 
 import { authLocales } from '@/locales/authLocales'
 
 type Step = 'code' | 'password'
 
+// The email is read once from storage on the client; nothing ever changes it
+// while this page is open, so there is nothing to subscribe to
+const subscribeToNothing = () => () => undefined
+const getServerEmail = () => null
+
 const ResetPasswordPage = () => {
     const t = useTranslations()
     const router = useRouter()
-    const email = useSearchParams().get('email')
+    const email = useSyncExternalStore(
+        subscribeToNothing,
+        getResetEmail,
+        getServerEmail
+    )
     const [step, setStep] = useState<Step>('code')
     const [otp, setOtp] = useState('')
 
@@ -32,6 +47,7 @@ const ResetPasswordPage = () => {
     if (!email) return null
 
     const handleSuccess = () => {
+        clearResetEmail()
         toast.success(t(authLocales.resetPassword.successToast))
         router.push(ROUTES.LOGIN)
     }

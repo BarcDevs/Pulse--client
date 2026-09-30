@@ -1,5 +1,7 @@
 import DOMPurify from 'dompurify'
 
+import { replaceUntrustedImages } from '@/utils/trustedImages'
+
 if (typeof window !== 'undefined') {
     DOMPurify.removeHook(
         'afterSanitizeAttributes'
@@ -35,12 +37,17 @@ if (typeof window !== 'undefined') {
     )
 }
 
-export const sanitizeHtml = (
-    html: string
-): string =>
+const purify = (html: string): string =>
     DOMPurify.sanitize(html, {
         ADD_ATTR: ['target', 'rel']
     })
+
+// The image pass re-parses the HTML, so it's sanitized again afterwards:
+// whatever reaches the page has always been through DOMPurify last
+export const sanitizeHtml = (
+    html: string
+): string =>
+    purify(replaceUntrustedImages(purify(html)))
 
 export const stripHtml = (
     html: string

@@ -6,5 +6,6 @@ export const RICH_TEXT_LINKS: Record<string, string> = {
     terms: ROUTES.TERMS,
     support: ROUTES.SUPPORT,
     contact: `${ROUTES.SUPPORT}#${SUPPORT_CONTACT_ANCHOR}`,
-    settings: ROUTES.PROFILE_SETTINGS
+    settings: ROUTES.PROFILE_SETTINGS,
+    appPreferences: `${ROUTES.PROFILE_SETTINGS}?tab=preferences`
 }

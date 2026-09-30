@@ -12,21 +12,37 @@ type DraftEntry = {
     expiresAt: number
 }
 
+export const COMMUNITY_DRAFT_PREFIX = 'community:draft:'
+
+// Keys are per user, so a shared browser never shows one user's draft to
+// another. No user means no key, and the helpers below then do nothing
+type UserId = string | null | undefined
+
+const userKey = (userId: UserId, suffix: string): string | null =>
+    userId ? `${COMMUNITY_DRAFT_PREFIX}${userId}:${suffix}` : null
+
 export const DRAFT_KEYS = {
-    newPost: 'community:draft:post',
-    newReply: (postId: string) => `community:draft:reply:${postId}`,
-    updatePost: (postId: string) => `community:draft:updatepost:${postId}`,
-    updateReply: (postId: string, replyId: string) =>
-        `community:draft:updatereply:${postId}:${replyId}`
+    newPost: (userId: UserId) => userKey(userId, 'post'),
+    newReply: (userId: UserId, postId: string) =>
+        userKey(userId, `reply:${postId}`),
+    updatePost: (userId: UserId, postId: string) =>
+        userKey(userId, `updatepost:${postId}`),
+    updateReply: (
+        userId: UserId,
+        postId: string,
+        replyId: string
+    ) =>
+        userKey(userId, `updatereply:${postId}:${replyId}`)
 }
 
 export const saveDraft = (
-    key: string,
+    key: string | null,
     type: DraftType,
     data: PostFormSchema,
     postId?: string,
     replyId?: string
 ): void => {
+    if (!key) return
     try {
         const entry: DraftEntry = {
             type,
@@ -41,7 +57,8 @@ export const saveDraft = (
     }
 }
 
-export const getDraft = (key: string): DraftEntry | null => {
+export const getDraft = (key: string | null): DraftEntry | null => {
+    if (!key) return null
     try {
         const raw = localStorage.getItem(key)
         if (!raw) return null
@@ -61,7 +78,8 @@ export const getDraft = (key: string): DraftEntry | null => {
     }
 }
 
-export const clearDraft = (key: string): void => {
+export const clearDraft = (key: string | null): void => {
+    if (!key) return
     try {
         localStorage.removeItem(key)
     } catch {

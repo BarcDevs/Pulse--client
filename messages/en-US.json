@@ -42,7 +42,8 @@
       "signingUpButton": "Creating your account...",
       "loginText": "Already have an account?",
       "loginLink": "Sign in",
-      "passwordDescription": "Use at least 8 characters, including one letter and one number"
+      "passwordDescription": "At least 8 characters, with an uppercase letter, a lowercase letter and a number",
+      "acceptTerms": "By signing up, I accept the <terms>Terms of Service</terms>"
     },
     "forgotPassword": {
       "title": "Reset your password",
@@ -1001,7 +1002,10 @@
         "confirmDescription": "Your account will be deactivated right away and permanently deleted after 30 days, including your check-ins, insights, goals and posts. Log back in within 30 days to cancel. To delete immediately, contact support.",
         "confirmButton": "Yes, delete",
         "confirmingButton": "Deleting...",
-        "cancelButton": "Cancel"
+        "cancelButton": "Cancel",
+        "sendCodeButton": "Email me a code",
+        "sendingCodeButton": "Sending...",
+        "otpDescription": "Enter the 6-digit code sent to your email address to confirm deleting your account."
       }
     },
     "preferences": {
@@ -1015,6 +1019,10 @@
       "language": {
         "title": "Preferred Language",
         "description": "Select the language used throughout the app"
+      },
+      "aiNotes": {
+        "label": "Use my notes for insights",
+        "description": "Include your check-in notes when our AI providers write your insights. When off, insights use only your scores and activities"
       }
     }
   },
@@ -1228,6 +1236,9 @@
     }
   },
   "validation": {
+    "terms": {
+      "required": "Accept the Terms of Service to create your account"
+    },
     "email": {
       "required": "Enter your email so we can keep your account secure",
       "invalid": "Enter a valid email address"
@@ -1246,7 +1257,9 @@
       },
       "noMatch": "The passwords do not match",
       "tooShort": "Password must contain at least {min} characters",
-      "format": "Use at least 8 characters, including letters and numbers"
+      "format": "Use at least 8 characters, including letters and numbers",
+      "strongFormat": "Use at least 8 characters, with an uppercase letter, a lowercase letter and a number",
+      "simpleRun": "Avoid 4 or more repeated or sequential characters in a row, like 1234, abcd or aaaa"
     },
     "otp": {
       "required": "Enter the verification code we sent you",
@@ -1568,7 +1581,7 @@
                 ],
                 [
                   "Local storage drafts",
-                  "Saves unsent posts and profile edits on your device so you don't lose them"
+                  "Saves unsent posts and profile edits on your device so you don't lose them. Health details are never saved there, and drafts are cleared when you sign out"
                 ]
               ]
             },
@@ -1587,7 +1600,7 @@
                 },
                 {
                   "label": "Personalize your experience",
-                  "text": "Generate insights and tailor features based on your recovery activity."
+                  "text": "Generate insights and tailor features based on your recovery activity. To write your insights, your recent check-ins, including any notes you add, are sent to our AI providers. You can stop sending your notes at any time in Settings, under <appPreferences>App Preferences</appPreferences>."
                 },
                 {
                   "label": "Keep the service secure",
@@ -1612,8 +1625,12 @@
                   "text": "You can view and manage your own information anytime."
                 },
                 {
+                  "label": "In the community forum",
+                  "text": "The community forum (posts, replies, and their authors' names and pictures) is visible only to signed-in Pulse users. With Anonymous Participation turned on, your name, username and picture are hidden from other users."
+                },
+                {
                   "label": "With trusted service providers",
-                  "text": "We work with carefully selected providers who help us securely operate Pulse: cloud hosting (AWS), error monitoring (Sentry), privacy-friendly page-view analytics (Vercel Web Analytics, no cookies), and Google when you choose to sign in with Google."
+                  "text": "We work with carefully selected providers who help us securely operate Pulse: cloud hosting (AWS), error monitoring (Sentry), privacy-friendly page-view analytics (Vercel Web Analytics, no cookies), AI providers that write your insights (Anthropic, Google and OpenAI), Google when you choose to sign in with Google, and OpenStreetMap (Nominatim) when you search for a location, which receives the text you type and your IP address."
                 },
                 {
                   "label": "When required by law",

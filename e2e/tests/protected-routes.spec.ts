@@ -7,7 +7,7 @@ import {
 } from '../helpers/mockApi'
 
 // Only routes listed in src/constants/proxyRoutes.ts protectedRoutes
-const PROTECTED = ['/dashboard', '/check-in', '/profile', '/insights', '/progress']
+const PROTECTED = ['/dashboard', '/check-in', '/profile', '/insights', '/progress', '/community']
 
 test.describe('Protected routes', () => {
     test.beforeEach(async ({ page }) => {

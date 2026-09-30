@@ -148,11 +148,11 @@ export const ProfileEditProvider = ({
             bio: draft?.bio ?? user?.profile?.bio ?? '',
             healthInterests: draft?.healthInterests ?? user?.profile?.healthInterests ?? [],
             activityPreferences: draft?.activityPreferences ?? user?.profile?.activityPreferences ?? [],
-            dateOfBirth: draft?.dateOfBirth ?? (user?.dateOfBirth
+            dateOfBirth: user?.dateOfBirth
                 ? new Date(user.dateOfBirth).toISOString().split('T')[0]
-                : ''),
-            recoveryType: draft?.recoveryType ?? user?.recoveryType ?? '',
-            careProvider: draft?.careProvider ?? user?.careProvider ?? ''
+                : '',
+            recoveryType: user?.recoveryType ?? '',
+            careProvider: user?.careProvider ?? ''
         })
         setIsEditing(true)
     }

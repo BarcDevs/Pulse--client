@@ -59,11 +59,17 @@ vi.mock('@/utils/communityDraft', () => ({
     saveDraft: vi.fn(),
     clearDraft: vi.fn(),
     DRAFT_KEYS: {
-        newPost: 'community:draft:post',
-        newReply: (id: string) => `community:draft:reply:${id}`,
-        updatePost: (id: string) => `community:draft:updatepost:${id}`,
-        updateReply: (postId: string, replyId: string) =>
-            `community:draft:updatereply:${postId}:${replyId}`
+        newPost: (userId?: string) => `community:draft:${userId}:post`,
+        newReply: (userId: string, id: string) =>
+            `community:draft:${userId}:reply:${id}`,
+        updatePost: (userId: string, id: string) =>
+            `community:draft:${userId}:updatepost:${id}`,
+        updateReply: (
+            userId: string,
+            postId: string,
+            replyId: string
+        ) =>
+            `community:draft:${userId}:updatereply:${postId}:${replyId}`
     }
 }))
 

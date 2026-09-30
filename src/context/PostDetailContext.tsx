@@ -40,7 +40,7 @@ export const PostDetailProvider = ({
         isReplyFormOpen, setIsReplyFormOpen
     ] = useState(() => {
         const draft = getDraft(
-            DRAFT_KEYS.newReply(postId)
+            DRAFT_KEYS.newReply(user?.id, postId)
         )
         return !!(draft && user)
     })
@@ -48,7 +48,7 @@ export const PostDetailProvider = ({
         isEditingPost, setIsEditingPost
     ] = useState(() => {
         const draft = getDraft(
-            DRAFT_KEYS.updatePost(postId)
+            DRAFT_KEYS.updatePost(user?.id, postId)
         )
         return !!(draft && user)
     })

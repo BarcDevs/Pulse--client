@@ -20,6 +20,7 @@ import { useGetMe } from '@/hooks/queries/useGetMe'
 
 import { authState, initiateLogout } from '@/lib/auth'
 
+import { sweepExpiredDrafts } from '@/utils/draftStorage'
 import {
     isNetworkError,
     isUnauthorizedError
@@ -93,6 +94,8 @@ export const AuthProvider = ({
         },
         []
     )
+
+    useEffect(sweepExpiredDrafts, [])
 
     useEffect(() => {
         authState.isCommunityPage =

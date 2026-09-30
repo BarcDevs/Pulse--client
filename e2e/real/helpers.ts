@@ -14,6 +14,7 @@ export const signupAndLogin = async (page: Page) => {
     await page.getByTestId('email').fill(email)
     await page.getByTestId('password').fill(password)
     await page.getByTestId('confirmPassword').fill(password)
+    await page.getByTestId('acceptTerms').click()
     await page.getByTestId('signup-submit').click()
     await expect(page.getByTestId('signup-submit')).toBeEnabled()
 

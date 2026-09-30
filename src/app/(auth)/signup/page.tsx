@@ -35,8 +35,13 @@ const SignupPage = () => {
     ) => {
         setIsLoading(true)
         setError(null)
-        const { ...dataWithoutConfirm } = userData
-        const err = await handleSignup(dataWithoutConfirm)
+        // The terms tick only gates the form, the server is not told
+        const err = await handleSignup({
+            firstName: userData.firstName,
+            lastName: userData.lastName,
+            email: userData.email,
+            password: userData.password
+        })
         setError(err)
         setIsLoading(false)
     }

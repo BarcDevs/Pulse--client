@@ -6,6 +6,7 @@ import { validationLocales } from '@/locales/validationLocales'
 
 import {
     confirmPasswordField,
+    newPasswordField,
     passwordField
 } from './validators'
 
@@ -16,7 +17,7 @@ export const createChangePasswordSchema = (
         currentPassword: passwordField(
             t, t(validationLocales.password.current.required)
         ),
-        newPassword: passwordField(
+        newPassword: newPasswordField(
             t, t(validationLocales.password.new.required)
         ),
         confirmPassword: confirmPasswordField(

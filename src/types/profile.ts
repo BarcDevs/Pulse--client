@@ -34,6 +34,7 @@ export type Profile = {
     communityAlerts: boolean
     profileVisibility: ProfileVisibility
     anonymousParticipation: boolean
+    shareNotesWithAI: boolean
     healthInterests: string[]
     activityPreferences: string[]
     likedPostIds: string[]
@@ -61,6 +62,7 @@ export type ProfileUpdateInput = {
     communityAlerts?: boolean
     profileVisibility?: ProfileVisibility
     anonymousParticipation?: boolean
+    shareNotesWithAI?: boolean
     healthInterests?: string[]
     activityPreferences?: string[]
 }

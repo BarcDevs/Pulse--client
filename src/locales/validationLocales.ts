@@ -17,7 +17,12 @@ export const validationLocales = {
         },
         noMatch: 'validation.password.noMatch',
         tooShort: 'validation.password.tooShort',
-        format: 'validation.password.format'
+        format: 'validation.password.format',
+        strongFormat: 'validation.password.strongFormat',
+        simpleRun: 'validation.password.simpleRun'
+    },
+    terms: {
+        required: 'validation.terms.required'
     },
     otp: {
         required: 'validation.otp.required',

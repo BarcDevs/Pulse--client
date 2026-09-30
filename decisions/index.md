@@ -21,6 +21,9 @@ Error tracking and performance-monitoring tooling decisions.
 | 12/09/2026 | Sentry (`@sentry/nextjs`) added for error tracking + perf monitoring |
 | 27/09/2026 | EC2 deploy wired to the real Sentry DSN; session replay left off in prod pending a privacy review |
 | 28/09/2026 | Client-side Sentry was dead code (never wired into the bundle) regardless of the DSN — fixed via `instrumentation-client.ts` |
+| 30/09/2026 | Sentry Error Watch moved from cloud to a local routine; `claude.ai Sentry` connector no longer needed |
+| 30/09/2026 | Feedback Watch routine needs `docs.google.com` + `*.googleusercontent.com` allowed in its cloud environment |
+| 30/09/2026 | Sentry watcher records move to `docs/sentry-errors/` (index + files) on a local `monitor/records` branch, shipped only with a fix |
 
 ## Charts & RTL — [[decisions/charts-and-rtl]]
 Trend-chart ordering and no-data rendering rules.
@@ -50,6 +53,7 @@ Cookie/storage consent and privacy-disclosure decisions.
 | Date | Entry |
 |---|---|
 | 23/09/2026 | No cookie/cache consent popup — no non-essential storage written; disclose on the Privacy page |
+| 30/09/2026 | Community pages require sign-in (reverses the June semi-public decision) |
 
 ## Agent Models — [[decisions/agent-models]]
 Which model each custom agent runs on, and why.

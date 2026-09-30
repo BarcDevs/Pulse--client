@@ -79,7 +79,7 @@ export const useAuthHandlers = () => {
     const handleSignup = async (
         userData: Omit<
             SignupSchema,
-            'confirmPassword'
+            'confirmPassword' | 'acceptTerms'
         >
     ): Promise<string | null> => {
         setIsLoading(true)

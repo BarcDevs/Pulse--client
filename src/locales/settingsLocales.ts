@@ -92,7 +92,10 @@ export const settingsLocales = {
             confirmDescription: 'settings.security.deactivate.confirmDescription',
             confirmButton: 'settings.security.deactivate.confirmButton',
             confirmingButton: 'settings.security.deactivate.confirmingButton',
-            cancelButton: 'settings.security.deactivate.cancelButton'
+            cancelButton: 'settings.security.deactivate.cancelButton',
+            sendCodeButton: 'settings.security.deactivate.sendCodeButton',
+            sendingCodeButton: 'settings.security.deactivate.sendingCodeButton',
+            otpDescription: 'settings.security.deactivate.otpDescription'
         }
     },
     preferences: {
@@ -106,6 +109,10 @@ export const settingsLocales = {
         language: {
             title: 'settings.preferences.language.title',
             description: 'settings.preferences.language.description'
+        },
+        aiNotes: {
+            label: 'settings.preferences.aiNotes.label',
+            description: 'settings.preferences.aiNotes.description'
         }
     }
 } as const

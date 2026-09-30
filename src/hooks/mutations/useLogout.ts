@@ -5,6 +5,7 @@ import {
     useQueryClient
 } from '@tanstack/react-query'
 
+import { clearAllDrafts } from '@/utils/draftStorage'
 import { isNetworkError } from '@/utils/error'
 
 import { ROUTES } from '@/constants/routes'
@@ -24,6 +25,7 @@ export const useLogout = () => {
         void
     >({
         mutationFn: async () => {
+            clearAllDrafts()
             await logoutApi()
         },
         onSettled: (_data, error) => {

@@ -27,6 +27,8 @@ import {
 } from '@/utils/communityDraft'
 import { sanitizeHtml } from '@/utils/sanitizeHtml'
 
+import { useAuth } from '@/context/AuthContext'
+
 import { communityLocales } from '@/locales/communityLocales'
 import { PostFormSchema } from '@/validations/forms/postFormSchema'
 
@@ -55,6 +57,7 @@ export const ReplyCard = ({
     isDeleting = false
 }: ReplyCardProps) => {
     const t = useTranslations()
+    const { user } = useAuth()
     const [isEditing, setIsEditing] = useState(false)
     const isOwner = currentUserId === reply.authorId
     const isPostAuthor = !!postAuthorId
@@ -77,7 +80,11 @@ export const ReplyCard = ({
     const sanitizedBody = sanitizeHtml(reply.body)
     const isEdited = reply.updatedAt !== null
     const [editDraft] = useState(() =>
-        getDraft(DRAFT_KEYS.updateReply(postId, reply.id))?.data
+        getDraft(DRAFT_KEYS.updateReply(
+            user?.id,
+            postId,
+            reply.id
+        ))?.data
     )
 
     const { author } = reply

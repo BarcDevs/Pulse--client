@@ -1,5 +1,6 @@
 # Environment variables
-.env*.local
+.env*
+!.env.example
 
 # Common ignores
 node_modules/
@@ -47,7 +48,9 @@ nul
 
 # Claude and Codex
 review
-.claude
+.claude/*
+!.claude/routines
+!.claude/routines/**
 .codex
 designs
 docs/plans

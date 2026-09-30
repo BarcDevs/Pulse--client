@@ -15,6 +15,12 @@ vi.mock(
         }
     } ))
 
+import {
+    clearCsrfToken,
+    getCsrfToken,
+    setCsrfToken
+} from '@/lib/csrf'
+
 import { api } from '@/api'
 import {
     getMe,
@@ -123,13 +129,37 @@ describe(
             'logout',
             () => {
                 it(
-                    'should GET /auth/logout',
+                    'should POST /auth/logout with the token it already has',
                     async () => {
+                        setCsrfToken('token-in-memory')
+                        vi.mocked(api.post)
+                            .mockResolvedValueOnce({})
+
+                        await logout()
+                        expect(api.get).not.toHaveBeenCalled()
+                        expect(api.post)
+                            .toHaveBeenCalledWith(ENDPOINTS.auth.logout)
+                    })
+
+                it(
+                    'should fetch a CSRF token first when none is in memory',
+                    async () => {
+                        clearCsrfToken()
                         vi.mocked(api.get)
+                            .mockResolvedValueOnce({
+                                data: {
+                                    message: 'ok',
+                                    data: { _csrf: 'fresh-token' }
+                                }
+                            })
+                        vi.mocked(api.post)
                             .mockResolvedValueOnce({})
 
                         await logout()
                         expect(api.get)
+                            .toHaveBeenCalledWith(ENDPOINTS.auth.refresh)
+                        expect(getCsrfToken()).toBe('fresh-token')
+                        expect(api.post)
                             .toHaveBeenCalledWith(ENDPOINTS.auth.logout)
                     })
             })

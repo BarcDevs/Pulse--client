@@ -4,7 +4,10 @@ export const protectedRoutes = [
     '/check-in',
     '/insights',
     '/progress',
-    '/chat'
+    '/chat',
+    '/community',
+    '/recovery-goals',
+    '/daily-checkin'
 ]
 
 export const authRoutes = [

@@ -39,7 +39,7 @@ A space for patients to share experiences, ask questions, and connect with other
 Profiles capture bio, location, timezone, and emerging personalization through health interests and activity preferences. These support improved recommendations and community connection.
 
 **Insights**
-Lightweight, supportive insights generated from check-in patterns help detect trends and maintain motivation. Insights are explicitly labeled as AI-assisted suggestions, not medical advice.
+Lightweight, supportive insights generated from check-in patterns help detect trends and maintain motivation. Insights are explicitly labeled as AI-assisted suggestions, not medical advice. Check-in notes are included in the AI prompt by default; users can turn this off with "Use my notes for insights" in Settings, under App Preferences.
 
 **Support**
 `/support` is the help center: an FAQ and a contact form (topic + message, plus an email field for logged-out visitors) that posts to `POST /support/contact`, which emails `support@pulserehab.app`. `/contact-support` redirects to the form (`/support#contact`). Search, quick-help cards and browse-by-topic cards are built but hidden behind the `supportSearch`, `supportQuickHelp` and `supportTopics` flags in `src/config/features.ts` until the help articles, chat and care-team features exist.
@@ -220,6 +220,7 @@ not meant for that.
 - HTTP-only JWT cookies
 - Type-safe forms with Zod validation
 - OAuth state validation to prevent CSRF attacks
+- Account deletion (Settings, Security) is confirmed with a 6-digit code emailed to the account, for password and Google users alike, so a stolen session alone can't delete it
 
 ---
 
@@ -253,6 +254,8 @@ Every push to `development` auto-deploys a staging build, isolated from producti
 | Vercel Authentication | Disabled (publicly reachable) |
 
 **Branch-scoped env vars** — `NEXT_PUBLIC_SERVER_URL` is overridden for `preview` + `development` branch only (`vercel env ls preview`), pointing at the staging server. All other preview branches fall back to the default value.
+
+**Backend URL variable** — the `/api` rewrite in `next.config.mjs` reads `SERVER_URL` first and falls back to `NEXT_PUBLIC_SERVER_URL` (kept so the Vercel preview override above keeps working). The EC2 Docker build passes only the non-public `SERVER_URL`, so the private backend address is never inlined into the browser bundle. Don't reintroduce a `NEXT_PUBLIC_` copy or read it from `src/config`.
 
 **Gotcha:** `NEXT_PUBLIC_*` vars are inlined into the JS bundle at build time. Adding/changing one does **not** affect already-deployed builds — trigger a rebuild:
 ```bash

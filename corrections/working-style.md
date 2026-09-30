@@ -126,3 +126,11 @@ Working from a server session (security audit), I finished the client Cloudflare
 `CLAUDE.md` Model Selection told sessions to use Haiku for sub-agents and lookups, a leftover from before the move to Sonnet. Noticed while checking which model the commit-skill agents run on. The real setup: Sonnet is the default for execution and every sub-agent, Opus via `/opusplan` for planning and hard reasoning.
 
 **Lesson:** when a `CLAUDE.md` line conflicts with the user's global rule (all sub-agents on Sonnet), the repo line is stale, not an override. Fixed in both pulse repos.
+
+---
+
+## 30/09/2026 — Wrapped a component in an extra `<div dir="ltr">` instead of passing `dir` on the component itself
+
+Fixing shadcn's `Switch` mirroring under RTL, wrapped it in `<div dir={'ltr'}>` in `ControlSwitch.tsx` without first checking whether `Switch` (a Radix primitive) accepts `dir` natively — it does. User fixed it directly: `dir={'ltr'}` goes straight on the `<Switch>` element, no wrapper needed.
+
+**Lesson:** before wrapping a component in an extra DOM element to force an HTML attribute/behavior (`dir`, `lang`, etc.), check whether the component already forwards or accepts that prop itself. A wrapper div is the fallback for props a component doesn't support, not the default move.
