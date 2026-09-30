@@ -78,6 +78,11 @@ const authFormConfigs: AuthFormConfigs = {
                 label: authLocales.signup.confirmPasswordLabel,
                 placeholder: '••••••••',
                 required: true
+            },
+            acceptTerms: {
+                type: 'checkbox',
+                label: authLocales.signup.acceptTerms,
+                required: true
             }
         },
         buttons: {

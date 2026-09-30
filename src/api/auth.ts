@@ -33,7 +33,7 @@ export const login = async (
 }
 
 export const signup = async (userData: Omit<
-    SignupSchema, 'confirmPassword'
+    SignupSchema, 'confirmPassword' | 'acceptTerms'
 >): Promise<AuthResponse> => {
     const res = await api.post<Response<AuthResponse>>(
         ENDPOINTS.auth.signup,

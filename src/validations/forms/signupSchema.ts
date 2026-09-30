@@ -24,6 +24,10 @@ export const createSignupSchema = (t: TranslatorFn) =>
         ),
         confirmPassword: confirmPasswordField(
             t(validationLocales.password.confirm.required)
+        ),
+        acceptTerms: z.boolean().refine(
+            (accepted) => accepted,
+            t(validationLocales.terms.required)
         )
     }).superRefine(({ password, confirmPassword }, ctx) => {
         if (password !== confirmPassword) {

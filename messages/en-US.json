@@ -42,7 +42,8 @@
       "signingUpButton": "Creating your account...",
       "loginText": "Already have an account?",
       "loginLink": "Sign in",
-      "passwordDescription": "At least 8 characters, with an uppercase letter, a lowercase letter and a number"
+      "passwordDescription": "At least 8 characters, with an uppercase letter, a lowercase letter and a number",
+      "acceptTerms": "By signing up, I accept the <terms>Terms of Service</terms>"
     },
     "forgotPassword": {
       "title": "Reset your password",
@@ -1235,6 +1236,9 @@
     }
   },
   "validation": {
+    "terms": {
+      "required": "Accept the Terms of Service to create your account"
+    },
     "email": {
       "required": "Enter your email so we can keep your account secure",
       "invalid": "Enter a valid email address"

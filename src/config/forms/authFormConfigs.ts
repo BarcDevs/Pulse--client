@@ -37,7 +37,8 @@ export const createAuthFormConfigs = (
             lastName: '',
             email: '',
             password: '',
-            confirmPassword: ''
+            confirmPassword: '',
+            acceptTerms: false
         }
     },
     forgotPassword: {

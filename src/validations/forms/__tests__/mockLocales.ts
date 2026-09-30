@@ -1,6 +1,7 @@
 import { type TranslatorFn } from '@/types/i18n'
 
 const messages: Record<string, string> = {
+    'validation.terms.required': 'Accept the terms',
     'validation.email.required': 'Email is required',
     'validation.email.invalid': 'Invalid email',
     'validation.password.required': 'Password is required',

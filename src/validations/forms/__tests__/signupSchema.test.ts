@@ -19,7 +19,8 @@ describe(
             lastName: 'Doe',
             email: 'john@example.com',
             password: 'Test@1357',
-            confirmPassword: 'Test@1357'
+            confirmPassword: 'Test@1357',
+            acceptTerms: true
         }
 
         it(
@@ -96,6 +97,14 @@ describe(
                         ...validSignup,
                         email: ''
                     })
+                expect(result.success).toBe(false)
+            })
+
+        it.each([false, undefined])(
+            'should reject signup when the terms are not accepted (%s)',
+            (acceptTerms) => {
+                const result = signupSchema
+                    .safeParse({ ...validSignup, acceptTerms })
                 expect(result.success).toBe(false)
             })
 

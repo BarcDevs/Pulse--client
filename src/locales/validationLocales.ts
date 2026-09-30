@@ -21,6 +21,9 @@ export const validationLocales = {
         strongFormat: 'validation.password.strongFormat',
         simpleRun: 'validation.password.simpleRun'
     },
+    terms: {
+        required: 'validation.terms.required'
+    },
     otp: {
         required: 'validation.otp.required',
         tooShort: 'validation.otp.tooShort',

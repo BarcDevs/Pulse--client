@@ -6,6 +6,7 @@ import { FieldValues } from 'react-hook-form'
 
 import { FieldConfig } from '@/types/forms'
 
+import { RichText } from '@/components/shared/content/RichText'
 import { Checkbox } from '@/components/ui/checkbox'
 import {
     FormControl,
@@ -32,11 +33,15 @@ export const CheckboxInput = <T extends FieldValues>({
                     onCheckedChange={field.onChange}
                     disabled={config.disabled}
                     id={config.label}
+                    data-testid={field.name}
                 />
             </FormControl>
             {config.label && (
                 <FormLabel htmlFor={config.label}>
-                    {t(config.label)}
+                    <RichText
+                        text={t(config.label)}
+                        openInNewTab
+                    />
                 </FormLabel>
             )}
             {config.description && (
