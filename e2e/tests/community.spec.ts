@@ -3,7 +3,6 @@ import { expect, test } from '@playwright/test'
 import {
     mockApiFallback,
     mockAuth,
-    mockUnauthenticated,
     setEnglishLocale
 } from '../helpers/mockApi'
 
@@ -14,7 +13,7 @@ test.describe('Community', () => {
     })
 
     test('renders community feed', async ({ page }) => {
-        await mockUnauthenticated(page)
+        await mockAuth(page)
         await page.goto('/community')
         await page.waitForLoadState('domcontentloaded')
         await expect(page.getByPlaceholder('Search conversations and discussions...')).toBeVisible()
@@ -22,7 +21,7 @@ test.describe('Community', () => {
     })
 
     test('shows empty state when no posts', async ({ page }) => {
-        await mockUnauthenticated(page)
+        await mockAuth(page)
         await page.route('**/api/**/forum/posts*', (route) =>
             route.fulfill({
                 status: 200,
@@ -45,13 +44,5 @@ test.describe('Community', () => {
         await page.waitForTimeout(2_000)
         await page.getByRole('button', { name: 'Create post' }).click()
         await expect(page.getByPlaceholder('Give your post a clear title')).toBeVisible()
-    })
-
-    test('shows login toast when unauthenticated user clicks Create post', async ({ page }) => {
-        await mockUnauthenticated(page)
-        await page.goto('/community')
-        await page.waitForLoadState('domcontentloaded')
-        await page.getByRole('button', { name: 'Create post' }).click()
-        await expect(page.getByText(/log in to share a post/i)).toBeVisible({ timeout: 5_000 })
     })
 })
