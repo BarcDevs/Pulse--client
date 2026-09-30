@@ -38,6 +38,11 @@ Trade-off: a local routine only runs while this machine is on and the app is ope
 The `claude.ai Sentry` connector can be disconnected at claude.ai/customize/connectors. The Feedback Watch routine does not use it.
 ---
 
+## 30/09/2026 — Sentry Error Watch run (automated, ~18:00 UTC)
+
+Searched `pulse-client` for unresolved issues with `lastSeen:-8h`. Zero issues found. No action taken.
+---
+
 ## 30/09/2026 — Feedback Watch routine needs `docs.google.com` + `*.googleusercontent.com` in its cloud environment's allowed domains
 
 **Pulse Feedback Watch** (`trig_01Ue4TBymyq5EP6WWEQeMprK`) failed 29–30/09 with `EGRESS_BLOCKED`: the routine's environment (`env_01A9QMZipgECw9E5e37T9Lja`) blocked `docs.google.com`. Google's public CSV export then redirects to a rotating `doc-XX-YY-sheets.googleusercontent.com` host, so that domain family must be allowed too (wildcard, since the subdomain changes). Both were added under the environment's Network access; verified by a manual run that fetched the CSV (header-only, zero responses yet).
