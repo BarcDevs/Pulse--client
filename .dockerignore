@@ -5,6 +5,7 @@ node_modules
 Dockerfile
 .dockerignore
 *.local
+.env*
 .DS_Store
 test-results
 .claude

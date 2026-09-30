@@ -1,5 +1,6 @@
 # Environment variables
-.env*.local
+.env*
+!.env.example
 
 # Common ignores
 node_modules/
