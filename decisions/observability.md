@@ -26,3 +26,9 @@ Verifying the DSN fix above (local prod build + serve, checked `window.__SENTRY_
 Fixed by moving the client init into `src/instrumentation-client.ts` — Next's own native client-instrumentation convention (no Sentry webpack plugin required), which `@sentry/nextjs` itself recommends over `sentry.client.config.ts` (its webpack-plugin code logs a deprecation warning: "`sentry.client.config.ts` will no longer work" under Turbopack, which this repo's `dev` already uses). Deleted `sentry.client.config.ts`. Verified via a local production build + `node .next/standalone/server.js`: `window.__SENTRY__` is present (`version: 10.57.0`) after the fix, absent before it.
 
 Server/edge init (`sentry.server.config.ts`, `sentry.edge.config.ts` via `src/instrumentation.ts`) is unaffected — that path doesn't depend on the webpack plugin and was never in question.
+
+---
+
+## 30/09/2026 — Sentry MCP is intentionally connected at two scopes
+
+Project `.mcp.json` `sentry` serves local interactive sessions in this repo only. The account-level `claude.ai Sentry` connector (claude.ai/customize/connectors) is required by the cloud **Pulse Sentry Error Watch** routine, since cloud routines can't read local `.mcp.json`. Side effect: `claude.ai Sentry` shows in `/mcp` in every local session, in any project, and cannot be scoped to one project. Decision: keep both; disable the connector per session where unwanted. Do NOT remove the connector without pausing the routine first, and don't treat its presence as a stray global override.
