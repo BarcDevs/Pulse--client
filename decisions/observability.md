@@ -29,10 +29,13 @@ Server/edge init (`sentry.server.config.ts`, `sentry.edge.config.ts` via `src/in
 
 ---
 
-## 30/09/2026 — Sentry MCP is intentionally connected at two scopes
+## 30/09/2026 — Sentry Error Watch moved from cloud to a local routine; `claude.ai Sentry` connector no longer needed
 
-Project `.mcp.json` `sentry` serves local interactive sessions in this repo only. The account-level `claude.ai Sentry` connector (claude.ai/customize/connectors) is required by the cloud **Pulse Sentry Error Watch** routine, since cloud routines can't read local `.mcp.json`. Side effect: `claude.ai Sentry` shows in `/mcp` in every local session, in any project, and cannot be scoped to one project. Decision: keep both; disable the connector per session where unwanted. Do NOT remove the connector without pausing the routine first, and don't treat its presence as a stray global override.
+The cloud routine `trig_01ShV1zJC3hdsQPD1TQiRFak` required Sentry as a claude.ai account-level connector, which showed in `/mcp` in every session in every project (connectors can't be scoped to one project). Replaced by a **Local** routine, "Pulse Sentry Error Watch (local)", every 6h (`0 */6 * * *`, local time), steps in `.claude/routines/sentry-error-monitor.md` (gitignored), same pattern as the server's AWS watcher. It uses this repo's project-scoped `sentry` MCP server (`.mcp.json`) only. First manual run: no new/regressed issues; independently confirmed `pulse-client` has zero unresolved issues. Cloud routine paused (`enabled: false`, not deleted, so it can be re-enabled).
 
+Trade-off: a local routine only runs while this machine is on and the app is open; the cloud one ran regardless. The Sentry project `sentry` server needs its OAuth done once in `pulse--client` (`/mcp`), since an unattended run can't log in.
+
+The `claude.ai Sentry` connector can be disconnected at claude.ai/customize/connectors. The Feedback Watch routine does not use it.
 ---
 
 ## 30/09/2026 — Feedback Watch routine needs `docs.google.com` + `*.googleusercontent.com` in its cloud environment's allowed domains
