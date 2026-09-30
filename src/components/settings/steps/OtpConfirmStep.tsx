@@ -21,7 +21,7 @@ import {
     InputOTPSlot
 } from '@/components/ui/input-otp'
 
-import { useConfirmEmailChangeForm } from '@/hooks/forms/useConfirmEmailChangeForm'
+import { useOtpForm } from '@/hooks/forms/useOtpForm'
 
 import { useAuth } from '@/context/AuthContext'
 
@@ -45,7 +45,7 @@ export const OtpConfirmStep = ({
     } = useMutation({
         mutationFn: confirmEmailChange
     })
-    const { form, handleSubmit } = useConfirmEmailChangeForm({
+    const { form, handleSubmit } = useOtpForm({
         onSubmit: async (data) => {
             const { user: confirmed } =
                 await confirmChange({

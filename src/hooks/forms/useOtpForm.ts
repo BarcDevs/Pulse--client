@@ -11,15 +11,15 @@ import {
     type OtpSchema
 } from '@/validations/forms/otpSchema'
 
-type UseConfirmEmailChangeFormProps = {
+type UseOtpFormProps = {
     onSubmit: (
         data: OtpSchema
     ) => Promise<void>
 }
 
-export const useConfirmEmailChangeForm = ({
+export const useOtpForm = ({
     onSubmit
-}: UseConfirmEmailChangeFormProps) => {
+}: UseOtpFormProps) => {
     const t = useTranslations()
     const form = useForm<OtpSchema>({
         resolver: zodResolver(

@@ -33,6 +33,7 @@ export const ENDPOINTS = {
     },
     users: {
         me: '/users/me',
+        deleteCode: '/users/me/delete-code',
         password: '/users/password'
     },
     forum: {
