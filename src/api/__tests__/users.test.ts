@@ -11,6 +11,7 @@ vi.mock(
     () => ( {
         api: {
             patch: vi.fn(),
+            post: vi.fn(),
             delete: vi.fn()
         }
     } ))
@@ -20,6 +21,7 @@ import { ENDPOINTS } from '@/api/routes'
 import {
     changePassword,
     deleteUser,
+    requestDeleteAccountCode,
     updateUser
 } from '@/api/users'
 
@@ -120,9 +122,12 @@ describe(
                         vi.mocked(api.delete)
                             .mockResolvedValueOnce({})
 
-                        await deleteUser()
+                        await deleteUser(123456)
                         expect(api.delete)
-                            .toHaveBeenCalledWith(ENDPOINTS.users.me)
+                            .toHaveBeenCalledWith(
+                                ENDPOINTS.users.me,
+                                { data: { OTP: 123456 } }
+                            )
                     })
 
                 it(
@@ -131,8 +136,23 @@ describe(
                         vi.mocked(api.delete)
                             .mockResolvedValueOnce({})
 
-                        const result = await deleteUser()
+                        const result = await deleteUser(123456)
                         expect(result).toBeUndefined()
+                    })
+            })
+
+        describe(
+            'requestDeleteAccountCode',
+            () => {
+                it(
+                    'should POST /users/me/delete-code',
+                    async () => {
+                        vi.mocked(api.post)
+                            .mockResolvedValueOnce({})
+
+                        await requestDeleteAccountCode()
+                        expect(api.post)
+                            .toHaveBeenCalledWith(ENDPOINTS.users.deleteCode)
                     })
             })
     })

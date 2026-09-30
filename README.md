@@ -220,6 +220,7 @@ not meant for that.
 - HTTP-only JWT cookies
 - Type-safe forms with Zod validation
 - OAuth state validation to prevent CSRF attacks
+- Account deletion (Settings, Security) is confirmed with a 6-digit code emailed to the account, for password and Google users alike, so a stolen session alone can't delete it
 
 ---
 

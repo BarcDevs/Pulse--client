@@ -32,6 +32,12 @@ export const changePassword = async (
     await api.patch(ENDPOINTS.users.password, input)
 }
 
-export const deleteUser = async (): Promise<void> => {
-    await api.delete(ENDPOINTS.users.me)
+export const requestDeleteAccountCode = async (): Promise<void> => {
+    await api.post(ENDPOINTS.users.deleteCode)
+}
+
+export const deleteUser = async (
+    OTP: number
+): Promise<void> => {
+    await api.delete(ENDPOINTS.users.me, { data: { OTP } })
 }

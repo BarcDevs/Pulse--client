@@ -1001,7 +1001,10 @@
         "confirmDescription": "Your account will be deactivated right away and permanently deleted after 30 days, including your check-ins, insights, goals and posts. Log back in within 30 days to cancel. To delete immediately, contact support.",
         "confirmButton": "Yes, delete",
         "confirmingButton": "Deleting...",
-        "cancelButton": "Cancel"
+        "cancelButton": "Cancel",
+        "sendCodeButton": "Email me a code",
+        "sendingCodeButton": "Sending...",
+        "otpDescription": "Enter the 6-digit code sent to your email address to confirm deleting your account."
       }
     },
     "preferences": {
