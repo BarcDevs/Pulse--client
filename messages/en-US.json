@@ -1182,7 +1182,6 @@
         "title": "Something went wrong.",
         "generic": "Something went wrong, but your progress and information remain safe.",
         "network": "Connection issues are preventing updates right now. Please try again shortly.",
-        "aborted": "Request aborted.",
         "tryAgainBtn": "Try Again"
       }
     }

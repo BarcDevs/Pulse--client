@@ -10,7 +10,6 @@ import { IconButton } from '@/components/shared/buttons/IconButton'
 
 import {
     getApiErrorMessage,
-    isAbortedError,
     isNetworkError
 } from '@/utils/error'
 
@@ -33,11 +32,9 @@ export const ErrorBanner = ({
     const isNetErr = isNetworkError(error)
     const message = isNetErr
         ? t(globalLocales.errors.networkErrorPage.title)
-        : isAbortedError(error)
-            ? t(globalLocales.errors.inline.aborted)
-            : isDev
-                ? getApiErrorMessage(error, error.message)
-                : t(globalLocales.errors.inline.title)
+        : isDev
+            ? getApiErrorMessage(error, error.message)
+            : t(globalLocales.errors.inline.title)
     const description = isNetErr
         ? t(globalLocales.errors.inline.network)
         : t(globalLocales.errors.inline.generic)

@@ -8,7 +8,6 @@ import {
 
 import {
     getApiErrorMessage,
-    isAbortedError,
     isNetworkError,
     isUnauthorizedError
 } from '@/utils/error'
@@ -142,19 +141,3 @@ describe(
                     })
             })
     })
-
-describe('isAbortedError', () => {
-    it('matches an axios request aborted mid-flight', () => {
-        const error = Object.assign(new Error('Request aborted'), { code: 'ECONNABORTED' })
-
-        expect(isAbortedError(error)).toBe(true)
-    })
-
-    it.each([
-        ['a timeout', Object.assign(new Error('timeout of 10000ms exceeded'), { code: 'ECONNABORTED' })],
-        ['a network error', Object.assign(new Error('Network Error'), { code: 'ERR_NETWORK' })],
-        ['no error', null]
-    ])('does not match %s', (_label, error) => {
-        expect(isAbortedError(error)).toBe(false)
-    })
-})

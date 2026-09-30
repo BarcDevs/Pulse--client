@@ -71,11 +71,3 @@ export const isNetworkError = (
         || errorMsg.includes('econnrefused')
     )
 }
-
-// Axios reports a request cut off mid-flight (navigation, page unload) as
-// ECONNABORTED with this message, unlike timeouts, which say "timeout of ..."
-export const isAbortedError = (
-    error: Error | null
-): boolean =>
-    (error as any)?.code === 'ECONNABORTED'
-    && error?.message === 'Request aborted'
