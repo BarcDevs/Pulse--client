@@ -39,7 +39,7 @@ export const CheckboxInput = <T extends FieldValues>({
             {config.label && (
                 <FormLabel htmlFor={config.label}>
                     <RichText
-                        text={t(config.label)}
+                        text={t.raw(config.label) as string}
                         openInNewTab
                     />
                 </FormLabel>
