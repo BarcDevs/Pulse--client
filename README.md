@@ -254,6 +254,8 @@ Every push to `development` auto-deploys a staging build, isolated from producti
 
 **Branch-scoped env vars** — `NEXT_PUBLIC_SERVER_URL` is overridden for `preview` + `development` branch only (`vercel env ls preview`), pointing at the staging server. All other preview branches fall back to the default value.
 
+**Backend URL variable** — the `/api` rewrite in `next.config.mjs` reads `SERVER_URL` first and falls back to `NEXT_PUBLIC_SERVER_URL` (kept so the Vercel preview override above keeps working). The EC2 Docker build passes only the non-public `SERVER_URL`, so the private backend address is never inlined into the browser bundle. Don't reintroduce a `NEXT_PUBLIC_` copy or read it from `src/config`.
+
 **Gotcha:** `NEXT_PUBLIC_*` vars are inlined into the JS bundle at build time. Adding/changing one does **not** affect already-deployed builds — trigger a rebuild:
 ```bash
 vercel redeploy <deployment-url> --target preview
