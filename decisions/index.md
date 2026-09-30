@@ -52,6 +52,7 @@ Cookie/storage consent and privacy-disclosure decisions.
 | Date | Entry |
 |---|---|
 | 23/09/2026 | No cookie/cache consent popup — no non-essential storage written; disclose on the Privacy page |
+| 30/09/2026 | Community pages require sign-in (reverses the June semi-public decision) |
 
 ## Agent Models — [[decisions/agent-models]]
 Which model each custom agent runs on, and why.
