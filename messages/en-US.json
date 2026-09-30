@@ -1625,6 +1625,10 @@
                   "text": "You can view and manage your own information anytime."
                 },
                 {
+                  "label": "In the community forum",
+                  "text": "The community forum (posts, replies, and their authors' names and pictures) is visible only to signed-in Pulse users. With Anonymous Participation turned on, your name, username and picture are hidden from other users."
+                },
+                {
                   "label": "With trusted service providers",
                   "text": "We work with carefully selected providers who help us securely operate Pulse: cloud hosting (AWS), error monitoring (Sentry), privacy-friendly page-view analytics (Vercel Web Analytics, no cookies), AI providers that write your insights (Anthropic, Google and OpenAI), Google when you choose to sign in with Google, and OpenStreetMap (Nominatim) when you search for a location, which receives the text you type and your IP address."
                 },
