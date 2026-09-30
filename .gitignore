@@ -47,7 +47,9 @@ nul
 
 # Claude and Codex
 review
-.claude
+.claude/*
+!.claude/routines
+!.claude/routines/**
 .codex
 designs
 docs/plans
