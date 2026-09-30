@@ -10,6 +10,7 @@ import { AuthForm } from '@/components/form/AuthForm'
 import { Logo } from '@/components/shared/brand/Logo'
 
 import { getLocalizedApiErrorMessage } from '@/utils/error'
+import { saveResetEmail } from '@/utils/resetEmail'
 
 import { ROUTES } from '@/constants/routes'
 
@@ -29,9 +30,8 @@ const ForgotPasswordPage = () => {
 
         try {
             await requestPasswordReset(email)
-            router.push(
-                `${ROUTES.RESET_PASSWORD}?email=${encodeURIComponent(email)}`
-            )
+            saveResetEmail(email)
+            router.push(ROUTES.RESET_PASSWORD)
         } catch (err) {
             setError(getLocalizedApiErrorMessage(
                 t,

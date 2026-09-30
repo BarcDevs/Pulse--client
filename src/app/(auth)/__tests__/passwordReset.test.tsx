@@ -13,12 +13,17 @@ import {
     waitFor
 } from '@testing-library/react'
 
+import {
+    clearResetEmail,
+    getResetEmail,
+    saveResetEmail
+} from '@/utils/resetEmail'
+
 import ForgotPasswordPage from '@/app/(auth)/forgot-password/page'
 import ResetPasswordPage from '@/app/(auth)/reset-password/page'
 
 const push = vi.fn()
 const replace = vi.fn()
-let searchParams = new URLSearchParams()
 
 vi.mock('sonner', () => ({
     toast: { success: vi.fn(), error: vi.fn() }
@@ -29,8 +34,7 @@ vi.mock('next-intl', () => ({
 }))
 
 vi.mock('next/navigation', () => ({
-    useRouter: () => ({ push, replace }),
-    useSearchParams: () => searchParams
+    useRouter: () => ({ push, replace })
 }))
 
 vi.mock('@/components/shared/brand/Logo', () => ({
@@ -66,10 +70,10 @@ const goToPasswordStep = async (otp = '123456') => {
 describe('password reset pages', () => {
     beforeEach(() => {
         vi.clearAllMocks()
-        searchParams = new URLSearchParams()
+        clearResetEmail()
     })
 
-    it('forgot-password requests a code and moves to the reset step with the email', async () => {
+    it('forgot-password requests a code and moves to the reset step without putting the email in the URL', async () => {
         vi.mocked(requestPasswordReset).mockResolvedValue()
         render(<ForgotPasswordPage/>)
 
@@ -77,9 +81,11 @@ describe('password reset pages', () => {
         fireEvent.click(screen.getByTestId('forgotPassword-submit'))
 
         await waitFor(() => expect(push).toHaveBeenCalledWith(
-            '/reset-password?email=user%40test.com'
+            '/reset-password'
         ))
         expect(requestPasswordReset).toHaveBeenCalledWith('user@test.com')
+        expect(getResetEmail()).toBe('user@test.com')
+        expect(JSON.stringify(push.mock.calls)).not.toContain('user')
     })
 
     it('reset-password without an email goes back to the request step', () => {
@@ -89,7 +95,7 @@ describe('password reset pages', () => {
     })
 
     it('reset-password verifies the code without consuming it, then asks for a new password', async () => {
-        searchParams = new URLSearchParams({ email: 'user@test.com' })
+        saveResetEmail('user@test.com')
         render(<ResetPasswordPage/>)
 
         await goToPasswordStep('123456')
@@ -102,7 +108,7 @@ describe('password reset pages', () => {
     })
 
     it('reset-password shows an inline error on a wrong code and stays on the code step', async () => {
-        searchParams = new URLSearchParams({ email: 'user@test.com' })
+        saveResetEmail('user@test.com')
         vi.mocked(verifyResetCode).mockRejectedValue(new Error('Invalid code'))
         render(<ResetPasswordPage/>)
 
@@ -114,7 +120,7 @@ describe('password reset pages', () => {
     })
 
     it('reset-password sends the verified code and new password, then returns to login', async () => {
-        searchParams = new URLSearchParams({ email: 'user@test.com' })
+        saveResetEmail('user@test.com')
         vi.mocked(resetPassword).mockResolvedValue()
         render(<ResetPasswordPage/>)
 
@@ -130,10 +136,11 @@ describe('password reset pages', () => {
             newPassword: 'NewPassword1',
             userOTP: 123456
         })
+        expect(getResetEmail()).toBeNull()
     })
 
     it('reset-password sends the user back to the code step when the code is rejected on submit', async () => {
-        searchParams = new URLSearchParams({ email: 'user@test.com' })
+        saveResetEmail('user@test.com')
         vi.mocked(resetPassword).mockRejectedValue({
             response: {
                 data: {
