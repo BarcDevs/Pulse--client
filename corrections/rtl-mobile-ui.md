@@ -18,4 +18,6 @@ shadcn's `Switch` (`src/components/ui/switch.tsx`, Radix-based) mirrors its thum
 
 Fixed in the shared wrapper `src/components/shared/inputs/ControlSwitch.tsx` — every usage in the app already goes through it (nothing imports `ui/switch` directly elsewhere), so wrapping there covers the whole app in one place.
 
-**Rule: any new direct usage of shadcn's `Switch` must be wrapped in a `<div dir="ltr">` (or otherwise forced LTR).** Prefer using the existing `ControlSwitch` wrapper instead of importing `ui/switch` directly.
+**Rule: any new direct usage of shadcn's `Switch` must be forced to LTR.** Prefer the existing `ControlSwitch` wrapper over importing `ui/switch` directly.
+
+Correction (same day): don't wrap in an extra `<div dir="ltr">` — Radix's `Switch` (and its underlying primitive) already accepts a `dir` prop directly, so pass `dir={'ltr'}` straight on the `<Switch>` element. A wrapper div is redundant DOM for something the component itself supports natively.

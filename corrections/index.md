@@ -20,7 +20,7 @@ Conventions from the responsive/RTL layout pass — physical-direction classes a
 | Date | Entry |
 |---|---|
 | 12/09/2026 | Mobile/RTL UI conventions (iOS zoom-on-focus, `em` scaling, logical positioning) |
-| 30/09/2026 | shadcn `Switch` mirrors under RTL - always wrap it in `dir="ltr"` |
+| 30/09/2026 | shadcn `Switch` mirrors under RTL - pass `dir={'ltr'}` directly, no wrapper div needed |
 
 ## Hebrew Copy — [[corrections/hebrew-copy]]
 Terminology and wording rules for `messages/he-IL.json` — established Hebrew terms over transliterations.
