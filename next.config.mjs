@@ -35,6 +35,13 @@ const SECURITY_HEADERS = [
     { key: 'X-Frame-Options', value: 'DENY' },
     { key: 'X-Content-Type-Options', value: 'nosniff' },
     { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+    // Only share and clipboard-write are used (share buttons); everything
+    // else is off so an injected script or embed can't request it
+    {
+        key: 'Permissions-Policy',
+        value: 'camera=(), microphone=(), geolocation=(), payment=(), usb=(), '
+            + 'web-share=(self), clipboard-write=(self)'
+    },
     {
         key: 'Content-Security-Policy-Report-Only',
         value: CONTENT_SECURITY_POLICY_REPORT_ONLY
@@ -44,6 +51,7 @@ const SECURITY_HEADERS = [
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     output: 'standalone',
+    poweredByHeader: false,
     typescript: {
         ignoreBuildErrors: true
     },
