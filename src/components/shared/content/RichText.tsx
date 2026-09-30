@@ -1,14 +1,18 @@
-import Link from 'next/link'
+import { GuardedLink } from '@/components/shared/content/GuardedLink'
 
 import { RICH_TEXT_LINKS } from '@/constants/richText'
 
 type RichTextProps = {
     text: string
+    openInNewTab?: boolean
 }
 
 const TAG_PATTERN = /<(\w+)>(.*?)<\/\1>/g
 
-export const RichText = ({ text }: RichTextProps) => {
+export const RichText = ({
+    text,
+    openInNewTab = false
+}: RichTextProps) => {
     const parts: (string | { tag: string, label: string })[] = []
     let lastIndex = 0
 
@@ -30,13 +34,14 @@ export const RichText = ({ text }: RichTextProps) => {
                 if (!href) return part.label
 
                 return (
-                    <Link
+                    <GuardedLink
                         key={`${part.tag}-${index}`}
                         href={href}
+                        openInNewTab={openInNewTab}
                         className={'text-primary underline underline-offset-2 hover:text-primary/80'}
                     >
                         {part.label}
-                    </Link>
+                    </GuardedLink>
                 )
             })}
         </>
