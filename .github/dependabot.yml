@@ -1,0 +1,7 @@
+version: 2
+updates:
+  # Actions are pinned to commit SHAs; this opens a weekly PR moving the pins
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
