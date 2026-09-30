@@ -13,6 +13,7 @@ describe('isProtectedHref', () => {
         ROUTES.CHECK_IN,
         ROUTES.PROGRESS,
         ROUTES.INSIGHTS,
+        ROUTES.COMMUNITY,
         ROUTES.PROFILE_SETTINGS,
         `${ROUTES.PROFILE_SETTINGS}?tab=preferences`,
         `${ROUTES.DASHBOARD}#top`
@@ -26,7 +27,6 @@ describe('isProtectedHref', () => {
         `${ROUTES.SUPPORT}#contact`,
         ROUTES.PRIVACY,
         ROUTES.TERMS,
-        ROUTES.COMMUNITY,
         '/profiles-are-not-profile'
     ])('treats %s as public', (href) => {
         expect(isProtectedHref(href)).toBe(false)

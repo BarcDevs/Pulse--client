@@ -5,6 +5,7 @@ export const protectedRoutes = [
     '/insights',
     '/progress',
     '/chat',
+    '/community',
     '/recovery-goals',
     '/daily-checkin'
 ]
