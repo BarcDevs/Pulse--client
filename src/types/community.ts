@@ -13,6 +13,7 @@ type Post_Base = {
     updatedAt: Date | null
     authorId: string
     author?: PartialUser
+    isAnonymous?: boolean
     _count?: {
         likes?: number
     }

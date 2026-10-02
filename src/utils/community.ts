@@ -18,6 +18,19 @@ type ActivityDisplayItem = {
     time: string
 }
 
+// Stand-in author for a just-submitted anonymous item, until the server's
+// alias author replaces it. Never carries the real user's name or picture
+export const ANONYMOUS_AUTHOR: PartialUser = {
+    id: '',
+    image: null,
+    user: {
+        id: '',
+        username: 'anonymous',
+        firstName: '',
+        lastName: ''
+    }
+}
+
 export const getAuthorDisplayName = (
     author: PartialUser | undefined,
     fallback = 'Unknown'
