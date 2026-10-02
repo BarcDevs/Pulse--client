@@ -26,7 +26,7 @@ test.describe('Recovery Goals', () => {
     })
 
     test('opens create goal modal', async ({ page }) => {
-        const createBtn = page.getByRole('button', { name: 'New Goal' })
+        const createBtn = page.getByRole('button', { name: 'New Goal' }).first()
         await expect(createBtn).toBeVisible()
         await createBtn.click()
 

@@ -17,7 +17,7 @@ test.describe('Community', () => {
         await page.goto('/community')
         await page.waitForLoadState('domcontentloaded')
         await expect(page.getByPlaceholder('Search conversations and discussions...')).toBeVisible()
-        await expect(page.getByRole('button', { name: 'Create post' })).toBeVisible()
+        await expect(page.getByRole('button', { name: 'Create post' }).first()).toBeVisible()
     })
 
     test('shows empty state when no posts', async ({ page }) => {
@@ -42,7 +42,7 @@ test.describe('Community', () => {
         await authReady
         // Allow React to process the auth state and re-render
         await page.waitForTimeout(2_000)
-        await page.getByRole('button', { name: 'Create post' }).click()
+        await page.getByRole('button', { name: 'Create post' }).first().click()
         await expect(page.getByPlaceholder('Give your post a clear title')).toBeVisible()
     })
 })

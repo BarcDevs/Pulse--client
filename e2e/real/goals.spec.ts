@@ -9,7 +9,7 @@ test.describe('real-server goals', () => {
         const title = `Smoke goal ${Date.now()}`
 
         await page.goto('/recovery-goals')
-        await page.getByRole('button', { name: 'New Goal' }).click()
+        await page.getByRole('button', { name: 'New Goal' }).first().click()
         await expect(page.getByRole('dialog')).toBeVisible()
 
         await page.locator('#goal-title').fill(title)
