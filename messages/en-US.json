@@ -333,8 +333,6 @@
     },
     "aiInsight": {
       "label": "Insight",
-      "seeMore": "Read more",
-      "seeLess": "Show less",
       "failedToLoad": "We couldn't load insights right now"
     },
     "noInsights": "Complete a few more check-ins to unlock personalized insights and trends.",
