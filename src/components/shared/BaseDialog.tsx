@@ -43,7 +43,7 @@ export const BaseDialog = ({
     >
         <DialogContent
             showCloseButton={false}
-            className={className}
+            className={cn('grid', className)}
             {...(!description && { 'aria-describedby': undefined })}
         >
             <DialogHeader>

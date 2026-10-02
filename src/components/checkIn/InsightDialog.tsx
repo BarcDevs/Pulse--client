@@ -38,7 +38,7 @@ export const InsightDialog = ({
                     />
                 ))}
             </div>
-            <div className={'flex justify-center mt-2'}>
+            <div className={'flex justify-center'}>
                 <Button
                     variant={'secondary'}
                     onClick={() => onOpenChangeAction(false)}

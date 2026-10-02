@@ -64,7 +64,7 @@ export const ConfirmationDialog = ({
                 </div>
             }
         >
-            <div className={'flex justify-center gap-2 mt-2'}>
+            <div className={'flex justify-center gap-2'}>
                 <Button
                     variant={'secondary'}
                     onClick={handleCancel}
