@@ -30,6 +30,7 @@ export const checkInLocales = {
     submitError: 'checkIn.submitError',
     submitPendingMessage: 'checkIn.submitPendingMessage',
     insightToast: {
-        showInFull: 'checkIn.insightToast.showInFull'
+        showInFull: 'checkIn.insightToast.showInFull',
+        close: 'checkIn.insightToast.close'
     }
 } as const

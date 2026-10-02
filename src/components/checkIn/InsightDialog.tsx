@@ -1,37 +1,51 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
+
 import type { CheckInInsight } from '@/types/checkIn'
 
-import {
-    Dialog,
-    DialogContent,
-    DialogDescription,
-    DialogHeader,
-    DialogTitle
-} from '@/components/ui/dialog'
+import { BaseDialog } from '@/components/shared/BaseDialog'
+import { Button } from '@/components/shared/buttons/Button'
+
+import { checkInLocales } from '@/locales/checkInLocales'
+import { insightsLocales } from '@/locales/insightsLocales'
+
+import { InsightDialogItem } from './InsightDialogItem'
 
 type InsightDialogProps = {
-    insight: CheckInInsight | null
+    insights: CheckInInsight[]
     onOpenChangeAction: (isOpen: boolean) => void
 }
 
 export const InsightDialog = ({
-    insight,
+    insights,
     onOpenChangeAction
-}: InsightDialogProps) => (
-    <Dialog
-        open={!!insight}
-        onOpenChange={onOpenChangeAction}
-    >
-        <DialogContent className={'max-h-[85dvh] overflow-y-auto'}>
-            <DialogHeader>
-                <DialogTitle>
-                    {insight?.title}
-                </DialogTitle>
-                <DialogDescription className={'whitespace-pre-line text-foreground'}>
-                    {insight?.content}
-                </DialogDescription>
-            </DialogHeader>
-        </DialogContent>
-    </Dialog>
-)
+}: InsightDialogProps) => {
+    const t = useTranslations()
+
+    return (
+        <BaseDialog
+            open={insights.length > 0}
+            onOpenChangeAction={onOpenChangeAction}
+            title={t(insightsLocales.title)}
+            className={'dialog-scrollable'}
+        >
+            <div className={'space-y-3'}>
+                {insights.map((insight) => (
+                    <InsightDialogItem
+                        key={insight.id}
+                        insight={insight}
+                    />
+                ))}
+            </div>
+            <div className={'flex justify-center'}>
+                <Button
+                    variant={'secondary'}
+                    onClick={() => onOpenChangeAction(false)}
+                >
+                    {t(checkInLocales.insightToast.close)}
+                </Button>
+            </div>
+        </BaseDialog>
+    )
+}

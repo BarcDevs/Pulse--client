@@ -3,23 +3,23 @@ import type { CheckInInsight } from '@/types/checkIn'
 import { getInsightTypeStyle } from '@/lib/insights/getInsightTypeStyle'
 import { cn } from '@/lib/utils'
 
-type DashboardInsightItemProps = {
+type InsightDialogItemProps = {
     insight: CheckInInsight
 }
 
-export const DashboardInsightItem = ({
+export const InsightDialogItem = ({
     insight
-}: DashboardInsightItemProps) => (
+}: InsightDialogItemProps) => (
     <div className={cn(
-        'space-y-0.5 rounded-md border-s-4 px-3 py-2',
+        'space-y-2 rounded-md border-s-4 p-3',
         getInsightTypeStyle(insight.type)
     )}
     >
-        <p className={'text-xs font-medium text-muted-foreground'}>
+        <p className={'text-sm font-medium text-foreground'}>
             {insight.title}
         </p>
-        <blockquote className={'italic text-foreground text-sm line-clamp-1 px-1'}>
+        <p className={'whitespace-pre-line text-sm text-foreground'}>
             {insight.content}
-        </blockquote>
+        </p>
     </div>
 )

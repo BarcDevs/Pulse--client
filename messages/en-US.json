@@ -157,7 +157,8 @@
     },
     "submitError": "We couldn't save your daily update right now. Please try again in a moment.",
     "insightToast": {
-      "showInFull": "Show in full"
+      "showInFull": "Show in full",
+      "close": "Close"
     },
     "submitPendingMessage": "Processing your check-in…",
     "quotes": [
@@ -335,6 +336,7 @@
     },
     "aiInsight": {
       "label": "Insight",
+      "seeMore": "Read more",
       "failedToLoad": "We couldn't load insights right now"
     },
     "noInsights": "Complete a few more check-ins to unlock personalized insights and trends.",
