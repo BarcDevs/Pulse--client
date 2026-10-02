@@ -61,7 +61,7 @@ jobs:
             NEXT_PUBLIC_SERVER_API_VERSION=v2
             NEXT_PUBLIC_HOSTNAME=https://pulserehab.app
             NEXT_PUBLIC_SENTRY_REPLAYS_SESSION_SAMPLE_RATE=0
-            NEXT_PUBLIC_SENTRY_DSN=https://94ccf213e00340996348fa63f2605456@o4506954726703104.ingest.us.sentry.io/4506954741055488
+            NEXT_PUBLIC_SENTRY_DSN=https://6cb47f46db22592d023a9cffa03a0e4e@o4506954726703104.ingest.us.sentry.io/4511547564294144
           tags: |
             110015905368.dkr.ecr.eu-central-1.amazonaws.com/pulse-client-app:${{ env.DEPLOY_SHA }}
             110015905368.dkr.ecr.eu-central-1.amazonaws.com/pulse-client-app:latest
