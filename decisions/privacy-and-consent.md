@@ -28,3 +28,15 @@ context in this topic — not routinely.
 **Why:** Posts are user-written recovery content; making them readable by anyone contradicts the privacy expectation users had when posting.
 
 **How to apply:** This gates the pages only. The server's forum read endpoints are a separate layer — if posts must be unreadable without an account, the API needs the same change (see the community/privacy finding in `docs/SECURITY-AUDIT.md`). The Privacy page wording about forum visibility should match whatever is decided there.
+
+---
+
+## 02/10/2026 — Vercel Analytics removed; no page-view analytics until one is chosen
+
+**Problem:** `<Analytics/>` (`@vercel/analytics`) loads `/_vercel/insights/script.js`, which only exists on Vercel. Production is EC2 + Docker, so the request failed on every page (visible in the console) and no analytics were collected, while the Privacy page said "privacy-friendly page-view analytics (Vercel Web Analytics, no cookies)". The 23/09 entry above also relied on Vercel Web Analytics being cookieless.
+
+**Decision:** Remove the component and the package, and delete the analytics sentence from the Privacy page (en-US, he-IL) and its PDFs. The "no consent popup" decision still holds: nothing non-essential is stored.
+
+**Why:** Nothing was being collected, so keeping the code and the disclosure was both dead weight and inaccurate.
+
+**How to apply:** If page-view analytics are wanted later, pick one that works on EC2 (cookieless, e.g. Plausible or Umami), add it with a Privacy-page sentence in both languages, and add its origin to `connect-src`/`script-src` in `src/lib/security/buildContentSecurityPolicy.ts`. Vercel preview deployments also lose analytics.
