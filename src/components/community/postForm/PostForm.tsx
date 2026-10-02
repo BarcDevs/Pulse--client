@@ -4,6 +4,7 @@ import { PostFormActions } from '@/components/community/postForm/PostFormActions
 import { PostFormBody } from '@/components/community/postForm/PostFormBody'
 import { PostFormFields } from '@/components/community/postForm/PostFormFields'
 import { PostFormHeader } from '@/components/community/postForm/PostFormHeader'
+import { PostFormPrivacyNote } from '@/components/community/postForm/PostFormPrivacyNote'
 import { Form } from '@/components/ui/form'
 
 import { usePostForm } from '@/hooks/forms/usePostForm'
@@ -58,6 +59,7 @@ export const PostForm = ({
                         form={form}
                         isReply={isReply}
                     />
+                    <PostFormPrivacyNote/>
                     <PostFormActions
                         isReply={isReply}
                         onCancelAction={onCancelAction}
