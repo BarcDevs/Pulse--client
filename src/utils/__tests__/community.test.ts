@@ -125,7 +125,7 @@ describe('getReplyAuthorView', () => {
         }
     } as never
 
-    it('shows the localized label and a neutral avatar for a purged author', () => {
+    it('shows the localized label and no initials for a purged author', () => {
         const placeholder = {
             id: '',
             image: null,
@@ -139,7 +139,7 @@ describe('getReplyAuthorView', () => {
 
         expect(view).toEqual({
             name: 'Deleted user',
-            initials: '?',
+            initials: undefined,
             imageSrc: undefined,
             isDeleted: true
         })

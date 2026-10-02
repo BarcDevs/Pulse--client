@@ -11,6 +11,7 @@ import type { Reply } from '@/types/community'
 import { PostForm } from '@/components/community/postForm/PostForm'
 import { PostActionButton } from '@/components/community/posts/postList/PostActionButton'
 import { ActionsMenu } from '@/components/shared/ActionsMenu'
+import { DeletedUserAvatar } from '@/components/shared/avatars/DeletedUserAvatar'
 import { UserAvatar } from '@/components/shared/avatars/UserAvatar'
 import { Badge } from '@/components/shared/badges/Badge'
 
@@ -125,6 +126,7 @@ export const ReplyCard = ({
                 ? 'ml-6 border-l-2 border-l-muted'
                 : 'border-l-4 border-l-primary'
         )}>
+            {isDeleted && <DeletedUserAvatar/>}
             {initials && (
                 <UserAvatar
                     initials={initials}

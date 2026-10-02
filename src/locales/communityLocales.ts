@@ -106,6 +106,7 @@ export const communityLocales = {
         tagsPlaceholder: 'community.postForm.tagsPlaceholder',
         tagsPlaceholderMore: 'community.postForm.tagsPlaceholderMore',
         tagsHint: 'community.postForm.tagsHint',
+        privacyNote: 'community.postForm.privacyNote',
         tagSuggestions: 'community.postForm.tagSuggestions',
         tagPopularTopics: 'community.postForm.tagPopularTopics',
         categoryHint: 'community.postForm.categoryHint'

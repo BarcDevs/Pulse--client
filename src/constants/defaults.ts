@@ -11,8 +11,5 @@ export const defaults = {
     },
     progress: {
         topGoalsCount: 4
-    },
-    community: {
-        deletedAuthorInitials: '?'
     }
 }

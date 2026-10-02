@@ -10,8 +10,6 @@ import type { PartialUser } from '@/types/user'
 import { toRelative } from '@/lib/time'
 import { getUserFallback } from '@/lib/utils'
 
-import { defaults } from '@/constants/defaults'
-
 type ActivityDisplayItem = {
     id: string
     avatar: string
@@ -39,8 +37,8 @@ type ReplyAuthorView = {
 }
 
 /** How to show a reply's author. A reply whose author's account was purged has
- * no author id: show the localized label and a neutral avatar, never the
- * server's placeholder username */
+ * no author id: show the localized label and no initials (the card draws the
+ * generic avatar), never the server's placeholder username */
 export const getReplyAuthorView = (
     reply: Pick<Reply, 'authorId' | 'author'>,
     deletedLabel: string
@@ -48,7 +46,7 @@ export const getReplyAuthorView = (
     if (reply.authorId === null) {
         return {
             name: deletedLabel,
-            initials: defaults.community.deletedAuthorInitials,
+            initials: undefined,
             imageSrc: undefined,
             isDeleted: true
         }
