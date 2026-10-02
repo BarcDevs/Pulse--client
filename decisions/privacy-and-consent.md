@@ -40,3 +40,15 @@ context in this topic — not routinely.
 **Why:** Nothing was being collected, so keeping the code and the disclosure was both dead weight and inaccurate.
 
 **How to apply:** If page-view analytics are wanted later, pick one that works on EC2 (cookieless, e.g. Plausible or Umami), add it with a Privacy-page sentence in both languages, and add its origin to `connect-src`/`script-src` in `src/lib/security/buildContentSecurityPolicy.ts`. Vercel preview deployments also lose analytics.
+
+---
+
+## 02/10/2026 — Replies on other users' posts survive account deletion; shown as "Deleted user"
+
+**Problem:** Owner decision (server, 02/10/2026): when the 30-day purge deletes a user, their posts go but their replies on other users' posts stay (server `Reply.authorId` becomes nullable, `ON DELETE SET NULL`; the API returns a placeholder author `deleted-user` with empty names). The client assumed every reply has an author, and the deletion copy promised that personal information is removed.
+
+**Decision:** Client shows a translated "Deleted user" label and a neutral `?` avatar for a reply whose `authorId` is null (`getReplyAuthorView`), and gives no owner or post-author treatment to it. The Privacy page (rights + retention), support FAQ and delete-account dialog now say replies on other people's posts are kept as written, without the name or picture.
+
+**Why:** Keeps conversations readable for other users; the cost is that reply text stays verbatim after deletion, so the wording must not overpromise erasure.
+
+**How to apply:** Any new client UI that shows a reply author must go through `getReplyAuthorView`, never `reply.author` directly. Reply text can still contain what the user wrote about themselves; if full erasure is ever promised, this decision has to be revisited.

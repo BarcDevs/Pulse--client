@@ -56,6 +56,7 @@ Cookie/storage consent and privacy-disclosure decisions.
 | 23/09/2026 | No cookie/cache consent popup — no non-essential storage written; disclose on the Privacy page |
 | 30/09/2026 | Community pages require sign-in (reverses the June semi-public decision) |
 | 02/10/2026 | Vercel Analytics removed — it never loaded on EC2; analytics sentence dropped from the Privacy page |
+| 02/10/2026 | Replies on other users' posts survive account deletion, shown as "Deleted user"; deletion copy updated |
 
 ## Dependency Security — [[decisions/dependency-security]]
 `npm audit` findings and whether/how they're addressed.
