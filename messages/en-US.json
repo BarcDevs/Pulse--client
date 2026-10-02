@@ -236,7 +236,8 @@
       "repliesLoadError": "Unable to load replies",
       "postLoadError": "Unable to load this post right now. Please try again.",
       "writeReplyPlaceholder": "Write a supportive reply…",
-      "authorBadge": "Author"
+      "authorBadge": "Author",
+      "deletedUser": "Deleted user"
     },
     "postActions": {
       "solidarity": "Showed support",
@@ -999,7 +1000,7 @@
         "description": "Permanently remove your account and recovery data",
         "buttonText": "Delete account",
         "confirmTitle": "Delete Account",
-        "confirmDescription": "Your account will be deactivated right away and permanently deleted after 30 days, including your check-ins, insights, goals and posts. Log back in within 30 days to cancel. To delete immediately, contact support.",
+        "confirmDescription": "Your account will be deactivated right away and permanently deleted after 30 days, including your check-ins, insights, goals and posts. Replies you wrote on other people's posts stay, shown as \"Deleted user\". Log back in within 30 days to cancel. To delete immediately, contact support.",
         "confirmButton": "Yes, delete",
         "confirmingButton": "Deleting...",
         "cancelButton": "Cancel",
@@ -1448,7 +1449,7 @@
         },
         "deleteData": {
           "q": "Can I export or delete my data?",
-          "a": "You can delete your account from <settings>Settings</settings>. It's permanently deleted after 30 days, and logging back in before then cancels the deletion. To delete it immediately, send us a message using <contact>the form below</contact>."
+          "a": "You can delete your account from <settings>Settings</settings>. It's permanently deleted after 30 days, and logging back in before then cancels the deletion. Your posts are deleted with it; replies you wrote on other people's posts stay, shown as \"Deleted user\". To delete it immediately, send us a message using <contact>the form below</contact>."
         }
       }
     },
@@ -1682,7 +1683,7 @@
                 },
                 {
                   "label": "Delete",
-                  "text": "Request deletion of your account and associated personal information."
+                  "text": "Request deletion of your account and associated personal information. Your posts are deleted with it. Replies you left on other people's posts stay, shown as \"Deleted user\" without your name or picture, but the text you wrote is kept as written."
                 },
                 {
                   "label": "Questions",
@@ -1695,7 +1696,7 @@
         {
           "title": "Data retention",
           "body": [
-            "We keep your information only for as long as it is needed to provide Pulse, comply with legal obligations, and maintain the integrity of our services. When your account is deleted, your personal information is removed according to our data retention policies."
+            "We keep your information only for as long as it is needed to provide Pulse, comply with legal obligations, and maintain the integrity of our services. When your account is deleted, your personal information is removed according to our data retention policies. Replies you left on other people's posts are the exception: they are kept as written, without your name or picture."
           ]
         },
         {

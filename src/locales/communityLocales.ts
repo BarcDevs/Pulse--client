@@ -63,7 +63,8 @@ export const communityLocales = {
         repliesLoadError: 'community.postDetail.repliesLoadError',
         postLoadError: 'community.postDetail.postLoadError',
         writeReplyPlaceholder: 'community.postDetail.writeReplyPlaceholder',
-        authorBadge: 'community.postDetail.authorBadge'
+        authorBadge: 'community.postDetail.authorBadge',
+        deletedUser: 'community.postDetail.deletedUser'
     },
     postActions: {
         solidarity: 'community.postActions.solidarity',

@@ -18,9 +18,9 @@ import { useReplyInteractions } from '@/hooks/mutations/useReplyInteractions'
 import { useDateLocale } from '@/hooks/ui/useDateLocale'
 
 import { toRelative } from '@/lib/time'
-import { cn, getUserFallback } from '@/lib/utils'
+import { cn } from '@/lib/utils'
 
-import { getAuthorDisplayName } from '@/utils/community'
+import { getReplyAuthorView } from '@/utils/community'
 import {
     DRAFT_KEYS,
     getDraft
@@ -59,8 +59,17 @@ export const ReplyCard = ({
     const t = useTranslations()
     const { user } = useAuth()
     const [isEditing, setIsEditing] = useState(false)
-    const isOwner = currentUserId === reply.authorId
-    const isPostAuthor = !!postAuthorId
+    const {
+        name: authorName,
+        initials,
+        imageSrc,
+        isDeleted
+    } = getReplyAuthorView(
+        reply,
+        t(communityLocales.postDetail.deletedUser)
+    )
+    const isOwner = !isDeleted && currentUserId === reply.authorId
+    const isPostAuthor = !isDeleted && !!postAuthorId
         && reply.authorId === postAuthorId
     const {
         liked,
@@ -72,7 +81,6 @@ export const ReplyCard = ({
         initialLikes: reply._count?.likes ?? 0
     })
     const dateLocale = useDateLocale()
-    const authorName = getAuthorDisplayName(reply.author)
     const timeAgo = toRelative(
         new Date(reply.createdAt),
         dateLocale
@@ -85,13 +93,6 @@ export const ReplyCard = ({
             postId,
             reply.id
         ))?.data
-    )
-
-    const { author } = reply
-    const authorUser = author?.user
-    const initials = authorUser && getUserFallback(
-        authorUser.firstName,
-        authorUser.lastName
     )
 
     const handleUpdate = (
@@ -127,7 +128,7 @@ export const ReplyCard = ({
             {initials && (
                 <UserAvatar
                     initials={initials}
-                    imageSrc={author?.image ?? undefined}
+                    imageSrc={imageSrc}
                 />
             )}
 

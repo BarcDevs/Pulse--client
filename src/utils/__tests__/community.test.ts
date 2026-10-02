@@ -16,6 +16,7 @@ import type { CommunityActivityItem } from '@/types/community'
 
 import {
     getAuthorDisplayName,
+    getReplyAuthorView,
     mapActivityItems
 } from '@/utils/community'
 
@@ -112,3 +113,75 @@ describe('mapActivityItems', () => {
         expect(result[0].action).toBeTruthy()
     })
 })
+
+describe('getReplyAuthorView', () => {
+    const author = {
+        id: 'p1',
+        image: 'https://lh3.googleusercontent.com/a/x',
+        user: {
+            firstName: 'John',
+            lastName: 'Doe',
+            username: 'johndoe'
+        }
+    } as never
+
+    it('shows the localized label and a neutral avatar for a purged author', () => {
+        const placeholder = {
+            id: '',
+            image: null,
+            user: { firstName: '', lastName: '', username: 'deleted-user' }
+        } as never
+
+        const view = getReplyAuthorView(
+            { authorId: null, author: placeholder },
+            'Deleted user'
+        )
+
+        expect(view).toEqual({
+            name: 'Deleted user',
+            initials: '?',
+            imageSrc: undefined,
+            isDeleted: true
+        })
+    })
+
+    it('never shows the raw placeholder username', () => {
+        const placeholder = {
+            id: '',
+            user: { firstName: '', lastName: '', username: 'deleted-user' }
+        } as never
+
+        const view = getReplyAuthorView(
+            { authorId: null, author: placeholder },
+            'משתמש שנמחק'
+        )
+
+        expect(view.name).toBe('משתמש שנמחק')
+        expect(view.name).not.toContain('deleted-user')
+    })
+
+    it('shows the name, initials and image of a normal author', () => {
+        const view = getReplyAuthorView(
+            { authorId: 'u1', author },
+            'Deleted user'
+        )
+
+        expect(view).toEqual({
+            name: 'John Doe',
+            initials: 'JD',
+            imageSrc: 'https://lh3.googleusercontent.com/a/x',
+            isDeleted: false
+        })
+    })
+
+    it('has no initials when the author was not loaded', () => {
+        const view = getReplyAuthorView(
+            { authorId: 'u1', author: undefined },
+            'Deleted user'
+        )
+
+        expect(view.initials).toBeUndefined()
+        expect(view.isDeleted).toBe(false)
+    })
+})
+
