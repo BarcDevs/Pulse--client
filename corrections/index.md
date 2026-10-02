@@ -40,6 +40,7 @@ Guessing at a spec instead of checking the actual rules/examples first.
 | 18/09/2026 | Claimed a Firefox-only font fix "fixed" it with no way to test in Firefox |
 | 23/09/2026 | Font fix committed twice without checking the served CSS; Turbopack ignored `adjustFontFallback` and `.next/dev` served stale CSS |
 | 29/09/2026 | Model Selection in CLAUDE.md said Haiku for sub-agents (stale); Sonnet default, Opus via /opusplan |
+| 02/10/2026 | Claimed the sticky-sidebar fix worked after a synthetic headless test that did not match the user's page; say exactly what was and was not tested |
 
 ## Working Style — [[corrections/working-style]]
 How to act on bug reports and where to log — state the fix before broad edits, log in this repo, check other branches before claiming a file doesn't exist.
@@ -53,6 +54,7 @@ How to act on bug reports and where to log — state the fix before broad edits,
 | 23/09/2026 | Pushed a branch without its tags and argued for withholding them; always push tags |
 | 23/09/2026 | Ran Python scripts to edit files instead of the Edit tool |
 | 02/10/2026 | Pushed `development` and tags when only a commit was approved; staged by directory and swept another editor's unfinished work into my commits |
+| 02/10/2026 | Committed iterative UI fixes unasked and called them done while the user still saw problems; also made a preview branch unasked |
 | 25/09/2026 | Dead code is removed in a separate cleanup commit, not left marked or noted |
 | 25/09/2026 | Branched and upgraded deps in the shared checkout while another session was in it; create the worktree first |
 | 26/09/2026 | Did a whole rfc series on whatever branch was checked out (the upgrade branch); every separate piece of work gets its own branch, created by Claude without being asked |
