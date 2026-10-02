@@ -17,7 +17,7 @@ export const Sidebar = ({
     className
 }: SidebarProps) => (
     <StickySidebar className={cn(
-        'w-64 border-r border-border bg-surface-card flex flex-col max-sm:hidden',
+        'w-64 border-r border-border bg-surface-card flex flex-col max-lg:hidden',
         className
     )}>
         <div className={'p-4'}>

@@ -30,7 +30,7 @@ export const MobileNavBar = () => {
 
     return (
         <>
-            <nav className={'fixed bottom-0 left-0 right-0 border-t border-border bg-surface-card sm:hidden z-40'}>
+            <nav className={'fixed bottom-0 left-0 right-0 border-t border-border bg-surface-card lg:hidden z-40'}>
                 <div className={'flex items-center justify-between h-20 px-1'}>
                     {filteredItems.map((item) => (
                         <MobileNavItem

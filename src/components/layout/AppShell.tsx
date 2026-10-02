@@ -45,7 +45,7 @@ export const AppShell = ({
                     <main className={'flex flex-1 flex-col overflow-x-clip bg-surface-page'}>
                         {children}
                     </main>
-                    <Footer className={'pb-20 sm:pb-0 print:hidden'}/>
+                    <Footer className={'pb-20 lg:pb-0 print:hidden'}/>
                 </div>
             </div>
             <MobileNavBar/>
