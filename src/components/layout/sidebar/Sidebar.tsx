@@ -8,15 +8,12 @@ import { StickySidebar } from '@/components/shared/StickySidebar'
 import { cn } from '@/lib/utils'
 
 import { NavSection } from './sections/NavSection'
-import { SidebarBottomError } from './SidebarBottomError'
 
 type SidebarProps = {
-    isErrorPage?: boolean
     className?: ClassName
 }
 
 export const Sidebar = ({
-    isErrorPage = false,
     className
 }: SidebarProps) => (
     <StickySidebar className={cn(
@@ -31,8 +28,5 @@ export const Sidebar = ({
                 <NavSection/>
             </div>
         </div>
-        {isErrorPage
-            && <SidebarBottomError/>
-        }
     </StickySidebar>
 )

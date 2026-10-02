@@ -5,6 +5,7 @@ import { getLocale, getMessages } from 'next-intl/server'
 
 import type { LayoutProps } from '@/types'
 
+import { AppShell } from '@/components/layout/AppShell'
 import { DirectionProvider } from '@/components/ui/direction'
 import { Toaster } from '@/components/ui/sonner'
 
@@ -59,7 +60,9 @@ const RootLayout = async ({
             >
                 <QueryProvider>
                     <AuthProvider>
-                        {children}
+                        <AppShell>
+                            {children}
+                        </AppShell>
                     </AuthProvider>
                 </QueryProvider>
             </NextIntlClientProvider>
