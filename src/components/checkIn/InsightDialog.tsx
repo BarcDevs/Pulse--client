@@ -1,14 +1,13 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
+
 import type { CheckInInsight } from '@/types/checkIn'
 
-import {
-    Dialog,
-    DialogContent,
-    DialogDescription,
-    DialogHeader,
-    DialogTitle
-} from '@/components/ui/dialog'
+import { BaseDialog } from '@/components/shared/BaseDialog'
+import { Button } from '@/components/shared/buttons/Button'
+
+import { checkInLocales } from '@/locales/checkInLocales'
 
 type InsightDialogProps = {
     insight: CheckInInsight | null
@@ -18,20 +17,26 @@ type InsightDialogProps = {
 export const InsightDialog = ({
     insight,
     onOpenChangeAction
-}: InsightDialogProps) => (
-    <Dialog
-        open={!!insight}
-        onOpenChange={onOpenChangeAction}
-    >
-        <DialogContent className={'max-h-[85dvh] overflow-y-auto'}>
-            <DialogHeader>
-                <DialogTitle>
-                    {insight?.title}
-                </DialogTitle>
-                <DialogDescription className={'whitespace-pre-line text-foreground'}>
-                    {insight?.content}
-                </DialogDescription>
-            </DialogHeader>
-        </DialogContent>
-    </Dialog>
-)
+}: InsightDialogProps) => {
+    const t = useTranslations()
+
+    return (
+        <BaseDialog
+            open={!!insight}
+            onOpenChangeAction={onOpenChangeAction}
+            title={insight?.title}
+            description={insight?.content}
+            className={'max-h-[85dvh] overflow-y-auto'}
+            descriptionClassName={'whitespace-pre-line text-foreground'}
+        >
+            <div className={'flex justify-center mt-2'}>
+                <Button
+                    variant={'secondary'}
+                    onClick={() => onOpenChangeAction(false)}
+                >
+                    {t(checkInLocales.insightToast.close)}
+                </Button>
+            </div>
+        </BaseDialog>
+    )
+}

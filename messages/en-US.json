@@ -157,7 +157,8 @@
     },
     "submitError": "We couldn't save your daily update right now. Please try again in a moment.",
     "insightToast": {
-      "showInFull": "Show in full"
+      "showInFull": "Show in full",
+      "close": "Close"
     },
     "submitPendingMessage": "Processing your check-in…",
     "quotes": [
