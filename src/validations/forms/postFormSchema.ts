@@ -91,7 +91,8 @@ export const createPostFormSchema = (
                         validationLocales.post.tag.tooMany,
                         { max: config.tags.max }
                     )
-                )
+                ),
+        isAnonymous: z.boolean().optional()
     })
         .superRefine((data, ctx) => {
             if (isReply) return

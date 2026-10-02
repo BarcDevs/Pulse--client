@@ -61,7 +61,6 @@ export type ProfileUpdateInput = {
     dailyReminder?: boolean
     communityAlerts?: boolean
     profileVisibility?: ProfileVisibility
-    anonymousParticipation?: boolean
     shareNotesWithAI?: boolean
     healthInterests?: string[]
     activityPreferences?: string[]

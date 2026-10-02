@@ -52,6 +52,7 @@ How to act on bug reports and where to log — state the fix before broad edits,
 | 23/09/2026 | Used `refactor` commit type instead of `rfc` (GIT_RULES); existing commits not renamed |
 | 23/09/2026 | Pushed a branch without its tags and argued for withholding them; always push tags |
 | 23/09/2026 | Ran Python scripts to edit files instead of the Edit tool |
+| 02/10/2026 | Pushed `development` and tags when only a commit was approved; staged by directory and swept another editor's unfinished work into my commits |
 | 25/09/2026 | Dead code is removed in a separate cleanup commit, not left marked or noted |
 | 25/09/2026 | Branched and upgraded deps in the shared checkout while another session was in it; create the worktree first |
 | 26/09/2026 | Did a whole rfc series on whatever branch was checked out (the upgrade branch); every separate piece of work gets its own branch, created by Claude without being asked |

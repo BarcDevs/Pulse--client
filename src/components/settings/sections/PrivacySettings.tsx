@@ -48,15 +48,6 @@ export const PrivacySettings = () => {
                     onChangeAction={() => {}}
                 />
 
-                <SettingToggle
-                    label={t(settingsLocales.privacy.anonymousParticipation.label)}
-                    description={t(settingsLocales.privacy.anonymousParticipation.description)}
-                    checked={settings?.anonymousParticipation || false}
-                    onChangeAction={(value) =>
-                        onSettingChange('anonymousParticipation', value)
-                    }
-                />
-
                 {/* TODO: activity visible to mentors — map to profileVisibility or new field */}
                 <SettingToggle
                     label={t(settingsLocales.privacy.activityVisible.label)}

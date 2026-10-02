@@ -47,10 +47,6 @@ export const settingsLocales = {
             title: 'settings.privacy.dataSharing.title',
             description: 'settings.privacy.dataSharing.description'
         },
-        anonymousParticipation: {
-            label: 'settings.privacy.anonymousParticipation.label',
-            description: 'settings.privacy.anonymousParticipation.description'
-        },
         activityVisible: {
             label: 'settings.privacy.activityVisible.label',
             description: 'settings.privacy.activityVisible.description'

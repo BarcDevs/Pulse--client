@@ -131,6 +131,7 @@ export const RepliesSection = ({
                     onSubmitAction={handleReplySubmit}
                     onCancelAction={() => setIsReplyFormOpen(false)}
                     defaultValues={replyDraft}
+                    showAnonymousToggle={true}
                 />
             )}
 

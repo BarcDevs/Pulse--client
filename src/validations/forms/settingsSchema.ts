@@ -13,8 +13,7 @@ export const privacySettingsSchema = z.object({
         'onlyMe',
         'friends',
         'public'
-    ]),
-    anonymousParticipation: z.boolean()
+    ])
 })
 
 export type PrivacySettingsSchema =

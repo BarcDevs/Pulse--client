@@ -18,6 +18,7 @@ import { useForumPostMutations } from '@/hooks/mutations/useForumPostMutations'
 import { useForumReplies } from '@/hooks/queries/useForumReplies'
 import { useAuthExpiredToast } from '@/hooks/useAuthExpiredToast'
 
+import { ANONYMOUS_AUTHOR } from '@/utils/community'
 import {
     clearDraft,
     DRAFT_KEYS,
@@ -122,7 +123,8 @@ const ForumRepliesStateProvider = ({
             createdAt: new Date(),
             updatedAt: null,
             authorId: user?.profile?.id ?? '',
-            author: user ? {
+            isAnonymous: data.isAnonymous,
+            author: data.isAnonymous ? ANONYMOUS_AUTHOR : user ? {
                 id: user.profile?.id ?? '',
                 image: null,
                 user: {
