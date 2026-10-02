@@ -28,7 +28,7 @@ export const InsightDialog = ({
             open={insights.length > 0}
             onOpenChangeAction={onOpenChangeAction}
             title={t(insightsLocales.title)}
-            className={'max-h-[85dvh] overflow-y-auto'}
+            className={'dialog-scrollable'}
         >
             <div className={'space-y-3'}>
                 {insights.map((insight) => (

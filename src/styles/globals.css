@@ -72,6 +72,7 @@
     --success-deep: #047857;
     --warning-light: #fef3c7;
     --warning-deep: #b45309;
+    --dialog-max-height: 85dvh;
     --destructive-light: #fee2e2;
     --destructive-deep: #b91c1c;
     --feedback-support: #8b5cf6;
@@ -609,6 +610,11 @@
 /*region component utilities*/
 @utility card-base {
     @apply rounded-2xl bg-surface-card p-6;
+}
+
+@utility dialog-scrollable {
+    max-height: var(--dialog-max-height);
+    overflow-y: auto;
 }
 
 @utility label-uppercase {
