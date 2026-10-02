@@ -6,6 +6,7 @@ import { Sparkles } from 'lucide-react'
 
 import { ClassName } from '@/types/react'
 
+import { TextButton } from '@/components/shared/buttons/TextButton'
 import { Card } from '@/components/shared/cards/Card'
 import {
     CardContent,
@@ -64,13 +65,17 @@ export const DashboardAIInsight = ({
                         {t(dashboardLocales.noInsights)}
                     </p>
                 ) : (
-                    insights.map((insight) => (
-                        <DashboardInsightItem
-                            key={insight.id}
-                            insight={insight}
-                            onShowFullAction={() => showInsights(insights)}
-                        />
-                    ))
+                    <>
+                        {insights.map((insight) => (
+                            <DashboardInsightItem
+                                key={insight.id}
+                                insight={insight}
+                            />
+                        ))}
+                        <TextButton onClick={() => showInsights(insights)}>
+                            {t(dashboardLocales.aiInsight.seeMore)}
+                        </TextButton>
+                    </>
                 )}
             </CardContent>
         </Card>

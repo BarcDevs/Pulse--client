@@ -9,6 +9,7 @@ export const dashboardLocales = {
     },
     aiInsight: {
         label: 'dashboard.aiInsight.label',
+        seeMore: 'dashboard.aiInsight.seeMore',
         failedToLoad: 'dashboard.aiInsight.failedToLoad'
     },
     noInsights: 'dashboard.noInsights',
