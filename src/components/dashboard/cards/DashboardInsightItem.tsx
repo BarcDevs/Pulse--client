@@ -9,19 +9,18 @@ import { TextButton } from '@/components/shared/buttons/TextButton'
 import { getInsightTypeStyle } from '@/lib/insights/getInsightTypeStyle'
 import { cn } from '@/lib/utils'
 
-import { useCheckIn } from '@/context/CheckInContext'
-
 import { checkInLocales } from '@/locales/checkInLocales'
 
 type DashboardInsightItemProps = {
     insight: CheckInInsight
+    onShowFullAction: () => void
 }
 
 export const DashboardInsightItem = ({
-    insight
+    insight,
+    onShowFullAction
 }: DashboardInsightItemProps) => {
     const t = useTranslations()
-    const { showInsight } = useCheckIn()
 
     return (
         <div className={cn(
@@ -35,7 +34,7 @@ export const DashboardInsightItem = ({
             <blockquote className={'italic text-foreground text-sm line-clamp-3 px-1'}>
                 {insight.content}
             </blockquote>
-            <TextButton onClick={() => showInsight(insight)}>
+            <TextButton onClick={onShowFullAction}>
                 {t(checkInLocales.insightToast.showInFull)}
             </TextButton>
         </div>

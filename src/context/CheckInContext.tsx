@@ -23,6 +23,7 @@ import { useProfile } from '@/hooks/queries/useProfile'
 
 import { applyOptimisticCheckIn } from '@/lib/checkIn/optimisticCheckIn'
 import { getInsightToastStyle } from '@/lib/insights/getInsightTypeStyle'
+import { getDisplayInsights } from '@/lib/insights/getLatestInsights'
 
 import { checkInQueryKeys } from '@/constants/queryKeys'
 import { ROUTES } from '@/constants/routes'
@@ -40,7 +41,7 @@ type CheckInContextType = {
     isPending: boolean
     isSubmitted: boolean
     submitCheckIn: (data: CheckInSchema) => void
-    showInsight: (insight: CheckInInsight) => void
+    showInsights: (insights: CheckInInsight[]) => void
 }
 
 const CheckInContext =
@@ -57,8 +58,8 @@ export const CheckInProvider = ({
     const dateFnsLocale = locale === 'he-IL' ? he : undefined
     const [isPending, setIsPending] = useState(false)
     const [isSubmitted, setIsSubmitted] = useState(false)
-    const [openInsight, setOpenInsight] =
-        useState<CheckInInsight | null>(null)
+    const [openInsights, setOpenInsights] =
+        useState<CheckInInsight[]>([])
 
     const runSubmit = async (
         data: CheckInSchema,
@@ -74,7 +75,7 @@ export const CheckInProvider = ({
                     style: getInsightToastStyle(insight.type),
                     action: {
                         label: t(checkInLocales.insightToast.showInFull),
-                        onClick: () => setOpenInsight(insight)
+                        onClick: () => setOpenInsights(getDisplayInsights(checkIn.insights))
                     }
                 })
             })
@@ -127,15 +128,15 @@ export const CheckInProvider = ({
         isPending,
         isSubmitted,
         submitCheckIn,
-        showInsight: setOpenInsight
+        showInsights: setOpenInsights
     }
 
     return (
         <CheckInContext.Provider value={value}>
             {children}
             <InsightDialog
-                insight={openInsight}
-                onOpenChangeAction={() => setOpenInsight(null)}
+                insights={openInsights}
+                onOpenChangeAction={() => setOpenInsights([])}
             />
         </CheckInContext.Provider>
     )

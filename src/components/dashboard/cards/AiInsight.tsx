@@ -18,6 +18,8 @@ import { useCheckIns } from '@/hooks/queries/useCheckIns'
 
 import { getLatestInsights } from '@/lib/insights/getLatestInsights'
 
+import { useCheckIn } from '@/context/CheckInContext'
+
 import { dashboardLocales } from '@/locales/dashboardLocales'
 
 import { DashboardInsightItem } from './DashboardInsightItem'
@@ -36,6 +38,7 @@ export const DashboardAIInsight = ({
         isError
     } = useCheckIns(1)
 
+    const { showInsights } = useCheckIn()
     const insights =
         getLatestInsights(checkInsResponse)
 
@@ -65,6 +68,7 @@ export const DashboardAIInsight = ({
                         <DashboardInsightItem
                             key={insight.id}
                             insight={insight}
+                            onShowFullAction={() => showInsights(insights)}
                         />
                     ))
                 )}

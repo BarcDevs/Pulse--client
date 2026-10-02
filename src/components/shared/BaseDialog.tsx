@@ -18,7 +18,7 @@ type BaseDialogProps = {
     open: boolean
     onOpenChangeAction: (isOpen: boolean) => void
     title: ReactNode
-    description: ReactNode
+    description?: ReactNode
     icon?: ReactNode
     isCentered?: boolean
     className?: ClassName
@@ -44,15 +44,18 @@ export const BaseDialog = ({
         <DialogContent
             showCloseButton={false}
             className={className}
+            {...(!description && { 'aria-describedby': undefined })}
         >
             <DialogHeader>
                 {icon}
                 <DialogTitle className={cn(isCentered && 'text-center')}>
                     {title}
                 </DialogTitle>
-                <DialogDescription className={cn(isCentered && 'text-center', descriptionClassName)}>
-                    {description}
-                </DialogDescription>
+                {description && (
+                    <DialogDescription className={cn(isCentered && 'text-center', descriptionClassName)}>
+                        {description}
+                    </DialogDescription>
+                )}
             </DialogHeader>
             {children}
         </DialogContent>

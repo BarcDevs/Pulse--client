@@ -7,34 +7,37 @@ import type { CheckInInsight } from '@/types/checkIn'
 import { BaseDialog } from '@/components/shared/BaseDialog'
 import { Button } from '@/components/shared/buttons/Button'
 
-import { getInsightDialogStyle } from '@/lib/insights/getInsightTypeStyle'
-import { cn } from '@/lib/utils'
-
 import { checkInLocales } from '@/locales/checkInLocales'
+import { insightsLocales } from '@/locales/insightsLocales'
+
+import { InsightDialogItem } from './InsightDialogItem'
 
 type InsightDialogProps = {
-    insight: CheckInInsight | null
+    insights: CheckInInsight[]
     onOpenChangeAction: (isOpen: boolean) => void
 }
 
 export const InsightDialog = ({
-    insight,
+    insights,
     onOpenChangeAction
 }: InsightDialogProps) => {
     const t = useTranslations()
 
     return (
         <BaseDialog
-            open={!!insight}
+            open={insights.length > 0}
             onOpenChangeAction={onOpenChangeAction}
-            title={insight?.title}
-            description={insight?.content}
-            className={cn(
-                'max-h-[85dvh] overflow-y-auto',
-                insight && getInsightDialogStyle(insight.type)
-            )}
-            descriptionClassName={'whitespace-pre-line text-foreground'}
+            title={t(insightsLocales.title)}
+            className={'max-h-[85dvh] overflow-y-auto'}
         >
+            <div className={'space-y-3'}>
+                {insights.map((insight) => (
+                    <InsightDialogItem
+                        key={insight.id}
+                        insight={insight}
+                    />
+                ))}
+            </div>
             <div className={'flex justify-center mt-2'}>
                 <Button
                     variant={'secondary'}
