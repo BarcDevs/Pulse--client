@@ -23,6 +23,7 @@ Error tracking and performance-monitoring tooling decisions.
 | 28/09/2026 | Client-side Sentry was dead code (never wired into the bundle) regardless of the DSN — fixed via `instrumentation-client.ts` |
 | 30/09/2026 | Sentry Error Watch moved from cloud to a local routine; `claude.ai Sentry` connector no longer needed |
 | 30/09/2026 | Feedback Watch routine needs `docs.google.com` + `*.googleusercontent.com` allowed in its cloud environment |
+| 02/10/2026 | Production client DSN moved from the `javascript-react` project to `pulse-client`, the one the watcher and docs name |
 | 30/09/2026 | Sentry watcher records move to `docs/sentry-errors/` (index + files) on a local `monitor/records` branch, shipped only with a fix |
 
 ## Charts & RTL — [[decisions/charts-and-rtl]]
