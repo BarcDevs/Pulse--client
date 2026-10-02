@@ -53,7 +53,8 @@ export const createPostSchema = (t: TranslatorFn) =>
                     validationLocales.post.tag.tooMany,
                     { max: config.tags.max }
                 )
-            )
+            ),
+        isAnonymous: z.boolean().optional()
     })
         .superRefine(({ category }, ctx) => {
             if (!category) {

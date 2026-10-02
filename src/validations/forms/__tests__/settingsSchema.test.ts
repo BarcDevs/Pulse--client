@@ -35,23 +35,14 @@ describe('privacySettingsSchema', () => {
         'accepts profileVisibility: %s',
         (visibility) => {
             expect(privacySettingsSchema.safeParse({
-                profileVisibility: visibility,
-                anonymousParticipation: false
+                profileVisibility: visibility
             }).success).toBe(true)
         }
     )
 
     it('rejects invalid profileVisibility', () => {
         expect(privacySettingsSchema.safeParse({
-            profileVisibility: 'everyone',
-            anonymousParticipation: false
-        }).success).toBe(false)
-    })
-
-    it('rejects non-boolean anonymousParticipation', () => {
-        expect(privacySettingsSchema.safeParse({
-            profileVisibility: 'public',
-            anonymousParticipation: 'yes'
+            profileVisibility: 'everyone'
         }).success).toBe(false)
     })
 })

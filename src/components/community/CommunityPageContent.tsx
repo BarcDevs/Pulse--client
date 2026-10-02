@@ -20,6 +20,7 @@ import { useCreatePostMutation } from '@/hooks/mutations/useCreatePostMutation'
 import { useAuthExpiredToast } from '@/hooks/useAuthExpiredToast'
 import { useDebounce } from '@/hooks/useDebounce'
 
+import { ANONYMOUS_AUTHOR } from '@/utils/community'
 import {
     clearDraft,
     DRAFT_KEYS,
@@ -96,7 +97,10 @@ export const CommunityPageContent = () => {
             createdAt: new Date(),
             updatedAt: null,
             authorId: user?.id ?? '',
-            author: user
+            isAnonymous: data.isAnonymous,
+            author: data.isAnonymous
+                ? ANONYMOUS_AUTHOR
+                : user
                 ? {
                     id: user.id,
                     image: user.profile?.image ?? null,
@@ -170,6 +174,7 @@ export const CommunityPageContent = () => {
                         onSubmitAction={handlePostSubmit}
                         onCancelAction={() => setIsNewPostOpen(false)}
                         defaultValues={postDraft}
+                        showAnonymousToggle={true}
                     />
                     <PostList
                         tag={selectedTag}

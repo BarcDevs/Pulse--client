@@ -267,6 +267,8 @@
       "tagsPlaceholder": "Add a topic like recovery, anxiety, sleep...",
       "tagsPlaceholderMore": "Add another topic...",
       "tagsHint": "Add 1–5 topics to help others find your post",
+      "anonymous": "Post anonymously",
+      "anonymousHint": "Your name and picture are hidden from other members.",
       "privacyNote": "For your safety, don't share private or identifying details like your full name, phone number, address or workplace. Everyone in the community can read what you write.",
       "tagSuggestions": "Suggested topics",
       "tagPopularTopics": "Popular topics",
@@ -958,10 +960,6 @@
       "dataSharing": {
         "title": "Data Sharing",
         "description": "Allow anonymous data to help improve recovery research and insights"
-      },
-      "anonymousParticipation": {
-        "label": "Anonymous Participation",
-        "description": "Hide your identity in community discussions"
       },
       "activityVisible": {
         "label": "Activity Visible to Mentors",

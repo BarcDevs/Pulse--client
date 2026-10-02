@@ -6,6 +6,8 @@ import {
 
 import { Reply } from '@/types/community'
 
+import { useRememberAnonymity } from '@/hooks/profile/useRememberAnonymity'
+
 import { forumQueryKeys } from '@/constants/queryKeys'
 
 import { useAuth } from '@/context/AuthContext'
@@ -45,6 +47,7 @@ export const useForumPostMutations = ({
 }: UseForumPostMutationsProps) => {
     const queryClient = useQueryClient()
     const { user } = useAuth()
+    const rememberAnonymity = useRememberAnonymity()
 
     const createReplyMutation = useMutation({
         mutationFn: (
@@ -55,15 +58,18 @@ export const useForumPostMutations = ({
                 body: data.body,
                 createdAt: new Date(),
                 updatedAt: null,
-                authorId: user?.profile?.id || ''
+                authorId: user?.profile?.id || '',
+                isAnonymous: data.isAnonymous
             }
             return createReply(postId, reply)
         },
-        onSuccess: () =>
+        onSuccess: (_reply, data) => {
+            rememberAnonymity(data.isAnonymous)
             invalidateReplyRelated(
                 queryClient,
                 postId
             )
+        }
     })
 
     const updateReplyMutation = useMutation({
