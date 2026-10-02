@@ -126,7 +126,7 @@ Checked with `npm outdated` on 26/09/2026 (69 packages behind). Next 16.3.6 and 
 | 6 | `zod` 3 to 4 with `@hookform/resolvers` 3 to 5 | Upgrade together, as one branch. Touches every form schema and resolver; verify all forms and validation messages |
 | 7 | `eslint` 9 to 10, `@eslint/js`, `eslint-plugin-simple-import-sort` 12 to 14 | Separate branch. Check flat config and the import-sort output (import order is enforced by lint) |
 | 8 | `vitest` 1 to 5, `jsdom` 24 to 29, `@vitejs/plugin-react` 4 to 6, `@testing-library/jest-dom` 6 to 7 | Test-tooling majors. Upgrade together on one branch and confirm all 754 tests still pass |
-| 9 | `lucide-react` 0.564 to 1.48, `sonner` 1 to 2, `react-resizable-panels` 2 to 4, `@vercel/analytics` 1 to 2, `@types/node` 22 to 26 | Independent majors, one branch each. `lucide-react` icon renames are the likeliest breakage |
+| 9 | `lucide-react` 0.564 to 1.48, `sonner` 1 to 2, `react-resizable-panels` 2 to 4, `@types/node` 22 to 26 | Independent majors, one branch each. `lucide-react` icon renames are the likeliest breakage |
 | 10 | Stable React Compiler (`reactCompiler: true`, `babel-plugin-react-compiler`) | Not in the list above (config, not a bump). Higher dev and build compile times per the Next 16 guide. Try on its own branch and measure |
 
 ---

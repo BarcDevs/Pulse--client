@@ -3,8 +3,6 @@ import { Inter, Noto_Sans_Hebrew } from 'next/font/google'
 import { NextIntlClientProvider } from 'next-intl'
 import { getLocale, getMessages } from 'next-intl/server'
 
-import { Analytics } from '@vercel/analytics/next'
-
 import type { LayoutProps } from '@/types'
 
 import { DirectionProvider } from '@/components/ui/direction'
@@ -67,7 +65,6 @@ const RootLayout = async ({
             </NextIntlClientProvider>
         </DirectionProvider>
         <Toaster/>
-        <Analytics/>
         </body>
         </html>
     )
