@@ -3,6 +3,7 @@
 import { ClassName } from '@/types/react'
 
 import { Logo } from '@/components/shared/brand/Logo'
+import { StickySidebar } from '@/components/shared/StickySidebar'
 
 import { cn } from '@/lib/utils'
 
@@ -18,7 +19,7 @@ export const Sidebar = ({
     isErrorPage = false,
     className
 }: SidebarProps) => (
-    <aside className={cn(
+    <StickySidebar className={cn(
         'w-64 border-r border-border bg-surface-card flex flex-col max-sm:hidden',
         className
     )}>
@@ -33,5 +34,5 @@ export const Sidebar = ({
         {isErrorPage
             && <SidebarBottomError/>
         }
-    </aside>
+    </StickySidebar>
 )

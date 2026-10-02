@@ -11,11 +11,11 @@ const DashboardLayout = ({
 }: LayoutProps) => (
     <DashboardClientProviders>
         <div className={'flex flex-col min-h-screen'}>
-            <div className={'flex flex-1 overflow-hidden'}>
-                <Sidebar/>
+            <div className={'flex flex-1 overflow-clip'}>
+                <Sidebar className={'top-0 h-screen self-start'}/>
                 <div className={'flex flex-col flex-1'}>
                     <AppHeader/>
-                    <main className={'flex-1 overflow-auto bg-surface-page'}>
+                    <main className={'flex-1 overflow-x-clip bg-surface-page'}>
                         {children}
                     </main>
                 </div>

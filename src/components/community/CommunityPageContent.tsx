@@ -2,11 +2,7 @@
 
 import { useRef, useState } from 'react'
 
-import {
-    usePathname,
-    useRouter,
-    useSearchParams
-} from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 
 import { toast } from 'sonner'
@@ -33,26 +29,26 @@ import { ROUTES } from '@/constants/routes'
 import { secondInMs } from '@/constants/time'
 
 import { useAuth } from '@/context/AuthContext'
+import { useCommunityTag } from '@/context/CommunityTagContext'
 
 import { communityLocales } from '@/locales/communityLocales'
 import { globalLocales } from '@/locales/globalLocales'
 import { PostFormSchema } from '@/validations/forms/postFormSchema'
 
 import { PostList } from './posts/PostList'
-import { CommunityPanel } from './CommunityPanel'
 import { CommunitySearchBar } from './CommunitySearchBar'
 import { NewPostFloatingButton } from './NewPostFloatingButton'
 
 export const CommunityPageContent = () => {
     const t = useTranslations()
-    const searchParams = useSearchParams()
     const router = useRouter()
     const pathname = usePathname()
     const { user } = useAuth()
     const { showAuthExpiredWithDraft } = useAuthExpiredToast()
-    const [selectedTag, setSelectedTag] = useState<string | null>(
-        searchParams.get('tag')
-    )
+    const {
+        selectedTag,
+        setSelectedTag
+    } = useCommunityTag()
     const [isNewPostOpen, setIsNewPostOpen] = useState(
         () => !!(getDraft(DRAFT_KEYS.newPost(user?.id)) && user)
     )
@@ -153,43 +149,31 @@ export const CommunityPageContent = () => {
     }
 
     return (
-        <div className={'p-6'}>
+        <div className={'flex flex-col gap-4'}>
             {createPost.isPending && (
-                <div className={'mb-4'}>
-                    <SavingBanner message={t(communityLocales.savingMessage)}/>
-                </div>
+                <SavingBanner message={t(communityLocales.savingMessage)}/>
             )}
-            <div className={'mt-2 grid grid-cols-1 lg:grid-cols-3 gap-6'}>
-                <div className={'lg:col-span-2 flex flex-col gap-4'}>
-                    <CommunitySearchBar
-                        searchValue={search}
-                        onSearchAction={setSearch}
-                        onNewPostAction={handleOpenNewPost}
-                        isPostOpen={isNewPostOpen}
-                    />
-                    <PostForm
-                        isReply={false}
-                        isOpen={isNewPostOpen}
-                        isLoading={createPost.isPending}
-                        onSubmitAction={handlePostSubmit}
-                        onCancelAction={() => setIsNewPostOpen(false)}
-                        defaultValues={postDraft}
-                        showAnonymousToggle={true}
-                    />
-                    <PostList
-                        tag={selectedTag}
-                        search={debouncedSearch}
-                        onTagSelectAction={setSelectedTag}
-                        prependPosts={pendingPosts}
-                    />
-                </div>
-
-                <CommunityPanel
-                    selectedTag={selectedTag}
-                    onTagSelect={setSelectedTag}
-                />
-            </div>
-
+            <CommunitySearchBar
+                searchValue={search}
+                onSearchAction={setSearch}
+                onNewPostAction={handleOpenNewPost}
+                isPostOpen={isNewPostOpen}
+            />
+            <PostForm
+                isReply={false}
+                isOpen={isNewPostOpen}
+                isLoading={createPost.isPending}
+                onSubmitAction={handlePostSubmit}
+                onCancelAction={() => setIsNewPostOpen(false)}
+                defaultValues={postDraft}
+                showAnonymousToggle={true}
+            />
+            <PostList
+                tag={selectedTag}
+                search={debouncedSearch}
+                onTagSelectAction={setSelectedTag}
+                prependPosts={pendingPosts}
+            />
             <NewPostFloatingButton
                 isPostOpen={isNewPostOpen}
                 onClickAction={handleOpenNewPost}

@@ -79,6 +79,8 @@
     --feedback-alert: #f59e0b;
     --feedback-motivational: #10b981;
     --feedback-neutral: var(--muted-foreground);
+    --side-column-width: 280px;
+    --header-offset: 6rem;
 
     /* Borders & Inputs */
     --border: #e2e8f0;
@@ -607,6 +609,16 @@
 /*endregion*/
 
 /*region component utilities*/
+@utility side-column {
+    width: var(--side-column-width);
+    flex-shrink: 0;
+}
+
+@utility below-header {
+    top: var(--header-offset);
+    max-height: calc(100dvh - var(--header-offset));
+}
+
 @utility card-base {
     @apply rounded-2xl bg-surface-card p-6;
 }
