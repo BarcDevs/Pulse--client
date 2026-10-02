@@ -1,39 +1,18 @@
 'use client'
 
-import { useRef, useState } from 'react'
+import { useState } from 'react'
 
-import { usePathname, useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
-
-import { toast } from 'sonner'
-
-import { Post } from '@/types/community'
 
 import { PostForm } from '@/components/community/postForm/PostForm'
 import { SavingBanner } from '@/components/shared/SavingBanner'
 
-import { useCreatePostMutation } from '@/hooks/mutations/useCreatePostMutation'
-import { useAuthExpiredToast } from '@/hooks/useAuthExpiredToast'
+import { useCommunityPostComposer } from '@/hooks/useCommunityPostComposer'
 import { useDebounce } from '@/hooks/useDebounce'
 
-import { ANONYMOUS_AUTHOR } from '@/utils/community'
-import {
-    clearDraft,
-    DRAFT_KEYS,
-    getDraft,
-    saveDraft
-} from '@/utils/communityDraft'
-import { isUnauthorizedError } from '@/utils/error'
-
-import { ROUTES } from '@/constants/routes'
-import { secondInMs } from '@/constants/time'
-
-import { useAuth } from '@/context/AuthContext'
 import { useCommunityTag } from '@/context/CommunityTagContext'
 
 import { communityLocales } from '@/locales/communityLocales'
-import { globalLocales } from '@/locales/globalLocales'
-import { PostFormSchema } from '@/validations/forms/postFormSchema'
 
 import { PostList } from './posts/PostList'
 import { CommunitySearchBar } from './CommunitySearchBar'
@@ -41,142 +20,43 @@ import { NewPostFloatingButton } from './NewPostFloatingButton'
 
 export const CommunityPageContent = () => {
     const t = useTranslations()
-    const router = useRouter()
-    const pathname = usePathname()
-    const { user } = useAuth()
-    const { showAuthExpiredWithDraft } = useAuthExpiredToast()
     const {
         selectedTag,
         setSelectedTag
     } = useCommunityTag()
-    const [isNewPostOpen, setIsNewPostOpen] = useState(
-        () => !!(getDraft(DRAFT_KEYS.newPost(user?.id)) && user)
-    )
+    const composer = useCommunityPostComposer()
     const [search, setSearch] = useState('')
-    const [pendingPosts, setPendingPosts] = useState<Post[]>([])
-    const tempCountRef = useRef(0)
     const debouncedSearch = useDebounce(search)
-    const createPost = useCreatePostMutation()
-
-    const [postDraft] = useState(() => getDraft(DRAFT_KEYS.newPost(user?.id))?.data)
-
-    const handleOpenNewPost = () => {
-        if (!user) {
-            toast.info(t(communityLocales.toasts.loginToCreate), {
-                action: {
-                    label: t(communityLocales.toasts.loginButton),
-                    onClick: () => router.push(
-                        ROUTES.loginWithRedirect(pathname)
-                    )
-                }
-            })
-            return
-        }
-        setIsNewPostOpen(true)
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        })
-    }
-
-    const handlePostSubmit = async (data: PostFormSchema) => {
-        tempCountRef.current += 1
-        const tempPost: Post = {
-            id: `temp-post-${tempCountRef.current}`,
-            title: data.title ?? '',
-            body: data.body,
-            category: data.category ?? '',
-            tags: [],
-            replies: [],
-            views: 0,
-            shareCount: 0,
-            createdAt: new Date(),
-            updatedAt: null,
-            authorId: user?.id ?? '',
-            isAnonymous: data.isAnonymous,
-            author: data.isAnonymous
-                ? ANONYMOUS_AUTHOR
-                : user
-                ? {
-                    id: user.id,
-                    image: user.profile?.image ?? null,
-                    user: {
-                        id: user.id,
-                        username: user.username,
-                        firstName: user.firstName,
-                        lastName: user.lastName
-                    }
-                }    : undefined
-        }
-        setPendingPosts((prev) => [tempPost, ...prev])
-        setIsNewPostOpen(false)
-        window.scrollTo({ top: 0, behavior: 'smooth' })
-
-        try {
-            const realPost = await createPost.mutateAsync(data)
-            setPendingPosts((prev) =>
-                prev.map((p) => p.id === tempPost.id ? realPost : p)
-            )
-            clearDraft(DRAFT_KEYS.newPost(user?.id))
-            toast.success(
-                t(communityLocales.toasts.postPublished),
-                { duration: 2.5 * secondInMs }
-            )
-        } catch (error) {
-            setPendingPosts((prev) =>
-                prev.filter((p) => p.id !== tempPost.id)
-            )
-            if (isUnauthorizedError(error as Error)) {
-                saveDraft(
-                    DRAFT_KEYS.newPost(user?.id),
-                    'newPost',
-                    data
-                )
-                showAuthExpiredWithDraft()
-                return
-            }
-            toast.error(
-                t(communityLocales.toasts.postPublishFailed),
-                {
-                    action: {
-                        label: t(globalLocales.shared.retry),
-                        onClick: () => void handlePostSubmit(data)
-                    },
-                    duration: 5 * secondInMs
-                }
-            )
-        }
-    }
 
     return (
         <div className={'flex flex-col gap-4'}>
-            {createPost.isPending && (
+            {composer.isPublishing && (
                 <SavingBanner message={t(communityLocales.savingMessage)}/>
             )}
             <CommunitySearchBar
                 searchValue={search}
                 onSearchAction={setSearch}
-                onNewPostAction={handleOpenNewPost}
-                isPostOpen={isNewPostOpen}
+                onNewPostAction={composer.openNewPost}
+                isPostOpen={composer.isNewPostOpen}
             />
             <PostForm
                 isReply={false}
-                isOpen={isNewPostOpen}
-                isLoading={createPost.isPending}
-                onSubmitAction={handlePostSubmit}
-                onCancelAction={() => setIsNewPostOpen(false)}
-                defaultValues={postDraft}
+                isOpen={composer.isNewPostOpen}
+                isLoading={composer.isPublishing}
+                onSubmitAction={composer.submitPost}
+                onCancelAction={composer.closeNewPost}
+                defaultValues={composer.postDraft}
                 showAnonymousToggle={true}
             />
             <PostList
                 tag={selectedTag}
                 search={debouncedSearch}
                 onTagSelectAction={setSelectedTag}
-                prependPosts={pendingPosts}
+                prependPosts={composer.pendingPosts}
             />
             <NewPostFloatingButton
-                isPostOpen={isNewPostOpen}
-                onClickAction={handleOpenNewPost}
+                isPostOpen={composer.isNewPostOpen}
+                onClickAction={composer.openNewPost}
             />
         </div>
     )
