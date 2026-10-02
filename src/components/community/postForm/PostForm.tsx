@@ -39,8 +39,8 @@ export const PostForm = ({
     showAnonymousToggle = false
 }: PostFormProps) => {
     const { data: profile } = useProfileQuery()
-    // The profile holds the last choice; anonymous until it says otherwise
-    const lastChoice = profile?.anonymousParticipation ?? true
+    // The profile holds the last choice; off until it says otherwise
+    const lastChoice = profile?.anonymousParticipation ?? false
     const { form, handleSubmit } = usePostForm({
         onSubmit: onSubmitAction,
         isReply,

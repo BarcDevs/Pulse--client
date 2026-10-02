@@ -27,7 +27,7 @@ export const PostFormAnonymousToggle = ({
                 <SettingToggle
                     label={t(communityLocales.postForm.anonymous)}
                     description={t(communityLocales.postForm.anonymousHint)}
-                    checked={field.value ?? true}
+                    checked={field.value ?? false}
                     onChangeAction={field.onChange}
                 />
             )}
