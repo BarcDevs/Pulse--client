@@ -7,6 +7,9 @@ import type { CheckInInsight } from '@/types/checkIn'
 import { BaseDialog } from '@/components/shared/BaseDialog'
 import { Button } from '@/components/shared/buttons/Button'
 
+import { getInsightDialogStyle } from '@/lib/insights/getInsightTypeStyle'
+import { cn } from '@/lib/utils'
+
 import { checkInLocales } from '@/locales/checkInLocales'
 
 type InsightDialogProps = {
@@ -26,7 +29,10 @@ export const InsightDialog = ({
             onOpenChangeAction={onOpenChangeAction}
             title={insight?.title}
             description={insight?.content}
-            className={'max-h-[85dvh] overflow-y-auto'}
+            className={cn(
+                'max-h-[85dvh] overflow-y-auto',
+                insight && getInsightDialogStyle(insight.type)
+            )}
             descriptionClassName={'whitespace-pre-line text-foreground'}
         >
             <div className={'flex justify-center mt-2'}>

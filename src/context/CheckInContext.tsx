@@ -22,6 +22,7 @@ import { InsightDialog } from '@/components/checkIn/InsightDialog'
 import { useProfile } from '@/hooks/queries/useProfile'
 
 import { applyOptimisticCheckIn } from '@/lib/checkIn/optimisticCheckIn'
+import { getInsightToastStyle } from '@/lib/insights/getInsightTypeStyle'
 
 import { checkInQueryKeys } from '@/constants/queryKeys'
 import { ROUTES } from '@/constants/routes'
@@ -70,6 +71,7 @@ export const CheckInProvider = ({
                 toast(insight.title, {
                     description: insight.content,
                     duration: timings.INSIGHT_TOAST_DURATION,
+                    style: getInsightToastStyle(insight.type),
                     action: {
                         label: t(checkInLocales.insightToast.showInFull),
                         onClick: () => setOpenInsight(insight)
