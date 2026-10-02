@@ -156,6 +156,9 @@
       "placeholder": "Write about how today feels, what's been difficult, or anything else on your mind."
     },
     "submitError": "We couldn't save your daily update right now. Please try again in a moment.",
+    "insightToast": {
+      "showInFull": "Show in full"
+    },
     "submitPendingMessage": "Processing your check-in…",
     "quotes": [
       "Showing up today is already meaningful.",

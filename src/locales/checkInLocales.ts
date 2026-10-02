@@ -28,5 +28,8 @@ export const checkInLocales = {
     },
     quotes: 'checkIn.quotes',
     submitError: 'checkIn.submitError',
-    submitPendingMessage: 'checkIn.submitPendingMessage'
+    submitPendingMessage: 'checkIn.submitPendingMessage',
+    insightToast: {
+        showInFull: 'checkIn.insightToast.showInFull'
+    }
 } as const

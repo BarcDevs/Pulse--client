@@ -1,10 +1,8 @@
-import type { CheckIn } from '@/types/checkIn'
+import type { CheckIn, CheckInInsight } from '@/types/checkIn'
 
 export const getLatestInsights = (
     checkIns: CheckIn[] | undefined
-) => {
-    const latestInsight =
-        checkIns?.[0]?.insights?.[0]
-
-    return latestInsight?.content ?? null
-}
+): CheckInInsight[] =>
+    (checkIns?.[0]?.insights ?? [])
+        .filter((insight) => insight.content)
+        .sort((a, b) => a.createdAt.localeCompare(b.createdAt))

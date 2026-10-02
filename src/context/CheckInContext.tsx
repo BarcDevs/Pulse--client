@@ -14,7 +14,10 @@ import { toast } from 'sonner'
 
 import { useQueryClient } from '@tanstack/react-query'
 
+import type { CheckInInsight } from '@/types/checkIn'
 import { ContextProps } from '@/types/react'
+
+import { InsightDialog } from '@/components/checkIn/InsightDialog'
 
 import { useProfile } from '@/hooks/queries/useProfile'
 
@@ -23,6 +26,8 @@ import { applyOptimisticCheckIn } from '@/lib/checkIn/optimisticCheckIn'
 import { checkInQueryKeys } from '@/constants/queryKeys'
 import { ROUTES } from '@/constants/routes'
 import { secondInMs } from '@/constants/time'
+
+import { timings } from '@/config/timings'
 
 import { handleCheckInSubmit } from '@/handlers/actions/checkIn'
 
@@ -34,6 +39,7 @@ type CheckInContextType = {
     isPending: boolean
     isSubmitted: boolean
     submitCheckIn: (data: CheckInSchema) => void
+    showInsight: (insight: CheckInInsight) => void
 }
 
 const CheckInContext =
@@ -50,6 +56,8 @@ export const CheckInProvider = ({
     const dateFnsLocale = locale === 'he-IL' ? he : undefined
     const [isPending, setIsPending] = useState(false)
     const [isSubmitted, setIsSubmitted] = useState(false)
+    const [openInsight, setOpenInsight] =
+        useState<CheckInInsight | null>(null)
 
     const runSubmit = async (
         data: CheckInSchema,
@@ -61,7 +69,11 @@ export const CheckInProvider = ({
             checkIn.insights?.forEach((insight) => {
                 toast(insight.title, {
                     description: insight.content,
-                    duration: 8 * secondInMs
+                    duration: timings.INSIGHT_TOAST_DURATION,
+                    action: {
+                        label: t(checkInLocales.insightToast.showInFull),
+                        onClick: () => setOpenInsight(insight)
+                    }
                 })
             })
             void queryClient.invalidateQueries({
@@ -112,12 +124,17 @@ export const CheckInProvider = ({
     const value: CheckInContextType = {
         isPending,
         isSubmitted,
-        submitCheckIn
+        submitCheckIn,
+        showInsight: setOpenInsight
     }
 
     return (
         <CheckInContext.Provider value={value}>
             {children}
+            <InsightDialog
+                insight={openInsight}
+                onOpenChangeAction={() => setOpenInsight(null)}
+            />
         </CheckInContext.Provider>
     )
 }

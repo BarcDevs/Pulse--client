@@ -13,32 +13,68 @@ describe(
     'getLatestInsights',
     () => {
         it(
-            'should return null when checkIns is undefined',
+            'should return an empty array when checkIns is undefined',
             () => {
-                expect(getLatestInsights(undefined)).toBe(null)
+                expect(getLatestInsights(undefined)).toEqual([])
             })
 
         it(
-            'should return null for an empty array',
+            'should return an empty array for an empty array',
             () => {
-                expect(getLatestInsights([])).toBe(null)
+                expect(getLatestInsights([])).toEqual([])
             })
 
         it(
-            'should return null when the first checkIn has no insights',
+            'should return an empty array when the first checkIn has no insights',
             () => {
                 const checkIns = [{ insights: [] }] as unknown as CheckIn[]
 
-                expect(getLatestInsights(checkIns)).toBe(null)
+                expect(getLatestInsights(checkIns)).toEqual([])
             })
 
         it(
-            'should return the insight content when present',
+            'should return all insights of the latest check-in oldest first',
             () => {
+                const baseline = {
+                    content: 'Baseline',
+                    createdAt: '2026-10-02T08:00:00.000Z'
+                }
+                const support = {
+                    content: 'Support',
+                    createdAt: '2026-10-02T09:00:00.000Z'
+                }
                 const checkIns = [
-                    { insights: [{ content: 'Great progress today!' }] }
+                    { insights: [support, baseline] },
+                    {
+                        insights: [{
+                            content: 'Yesterday',
+                            createdAt: '2026-10-01T09:00:00.000Z'
+                        }]
+                    }
                 ] as unknown as CheckIn[]
 
-                expect(getLatestInsights(checkIns)).toBe('Great progress today!')
+                expect(getLatestInsights(checkIns)).toEqual([baseline, support])
+            })
+
+        it(
+            'should skip insights with empty content',
+            () => {
+                const real = {
+                    content: 'Real',
+                    createdAt: '2026-10-02T08:00:00.000Z'
+                }
+                const checkIns = [
+                    {
+                        insights: [
+                            real,
+                            {
+                                content: '',
+                                createdAt: '2026-10-02T09:00:00.000Z'
+                            }
+                        ]
+                    }
+                ] as unknown as CheckIn[]
+
+                expect(getLatestInsights(checkIns)).toEqual([real])
             })
     })

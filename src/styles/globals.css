@@ -74,6 +74,11 @@
     --warning-deep: #b45309;
     --destructive-light: #fee2e2;
     --destructive-deep: #b91c1c;
+    --feedback-support: #8b5cf6;
+    --feedback-summary: #0ea5a4;
+    --feedback-alert: #f59e0b;
+    --feedback-motivational: #10b981;
+    --feedback-neutral: var(--muted-foreground);
 
     /* Borders & Inputs */
     --border: #e2e8f0;
@@ -324,6 +329,11 @@
     --color-warning-deep: var(--warning-deep);
     --color-destructive-light: var(--destructive-light);
     --color-destructive-deep: var(--destructive-deep);
+    --color-feedback-support: var(--feedback-support);
+    --color-feedback-summary: var(--feedback-summary);
+    --color-feedback-alert: var(--feedback-alert);
+    --color-feedback-motivational: var(--feedback-motivational);
+    --color-feedback-neutral: var(--feedback-neutral);
     --color-border: var(--border);
     --color-input: var(--input);
     --color-ring: var(--ring);

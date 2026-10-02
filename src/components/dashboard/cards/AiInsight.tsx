@@ -1,18 +1,11 @@
 'use client'
 
-import {
-    useLayoutEffect,
-    useRef,
-    useState
-} from 'react'
-
 import { useTranslations } from 'next-intl'
 
 import { Sparkles } from 'lucide-react'
 
 import { ClassName } from '@/types/react'
 
-import { TextButton } from '@/components/shared/buttons/TextButton'
 import { Card } from '@/components/shared/cards/Card'
 import {
     CardContent,
@@ -24,9 +17,10 @@ import { Skeleton } from '@/components/ui/skeleton'
 import { useCheckIns } from '@/hooks/queries/useCheckIns'
 
 import { getLatestInsights } from '@/lib/insights/getLatestInsights'
-import { cn } from '@/lib/utils'
 
 import { dashboardLocales } from '@/locales/dashboardLocales'
+
+import { DashboardInsightItem } from './DashboardInsightItem'
 
 type DashboardAIInsightProps = {
     className?: ClassName
@@ -36,31 +30,14 @@ export const DashboardAIInsight = ({
     className
 }: DashboardAIInsightProps) => {
     const t = useTranslations()
-    const [isExpanded, setIsExpanded] = useState(false)
-    const [isTruncated, setIsTruncated] = useState(false)
-    const blockquoteRef = useRef<HTMLQuoteElement>(null)
     const {
         data: checkInsResponse,
         isLoading,
         isError
     } = useCheckIns(1)
 
-    const insightText =
+    const insights =
         getLatestInsights(checkInsResponse)
-
-    useLayoutEffect(() => {
-        const el = blockquoteRef.current
-        if (!el || isExpanded) return
-
-        const checkTruncation = () =>
-            setIsTruncated(el.scrollHeight > el.clientHeight)
-
-        checkTruncation()
-
-        const observer = new ResizeObserver(checkTruncation)
-        observer.observe(el)
-        return () => observer.disconnect()
-    }, [insightText, isExpanded])
 
     return (
         <Card className={className}>
@@ -79,30 +56,17 @@ export const DashboardAIInsight = ({
                     <p className={'text-sm text-muted-foreground'}>
                         {t(dashboardLocales.aiInsight.failedToLoad)}
                     </p>
-                ) : !insightText ? (
+                ) : insights.length === 0 ? (
                     <p className={'text-sm text-muted-foreground'}>
                         {t(dashboardLocales.noInsights)}
                     </p>
                 ) : (
-                    <>
-                        <blockquote
-                            ref={blockquoteRef}
-                            className={cn(
-                                'border-s-2 border-primary ps-4 italic text-foreground text-sm',
-                                !isExpanded && 'line-clamp-3'
-                            )}
-                        >
-                            {insightText}
-                        </blockquote>
-                        {isTruncated && (
-                            <TextButton onClick={() => setIsExpanded(!isExpanded)}>
-                                {t(isExpanded
-                                    ? dashboardLocales.aiInsight.seeLess
-                                    : dashboardLocales.aiInsight.seeMore
-                                )}
-                            </TextButton>
-                        )}
-                    </>
+                    insights.map((insight) => (
+                        <DashboardInsightItem
+                            key={insight.id}
+                            insight={insight}
+                        />
+                    ))
                 )}
             </CardContent>
         </Card>
