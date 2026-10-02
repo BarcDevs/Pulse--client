@@ -34,7 +34,7 @@ ENV NEXT_PUBLIC_HOSTNAME=$NEXT_PUBLIC_HOSTNAME
 ENV NEXT_PUBLIC_SENTRY_REPLAYS_SESSION_SAMPLE_RATE=$NEXT_PUBLIC_SENTRY_REPLAYS_SESSION_SAMPLE_RATE
 ENV NEXT_PUBLIC_SENTRY_DSN=$NEXT_PUBLIC_SENTRY_DSN
 
-RUN npm run build
+RUN --mount=type=cache,id=next-cache,target=/app/.next/cache npm run build
 
 # ── runner ────────────────────────────────────────────────────────────────────
 FROM base AS runner
