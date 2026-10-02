@@ -4,14 +4,8 @@ import { MouseEvent } from 'react'
 
 import { LucideIcon, Trash2 } from 'lucide-react'
 
+import { BaseDialog } from '@/components/shared/BaseDialog'
 import { Button } from '@/components/shared/buttons/Button'
-import {
-    Dialog,
-    DialogContent,
-    DialogDescription,
-    DialogHeader,
-    DialogTitle
-} from '@/components/ui/dialog'
 
 type ConfirmationDialogProps = {
     open: boolean
@@ -54,44 +48,37 @@ export const ConfirmationDialog = ({
     }
 
     return (
-        <Dialog
+        <BaseDialog
             open={open}
-            onOpenChange={onOpenChangeAction}
-        >
-            <DialogContent
-                showCloseButton={false}
-                className={'max-w-sm'}
-            >
-                <DialogHeader>
-                    <div className={'flex items-center justify-center w-12 h-12 rounded-full bg-red-100 mx-auto mb-2'}>
-                        <Icon
-                            className={DESTRUCTIVE_CLASS}
-                            size={20}
-                        />
-                    </div>
-                    <DialogTitle className={'text-center'}>
-                        {title}
-                    </DialogTitle>
-                    <DialogDescription className={'text-center'}>
-                        {description}
-                    </DialogDescription>
-                </DialogHeader>
-                <div className={'flex justify-center gap-2 mt-2'}>
-                    <Button
-                        variant={'secondary'}
-                        onClick={handleCancel}
-                    >
-                        {cancelLabel}
-                    </Button>
-                    <Button
-                        variant={'destructive'}
-                        disabled={isLoading}
-                        onClick={handleConfirm}
-                    >
-                        {label}
-                    </Button>
+            onOpenChangeAction={onOpenChangeAction}
+            title={title}
+            description={description}
+            isCentered={true}
+            className={'max-w-sm'}
+            icon={
+                <div className={'flex items-center justify-center w-12 h-12 rounded-full bg-red-100 mx-auto mb-2'}>
+                    <Icon
+                        className={DESTRUCTIVE_CLASS}
+                        size={20}
+                    />
                 </div>
-            </DialogContent>
-        </Dialog>
+            }
+        >
+            <div className={'flex justify-center gap-2 mt-2'}>
+                <Button
+                    variant={'secondary'}
+                    onClick={handleCancel}
+                >
+                    {cancelLabel}
+                </Button>
+                <Button
+                    variant={'destructive'}
+                    disabled={isLoading}
+                    onClick={handleConfirm}
+                >
+                    {label}
+                </Button>
+            </div>
+        </BaseDialog>
     )
 }
