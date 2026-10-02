@@ -4,14 +4,12 @@ import { useTranslations } from 'next-intl'
 
 import { Sparkles } from 'lucide-react'
 
-import { CheckInInsight } from '@/types/checkIn'
-
+import { InsightDialogItem } from '@/components/checkIn/InsightDialogItem'
 import { EmptyState } from '@/components/shared/EmptyState'
 
 import { useCheckIns } from '@/hooks/queries/useCheckIns'
 
-import { getInsightColor } from '@/lib/milestones'
-import { cn } from '@/lib/utils'
+import { getLatestInsights } from '@/lib/insights/getLatestInsights'
 
 import { goalsLocales } from '@/locales/goalsLocales'
 
@@ -27,9 +25,8 @@ export const GoalInsightsSection = () => {
         isError: checkInsError
     } = useCheckIns(5)
 
-    const insights = checkIns?.[0]?.insights ?? []
-    const displayedInsights = insights.slice(0, 2)
-    const hasInsights = displayedInsights.length > 0
+    const insights = getLatestInsights(checkIns)
+    const hasInsights = insights.length > 0
 
     return (
         <>
@@ -58,18 +55,11 @@ export const GoalInsightsSection = () => {
                         </h4>
                     </div>
                     <div className={'space-y-4'}>
-                        {displayedInsights.map((insight: CheckInInsight) => (
-                            <div
+                        {insights.map((insight) => (
+                            <InsightDialogItem
                                 key={insight.id}
-                                className={cn(getInsightColor(insight.type), 'p-4 rounded-lg')}
-                            >
-                                <p className={'text-sm font-medium mb-1'}>
-                                    {insight.title}
-                                </p>
-                                <p className={'text-xs'}>
-                                    {insight.content}
-                                </p>
-                            </div>
+                                insight={insight}
+                            />
                         ))}
                     </div>
                 </div>
