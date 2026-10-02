@@ -57,6 +57,13 @@ Cookie/storage consent and privacy-disclosure decisions.
 | 30/09/2026 | Community pages require sign-in (reverses the June semi-public decision) |
 | 02/10/2026 | Vercel Analytics removed — it never loaded on EC2; analytics sentence dropped from the Privacy page |
 
+## Dependency Security — [[decisions/dependency-security]]
+`npm audit` findings and whether/how they're addressed.
+
+| Date | Entry |
+|---|---|
+| 02/10/2026 | `quill` XSS (GHSA-v3m3-f69x-jf25) accepted, not force-downgraded — no upstream fix exists, and all render paths already sanitize via DOMPurify |
+
 ## Agent Models — [[decisions/agent-models]]
 Which model each custom agent runs on, and why.
 
