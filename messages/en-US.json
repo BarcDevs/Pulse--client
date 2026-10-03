@@ -156,6 +156,10 @@
       "placeholder": "Write about how today feels, what's been difficult, or anything else on your mind."
     },
     "submitError": "We couldn't save your daily update right now. Please try again in a moment.",
+    "insightToast": {
+      "showInFull": "Show in full",
+      "close": "Close"
+    },
     "submitPendingMessage": "Processing your check-in…",
     "quotes": [
       "Showing up today is already meaningful.",
@@ -236,7 +240,8 @@
       "repliesLoadError": "Unable to load replies",
       "postLoadError": "Unable to load this post right now. Please try again.",
       "writeReplyPlaceholder": "Write a supportive reply…",
-      "authorBadge": "Author"
+      "authorBadge": "Author",
+      "deletedUser": "Deleted user"
     },
     "postActions": {
       "solidarity": "Showed support",
@@ -266,6 +271,9 @@
       "tagsPlaceholder": "Add a topic like recovery, anxiety, sleep...",
       "tagsPlaceholderMore": "Add another topic...",
       "tagsHint": "Add 1–5 topics to help others find your post",
+      "anonymous": "Post anonymously",
+      "anonymousHint": "Your name and picture will be hidden from other members.",
+      "privacyNote": "For your safety, don't share private or identifying details like your full name, phone number, address or workplace. Everyone in the community can read what you write.",
       "tagSuggestions": "Suggested topics",
       "tagPopularTopics": "Popular topics",
       "categoryHint": "What kind of conversation would you like to start?"
@@ -329,7 +337,6 @@
     "aiInsight": {
       "label": "Insight",
       "seeMore": "Read more",
-      "seeLess": "Show less",
       "failedToLoad": "We couldn't load insights right now"
     },
     "noInsights": "Complete a few more check-ins to unlock personalized insights and trends.",
@@ -957,10 +964,6 @@
         "title": "Data Sharing",
         "description": "Allow anonymous data to help improve recovery research and insights"
       },
-      "anonymousParticipation": {
-        "label": "Anonymous Participation",
-        "description": "Hide your identity in community discussions"
-      },
       "activityVisible": {
         "label": "Activity Visible to Mentors",
         "description": "Allow your care team to view your progress"
@@ -999,7 +1002,7 @@
         "description": "Permanently remove your account and recovery data",
         "buttonText": "Delete account",
         "confirmTitle": "Delete Account",
-        "confirmDescription": "Your account will be deactivated right away and permanently deleted after 30 days, including your check-ins, insights, goals and posts. Log back in within 30 days to cancel. To delete immediately, contact support.",
+        "confirmDescription": "Your account will be deactivated right away and permanently deleted after 30 days, including your check-ins, insights, goals and posts. Replies you wrote on other people's posts stay, shown as \"Deleted user\". Log back in within 30 days to cancel. To delete immediately, contact support.",
         "confirmButton": "Yes, delete",
         "confirmingButton": "Deleting...",
         "cancelButton": "Cancel",
@@ -1448,7 +1451,7 @@
         },
         "deleteData": {
           "q": "Can I export or delete my data?",
-          "a": "You can delete your account from <settings>Settings</settings>. It's permanently deleted after 30 days, and logging back in before then cancels the deletion. To delete it immediately, send us a message using <contact>the form below</contact>."
+          "a": "You can delete your account from <settings>Settings</settings>. It's permanently deleted after 30 days, and logging back in before then cancels the deletion. Your posts are deleted with it; replies you wrote on other people's posts stay, shown as \"Deleted user\". To delete it immediately, send us a message using <contact>the form below</contact>."
         }
       }
     },
@@ -1630,7 +1633,7 @@
                 },
                 {
                   "label": "With trusted service providers",
-                  "text": "We work with carefully selected providers who help us securely operate Pulse: cloud hosting (AWS), error monitoring (Sentry), privacy-friendly page-view analytics (Vercel Web Analytics, no cookies), AI providers that write your insights (Anthropic, Google and OpenAI), Google when you choose to sign in with Google, and OpenStreetMap (Nominatim) when you search for a location, which receives the text you type and your IP address."
+                  "text": "We work with carefully selected providers who help us securely operate Pulse: cloud hosting (AWS), error monitoring (Sentry), AI providers that write your insights (Anthropic, Google and OpenAI), Google when you choose to sign in with Google, and OpenStreetMap (Nominatim) when you search for a location, which receives the text you type and your IP address."
                 },
                 {
                   "label": "When required by law",
@@ -1682,7 +1685,7 @@
                 },
                 {
                   "label": "Delete",
-                  "text": "Request deletion of your account and associated personal information."
+                  "text": "Request deletion of your account and associated personal information. Your posts are deleted with it. Replies you left on other people's posts stay, shown as \"Deleted user\" without your name or picture, but the text you wrote is kept as written."
                 },
                 {
                   "label": "Questions",
@@ -1695,7 +1698,7 @@
         {
           "title": "Data retention",
           "body": [
-            "We keep your information only for as long as it is needed to provide Pulse, comply with legal obligations, and maintain the integrity of our services. When your account is deleted, your personal information is removed according to our data retention policies."
+            "We keep your information only for as long as it is needed to provide Pulse, comply with legal obligations, and maintain the integrity of our services. When your account is deleted, your personal information is removed according to our data retention policies. Replies you left on other people's posts are the exception: they are kept as written, without your name or picture."
           ]
         },
         {

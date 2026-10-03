@@ -1,6 +1,6 @@
 import { LegalCalloutTone } from '@/types/legal'
 
-export const PRIVACY_UPDATED_DATE = '2026-09-30'
+export const PRIVACY_UPDATED_DATE = '2026-10-02'
 export const TERMS_UPDATED_DATE = '2026-04-28'
 
 export const PRIVACY_CALLOUT_TONES: LegalCalloutTone[] = ['info']

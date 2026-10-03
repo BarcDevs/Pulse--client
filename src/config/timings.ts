@@ -7,6 +7,7 @@ import { secondInMs } from '@/constants/time'
 export const timings = {
     // Toast and notification durations
     TOAST_DURATION: 3 * secondInMs,
+    INSIGHT_TOAST_DURATION: 30 * secondInMs,
 
     // Animation durations
     ANIMATION_DURATION_FAST: 0.3 * secondInMs,

@@ -3,10 +3,9 @@ import { Inter, Noto_Sans_Hebrew } from 'next/font/google'
 import { NextIntlClientProvider } from 'next-intl'
 import { getLocale, getMessages } from 'next-intl/server'
 
-import { Analytics } from '@vercel/analytics/next'
-
 import type { LayoutProps } from '@/types'
 
+import { AppShell } from '@/components/layout/AppShell'
 import { DirectionProvider } from '@/components/ui/direction'
 import { Toaster } from '@/components/ui/sonner'
 
@@ -61,13 +60,14 @@ const RootLayout = async ({
             >
                 <QueryProvider>
                     <AuthProvider>
-                        {children}
+                        <AppShell>
+                            {children}
+                        </AppShell>
                     </AuthProvider>
                 </QueryProvider>
             </NextIntlClientProvider>
         </DirectionProvider>
         <Toaster/>
-        <Analytics/>
         </body>
         </html>
     )

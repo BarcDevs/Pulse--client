@@ -91,8 +91,11 @@ vi.mock('@/components/community/posts/PostList', () => ({
     PostList: () => <div/>
 }))
 
-vi.mock('@/components/community/CommunityPanel', () => ({
-    CommunityPanel: () => <div/>
+vi.mock('@/context/CommunityTagContext', () => ({
+    useCommunityTag: () => ({
+        selectedTag: null,
+        setSelectedTag: vi.fn()
+    })
 }))
 
 vi.mock('@/components/shared/SavingBanner', () => ({

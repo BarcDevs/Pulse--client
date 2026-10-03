@@ -9,30 +9,25 @@ const JUMP_OFFSET = 80
 
 export const useLegalScrollSpy = (sectionIds: string[]) => {
     const [activeId, setActiveId] = useState(sectionIds[0])
-    const scrollerRef = useRef<HTMLDivElement>(null)
     const sectionRefs = useRef<Record<string, HTMLElement | null>>({})
 
     useEffect(() => {
-        const scroller = scrollerRef.current
-
-        if (!scroller) return
-
         const handleScroll = () => {
             let current = sectionIds[0]
 
             for (const id of sectionIds) {
                 const el = sectionRefs.current[id]
 
-                if (el && el.offsetTop - SCROLL_OFFSET <= scroller.scrollTop)
+                if (el && el.getBoundingClientRect().top <= SCROLL_OFFSET)
                     current = id
             }
 
             setActiveId(current)
         }
 
-        scroller.addEventListener('scroll', handleScroll)
+        window.addEventListener('scroll', handleScroll)
 
-        return () => scroller.removeEventListener('scroll', handleScroll)
+        return () => window.removeEventListener('scroll', handleScroll)
     }, [sectionIds])
 
     const registerSection = (id: string) => (el: HTMLElement | null) => {
@@ -41,11 +36,10 @@ export const useLegalScrollSpy = (sectionIds: string[]) => {
 
     const jumpTo = (id: string) => {
         const el = sectionRefs.current[id]
-        const scroller = scrollerRef.current
 
-        if (el && scroller) {
-            scroller.scrollTo({
-                top: el.offsetTop - JUMP_OFFSET,
+        if (el) {
+            window.scrollTo({
+                top: window.scrollY + el.getBoundingClientRect().top - JUMP_OFFSET,
                 behavior: 'smooth'
             })
         }
@@ -53,7 +47,6 @@ export const useLegalScrollSpy = (sectionIds: string[]) => {
 
     return {
         activeId,
-        scrollerRef,
         registerSection,
         jumpTo
     }

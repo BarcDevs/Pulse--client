@@ -78,20 +78,6 @@ export const getMilestoneIconColor = (
     }
 }
 
-export const getInsightColor = (
-    type: string
-): string => {
-    switch (type) {
-        case 'MOTIVATIONAL':
-            return 'bg-blue-50'
-        case 'MOOD_DROP_ALERT':
-            return 'bg-purple-50'
-        case 'WEEKLY_SUMMARY':
-            return 'bg-green-50'
-        default:
-            return 'bg-slate-50'
-    }
-}
 
 export const getMilestoneCardConfig = (
     milestone: GoalMilestone,

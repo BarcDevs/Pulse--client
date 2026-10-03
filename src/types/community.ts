@@ -13,6 +13,7 @@ type Post_Base = {
     updatedAt: Date | null
     authorId: string
     author?: PartialUser
+    isAnonymous?: boolean
     _count?: {
         likes?: number
     }
@@ -31,7 +32,10 @@ export type Post = Prettify<{
     }
 } & Post_Base>
 
-export type Reply = Prettify<Post_Base>
+// A reply stays after its author's account is purged, with no author id
+export type Reply = Prettify<Omit<Post_Base, 'authorId'> & {
+    authorId: string | null
+}>
 
 export type TagLabel = {
     en: string

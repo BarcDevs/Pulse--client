@@ -9,7 +9,8 @@ has nothing that fits.
 | File | Purpose |
 |---|---|
 | `ActionsMenu.tsx` | Dropdown/menu of row/item actions |
-| `ConfirmationDialog.tsx` | Generic confirm/cancel modal |
+| `BaseDialog.tsx` | Base modal (title, description, optional icon, footer children, no X); build dialogs on this |
+| `ConfirmationDialog.tsx` | Confirm/cancel modal built on `BaseDialog` |
 | `EmptyState.tsx` | Placeholder for an empty list/section |
 | `ErrorBanner.tsx` | Dismissible inline error banner |
 | `ErrorBannerWrapper.tsx` | Wraps `ErrorBanner` with state/positioning |
@@ -19,6 +20,7 @@ has nothing that fits.
 | `PageHeader.tsx` | Page-level header (title/actions/tabs) |
 | `PageHeaderTabs.tsx` | Tab strip used inside `PageHeader` |
 | `SavingBanner.tsx` | "Saving..." status banner |
+| `StickySidebar.tsx` | Sticky, independently scrolling side panel (`aside`); the nav `Sidebar` and the community side cards are built on it |
 | `StandalonePageShell.tsx` | Wraps a page that sits outside `(dashboard)` (support, legal docs) with the sidebar when signed in, so logged-out visitors still get the bare page |
 
 ## Subfolders

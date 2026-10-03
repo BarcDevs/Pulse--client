@@ -63,7 +63,8 @@ export const communityLocales = {
         repliesLoadError: 'community.postDetail.repliesLoadError',
         postLoadError: 'community.postDetail.postLoadError',
         writeReplyPlaceholder: 'community.postDetail.writeReplyPlaceholder',
-        authorBadge: 'community.postDetail.authorBadge'
+        authorBadge: 'community.postDetail.authorBadge',
+        deletedUser: 'community.postDetail.deletedUser'
     },
     postActions: {
         solidarity: 'community.postActions.solidarity',
@@ -105,6 +106,9 @@ export const communityLocales = {
         tagsPlaceholder: 'community.postForm.tagsPlaceholder',
         tagsPlaceholderMore: 'community.postForm.tagsPlaceholderMore',
         tagsHint: 'community.postForm.tagsHint',
+        privacyNote: 'community.postForm.privacyNote',
+        anonymous: 'community.postForm.anonymous',
+        anonymousHint: 'community.postForm.anonymousHint',
         tagSuggestions: 'community.postForm.tagSuggestions',
         tagPopularTopics: 'community.postForm.tagPopularTopics',
         categoryHint: 'community.postForm.categoryHint'

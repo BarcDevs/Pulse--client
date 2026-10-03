@@ -72,8 +72,16 @@
     --success-deep: #047857;
     --warning-light: #fef3c7;
     --warning-deep: #b45309;
+    --dialog-max-height: 85dvh;
     --destructive-light: #fee2e2;
     --destructive-deep: #b91c1c;
+    --feedback-support: #8b5cf6;
+    --feedback-summary: #0ea5a4;
+    --feedback-alert: #f59e0b;
+    --feedback-motivational: #10b981;
+    --feedback-neutral: var(--muted-foreground);
+    --side-column-width: 280px;
+    --header-offset: 6rem;
 
     /* Borders & Inputs */
     --border: #e2e8f0;
@@ -324,6 +332,11 @@
     --color-warning-deep: var(--warning-deep);
     --color-destructive-light: var(--destructive-light);
     --color-destructive-deep: var(--destructive-deep);
+    --color-feedback-support: var(--feedback-support);
+    --color-feedback-summary: var(--feedback-summary);
+    --color-feedback-alert: var(--feedback-alert);
+    --color-feedback-motivational: var(--feedback-motivational);
+    --color-feedback-neutral: var(--feedback-neutral);
     --color-border: var(--border);
     --color-input: var(--input);
     --color-ring: var(--ring);
@@ -597,8 +610,23 @@
 /*endregion*/
 
 /*region component utilities*/
+@utility side-column {
+    width: var(--side-column-width);
+    flex-shrink: 0;
+}
+
+@utility below-header {
+    top: var(--header-offset);
+    max-height: calc(100dvh - var(--header-offset));
+}
+
 @utility card-base {
     @apply rounded-2xl bg-surface-card p-6;
+}
+
+@utility dialog-scrollable {
+    max-height: var(--dialog-max-height);
+    overflow-y: auto;
 }
 
 @utility label-uppercase {

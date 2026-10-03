@@ -23,6 +23,7 @@ Error tracking and performance-monitoring tooling decisions.
 | 28/09/2026 | Client-side Sentry was dead code (never wired into the bundle) regardless of the DSN — fixed via `instrumentation-client.ts` |
 | 30/09/2026 | Sentry Error Watch moved from cloud to a local routine; `claude.ai Sentry` connector no longer needed |
 | 30/09/2026 | Feedback Watch routine needs `docs.google.com` + `*.googleusercontent.com` allowed in its cloud environment |
+| 02/10/2026 | Production client DSN moved from the `javascript-react` project to `pulse-client`, the one the watcher and docs name |
 | 30/09/2026 | Sentry watcher records move to `docs/sentry-errors/` (index + files) on a local `monitor/records` branch, shipped only with a fix |
 
 ## Charts & RTL — [[decisions/charts-and-rtl]]
@@ -54,6 +55,15 @@ Cookie/storage consent and privacy-disclosure decisions.
 |---|---|
 | 23/09/2026 | No cookie/cache consent popup — no non-essential storage written; disclose on the Privacy page |
 | 30/09/2026 | Community pages require sign-in (reverses the June semi-public decision) |
+| 02/10/2026 | Vercel Analytics removed — it never loaded on EC2; analytics sentence dropped from the Privacy page |
+| 02/10/2026 | Replies on other users' posts survive account deletion, shown as "Deleted user"; deletion copy updated |
+
+## Dependency Security — [[decisions/dependency-security]]
+`npm audit` findings and whether/how they're addressed.
+
+| Date | Entry |
+|---|---|
+| 02/10/2026 | `quill` XSS (GHSA-v3m3-f69x-jf25) accepted, not force-downgraded — no upstream fix exists, and all render paths already sanitize via DOMPurify |
 
 ## Agent Models — [[decisions/agent-models]]
 Which model each custom agent runs on, and why.

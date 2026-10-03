@@ -50,3 +50,15 @@ The failure was silent in the routine list: a blocked fetch is reported as the f
 ## 30/09/2026 — Sentry watcher records move to `docs/sentry-errors/` on a local amended branch
 
 The watcher used to add a dated entry here and commit it straight to `development`. Records are now `docs/sentry-errors/index.md` (one row per Sentry issue) plus one `<slug>.md` per diagnosed issue, written only in the routine's own worktree (`../pulse--client.wt/monitor-records`) on the local branch `monitor/records`: exactly one commit on top of `development`, amended every run, merged and pushed only together with a fix. Same design as the server's AWS watcher (server `decisions/dev-workflow.md`, 30/09/2026). This file keeps observability decisions only, not watcher runs. Look for the newest watcher records on `monitor/records`, not only on `development`.
+
+---
+
+## 02/10/2026 — Production client DSN moved from `javascript-react` to the `pulse-client` Sentry project
+
+**Problem:** The DSN baked into the client deploy (`NEXT_PUBLIC_SENTRY_DSN` in `.github/workflows/deploy.yml`, project id `4506954741055488`) belongs to the Sentry project **`javascript-react`**. Everything else (the Sentry Error Watch routine, `CLAUDE.md`, these records) points at **`pulse-client`**, which had no events in 90 days. So the watcher was blind to real production errors. The same DSN sat in the gitignored `.env.local`, so local dev-server errors (e.g. a `globals.css` build error) also landed in the production project.
+
+**Decision:** Use the `pulse-client` project's DSN (`…/4511547564294144`) in `deploy.yml` and `.env.local`. Nothing else changes: same org and region host, so the CSP `connect-src` origin is the same, and the CSP `report-uri` is derived from the DSN.
+
+**Why:** One project for the client, the one the watcher and docs already name, instead of re-pointing the watcher at a generically named project.
+
+**How to apply:** Takes effect with the next client deploy. Issues already captured stay in `javascript-react` (`JAVASCRIPT-REACT-14…18`, the audit's probes are resolved); do not expect them in `pulse-client`. If dev-server errors should not reach Sentry at all, leave `NEXT_PUBLIC_SENTRY_DSN` empty in `.env.local`. The `VITE_SENTRY_DSN` in `.env.production.local` is a leftover from the Vite days and unused.

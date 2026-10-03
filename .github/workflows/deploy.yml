@@ -50,6 +50,33 @@ jobs:
       - name: Log in to ECR
         uses: aws-actions/amazon-ecr-login@03f1aad4c6c7ffd436567f42f9384779290529bd # v2
 
+      - name: Set up Buildx
+        uses: docker/setup-buildx-action@f87e5991a6d7451dcb8d9637bfbc97413f497069 # v4.4.1
+
+      # Next's Turbopack build cache lives in .next/cache; a fresh runner and
+      # a fresh container layer never carry it over, so persist the BuildKit
+      # cache mount through actions/cache
+      - name: Restore Next build cache
+        id: next-cache
+        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: next-build-cache
+          key: nextjs-docker-${{ hashFiles('package-lock.json') }}-${{ hashFiles('src/**', 'public/**') }}
+          restore-keys: |
+            nextjs-docker-${{ hashFiles('package-lock.json') }}-
+
+      - name: Inject Next build cache into BuildKit
+        uses: reproducible-containers/buildkit-cache-dance@7a38cfab60c63ee1022b7c1a14a031c82f4114c7 # v3.4.0
+        with:
+          cache-map: |
+            {
+              "next-build-cache": {
+                "target": "/app/.next/cache",
+                "id": "next-cache"
+              }
+            }
+          skip-extraction: ${{ steps.next-cache.outputs.cache-hit }}
+
       - name: Build and push runner image
         uses: docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8 # v6
         with:
@@ -61,7 +88,7 @@ jobs:
             NEXT_PUBLIC_SERVER_API_VERSION=v2
             NEXT_PUBLIC_HOSTNAME=https://pulserehab.app
             NEXT_PUBLIC_SENTRY_REPLAYS_SESSION_SAMPLE_RATE=0
-            NEXT_PUBLIC_SENTRY_DSN=https://94ccf213e00340996348fa63f2605456@o4506954726703104.ingest.us.sentry.io/4506954741055488
+            NEXT_PUBLIC_SENTRY_DSN=https://6cb47f46db22592d023a9cffa03a0e4e@o4506954726703104.ingest.us.sentry.io/4511547564294144
           tags: |
             110015905368.dkr.ecr.eu-central-1.amazonaws.com/pulse-client-app:${{ env.DEPLOY_SHA }}
             110015905368.dkr.ecr.eu-central-1.amazonaws.com/pulse-client-app:latest

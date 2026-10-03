@@ -8,7 +8,6 @@ import type { GoalMilestone } from '@/types/goals'
 import { MilestoneStatus } from '@/types/goals'
 
 import {
-    getInsightColor,
     getMilestoneCardConfig,
     getMilestoneIconColor
 } from '@/lib/milestones'
@@ -43,25 +42,6 @@ describe('getMilestoneIconColor', () => {
 
     it('returns bg-surface-container-highest for LOCKED', () => {
         expect(getMilestoneIconColor(MilestoneStatus.LOCKED)).toBe('bg-surface-container-highest')
-    })
-})
-
-// ==================== getInsightColor ====================
-describe('getInsightColor', () => {
-    it('returns bg-blue-50 for MOTIVATIONAL', () => {
-        expect(getInsightColor('MOTIVATIONAL')).toBe('bg-blue-50')
-    })
-
-    it('returns bg-purple-50 for MOOD_DROP_ALERT', () => {
-        expect(getInsightColor('MOOD_DROP_ALERT')).toBe('bg-purple-50')
-    })
-
-    it('returns bg-green-50 for WEEKLY_SUMMARY', () => {
-        expect(getInsightColor('WEEKLY_SUMMARY')).toBe('bg-green-50')
-    })
-
-    it('returns bg-slate-50 for unknown type', () => {
-        expect(getInsightColor('UNKNOWN')).toBe('bg-slate-50')
     })
 })
 

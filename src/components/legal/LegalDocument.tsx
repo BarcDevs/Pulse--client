@@ -9,9 +9,7 @@ import {
     LegalSection as LegalSectionType
 } from '@/types/legal'
 
-import { Footer } from '@/components/shared/footer/Footer'
 import { PageHeader } from '@/components/shared/PageHeader'
-import { StandalonePageShell } from '@/components/shared/StandalonePageShell'
 
 import { useLegalScrollSpy } from '@/hooks/legal/useLegalScrollSpy'
 
@@ -43,17 +41,12 @@ export const LegalDocument = ({
     const sectionIds = sections.map((section) => section.id)
     const {
         activeId,
-        scrollerRef,
         registerSection,
         jumpTo
     } = useLegalScrollSpy(sectionIds)
 
     return (
-        <StandalonePageShell>
-            <div
-                ref={scrollerRef}
-                className={'flex min-h-0 flex-1 flex-col overflow-y-auto bg-surface-page print:overflow-visible'}
-            >
+        <div className={'flex flex-1 flex-col'}>
                 <div className={'px-4 pt-6 md:px-8'}>
                     <PageHeader
                         title={content.title}
@@ -89,9 +82,6 @@ export const LegalDocument = ({
                         </article>
                     </div>
                 </div>
-
-                <Footer className={'print:hidden'}/>
-            </div>
-        </StandalonePageShell>
+        </div>
     )
 }

@@ -1,4 +1,4 @@
-export type CheckInInsightType = 'MOOD_DROP_ALERT' | 'MOTIVATIONAL' | 'WEEKLY_SUMMARY'
+export type CheckInInsightType = 'MOOD_DROP_ALERT' | 'MOTIVATIONAL' | 'WEEKLY_SUMMARY' | 'BAD_DAY_SUPPORT'
 
 export type CheckInInsight = {
     id: string

@@ -1,6 +1,9 @@
 import type { Locale } from 'date-fns'
 
-import type { CommunityActivityItem } from '@/types/community'
+import type {
+    CommunityActivityItem,
+    Reply
+} from '@/types/community'
 import { TranslatorFn } from '@/types/i18n'
 import type { PartialUser } from '@/types/user'
 
@@ -15,6 +18,19 @@ type ActivityDisplayItem = {
     time: string
 }
 
+// Stand-in author for a just-submitted anonymous item, until the server's
+// alias author replaces it. Never carries the real user's name or picture
+export const ANONYMOUS_AUTHOR: PartialUser = {
+    id: '',
+    image: null,
+    user: {
+        id: '',
+        username: 'anonymous',
+        firstName: '',
+        lastName: ''
+    }
+}
+
 export const getAuthorDisplayName = (
     author: PartialUser | undefined,
     fallback = 'Unknown'
@@ -24,6 +40,42 @@ export const getAuthorDisplayName = (
     return firstName && lastName
         ? `${firstName} ${lastName}`
         : username
+}
+
+type ReplyAuthorView = {
+    name: string
+    initials: string | undefined
+    imageSrc: string | undefined
+    isDeleted: boolean
+}
+
+/** How to show a reply's author. A reply whose author's account was purged has
+ * no author id: show the localized label and no initials (the card draws the
+ * generic avatar), never the server's placeholder username */
+export const getReplyAuthorView = (
+    reply: Pick<Reply, 'authorId' | 'author'>,
+    deletedLabel: string
+): ReplyAuthorView => {
+    if (reply.authorId === null) {
+        return {
+            name: deletedLabel,
+            initials: undefined,
+            imageSrc: undefined,
+            isDeleted: true
+        }
+    }
+
+    const authorUser = reply.author?.user
+
+    return {
+        name: getAuthorDisplayName(reply.author),
+        initials: authorUser && getUserFallback(
+            authorUser.firstName,
+            authorUser.lastName
+        ),
+        imageSrc: reply.author?.image ?? undefined,
+        isDeleted: false
+    }
 }
 
 export const mapActivityItems = (

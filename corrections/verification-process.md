@@ -24,3 +24,11 @@ A GitHub issue-bot validation failed 12 times because random variations were tri
 Committed `adjustFontFallback: false` + a trimmed `--font-sans` as "the fix" for the Firefox Arial-fallback heading, never fetching the served CSS. It was wrong twice over: Turbopack dev ignores `adjustFontFallback` (the "Inter Fallback" `@font-face` was still generated), and the dev server kept serving stale CSS from `.next/dev` even after restarts, so the user saw no change. Found only after the Firefox DevTools MCP showed `Noto Sans Hebrew | unloaded` while `Inter Fallback | loaded U+0-10FFFF`. Real fix: name the loaded families directly in the stack (`'Inter', 'Noto Sans Hebrew', system-ui, sans-serif`) so the generated fallback faces are never referenced. User: "finally!!!"
 
 **Lesson:** for a font/CSS bug, `curl` the served CSS chunk and check the actual rules before claiming a change took effect; a font that "should" load can be shadowed by an unrestricted `@font-face` (no unicode-range) earlier in the stack. If served CSS doesn't match source after a restart, suspect `.next/dev` cache and clear it. For Firefox-only issues, use the Firefox DevTools MCP (`document.fonts` statuses + computed family) instead of guessing.
+
+---
+
+## 02/10/2026 — Claimed sticky sidebars "covered" and "checked" after a test that did not match the user's page
+
+A scroll fix (overflow-hidden/auto to overflow-clip, sticky nav sidebar and community panel) was reported as working after a headless-Chromium run on a mocked, spacer-padded page; only the community page and a glance at `/dashboard` were exercised, and the dashboard's own side column was visibly not sticky in that same run. The user still saw the sidebars scroll with the content. User: "no u didnt. dont claim untested fixes".
+
+**Lesson:** state exactly what was run (page, browser, viewport, content) and what was not. A synthetic repro that passes does not mean the fix works on the user's screen; ask which page and browser, and never write "covered" or "checked" for pages or engines that were not exercised.

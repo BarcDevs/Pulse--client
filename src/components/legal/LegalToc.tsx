@@ -20,7 +20,7 @@ export const LegalToc = ({
     const t = useTranslations()
 
     return (
-        <nav className={'sticky top-8 hidden md:block print:hidden'}>
+        <nav className={'sticky below-header hidden md:block print:hidden'}>
             <p className={'mb-3 text-[10px] font-bold uppercase tracking-widest text-muted-foreground'}>
                 {t(legalLocales.common.toc.onThisPage)}
             </p>

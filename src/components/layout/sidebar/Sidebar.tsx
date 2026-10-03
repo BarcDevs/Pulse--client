@@ -3,23 +3,21 @@
 import { ClassName } from '@/types/react'
 
 import { Logo } from '@/components/shared/brand/Logo'
+import { StickySidebar } from '@/components/shared/StickySidebar'
 
 import { cn } from '@/lib/utils'
 
 import { NavSection } from './sections/NavSection'
-import { SidebarBottomError } from './SidebarBottomError'
 
 type SidebarProps = {
-    isErrorPage?: boolean
     className?: ClassName
 }
 
 export const Sidebar = ({
-    isErrorPage = false,
     className
 }: SidebarProps) => (
-    <aside className={cn(
-        'w-64 border-r border-border bg-surface-card flex flex-col max-sm:hidden',
+    <StickySidebar className={cn(
+        'w-64 border-r border-border bg-surface-card flex flex-col max-lg:hidden',
         className
     )}>
         <div className={'p-4'}>
@@ -30,8 +28,5 @@ export const Sidebar = ({
                 <NavSection/>
             </div>
         </div>
-        {isErrorPage
-            && <SidebarBottomError/>
-        }
-    </aside>
+    </StickySidebar>
 )

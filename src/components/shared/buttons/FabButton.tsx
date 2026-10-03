@@ -13,7 +13,7 @@ export const FabButton = ({
     <Button
         size={'default'}
         className={cn(
-            'fixed bottom-24 end-4 z-40 size-14 rounded-full p-0 sm:hidden',
+            'fixed bottom-24 end-4 z-40 size-14 rounded-full p-0 lg:bottom-6',
             className
         )}
         {...props}
