@@ -32,3 +32,11 @@ Committed `adjustFontFallback: false` + a trimmed `--font-sans` as "the fix" for
 A scroll fix (overflow-hidden/auto to overflow-clip, sticky nav sidebar and community panel) was reported as working after a headless-Chromium run on a mocked, spacer-padded page; only the community page and a glance at `/dashboard` were exercised, and the dashboard's own side column was visibly not sticky in that same run. The user still saw the sidebars scroll with the content. User: "no u didnt. dont claim untested fixes".
 
 **Lesson:** state exactly what was run (page, browser, viewport, content) and what was not. A synthetic repro that passes does not mean the fix works on the user's screen; ask which page and browser, and never write "covered" or "checked" for pages or engines that were not exercised.
+
+---
+
+## 03/10/2026 — Pushed `development` after running only unit tests, and CI went red on e2e
+
+A UI change (floating action button made visible on desktop) was merged and pushed after typecheck, lint and the 857 unit tests passed, but without running the Playwright e2e suite. CI run #104 on `development` failed: `Create post` and `New Goal` each matched two buttons (inline + FAB), a strict-mode violation in 2 e2e tests. A Dependabot PR rebased onto it then showed the same red run and looked like the dependency bump had broken CI. User: "you shouldn't push before testing the entire suite".
+
+**Lesson:** before any push, run the whole suite CI runs: typecheck, lint, unit tests and the mocked Playwright e2e (`npx playwright test`). Changing what is visible or what a control is named can break role/name locators elsewhere, so grep `e2e/` for the affected labels too. Say which suites were not run (the real-backend e2e needs a live server).

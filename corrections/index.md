@@ -41,6 +41,7 @@ Guessing at a spec instead of checking the actual rules/examples first.
 | 23/09/2026 | Font fix committed twice without checking the served CSS; Turbopack ignored `adjustFontFallback` and `.next/dev` served stale CSS |
 | 29/09/2026 | Model Selection in CLAUDE.md said Haiku for sub-agents (stale); Sonnet default, Opus via /opusplan |
 | 02/10/2026 | Claimed the sticky-sidebar fix worked after a synthetic headless test that did not match the user's page; say exactly what was and was not tested |
+| 03/10/2026 | Pushed after unit tests only; the e2e suite (strict-mode duplicate button names) failed in CI. Run the full suite before any push |
 
 ## Working Style — [[corrections/working-style]]
 How to act on bug reports and where to log — state the fix before broad edits, log in this repo, check other branches before claiming a file doesn't exist.
