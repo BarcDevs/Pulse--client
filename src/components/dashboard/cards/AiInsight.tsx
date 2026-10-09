@@ -6,7 +6,6 @@ import { Sparkles } from 'lucide-react'
 
 import { ClassName } from '@/types/react'
 
-import { TextButton } from '@/components/shared/buttons/TextButton'
 import { Card } from '@/components/shared/cards/Card'
 import {
     CardContent,
@@ -18,8 +17,6 @@ import { Skeleton } from '@/components/ui/skeleton'
 import { useCheckIns } from '@/hooks/queries/useCheckIns'
 
 import { getLatestInsights } from '@/lib/insights/getLatestInsights'
-
-import { useCheckIn } from '@/context/CheckInContext'
 
 import { dashboardLocales } from '@/locales/dashboardLocales'
 
@@ -39,7 +36,6 @@ export const DashboardAIInsight = ({
         isError
     } = useCheckIns(1)
 
-    const { showInsights } = useCheckIn()
     const insights =
         getLatestInsights(checkInsResponse)
 
@@ -65,17 +61,12 @@ export const DashboardAIInsight = ({
                         {t(dashboardLocales.noInsights)}
                     </p>
                 ) : (
-                    <>
-                        {insights.map((insight) => (
-                            <DashboardInsightItem
-                                key={insight.id}
-                                insight={insight}
-                            />
-                        ))}
-                        <TextButton onClick={() => showInsights(insights)}>
-                            {t(dashboardLocales.aiInsight.seeMore)}
-                        </TextButton>
-                    </>
+                    insights.map((insight) => (
+                        <DashboardInsightItem
+                            key={insight.id}
+                            insight={insight}
+                        />
+                    ))
                 )}
             </CardContent>
         </Card>
