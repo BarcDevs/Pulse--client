@@ -80,3 +80,4 @@ Dashboard cards, chart size and how dashboard screenshots for outside use are ma
 | 09/10/2026 | The dashboard insight card lists insights in full (no clamp, no "read more") |
 | 09/10/2026 | The dashboard trend chart plot is taller (about h-56) so trends are not flat |
 | 09/10/2026 | Product screenshots for outside use come from the real UI with a mocked API |
+| 09/10/2026 | Dashboard insight items clamp at two lines, not one and not full; read-more stays |

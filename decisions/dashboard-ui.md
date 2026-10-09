@@ -36,3 +36,15 @@ context in this topic — not routinely.
 **Why over alternatives:** a fixture account or seeded database could leak into normal sessions and drifts from the code; a drawn mock would invent UI. Mocking the API leaves the app untouched.
 
 **How to apply:** the capture script was a session scratch file, not in the repo; rebuild it from `e2e/helpers/mockApi.ts` (`/auth/me`, `/check-in`, `/check-in/stats`, `/recovery-goals/stats`, `/insight/observation`) and hide the Next dev badge (`nextjs-portal`) before the screenshot. For phone-width use a tighter crop (stat cards and chart at tablet width), because the full desktop shot shrinks to about 38% on a phone.
+
+---
+
+## 09/10/2026 — Dashboard insight items clamp at two lines, not one and not full
+
+**Problem:** the card had two competing states: a compact one-line-per-insight version with a "read more" popup (what shipped), and the owner's earlier decision to list insights in full with no clamp. One line cut real insight text too short to read.
+
+**Decision (owner):** each insight on the dashboard card shows up to two lines (`line-clamp-2` in `DashboardInsightItem`) and is folded after that; the "read more" button and popup stay. This is a middle step, so the "lists insights in full" entry above (TODO row 5) is still the longer-term direction and is not withdrawn.
+
+**Why over alternatives:** two lines makes a typical insight readable on a phone without growing the card to the full-text version, which needs longer, data-based text from the backend first.
+
+**How to apply:** the clamp is one class on the insight text. Remove it when the full-text card from the entry above is built.
