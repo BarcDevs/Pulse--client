@@ -13,7 +13,7 @@ const chartBarHeights = [
 ]
 
 export const HistoryChartSkeleton = () => (
-    <div className={'flex items-end gap-2 h-60'}>
+    <div className={'flex items-end gap-2 h-56'}>
         {chartBarHeights.map(({ key, height }) => (
             <Skeleton
                 key={key}

@@ -102,6 +102,7 @@ export const DashboardHistoryChart = () => {
                         series={series}
                         seriesPrevious={seriesPrevious}
                         noDataLabel={t(progressLocales.charts.status.noCheckInTooltip)}
+                        plotClassName={'h-56'}
                     />
                 )}
             </CardContent>

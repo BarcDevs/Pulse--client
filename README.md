@@ -47,6 +47,9 @@ Lightweight, supportive insights generated from check-in patterns help detect tr
 **Legal Pages**
 `/privacy` and `/terms` (English and Hebrew) with a table of contents and a localized last-updated date. Each page has a "Download PDF" button that links to a pre-generated PDF in `public/legal/` (`{privacy,terms}-{en-US,he-IL}.pdf`). The privacy policy discloses the essential cookies, on-device storage and service providers; Pulse sets no tracking cookies, so there is no cookie-consent popup.
 
+**Installable App (PWA)**
+Pulse can be installed to the home screen and opens standalone. `src/app/manifest.ts` serves the web app manifest (name, theme color, 192/512/maskable icons); the favicon and WebP apple-touch icon live in `public/`, and `docs/design/pwa/` holds the SVG sources they are rendered from. `public/sw.js` is a deliberately minimal service worker that caches nothing, so no signed-in page is ever stored; it registers in production only. Signed-in phone users see an install dialog (`InstallPromptDialog`): an **Install** button on Android/Chrome (the `beforeinstallprompt` event, captured in `src/lib/installPromptStore.ts`) and Add to Home Screen steps on iOS. It is hidden once installed, and dismissing it snoozes it for 14 days via one localStorage key, disclosed on the Privacy page. No server changes are involved.
+
 ---
 
 ## Technology Stack

@@ -1,4 +1,7 @@
-import type { Metadata } from 'next'
+import type {
+    Metadata,
+    Viewport
+} from 'next'
 import { Inter, Noto_Sans_Hebrew } from 'next/font/google'
 import { NextIntlClientProvider } from 'next-intl'
 import { getLocale, getMessages } from 'next-intl/server'
@@ -6,12 +9,14 @@ import { getLocale, getMessages } from 'next-intl/server'
 import type { LayoutProps } from '@/types'
 
 import { AppShell } from '@/components/layout/AppShell'
+import { ServiceWorkerRegister } from '@/components/pwa/ServiceWorkerRegister'
 import { DirectionProvider } from '@/components/ui/direction'
 import { Toaster } from '@/components/ui/sonner'
 
 import { cn } from '@/lib/utils'
 
 import { getAppMetadata } from '@/config/appMetadata'
+import { appSettings } from '@/config/appSettings'
 
 import { AuthProvider } from '@/context/AuthProvider'
 
@@ -32,6 +37,10 @@ const notoSansHebrew = Noto_Sans_Hebrew({
 })
 
 export const metadata: Metadata = getAppMetadata()
+
+export const viewport: Viewport = {
+    themeColor: appSettings.themeColor
+}
 
 const RootLayout = async ({
     children
@@ -68,6 +77,7 @@ const RootLayout = async ({
             </NextIntlClientProvider>
         </DirectionProvider>
         <Toaster/>
+        <ServiceWorkerRegister/>
         </body>
         </html>
     )

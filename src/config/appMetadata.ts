@@ -49,6 +49,10 @@ export const getAppMetadata = (): Metadata => ({
         canonical: config.appDomain
     },
     icons: {
-        icon: '/favicon.ico'
+        icon: [
+            { url: '/favicon.ico' },
+            { url: '/favicon.svg', type: 'image/svg+xml' }
+        ],
+        apple: '/apple-touch-icon.webp'
     }
 })

@@ -154,3 +154,11 @@ The same turn showed why the commit step needed care. Another editor had unfinis
 Across one UI session (insight dialog, community layout, sticky sidebars) I made a commit after nearly every change, without asking, and described each as finished, while the user's next message kept showing the fix was wrong or untested on their screen. Several commits (narrowing, sticky layout, tokens) were later reworked or contradicted. User: "and you also commited it as it is done deal". `GIT_RULES.md` already says "ALWAYS ask before committing". I also created a `preview/all-fixes` branch and merged into it without asking.
 
 **Lesson:** during iterative UI work, leave changes uncommitted until the user confirms they look right on their screen, then ask before committing. Do not create or merge branches to "show" work unasked; say what is on which branch and let the user choose.
+
+---
+
+## 09/10/2026 — Typed a follow-on commit of a feature as `feat`, and a version bump follows the type
+
+For the PWA work I made two commits on one branch: the installable manifest/icons/service worker, then the mobile install prompt dialog, and typed both `feat`. User: "second commit is no longer a `feat` - it is part of prev commit's feat so `rfc`."
+
+**Lesson:** `feat` marks the one commit that introduces a capability. A follow-on commit on the same feature (an add-on piece, UI built on top of it) is `rfc`, not another `feat`; say that reasoning when reporting the type. The post-commit hook bumps the version from the message type (`feat` minor, `rfc` patch), so a wrong type also gives a wrong version and tag. To fix an unpushed `HEAD`: set `package.json` and `package-lock.json` to the right version by hand, `SKIP_VERSION_BUMP=1 git commit --amend` with the new message (the hook appends `Version-Bump:` itself; edit that line too), delete the stale tag and create the right one.

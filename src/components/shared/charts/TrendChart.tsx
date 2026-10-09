@@ -13,6 +13,10 @@ import {
     YAxis
 } from 'recharts'
 
+import { ClassName } from '@/types/react'
+
+import { cn } from '@/lib/utils'
+
 import { ChartLegend } from './ChartLegend'
 import { ChartTooltip } from './ChartTooltip'
 
@@ -86,13 +90,15 @@ type TrendChartProps = {
     series: ChartSeries[]
     seriesPrevious?: Record<string, number | null>
     noDataLabel: string
+    plotClassName?: ClassName
 }
 
 export const TrendChart = ({
     data,
     series,
     seriesPrevious,
-    noDataLabel
+    noDataLabel,
+    plotClassName = 'h-40'
 }: TrendChartProps) => {
     const { enrichedData, bridgeKeys } = useMemo(
         () => enrichWithBridges(
@@ -167,7 +173,7 @@ export const TrendChart = ({
 
     return (
         <div className={'flex flex-col gap-1'}>
-            <div className={'h-40 w-full'}>
+            <div className={cn('w-full', plotClassName)}>
                 <ResponsiveContainer
                     width={'100%'}
                     height={'100%'}
