@@ -18,7 +18,7 @@ export const DashboardInsightItem = ({
         <p className={'text-xs font-medium text-muted-foreground'}>
             {insight.title}
         </p>
-        <blockquote className={'italic text-foreground text-sm line-clamp-1 px-1'}>
+        <blockquote className={'italic text-foreground text-sm line-clamp-2 px-1'}>
             {insight.content}
         </blockquote>
     </div>
