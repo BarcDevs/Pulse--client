@@ -45,7 +45,9 @@ from here).
      `N=0`: `git -C "$WT" merge --ff-only development`. `N=1`: `git -C "$WT" rebase development`
      (on conflict: `git -C "$WT" rebase --abort`, notify, stop). `N>1`: the one-commit rule is
      broken; notify and stop without touching anything.
-5. For each issue found:
+5. **First notification, before diagnosing anything:** send a Claude Code notification that
+   issues were found: how many, and for each its id, title, event count and environment. Then,
+   for each issue found:
    a. **Known-fix check.** Read `$WT/docs/sentry-errors/index.md` (it includes records not
       shipped yet) and the linked `<slug>.md`, plus `corrections/index.md` and relevant topic
       files. If this issue (or a clear variant) is already recorded, bump its row (runs seen +1,
@@ -125,7 +127,7 @@ from here).
    auto-merge, or push `main`. If the push or `gh` fails, notify with the error (the fixes stay
    merged on `development`). If no fix passed, nothing is merged, pushed or opened; the records
    wait on the branch for the next fix.
-8. **Notify** with a summary of the run: N issues found (M merged to `development`, K notify-only,
+8. **Final notification** (the second of the run) with a summary: N issues found (M merged to `development`, K notify-only,
    J blocked by review or busy checkout), the `development` -> `main` PR link, commit links, and
    the new records (quote them). For each notify-only issue include the recommendation from
    (b)5, and flag any issue that has now been notify-only for 2+ runs as "needs a human
