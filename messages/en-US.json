@@ -1597,6 +1597,10 @@
                 [
                   "Local storage drafts",
                   "Saves unsent posts and profile edits on your device so you don't lose them. Health details are never saved there, and drafts are cleared when you sign out"
+                ],
+                [
+                  "Install prompt (local storage)",
+                  "Remembers that you dismissed the install Pulse prompt so it does not keep reappearing"
                 ]
               ]
             },
