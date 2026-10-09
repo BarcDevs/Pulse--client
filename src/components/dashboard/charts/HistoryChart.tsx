@@ -64,7 +64,7 @@ export const DashboardHistoryChart = () => {
 
     return (
         <Card className={'h-full'}>
-            <CardHeader className={'flex flex-row items-center justify-between pb-6'}>
+            <CardHeader className={'flex flex-row items-center justify-between'}>
                 <CardTitle className={'text-lg font-semibold'}>
                     {t(dashboardLocales.historyChart.title)}
                 </CardTitle>

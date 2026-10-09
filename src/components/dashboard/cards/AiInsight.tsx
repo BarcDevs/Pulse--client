@@ -18,6 +18,7 @@ import { Skeleton } from '@/components/ui/skeleton'
 import { useCheckIns } from '@/hooks/queries/useCheckIns'
 
 import { getLatestInsights } from '@/lib/insights/getLatestInsights'
+import { cn } from '@/lib/utils'
 
 import { useCheckIn } from '@/context/CheckInContext'
 
@@ -44,8 +45,8 @@ export const DashboardAIInsight = ({
         getLatestInsights(checkInsResponse)
 
     return (
-        <Card className={className}>
-            <CardHeader>
+        <Card className={cn('gap-2', className)}>
+            <CardHeader className={'px-0 lg:px-6'}>
                 <div className={'flex items-center gap-2'}>
                     <Sparkles className={'size-4 text-purple'}/>
                     <CardTitle className={'text-sm font-medium text-muted-foreground'}>
@@ -53,7 +54,7 @@ export const DashboardAIInsight = ({
                     </CardTitle>
                 </div>
             </CardHeader>
-            <CardContent className={'space-y-3'}>
+            <CardContent className={'space-y-3 px-0 lg:px-6'}>
                 {isLoading ? (
                     <Skeleton className={'h-12 w-full'}/>
                 ) : isError ? (
