@@ -66,6 +66,7 @@ How to act on bug reports and where to log — state the fix before broad edits,
 | 23/09/2026 | Built new MCP wiring instead of checking `disabledMcpjsonServers` / a working sibling project's settings |
 | 28/09/2026 | Blanket-killed every Node process on the machine (`taskkill /IM node.exe`) to free one busy directory instead of targeting the one PID |
 | 30/09/2026 | Wrapped `Switch` in an extra `<div dir="ltr">` instead of passing `dir` on the component itself, which it already supports |
+| 09/10/2026 | Typed a follow-on commit of a feature as `feat`; it is `rfc`, and the version bump follows the type |
 
 ## Code Placement — [[corrections/code-placement]]
 Where new constants/config values belong.
