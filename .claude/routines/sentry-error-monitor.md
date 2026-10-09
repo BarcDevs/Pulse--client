@@ -6,8 +6,8 @@ a cloud routine needs Sentry attached as a claude.ai account-level connector, wh
 in `/mcp` in every session. Locally it uses this repo's project-scoped `sentry` MCP server
 (`.mcp.json`) instead. Same workflow as the server's AWS watcher
 (`../pulse--server/.claude/routines/prod-error-monitor.md`): confidence gate, full `/code-review`
-before opening a PR into `development` (the routine never merges), records on an amended branch
-that ships inside the fix PR. Working
+before merging into `development` and opening a `development` -> `main` PR (the
+routine never merges a PR), records on an amended branch merged together with the fix. Working
 directory: `C:\Users\66bar\Claude\work\projects\pulse\.watchers` (dedicated, so run sessions are
 saved outside the repo's `/resume` list; the routine does not start in the repo). Because of that,
 the repo's `.mcp.json` does not load: the `sentry` server must also be defined in
@@ -21,8 +21,7 @@ Records are `docs/sentry-errors/index.md` (one row per Sentry issue) plus one
 `docs/sentry-errors/<slug>.md` per diagnosed issue. The routine never writes them in the shared
 checkout. It keeps them on the local branch `monitor/records`, in its own worktree
 `../pulse--client.wt/monitor-records`, as **exactly one commit on top of `development`, amended
-every run**. That commit reaches `development` (and origin) only inside a fix PR that a human
-merges.
+every run**. That commit reaches `development` (and origin) only in a run that merges a fix.
 
 Below, define absolute paths and never rely on the current directory:
 `MAIN=C:/Users/66bar/Claude/work/projects/pulse/pulse--client`,
@@ -51,9 +50,6 @@ from here).
       shipped yet) and the linked `<slug>.md`, plus `corrections/index.md` and relevant topic
       files. If this issue (or a clear variant) is already recorded, bump its row (runs seen +1,
       last seen = today, event count) and branch on what the record's **Fix** says:
-      - a fix **in an open monitor PR** (`gh pr list --state open --search "head:fix/monitor-"`)
-        → don't redo it and don't touch the record (it lives in that PR); just mention the PR in
-        the notification;
       - a **merged fix** (commit link) → don't reinvent it; if the issue recurs despite it, flag
         explicitly (old fix incomplete or regressed) and re-diagnose from (b);
       - **anything else** (`notify only`, `blocked by review`, an unverified hypothesis) → the
@@ -90,14 +86,14 @@ from here).
       then `cd` into that worktree for everything below (tests, review and commit act on the
       current directory), make the minimal fix. Run `npm run typecheck`, `npm run lint:check` and the relevant tests —
       do not proceed if any fail; fall back to notify-only. Commit per `GIT_RULES.md`.
-   e. **Full review before opening a PR.** From inside the fix worktree, invoke the local `code-review`
+   e. **Full review before merge.** From inside the fix worktree, invoke the local `code-review`
       skill (via the Skill tool) on the branch's diff — the one that runs code-reviewer, architecture-auditor, duplication-eliminator
       and security-scanner in parallel, then style-enforcer, i.e. `/commit`'s review without the
       typecheck/lint/commit steps. NOT the cloud multi-agent `/code-review ultra` (`/ultrareview`):
       never pass `ultra`, it is user-triggered and billed. Any HIGH/CRITICAL finding, or an
-      ESCALATE line → no PR is opened; notify-only with the review findings, and leave the
+      ESCALATE line → the fix is not merged; notify-only with the review findings, and leave the
       branch unmerged for manual review instead of deleting it. Only a clean review (or one whose
-      own auto-fixes were applied and tests/typecheck still pass) counts as a fix ready for a PR.
+      own auto-fixes were applied and tests/typecheck still pass) counts as a fix ready to merge.
       This is the actual gate against shipping unsafe autonomous code — the confidence gate only
       decides whether to *attempt* a fix, not whether it's safe to land.
    f. **Record** in `$WT`: add a row to `docs/sentry-errors/index.md` (issue id, title, runs seen =
@@ -112,39 +108,44 @@ from here).
 6. **Amend the records commit** in `$WT` (`git -C "$WT" add docs/sentry-errors`): no records commit
    yet (`N=0` after step 4) → `git commit -m "docs(sentry-errors): monitor records"`; otherwise
    `git commit --amend --no-edit`. Never a second commit.
-7. **Open PRs, only if at least one fix passed (5e).** Open a PR for each passing fix; never merge it. In order, per passing fix, from its fix
-   worktree: (1) for the FIRST passing fix of the run only, if `monitor/records` has a records
-   commit, `git merge --no-ff monitor/records -m "Merge branch 'monitor/records' into <branch>"`
-   so the records ship in that PR; (2) `git push -u origin <branch>`; (3) `gh pr create --base
-   development --head <branch>` with a title in the repo's commit convention and a body with: the
-   Sentry issue link, evidence-backed root cause (`file:line`), what the fix changes, the
-   typecheck/test results and the `/code-review` result. Once that PR exists, `git -C "$WT" reset
-   --hard development` (the records now live in the PR; the next run starts clean), then
-   `git -C "$MAIN" worktree remove` the fix worktree and keep the pushed branch for the PR.
-   NEVER merge a PR, enable auto-merge, or push `development`. If push or `gh` fails, notify with
-   the error and leave the branch and records as they are. If no fix passed, nothing is pushed;
-   the records wait on `monitor/records` for the next fix.
-8. **Notify** with a summary of the run: N issues found (M fix PRs opened, K notify-only, J blocked
-   by review), the PR links, and the new records (quote them, since unshipped
-   records aren't on origin yet). For each notify-only issue include the recommendation from
+7. **Ship, only if at least one fix passed (5e).** Merge into `development`, push it, then open the release PR; never
+   merge that PR. In the shared checkout (`$MAIN`): first run `ListAgents` and `git status`. If
+   another session is active there or the tree is dirty, don't merge: leave the fix branches and
+   records unmerged, say "merge blocked: checkout busy" in the notification, and open no PR.
+   Otherwise, on `development` (all via `git -C "$MAIN"`): `merge --no-ff` each passing fix branch,
+   then `merge --no-ff monitor/records -m "Merge branch 'monitor/records' into development"`, then
+   `git push origin development`. Remove each merged fix worktree (`git -C "$MAIN" worktree
+   remove`) and delete its branch. The next run fast-forwards `monitor/records` (it is then 0
+   commits ahead). Then open the PR that carries it to `main` (flow: local -> development -> main):
+   if `gh pr list --base main --head development --state open` shows one, add a comment to it
+   listing the new fixes; otherwise `gh pr create --base main --head development` with a title in
+   the repo's commit convention and a body listing each fix (issue link, evidence-backed root cause
+   with `file:line`, what changed, typecheck/test results, `/code-review` result) plus the line
+   "This PR carries everything on `development` not yet on `main`." NEVER merge a PR, enable
+   auto-merge, or push `main`. If the push or `gh` fails, notify with the error (the fixes stay
+   merged on `development`). If no fix passed, nothing is merged, pushed or opened; the records
+   wait on the branch for the next fix.
+8. **Notify** with a summary of the run: N issues found (M merged to `development`, K notify-only,
+   J blocked by review or busy checkout), the `development` -> `main` PR link, commit links, and
+   the new records (quote them). For each notify-only issue include the recommendation from
    (b)5, and flag any issue that has now been notify-only for 2+ runs as "needs a human
    decision", with its event count trend.
 
 ## Guardrails
 
-- Never touch `main`, never force-push, never merge a PR, never enable auto-merge. Opening PRs
-  into `development` is expected (step 7).
-- Never commit records on `development` directly, never push `development`, never push
-  `monitor/records` on its own (records ship inside a fix PR), and keep it at most one commit
-  ahead of `development` (amend, don't add).
+- Never push `main`, never force-push, never merge a PR, never enable auto-merge. The only branch
+  this routine pushes is `development` (step 7), and the only PR it opens is `development` -> `main`.
+- Never commit records on `development` directly (they arrive via the `monitor/records` merge),
+  never push `monitor/records` on its own, and keep it at most one commit ahead of `development`
+  (amend, don't add).
 - Never invent a fix for an error whose cause isn't clearly localized (see confidence gate) — a
   wrong guess in prod is worse than a delayed manual fix.
-- Recording is not handling. Every issue must end a run as an open fix PR, blocked-by-review, or a
+- Recording is not handling. Every issue must end a run as a merged fix, blocked-by-review, or a
   notify-only backed by an actual investigation (5b). Never stop at the Sentry issue summary and
   never write a guess as a root cause. Never carry a previous run's notify-only verdict forward
   without re-checking it (5a).
-- Never open a fix PR that hasn't cleanly passed the full `/code-review` (step 5e) — it is the
-  quality gate on what a human is asked to merge, since this routine may run on a smaller/cheaper
-  model whose own judgment of "safe to land" isn't trusted alone.
+- Never merge a fix that hasn't cleanly passed the full `/code-review` (step 5e) — that review is
+  the actual safety gate on unsupervised code reaching `development`, since this routine may run on
+  a smaller/cheaper model whose own judgment of "safe to merge" isn't trusted alone.
 - Never switch branches, stash, or reset in the shared checkout.
 - If the Sentry MCP is unauthenticated or unreachable, notify and stop rather than failing silently.
