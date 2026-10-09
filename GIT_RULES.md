@@ -24,6 +24,7 @@
 - Hiding/gating unimplemented UI behind a feature flag = `chore`, not `feat`. Restructuring/redesigning existing UI (even adding new sub-components as part of it) = `rfc`, not `feat` — `feat` implies net-new user-visible capability, a redesign reorganizes what already exists. Wiring an already-existing data field into an edit form is `rfc`, not `feat`, if the field already existed in view mode.
 - If you're not sure, read `../../.resources/conventional-commits-cheatsheet.md` for more info
 - **Always push tags** — whenever pushing a branch, also push tags (`git push origin --tags`). The version-bump hook tags every bumped commit locally; unpushed tags leave the remote's versions stale.
+- **Always pull before pushing** — before any `git push` (a branch, `development`, tags), run `git pull --ff-only origin <branch>` first; if it can't fast-forward, fetch and rebase or merge, then push. Never push from a stale branch: `development` must always contain `origin/development`, so local → development → main stays in sync.
 - Atomic commits — one change or fix per commit
 - Claude's plans must never be committed
 - *IMPORTANT:* Use /commit skill only when user explicitly invokes it — never on plain "commit"
