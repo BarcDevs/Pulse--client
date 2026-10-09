@@ -30,3 +30,13 @@ Over the 30/09-02/10 security/privacy work I wrote Hebrew copy myself and commit
 **Root cause:** I did not read `corrections/index.md` at the start of the session (CLAUDE.md requires it), so I missed the punctuation rule; and I treated "write the wording" as approval to commit it.
 
 **Lesson:** never `git add` or commit anything containing Hebrew copy (`messages/he-IL.json`, the Hebrew legal PDFs, Hebrew strings in tests or docs) until the user has reviewed the exact text. Show the key and the Hebrew text, then wait for an explicit go; the user may also edit the file directly. English changes and code that do not depend on new Hebrew can be committed. Read `corrections/index.md` and `decisions/index.md` first thing in every session. The plain-punctuation rule above applies to Hebrew too: no gershayim, no quote marks around a label.
+
+---
+
+## 09/10/2026 — AI-generated Hebrew follows the same copy rules, and is fixed in the prompt
+
+The insight and observation text the server generates came out with "המצב רוח", an en dash and "ההליכה". User: "The grammar issue is indeed an issue, and you should fix it. If it's been given from the prompt itself, you need to fix the prompt ... Also, the em/n-dash, same issue", and about the activity: "ההליכה is not right here, you should drop the leading ה".
+
+**Root cause:** the server prompts only set the language and the term "דיווח יומי"; they said nothing about the mood term, punctuation or articles, so the model chose its own.
+
+**Lesson:** the Hebrew rules apply to generated text as well: `מצב הרוח` (never `המצב רוח`), plain keyboard punctuation (no em or en dashes, no curly quotes), activity names as bare nouns (`הליכה`). Fix the wording in the prompt, not in a saved sample, then regenerate. Also read generated samples for factual errors against the data before using one; three samples of one weekly prompt had a garbled phrase, a false "mood rose" claim and a streak contradiction.
