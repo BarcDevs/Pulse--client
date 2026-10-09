@@ -46,7 +46,7 @@ export const ChartCard = ({ title, series }: ChartCardProps) => {
 
     return (
         <Card>
-            <CardHeader className={'flex flex-row items-center justify-between p-4 pb-2'}>
+            <CardHeader className={'flex flex-row items-center justify-between p-4 pb-0'}>
                 <CardTitle className={'text-base font-semibold'}>
                     {title}
                 </CardTitle>
