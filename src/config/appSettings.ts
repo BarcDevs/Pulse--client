@@ -1,5 +1,6 @@
 export const appSettings = {
     brandName: 'Pulse',
+    themeColor: '#1f4bb5',
     community: {
         repliesPageSize: 5
     },

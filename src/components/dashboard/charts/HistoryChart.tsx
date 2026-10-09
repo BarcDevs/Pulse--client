@@ -64,7 +64,7 @@ export const DashboardHistoryChart = () => {
 
     return (
         <Card className={'h-full'}>
-            <CardHeader className={'flex flex-row items-center justify-between pb-6'}>
+            <CardHeader className={'flex flex-row items-center justify-between'}>
                 <CardTitle className={'text-lg font-semibold'}>
                     {t(dashboardLocales.historyChart.title)}
                 </CardTitle>
@@ -102,6 +102,7 @@ export const DashboardHistoryChart = () => {
                         series={series}
                         seriesPrevious={seriesPrevious}
                         noDataLabel={t(progressLocales.charts.status.noCheckInTooltip)}
+                        plotClassName={'h-56'}
                     />
                 )}
             </CardContent>

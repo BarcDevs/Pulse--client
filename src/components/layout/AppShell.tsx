@@ -8,6 +8,7 @@ import { AppHeader } from '@/components/AppHeader'
 import { DashboardClientProviders } from '@/components/layout/DashboardClientProviders'
 import { MobileNavBar } from '@/components/layout/mobileNav/MobileNavBar'
 import { Sidebar } from '@/components/layout/sidebar/Sidebar'
+import { InstallPromptDialog } from '@/components/pwa/InstallPromptDialog'
 import { Footer } from '@/components/shared/footer/Footer'
 
 import { getAppShellMode } from '@/lib/appShell'
@@ -49,6 +50,7 @@ export const AppShell = ({
                 </div>
             </div>
             <MobileNavBar/>
+            <InstallPromptDialog/>
         </DashboardClientProviders>
     )
 }

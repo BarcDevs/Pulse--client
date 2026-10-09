@@ -34,6 +34,7 @@ The card reflects the user back to themselves — it does not instruct them.
 | ~~2~~ | ~~`src/components/dashboard/cards/DailyObservation.tsx`~~ | ~~**[Bug]** Some activity slugs lack translated label in `checkInLocales.activities.default` and render as raw slug (e.g. `self-care`) instead of friendly name in daily observation card~~ |
 | ~~3~~ | ~~`src/components/dashboard/cards/AiInsight.tsx`~~ | ~~**[High, Bug]** RTL layout not applied in insight popup~~ |
 | ~~4~~ | ~~`src/components/dashboard/cards/AiInsight.tsx`~~ | ~~**[High, Bug]** "Read more" button in insight popup not visible~~ |
+| 5 | `src/components/dashboard/cards/AiInsight.tsx`, `DashboardInsightItem.tsx` | **[Design, Bar 09/10/2026]** Adopt the insight card structure from the landing-page screenshot demo: the card uses its full height and lists the latest insights in full (small title label + full text, drop the `line-clamp-1` in `DashboardInsightItem`), no "Read more" button on the dashboard card. Needs longer, data-grounded insight text from the backend (concrete numbers from the user's own check-ins, locale-style wording) instead of one generic line. Check the card height in the 2/3 column when check-in exists and when it does not, and the popup (`showInsights`) still being reachable from the insights page if the button goes away. |
 
 **Scaling-deferred — do NOT build until data maturity + trust calibration:**
 

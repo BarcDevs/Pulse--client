@@ -24,7 +24,7 @@ export const DashboardPageContent = () => {
                         FEATURES.motivationFeedback
                         && isTodayCheckInExists
                         && (
-                            <DashboardAIInsight className={'pt-6 px-10 pb-10 h-full'}/>
+                            <DashboardAIInsight className={'pt-6 px-4 pb-4 lg:px-10 lg:pb-6 h-full'}/>
                         )}
                 </div>
                 <DashboardDailyObservation/>

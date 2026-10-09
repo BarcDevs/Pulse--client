@@ -30,6 +30,7 @@ Terminology and wording rules for `messages/he-IL.json` — established Hebrew t
 | 24/09/2026 | "check-in" is דיווח יומי, never the transliteration צ'ק-אין |
 | 24/09/2026 | Copy uses plain keyboard punctuation: no em-dashes, curly quotes/apostrophes, gershayim or low-9 quotes |
 | 02/10/2026 | Never commit Hebrew copy without the user's review; show the exact text and wait. Gershayim reintroduced |
+| 09/10/2026 | AI-generated Hebrew follows the same copy rules (mood term, no dashes, no leading ה) and is fixed in the prompt |
 
 ## Verification Process — [[corrections/verification-process]]
 Guessing at a spec instead of checking the actual rules/examples first.
@@ -41,6 +42,7 @@ Guessing at a spec instead of checking the actual rules/examples first.
 | 23/09/2026 | Font fix committed twice without checking the served CSS; Turbopack ignored `adjustFontFallback` and `.next/dev` served stale CSS |
 | 29/09/2026 | Model Selection in CLAUDE.md said Haiku for sub-agents (stale); Sonnet default, Opus via /opusplan |
 | 02/10/2026 | Claimed the sticky-sidebar fix worked after a synthetic headless test that did not match the user's page; say exactly what was and was not tested |
+| 03/10/2026 | Pushed after unit tests only; the e2e suite (strict-mode duplicate button names) failed in CI. Run the full suite before any push |
 
 ## Working Style — [[corrections/working-style]]
 How to act on bug reports and where to log — state the fix before broad edits, log in this repo, check other branches before claiming a file doesn't exist.
@@ -64,6 +66,7 @@ How to act on bug reports and where to log — state the fix before broad edits,
 | 23/09/2026 | Built new MCP wiring instead of checking `disabledMcpjsonServers` / a working sibling project's settings |
 | 28/09/2026 | Blanket-killed every Node process on the machine (`taskkill /IM node.exe`) to free one busy directory instead of targeting the one PID |
 | 30/09/2026 | Wrapped `Switch` in an extra `<div dir="ltr">` instead of passing `dir` on the component itself, which it already supports |
+| 09/10/2026 | Typed a follow-on commit of a feature as `feat`; it is `rfc`, and the version bump follows the type |
 
 ## Code Placement — [[corrections/code-placement]]
 Where new constants/config values belong.
