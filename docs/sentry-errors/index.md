@@ -17,6 +17,9 @@ routine bumps its row instead of re-diagnosing, and flags it if a recorded fix d
 
 | Issue | Title | Seen in runs | First seen | Last seen | Record |
 |-------|-------|--------------|------------|-----------|--------|
+| PULSE-CLIENT-1 | InvalidStateError: Skipped ViewTransition due to document being hidden | 3 | 2026-10-02 | 2026-10-10 | [pulse-client-1-viewtransition-hidden](pulse-client-1-viewtransition-hidden.md) |
+| PULSE-CLIENT-2 | Error: ./package.json:3:1 (unresolved merge conflict) | 2 | 2026-10-02 | 2026-10-03 | [pulse-client-2-package-json-merge-conflict](pulse-client-2-package-json-merge-conflict.md) |
+| PULSE-CLIENT-3 | Error: ./src/styles/globals.css (Tailwind PostCSS failure) | 2 | 2026-10-02 | 2026-10-03 | [pulse-client-3-globals-css-tailwind-error](pulse-client-3-globals-css-tailwind-error.md) |
 
 <!--
 Row template:
