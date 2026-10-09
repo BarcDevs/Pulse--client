@@ -1372,6 +1372,18 @@
       "sharedPost": "shared an update"
     }
   },
+  "pwa": {
+    "install": {
+      "title": "Pulse can be installed",
+      "description": "Add Pulse to your home screen for quick access, just like any other app.",
+      "action": "Install",
+      "dismiss": "Not now",
+      "iosDescription": "Add Pulse to your home screen for quick access, just like any other app.",
+      "iosStepShare": "Tap the Share button in the toolbar",
+      "iosStepAdd": "Choose Add to Home Screen",
+      "iosDone": "Got it"
+    }
+  },
   "support": {
     "header": {
       "kicker": "Support Center",
