@@ -41,7 +41,6 @@ type CheckInContextType = {
     isPending: boolean
     isSubmitted: boolean
     submitCheckIn: (data: CheckInSchema) => void
-    showInsights: (insights: CheckInInsight[]) => void
 }
 
 const CheckInContext =
@@ -127,8 +126,7 @@ export const CheckInProvider = ({
     const value: CheckInContextType = {
         isPending,
         isSubmitted,
-        submitCheckIn,
-        showInsights: setOpenInsights
+        submitCheckIn
     }
 
     return (
