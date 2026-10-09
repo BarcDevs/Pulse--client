@@ -1,13 +1,16 @@
 import {
-    useEffect,
     useState,
     useSyncExternalStore
 } from 'react'
 
-import { BeforeInstallPromptEvent } from '@/types/pwa'
-
 import { useIsMobile } from '@/hooks/ui/useMobile'
 
+import {
+    clearInstallPrompt,
+    getInstallPrompt,
+    getServerInstallPrompt,
+    subscribeToInstallPrompt
+} from '@/lib/installPromptStore'
 import {
     isIos,
     isStandalone
@@ -36,25 +39,12 @@ export const useInstallPrompt = () => {
         isIos,
         getServerSnapshot
     )
-    const [deferredPrompt, setDeferredPrompt] = useState<BeforeInstallPromptEvent | null>(null)
+    const deferredPrompt = useSyncExternalStore(
+        subscribeToInstallPrompt,
+        getInstallPrompt,
+        getServerInstallPrompt
+    )
     const [isDismissed, setIsDismissed] = useState(false)
-
-    useEffect(() => {
-        const handleBeforeInstallPrompt = (event: Event) => {
-            event.preventDefault()
-            setDeferredPrompt(event as BeforeInstallPromptEvent)
-        }
-
-        const handleInstalled = () => setDeferredPrompt(null)
-
-        window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt)
-        window.addEventListener('appinstalled', handleInstalled)
-
-        return () => {
-            window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt)
-            window.removeEventListener('appinstalled', handleInstalled)
-        }
-    }, [])
 
     const getMode = (): InstallMode | null => {
         if (deferredPrompt) return 'native'
@@ -77,7 +67,7 @@ export const useInstallPrompt = () => {
         await deferredPrompt.prompt()
         const { outcome } = await deferredPrompt.userChoice
 
-        setDeferredPrompt(null)
+        clearInstallPrompt()
 
         if (outcome === 'dismissed') dismiss()
     }
