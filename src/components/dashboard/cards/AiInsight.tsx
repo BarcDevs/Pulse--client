@@ -17,6 +17,7 @@ import { Skeleton } from '@/components/ui/skeleton'
 import { useCheckIns } from '@/hooks/queries/useCheckIns'
 
 import { getLatestInsights } from '@/lib/insights/getLatestInsights'
+import { cn } from '@/lib/utils'
 
 import { dashboardLocales } from '@/locales/dashboardLocales'
 
@@ -40,7 +41,7 @@ export const DashboardAIInsight = ({
         getLatestInsights(checkInsResponse)
 
     return (
-        <Card className={className}>
+        <Card className={cn('gap-3', className)}>
             <CardHeader>
                 <div className={'flex items-center gap-2'}>
                     <Sparkles className={'size-4 text-purple'}/>
