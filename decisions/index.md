@@ -13,6 +13,13 @@ Dev-server / build performance root causes and fixes.
 |---|---|
 | 11/06/2026 | Dev-server OOM root cause: Next.js dev-server HMR module-instance retention, not Turbopack |
 
+## Dashboard — [[decisions/dashboard]]
+What the dashboard cards show and when.
+
+| Date | Entry |
+|---|---|
+| 10/10/2026 | Sidebar insight card shows a check-in prompt, never the previous check-in's insights; server drops stale insight types on regenerate |
+
 ## Observability — [[decisions/observability]]
 Error tracking and performance-monitoring tooling decisions.
 
