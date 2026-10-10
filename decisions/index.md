@@ -13,6 +13,13 @@ Dev-server / build performance root causes and fixes.
 |---|---|
 | 11/06/2026 | Dev-server OOM root cause: Next.js dev-server HMR module-instance retention, not Turbopack |
 
+## Workflow — [[decisions/workflow]]
+How Claude sessions coordinate with each other.
+
+| Date | Entry |
+|---|---|
+| 10/10/2026 | Scoped standing authorization: a relayed approval from an interactive, busy local session counts for local reversible git work only (verbatim rule) |
+
 ## Observability — [[decisions/observability]]
 Error tracking and performance-monitoring tooling decisions.
 
