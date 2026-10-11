@@ -17,6 +17,10 @@ export const timings = {
     // Retry delay while the backend/network is unreachable
     NETWORK_RETRY_DELAY: 10 * secondInMs,
 
+    // Polling for AI insights after a check-in is saved
+    INSIGHTS_POLL_INTERVAL: 3 * secondInMs,
+    INSIGHTS_POLL_TIMEOUT: 60 * secondInMs,
+
     // Debounce and throttle delays
     DEBOUNCE_DELAY: 0.3 * secondInMs,
     THROTTLE_DELAY: 0.5 * secondInMs

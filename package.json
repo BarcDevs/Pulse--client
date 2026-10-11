@@ -1,6 +1,6 @@
 {
   "name": "pulse",
-  "version": "1.13.3",
+  "version": "1.13.6",
   "type": "module",
   "private": true,
   "scripts": {
