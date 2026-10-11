@@ -15,6 +15,14 @@ Replace hardcoded mock data with real API integration for pages with enabled fea
 
 ---
 
+## CRITICAL — Legal PDFs
+
+| # | File | Note |
+|---|------|------|
+| ~~1~~ | ~~`public/legal/privacy-he-IL.pdf`, `scripts/generate-legal-pdfs.mjs`~~ | ~~**[Critical, Bug, Bar 10/10/2026]** The published Hebrew privacy PDF has the "החיבור נותק" network-error banner printed at the top of page 1 (the other three PDFs are clean). It was generated from a dev server that could not reach the backend. Regenerate with `npm run legal:pdf` against a client that has a working backend, or make the script robust: hide or mock the connectivity banner before `page.pdf`, and fail the run if the banner is present. Then check all four PDFs visually and redeploy. Needs a dev server run, so it belongs to the client session.~~ Done 11/10 — script now fails the run if the locale's network-error title is on the page; all four PDFs regenerated against the live backend, first-page text checked (no banner). Not yet visually checked (no poppler); deploys with the next push to `main` |
+
+---
+
 ## AI / Reflective Insights
 
 The `DailyObservation` card currently shows a static hardcoded description. This is temporary.
