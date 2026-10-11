@@ -19,7 +19,7 @@ const activityNames: Record<string, ActivityNames> = {
     'meditation':  { en: 'Meditation',           he: 'מדיטציה' },
     'yoga':        { en: 'Yoga',                 he: 'יוגה' },
     'self-care':   { en: 'Self Care',            he: 'טיפוח עצמי' },
-    'medical':     { en: 'Medical Appointment',  he: 'תור רפואי' }
+    'medical':     { en: 'Medical Appointment',  he: 'פגישה עם רופא' }
 }
 
 export const getActivityName = (

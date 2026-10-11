@@ -37,6 +37,9 @@ from here).
    notify — do not attempt OAuth unattended) to search `pulse-client` for issues with activity in
    the last ~8h (6h interval plus buffer), e.g. `search_issues` with `firstSeen:-8h` or unresolved
    issues sorted by date. Also check for issues that regressed/reappeared in that window.
+   **Production only:** every query includes `environment:production`, and ignore any returned
+   issue whose events are all from another environment (e.g. `development` from a local
+   `next dev`). Those are not production errors: no record, no commit, no notification.
 3. If there are no new/regressed issues, report that plainly and STOP. No records, no commit, no
    notification: a quiet run leaves no trace.
 4. **Prepare the records worktree.**
