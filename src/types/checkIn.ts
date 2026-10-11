@@ -20,6 +20,8 @@ export type MoodPainSeriesPoint = {
     pain: number | null
 }
 
+export type InsightsStatus = 'pending' | 'ready'
+
 export type CheckIn = {
     id: string
     userId: string
@@ -29,6 +31,7 @@ export type CheckIn = {
     activities: string[]
     notes?: string
     insights?: CheckInInsight[]
+    insightsStatus?: InsightsStatus
     createdAt: string
     updatedAt: string
 }

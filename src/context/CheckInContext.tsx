@@ -14,12 +14,13 @@ import { toast } from 'sonner'
 
 import { useQueryClient } from '@tanstack/react-query'
 
-import type { CheckInInsight } from '@/types/checkIn'
+import type { CheckIn, CheckInInsight } from '@/types/checkIn'
 import { ContextProps } from '@/types/react'
 
 import { InsightDialog } from '@/components/checkIn/InsightDialog'
 
 import { useProfile } from '@/hooks/queries/useProfile'
+import { useCheckInInsightsPolling } from '@/hooks/useCheckInInsightsPolling'
 
 import { applyOptimisticCheckIn } from '@/lib/checkIn/optimisticCheckIn'
 import { getInsightToastStyle } from '@/lib/insights/getInsightTypeStyle'
@@ -60,6 +61,37 @@ export const CheckInProvider = ({
     const [isSubmitted, setIsSubmitted] = useState(false)
     const [openInsights, setOpenInsights] =
         useState<CheckInInsight[]>([])
+    const [pollingCheckInId, setPollingCheckInId] =
+        useState<string | null>(null)
+
+    const showInsightToasts = (checkIn: CheckIn) => {
+        checkIn.insights?.forEach((insight) => {
+            toast(insight.title, {
+                description: insight.content,
+                duration: timings.INSIGHT_TOAST_DURATION,
+                style: getInsightToastStyle(insight.type),
+                action: {
+                    label: t(checkInLocales.insightToast.showInFull),
+                    onClick: () => setOpenInsights(getDisplayInsights(checkIn.insights))
+                }
+            })
+        })
+    }
+
+    const invalidateCheckIns = () => {
+        void queryClient.invalidateQueries({
+            queryKey: checkInQueryKeys.all
+        })
+    }
+
+    useCheckInInsightsPolling({
+        checkInId: pollingCheckInId,
+        onReady: (checkIn) => {
+            showInsightToasts(checkIn)
+            invalidateCheckIns()
+        },
+        onStop: () => setPollingCheckInId(null)
+    })
 
     const runSubmit = async (
         data: CheckInSchema,
@@ -68,20 +100,12 @@ export const CheckInProvider = ({
     ) => {
         try {
             const checkIn = await handleCheckInSubmit(data)
-            checkIn.insights?.forEach((insight) => {
-                toast(insight.title, {
-                    description: insight.content,
-                    duration: timings.INSIGHT_TOAST_DURATION,
-                    style: getInsightToastStyle(insight.type),
-                    action: {
-                        label: t(checkInLocales.insightToast.showInFull),
-                        onClick: () => setOpenInsights(getDisplayInsights(checkIn.insights))
-                    }
-                })
-            })
-            void queryClient.invalidateQueries({
-                queryKey: checkInQueryKeys.all
-            })
+            if (checkIn.insightsStatus === 'pending') {
+                setPollingCheckInId(checkIn.id)
+            } else {
+                showInsightToasts(checkIn)
+            }
+            invalidateCheckIns()
         } catch {
             onRollback()
             toast.error(t(checkInLocales.submitError), {
