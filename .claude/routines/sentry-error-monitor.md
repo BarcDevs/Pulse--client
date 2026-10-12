@@ -30,18 +30,29 @@ takes `-C "$MAIN"` (shared checkout), `-C "$WT"` (records worktree) or `-C` of a
 Before committing anything, read `$MAIN/GIT_RULES.md` (the repo's `CLAUDE.md` does not auto-load
 from here).
 
+**Checkpoint.** The time the last run finished its search lives in an untracked file,
+`CP_FILE="$(git -C "$MAIN" rev-parse --absolute-git-dir)/monitor-sentry-checkpoint"`, one ISO8601
+timestamp (UTC, `Z` suffix). It is never in a tracked file, so moving it never dirties a tree or
+needs a commit. Read it with `cat "$CP_FILE"`; write it with `printf '%s' "<ts>" > "$CP_FILE"`.
+Take `RUN_START=<now, ISO8601>` before searching. Set `CP_FILE` to `RUN_START` only when a run
+finishes (at the quiet stop in step 3, or in step 6); a run that fails or stops earlier (Sentry
+unauthenticated, errors, notify-and-stop) leaves it unmoved so the next run covers the gap.
+
 ## Steps
 
 1. Nothing to `cd` into yet: the routine starts in `.watchers`. Steps 2-3 need no repo access.
 2. Use the `sentry` MCP tools (project `.mcp.json` server; if it reports unauthenticated, stop and
-   notify — do not attempt OAuth unattended) to search `pulse-client` for issues with activity in
-   the last ~8h (6h interval plus buffer), e.g. `search_issues` with `firstSeen:-8h` or unresolved
-   issues sorted by date. Also check for issues that regressed/reappeared in that window.
+   notify — do not attempt OAuth unattended) to search `pulse-client` for issues with activity
+   since the checkpoint: `SINCE` = the later of `cat "$CP_FILE"` and now minus 24h (the cap keeps
+   a long outage from pulling a huge window); with no checkpoint file yet, use now minus 8h. E.g.
+   `search_issues` filtering on activity at or after `SINCE` (`lastSeen`/`firstSeen`, whichever the
+   tool accepts as an absolute time) or unresolved issues sorted by date. Also check for issues
+   that regressed/reappeared since `SINCE`.
    **Production only:** every query includes `environment:production`, and ignore any returned
    issue whose events are all from another environment (e.g. `development` from a local
    `next dev`). Those are not production errors: no record, no commit, no notification.
-3. If there are no new/regressed issues, report that plainly and STOP. No records, no commit, no
-   notification: a quiet run leaves no trace.
+3. If there are no new/regressed issues, set `CP_FILE` to `RUN_START`, report that plainly and
+   STOP. No records, no commit, no notification: a quiet run leaves no trace in git.
 4. **Prepare the records worktree.**
    - If `$WT` doesn't exist: `git -C "$MAIN" worktree add "$WT" -B monitor/records development`.
    - `N=$(git -C "$WT" rev-list --count development..monitor/records)`.
@@ -127,7 +138,8 @@ from here).
       **Verification** (step d2/c2). A record without an Investigated
       section means (b) was skipped: go back and do it. For a recurrence, append a dated
       "recurrence" note with what you re-checked, not just the bumped count.
-6. **Amend the records commit** in `$WT` (`git -C "$WT" add docs/sentry-errors`): no records commit
+6. **Set `CP_FILE` to `RUN_START`**, then **amend the records commit** in `$WT`
+   (`git -C "$WT" add docs/sentry-errors`): no records commit
    yet (`N=0` after step 4) → `git commit -m "docs(sentry-errors): monitor records"`; otherwise
    `git commit --amend --no-edit`. Never a second commit.
 7. **Ship, only if at least one fix passed (5e).** Merge into `development`, push it, then open the release PR; never
