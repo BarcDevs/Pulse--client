@@ -27,6 +27,8 @@ describe('ENDPOINTS path builders', () => {
             .toBe(`${base}/save`)
         expect(ENDPOINTS.forum.sharePost(traversalId))
             .toBe(`${base}/share`)
+        expect(ENDPOINTS.forum.viewPost(traversalId))
+            .toBe(`${base}/view`)
         expect(ENDPOINTS.forum.replies(traversalId))
             .toBe(`${base}/replies`)
         expect(ENDPOINTS.forum.reply('post-1', traversalId))

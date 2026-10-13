@@ -33,7 +33,7 @@ Users log mood (1-10), pain level (1-10), activities, and notes in a single dail
 Mood and pain charts display trends over time, making recovery visible and tangible.
 
 **Community Forum**
-A space for patients to share experiences, ask questions, and connect with others in recovery. Includes posts, replies, voting, and tag-based filtering.
+A space for patients to share experiences, ask questions, and connect with others in recovery. Includes posts, replies, voting, and tag-based filtering. Opening a post detail page records a view with a fire-and-forget `POST /forum/posts/:postId/view` (`useRecordPostView`, once per mount per post, errors ignored); the server counts one view per profile per post per rolling 24 h and skips the author. It is a dedicated call because the detail page often seeds from the list cache and makes no `GET /forum/posts/:id`.
 
 **User Profiles**
 Profiles capture bio, location, timezone, and emerging personalization through health interests and activity preferences. These support improved recommendations and community connection.
