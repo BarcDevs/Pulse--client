@@ -5,7 +5,7 @@ claude.ai/code/routines), replacing the cloud routine `trig_01ShV1zJC3hdsQPD1TQi
 a cloud routine needs Sentry attached as a claude.ai account-level connector, which then shows up
 in `/mcp` in every session. Locally it uses this repo's project-scoped `sentry` MCP server
 (`.mcp.json`) instead. Same workflow as the server's AWS watcher
-(`../pulse--server/.claude/routines/prod-error-monitor.md`): confidence gate, full `/code-review`
+(`../pulse--server/.claude/routines/prod-error-monitor.md`): confidence gate, full `/review-agents`
 before merging into `development` and opening a `development` -> `main` PR (the
 routine never merges a PR), records on an amended branch merged together with the fix. Working
 directory: `C:\Users\66bar\Claude\work\projects\pulse\.watchers` (dedicated, so run sessions are
@@ -117,7 +117,7 @@ unauthenticated, errors, notify-and-stop) leaves it unmoved so the next run cove
          `unverified locally: <why>` | `suppression, cause not fixed`). The next run's re-open
          check is the post-deploy confirmation: if the signature keeps appearing after the fix, it
          did not hold.
-   e. **Full review before merge.** From inside the fix worktree, invoke the local `code-review`
+   e. **Full review before merge.** From inside the fix worktree, invoke the local `review-agents`
       skill (via the Skill tool) on the branch's diff — the one that runs code-reviewer, architecture-auditor, duplication-eliminator
       and security-scanner in parallel, then style-enforcer, i.e. `/commit`'s review without the
       typecheck/lint/commit steps. NOT the cloud multi-agent `/code-review ultra` (`/ultrareview`):
@@ -156,7 +156,7 @@ unauthenticated, errors, notify-and-stop) leaves it unmoved so the next run cove
    if `gh pr list --base main --head development --state open` shows one, add a comment to it
    listing the new fixes; otherwise `gh pr create --base main --head development` with a title in
    the repo's commit convention and a body listing each fix (issue link, evidence-backed root cause
-   with `file:line`, what changed, typecheck/test results, verification result, `/code-review` result) plus the line
+   with `file:line`, what changed, typecheck/test results, verification result, `/review-agents` result) plus the line
    "This PR carries everything on `development` not yet on `main`." NEVER merge a PR, enable
    auto-merge, or push `main`. If the push or `gh` fails, notify with the error (the fixes stay
    merged on `development`). If no fix passed, nothing is merged, pushed or opened; the records
@@ -180,7 +180,7 @@ unauthenticated, errors, notify-and-stop) leaves it unmoved so the next run cove
   notify-only backed by an actual investigation (5b). Never stop at the Sentry issue summary and
   never write a guess as a root cause. Never carry a previous run's notify-only verdict forward
   without re-checking it (5a).
-- Never merge a fix that hasn't cleanly passed the full `/code-review` (step 5e) — that review is
+- Never merge a fix that hasn't cleanly passed the full `/review-agents` (step 5e) — that review is
   the actual safety gate on unsupervised code reaching `development`, since this routine may run on
   a smaller/cheaper model whose own judgment of "safe to merge" isn't trusted alone.
 - Never switch branches, stash, or reset in the shared checkout.
