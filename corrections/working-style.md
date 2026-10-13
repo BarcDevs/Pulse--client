@@ -162,3 +162,11 @@ Across one UI session (insight dialog, community layout, sticky sidebars) I made
 For the PWA work I made two commits on one branch: the installable manifest/icons/service worker, then the mobile install prompt dialog, and typed both `feat`. User: "second commit is no longer a `feat` - it is part of prev commit's feat so `rfc`."
 
 **Lesson:** `feat` marks the one commit that introduces a capability. A follow-on commit on the same feature (an add-on piece, UI built on top of it) is `rfc`, not another `feat`; say that reasoning when reporting the type. The post-commit hook bumps the version from the message type (`feat` minor, `rfc` patch), so a wrong type also gives a wrong version and tag. To fix an unpushed `HEAD`: set `package.json` and `package-lock.json` to the right version by hand, `SKIP_VERSION_BUMP=1 git commit --amend` with the new message (the hook appends `Version-Bump:` itself; edit that line too), delete the stale tag and create the right one.
+
+---
+
+## 13/10/2026 — Offered to raise `max-lines` from 150 to 200 to clear component warnings
+
+A commit left a `max-lines` warning on `PostDetailContent.tsx` (191 lines, already over before the commit). I said the warning was old, then, when the user asked, proposed raising the limit to 200, which would have cleared 5 of the 7 warnings. User: "I don't want to extend that limit because that implies a larger symptom. There is a reason the limit exists: that component with 300 lines can be split into a few components." He recalled that only `TrendChart` caused trouble when he split it.
+
+**Lesson:** a lint limit that warns is a signal to split the file, not a number to move. Never propose raising `max-lines` (or another size limit) to silence warnings. Report which touched file carries a warning, and whether the commit made it worse. For `TrendChart` (336 lines), checked 13/10/2026 on Recharts 3.8.1: wrapper components and fragments around `Area`, `Line` and `ReferenceArea` render normally inside `ComposedChart`, so the old "fragment children don't work with Recharts" note in `src/components/CLAUDE.md` does not hold for these. Tooltip content, `<defs>` and the custom `dot` renderer were not tested.
