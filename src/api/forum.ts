@@ -71,6 +71,7 @@ export const deletePost = async (
 type FetchRepliesParams = {
     limit?: number
     page?: number
+    cursor?: string
 }
 
 export const fetchReplies = async (

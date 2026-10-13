@@ -40,6 +40,12 @@ export const getApiErrorStatus = (
 ): number | undefined =>
     (error as any)?.response?.status
 
+export const isCursorNotFoundError = (
+    error: unknown
+): boolean =>
+    getApiErrorStatus(error) === 404
+    && (error as any)?.response?.data?.message === 'Cursor not found'
+
 export const isUnauthorizedError = (
     error: Error | null
 ): boolean => {

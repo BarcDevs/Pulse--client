@@ -9,6 +9,14 @@ import type {
 import { useInfiniteQuery } from '@tanstack/react-query'
 
 import type { Reply } from '@/types/community'
+import type { ListPageParam } from '@/types/responses'
+
+import { useResetOnLostCursor } from '@/hooks/queries/useResetOnLostCursor'
+
+import {
+    getFirstListPageParam,
+    getNextListPageParam
+} from '@/lib/community/listPaging'
 
 import { isNetworkError } from '@/utils/error'
 
@@ -25,40 +33,47 @@ export const useForumReplies = (postId?: string | null) => {
     const { repliesPageSize } = appSettings.community
     const { setNetworkError } = useAuth()
 
+    const queryKey = postId
+        ? forumQueryKeys.replies(postId)
+        : [
+            'forum',
+            'replies',
+            'disabled'
+        ]
+
     const query = useInfiniteQuery<
         Reply[],
         Error,
         InfiniteData<Reply[]>,
         QueryKey,
-        number
+        ListPageParam
     >({
-        queryKey: postId
-            ? forumQueryKeys.replies(postId)
-            : [
-                'forum',
-                'replies',
-                'disabled'
-            ],
+        queryKey,
         queryFn: ({ pageParam }) => {
             if (!postId)
                 throw new Error('Post ID is required')
 
             return fetchReplies(postId, {
                 limit: repliesPageSize,
-                page: pageParam
+                ...pageParam
             }).then((res) => res.items)
         },
-        initialPageParam: 1,
+        initialPageParam: getFirstListPageParam(true),
         getNextPageParam: (lastPage, allPages) =>
-            lastPage.length === repliesPageSize
-                ? allPages.length + 1
-                : undefined,
+            getNextListPageParam(
+                lastPage,
+                allPages,
+                repliesPageSize,
+                true
+            ),
         enabled: !!postId,
         staleTime: minuteInMs * 5,
         retry: false
     })
 
     const { error, refetch } = query
+
+    useResetOnLostCursor(error, queryKey)
 
     useEffect(() => {
         if (!error) {
