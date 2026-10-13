@@ -3,7 +3,7 @@
 import { useEffect } from 'react'
 
 import type { QueryKey } from '@tanstack/react-query'
-import { useQueryClient } from '@tanstack/react-query'
+import { hashKey, useQueryClient } from '@tanstack/react-query'
 
 import { isCursorNotFoundError } from '@/utils/error'
 
@@ -13,17 +13,17 @@ export const useResetOnLostCursor = (
     queryKey: QueryKey
 ) => {
     const queryClient = useQueryClient()
+    const queryHash = hashKey(queryKey)
 
     useEffect(() => {
         if (!isCursorNotFoundError(error)) return
 
         void queryClient.resetQueries({
-            queryKey,
-            exact: true
+            predicate: (query) => query.queryHash === queryHash
         })
     }, [
         error,
         queryClient,
-        queryKey
+        queryHash
     ])
 }

@@ -42,9 +42,14 @@ export const getApiErrorStatus = (
 
 export const isCursorNotFoundError = (
     error: unknown
-): boolean =>
-    getApiErrorStatus(error) === 404
-    && (error as any)?.response?.data?.message === 'Cursor not found'
+): boolean => {
+    if (getApiErrorStatus(error) !== 404) return false
+
+    const detail = getApiErrorDetail(error)
+
+    return detail?.code === 'NOT_FOUND'
+        && detail.params?.resource === 'Cursor'
+}
 
 export const isUnauthorizedError = (
     error: Error | null

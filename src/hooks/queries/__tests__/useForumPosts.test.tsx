@@ -49,7 +49,13 @@ const page = (ids: string[]) => ({
 })
 
 const cursorLost = Object.assign(new Error('Request failed with status code 404'), {
-    response: { status: 404, data: { message: 'Cursor not found' } }
+    response: {
+        status: 404,
+        data: {
+            message: 'Cursor not found! please check your inputs and try again!',
+            error: [{ code: 'NOT_FOUND', params: { resource: 'Cursor' } }]
+        }
+    }
 })
 
 describe('useForumPosts paging', () => {

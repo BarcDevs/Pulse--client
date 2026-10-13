@@ -4,23 +4,39 @@ import { isCursorNotFoundError } from '@/utils/error'
 
 const apiError = (
     status: number,
-    message: string
-) => ({ response: { status, data: { message } } })
+    code: string,
+    resource: string
+) => ({
+    response: {
+        status,
+        data: {
+            message: `${resource} not found! please check your inputs and try again!`,
+            error: [{ code, params: { resource } }]
+        }
+    }
+})
 
 describe('isCursorNotFoundError', () => {
-    it('matches the 404 Cursor not found answer', () => {
-        expect(isCursorNotFoundError(apiError(404, 'Cursor not found')))
+    it('matches the 404 NOT_FOUND answer for the Cursor resource', () => {
+        expect(isCursorNotFoundError(apiError(404, 'NOT_FOUND', 'Cursor')))
             .toBe(true)
     })
 
-    it('does not match another 404 such as a missing post', () => {
-        expect(isCursorNotFoundError(apiError(404, 'Post not found')))
+    it('does not match another resource such as a missing post', () => {
+        expect(isCursorNotFoundError(apiError(404, 'NOT_FOUND', 'Post')))
             .toBe(false)
     })
 
-    it('does not match the same message with another status', () => {
-        expect(isCursorNotFoundError(apiError(400, 'Cursor not found')))
+    it('does not match the same detail with another status', () => {
+        expect(isCursorNotFoundError(apiError(400, 'NOT_FOUND', 'Cursor')))
             .toBe(false)
+    })
+
+    it('does not depend on the translated message text', () => {
+        const error = apiError(404, 'NOT_FOUND', 'Cursor')
+        error.response.data.message = 'הסמן לא נמצא'
+
+        expect(isCursorNotFoundError(error)).toBe(true)
     })
 
     it('does not match a missing error or a plain Error', () => {

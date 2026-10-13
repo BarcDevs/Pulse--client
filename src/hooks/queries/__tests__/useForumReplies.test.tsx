@@ -106,7 +106,10 @@ describe('useForumReplies paging', () => {
                 {
                     response: {
                         status: 404,
-                        data: { message: 'Cursor not found' }
+                        data: {
+                            message: 'Cursor not found! please check your inputs and try again!',
+                            error: [{ code: 'NOT_FOUND', params: { resource: 'Cursor' } }]
+                        }
                     }
                 }
             ))

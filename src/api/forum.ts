@@ -5,6 +5,7 @@ import type {
     Reply
 } from '@/types/community'
 import type {
+    ListPageParam,
     Paginated,
     Response
 } from '@/types/responses'
@@ -21,8 +22,16 @@ export const fetchCommunityRecommendations = async (
     return res.data.data
 }
 
+type FetchPostsParams = ListPageParam & {
+    limit?: number
+    filter?: string
+    search?: string
+    tag?: string
+    category?: string
+}
+
 export const fetchPosts = async (
-    query: any
+    query: FetchPostsParams
 ): Promise<Paginated<Post>> => {
     const res = await api.get<Response<Paginated<Post>>>(
         ENDPOINTS.forum.posts,
