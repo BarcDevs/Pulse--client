@@ -30,7 +30,7 @@ has nothing that fits.
 | `ui/` | Small shared atoms not tied to shadcn — `Icon`, `FormError`, `RetryButton` |
 | `bars/` | Progress bars (e.g. `GoalProgressBar`) |
 | `brand/` | Logo/brand marks (`Logo`) |
-| `charts/` | Chart cards, legends, tooltips, tabs, skeletons |
+| `charts/` | Chart cards, legends, tooltips, tabs, skeletons; `TrendChart` pieces (gradients, series layers, dots, no-data areas, bridge lines) |
 | `content/` | Small content-display atoms (e.g. `GuidelineItem`) |
 | `error/` | Full error-page building blocks (illustrations, recovery/crisis cards, debug/health cards) + `network/`, `notFound/` subfolders |
 | `footer/` | Footer sections (brand/legal/links/social) |

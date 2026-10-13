@@ -1,4 +1,4 @@
-import { ChartSeries } from './TrendChart'
+import { ChartSeries } from '@/types/chart'
 
 type PayloadItem = {
     name?: string | number

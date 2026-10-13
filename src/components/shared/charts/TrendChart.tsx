@@ -1,92 +1,30 @@
 'use client'
 
-import { useMemo } from 'react'
-
 import {
-    Area,
     ComposedChart,
     Line,
-    ReferenceArea,
     ResponsiveContainer,
     Tooltip,
     XAxis,
     YAxis
 } from 'recharts'
 
+import { ChartRow, ChartSeries } from '@/types/chart'
 import { ClassName } from '@/types/react'
+
+import { useTrendChartData } from '@/hooks/ui/useTrendChartData'
 
 import { cn } from '@/lib/utils'
 
+import { BridgeLines } from './BridgeLines'
+import { ChartGradients } from './ChartGradients'
 import { ChartLegend } from './ChartLegend'
 import { ChartTooltip } from './ChartTooltip'
-
-export type ChartSeries = {
-    dataKey: string
-    color: string
-    fillColor?: string
-    label: string
-    gradientId: string
-    dashed?: boolean
-}
-
-type BridgeKey = {
-    key: string
-    color: string
-}
-
-type EnrichedResult = {
-    enrichedData: Record<string, unknown>[]
-    bridgeKeys: BridgeKey[]
-}
-
-const enrichWithBridges = (
-    data: Record<string, unknown>[],
-    series: ChartSeries[],
-    seriesPrevious?: Record<string, number | null>
-): EnrichedResult => {
-    const enrichedData = data.map(d => ({ ...d }))
-    const bridgeKeys: BridgeKey[] = []
-
-    for (const s of series) {
-        if (s.dashed) continue
-
-        const prevVal = seriesPrevious?.[s.dataKey]
-        // -1 = virtual anchor before window; null = no anchor yet
-        let lastRealIdx: number | null =
-            (
-                prevVal !== null
-                && prevVal !== undefined
-            ) ? -1 : null
-        let inGap = false
-        let bridgeIdx = 0
-
-        for (let i = 0; i < data.length; i++) {
-            const val = data[i][s.dataKey]
-            const isReal = val !== null && val !== undefined
-
-            if (isReal) {
-                // Skip bridging from the off-screen virtual anchor (-1) —
-                // it has no visible point to draw the dashed line from
-                if (inGap && lastRealIdx !== null && lastRealIdx !== -1) {
-                    const key = `_bridge_${s.dataKey}_${bridgeIdx++}`
-                    enrichedData[lastRealIdx][key] =
-                        data[lastRealIdx][s.dataKey]
-                    enrichedData[i][key] = val
-                    bridgeKeys.push({ key, color: s.color })
-                }
-                lastRealIdx = i
-                inGap = false
-            } else if (lastRealIdx !== null) {
-                inGap = true
-            }
-        }
-    }
-
-    return { enrichedData, bridgeKeys }
-}
+import { NoDataAreas } from './NoDataAreas'
+import { SeriesLayers } from './SeriesLayers'
 
 type TrendChartProps = {
-    data: Record<string, unknown>[]
+    data: ChartRow[]
     series: ChartSeries[]
     seriesPrevious?: Record<string, number | null>
     noDataLabel: string
@@ -100,76 +38,17 @@ export const TrendChart = ({
     noDataLabel,
     plotClassName = 'h-40'
 }: TrendChartProps) => {
-    const { enrichedData, bridgeKeys } = useMemo(
-        () => enrichWithBridges(
-            data,
-            series,
-            seriesPrevious
-        ),
-        [data, series, seriesPrevious]
+    const {
+        enrichedData,
+        bridgeKeys,
+        hoverData,
+        noDataRanges,
+        lastRealIndex
+    } = useTrendChartData(
+        data,
+        series,
+        seriesPrevious
     )
-
-    const hoverData = useMemo(
-        () => enrichedData.map(d => ({
-            ...d,
-            __hover: 0
-        })),
-        [enrichedData]
-    )
-
-    const noDataRanges = useMemo(() => {
-        const realSeries = series.filter(s => !s.dashed)
-        const hasDataAt = (i: number) => realSeries.some(
-            s => enrichedData[i][s.dataKey] != null
-        )
-
-        let firstGlobalIdx = -1
-        let lastGlobalIdx = -1
-        for (let i = 0; i < enrichedData.length; i++) {
-            if (hasDataAt(i)) {
-                if (firstGlobalIdx === -1) firstGlobalIdx = i
-                lastGlobalIdx = i
-            }
-        }
-
-        const ranges: { x1: string, x2: string }[] = []
-        if (firstGlobalIdx === -1) {
-            if (enrichedData.length > 0) {
-                ranges.push({
-                    x1: enrichedData[0].date as string,
-                    x2: enrichedData[enrichedData.length - 1].date as string
-                })
-            }
-            return ranges
-        }
-        if (firstGlobalIdx > 0) {
-            ranges.push({
-                x1: enrichedData[0].date as string,
-                x2: enrichedData[firstGlobalIdx].date as string
-            })
-        }
-        if (lastGlobalIdx < enrichedData.length - 1) {
-            ranges.push({
-                x1: enrichedData[lastGlobalIdx].date as string,
-                x2: enrichedData[enrichedData.length - 1].date as string
-            })
-        }
-        return ranges
-    }, [enrichedData, series])
-
-    const lastRealIndex = useMemo(() => {
-        const result: Record<string, number> = {}
-        for (const s of series) {
-            for (let i = enrichedData.length - 1; i >= 0; i--) {
-                const val = enrichedData[i][s.dataKey]
-                if (val !== null && val !== undefined) {
-                    result[s.dataKey] = i
-                    break
-                }
-            }
-        }
-        return result
-    }, [enrichedData, series])
 
     return (
         <div className={'flex flex-col gap-1'}>
@@ -187,29 +66,7 @@ export const TrendChart = ({
                             bottom: 0
                         }}
                     >
-                        <defs>
-                            {series.filter(s => !s.dashed).map(s => (
-                                <linearGradient
-                                    key={s.gradientId}
-                                    id={s.gradientId}
-                                    x1={'0'}
-                                    y1={'0'}
-                                    x2={'0'}
-                                    y2={'1'}
-                                >
-                                    <stop
-                                        offset={'5%'}
-                                        stopColor={s.fillColor ?? s.color}
-                                        stopOpacity={0.9}
-                                    />
-                                    <stop
-                                        offset={'95%'}
-                                        stopColor={s.fillColor ?? s.color}
-                                        stopOpacity={0}
-                                    />
-                                </linearGradient>
-                            ))}
-                        </defs>
+                        <ChartGradients series={series}/>
                         <XAxis
                             dataKey={'date'}
                             axisLine={false}
@@ -230,16 +87,7 @@ export const TrendChart = ({
                             }}
                             width={30}
                         />
-                        {noDataRanges.map(range => (
-                            <ReferenceArea
-                                key={`${range.x1}-${range.x2}`}
-                                x1={range.x1}
-                                x2={range.x2}
-                                fill={'var(--muted-foreground)'}
-                                fillOpacity={0.15}
-                                ifOverflow={'visible'}
-                            />
-                        ))}
+                        <NoDataAreas ranges={noDataRanges}/>
                         <Tooltip
                             content={(props) => (
                                 <ChartTooltip
@@ -249,60 +97,11 @@ export const TrendChart = ({
                                 />
                             )}
                         />
-                        {series.map(s => s.dashed ? (
-                            <Line
-                                key={s.dataKey}
-                                type={'monotone'}
-                                dataKey={s.dataKey}
-                                stroke={s.color}
-                                strokeDasharray={'5 5'}
-                                strokeWidth={1}
-                                dot={false}
-                                connectNulls={false}
-                            />
-                        ) : (
-                            <Area
-                                key={s.dataKey}
-                                type={'monotone'}
-                                dataKey={s.dataKey}
-                                stroke={s.color}
-                                strokeWidth={2}
-                                fill={`url(#${s.gradientId})`}
-                                connectNulls={false}
-                                dot={(props: {
-                                    cx?: number
-                                    cy?: number
-                                    index?: number
-                                }) => {
-                                    const idx = props.index ?? -1
-                                    const hasValue = enrichedData[idx]?.[s.dataKey] != null
-                                    if (!hasValue || props.cx == null || props.cy == null) {
-                                        return <g key={`dot-${s.dataKey}-${idx}`}/>
-                                    }
-                                    const prevNull = enrichedData[idx - 1]?.[s.dataKey] == null
-                                    const nextNull = enrichedData[idx + 1]?.[s.dataKey] == null
-                                    const atStart = idx === 0
-                                    const atEnd = idx === enrichedData.length - 1
-                                    const isOrphan = prevNull && nextNull
-                                    const isEdge = (atStart && nextNull) || (atEnd && prevNull)
-                                    if (!isOrphan && !isEdge) {
-                                        return <g key={`dot-${s.dataKey}-${idx}`}/>
-                                    }
-                                    const isLast = idx === lastRealIndex[s.dataKey]
-                                    return (
-                                        <circle
-                                            key={`dot-${s.dataKey}-${idx}`}
-                                            cx={props.cx}
-                                            cy={props.cy}
-                                            r={isLast ? 4 : 3}
-                                            fill={s.color}
-                                            stroke={'white'}
-                                            strokeWidth={2}
-                                        />
-                                    )
-                                }}
-                            />
-                        ))}
+                        <SeriesLayers
+                            series={series}
+                            enrichedData={enrichedData}
+                            lastRealIndex={lastRealIndex}
+                        />
                         <Line
                             dataKey={'__hover'}
                             stroke={'none'}
@@ -311,22 +110,7 @@ export const TrendChart = ({
                             legendType={'none'}
                             isAnimationActive={false}
                         />
-                        {bridgeKeys.map(b => (
-                            <Line
-                                key={b.key}
-                                type={'monotone'}
-                                dataKey={b.key}
-                                stroke={b.color}
-                                strokeDasharray={'4 4'}
-                                strokeWidth={2}
-                                strokeOpacity={0.2}
-                                connectNulls={true}
-                                dot={false}
-                                activeDot={false}
-                                legendType={'none'}
-                                isAnimationActive={false}
-                            />
-                        ))}
+                        <BridgeLines bridgeKeys={bridgeKeys}/>
                     </ComposedChart>
                 </ResponsiveContainer>
             </div>
