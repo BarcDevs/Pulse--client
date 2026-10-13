@@ -157,6 +157,12 @@ export const sharePost = async (
     return res.data.data
 }
 
+export const recordPostView = async (
+    postId: string
+): Promise<void> => {
+    await api.post(ENDPOINTS.forum.viewPost(postId))
+}
+
 export const savePost = async (
     postId: string
 ): Promise<{ saved: boolean }> => {

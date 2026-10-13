@@ -43,6 +43,7 @@ export const ENDPOINTS = {
         likePost: (postId: string) => `${postPath(postId)}/like`,
         savePost: (postId: string) => `${postPath(postId)}/save`,
         sharePost: (postId: string) => `${postPath(postId)}/share`,
+        viewPost: (postId: string) => `${postPath(postId)}/view`,
         replies: (postId: string) =>
             `${postPath(postId)}/replies`,
         reply: (

@@ -21,6 +21,7 @@ import { ErrorDisplay } from '@/components/shared/ErrorDisplay'
 
 import { useForumPostMutations } from '@/hooks/mutations/useForumPostMutations'
 import { useForumPost } from '@/hooks/queries/useForumPost'
+import { useRecordPostView } from '@/hooks/queries/useRecordPostView'
 import { useDateLocale } from '@/hooks/ui/useDateLocale'
 import { useAuthExpiredToast } from '@/hooks/useAuthExpiredToast'
 
@@ -66,6 +67,8 @@ export const PostDetailContent = () => {
         isError: isPostError,
         error: postError
     } = useForumPost(postId)
+
+    useRecordPostView(postId)
 
     if (isPostLoading) return <PostDetailSkeletons/>
 
