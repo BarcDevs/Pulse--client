@@ -4,6 +4,7 @@ import { useState } from 'react'
 
 import { useTranslations } from 'next-intl'
 
+import { ChartSeries } from '@/types/chart'
 import { MoodPainSeriesPoint } from '@/types/checkIn'
 import { TimePeriod } from '@/types/time'
 
@@ -20,7 +21,7 @@ import { progressLocales } from '@/locales/progressLocales'
 
 import { ChartCardSkeleton } from './ChartCardSkeleton'
 import { ChartTabs } from './ChartTabs'
-import { ChartSeries, TrendChart } from './TrendChart'
+import { TrendChart } from './TrendChart'
 
 type ChartCardProps = {
     title: string

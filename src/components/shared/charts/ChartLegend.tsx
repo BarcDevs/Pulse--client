@@ -1,4 +1,4 @@
-import { ChartSeries } from './TrendChart'
+import { ChartSeries } from '@/types/chart'
 
 type ChartLegendProps = {
     series: Pick<
