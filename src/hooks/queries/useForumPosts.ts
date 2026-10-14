@@ -9,6 +9,15 @@ import type {
 import { useInfiniteQuery } from '@tanstack/react-query'
 
 import type { FilterType, Post } from '@/types/community'
+import type { ListPageParam } from '@/types/responses'
+
+import { useResetOnLostCursor } from '@/hooks/queries/useResetOnLostCursor'
+
+import {
+    getFirstListPageParam,
+    getNextListPageParam,
+    usesCursorPaging
+} from '@/lib/community/listPaging'
 
 import { isNetworkError } from '@/utils/error'
 
@@ -34,37 +43,45 @@ export const useForumPosts = (
     }
 ) => {
     const { setNetworkError } = useAuth()
+    const useCursor = usesCursorPaging(query?.filter)
+    const limit = query?.limit ?? 20
+    const queryKey = query
+        ? [
+            ...forumQueryKeys.posts,
+            query.filter ?? 'newest',
+            limit,
+            query.tag,
+            query.category,
+            query.search
+        ] : forumQueryKeys.posts
 
     const result = useInfiniteQuery<
         Post[],
         Error,
         InfiniteData<Post[]>,
         QueryKey,
-        number
+        ListPageParam
     >({
-        queryKey: query
-            ? [
-                ...forumQueryKeys.posts,
-                query.filter ?? 'newest',
-                query.limit ?? 20,
-                query.tag,
-                query.category,
-                query.search
-            ] : forumQueryKeys.posts,
+        queryKey,
         queryFn: ({ pageParam }) =>
-            fetchPosts({ ...query, page: pageParam })
+            fetchPosts({ ...query, ...pageParam })
                 .then((res) => res.items),
-        initialPageParam: 1,
+        initialPageParam: getFirstListPageParam(useCursor),
         getNextPageParam: (lastPage, allPages) =>
-            lastPage.length === (query?.limit ?? 20)
-                ? allPages.length + 1
-                : undefined,
+            getNextListPageParam(
+                lastPage,
+                allPages,
+                limit,
+                useCursor
+            ),
         staleTime: 5 * minuteInMs,
         enabled: options?.enabled !== false,
         retry: false
     })
 
     const { error, refetch } = result
+
+    useResetOnLostCursor(error, queryKey)
 
     useEffect(() => {
         if (!error) {
