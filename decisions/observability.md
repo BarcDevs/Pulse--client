@@ -62,3 +62,15 @@ The watcher used to add a dated entry here and commit it straight to `developmen
 **Why:** One project for the client, the one the watcher and docs already name, instead of re-pointing the watcher at a generically named project.
 
 **How to apply:** Takes effect with the next client deploy. Issues already captured stay in `javascript-react` (`JAVASCRIPT-REACT-14…18`, the audit's probes are resolved); do not expect them in `pulse-client`. If dev-server errors should not reach Sentry at all, leave `NEXT_PUBLIC_SENTRY_DSN` empty in `.env.local`. The `VITE_SENTRY_DSN` in `.env.production.local` is a leftover from the Vite days and unused.
+
+---
+
+## 12/10/2026 — Sentry watcher gets a checkpoint, kept in an untracked file; searches production events only
+
+**Problem:** The watcher searched a fixed ~8h window (6h interval plus buffer). A skipped or failed run left a gap that was never searched (the 6pm run on 10/10 was skipped), and overlapping windows could show one issue to two consecutive runs. It also picked up `environment:development` events from a local `next dev`, which became records and notifications.
+
+**Decision:** The last finished search time is stored in an untracked file in the main checkout's git dir (`monitor-sentry-checkpoint`), the same approach as the server's AWS watcher. A run searches from the later of the checkpoint and now minus 24h (8h when there is no file yet), and moves the checkpoint only when it finishes: at the quiet stop, or in the records step. Every query filters `environment:production`. No tracked file changes on a quiet run.
+
+**Why over alternatives:** a checkpoint in a tracked file would dirty a tree and force an amend each run, which the auto-mode classifier kept blocking on the server side. A wider fixed window only hides the gap problem and double-counts more.
+
+**How to apply:** if `monitor-sentry-checkpoint` is deleted, the next run falls back to the 8h window. The 24h cap means an outage longer than a day still loses the older part; widen the cap if that happens. The routine is `.claude/routines/sentry-error-monitor.md`.

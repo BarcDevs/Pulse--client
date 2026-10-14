@@ -30,5 +30,11 @@ export type Paginated<T> = {
         page: number
         limit: number
         hasMore: boolean
+        nextCursor: string | null
     }
+}
+
+export type ListPageParam = {
+    page?: number
+    cursor?: string
 }

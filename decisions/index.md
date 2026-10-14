@@ -32,6 +32,7 @@ Error tracking and performance-monitoring tooling decisions.
 | 30/09/2026 | Feedback Watch routine needs `docs.google.com` + `*.googleusercontent.com` allowed in its cloud environment |
 | 02/10/2026 | Production client DSN moved from the `javascript-react` project to `pulse-client`, the one the watcher and docs name |
 | 30/09/2026 | Sentry watcher records move to `docs/sentry-errors/` (index + files) on a local `monitor/records` branch, shipped only with a fix |
+| 12/10/2026 | Sentry watcher gets a checkpoint in an untracked file (no gaps between runs) and searches production events only |
 
 ## Charts & RTL — [[decisions/charts-and-rtl]]
 Trend-chart ordering and no-data rendering rules.

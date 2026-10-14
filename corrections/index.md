@@ -67,6 +67,7 @@ How to act on bug reports and where to log — state the fix before broad edits,
 | 28/09/2026 | Blanket-killed every Node process on the machine (`taskkill /IM node.exe`) to free one busy directory instead of targeting the one PID |
 | 30/09/2026 | Wrapped `Switch` in an extra `<div dir="ltr">` instead of passing `dir` on the component itself, which it already supports |
 | 09/10/2026 | Typed a follow-on commit of a feature as `feat`; it is `rfc`, and the version bump follows the type |
+| 13/10/2026 | Suggested raising the `max-lines` limit to clear warnings; the limit stays at 150 and the fix is to split the component |
 
 ## Code Placement — [[corrections/code-placement]]
 Where new constants/config values belong.
