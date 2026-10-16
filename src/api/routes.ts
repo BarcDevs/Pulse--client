@@ -59,6 +59,10 @@ export const ENDPOINTS = {
         tagsUnknown: '/forum/tags/unknown',
         postCategories: '/forum/posts/categories'
     },
+    launchFunnel: {
+        open: '/launch-funnel/open'
+    },
+
     checkIn: {
         base: '/check-in',
         stats: '/check-in/stats',
