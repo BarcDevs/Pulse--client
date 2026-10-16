@@ -8,6 +8,7 @@ import { getLocale, getMessages } from 'next-intl/server'
 
 import type { LayoutProps } from '@/types'
 
+import { LaunchOpenTracker } from '@/components/launch/LaunchOpenTracker'
 import { AppShell } from '@/components/layout/AppShell'
 import { ServiceWorkerRegister } from '@/components/pwa/ServiceWorkerRegister'
 import { DirectionProvider } from '@/components/ui/direction'
@@ -78,6 +79,7 @@ const RootLayout = async ({
         </DirectionProvider>
         <Toaster/>
         <ServiceWorkerRegister/>
+        <LaunchOpenTracker/>
         </body>
         </html>
     )
