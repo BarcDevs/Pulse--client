@@ -27,8 +27,7 @@ Terminology and wording rules for `messages/he-IL.json` — established Hebrew t
 
 | Date | Entry |
 |---|---|
-| 17/10/2026 | "check-in" is צ'ק אין again (reverses 24/09 דיווח יומי), client copy and server prompts |
-| 24/09/2026 | (superseded 17/10) "check-in" was דיווח יומי, never the transliteration צ'ק-אין |
+| 17/10/2026 | "check-in" is צ'ק אין again (supersedes archived "דיווח יומי" entry), client copy and server prompts |
 | 24/09/2026 | Copy uses plain keyboard punctuation: no em-dashes, curly quotes/apostrophes, gershayim or low-9 quotes |
 | 02/10/2026 | Never commit Hebrew copy without the user's review; show the exact text and wait. Gershayim reintroduced |
 | 09/10/2026 | AI-generated Hebrew follows the same copy rules (mood term, no dashes, no leading ה) and is fixed in the prompt |
