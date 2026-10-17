@@ -7,9 +7,9 @@ a lesson in this topic — not routinely.
 
 ## 17/10/2026 — REVERSAL: Hebrew term for "check-in" is צ'ק אין again
 
-User: "i need you to revert every occurence of דיווח יומי back to צ'ק אין, way more natural and lightweight. do it on server too". Changed `messages/he-IL.json` (`step1Title`) and the server prompt `src/lib/prompts/sharedInstructions.ts`. Supersedes the 24/09 entry, now in [[corrections/archive/hebrew-copy]].
+User: "i need you to revert every occurence of דיווח יומי back to צ'ק אין, way more natural and lightweight. do it on server too". Changed `messages/he-IL.json` (`step1Title`) and the server prompt `src/lib/prompts/sharedInstructions.ts`. Commits to revert if the user wants דיווח יומי back: client `6d557d1b` (merged to main in PR #42, `ea0c95b6`), server `e4923d0` (also the eval count phrase in `scripts/eval-ai-models/rules.ts`; PR #64, `8b8a484`). Supersedes the 24/09 entry, now in [[corrections/archive/hebrew-copy]].
 
-**Lesson:** write "צ'ק אין" (with a space, plain apostrophe) for a check-in in Hebrew copy and in the server AI prompts. Hebrew copy edit is uncommitted until the user reviews it (see 02/10 entry).
+**Lesson:** write "צ'ק אין" (with a space, plain apostrophe) for a check-in in Hebrew copy and in the server AI prompts.
 
 ---
 
