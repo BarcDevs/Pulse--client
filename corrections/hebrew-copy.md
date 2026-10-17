@@ -5,11 +5,11 @@ a lesson in this topic — not routinely.
 
 ---
 
-## 24/09/2026 — Hebrew term for "check-in" is דיווח יומי, never צ'ק-אין
+## 17/10/2026 — REVERSAL: Hebrew term for "check-in" is צ'ק אין again
 
-While writing Hebrew copy for the support page I used the transliteration "צ׳ק-אין" (and also "צ'ק אין" in the Terms file). User: "צק אן = דיווח יומי. תשנה בכל הקובץ של התרגום בעברית". I replaced all 7 occurrences in `messages/he-IL.json`, adjusting the grammar per sentence (דיווח יומי / דיווחים יומיים / בדיווחים היומיים), and regenerated the legal PDFs since the Terms text changed.
+User: "i need you to revert every occurence of דיווח יומי back to צ'ק אין, way more natural and lightweight. do it on server too". Changed `messages/he-IL.json` (`step1Title`) and the server prompt `src/lib/prompts/sharedInstructions.ts`. Supersedes the 24/09 entry, now in [[corrections/archive/hebrew-copy]].
 
-**Lesson:** in Hebrew copy write "דיווח יומי" for a check-in; don't transliterate English product terms ("צ'ק-אין") when a Hebrew term is established. Before writing new Hebrew copy, grep `messages/he-IL.json` for how the same concept is already worded. Note: the file still has ~12 older strings that say "עדכון יומי" for the same concept (e.g. `dailyCheckIn`, `saveCheckIn`, `checkInSaved`) — not changed unless the user asks to unify them. Anything in `messages/he-IL.json` that lands in the Terms/Privacy text means `npm run legal:pdf` must be rerun.
+**Lesson:** write "צ'ק אין" (with a space, plain apostrophe) for a check-in in Hebrew copy and in the server AI prompts. Hebrew copy edit is uncommitted until the user reviews it (see 02/10 entry).
 
 ---
 
