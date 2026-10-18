@@ -58,6 +58,7 @@ matches it.
 
 ## Docs Sync
 New feature added → update client README, server PRD, AND server README same time, every time.
+AI insight texts are short by design (about two sentences; the daily observation title is 5 words or fewer in Hebrew, 7 in English). Layouts must not assume long text. Limits live in the server's `TEXT_LIMITS` table (`src/constants/aiInsight/textLimits.ts`); the client README states this.
 
 ## Design Files
 `docs/design/` — design system, JSX screen specs and OTP emails from Claude Design (reference when building UI). Older sessions/skills may still say `.claude/design/`; same content.
