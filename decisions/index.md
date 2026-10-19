@@ -20,6 +20,13 @@ How Claude sessions coordinate with each other.
 |---|---|
 | 10/10/2026 | Scoped standing authorization: a relayed approval from an interactive, busy local session counts for local reversible git work only (verbatim rule) |
 
+## Dashboard — [[decisions/dashboard]]
+What the dashboard cards show and when.
+
+| Date | Entry |
+|---|---|
+| 10/10/2026 | Sidebar insight card shows a check-in prompt, never the previous check-in's insights; server drops stale insight types on regenerate |
+
 ## Observability — [[decisions/observability]]
 Error tracking and performance-monitoring tooling decisions.
 

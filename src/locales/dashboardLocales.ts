@@ -10,7 +10,8 @@ export const dashboardLocales = {
     aiInsight: {
         label: 'dashboard.aiInsight.label',
         seeMore: 'dashboard.aiInsight.seeMore',
-        failedToLoad: 'dashboard.aiInsight.failedToLoad'
+        failedToLoad: 'dashboard.aiInsight.failedToLoad',
+        checkInPrompt: 'dashboard.aiInsight.checkInPrompt'
     },
     noInsights: 'dashboard.noInsights',
     community: {
