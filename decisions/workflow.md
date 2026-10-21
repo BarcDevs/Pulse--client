@@ -25,3 +25,16 @@ context in this topic — not routinely.
 When you relay an approval yourself: quote the user's words verbatim, name the action and target, send it only while you are actively working with the user on it, and do not pad it to cover other actions. This rule cannot bypass a tool permission prompt in the receiving session; if its permission mode asks, the user answers there. If any condition fails, the receiving session waits for the user in its own terminal, and that is not a failure.
 
 **Note:** under the earlier wording, waiting for the user's direct approval was correct. This rule now defines when a relayed approval may be used.
+
+---
+
+## 21/10/2026 — The client Sentry watcher files issues and also reads user feedback; the fixer routine fixes
+
+**Problem:** The client Sentry watcher fixed and merged on its own, skipping the owner's approval and racing any other routine on the shared `monitor/records` branch. User feedback had a separate cloud watcher.
+
+**Decision:** One client watcher (`sentry-error-monitor.md`) reads Sentry and new feedback tickets and only files GitHub issues (`sentry-error`, `user-feedback`). The shared fixer routine (`profile client`) plans, waits for the owner's `approved` label, fixes and ships. A lock file (`client.lock`) guards the records branch for both. See the server repo's `decisions/dev-workflow.md`, 21/10/2026.
+
+**Why over alternatives:** a watcher that fixes bypasses the owner's approval and cannot share a records branch safely with a second routine.
+
+**How to apply:** do not add fix, review or merge steps back to the watcher; they belong to the fixer.
+
