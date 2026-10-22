@@ -76,6 +76,10 @@ run covers the gap.
    3. **Fix in place.** `$MAIN` must be free (clean tree, on `development`, no merge in progress);
       otherwise skip and retry next run. Worktree `pulse--client.wt/ci-fix-<run number>` on branch
       `fix/ci-<run number>` from `development`, with its own `node_modules` per `$MAIN/CLAUDE.md`.
+      Before changing anything, read `$MAIN/decisions/index.md` and `$MAIN/corrections/index.md`
+      (via `git -C "$MAIN" show development:<path>`) and open the topic files that touch the failing
+      area: the fix must not undo a recorded decision or repeat a corrected mistake. A fix that
+      would contradict one is **serious** (item 4), not a tweak.
       Reproduce the failing check, make the smallest change that fixes it and nothing else,
       following `$MAIN/GIT_RULES.md` and `CORE_RULES.md`, and commit as `fix(ci): <what>`. Then all
       of `npx vitest run` (never plain `vitest`, it watches), `npm run typecheck` and
