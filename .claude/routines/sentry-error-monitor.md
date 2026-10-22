@@ -86,7 +86,7 @@ run covers the gap.
       `npm run lint:check` must pass; never run the Playwright e2e suites. Ship like the fixer's
       Ship step, minus the PR: `pull --ff-only origin development`, `merge --no-ff` the branch,
       `git push origin development`, `git push origin --tags`, remove the worktree and delete the
-      branch. Never push `main`, never force-push. Then comment on the open `development` -> `main` PR (open it if none is) with
+      branch. Then comment on the open `development` -> `main` PR (open it if none is) with
       one line saying what this push contains. Any small change or
       tweak is fixed here, however many lines, as long as it stays local to the failure. If the
       failure needs an overall change in the code instead (a wide refactor or redesign across many
@@ -211,8 +211,7 @@ run covers the gap.
 - This routine is read-only for code, with one exception: the failing-CI fix in step 1b. For
   Sentry and feedback it writes no fix, creates no fix branch or worktree. Its outward writes are GitHub issues, comments and labels in this repo
   (steps 6d and 7), the urgent CI ticket and CI re-runs (step 1b), and the local records branch.
-  The CI exception may merge into and push `development` (and tags) only, never `main`, never
-  force.
+  The CI exception may merge into and push `development` (and tags).
 - Never commit records on `development` directly and never push `monitor/records`. It may be any
   number of commits ahead of `development`; never amend.
 - Recording is not handling. Every Sentry issue must end a run as an issue backed by an actual
