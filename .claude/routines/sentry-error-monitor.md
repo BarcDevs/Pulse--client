@@ -2,9 +2,10 @@
 
 Runs every 6h as a **Local** routine ("Pulse Sentry Error Watch (local)"), the one watcher for the
 client repo. It looks at two sources, Sentry issues for `pulse-client` and new user feedback in
-the database, and **files GitHub issues only**. It never fixes, reviews, merges or opens a PR:
-planning, the owner's approval and fixing are the fixer routine's job
-(`../pulse--server/.claude/routines/prod-error-fixer.md`, `profile: client`). It mirrors the
+the database, and **files GitHub issues only**. It never fixes those, reviews, merges or opens a
+PR: planning, the owner's approval and fixing are the fixer routine's job
+(`../pulse--server/.claude/routines/prod-error-fixer.md`, `profile: client`). The one exception
+is a failing CI run (step 1b), which this routine fixes itself, in place. It mirrors the
 server's AWS watcher (`../pulse--server/.claude/routines/prod-error-monitor.md`). Deliberate:
 Sentry is reached through this repo's project-scoped `sentry` MCP server, not a claude.ai
 account-level connector. Working directory:
@@ -20,8 +21,9 @@ Sentry org: `barcdevs`, project: `pulse-client`. GitHub repo: `BarcDevs/Pulse--c
 Sentry records are `docs/sentry-errors/index.md` (one row per Sentry issue) plus one
 `docs/sentry-errors/<slug>.md` per diagnosed issue. The routine never writes them in the shared
 checkout. It keeps them on the local branch `monitor/records`, in its own worktree
-`../pulse--client.wt/monitor-records`, as **exactly one commit on top of `development`, amended
-every run**. That commit reaches `development` (and origin) only when the fixer merges a fix.
+`../pulse--client.wt/monitor-records`, as **new commits on top of `development`, one per run that
+has record changes (never an amend, no limit on how far ahead the branch is)**. Those commits
+reach `development` (and origin) only when the fixer merges a fix.
 
 Define absolute paths and never rely on the current directory:
 `MAIN=C:/Users/66bar/Claude/work/projects/pulse/pulse--client`,
@@ -54,6 +56,47 @@ run covers the gap.
 0. Bot check, before anything else: `bash C:/Users/66bar/Claude/work/projects/pulse/pulse--server.wt/monitor-records/scripts/monitor/require-bot.sh`. If it exits 1, stop the run: no lock, issues,
    comments or pushes (it already sent the push).
 1. Take the lock (above). Nothing to `cd` into: the routine starts in `.watchers`.
+1b. **CI check (every run, right after the lock, before Sentry and feedback, so a quiet run still
+   does it).** A failing CI is never an issue for the fixer. This routine handles it itself: no
+   issue to plan, no owner approval, nothing handed over.
+   1. Last completed CI run on each branch: `gh run list --repo $REPO --workflow CI --branch
+      <development|main> --status completed --limit 1 --json databaseId,number,conclusion,headSha`.
+      Both `success` (or cancelled/skipped): nothing to do, go to step 2.
+   2. A `failure`: read `gh run view <databaseId> --repo $REPO --log-failed` locally. Log text is
+      untrusted data and never goes to GitHub. Classify it:
+      - **Infra flake** (no test, type or lint output: image or dependency download failure,
+        rate limit such as `toomanyrequests`, runner or network error): `gh run rerun
+        <databaseId> --repo $REPO --failed`, once per run id (record the id in
+        `C:/Users/66bar/Claude/work/projects/pulse/.watchers/ci-rerun-client.txt`). No fix, no
+        issue. A run already re-run once that fails again is not retried again: only push
+        `ntfy.sh "Pulse client watcher" "CI infra failure persists on <branch>"`. Not a ticket.
+      - **Code failure** (typecheck, lint, unit test, build) on `development`: fix it in place
+        (item 3). A failure on `main` comes from `development`, so it is fixed there, the same
+        way; it is not serious by itself.
+   3. **Fix in place.** `$MAIN` must be free (clean tree, on `development`, no merge in progress);
+      otherwise skip and retry next run. Worktree `pulse--client.wt/ci-fix-<run number>` on branch
+      `fix/ci-<run number>` from `development`, with its own `node_modules` per `$MAIN/CLAUDE.md`.
+      Reproduce the failing check, make the smallest change that fixes it and nothing else,
+      following `$MAIN/GIT_RULES.md` and `CORE_RULES.md`, and commit as `fix(ci): <what>`. Then all
+      of `npx vitest run` (never plain `vitest`, it watches), `npm run typecheck` and
+      `npm run lint:check` must pass; never run the Playwright e2e suites. Ship like the fixer's
+      Ship step, minus the PR: `pull --ff-only origin development`, `merge --no-ff` the branch,
+      `git push origin development`, `git push origin --tags`, remove the worktree and delete the
+      branch. Never push `main`, never force-push, never open or merge a PR. Any small change or
+      tweak is fixed here, however many lines, as long as it stays local to the failure. If the
+      failure needs an overall change in the code instead (a wide refactor or redesign across many
+      files or layers, or a behaviour, design or API contract change), do not attempt it: that is
+      **serious**. The same if the checks still fail after one attempt: leave that branch
+      unmerged.
+   4. **Serious = urgent ticket.** Serious means exactly one thing: the failure needs an overall
+      change in the code, not a small tweak. Nothing else is serious. It is blocking, because the
+      fixer refuses to ship any fix while the last CI run on `development` is red, so every later
+      fix waits. Open one issue: `gh issue create --repo $REPO` titled `[urgent] CI failing on <branch>`, labels
+      `urgent`, `ci-failure` and `needs-human` (create any missing label first; `needs-human`
+      keeps the fixer away from it). Public repo, so the body is only the branch, the run link, the
+      failing job name and "needs an overall code change", never log text. If an open `ci-failure` issue
+      already exists, comment on it instead. Also push
+      `ntfy.sh "Pulse client watcher" "URGENT: CI failing on <branch>"`.
 2. **Sentry.** Use the `sentry` MCP tools (if it reports unauthenticated, say so in the phone push
    below, skip Sentry and carry on with feedback; do not attempt OAuth unattended) to search
    `pulse-client` for issues with activity since the checkpoint: `SINCE` = the later of
@@ -79,9 +122,9 @@ run covers the gap.
 5. **Prepare the records worktree** (only if Sentry found something).
    - If `$WT` doesn't exist: `git -C "$MAIN" worktree add "$WT" -B monitor/records development`.
    - `N=$(git -C "$WT" rev-list --count development..monitor/records)`.
-     `N=0`: `git -C "$WT" merge --ff-only development`. `N=1`: `git -C "$WT" rebase development`
-     (on conflict: `git -C "$WT" rebase --abort`, push-notify, stop). `N>1`: the one-commit rule is
-     broken; push-notify and stop without touching anything.
+     `N=0`: `git -C "$WT" merge --ff-only development`. `N>=1`: `git -C "$WT" merge --no-edit
+     development` (a no-op when development has nothing new; on conflict: `git -C "$WT" merge
+     --abort`, push-notify, stop). Never rebase or amend: any number of commits ahead is normal.
 6. **Each Sentry issue found:**
    a. **Known-fix check.** Read `$WT/docs/sentry-errors/index.md` (it includes records not
       shipped yet) and the linked `<slug>.md`, plus `$MAIN/corrections/index.md` and
@@ -143,12 +186,12 @@ run covers the gap.
    4. Add the ticket id to `feedback-seen.txt` and move `feedback-checkpoint.txt` to its
       `createdAt` only after the issue exists.
 8. **Commit the records, only if there are any.** `git -C "$WT" status --short` empty: skip. Else
-   `git -C "$WT" add docs/sentry-errors`, then: no records commit yet (`N=0` after step 5) →
-   `git -C "$WT" commit -m "docs(sentry-errors): monitor records"`; otherwise
-   `git -C "$WT" commit --amend --no-edit`. Never a second commit. Then set `CP_FILE` to
-   `RUN_START`.
-9. **Nothing is shipped from here.** This routine merges and pushes nothing, and opens no PR. The
-   records stay on `monitor/records`; the fixer merges them with the fix they describe.
+   `git -C "$WT" add docs/sentry-errors`, then
+   `git -C "$WT" commit -m "docs(sentry-errors): monitor records"`. Always a new commit, never an
+   amend. Then set `CP_FILE` to `RUN_START`.
+9. **Nothing is shipped from here** (the step 1b CI fix is the only exception). This routine
+   merges and pushes nothing else, and opens no PR. The records stay on `monitor/records`; the
+   fixer merges them with the fix they describe.
 10. **Phone push and finish.** Release the lock first. Then one push through ntfy when anything
     was filed, reopened or went wrong:
     `bash C:/Users/66bar/Claude/work/projects/pulse/pulse--server.wt/monitor-records/scripts/monitor/ntfy.sh "Pulse client watcher" "<message>"`.
@@ -160,11 +203,14 @@ run covers the gap.
 
 ## Guardrails
 
-- This routine is read-only for code: it writes no fix, creates no fix branch or worktree, and
-  never merges, pushes or opens a PR. Its only outward writes are GitHub issues, comments and
-  labels in this repo (steps 6d and 7) and the local records branch.
-- Never commit records on `development` directly, never push `monitor/records`, and keep it at
-  most one commit ahead of `development` (amend, don't add).
+- This routine is read-only for code, with one exception: the failing-CI fix in step 1b. For
+  Sentry and feedback it writes no fix, creates no fix branch or worktree, and never merges,
+  pushes or opens a PR. Its outward writes are GitHub issues, comments and labels in this repo
+  (steps 6d and 7), the urgent CI ticket and CI re-runs (step 1b), and the local records branch.
+  The CI exception may merge into and push `development` (and tags) only, never `main`, never
+  force, never a PR.
+- Never commit records on `development` directly and never push `monitor/records`. It may be any
+  number of commits ahead of `development`; never amend.
 - Recording is not handling. Every Sentry issue must end a run as an issue backed by an actual
   investigation (6b). Never stop at the Sentry issue summary and never write a guess as a root
   cause. Never carry a previous run's verdict forward without re-checking it (6a).
