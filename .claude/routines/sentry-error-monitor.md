@@ -51,6 +51,8 @@ run covers the gap.
 
 ## Steps
 
+0. Bot check, before anything else: `bash C:/Users/66bar/Claude/work/projects/pulse/pulse--server.wt/monitor-records/scripts/monitor/require-bot.sh`. If it exits 1, stop the run: no lock, issues,
+   comments or pushes (it already sent the push).
 1. Take the lock (above). Nothing to `cd` into: the routine starts in `.watchers`.
 2. **Sentry.** Use the `sentry` MCP tools (if it reports unauthenticated, say so in the phone push
    below, skip Sentry and carry on with feedback; do not attempt OAuth unattended) to search
