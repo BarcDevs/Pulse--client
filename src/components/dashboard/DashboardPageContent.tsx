@@ -32,7 +32,7 @@ export const DashboardPageContent = () => {
 
             <DashboardStatsCards/>
             <DashboardChartSidebar
-                showAIInsight={!isTodayCheckInExists}
+                showInsightPrompt={!isTodayCheckInExists}
             />
         </div>
     )

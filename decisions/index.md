@@ -19,6 +19,14 @@ How Claude sessions coordinate with each other.
 | Date | Entry |
 |---|---|
 | 10/10/2026 | Scoped standing authorization: a relayed approval from an interactive, busy local session counts for local reversible git work only (verbatim rule) |
+| 21/10/2026 | The client Sentry watcher files issues and also reads user feedback; the shared fixer routine plans, waits for approval and fixes |
+
+## Dashboard — [[decisions/dashboard]]
+What the dashboard cards show and when.
+
+| Date | Entry |
+|---|---|
+| 10/10/2026 | Sidebar insight card shows a check-in prompt, never the previous check-in's insights; server drops stale insight types on regenerate |
 
 ## Observability — [[decisions/observability]]
 Error tracking and performance-monitoring tooling decisions.
