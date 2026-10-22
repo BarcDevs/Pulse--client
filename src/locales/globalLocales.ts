@@ -69,50 +69,9 @@ export const globalLocales = {
         }
     },
     landing: {
-        descriptions: {
-            about: 'global.landing.descriptions.about',
-            benefits: 'global.landing.descriptions.benefits',
-            hero: 'global.landing.descriptions.hero',
-            features: 'global.landing.descriptions.features'
-        },
-        footer: {
-            H3: 'global.landing.footer.H3',
-            desc: 'global.landing.footer.desc',
-            rights: 'global.landing.footer.rights',
-            quickLinks: 'global.landing.footer.quickLinks',
-            legalLinks: 'global.landing.footer.legalLinks'
-        },
-        fields: {
-            forgotPassword: 'global.landing.fields.forgotPassword',
-            remember: 'global.landing.fields.remember'
-        },
         buttons: {
-            exploreForum: 'global.landing.buttons.exploreForum',
-            joinNow: 'global.landing.buttons.joinNow',
-            signIn: 'global.landing.buttons.signIn',
             signUp: 'global.landing.buttons.signUp',
-            login: 'global.landing.buttons.login',
-            logout: 'global.landing.buttons.logout',
-            verifyCode: 'global.landing.buttons.verifyCode',
-            resetPassword: 'global.landing.buttons.resetPassword',
-            backToLogin: 'global.landing.buttons.backToLogin',
-            createPost: 'global.landing.buttons.createPost',
-            updatePost: 'global.landing.buttons.updatePost',
-            deletePost: 'global.landing.buttons.deletePost',
-            newCheckIn: 'global.landing.buttons.newCheckIn',
-            updateCheckIn: 'global.landing.buttons.updateCheckIn',
-            saveCheckIn: 'global.landing.buttons.saveCheckIn',
-            tryAgain: 'global.landing.buttons.tryAgain',
-            showStackTrace: 'global.landing.buttons.showStackTrace',
-            goBack: 'global.landing.buttons.goBack',
-            goHome: 'global.landing.buttons.goHome',
-            reloadPage: 'global.landing.buttons.reloadPage'
-        },
-        toasts: {
-            checkInSaved: 'global.landing.toasts.checkInSaved',
-            checkInUpdated: 'global.landing.toasts.checkInUpdated',
-            checkInError: 'global.landing.toasts.checkInError',
-            checkInDeleted: 'global.landing.toasts.checkInDeleted'
+            login: 'global.landing.buttons.login'
         }
     },
     shared: {
