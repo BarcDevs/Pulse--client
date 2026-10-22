@@ -22,3 +22,10 @@ still entirely Next/React internals. Notify-only; no recorded fix to have regres
 `fix/monitor-viewtransition-hidden`, merged into `development`). The error is benign (React starts
 a ViewTransition while the tab is backgrounded) and has no first-party frame to guard, so the fix
 drops it at the Sentry client instead of changing the animation. Full `/code-review` clean.
+
+**2026-10-10 (later run) re-check:** 37 events, last event 2026-10-09T20:49Z, Firefox 157, `/dashboard`,
+`localhost:5173`, environment `development`, 0 users. Fix commit 8c5e2f5 landed 2026-10-09T21:06Z
+(`git log`), 17 min after the last event, and `ignoreErrors` is present in
+`src/instrumentation-client.ts:9`. So these events predate the fix; not a regression. Next run's
+check is the post-fix confirmation: new events after the fix is deployed/restarted would mean
+the suppression did not hold. Verification: suppression, cause not fixed.
