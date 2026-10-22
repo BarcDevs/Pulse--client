@@ -1101,50 +1101,9 @@
       }
     },
     "landing": {
-      "descriptions": {
-        "about": "{brandName} supports people navigating recovery after medical treatment, injury, or major life challenges. Daily check-ins help you notice patterns, AI-powered insights provide guidance, and community support helps you feel less alone through the process.",
-        "benefits": "Support designed for different stages of recovery",
-        "hero": "Track your progress, build supportive routines, and connect with people who understand.",
-        "features": "Simple tools designed to support recovery and wellbeing"
-      },
-      "footer": {
-        "H3": "Recovery, together.",
-        "desc": "Supporting healing through structure, reflection, and community.",
-        "rights": "© 2026 {brandName}. All rights reserved.",
-        "quickLinks": "Quick Links",
-        "legalLinks": "Legal"
-      },
-      "fields": {
-        "forgotPassword": "Forgot your password?",
-        "remember": "Remember Me"
-      },
       "buttons": {
-        "exploreForum": "Explore Community",
-        "joinNow": "Get Started",
-        "signIn": "Sign In",
         "signUp": "Sign Up",
-        "login": "Log In",
-        "logout": "Log Out",
-        "verifyCode": "Verify Code",
-        "resetPassword": "Reset Password",
-        "backToLogin": "Back to Login",
-        "createPost": "Create Post",
-        "updatePost": "Update Post",
-        "deletePost": "Delete Post",
-        "newCheckIn": "New Check-In",
-        "updateCheckIn": "Update Check-In",
-        "saveCheckIn": "Save Check-In",
-        "tryAgain": "Try Again",
-        "showStackTrace": "Show Technical Details",
-        "goBack": "Go Back",
-        "goHome": "Go Home",
-        "reloadPage": "Reload Page"
-      },
-      "toasts": {
-        "checkInSaved": "Your daily update has been saved",
-        "checkInUpdated": "Your daily update has been updated",
-        "checkInError": "We couldn't save your daily update right now. Please try again.",
-        "checkInDeleted": "Your daily update has been removed"
+        "login": "Log In"
       }
     },
     "errors": {
