@@ -53,7 +53,7 @@ run covers the gap.
 
 ## Steps
 
-0. Bot check, before anything else: `bash C:/Users/66bar/Claude/work/projects/pulse/pulse--server.wt/monitor-records/scripts/monitor/require-bot.sh`. If it exits 1, stop the run: no lock, issues,
+0. Bot check, before anything else: `bash C:/Users/66bar/Claude/work/projects/pulse/pulse--client.wt/monitor-records/scripts/monitor/require-bot.sh`. If it exits 1, stop the run: no lock, issues,
    comments or pushes (it already sent the push).
 1. Take the lock (above). Nothing to `cd` into: the routine starts in `.watchers`.
 1b. **CI check (every run, right after the lock, before Sentry and feedback, so a quiet run still
@@ -194,7 +194,7 @@ run covers the gap.
    fixer merges them with the fix they describe.
 10. **Phone push and finish.** Release the lock first. Then one push through ntfy when anything
     was filed, reopened or went wrong:
-    `bash C:/Users/66bar/Claude/work/projects/pulse/pulse--server.wt/monitor-records/scripts/monitor/ntfy.sh "Pulse client watcher" "<message>"`.
+    `bash C:/Users/66bar/Claude/work/projects/pulse/pulse--client.wt/monitor-records/scripts/monitor/ntfy.sh "Pulse client watcher" "<message>"`.
     The message is counts and issue numbers only, each number prefixed `C#` (the server uses
     `S#`), e.g. `Filed: C#44 C#45. Reopened: C#12. Feedback not filed: 2.` The repo is public and
     ntfy is a third party: no titles, error text, feedback text or links. A quiet run sends
