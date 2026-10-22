@@ -53,7 +53,7 @@ run covers the gap.
 
 ## Steps
 
-0. Bot check, before anything else: `bash C:/Users/66bar/Claude/work/projects/pulse/pulse--client.wt/monitor-records/scripts/monitor/require-bot.sh`. If it exits 1, stop the run: no lock, issues,
+0. Bot check, before anything else: `bash C:/Users/66bar/Claude/work/projects/pulse/pulse--client.wt/monitor-records/scripts/monitor/require-bot.sh "client watcher"`. If it exits 1, stop the run: no lock, issues,
    comments or pushes (it already sent the push).
 1. Take the lock (above). Nothing to `cd` into: the routine starts in `.watchers`.
 1b. **CI check (every run, right after the lock, before Sentry and feedback, so a quiet run still
