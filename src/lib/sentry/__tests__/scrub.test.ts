@@ -112,6 +112,62 @@ describe('scrubEvent', () => {
             .toBe('https://nominatim.openstreetmap.org/search')
     })
 
+    it('strips the fragment from the request url', () => {
+        const event: Event = {
+            request: { url: 'https://pulserehab.app/a?x=1#section' }
+        }
+
+        expect(scrubEvent(event).request?.url)
+            .toBe('https://pulserehab.app/a')
+    })
+
+    it('strips the query from http.query span data', () => {
+        const event: Event = {
+            spans: [
+                {
+                    span_id: 'a',
+                    trace_id: 'b',
+                    start_timestamp: 1,
+                    data: { 'http.query': '?q=Tel%20Aviv' }
+                } as NonNullable<Event['spans']>[number]
+            ]
+        }
+
+        const [span] = scrubEvent(event).spans!
+
+        expect(span.data['http.query']).toBe('')
+    })
+
+    it('keeps headers, cookies and user fields as they are', () => {
+        const event: Event = {
+            user: { id: '1' },
+            request: {
+                url: '/a?x=1',
+                headers: { accept: 'text/html' },
+                cookies: { theme: 'dark' }
+            }
+        }
+
+        const scrubbed = scrubEvent(event)
+
+        expect(scrubbed.user).toEqual({ id: '1' })
+        expect(scrubbed.request?.headers)
+            .toEqual({ accept: 'text/html' })
+        expect(scrubbed.request?.cookies)
+            .toEqual({ theme: 'dark' })
+    })
+
+    it('does not mutate the original event', () => {
+        const event: Event = {
+            request: { url: '/a?x=1', query_string: 'x=1' }
+        }
+
+        scrubEvent(event)
+
+        expect(event.request?.url).toBe('/a?x=1')
+        expect(event.request?.query_string).toBe('x=1')
+    })
+
     it('leaves an event without request or spans unchanged', () => {
         const event: Event = { message: 'boom' }
 
