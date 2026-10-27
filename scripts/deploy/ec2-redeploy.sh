@@ -14,7 +14,7 @@ ACCOUNT_ID="110015905368"
 ECR="$ACCOUNT_ID.dkr.ecr.$REGION.amazonaws.com"
 REPO="pulse-client-app"
 IMAGE_TAG="${1:?image tag required}"
-CLOUDFLARED_IMAGE="cloudflare/cloudflared:2026.9.3"
+CLOUDFLARED_IMAGE="cloudflare/cloudflared:2026.10.3"
 
 # Starts cloudflared (host network, forwards to localhost:80) unless it is
 # already running this pinned version.
