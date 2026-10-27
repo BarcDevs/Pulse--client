@@ -8,5 +8,6 @@ Sentry.init({
     userInfo: false,
     cookies: false,
     httpBodies: [],
+    urlQueryParams: false,
   },
 })

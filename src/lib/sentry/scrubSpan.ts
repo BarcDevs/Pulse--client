@@ -6,12 +6,15 @@ type StreamedSpan = Parameters<
     NonNullable<BrowserOptions['beforeSendSpan']>
 >[0]
 
-const SPAN_URL_ATTRIBUTES = [
-    'url',
-    'url.full',
+const SPAN_URL_ATTRIBUTES = ['url', 'url.full', 'http.url']
+
+// v11 stores query and fragment without their leading ? or #, so
+// stripQueryString would keep them: drop the attributes instead
+const SPAN_DROPPED_ATTRIBUTES = [
     'url.query',
-    'http.url',
-    'http.query'
+    'url.fragment',
+    'http.query',
+    'http.fragment'
 ]
 
 /** Streamed spans (default since SDK v11) replace transaction events, so
@@ -25,6 +28,10 @@ export const scrubSpan = (
     SPAN_URL_ATTRIBUTES.forEach((key) => {
         if (typeof attributes[key] === 'string')
             attributes[key] = stripQueryString(attributes[key])
+    })
+
+    SPAN_DROPPED_ATTRIBUTES.forEach((key) => {
+        delete attributes[key]
     })
 
     return {

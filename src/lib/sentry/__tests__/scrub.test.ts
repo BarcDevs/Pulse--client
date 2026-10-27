@@ -154,6 +154,8 @@ describe('scrubSpan', () => {
             attributes: {
                 'http.url': nominatim,
                 'url.full': nominatim,
+                'url.query': 'q=Tel%20Aviv',
+                'url.fragment': 'top',
                 'http.query': '?q=Tel%20Aviv',
                 'http.method': 'GET'
             }
@@ -164,7 +166,6 @@ describe('scrubSpan', () => {
         expect(scrubbed.attributes).toEqual({
             'http.url': 'https://nominatim.openstreetmap.org/search',
             'url.full': 'https://nominatim.openstreetmap.org/search',
-            'http.query': '',
             'http.method': 'GET'
         })
     })

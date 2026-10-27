@@ -15,6 +15,7 @@ Sentry.init({
     dataCollection: {
         userInfo: false,
         cookies: false,
-        httpBodies: []
+        httpBodies: [],
+        urlQueryParams: false
     }
 })
