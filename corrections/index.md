@@ -43,6 +43,7 @@ Guessing at a spec instead of checking the actual rules/examples first.
 | 29/09/2026 | Model Selection in CLAUDE.md said Haiku for sub-agents (stale); Sonnet default, Opus via /opusplan |
 | 02/10/2026 | Claimed the sticky-sidebar fix worked after a synthetic headless test that did not match the user's page; say exactly what was and was not tested |
 | 03/10/2026 | Pushed after unit tests only; the e2e suite (strict-mode duplicate button names) failed in CI. Run the full suite before any push |
+| 27/10/2026 | Dropped the zod 4 upgrade's `@hookform/resolvers` 6 to 5 after one failed install; 6.0.1+ installs cleanly, so check newer patches before downgrading |
 
 ## Working Style — [[corrections/working-style]]
 How to act on bug reports and where to log — state the fix before broad edits, log in this repo, check other branches before claiming a file doesn't exist.
