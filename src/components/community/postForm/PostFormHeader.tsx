@@ -40,6 +40,7 @@ export const PostFormHeader = ({
                     onClick={onCancelAction}
                     type={'button'}
                     size={'sm'}
+                    aria-label={t(communityLocales.postForm.cancel)}
                 >
                     <X size={18}/>
                 </IconButton>
