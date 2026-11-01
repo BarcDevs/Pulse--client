@@ -23,6 +23,11 @@ const tagItemSchema = (t: TranslatorFn) => z.string()
     .min(config.tags.minLength, t(validationLocales.post.tag.tooShort, { min: config.tags.minLength }))
     .max(config.tags.maxLength, t(validationLocales.post.tag.tooLong, { max: config.tags.maxLength }))
 
+// Zod 4 types a key as required when the isReply ternary mixes optional and required
+// schemas; the form value type keeps title, category and tags optional (as under Zod 3).
+const typedOptional = <T extends z.ZodType>(schema: T) =>
+    schema as unknown as z.ZodOptional<T>
+
 export const createPostFormSchema = (
     t: TranslatorFn,
     { isReply = false }: PostFormSchemaOptions = {}
@@ -30,7 +35,7 @@ export const createPostFormSchema = (
     z.object({
         title: isReply
             ? z.string().optional()
-            : z.string()
+            : typedOptional(z.string()
                 .trim()
                 .min(1, t(validationLocales.post.title.required))
                 .min(
@@ -40,12 +45,12 @@ export const createPostFormSchema = (
                 .max(
                     config.title.maxLength,
                     t(validationLocales.post.title.tooLong)
-                ),
+                )),
         category: isReply
             ? z.string()
                 .optional()
-            : z.string()
-                .min(1, t(validationLocales.post.category.required)),
+            : typedOptional(z.string()
+                .min(1, t(validationLocales.post.category.required))),
         body: z.string()
             .superRefine((value, ctx) => {
             const stripped = stripHtmlTags(value)
@@ -80,7 +85,7 @@ export const createPostFormSchema = (
         }),
         tags: isReply
             ? z.array(tagItemSchema(t)).optional()
-            : z.array(tagItemSchema(t))
+            : typedOptional(z.array(tagItemSchema(t))
                 .min(
                     config.tags.min,
                     t(validationLocales.post.tag.required)
@@ -91,7 +96,7 @@ export const createPostFormSchema = (
                         validationLocales.post.tag.tooMany,
                         { max: config.tags.max }
                     )
-                ),
+                )),
         isAnonymous: z.boolean().optional()
     })
         .superRefine((data, ctx) => {
