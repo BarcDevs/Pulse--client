@@ -1,5 +1,6 @@
 import * as Sentry from '@sentry/nextjs'
 
+import { sentryDataCollection } from '@/lib/sentry/dataCollection'
 import { scrubBreadcrumb } from '@/lib/sentry/scrubBreadcrumb'
 import { scrubEvent } from '@/lib/sentry/scrubEvent'
 import { scrubSpan } from '@/lib/sentry/scrubSpan'
@@ -12,10 +13,5 @@ Sentry.init({
     beforeBreadcrumb: scrubBreadcrumb,
     beforeSend: scrubEvent,
     beforeSendSpan: scrubSpan,
-    dataCollection: {
-        userInfo: false,
-        cookies: false,
-        httpBodies: [],
-        urlQueryParams: false
-    }
+    dataCollection: sentryDataCollection
 })

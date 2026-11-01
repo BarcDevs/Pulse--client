@@ -1,5 +1,6 @@
 import * as Sentry from '@sentry/nextjs'
 
+import { sentryDataCollection } from '@/lib/sentry/dataCollection'
 import { scrubEvent } from '@/lib/sentry/scrubEvent'
 import { scrubSpan } from '@/lib/sentry/scrubSpan'
 
@@ -9,10 +10,5 @@ Sentry.init({
   tracesSampleRate: process.env.NODE_ENV === 'production' ? 0.1 : 1.0,
   beforeSend: scrubEvent,
   beforeSendSpan: scrubSpan,
-  dataCollection: {
-    userInfo: false,
-    cookies: false,
-    httpBodies: [],
-    urlQueryParams: false,
-  },
+  dataCollection: sentryDataCollection,
 })
