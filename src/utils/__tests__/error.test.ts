@@ -8,6 +8,7 @@ import {
 
 import {
     getApiErrorMessage,
+    getLocalizedApiErrorMessage,
     isNetworkError,
     isUnauthorizedError
 } from '@/utils/error'
@@ -138,6 +139,25 @@ describe(
                         const error = Object.assign(new Error('Request failed with status code 500'), { response: { status: 500, data: { message: 'boom' } } })
 
                         expect(isNetworkError(error)).toBe(false)
+                    })
+            })
+
+        // ==================== getLocalizedApiErrorMessage ====================
+        describe(
+            'getLocalizedApiErrorMessage',
+            () => {
+                it(
+                    'should translate a TOO_MANY_REQUESTS 429 body by its code',
+                    () => {
+                        const t = vi.fn((key: string) => `translated:${key}`)
+                        const error = {
+                            response: {
+                                status: 429,
+                                data: { error: [{ code: 'TOO_MANY_REQUESTS', error: 'English' }] }
+                            }
+                        }
+
+                        expect(getLocalizedApiErrorMessage(t, error, 'fallback')).toBe('translated:apiErrors.TOO_MANY_REQUESTS')
                     })
             })
     })

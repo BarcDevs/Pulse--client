@@ -142,5 +142,6 @@ export const apiErrorLocales = {
     VALIDATION_GENERIC: 'apiErrors.VALIDATION_GENERIC',
     VALIDATION_OTP: 'apiErrors.VALIDATION_OTP',
     VALIDATION_ZOD: 'apiErrors.VALIDATION_ZOD',
+    TOO_MANY_REQUESTS: 'apiErrors.TOO_MANY_REQUESTS',
     INTERNAL_ERROR: 'apiErrors.INTERNAL_ERROR'
 } as const satisfies Record<string, string>

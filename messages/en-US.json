@@ -1323,6 +1323,7 @@
     "VALIDATION_GENERIC": "Please check the details and try again.",
     "VALIDATION_OTP": "The verification code doesn't match. Please check it and try again.",
     "VALIDATION_ZOD": "Please check the {property} field and try again.",
+    "TOO_MANY_REQUESTS": "Too many attempts. Please wait a while and try again.",
     "INTERNAL_ERROR": "Something went wrong. Please try again in a few minutes."
   },
   "recommendations": {
