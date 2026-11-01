@@ -21,7 +21,7 @@ export const ChatSendButton = ({
     return (
         <Button
             aria-label={t(globalLocales.a11y.sendMessage)}
-                className={cn(
+            className={cn(
                 'size-8 rounded-full p-0',
                 className
             )}
