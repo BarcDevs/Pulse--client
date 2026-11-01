@@ -6,14 +6,14 @@ import {
 } from 'vitest'
 
 import {
+    QueryClient,
+    QueryClientProvider
+} from '@tanstack/react-query'
+import {
     act,
     render,
     waitFor
 } from '@testing-library/react'
-import {
-    QueryClient,
-    QueryClientProvider
-} from '@tanstack/react-query'
 
 import type { User } from '@/types/user'
 
@@ -36,10 +36,10 @@ vi.mock('@/utils/draftStorage', () => ({
     sweepExpiredDrafts: vi.fn()
 }))
 
-import { AuthProvider } from '@/context/AuthProvider'
 import {
     useAuth
 } from '@/context/AuthContext'
+import { AuthProvider } from '@/context/AuthProvider'
 
 const newUser = {
     id: 'user-1',
