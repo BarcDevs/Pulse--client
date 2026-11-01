@@ -6,6 +6,7 @@ import { cn } from '@/lib/utils'
 
 type PostActionButtonProps = {
     text?: string
+    ariaLabel?: string
     onClick: () => void
     icon: LucideIcon
     count?: number
@@ -15,6 +16,7 @@ type PostActionButtonProps = {
 
 export const PostActionButton = ({
     text,
+    ariaLabel,
     onClick,
     icon: Icon,
     count,
@@ -29,6 +31,7 @@ export const PostActionButton = ({
             isActive && activeClassName
         )}
         onClick={onClick}
+        aria-label={ariaLabel}
     >
         <Icon className={cn(
             'h-4 w-4',

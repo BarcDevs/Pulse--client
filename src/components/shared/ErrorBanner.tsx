@@ -51,6 +51,7 @@ export const ErrorBanner = ({
             <IconButton
                 size={'sm'}
                 onClick={() => setDismissed(true)}
+                aria-label={t(globalLocales.a11y.dismiss)}
                 className={'ml-4'}
             >
                 <X className={'w-4 h-4'}/>

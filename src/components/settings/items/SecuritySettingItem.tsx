@@ -1,11 +1,15 @@
 import { ReactNode } from 'react'
 
+import { useTranslations } from 'next-intl'
+
 import { Edit2 } from 'lucide-react'
 
 import { Button } from '@/components/shared/buttons/Button'
 import { IconButton } from '@/components/shared/buttons/IconButton'
 
 import { securitySettingStyles } from '@/constants/securitySettings'
+
+import { globalLocales } from '@/locales/globalLocales'
 
 type SecuritySettingItemProps = {
     icon: ReactNode
@@ -26,6 +30,7 @@ export const SecuritySettingItem = ({
     flat = false,
     onClickAction
 }: SecuritySettingItemProps) => {
+    const t = useTranslations()
     const styles = securitySettingStyles[variant]
     const isDestructive = variant === 'destructive'
     const containerClass = flat
@@ -57,6 +62,7 @@ export const SecuritySettingItem = ({
                 <IconButton
                     size={'sm'}
                     onClick={onClickAction}
+                    aria-label={t(globalLocales.a11y.edit)}
                 >
                     <Edit2 className={'h-4 w-4'}/>
                 </IconButton>

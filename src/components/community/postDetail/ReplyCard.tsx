@@ -198,6 +198,7 @@ export const ReplyCard = ({
                     <div className={'flex items-center gap-1 mt-2'}>
                         <PostActionButton
                             icon={Heart}
+                            ariaLabel={t(communityLocales.postActions.solidarity)}
                             count={likeCount}
                             isActive={liked}
                             activeClassName={'text-destructive hover:text-destructive'}

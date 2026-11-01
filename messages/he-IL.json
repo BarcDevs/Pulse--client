@@ -1024,6 +1024,15 @@
     }
   },
   "global": {
+    "a11y": {
+      "showPassword": "הצג סיסמה",
+      "hidePassword": "הסתר סיסמה",
+      "edit": "עריכה",
+      "moreActions": "פעולות נוספות",
+      "dismiss": "סגירה",
+      "sendMessage": "שלח הודעה",
+      "uploadPhoto": "העלאת תמונה"
+    },
     "footer": {
       "brandTagline": "תמיכה לאורך מסע ההחלמה שלך",
       "quickLinksTitle": "קישורים מהירים",
