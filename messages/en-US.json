@@ -1031,6 +1031,15 @@
     }
   },
   "global": {
+    "a11y": {
+      "showPassword": "Show password",
+      "hidePassword": "Hide password",
+      "edit": "Edit",
+      "moreActions": "More actions",
+      "dismiss": "Dismiss",
+      "sendMessage": "Send message",
+      "uploadPhoto": "Upload photo"
+    },
     "footer": {
       "brandTagline": "Supporting your recovery journey",
       "quickLinksTitle": "Quick Links",

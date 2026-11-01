@@ -24,6 +24,8 @@ import {
 
 import { cn } from '@/lib/utils'
 
+import { globalLocales } from '@/locales/globalLocales'
+
 type PasswordInputProps<T extends FieldValues> = {
     field: T
     config: FieldConfig
@@ -57,6 +59,11 @@ export const PasswordInput = <T extends FieldValues>({
                         type={'button'}
                         size={'sm'}
                         onClick={() => setShowPassword(!showPassword)}
+                        aria-label={t(
+                            showPassword
+                                ? globalLocales.a11y.hidePassword
+                                : globalLocales.a11y.showPassword
+                        )}
                         className={'absolute right-1 top-1/2 -translate-y-1/2'}
                     >
                         {showPassword
