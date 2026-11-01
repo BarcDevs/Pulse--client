@@ -6,6 +6,7 @@ import { MilestoneStatus } from '@/types/goals'
 
 import { useGoals } from '@/hooks/queries/useGoals'
 
+import { recoveryGoalsQueryKeys } from '@/constants/queryKeys'
 import { minuteInMs } from '@/constants/time'
 
 import { fetchGoal } from '@/api/goals'
@@ -15,7 +16,9 @@ export const useMilestones = () => {
 
     const milestonesQueries = useQueries({
         queries: (goals || []).map((goal) => ({
-            queryKey: ['goal', goal.id],
+            queryKey: recoveryGoalsQueryKeys.goal(
+                goal.id
+            ),
             queryFn: () => fetchGoal(goal.id),
             staleTime: 5 * minuteInMs,
             enabled: Boolean(goals)
