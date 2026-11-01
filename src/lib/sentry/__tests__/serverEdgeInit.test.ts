@@ -8,6 +8,7 @@ import {
 
 import * as Sentry from '@sentry/nextjs'
 
+import { sentryDataCollection } from '@/lib/sentry/dataCollection'
 import { scrubEvent } from '@/lib/sentry/scrubEvent'
 import { scrubSpan } from '@/lib/sentry/scrubSpan'
 
@@ -29,12 +30,14 @@ describe.each(inits)('$name Sentry init', ({ load }) => {
         vi.mocked(Sentry.init).mockClear()
     })
 
-    it('scrubs query strings from events and spans', async () => {
+    it('scrubs events and spans and uses shared dataCollection', async () => {
         await load()
 
         const options = vi.mocked(Sentry.init).mock.calls[0][0]
 
         expect(options?.beforeSend).toBe(scrubEvent)
         expect(options?.beforeSendSpan).toBe(scrubSpan)
+        expect(options?.dataCollection)
+            .toBe(sentryDataCollection)
     })
 })
