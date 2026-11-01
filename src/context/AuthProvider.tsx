@@ -66,15 +66,9 @@ export const AuthProvider = ({
                     queryKey: authQueryKeys.getMe
                 })
             } else {
-                queryClient.setQueryData(
+                queryClient.setQueryData<User>(
                     authQueryKeys.getMe,
-                    {
-                        data: {
-                            user: newUser,
-                            _csrf: ''
-                        },
-                        success: true
-                    }
+                    newUser
                 )
             }
         },
