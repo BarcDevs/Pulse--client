@@ -66,7 +66,7 @@ jobs:
             nextjs-docker-${{ hashFiles('package-lock.json') }}-
 
       - name: Inject Next build cache into BuildKit
-        uses: reproducible-containers/buildkit-cache-dance@7a38cfab60c63ee1022b7c1a14a031c82f4114c7 # v3.4.0
+        uses: reproducible-containers/buildkit-cache-dance@5422eac04292c961a382e0f584ea0f03ad9da723 # v3.4.0
         with:
           cache-map: |
             {
