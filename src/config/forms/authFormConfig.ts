@@ -119,7 +119,7 @@ const authFormConfigs: AuthFormConfigs = {
         buttons: {
             primary: {
                 label: startLocales.save.submit,
-                loadingLabel: startLocales.save.submitting
+                loadingLabel: startLocales.save.submit
             }
         }
     },

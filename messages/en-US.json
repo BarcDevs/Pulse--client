@@ -1831,7 +1831,6 @@
       "title": "Want to keep this?",
       "description": "Add an email and a password to save your progress and get a reminder for tomorrow's check-in.",
       "submit": "Save my progress",
-      "submitting": "Saving...",
       "later": "Not now",
       "emailTaken": "This email already has an account. Log in instead.",
       "limitReached": "You have used the free check-ins. Create an account to continue.",

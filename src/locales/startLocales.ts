@@ -14,7 +14,6 @@ export const startLocales = {
         title: 'start.save.title',
         description: 'start.save.description',
         submit: 'start.save.submit',
-        submitting: 'start.save.submitting',
         later: 'start.save.later',
         emailTaken: 'start.save.emailTaken',
         limitReached: 'start.save.limitReached',

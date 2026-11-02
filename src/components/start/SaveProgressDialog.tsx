@@ -45,12 +45,13 @@ export const SaveProgressDialog = ({
     const t = useTranslations()
     const router = useRouter()
     const queryClient = useQueryClient()
-    const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState<string | null>(null)
 
+    // Optimistic: the dialog closes at once and reopens with the error if the
+    // upgrade fails
     const handleUpgrade = async (data: UpgradeGuestSchema) => {
-        setIsLoading(true)
         setError(null)
+        onOpenChangeAction(false)
         // The server revokes the old token as soon as the upgrade commits, so
         // a poll in flight would get a 401 and log the guest out mid-upgrade
         onUpgradingChangeAction?.(true)
@@ -71,8 +72,8 @@ export const SaveProgressDialog = ({
                         : startLocales.save.error
                 )
             )
-            setIsLoading(false)
             onUpgradingChangeAction?.(false)
+            onOpenChangeAction(true)
         }
     }
 
@@ -97,7 +98,6 @@ export const SaveProgressDialog = ({
                 <AuthForm
                     formType={'upgradeGuest'}
                     onSuccessAction={handleUpgrade}
-                    isLoading={isLoading}
                     error={error}
                 />
                 <Button
