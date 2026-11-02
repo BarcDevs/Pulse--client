@@ -1,4 +1,5 @@
 import {
+    useCallback,
     useEffect,
     useRef,
     useState
@@ -22,12 +23,15 @@ export const useGuestSession = () => {
     const router = useRouter()
     const queryClient = useQueryClient()
     const { user } = useAuth()
-    const startedRef = useRef(false)
     const [hasFailed, setHasFailed] = useState(false)
 
-    useEffect(() => {
-        if (startedRef.current) return
-        startedRef.current = true
+    const isInFlightRef = useRef(false)
+
+    // One request at a time: a re-run effect or a double click must not
+    // create a second guest
+    const start = useCallback(() => {
+        if (isInFlightRef.current) return
+        isInFlightRef.current = true
 
         createGuest()
             .then(({ user: guest }) => queryClient.setQueryData(
@@ -41,10 +45,21 @@ export const useGuestSession = () => {
                 }
                 setHasFailed(true)
             })
+            .finally(() => {
+                isInFlightRef.current = false
+            })
     }, [router, queryClient])
+
+    const retry = () => {
+        setHasFailed(false)
+        start()
+    }
+
+    useEffect(start, [start])
 
     return {
         isReady: !!user?.isGuest,
-        hasFailed
+        hasFailed,
+        retry
     }
 }

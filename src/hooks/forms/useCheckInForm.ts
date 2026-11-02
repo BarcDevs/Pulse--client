@@ -26,12 +26,14 @@ type UseCheckInFormProps = {
     latestCheckIn: CheckIn | null
     stats: CheckInStats | null
     timezone?: string
+    initialScore?: number
 }
 
 export const useCheckInForm = ({
     latestCheckIn,
     stats,
-    timezone
+    timezone,
+    initialScore
 }: UseCheckInFormProps) => {
     const t = useTranslations()
     const isTodayCheckInExists =
@@ -62,8 +64,8 @@ export const useCheckInForm = ({
                         latestCheckIn.notes ?? ''
                 }
                 : {
-                    moodScore: moodConfig.min,
-                    painLevel: painConfig.min,
+                    moodScore: initialScore ?? moodConfig.min,
+                    painLevel: initialScore ?? painConfig.min,
                     activities: [],
                     notes: ''
                 }
