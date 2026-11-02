@@ -28,6 +28,9 @@ import { upgradeGuest } from '@/api/auth'
 import { startLocales } from '@/locales/startLocales'
 import type { UpgradeGuestSchema } from '@/validations/forms/upgradeGuestSchema'
 
+import type { SaveErrorKind } from './SaveErrorMessage'
+import { SaveErrorMessage } from './SaveErrorMessage'
+
 type SaveProgressDialogProps = {
     open: boolean
     isLimitReached?: boolean
@@ -44,7 +47,7 @@ export const SaveProgressDialog = ({
     const t = useTranslations()
     const router = useRouter()
     const queryClient = useQueryClient()
-    const [error, setError] = useState<string | null>(null)
+    const [error, setError] = useState<SaveErrorKind | null>(null)
     const [isOpen, setOptimisticOpen] = useOptimistic(open)
     const isUpgradingRef = useRef(false)
 
@@ -72,11 +75,9 @@ export const SaveProgressDialog = ({
                 router.push(ROUTES.DASHBOARD)
             } catch (upgradeError) {
                 setError(
-                    t(
-                        isConflictError(upgradeError)
-                            ? startLocales.save.emailTaken
-                            : startLocales.save.error
-                    )
+                    isConflictError(upgradeError)
+                        ? 'emailTaken'
+                        : 'failed'
                 )
                 onUpgradingChangeAction?.(false)
                 isUpgradingRef.current = false
@@ -105,7 +106,7 @@ export const SaveProgressDialog = ({
             <AuthForm
                 formType={'upgradeGuest'}
                 onSuccessAction={handleUpgrade}
-                error={error}
+                error={error && <SaveErrorMessage kind={error}/>}
             />
             <TextButton
                 type={'button'}

@@ -1844,7 +1844,7 @@
       "description": "Add an email and a password to save your progress and get a reminder for tomorrow's check-in.",
       "submit": "Save my progress",
       "later": "Not now",
-      "emailTaken": "This email already has an account. Log in instead.",
+      "emailTaken": "This email already has an account. <link>Log in</link> instead.",
       "limitReached": "You have used the free check-ins. Create an account to continue.",
       "error": "Something went wrong. Please try again."
     }

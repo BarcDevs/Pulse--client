@@ -160,6 +160,21 @@ test.describe('Guest mode', () => {
         await expect(page).toHaveURL(/\/start\/result/)
     })
 
+    test('the email-taken message links to the login page, which a guest can use', async ({ page }) => {
+        await mockGuestApi(page, { upgradeStatus: 409 })
+        await page.goto('/start')
+        await fillAndSubmitCheckIn(page)
+        await page.getByTestId('guest-save-open').click()
+
+        await page.locator('input[type="email"]').fill('me@example.com')
+        await page.locator('input[type="password"]').fill('Sm0keTest!x')
+        await page.getByTestId('upgradeGuest-submit').click()
+        await page.getByRole('link', { name: 'Log in' }).click()
+
+        await expect(page).toHaveURL(/\/login/)
+        await expect(page.getByTestId('login-submit')).toBeVisible()
+    })
+
     test('hitting the guest limit opens the save prompt', async ({ page }) => {
         await mockGuestApi(page, { checkInPostStatus: 403 })
         await page.goto('/start')

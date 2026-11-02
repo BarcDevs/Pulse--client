@@ -32,7 +32,7 @@ const LoginPage = () => {
     const { user } = useGetMe()
 
     useEffect(() => {
-        if (user) router.replace(
+        if (user && !user.isGuest) router.replace(
             getSafeRedirectUrl(redirect, ROUTES.DASHBOARD)
         )
     }, [user, redirect, router])
