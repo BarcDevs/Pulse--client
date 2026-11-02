@@ -1813,5 +1813,28 @@
         }
       ]
     }
+  },
+  "start": {
+    "title": "How are you feeling right now?",
+    "subtitle": "Takes under a minute. No sign-up needed.",
+    "submitButton": "See my results",
+    "starting": "Getting things ready...",
+    "startError": "We could not start your check-in. Please try again.",
+    "result": {
+      "title": "Here is your first look",
+      "insightPending": "Reading your check-in...",
+      "insightEmpty": "Your insight will show up here soon.",
+      "saveButton": "Save my progress"
+    },
+    "save": {
+      "title": "Want to keep this?",
+      "description": "Add an email and a password to save your progress and get a reminder for tomorrow's check-in.",
+      "submit": "Save my progress",
+      "submitting": "Saving...",
+      "later": "Not now",
+      "emailTaken": "This email already has an account. Log in instead.",
+      "limitReached": "You have used the free check-ins. Create an account to continue.",
+      "error": "Something went wrong. Please try again."
+    }
   }
 }

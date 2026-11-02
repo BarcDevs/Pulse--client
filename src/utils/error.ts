@@ -58,6 +58,20 @@ export const isUnauthorizedError = (
     return getApiErrorStatus(error) === 401
 }
 
+export const isForbiddenError = (
+    error: Error | null
+): boolean => {
+    if (!error) return false
+    return getApiErrorStatus(error) === 403
+}
+
+export const isConflictError = (
+    error: Error | null
+): boolean => {
+    if (!error) return false
+    return getApiErrorStatus(error) === 409
+}
+
 const unreachableStatuses = [502, 503, 504]
 
 const isProxyFailure = (error: Error): boolean => {

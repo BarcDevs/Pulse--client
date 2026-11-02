@@ -11,6 +11,7 @@ import { createAuthFormConfigs } from '@/config/forms/authFormConfigs'
 type AuthFormType_Union =
     'login' |
     'signup' |
+    'upgradeGuest' |
     'forgotPassword' |
     'verifyResetCode' |
     'resetPassword'

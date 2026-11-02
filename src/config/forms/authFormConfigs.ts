@@ -5,10 +5,12 @@ import { createLoginSchema } from '@/validations/forms/loginSchema'
 import { createOtpSchema } from '@/validations/forms/otpSchema'
 import { createResetPasswordSchema } from '@/validations/forms/resetPasswordSchema'
 import { createSignupSchema } from '@/validations/forms/signupSchema'
+import { createUpgradeGuestSchema } from '@/validations/forms/upgradeGuestSchema'
 
 type AuthFormType =
     'login' |
     'signup' |
+    'upgradeGuest' |
     'forgotPassword' |
     'verifyResetCode' |
     'resetPassword'
@@ -39,6 +41,13 @@ export const createAuthFormConfigs = (
             password: '',
             confirmPassword: '',
             acceptTerms: false
+        }
+    },
+    upgradeGuest: {
+        schema: createUpgradeGuestSchema(t),
+        defaultValues: {
+            email: '',
+            password: ''
         }
     },
     forgotPassword: {

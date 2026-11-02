@@ -64,6 +64,7 @@ export type FormConfig = {
 export type AuthFormType =
     'login' |
     'signup' |
+    'upgradeGuest' |
     'forgotPassword' |
     'verifyResetCode' |
     'resetPassword'

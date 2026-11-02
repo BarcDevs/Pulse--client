@@ -21,6 +21,9 @@ export const timings = {
     INSIGHTS_POLL_INTERVAL: 3 * secondInMs,
     INSIGHTS_POLL_TIMEOUT: 60 * secondInMs,
 
+    // Pause on the guest's first result before the save prompt opens
+    GUEST_SAVE_PROMPT_DELAY: 4 * secondInMs,
+
     // Debounce and throttle delays
     DEBOUNCE_DELAY: 0.3 * secondInMs,
     THROTTLE_DELAY: 0.5 * secondInMs
