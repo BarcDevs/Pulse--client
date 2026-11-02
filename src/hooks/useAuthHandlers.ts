@@ -5,6 +5,8 @@ import { useTranslations } from 'next-intl'
 
 import { useQueryClient } from '@tanstack/react-query'
 
+import type { User } from '@/types/user'
+
 import {
     getLocalizedApiErrorMessage,
     isNetworkError
@@ -49,12 +51,22 @@ export const useAuthHandlers = () => {
         )
     }
 
+    // A visitor who was a guest keeps the guest's cached user and check-in
+    // data, which would show up on the account they log in to
+    const clearGuestCache = () => {
+        const cachedUser = queryClient.getQueryData<User>(
+            authQueryKeys.getMe
+        )
+        if (cachedUser?.isGuest) queryClient.clear()
+    }
+
     const handleLogin = async (
         credentials: LoginSchema
     ): Promise<string | null> => {
         setIsLoading(true)
         try {
             await login(credentials)
+            clearGuestCache()
             await queryClient.invalidateQueries({
                 queryKey: authQueryKeys.getMe
             })
@@ -85,6 +97,7 @@ export const useAuthHandlers = () => {
         setIsLoading(true)
         try {
             await signup(userData)
+            clearGuestCache()
             await queryClient.invalidateQueries({
                 queryKey: authQueryKeys.getMe
             })

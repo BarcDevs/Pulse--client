@@ -3,12 +3,15 @@
 import { useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 
+import { useQueryClient } from '@tanstack/react-query'
+
 import { Button } from '@/components/shared/buttons/Button'
 
 import { useCheckInForm } from '@/hooks/forms/useCheckInForm'
 
 import { isForbiddenError } from '@/utils/error'
 
+import { checkInQueryKeys } from '@/constants/queryKeys'
 import { ROUTES } from '@/constants/routes'
 
 import { handleCheckInSubmit } from '@/handlers/actions/checkIn'
@@ -28,6 +31,7 @@ export const GuestCheckInForm = ({
 }: GuestCheckInFormProps) => {
     const t = useTranslations()
     const router = useRouter()
+    const queryClient = useQueryClient()
     const { form } = useCheckInForm({
         latestCheckIn: null,
         stats: null
@@ -36,9 +40,13 @@ export const GuestCheckInForm = ({
     const submit = async (data: CheckInSchema) => {
         try {
             await handleCheckInSubmit(data)
+            // A second check-in in the same visit must not show the first one
+            await queryClient.invalidateQueries({
+                queryKey: checkInQueryKeys.all
+            })
             router.push(ROUTES.START_RESULT)
         } catch (error) {
-            if (isForbiddenError(error as Error)) {
+            if (isForbiddenError(error)) {
                 onLimitReachedAction()
                 return
             }

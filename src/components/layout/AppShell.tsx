@@ -20,7 +20,8 @@ export const AppShell = ({
 }: LayoutProps) => {
     const pathname = usePathname()
     const { user } = useAuth()
-    const mode = getAppShellMode(pathname, !!user)
+    // A guest has no profile or dashboard, so the app shell is not for them
+    const mode = getAppShellMode(pathname, !!user && !user.isGuest)
 
     if (mode === 'none') {
         return children

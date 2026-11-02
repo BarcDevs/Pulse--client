@@ -31,23 +31,28 @@ export const GuestResultPage = () => {
     const [isSaveOpen, setIsSaveOpen] = useState(false)
     const [isUpgrading, setIsUpgrading] = useState(false)
     const isGuest = !!user?.isGuest
-    const { data: checkIn } = useGuestResultCheckIn(isGuest && !isUpgrading)
+    const {
+        data: checkIn,
+        isFetching
+    } = useGuestResultCheckIn(isGuest && !isUpgrading)
     const hasInsights = !!checkIn?.insights?.length
+    const hasNoCheckIn = checkIn === null && !isFetching
 
     useEffect(() => {
         if (isLoading) return
         if (!user) router.replace(ROUTES.START)
         else if (!user.isGuest) router.replace(ROUTES.DASHBOARD)
-    }, [user, isLoading, router])
+        else if (hasNoCheckIn) router.replace(ROUTES.START)
+    }, [user, isLoading, hasNoCheckIn, router])
 
     useEffect(() => {
-        if (!hasInsights) return
+        if (!hasInsights || isUpgrading) return
         const timer = setTimeout(
             () => setIsSaveOpen(true),
             timings.GUEST_SAVE_PROMPT_DELAY
         )
         return () => clearTimeout(timer)
-    }, [hasInsights])
+    }, [hasInsights, isUpgrading])
 
     if (!isGuest) return null
 
@@ -63,6 +68,7 @@ export const GuestResultPage = () => {
                     <Button
                         size={'lg'}
                         onClick={() => setIsSaveOpen(true)}
+                        disabled={isUpgrading}
                         data-testid={'guest-save-open'}
                     >
                         {t(startLocales.result.saveButton)}

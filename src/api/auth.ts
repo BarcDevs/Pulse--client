@@ -54,12 +54,19 @@ export const createGuest = async ():
 
 // Converts the guest row in place, so its check-ins are kept. The CSRF token
 // lives in memory only and /auth/me does not return one, so after a reload
-// ask the idempotent guest endpoint for a fresh one first
+// ask the idempotent guest endpoint for a fresh one first. A 201 there means
+// the guest cookie was gone and a new, empty guest was made, so stop instead
+// of upgrading the wrong account
 export const upgradeGuest = async (
     credentials: UpgradeGuestSchema
 ): Promise<AuthResponse> => {
-    if (!getCsrfToken())
-        await createGuest()
+    if (!getCsrfToken()) {
+        const guest = await api.post<Response<AuthResponse>>(
+            ENDPOINTS.auth.guest
+        )
+        if (guest.status === 201)
+            throw new Error('Guest session lost')
+    }
     const res = await api.post<Response<AuthResponse>>(
         ENDPOINTS.auth.upgradeGuest,
         credentials

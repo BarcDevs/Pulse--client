@@ -51,6 +51,9 @@ export const AuthProvider = ({
     const isPublicRoute = PUBLIC_ROUTES.includes(
         pathname as typeof PUBLIC_ROUTES[number]
     )
+    const isProtectedRoute = protectedRoutes.some(
+        (route) => pathname.startsWith(route)
+    )
 
     const me = useGetMe(!isPublicRoute)
 
@@ -129,27 +132,21 @@ export const AuthProvider = ({
     }, [me.status.error, me.actions.refetch])
 
     useEffect(() => {
-        const isProtected = protectedRoutes.some(
-            (route) => pathname.startsWith(route)
-        )
         if (
             me.status.error
             && isUnauthorizedError(me.status.error)
-            && isProtected
+            && isProtectedRoute
         ) {
             initiateLogout(pathname)
         }
-    }, [me.status.error, pathname])
+    }, [me.status.error, pathname, isProtectedRoute])
 
     // A guest can only use check-in and its result, the server answers 403
     // everywhere else
     useEffect(() => {
-        const isProtected = protectedRoutes.some(
-            (route) => pathname.startsWith(route)
-        )
-        if (me.user?.isGuest && isProtected)
+        if (me.user?.isGuest && isProtectedRoute)
             router.replace(ROUTES.START_RESULT)
-    }, [me.user?.isGuest, pathname, router])
+    }, [me.user?.isGuest, isProtectedRoute, router])
 
     useEffect(() => {
         const hasNetworkError = me.status.error

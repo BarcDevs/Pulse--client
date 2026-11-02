@@ -1,6 +1,11 @@
 'use client'
 
-import { useState } from 'react'
+import {
+    startTransition,
+    useOptimistic,
+    useRef,
+    useState
+} from 'react'
 
 import { useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
@@ -46,41 +51,54 @@ export const SaveProgressDialog = ({
     const router = useRouter()
     const queryClient = useQueryClient()
     const [error, setError] = useState<string | null>(null)
+    const [isOpen, setOptimisticOpen] = useOptimistic(open)
+    const isUpgradingRef = useRef(false)
 
-    // Optimistic: the dialog closes at once and reopens with the error if the
-    // upgrade fails
-    const handleUpgrade = async (data: UpgradeGuestSchema) => {
-        setError(null)
-        onOpenChangeAction(false)
+    // The dialog closes at once. If the upgrade throws, React puts `open`
+    // back by itself and the error shows when it reopens
+    const handleUpgrade = (data: UpgradeGuestSchema) => {
+        if (isUpgradingRef.current) return
+        isUpgradingRef.current = true
         // The server revokes the old token as soon as the upgrade commits, so
-        // a poll in flight would get a 401 and log the guest out mid-upgrade
+        // a poll sent later would get a 401 mid-upgrade. Set outside the
+        // transition: React holds state updates made inside one until the
+        // action ends, which would leave the poll running
+        setError(null)
         onUpgradingChangeAction?.(true)
-        await queryClient.cancelQueries({
-            queryKey: checkInQueryKeys.all
-        })
-        try {
-            await upgradeGuest(data)
-            await queryClient.invalidateQueries({
-                queryKey: authQueryKeys.getMe
+
+        startTransition(async () => {
+            setOptimisticOpen(false)
+            await queryClient.cancelQueries({
+                queryKey: checkInQueryKeys.all
             })
-            router.push(ROUTES.DASHBOARD)
-        } catch (upgradeError) {
-            setError(
-                t(
-                    isConflictError(upgradeError as Error)
-                        ? startLocales.save.emailTaken
-                        : startLocales.save.error
+            try {
+                const { user } = await upgradeGuest(data)
+                queryClient.setQueryData(authQueryKeys.getMe, user)
+                onOpenChangeAction(false)
+                router.push(ROUTES.DASHBOARD)
+            } catch (upgradeError) {
+                setError(
+                    t(
+                        isConflictError(upgradeError)
+                            ? startLocales.save.emailTaken
+                            : startLocales.save.error
+                    )
                 )
-            )
-            onUpgradingChangeAction?.(false)
-            onOpenChangeAction(true)
-        }
+                onUpgradingChangeAction?.(false)
+                isUpgradingRef.current = false
+            }
+        })
+    }
+
+    const handleOpenChange = (next: boolean) => {
+        if (!next) setError(null)
+        onOpenChangeAction(next)
     }
 
     return (
         <Dialog
-            open={open}
-            onOpenChange={onOpenChangeAction}
+            open={isOpen}
+            onOpenChange={handleOpenChange}
         >
             <DialogContent>
                 <DialogHeader>
@@ -103,7 +121,7 @@ export const SaveProgressDialog = ({
                 <Button
                     type={'button'}
                     variant={'ghost'}
-                    onClick={() => onOpenChangeAction(false)}
+                    onClick={() => handleOpenChange(false)}
                 >
                     {t(startLocales.save.later)}
                 </Button>
