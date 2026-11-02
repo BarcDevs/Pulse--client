@@ -184,7 +184,7 @@ Pulse supports two authentication methods:
 - A guest can only use check-in, stats, insights, `/auth/me`, `/auth/refresh` and `/auth/logout`. Any other route answers 403, and the client treats a 403 as "show the save prompt"
 - A guest is capped at 3 check-ins: `POST /check-in` answers 403 once the cap is reached, which also opens the save prompt
 - `POST /auth/guest/upgrade` with `{ email, password }` (CSRF header required) converts the same user row, so check-ins are kept, and re-issues the session cookies. The user lands on the dashboard like a fresh signup, with the email still unverified. 409 means the email is taken
-- `User.isGuest` tells the client which state it is in. Unconverted guests are deleted by the server after 30 days
+- `User.isGuest` tells the client which state it is in. Unconverted guests are deleted by the server once they are older than the token lifetime plus a day (8 days in production), so do not rely on a guest lasting longer
 - Code: `src/hooks/useGuestSession.ts`, `src/components/start/`, `createGuest` and `upgradeGuest` in `src/api/auth.ts`
 
 Both methods use the same session system:
