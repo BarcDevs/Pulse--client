@@ -16,12 +16,15 @@ export const getWellnessData = (
     const painScore = isError ? '-' : (data?.averagePainLevel ?? 0)
     const moodTrend = getTrendData(isError ? [] : (data?.moodTrend ?? []), 'mood')
     const painTrend = getTrendData(isError ? [] : (data?.painTrend ?? []), 'pain')
-    const moodTrendLabel = t(moodTrend.labelKey)
-    const painTrendLabel = t(painTrend.labelKey)
+    const moodTrendLabel = moodTrend.labelKey ? t(moodTrend.labelKey) : ''
+    const painTrendLabel = painTrend.labelKey ? t(painTrend.labelKey) : ''
     const wellnessStatusKey = getWellnessStatusKey(moodTrend, painTrend)
+    const hasTrend = !!moodTrend.labelKey && !!painTrend.labelKey
     const wellnessStatus = wellnessStatusKey
         ? t(wellnessStatusKey)
-        : `${moodTrendLabel} & ${painTrendLabel}`
+        : hasTrend
+            ? `${moodTrendLabel} & ${painTrendLabel}`
+            : ''
     return {
         moodScore,
         painScore,

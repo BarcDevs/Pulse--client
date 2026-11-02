@@ -24,17 +24,27 @@ const points = (values: number[]): TrendPoint[] =>
     values.map(v => ({ actual: v } as TrendPoint))
 
 describe('getTrendData', () => {
-    it('returns steady for mood when fewer than 2 points', () => {
+    it('has no trend label for mood when there are no points', () => {
         const result = getTrendData([], 'mood')
         expect(result.icon).toBe(Minus)
-        expect(result.labelKey).toBe(trends.steady)
+        expect(result.labelKey).toBeNull()
         expect(result.color).toBe('text-muted-foreground')
     })
 
-    it('returns stable for pain when fewer than 2 points', () => {
+    it('has no trend label for pain when there is a single point', () => {
         const result = getTrendData([{ actual: 5 } as TrendPoint], 'pain')
         expect(result.icon).toBe(Minus)
-        expect(result.labelKey).toBe(trends.stable)
+        expect(result.labelKey).toBeNull()
+    })
+
+    it('has no trend label when only one day has a value', () => {
+        const days = [
+            { actual: null },
+            { actual: 6 },
+            { actual: null }
+        ] as TrendPoint[]
+        expect(getTrendData(days, 'mood').labelKey).toBeNull()
+        expect(getTrendData(days, 'pain').labelKey).toBeNull()
     })
 
     it('returns improving mood when second half avg exceeds first half by > 0.5', () => {
@@ -113,6 +123,11 @@ describe('getWellnessStatusKey', () => {
 
     it('returns stableAndMaintaining when mood steady and pain stable', () => {
         expect(getWellnessStatusKey(steadyMood, stablePain)).toBe(status.stableAndMaintaining)
+    })
+
+    it('returns null when there is no trend to describe', () => {
+        const noTrend = getTrendData(points([5]), 'mood')
+        expect(getWellnessStatusKey(noTrend, noTrend)).toBeNull()
     })
 
     it('returns null when no specific status matches', () => {

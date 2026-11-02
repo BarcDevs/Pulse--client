@@ -43,10 +43,10 @@ export const WellnessScoreCard = ({
                 </span>
             </div>
             <div
-                className={'flex items-center gap-1 mt-1 text-sm'}
+                className={'flex items-center gap-1 mt-1 text-sm empty:hidden'}
                 style={{ color }}
             >
-                <TrendIcon className={'h-3 w-3'}/>
+                {trendLabel && <TrendIcon className={'h-3 w-3'}/>}
                 {trendLabel}
             </div>
         </div>

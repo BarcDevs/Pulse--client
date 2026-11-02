@@ -48,7 +48,7 @@ export const WellnessCard = () => {
                     <p className={'text-muted-foreground label-uppercase'}>
                         {t(progressLocales.wellness.label)}
                     </p>
-                    <h3 className={'mt-1 text-xl font-semibold text-foreground'}>
+                    <h3 className={'mt-1 text-xl font-semibold text-foreground empty:hidden'}>
                         {wellnessStatus}
                     </h3>
                 </div>
