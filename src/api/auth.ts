@@ -12,6 +12,7 @@ import { ENDPOINTS } from '@/api/routes'
 import type { ChangeEmailSchema } from '@/validations/forms/changeEmailSchema'
 import type { LoginSchema } from '@/validations/forms/loginSchema'
 import type { SignupSchema } from '@/validations/forms/signupSchema'
+import type { UpgradeGuestSchema } from '@/validations/forms/upgradeGuestSchema'
 
 type ConfirmedEmailUser = {
     id: string
@@ -38,6 +39,37 @@ export const signup = async (userData: Omit<
     const res = await api.post<Response<AuthResponse>>(
         ENDPOINTS.auth.signup,
         userData
+    )
+    return res.data.data
+}
+
+// Idempotent: a valid guest cookie gets the same guest back
+export const createGuest = async ():
+    Promise<AuthResponse> => {
+    const res = await api.post<Response<AuthResponse>>(
+        ENDPOINTS.auth.guest
+    )
+    return res.data.data
+}
+
+// Converts the guest row in place, so its check-ins are kept. The CSRF token
+// lives in memory only and /auth/me does not return one, so after a reload
+// ask the idempotent guest endpoint for a fresh one first. A 201 there means
+// the guest cookie was gone and a new, empty guest was made, so stop instead
+// of upgrading the wrong account
+export const upgradeGuest = async (
+    credentials: UpgradeGuestSchema
+): Promise<AuthResponse> => {
+    if (!getCsrfToken()) {
+        const guest = await api.post<Response<AuthResponse>>(
+            ENDPOINTS.auth.guest
+        )
+        if (guest.status === 201)
+            throw new Error('Guest session lost')
+    }
+    const res = await api.post<Response<AuthResponse>>(
+        ENDPOINTS.auth.upgradeGuest,
+        credentials
     )
     return res.data.data
 }

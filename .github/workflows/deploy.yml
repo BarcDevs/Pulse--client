@@ -58,7 +58,7 @@ jobs:
       # cache mount through actions/cache
       - name: Restore Next build cache
         id: next-cache
-        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: next-build-cache
           key: nextjs-docker-${{ hashFiles('package-lock.json') }}-${{ hashFiles('src/**', 'public/**') }}
@@ -66,7 +66,7 @@ jobs:
             nextjs-docker-${{ hashFiles('package-lock.json') }}-
 
       - name: Inject Next build cache into BuildKit
-        uses: reproducible-containers/buildkit-cache-dance@7a38cfab60c63ee1022b7c1a14a031c82f4114c7 # v3.4.0
+        uses: reproducible-containers/buildkit-cache-dance@5422eac04292c961a382e0f584ea0f03ad9da723 # v3.4.0
         with:
           cache-map: |
             {

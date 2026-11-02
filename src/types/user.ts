@@ -9,6 +9,7 @@ export type User = {
     username: string
     email: string
     role: Role
+    isGuest?: boolean
     dateOfBirth?: Date
     recoveryType?: string
     careProvider?: string

@@ -3,6 +3,7 @@ import { AuthFormType, FormConfig } from '@/types/forms'
 import { ROUTES } from '@/constants/routes'
 
 import { authLocales } from '@/locales/authLocales'
+import { startLocales } from '@/locales/startLocales'
 
 type AuthFormConfigs = Record<
     AuthFormType,
@@ -97,6 +98,30 @@ const authFormConfigs: AuthFormConfigs = {
                 href: ROUTES.LOGIN
             }
         ]
+    },
+
+    upgradeGuest: {
+        fields: {
+            email: {
+                type: 'email',
+                label: authLocales.common.emailLabel,
+                placeholder: 'name@example.com',
+                required: true
+            },
+            password: {
+                type: 'password',
+                label: authLocales.common.passwordLabel,
+                placeholder: '••••••••',
+                required: true,
+                description: 'auth.signup.passwordDescription'
+            }
+        },
+        buttons: {
+            primary: {
+                label: startLocales.save.submit,
+                loadingLabel: startLocales.save.submit
+            }
+        }
     },
 
     forgotPassword: {

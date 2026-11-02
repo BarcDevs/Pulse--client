@@ -28,3 +28,9 @@ downgrading `react-quill-new` to `3.7.0` as the only "fix," flagged semver-major
 **Decision:** accept the advisory as mitigated rather than force a downgrade that doesn't fix
 anything and would be a breaking version bump for no benefit. Revisit if/when `quill` ships an
 actual patched version upstream.
+
+---
+
+## 27/10/2026 — zod 4 and `@hookform/resolvers` 6 adopted to close GHSA-mrhx-c7xc-m3w5
+
+`zod` 3.25.76 carries a HIGH advisory (oversized constrained input can exhaust memory) fixed only in zod 4. Upgraded `zod` to ^4 and `@hookform/resolvers` to ^6 together on one branch; resolvers 6.0.1+ installs cleanly with zod 4, so no forced peers. Existing schema tests were the safety net and user-facing validation messages stay identical. The advisory is not reproducible locally (the oversized-input regression test also passes on zod 3), so the fix is recorded as unverified locally.

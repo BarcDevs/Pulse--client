@@ -31,6 +31,9 @@ Terminology and wording rules for `messages/he-IL.json` — established Hebrew t
 | 24/09/2026 | Copy uses plain keyboard punctuation: no em-dashes, curly quotes/apostrophes, gershayim or low-9 quotes |
 | 02/10/2026 | Never commit Hebrew copy without the user's review; show the exact text and wait. Gershayim reintroduced |
 | 09/10/2026 | AI-generated Hebrew follows the same copy rules (mood term, no dashes, no leading ה) and is fixed in the prompt |
+| 02/11/2026 | Hebrew copy must read naturally, not as a translation |
+| 02/11/2026 | Hebrew UI copy addresses one user in singular, never plural |
+| 02/11/2026 | Hebrew UI copy addresses one user in the singular |
 
 ## Verification Process — [[corrections/verification-process]]
 Guessing at a spec instead of checking the actual rules/examples first.
@@ -43,6 +46,7 @@ Guessing at a spec instead of checking the actual rules/examples first.
 | 29/09/2026 | Model Selection in CLAUDE.md said Haiku for sub-agents (stale); Sonnet default, Opus via /opusplan |
 | 02/10/2026 | Claimed the sticky-sidebar fix worked after a synthetic headless test that did not match the user's page; say exactly what was and was not tested |
 | 03/10/2026 | Pushed after unit tests only; the e2e suite (strict-mode duplicate button names) failed in CI. Run the full suite before any push |
+| 27/10/2026 | Dropped the zod 4 upgrade's `@hookform/resolvers` 6 to 5 after one failed install; 6.0.1+ installs cleanly, so check newer patches before downgrading |
 
 ## Working Style — [[corrections/working-style]]
 How to act on bug reports and where to log — state the fix before broad edits, log in this repo, check other branches before claiming a file doesn't exist.
@@ -76,6 +80,7 @@ Where new constants/config values belong.
 |---|---|
 | 23/09/2026 | Tunable delays go in `src/config/timings.ts`, not `src/constants/time.ts` (which is unit conversions only) |
 | 23/09/2026 | Durations must use `*InMs` constants, not magic numbers, even when the surrounding file doesn't |
+| 02/11/2026 | Check SHARED_COMPONENTS.md and use BaseDialog, never raw ui/dialog |
 
 ## Chart No-Data Regions — [[corrections/chart-no-data-regions]]
 Reimplementing a dropped fix from scratch instead of restoring the original commit.
@@ -83,3 +88,10 @@ Reimplementing a dropped fix from scratch instead of restoring the original comm
 | Date | Entry |
 |---|---|
 | 27/09/2026 | Before reimplementing a "this used to work" fix, `git log --all -S "<symbol>"` to find and restore the original commit instead of re-deriving boundary logic from scratch |
+
+## Optimistic Updates — [[corrections/optimistic-updates]]
+Auto-recorded corrections.
+
+| Date | Entry |
+|---|---|
+| 02/11/2026 | Use an optimistic update, not a saving status label |

@@ -9,6 +9,8 @@ const shelllessRoutes: string[] = [
     ROUTES.LOGIN,
     ROUTES.SIGNUP,
     ROUTES.VERIFY,
+    ROUTES.START,
+    ROUTES.START_RESULT,
     ROUTES.FORGOT_PASSWORD,
     ROUTES.RESET_PASSWORD
 ]

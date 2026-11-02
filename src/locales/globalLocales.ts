@@ -1,4 +1,13 @@
 export const globalLocales = {
+    a11y: {
+        showPassword: 'global.a11y.showPassword',
+        hidePassword: 'global.a11y.hidePassword',
+        edit: 'global.a11y.edit',
+        moreActions: 'global.a11y.moreActions',
+        dismiss: 'global.a11y.dismiss',
+        sendMessage: 'global.a11y.sendMessage',
+        uploadPhoto: 'global.a11y.uploadPhoto'
+    },
     nav: {
         help: 'global.nav.help',
         about: 'global.nav.about',

@@ -2,6 +2,8 @@
 
 import { MouseEvent, useState } from 'react'
 
+import { useTranslations } from 'next-intl'
+
 import {
     MoreVertical,
     Pencil,
@@ -18,6 +20,8 @@ import {
     DropdownMenuItem,
     DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu'
+
+import { globalLocales } from '@/locales/globalLocales'
 
 const DESTRUCTIVE_CLASS = 'text-destructive focus:text-destructive'
 const DESTRUCTIVE_ICON_CLASS = 'text-destructive'
@@ -47,6 +51,7 @@ export const ActionsMenu = ({
     iconSize = 16,
     additionalActions = []
 }: ActionsMenuProps) => {
+    const t = useTranslations()
     const [open, setOpen] = useState(false)
     const [confirmingActionId, setConfirmingActionId] =
         useState<string | null>(null)
@@ -89,6 +94,7 @@ export const ActionsMenu = ({
                         size={'sm'}
                         disabled={isLoading}
                         onClick={stopPropagation}
+                        aria-label={t(globalLocales.a11y.moreActions)}
                     >
                         <MoreVertical size={iconSize}/>
                     </IconButton>

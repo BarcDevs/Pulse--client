@@ -80,6 +80,7 @@ Cookie/storage consent and privacy-disclosure decisions.
 | Date | Entry |
 |---|---|
 | 02/10/2026 | `quill` XSS (GHSA-v3m3-f69x-jf25) accepted, not force-downgraded — no upstream fix exists, and all render paths already sanitize via DOMPurify |
+| 27/10/2026 | zod 4 and `@hookform/resolvers` 6 adopted to close GHSA-mrhx-c7xc-m3w5; not reproducible locally |
 
 ## Agent Models — [[decisions/agent-models]]
 Which model each custom agent runs on, and why.
@@ -97,3 +98,11 @@ Dashboard cards, chart size and how dashboard screenshots for outside use are ma
 | 09/10/2026 | The dashboard trend chart plot is taller (about h-56) so trends are not flat |
 | 09/10/2026 | Product screenshots for outside use come from the real UI with a mocked API |
 | 09/10/2026 | Dashboard insight items clamp at two lines, not one and not full; read-more stays |
+
+## Guest Onboarding — [[decisions/guest-onboarding]]
+Auto-recorded decisions.
+
+| Date | Entry |
+|---|---|
+| 02/11/2026 | Guest onboarding: server-side guest account, email+password at save step |
+| 02/11/2026 | Guest accounts live about a week, not 30 days |

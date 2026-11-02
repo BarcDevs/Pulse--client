@@ -1,7 +1,9 @@
 import * as Sentry from '@sentry/nextjs'
 
+import { sentryDataCollection } from '@/lib/sentry/dataCollection'
 import { scrubBreadcrumb } from '@/lib/sentry/scrubBreadcrumb'
 import { scrubEvent } from '@/lib/sentry/scrubEvent'
+import { scrubSpan } from '@/lib/sentry/scrubSpan'
 
 Sentry.init({
     dsn: process.env.NEXT_PUBLIC_SENTRY_DSN,
@@ -10,5 +12,6 @@ Sentry.init({
     tracesSampleRate: process.env.NODE_ENV === 'production' ? 0.1 : 1.0,
     beforeBreadcrumb: scrubBreadcrumb,
     beforeSend: scrubEvent,
-    beforeSendTransaction: scrubEvent
+    beforeSendSpan: scrubSpan,
+    dataCollection: sentryDataCollection
 })

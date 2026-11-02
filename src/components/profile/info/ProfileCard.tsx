@@ -1,5 +1,7 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
+
 import { Camera } from 'lucide-react'
 
 import { ProfileLevel } from '@/components/profile/info/ProfileLevel'
@@ -14,12 +16,15 @@ import { getUserFallback } from '@/lib/utils'
 
 import { FEATURES } from '@/config/features'
 
+import { globalLocales } from '@/locales/globalLocales'
+
 import { ProfileStats } from '../stats/ProfileStats'
 
 import { ProfileCardSkeleton } from './ProfileCardSkeleton'
 import { ProfileInfo } from './ProfileInfo'
 
 export const ProfileCard = () => {
+    const t = useTranslations()
     const currentUser = useUser()
 
     if (currentUser.status.isLoading) return <ProfileCardSkeleton/>
@@ -46,6 +51,7 @@ export const ProfileCard = () => {
                         <IconButton
                             outlined
                             round
+                            aria-label={t(globalLocales.a11y.uploadPhoto)}
                             className={'absolute -bottom-1 -left-1 size-7'}
                         >
                             <Camera className={'size-3.5'}/>

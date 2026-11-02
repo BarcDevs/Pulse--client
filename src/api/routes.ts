@@ -19,6 +19,8 @@ export const ENDPOINTS = {
     auth: {
         login: '/auth/login',
         signup: '/auth/signup',
+        guest: '/auth/guest',
+        upgradeGuest: '/auth/guest/upgrade',
         logout: '/auth/logout',
         me: '/auth/me',
         refresh: '/auth/refresh',

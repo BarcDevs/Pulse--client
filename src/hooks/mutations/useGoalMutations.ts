@@ -146,6 +146,9 @@ export const useGoalMutations = () => {
                     goalId
                 )
             })
+            queryClient.invalidateQueries({
+                queryKey: recoveryGoalsQueryKeys.all
+            })
         }
     })
 
@@ -189,6 +192,9 @@ export const useGoalMutations = () => {
                 queryKey: recoveryGoalsQueryKeys.goal(
                     goalId
                 )
+            })
+            queryClient.invalidateQueries({
+                queryKey: recoveryGoalsQueryKeys.all
             })
         }
     })

@@ -7,7 +7,7 @@ import {
     useState
 } from 'react'
 
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 
 import { useQueryClient } from '@tanstack/react-query'
 
@@ -39,6 +39,7 @@ const PUBLIC_ROUTES = [
     ROUTES.LOGIN,
     ROUTES.SIGNUP,
     ROUTES.VERIFY,
+    ROUTES.START,
     ROUTES.FORGOT_PASSWORD
 ] as const
 
@@ -46,8 +47,12 @@ export const AuthProvider = ({
     children
 }: LayoutProps) => {
     const pathname = usePathname()
+    const router = useRouter()
     const isPublicRoute = PUBLIC_ROUTES.includes(
         pathname as typeof PUBLIC_ROUTES[number]
+    )
+    const isProtectedRoute = protectedRoutes.some(
+        (route) => pathname.startsWith(route)
     )
 
     const me = useGetMe(!isPublicRoute)
@@ -127,17 +132,21 @@ export const AuthProvider = ({
     }, [me.status.error, me.actions.refetch])
 
     useEffect(() => {
-        const isProtected = protectedRoutes.some(
-            (route) => pathname.startsWith(route)
-        )
         if (
             me.status.error
             && isUnauthorizedError(me.status.error)
-            && isProtected
+            && isProtectedRoute
         ) {
             initiateLogout(pathname)
         }
-    }, [me.status.error, pathname])
+    }, [me.status.error, pathname, isProtectedRoute])
+
+    // A guest can only use check-in and its result, the server answers 403
+    // everywhere else
+    useEffect(() => {
+        if (me.user?.isGuest && isProtectedRoute)
+            router.replace(ROUTES.START_RESULT)
+    }, [me.user?.isGuest, isProtectedRoute, router])
 
     useEffect(() => {
         const hasNetworkError = me.status.error

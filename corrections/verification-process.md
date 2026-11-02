@@ -40,3 +40,11 @@ A scroll fix (overflow-hidden/auto to overflow-clip, sticky nav sidebar and comm
 A UI change (floating action button made visible on desktop) was merged and pushed after typecheck, lint and the 857 unit tests passed, but without running the Playwright e2e suite. CI run #104 on `development` failed: `Create post` and `New Goal` each matched two buttons (inline + FAB), a strict-mode violation in 2 e2e tests. A Dependabot PR rebased onto it then showed the same red run and looked like the dependency bump had broken CI. User: "you shouldn't push before testing the entire suite".
 
 **Lesson:** before any push, run the whole suite CI runs: typecheck, lint, unit tests and the mocked Playwright e2e (`npx playwright test`). Changing what is visible or what a control is named can break role/name locators elsewhere, so grep `e2e/` for the affected labels too. Say which suites were not run (the real-backend e2e needs a live server).
+
+---
+
+## 27/10/2026 — Fell back to `@hookform/resolvers` 5 instead of installing 6
+
+The zod 4 upgrade plan paired zod 4 with `@hookform/resolvers` 6, but the install of 6.0.0 failed on a peer-dependency conflict, so the plan quietly dropped to resolvers 5 without checking whether a newer 6.x resolved it. Re-checking showed 6.0.1 (and later 6.0.2) installs cleanly beside zod 4, no `--force` or `--legacy-peer-deps`. Owner: record the "escaping to resolvers 5" attempt as a correction.
+
+**Lesson:** when a requested version fails to install, check the newer patch releases (`npm view <pkg> versions`, a dry-run install) before downgrading the target, and never reach for `--force` or `--legacy-peer-deps`. Report the conflict and the exact result of the re-check rather than substituting an older major.

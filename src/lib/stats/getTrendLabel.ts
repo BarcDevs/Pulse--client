@@ -11,29 +11,29 @@ import { progressLocales } from '@/locales/progressLocales'
 
 const { trends, status } = progressLocales.wellness
 
+// A null label means there are too few check-ins to compare, so nothing is
+// said about the trend
 export type TrendData = {
-    labelKey: string
+    labelKey: string | null
     icon: LucideIcon
     color: string
 }
+
+const MIN_POINTS_FOR_TREND = 2
 
 // todo: use AI to get trend
 export const getTrendData = (
     trendData: TrendPoint[],
     metricType: 'mood' | 'pain' = 'mood'
 ): TrendData => {
-    if (trendData.length < 2)
-        return metricType === 'mood'
-            ? {
-                labelKey: trends.steady,
-                icon: Minus,
-                color: 'text-muted-foreground'
-            }
-            : {
-                labelKey: trends.stable,
-                icon: Minus,
-                color: 'text-muted-foreground'
-            }
+    const filledDays = trendData.filter(p => p.actual != null)
+
+    if (filledDays.length < MIN_POINTS_FOR_TREND)
+        return {
+            labelKey: null,
+            icon: Minus,
+            color: 'text-muted-foreground'
+        }
 
     const mid = Math.floor(trendData.length / 2)
     const firstHalf = trendData
@@ -93,6 +93,7 @@ export const getWellnessStatusKey = (
     const mood = moodTrend.labelKey
     const pain = painTrend.labelKey
 
+    if (!mood || !pain) return null
     if (
         mood === trends.improving
         && pain === trends.improving

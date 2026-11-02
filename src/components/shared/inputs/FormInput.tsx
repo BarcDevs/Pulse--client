@@ -4,6 +4,8 @@ import {
     useState
 } from 'react'
 
+import { useTranslations } from 'next-intl'
+
 import { Eye, EyeOff } from 'lucide-react'
 
 import { IconButton } from '@/components/shared/buttons/IconButton'
@@ -11,6 +13,8 @@ import { Input } from '@/components/shared/inputs/Input'
 import { FormLabel } from '@/components/ui/form'
 
 import { cn } from '@/lib/utils'
+
+import { globalLocales } from '@/locales/globalLocales'
 
 type FormInputProps = Omit<
     InputHTMLAttributes<HTMLInputElement>,
@@ -32,6 +36,7 @@ export const FormInput = ({
     className,
     ...rest
 }: FormInputProps) => {
+    const t = useTranslations()
     const [showPassword, setShowPassword] = useState(false)
     const isPasswordField = type === 'password'
 
@@ -71,6 +76,11 @@ export const FormInput = ({
                         type={'button'}
                         size={'sm'}
                         onClick={() => setShowPassword(!showPassword)}
+                        aria-label={t(
+                            showPassword
+                                ? globalLocales.a11y.hidePassword
+                                : globalLocales.a11y.showPassword
+                        )}
                         className={'absolute right-1 top-1/2 -translate-y-1/2'}
                     >
                         {showPassword

@@ -1031,6 +1031,15 @@
     }
   },
   "global": {
+    "a11y": {
+      "showPassword": "Show password",
+      "hidePassword": "Hide password",
+      "edit": "Edit",
+      "moreActions": "More actions",
+      "dismiss": "Dismiss",
+      "sendMessage": "Send message",
+      "uploadPhoto": "Upload photo"
+    },
     "footer": {
       "brandTagline": "Supporting your recovery journey",
       "quickLinksTitle": "Quick Links",
@@ -1674,7 +1683,8 @@
         {
           "title": "Data retention",
           "body": [
-            "We keep your information only for as long as it is needed to provide Pulse, comply with legal obligations, and maintain the integrity of our services. When your account is deleted, your personal information is removed according to our data retention policies. Replies you left on other people's posts are the exception: they are kept as written, without your name or picture."
+            "We keep your information only for as long as it is needed to provide Pulse, comply with legal obligations, and maintain the integrity of our services. When your account is deleted, your personal information is removed according to our data retention policies. Replies you left on other people's posts are the exception: they are kept as written, without your name or picture.",
+            "If you try Pulse as a guest, your check-ins are kept in a temporary guest account for up to a week. If you do not save it with an email and a password, the account and its check-ins are then deleted."
           ]
         },
         {
@@ -1803,6 +1813,28 @@
           ]
         }
       ]
+    }
+  },
+  "start": {
+    "title": "How are you feeling right now?",
+    "subtitle": "Takes under a minute. No sign-up needed.",
+    "submitButton": "See my results",
+    "starting": "Getting things ready...",
+    "startError": "We could not start your check-in. Please try again.",
+    "result": {
+      "title": "Here is your first look",
+      "insightPending": "Reading your check-in...",
+      "insightEmpty": "Your insight will show up here soon.",
+      "saveButton": "Save my progress"
+    },
+    "save": {
+      "title": "Want to keep this?",
+      "description": "Add an email and a password to save your progress and get a reminder for tomorrow's check-in.",
+      "submit": "Save my progress",
+      "later": "Not now",
+      "emailTaken": "This email already has an account. Log in instead.",
+      "limitReached": "You have used the free check-ins. Create an account to continue.",
+      "error": "Something went wrong. Please try again."
     }
   }
 }

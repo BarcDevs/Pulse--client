@@ -5,7 +5,8 @@ export const authQueryKeys = {
 
 export const checkInQueryKeys = {
     all: ['checkIn'] as const,
-    stats: ['checkIn', 'stats'] as const
+    stats: ['checkIn', 'stats'] as const,
+    guestResult: ['checkIn', 'guestResult'] as const
 }
 
 export const forumQueryKeys = {

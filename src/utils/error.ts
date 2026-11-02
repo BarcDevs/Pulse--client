@@ -51,12 +51,13 @@ export const isCursorNotFoundError = (
         && detail.params?.resource === 'Cursor'
 }
 
-export const isUnauthorizedError = (
-    error: Error | null
-): boolean => {
-    if (!error) return false
-    return getApiErrorStatus(error) === 401
-}
+const hasStatus = (status: number) =>
+    (error: unknown): boolean =>
+        getApiErrorStatus(error) === status
+
+export const isUnauthorizedError = hasStatus(401)
+export const isForbiddenError = hasStatus(403)
+export const isConflictError = hasStatus(409)
 
 const unreachableStatuses = [502, 503, 504]
 
