@@ -105,3 +105,4 @@ Auto-recorded decisions.
 | Date | Entry |
 |---|---|
 | 02/11/2026 | Guest onboarding: server-side guest account, email+password at save step |
+| 02/11/2026 | Guest accounts live about a week, not 30 days |
