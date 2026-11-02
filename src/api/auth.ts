@@ -52,10 +52,14 @@ export const createGuest = async ():
     return res.data.data
 }
 
-// Converts the guest row in place, so its check-ins are kept
+// Converts the guest row in place, so its check-ins are kept. The CSRF token
+// lives in memory only and /auth/me does not return one, so after a reload
+// ask the idempotent guest endpoint for a fresh one first
 export const upgradeGuest = async (
     credentials: UpgradeGuestSchema
 ): Promise<AuthResponse> => {
+    if (!getCsrfToken())
+        await createGuest()
     const res = await api.post<Response<AuthResponse>>(
         ENDPOINTS.auth.upgradeGuest,
         credentials

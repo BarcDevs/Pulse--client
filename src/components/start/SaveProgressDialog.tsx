@@ -19,7 +19,10 @@ import {
 
 import { isConflictError } from '@/utils/error'
 
-import { authQueryKeys } from '@/constants/queryKeys'
+import {
+    authQueryKeys,
+    checkInQueryKeys
+} from '@/constants/queryKeys'
 import { ROUTES } from '@/constants/routes'
 
 import { upgradeGuest } from '@/api/auth'
@@ -30,12 +33,14 @@ type SaveProgressDialogProps = {
     open: boolean
     isLimitReached?: boolean
     onOpenChangeAction: (open: boolean) => void
+    onUpgradingChangeAction?: (isUpgrading: boolean) => void
 }
 
 export const SaveProgressDialog = ({
     open,
     isLimitReached = false,
-    onOpenChangeAction
+    onOpenChangeAction,
+    onUpgradingChangeAction
 }: SaveProgressDialogProps) => {
     const t = useTranslations()
     const router = useRouter()
@@ -46,6 +51,12 @@ export const SaveProgressDialog = ({
     const handleUpgrade = async (data: UpgradeGuestSchema) => {
         setIsLoading(true)
         setError(null)
+        // The server revokes the old token as soon as the upgrade commits, so
+        // a poll in flight would get a 401 and log the guest out mid-upgrade
+        onUpgradingChangeAction?.(true)
+        await queryClient.cancelQueries({
+            queryKey: checkInQueryKeys.all
+        })
         try {
             await upgradeGuest(data)
             await queryClient.invalidateQueries({
@@ -61,6 +72,7 @@ export const SaveProgressDialog = ({
                 )
             )
             setIsLoading(false)
+            onUpgradingChangeAction?.(false)
         }
     }
 

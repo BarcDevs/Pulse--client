@@ -29,8 +29,9 @@ export const GuestResultPage = () => {
     const router = useRouter()
     const { user, isLoading } = useAuth()
     const [isSaveOpen, setIsSaveOpen] = useState(false)
+    const [isUpgrading, setIsUpgrading] = useState(false)
     const isGuest = !!user?.isGuest
-    const { data: checkIn } = useGuestResultCheckIn(isGuest)
+    const { data: checkIn } = useGuestResultCheckIn(isGuest && !isUpgrading)
     const hasInsights = !!checkIn?.insights?.length
 
     useEffect(() => {
@@ -71,6 +72,7 @@ export const GuestResultPage = () => {
             <SaveProgressDialog
                 open={isSaveOpen}
                 onOpenChangeAction={setIsSaveOpen}
+                onUpgradingChangeAction={setIsUpgrading}
             />
         </div>
     )
