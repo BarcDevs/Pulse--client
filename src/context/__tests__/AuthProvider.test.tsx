@@ -37,9 +37,7 @@ vi.mock('@/utils/draftStorage', () => ({
     sweepExpiredDrafts: vi.fn()
 }))
 
-import {
-    useAuth
-} from '@/context/AuthContext'
+import { useAuth } from '@/context/AuthContext'
 import { AuthProvider } from '@/context/AuthProvider'
 
 const newUser = {
