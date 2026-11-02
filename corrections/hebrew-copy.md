@@ -40,3 +40,9 @@ The insight and observation text the server generates came out with "המצב ר
 **Root cause:** the server prompts only set the language and the term "דיווח יומי"; they said nothing about the mood term, punctuation or articles, so the model chose its own.
 
 **Lesson:** the Hebrew rules apply to generated text as well: `מצב הרוח` (never `המצב רוח`), plain keyboard punctuation (no em or en dashes, no curly quotes), activity names as bare nouns (`הליכה`). Fix the wording in the prompt, not in a saved sample, then regenerate. Also read generated samples for factual errors against the data before using one; three samples of one weekly prompt had a garbled phrase, a false "mood rose" claim and a streak contradiction.
+
+## 02/11/2026 — Hebrew copy must read naturally, not as a translation
+
+**Correct fact:** Hebrew UI copy should sound natural and idiomatic, not translated from English, and should not address the system in the plural. Save states should use an optimistic update, not an `...ing` submitting status (for example, `start.save.submitting` should be `שומר`, not a `-ing` label). Recheck the other Hebrew guest-mode strings, such as the "השתמשתם בצ'ק אין החופשיים" line and the 30-day guest-account notice, against this rule.
+
+**Source:** user, auto-recorded: "start.save.submitting - שומר (there's no reason to refer the system in plural and it is weird, and it should use optimistic update and NO `ing...` status) `השתמשתם בצ'ק אין החופשיים. פתחו חשבון כדי לה"
