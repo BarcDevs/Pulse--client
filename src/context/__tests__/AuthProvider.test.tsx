@@ -20,7 +20,8 @@ import type { User } from '@/types/user'
 import { authQueryKeys } from '@/constants/queryKeys'
 
 vi.mock('next/navigation', () => ({
-    usePathname: () => '/'
+    usePathname: () => '/',
+    useRouter: () => ({ replace: vi.fn() })
 }))
 
 vi.mock('@/api/auth', () => ({
