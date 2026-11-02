@@ -12,6 +12,7 @@ import { ENDPOINTS } from '@/api/routes'
 import type { ChangeEmailSchema } from '@/validations/forms/changeEmailSchema'
 import type { LoginSchema } from '@/validations/forms/loginSchema'
 import type { SignupSchema } from '@/validations/forms/signupSchema'
+import type { UpgradeGuestSchema } from '@/validations/forms/upgradeGuestSchema'
 
 type ConfirmedEmailUser = {
     id: string
@@ -38,6 +39,26 @@ export const signup = async (userData: Omit<
     const res = await api.post<Response<AuthResponse>>(
         ENDPOINTS.auth.signup,
         userData
+    )
+    return res.data.data
+}
+
+// Idempotent: a valid guest cookie gets the same guest back
+export const createGuest = async ():
+    Promise<AuthResponse> => {
+    const res = await api.post<Response<AuthResponse>>(
+        ENDPOINTS.auth.guest
+    )
+    return res.data.data
+}
+
+// Converts the guest row in place, so its check-ins are kept
+export const upgradeGuest = async (
+    credentials: UpgradeGuestSchema
+): Promise<AuthResponse> => {
+    const res = await api.post<Response<AuthResponse>>(
+        ENDPOINTS.auth.upgradeGuest,
+        credentials
     )
     return res.data.data
 }
