@@ -31,6 +31,7 @@ Terminology and wording rules for `messages/he-IL.json` — established Hebrew t
 | 24/09/2026 | Copy uses plain keyboard punctuation: no em-dashes, curly quotes/apostrophes, gershayim or low-9 quotes |
 | 02/10/2026 | Never commit Hebrew copy without the user's review; show the exact text and wait. Gershayim reintroduced |
 | 09/10/2026 | AI-generated Hebrew follows the same copy rules (mood term, no dashes, no leading ה) and is fixed in the prompt |
+| 02/11/2026 | Hebrew copy must read naturally, not as a translation |
 
 ## Verification Process — [[corrections/verification-process]]
 Guessing at a spec instead of checking the actual rules/examples first.
@@ -84,3 +85,10 @@ Reimplementing a dropped fix from scratch instead of restoring the original comm
 | Date | Entry |
 |---|---|
 | 27/09/2026 | Before reimplementing a "this used to work" fix, `git log --all -S "<symbol>"` to find and restore the original commit instead of re-deriving boundary logic from scratch |
+
+## Optimistic Updates — [[corrections/optimistic-updates]]
+Auto-recorded corrections.
+
+| Date | Entry |
+|---|---|
+| 02/11/2026 | Use an optimistic update, not a saving status label |
