@@ -3,6 +3,8 @@
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 
+import type { ReactNode } from 'react'
+
 import { AuthFormType } from '@/types/forms'
 import { SetState } from '@/types/react'
 
@@ -19,7 +21,7 @@ type AuthFormProps = {
     formType: AuthFormType
     onSuccessAction: SetState<any>
     isLoading?: boolean
-    error?: string | null
+    error?: ReactNode
 }
 
 export const AuthForm = ({
