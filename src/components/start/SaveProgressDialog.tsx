@@ -13,14 +13,8 @@ import { useTranslations } from 'next-intl'
 import { useQueryClient } from '@tanstack/react-query'
 
 import { AuthForm } from '@/components/form/AuthForm'
+import { BaseDialog } from '@/components/shared/BaseDialog'
 import { Button } from '@/components/shared/buttons/Button'
-import {
-    Dialog,
-    DialogContent,
-    DialogDescription,
-    DialogHeader,
-    DialogTitle
-} from '@/components/ui/dialog'
 
 import { isConflictError } from '@/utils/error'
 
@@ -96,36 +90,30 @@ export const SaveProgressDialog = ({
     }
 
     return (
-        <Dialog
+        <BaseDialog
             open={isOpen}
-            onOpenChange={handleOpenChange}
+            onOpenChangeAction={handleOpenChange}
+            title={t(startLocales.save.title)}
+            description={t(
+                isLimitReached
+                    ? startLocales.save.limitReached
+                    : startLocales.save.description
+            )}
+            isCentered={true}
+            className={'max-w-sm'}
         >
-            <DialogContent>
-                <DialogHeader>
-                    <DialogTitle>
-                        {t(startLocales.save.title)}
-                    </DialogTitle>
-                    <DialogDescription>
-                        {t(
-                            isLimitReached
-                                ? startLocales.save.limitReached
-                                : startLocales.save.description
-                        )}
-                    </DialogDescription>
-                </DialogHeader>
-                <AuthForm
-                    formType={'upgradeGuest'}
-                    onSuccessAction={handleUpgrade}
-                    error={error}
-                />
-                <Button
-                    type={'button'}
-                    variant={'ghost'}
-                    onClick={() => handleOpenChange(false)}
-                >
-                    {t(startLocales.save.later)}
-                </Button>
-            </DialogContent>
-        </Dialog>
+            <AuthForm
+                formType={'upgradeGuest'}
+                onSuccessAction={handleUpgrade}
+                error={error}
+            />
+            <Button
+                type={'button'}
+                variant={'ghost'}
+                onClick={() => handleOpenChange(false)}
+            >
+                {t(startLocales.save.later)}
+            </Button>
+        </BaseDialog>
     )
 }
