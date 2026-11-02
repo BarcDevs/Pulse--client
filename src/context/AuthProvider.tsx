@@ -7,7 +7,7 @@ import {
     useState
 } from 'react'
 
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 
 import { useQueryClient } from '@tanstack/react-query'
 
@@ -47,6 +47,7 @@ export const AuthProvider = ({
     children
 }: LayoutProps) => {
     const pathname = usePathname()
+    const router = useRouter()
     const isPublicRoute = PUBLIC_ROUTES.includes(
         pathname as typeof PUBLIC_ROUTES[number]
     )
@@ -139,6 +140,16 @@ export const AuthProvider = ({
             initiateLogout(pathname)
         }
     }, [me.status.error, pathname])
+
+    // A guest can only use check-in and its result, the server answers 403
+    // everywhere else
+    useEffect(() => {
+        const isProtected = protectedRoutes.some(
+            (route) => pathname.startsWith(route)
+        )
+        if (me.user?.isGuest && isProtected)
+            router.replace(ROUTES.START_RESULT)
+    }, [me.user?.isGuest, pathname, router])
 
     useEffect(() => {
         const hasNetworkError = me.status.error
