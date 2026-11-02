@@ -178,6 +178,15 @@ Pulse supports two authentication methods:
 - New account creation if no existing email match
 - Seamless session management via HTTP-only cookies
 
+**Guest mode (`/start`)**
+- Public entry for the launch link: the visitor does a first check-in with no sign-up, sees the chart and AI insight on `/start/result`, and is only then asked to save
+- `POST /auth/guest` (no body, no CSRF) creates a server-side guest account and sets the normal session cookies. It is idempotent per cookie (201 new, 200 existing) and answers 409 when a real account is signed in, which redirects to the dashboard
+- A guest can only use check-in, stats, insights, `/auth/me`, `/auth/refresh` and `/auth/logout`. Any other route answers 403, and the client treats a 403 as "show the save prompt"
+- A guest is capped at 3 check-ins: `POST /check-in` answers 403 once the cap is reached, which also opens the save prompt
+- `POST /auth/guest/upgrade` with `{ email, password }` (CSRF header required) converts the same user row, so check-ins are kept, and re-issues the session cookies. The user lands on the dashboard like a fresh signup, with the email still unverified. 409 means the email is taken
+- `User.isGuest` tells the client which state it is in. Unconverted guests are deleted by the server after 30 days
+- Code: `src/hooks/useGuestSession.ts`, `src/components/start/`, `createGuest` and `upgradeGuest` in `src/api/auth.ts`
+
 Both methods use the same session system:
 - JWT stored in HTTP-only `accessToken` cookie (auto-sent on requests)
 - CSRF token in `_csrf` cookie (read and sent as `x-csrf-token` header for mutations)
