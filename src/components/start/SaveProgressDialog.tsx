@@ -14,7 +14,7 @@ import { useQueryClient } from '@tanstack/react-query'
 
 import { AuthForm } from '@/components/form/AuthForm'
 import { BaseDialog } from '@/components/shared/BaseDialog'
-import { Button } from '@/components/shared/buttons/Button'
+import { TextButton } from '@/components/shared/buttons/TextButton'
 
 import { isConflictError } from '@/utils/error'
 
@@ -107,13 +107,14 @@ export const SaveProgressDialog = ({
                 onSuccessAction={handleUpgrade}
                 error={error}
             />
-            <Button
+            <TextButton
                 type={'button'}
-                variant={'ghost'}
+                tone={'muted'}
                 onClick={() => handleOpenChange(false)}
+                className={'min-h-11 w-full'}
             >
                 {t(startLocales.save.later)}
-            </Button>
+            </TextButton>
         </BaseDialog>
     )
 }

@@ -1821,8 +1821,20 @@
     "submitButton": "See my results",
     "starting": "Getting things ready...",
     "startError": "We could not start your check-in. Please try again.",
+    "errorTitle": "We couldn't get started",
+    "retry": "Try again",
+    "footNote": "No account needed. You can save this later.",
+    "journal": {
+      "label": "One sentence about today",
+      "optional": "optional",
+      "placeholder": "For example: I slept a little better last night"
+    },
     "result": {
       "title": "Here is your first look",
+      "eyebrow": "First insight",
+      "today": "Today",
+      "firstPoint": "Starting point",
+      "saveNote": "To come back to this from any device",
       "insightPending": "Reading your check-in...",
       "insightEmpty": "Your insight will show up here soon.",
       "saveButton": "Save my progress"

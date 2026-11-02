@@ -104,6 +104,26 @@ test.describe('Guest mode', () => {
         await expect(page.getByRole('slider').first()).toBeVisible()
     })
 
+    test('a failed start shows a retry that opens the check-in', async ({ page }) => {
+        let attempts = 0
+        await mockGuestApi(page)
+        await page.route('**/api/*/auth/guest', (route) => {
+            attempts++
+            return route.fulfill(
+                attempts === 1
+                    ? json(500, null)
+                    : json(201, { user: guestUser, _csrf: 'guest-csrf' })
+            )
+        })
+        await page.goto('/start')
+
+        const retryButton = page.getByRole('button', { name: 'Try again' })
+        await expect(retryButton).toBeVisible()
+        await retryButton.click()
+
+        await expect(page.getByTestId('guest-check-in-submit')).toBeVisible()
+    })
+
     test('submitting shows the result with the AI insight', async ({ page }) => {
         await mockGuestApi(page)
         await page.goto('/start')
