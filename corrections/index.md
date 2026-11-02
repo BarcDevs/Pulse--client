@@ -32,6 +32,8 @@ Terminology and wording rules for `messages/he-IL.json` — established Hebrew t
 | 02/10/2026 | Never commit Hebrew copy without the user's review; show the exact text and wait. Gershayim reintroduced |
 | 09/10/2026 | AI-generated Hebrew follows the same copy rules (mood term, no dashes, no leading ה) and is fixed in the prompt |
 | 02/11/2026 | Hebrew copy must read naturally, not as a translation |
+| 02/11/2026 | Hebrew UI copy addresses one user in singular, never plural |
+| 02/11/2026 | Hebrew UI copy addresses one user in the singular |
 
 ## Verification Process — [[corrections/verification-process]]
 Guessing at a spec instead of checking the actual rules/examples first.
