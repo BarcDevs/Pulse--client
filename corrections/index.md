@@ -80,6 +80,7 @@ Where new constants/config values belong.
 |---|---|
 | 23/09/2026 | Tunable delays go in `src/config/timings.ts`, not `src/constants/time.ts` (which is unit conversions only) |
 | 23/09/2026 | Durations must use `*InMs` constants, not magic numbers, even when the surrounding file doesn't |
+| 02/11/2026 | Check SHARED_COMPONENTS.md and use BaseDialog, never raw ui/dialog |
 
 ## Chart No-Data Regions — [[corrections/chart-no-data-regions]]
 Reimplementing a dropped fix from scratch instead of restoring the original commit.
