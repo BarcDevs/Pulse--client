@@ -13,3 +13,13 @@
 **Rejected:** LocalStorage plus a public stateless insight endpoint (history-based insights would not work); full app as guest (too wide, conflicts with the 30/09 sign-in-for-community decision); asking only for a password using the lm token (token has no email).
 
 **Source:** user, auto-recorded: "recorded by the session"
+
+## 02/11/2026 — Guest accounts live about a week, not 30 days
+
+**Decision:** The server deletes unconverted guests once they are older than the token lifetime plus one day (8 days in production). The privacy page says guests are kept "up to a week" instead of a fixed number, and the README states the exact server rule. This supersedes the 30 days in the guest-onboarding decision.
+
+**Why over alternatives:** The server's review pass shortened guest retention. A fixed "30 days" on the privacy page would state a longer retention than the server applies, and "up to a week" stays true if the exact lifetime shifts by a day or two.
+
+**Rejected:** "Up to 8 days" (exact today but wrong again if the token lifetime changes); keeping "30 days" (inaccurate).
+
+**Source:** user, auto-recorded: "recorded by the session"

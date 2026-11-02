@@ -36,6 +36,7 @@ const nextConfig = {
         unoptimized: true
     },
     experimental: {
+        agentUpgrade: 'security',
         optimizePackageImports: ['radix-ui']
     },
     async headers() {

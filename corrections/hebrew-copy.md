@@ -40,3 +40,25 @@ The insight and observation text the server generates came out with "המצב ר
 **Root cause:** the server prompts only set the language and the term "דיווח יומי"; they said nothing about the mood term, punctuation or articles, so the model chose its own.
 
 **Lesson:** the Hebrew rules apply to generated text as well: `מצב הרוח` (never `המצב רוח`), plain keyboard punctuation (no em or en dashes, no curly quotes), activity names as bare nouns (`הליכה`). Fix the wording in the prompt, not in a saved sample, then regenerate. Also read generated samples for factual errors against the data before using one; three samples of one weekly prompt had a garbled phrase, a false "mood rose" claim and a streak contradiction.
+
+## 02/11/2026 — Hebrew copy must read naturally, not as a translation
+
+**Correct fact:** Hebrew UI copy should sound natural and idiomatic, not translated from English, and should not address the system in the plural. Save states should use an optimistic update, not an `...ing` submitting status (for example, `start.save.submitting` should be `שומר`, not a `-ing` label). Recheck the other Hebrew guest-mode strings, such as the "השתמשתם בצ'ק אין החופשיים" line and the 30-day guest-account notice, against this rule.
+
+**Source:** user, auto-recorded: "start.save.submitting - שומר (there's no reason to refer the system in plural and it is weird, and it should use optimistic update and NO `ing...` status) `השתמשתם בצ'ק אין החופשיים. פתחו חשבון כדי לה"
+
+## 02/11/2026 — Hebrew UI copy addresses one user in singular, never plural
+
+**Correct fact:** Hebrew copy in this app addresses a single user, so use singular forms (for example "שלך", not "שלכם"; "שמור לי", not "שמרו לי"). Plural addressing is wrong because each user is an individual, not a group.
+
+**Lesson:** The user is one person using the app, not a group, so plural forms read as odd and impersonal.
+
+**Source:** user, auto-recorded: "The user answered: 'How should I fix the awkward Hebrew? Nothing gets committed until you approve the exact text.'='Why is everything in plural? It is weird. You should refer to it in the singular. It"
+
+## 02/11/2026 — Hebrew UI copy addresses one user in the singular
+
+**Correct fact:** Hebrew UI copy addresses a single user, so use the singular or a gender-neutral form (infinitive, "אפשר ל...", noun phrases such as "יצירת חשבון", masculine imperative on buttons as the existing copy does), never the plural (אתם, שלכם, שמרו, נסו). Match the register of the existing check-in and signup strings, and do not translate English labels word for word.
+
+**Lesson:** The guest-mode screens were written in the plural ("ראו את התוצאה שלי", "שלכם", "הוסיפו"). The user called it weird: one person uses the app, not a group. The button was a literal translation of "See my results"; the user's own brief called it "סיום".
+
+**Source:** user, auto-recorded: "recorded by the session"
