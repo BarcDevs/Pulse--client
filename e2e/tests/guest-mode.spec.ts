@@ -49,6 +49,7 @@ type Options = {
     guestStatus?: number
     checkInPostStatus?: number
     upgradeStatus?: number
+    checkIns?: unknown[]
 }
 
 const mockGuestApi = async (
@@ -56,9 +57,12 @@ const mockGuestApi = async (
     {
         guestStatus = 201,
         checkInPostStatus = 201,
-        upgradeStatus = 200
+        upgradeStatus = 200,
+        checkIns = [checkIn]
     }: Options = {}
 ) => {
+    let isUpgraded = false
+
     await setEnglishLocale(page)
     await mockApiFallback(page)
     await page.route('**/api/*/auth/guest', (route) =>
@@ -67,18 +71,22 @@ const mockGuestApi = async (
             _csrf: 'guest-csrf'
         })))
     await page.route('**/api/*/auth/me', (route) =>
-        route.fulfill(json(200, { user: guestUser })))
+        route.fulfill(json(200, {
+            user: { ...guestUser, isGuest: !isUpgraded }
+        })))
     await page.route(/\/api\/[^/]+\/check-in(\?.*)?$/, (route) =>
         route.fulfill(
             route.request().method() === 'POST'
                 ? json(checkInPostStatus, checkIn)
-                : json(200, [checkIn])
+                : json(200, checkIns)
         ))
-    await page.route('**/api/*/auth/guest/upgrade', (route) =>
-        route.fulfill(json(upgradeStatus, {
+    await page.route('**/api/*/auth/guest/upgrade', (route) => {
+        isUpgraded = upgradeStatus < 400
+        return route.fulfill(json(upgradeStatus, {
             user: { ...guestUser, isGuest: false },
             _csrf: 'new-csrf'
-        })))
+        }))
+    })
 }
 
 const fillAndSubmitCheckIn = async (page: Page) => {
@@ -152,5 +160,28 @@ test.describe('Guest mode', () => {
         await page.goto('/dashboard')
 
         await expect(page).toHaveURL(/\/start\/result/)
+    })
+
+    test('a guest with no check-in is sent back to /start', async ({ page }) => {
+        await mockGuestApi(page, { checkIns: [] })
+        await page.goto('/start/result')
+
+        await expect(page).toHaveURL(/\/start$/)
+        await expect(page.getByTestId('guest-check-in-submit')).toBeVisible()
+    })
+
+    test('the converted user stays on the dashboard', async ({ page }) => {
+        await mockGuestApi(page)
+        await page.goto('/start')
+        await fillAndSubmitCheckIn(page)
+        await page.getByTestId('guest-save-open').click()
+
+        await page.locator('input[type="email"]').fill('me@example.com')
+        await page.locator('input[type="password"]').fill('Sm0keTest!x')
+        await page.getByTestId('upgradeGuest-submit').click()
+
+        await expect(page).toHaveURL(/\/dashboard/)
+        await page.waitForTimeout(1500)
+        await expect(page).toHaveURL(/\/dashboard/)
     })
 })
