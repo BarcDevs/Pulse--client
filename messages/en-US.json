@@ -1824,6 +1824,10 @@
     "errorTitle": "We couldn't get started",
     "retry": "Try again",
     "footNote": "No account needed. You can save this later.",
+    "guest": {
+      "badge": "Guest mode",
+      "notice": "You are using Pulse as a guest. <link>Log in</link> if you already have an account."
+    },
     "journal": {
       "label": "One sentence about today",
       "optional": "optional",

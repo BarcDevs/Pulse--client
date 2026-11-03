@@ -7,6 +7,10 @@ export const startLocales = {
     errorTitle: 'start.errorTitle',
     retry: 'start.retry',
     footNote: 'start.footNote',
+    guest: {
+        badge: 'start.guest.badge',
+        notice: 'start.guest.notice'
+    },
     journal: {
         label: 'start.journal.label',
         optional: 'start.journal.optional',

@@ -104,6 +104,20 @@ test.describe('Guest mode', () => {
         await expect(page.getByRole('slider').first()).toBeVisible()
     })
 
+    test('both guest screens say guest mode and link to login', async ({ page }) => {
+        await mockGuestApi(page)
+        await page.goto('/start')
+
+        await expect(page.getByText('Guest mode')).toBeVisible()
+        await expect(page.getByTestId('guest-mode-notice').getByRole('link', { name: 'Log in' })).toHaveAttribute('href', '/login')
+
+        await fillAndSubmitCheckIn(page)
+
+        await expect(page).toHaveURL(/\/start\/result/)
+        await expect(page.getByText('Guest mode')).toBeVisible()
+        await expect(page.getByTestId('guest-mode-notice')).toBeVisible()
+    })
+
     test('a failed start shows a retry that opens the check-in', async ({ page }) => {
         let attempts = 0
         await mockGuestApi(page)
