@@ -27,7 +27,7 @@ const SignupPage = () => {
     const { user } = useGetMe()
 
     useEffect(() => {
-        if (user) router.replace(ROUTES.DASHBOARD)
+        if (user && !user.isGuest) router.replace(ROUTES.DASHBOARD)
     }, [user, router])
 
     const handleSignupSuccess = async (

@@ -109,6 +109,14 @@ Behavioral intelligence systems require medical/legal caution, behavioral tuning
 
 ---
 
+## Guest Onboarding
+
+| # | File | Note |
+|---|------|------|
+| 1 | `src/components/start/GoogleSignupLink.tsx`, server `googleOAuthService.ts` | **[Medium, Bar 03/11/2026]** The "Continue with Google" button in the save dialog only links to `/signup`. The server's Google flow does not know about guests, so signing in with Google there makes a new account and the guest's check-in stays on the guest row. Make the Google callback read the guest cookie and upgrade that same user, like `/auth/guest/upgrade`, then point the button at `redirectToGoogleAuth` directly. Needs the server session. |
+
+---
+
 ## Progress / Goals
 
 | # | File | Line | Note |
