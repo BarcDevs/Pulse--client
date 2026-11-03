@@ -28,6 +28,7 @@ import { upgradeGuest } from '@/api/auth'
 import { startLocales } from '@/locales/startLocales'
 import type { UpgradeGuestSchema } from '@/validations/forms/upgradeGuestSchema'
 
+import { GoogleSignupLink } from './GoogleSignupLink'
 import type { SaveErrorKind } from './SaveErrorMessage'
 import { SaveErrorMessage } from './SaveErrorMessage'
 
@@ -101,6 +102,7 @@ export const SaveProgressDialog = ({
                     : startLocales.save.description
             )}
             isCentered={true}
+            preventAutoFocus={true}
             className={'max-w-sm'}
         >
             <AuthForm
@@ -108,6 +110,7 @@ export const SaveProgressDialog = ({
                 onSuccessAction={handleUpgrade}
                 error={error && <SaveErrorMessage kind={error}/>}
             />
+            <GoogleSignupLink/>
             <TextButton
                 type={'button'}
                 tone={'muted'}

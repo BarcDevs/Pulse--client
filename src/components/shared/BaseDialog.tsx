@@ -21,6 +21,7 @@ type BaseDialogProps = {
     description?: ReactNode
     icon?: ReactNode
     isCentered?: boolean
+    preventAutoFocus?: boolean
     className?: ClassName
     descriptionClassName?: ClassName
     children?: ReactNode
@@ -33,6 +34,7 @@ export const BaseDialog = ({
     description,
     icon,
     isCentered = false,
+    preventAutoFocus = false,
     className,
     descriptionClassName,
     children
@@ -44,6 +46,7 @@ export const BaseDialog = ({
         <DialogContent
             showCloseButton={false}
             className={cn('grid', className)}
+            onOpenAutoFocus={preventAutoFocus ? (event) => event.preventDefault() : undefined}
             {...(!description && { 'aria-describedby': undefined })}
         >
             <DialogHeader>
