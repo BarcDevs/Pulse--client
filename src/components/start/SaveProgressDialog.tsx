@@ -28,7 +28,7 @@ import { upgradeGuest } from '@/api/auth'
 import { startLocales } from '@/locales/startLocales'
 import type { UpgradeGuestSchema } from '@/validations/forms/upgradeGuestSchema'
 
-import { GoogleSignupLink } from './GoogleSignupLink'
+import { GoogleSignupButton } from './GoogleSignupButton'
 import type { SaveErrorKind } from './SaveErrorMessage'
 import { SaveErrorMessage } from './SaveErrorMessage'
 
@@ -110,7 +110,7 @@ export const SaveProgressDialog = ({
                 onSuccessAction={handleUpgrade}
                 error={error && <SaveErrorMessage kind={error}/>}
             />
-            <GoogleSignupLink/>
+            <GoogleSignupButton/>
             <TextButton
                 type={'button'}
                 tone={'muted'}

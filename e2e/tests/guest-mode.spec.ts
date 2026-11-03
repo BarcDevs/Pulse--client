@@ -189,15 +189,19 @@ test.describe('Guest mode', () => {
         await expect(page.getByTestId('login-submit')).toBeVisible()
     })
 
-    test('the Google button in the save prompt opens the signup page for a guest', async ({ page }) => {
+    test('the Google button in the save prompt goes to Google sign-in', async ({ page }) => {
         await mockGuestApi(page)
+        await page.route('**/auth/google*', (route) => route.fulfill({
+            status: 200,
+            contentType: 'text/html',
+            body: 'google'
+        }))
         await page.goto('/start')
         await fillAndSubmitCheckIn(page)
         await page.getByTestId('guest-save-open').click()
-        await page.getByRole('link', { name: 'Continue with Google' }).click()
+        await page.getByTestId('guest-google').click()
 
-        await expect(page).toHaveURL(/\/signup/, { timeout: 20000 })
-        await expect(page.getByTestId('signup-submit')).toBeVisible()
+        await expect(page).toHaveURL(/\/auth\/google/)
     })
 
     test('hitting the guest limit opens the save prompt', async ({ page }) => {
