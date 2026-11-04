@@ -38,9 +38,9 @@ export const BasicInfoView = () => {
         },
         {
             label: t(profileLocales.basicInfo.dateOfBirth),
-            value: currentUser.user.dateOfBirth
+            value: currentUser.user.profile?.dateOfBirth
                 ? formatByUserPreference(
-                    new Date(currentUser.user.dateOfBirth),
+                    new Date(currentUser.user.profile.dateOfBirth),
                     false,
                     undefined,
                     dateFnsLocale
@@ -52,11 +52,11 @@ export const BasicInfoView = () => {
         },
         {
             label: t(profileLocales.basicInfo.recoveryType),
-            value: currentUser.user.recoveryType ?? null
+            value: currentUser.user.profile?.recoveryType || null
         },
         {
             label: t(profileLocales.basicInfo.careProvider),
-            value: currentUser.user.careProvider ?? null
+            value: currentUser.user.profile?.careProvider || null
         }
     ]
 
