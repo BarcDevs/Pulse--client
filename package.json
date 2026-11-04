@@ -1,6 +1,6 @@
 {
   "name": "pulse",
-  "version": "1.22.0",
+  "version": "1.22.1",
   "type": "module",
   "private": true,
   "scripts": {
@@ -34,7 +34,7 @@
     "clsx": "^2.1.1",
     "cmdk": "^1.1.1",
     "date-fns": "^4.4.0",
-    "dompurify": "^3.4.16",
+    "dompurify": "^3.4.17",
     "embla-carousel-react": "8.6.0",
     "html2canvas": "^1.4.1",
     "input-otp": "^1.4.2",
