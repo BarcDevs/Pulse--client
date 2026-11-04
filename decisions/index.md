@@ -81,6 +81,7 @@ Cookie/storage consent and privacy-disclosure decisions.
 |---|---|
 | 02/10/2026 | `quill` XSS (GHSA-v3m3-f69x-jf25) accepted, not force-downgraded — no upstream fix exists, and all render paths already sanitize via DOMPurify |
 | 27/10/2026 | zod 4 and `@hookform/resolvers` 6 adopted to close GHSA-mrhx-c7xc-m3w5; not reproducible locally |
+| 04/11/2026 | `dompurify` and `follow-redirects` patched; `quill` acceptance reassessed and stands (every render path still sanitizes via DOMPurify) |
 
 ## Agent Models — [[decisions/agent-models]]
 Which model each custom agent runs on, and why.
