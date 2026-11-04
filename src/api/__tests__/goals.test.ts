@@ -249,7 +249,7 @@ describe(
                         const input = { title: 'First week', order: 1 }
                         vi.mocked(api.post)
                             .mockResolvedValueOnce({
-                                data: { data: mockMilestone }
+                                data: { data: [mockMilestone] }
                             })
 
                         await createMilestone('g-1', input)
@@ -258,12 +258,12 @@ describe(
                     })
 
                 it(
-                    'should return the created milestone',
+                    'should return the first milestone of the created array',
                     async () => {
                         const input = { title: 'First week', order: 1 }
                         vi.mocked(api.post)
                             .mockResolvedValueOnce({
-                                data: { data: mockMilestone }
+                                data: { data: [mockMilestone] }
                             })
 
                         const result = await createMilestone('g-1', input)
@@ -339,7 +339,7 @@ describe(
                     async () => {
                         vi.mocked(api.patch)
                             .mockResolvedValueOnce({
-                                data: { data: mockMilestone }
+                                data: { data: null }
                             })
 
                         await completeMilestone('g-1', 'm-1')
@@ -348,16 +348,15 @@ describe(
                     })
 
                 it(
-                    'should return the completed milestone',
+                    'should resolve void',
                     async () => {
-                        const completed = { ...mockMilestone, status: 'COMPLETED' }
                         vi.mocked(api.patch)
                             .mockResolvedValueOnce({
-                                data: { data: completed }
+                                data: { data: null }
                             })
 
                         const result = await completeMilestone('g-1', 'm-1')
-                        expect(result).toEqual(completed)
+                        expect(result).toBeUndefined()
                     })
             })
 
