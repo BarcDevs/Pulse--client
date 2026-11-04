@@ -43,17 +43,13 @@ export type TrendPoint = {
 }
 
 export type CheckInStats = {
-    total: number
     totalCheckIns: number
-    avgMood: number
     averageMoodScore: number
-    avgPain: number
     averagePainLevel: number
     topActivities: string[]
     currentStreak: number
     longestStreak: number
     moodTrend: TrendPoint[]
     painTrend: TrendPoint[]
-    milestonesAchieved: number
 }
 
