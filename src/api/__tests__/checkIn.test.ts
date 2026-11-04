@@ -58,18 +58,14 @@ const mockCheckIn = {
 }
 
 const mockStats = {
-    total: 10,
     totalCheckIns: 10,
-    avgMood: 6.5,
     averageMoodScore: 6.5,
-    avgPain: 3.2,
     averagePainLevel: 3.2,
     topActivities: ['walking'],
     currentStreak: 5,
     longestStreak: 10,
     moodTrend: [],
-    painTrend: [],
-    milestonesAchieved: 2
+    painTrend: []
 }
 
 // ==================== checkIn API ====================

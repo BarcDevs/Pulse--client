@@ -9,18 +9,14 @@ import type { CheckInStats } from '@/types/checkIn'
 import { buildStatsData } from '@/lib/stats/buildStatsData'
 
 const mockStats = (overrides: Partial<CheckInStats> = {}): CheckInStats => ({
-    total: 10,
     totalCheckIns: 10,
-    avgMood: 7.5,
     averageMoodScore: 7.5,
-    avgPain: 3.2,
     averagePainLevel: 3.2,
     topActivities: [],
     currentStreak: 5,
     longestStreak: 10,
     moodTrend: [],
     painTrend: [],
-    milestonesAchieved: 2,
     ...overrides
 })
 

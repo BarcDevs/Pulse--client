@@ -7,61 +7,9 @@ import {
     vi
 } from 'vitest'
 
-import type { CheckIn, CheckInStats } from '@/types/checkIn'
+import type { CheckIn } from '@/types/checkIn'
 
-import { isTodayCheckIn, normalizeStats } from '@/lib/checkIn/loaderHelpers'
-
-describe('normalizeStats', () => {
-    it('passes through non-null values unchanged', () => {
-        const raw = {
-            totalCheckIns: 5,
-            averageMoodScore: 7,
-            averagePainLevel: 3
-        } as CheckInStats
-
-        expect(normalizeStats(raw)).toEqual(raw)
-    })
-
-    it('replaces null totalCheckIns with 0', () => {
-        const raw = {
-            totalCheckIns: null,
-            averageMoodScore: 5,
-            averagePainLevel: 3
-        } as unknown as CheckInStats
-
-        expect(normalizeStats(raw).totalCheckIns).toBe(0)
-    })
-
-    it('replaces null averageMoodScore with 0', () => {
-        const raw = {
-            totalCheckIns: 5,
-            averageMoodScore: null,
-            averagePainLevel: 3
-        } as unknown as CheckInStats
-
-        expect(normalizeStats(raw).averageMoodScore).toBe(0)
-    })
-
-    it('replaces null averagePainLevel with 0', () => {
-        const raw = {
-            totalCheckIns: 5,
-            averageMoodScore: 7,
-            averagePainLevel: null
-        } as unknown as CheckInStats
-
-        expect(normalizeStats(raw).averagePainLevel).toBe(0)
-    })
-
-    it('preserves zero values (does not replace 0 with 0 via ??)', () => {
-        const raw = {
-            totalCheckIns: 0,
-            averageMoodScore: 0,
-            averagePainLevel: 0
-        } as CheckInStats
-
-        expect(normalizeStats(raw)).toEqual(raw)
-    })
-})
+import { isTodayCheckIn } from '@/lib/checkIn/loaderHelpers'
 
 describe('isTodayCheckIn', () => {
     beforeEach(() => {
