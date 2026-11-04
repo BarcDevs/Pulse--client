@@ -8,6 +8,9 @@ export type UserProfile = {
     location?: string
     timezone?: string
     dateFormat?: string
+    dateOfBirth?: string
+    recoveryType?: string
+    careProvider?: string
     theme: string
     language: string
     dailyReminder: boolean
@@ -28,6 +31,9 @@ export type Profile = {
     location?: string
     timezone?: string
     dateFormat?: string
+    dateOfBirth?: string
+    recoveryType?: string
+    careProvider?: string
     theme: string
     language: string
     dailyReminder: boolean

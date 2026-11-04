@@ -148,11 +148,11 @@ export const ProfileEditProvider = ({
             bio: draft?.bio ?? user?.profile?.bio ?? '',
             healthInterests: draft?.healthInterests ?? user?.profile?.healthInterests ?? [],
             activityPreferences: draft?.activityPreferences ?? user?.profile?.activityPreferences ?? [],
-            dateOfBirth: user?.dateOfBirth
-                ? new Date(user.dateOfBirth).toISOString().split('T')[0]
+            dateOfBirth: user?.profile?.dateOfBirth
+                ? new Date(user.profile.dateOfBirth).toISOString().split('T')[0]
                 : '',
-            recoveryType: user?.recoveryType ?? '',
-            careProvider: user?.careProvider ?? ''
+            recoveryType: user?.profile?.recoveryType ?? '',
+            careProvider: user?.profile?.careProvider ?? ''
         })
         setIsEditing(true)
     }
@@ -204,12 +204,12 @@ export const ProfileEditProvider = ({
             textUpdates.location = profileFields.location
         if (profileFields.bio !== (user.profile?.bio ?? ''))
             textUpdates.bio = profileFields.bio
-        if (profileFields.recoveryType !== (user.recoveryType ?? ''))
+        if (profileFields.recoveryType !== (user.profile?.recoveryType ?? ''))
             textUpdates.recoveryType = profileFields.recoveryType
-        if (profileFields.careProvider !== (user.careProvider ?? ''))
+        if (profileFields.careProvider !== (user.profile?.careProvider ?? ''))
             textUpdates.careProvider = profileFields.careProvider
-        const currentDob = user.dateOfBirth
-            ? new Date(user.dateOfBirth).toISOString().split('T')[0]
+        const currentDob = user.profile?.dateOfBirth
+            ? new Date(user.profile.dateOfBirth).toISOString().split('T')[0]
             : ''
         if (profileFields.dateOfBirth !== currentDob && profileFields.dateOfBirth)
             textUpdates.dateOfBirth = profileFields.dateOfBirth
@@ -225,10 +225,7 @@ export const ProfileEditProvider = ({
         queryClient.setQueryData<User>(authQueryKeys.getMe, (old) =>
             old ? {
                 ...old,
-                ...userUpdates,
-                ...(profileFields.dateOfBirth && { dateOfBirth: new Date(profileFields.dateOfBirth) }),
-                recoveryType: profileFields.recoveryType || undefined,
-                careProvider: profileFields.careProvider || undefined
+                ...userUpdates
             } : old
         )
         queryClient.setQueryData<Profile>(authQueryKeys.profile, (old) => {
