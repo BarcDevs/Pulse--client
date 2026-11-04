@@ -33,7 +33,9 @@ vi.mock('next-intl', () => ({
 }))
 
 vi.mock('sonner', () => ({
-    toast: { error: vi.fn() }
+    toast: {
+        error: vi.fn()
+    }
 }))
 
 vi.mock('@/hooks/mutations/useSaveSettings', () => ({
