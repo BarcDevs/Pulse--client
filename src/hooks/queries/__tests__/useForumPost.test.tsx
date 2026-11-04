@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react'
 import {
     beforeEach,
     describe,
@@ -47,13 +48,21 @@ describe('useForumPost', () => {
         fetchPost.mockResolvedValue(fetchedPost)
         const client = new QueryClient()
         client.setQueryData(
-            forumQueryKeys.posts,
+            [
+                ...forumQueryKeys.posts,
+                'newest',
+                20
+            ],
             {
-                pages: [{ items: [cachedPost] }],
+                pages: [[cachedPost]],
                 pageParams: [undefined]
             }
         )
-        const wrapper = ({ children }: { children: React.ReactNode }) => (
+        const wrapper = ({
+            children
+        }: {
+            children: ReactNode
+        }) => (
             <QueryClientProvider client={client}>
                 {children}
             </QueryClientProvider>
