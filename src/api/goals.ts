@@ -87,12 +87,12 @@ export const createMilestone = async (
     data: MilestoneInput
 ): Promise<GoalMilestone> => {
     const res = await api.post<{
-        data: GoalMilestone
+        data: GoalMilestone[]
     }>(
         ENDPOINTS.recoveryGoals.milestones(goalId),
         data
     )
-    return res.data.data
+    return res.data.data[0]
 }
 
 export const updateMilestone = async (
@@ -128,16 +128,14 @@ export const deleteMilestone = async (
 export const completeMilestone = async (
     goalId: string,
     milestoneId: string
-): Promise<GoalMilestone> => {
-    const res = await api.patch<{
-        data: GoalMilestone
-    }>(
+): Promise<void> => {
+    await api.patch(
         ENDPOINTS.recoveryGoals.completeMilestone(
             goalId,
             milestoneId
         )
     )
-    return res.data.data
+    return undefined
 }
 
 export const fetchRecoveryGoalsStats = async ():
