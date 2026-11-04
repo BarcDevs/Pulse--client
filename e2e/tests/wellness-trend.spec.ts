@@ -11,18 +11,14 @@ import {
 const statsWith = (days: { actual: number | null }[]) => ({
     success: true,
     data: {
-        total: days.length,
         totalCheckIns: days.length,
-        avgMood: 6,
         averageMoodScore: 6,
-        avgPain: 3,
         averagePainLevel: 3,
         topActivities: [],
         currentStreak: 1,
         longestStreak: 1,
         moodTrend: days,
-        painTrend: days,
-        milestonesAchieved: 0
+        painTrend: days
     }
 })
 
