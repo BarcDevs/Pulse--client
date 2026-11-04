@@ -6,7 +6,12 @@ type StreamedSpan = Parameters<
     NonNullable<BrowserOptions['beforeSendSpan']>
 >[0]
 
-const SPAN_URL_ATTRIBUTES = ['url', 'url.full', 'http.url']
+const SPAN_URL_ATTRIBUTES = [
+    'url',
+    'url.full',
+    'http.url',
+    'http.target'
+]
 
 // v11 stores query and fragment without their leading ? or #, so
 // stripQueryString would keep them: drop the attributes instead
