@@ -78,6 +78,9 @@ SOLID principles | Industry standards | Type-safe forms
 **Never:** Direct fetch/axios | Commented code | `window.location` for navigation
 **Never:** Multiple components per file | NEXT_PUBLIC_ prefix | Server directives
 
+## GitHub Actions
+**Never use the `pull_request_target` trigger** (GitHub blocks it globally as a supply-chain risk: it runs with secrets on untrusted PR code). Workflows here use `pull_request`, `push`, `workflow_run` or `workflow_dispatch` only. Do not add it to any workflow, routine or script, and do not suggest it as a fix; enforcement of release rules happens in the deploy workflow instead.
+
 ## Git & Commits
 **Read `GIT_RULES.md` before committing or when instructed to commit.** Do not skip it.
 Full rules there. Key constraint: never invoke `/commit` skill on small fixes, formatting, or docs changes — use plain `git commit` for those.
