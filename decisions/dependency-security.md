@@ -34,3 +34,11 @@ actual patched version upstream.
 ## 27/10/2026 — zod 4 and `@hookform/resolvers` 6 adopted to close GHSA-mrhx-c7xc-m3w5
 
 `zod` 3.25.76 carries a HIGH advisory (oversized constrained input can exhaust memory) fixed only in zod 4. Upgraded `zod` to ^4 and `@hookform/resolvers` to ^6 together on one branch; resolvers 6.0.1+ installs cleanly with zod 4, so no forced peers. Existing schema tests were the safety net and user-facing validation messages stay identical. The advisory is not reproducible locally (the oversized-input regression test also passes on zod 3), so the fix is recorded as unverified locally.
+
+---
+
+## 04/11/2026 — `quill` acceptance reassessed after the DOMPurify and follow-redirects patches
+
+`npm audit --omit=dev` flagged `dompurify` (critical, `<=3.4.16`) and `follow-redirects` (high, `1.16.0 - 1.16.1`, transitive via `axios`). Both are patched: `dompurify` to 3.4.17 and `follow-redirects` to 1.16.2. `next` was already on the patched 16.4.4, so it needed no change. The audit lists neither package afterwards.
+
+The 02/10/2026 `quill` acceptance rests on DOMPurify sanitizing every path that renders the editor's HTML, so the patch removes the known DOMPurify advisory from that chain. Every render path is still safe: `PostDetailCard` (via `PostDetailContent.tsx`) and `ReplyCard` render `sanitizeHtml` (DOMPurify) output, and `PostItem` renders `stripHtml` output (tags stripped, shown as plain text) without DOMPurify. The existing `sanitizeHtml` tests (script tags, event-handler attributes, `javascript:` hrefs) pass on the patched version. **The acceptance stands.** Not reproducible locally (the advisories live in the dependencies), so the fix is recorded as unverified locally; a clean audit is the evidence.

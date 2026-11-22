@@ -1,5 +1,8 @@
 name: Deploy
 
+# Never add a pull_request_target trigger to any workflow (GitHub blocks it globally
+# as a supply-chain risk). Allowed triggers: pull_request, push, workflow_run,
+# workflow_dispatch.
 on:
   workflow_run:
     workflows: [CI]
@@ -84,7 +87,7 @@ jobs:
           target: runner
           push: true
           build-args: |
-            SERVER_URL=http://172.31.16.100:80
+            SERVER_URL=${{ vars.SERVER_URL || 'http://172.31.16.100:80' }}
             NEXT_PUBLIC_SERVER_API_VERSION=v2
             NEXT_PUBLIC_HOSTNAME=https://pulserehab.app
             NEXT_PUBLIC_SENTRY_REPLAYS_SESSION_SAMPLE_RATE=0
@@ -92,6 +95,25 @@ jobs:
           tags: |
             110015905368.dkr.ecr.eu-central-1.amazonaws.com/pulse-client-app:${{ env.DEPLOY_SHA }}
             110015905368.dkr.ecr.eu-central-1.amazonaws.com/pulse-client-app:latest
+
+      # Until the client moves to the app box the deploy targets the old client box.
+      # Setting the repository variable CLIENT_DEPLOY_ASG (for example pulse-server-asg)
+      # points it at that group's running instance instead, looked up at deploy time
+      # because an ASG replaces its instance and the id changes.
+      - name: Resolve the target instance
+        id: target
+        run: |
+          ASG="${{ vars.CLIENT_DEPLOY_ASG }}"
+          if [ -n "$ASG" ]; then
+            ID=$(aws autoscaling describe-auto-scaling-groups --auto-scaling-group-names "$ASG"               --region eu-central-1               --query "AutoScalingGroups[0].Instances[?LifecycleState=='InService'].InstanceId | [0]" --output text)
+          else
+            ID=i-0d9e9912236e3851c
+          fi
+          if [ -z "$ID" ] || [ "$ID" = "None" ]; then
+            echo "No in-service instance found for the deploy target." >&2
+            exit 1
+          fi
+          echo "instance_id=$ID" >> "$GITHUB_OUTPUT"
 
       - name: Trigger redeploy on EC2 via SSM
         id: deploy
@@ -102,7 +124,7 @@ jobs:
             > /tmp/ssm-params.json
 
           CMD_ID=$(aws ssm send-command \
-            --instance-ids i-0d9e9912236e3851c \
+            --instance-ids ${{ steps.target.outputs.instance_id }} \
             --document-name AWS-RunShellScript \
             --parameters file:///tmp/ssm-params.json \
             --region eu-central-1 \
@@ -114,7 +136,7 @@ jobs:
           for i in $(seq 1 60); do
             STATUS=$(aws ssm get-command-invocation \
               --command-id "${{ steps.deploy.outputs.command_id }}" \
-              --instance-id i-0d9e9912236e3851c \
+              --instance-id ${{ steps.target.outputs.instance_id }} \
               --region eu-central-1 \
               --query "Status" --output text 2>/dev/null || echo "Pending")
             echo "status: $STATUS"
@@ -123,13 +145,13 @@ jobs:
               echo "--- stdout ---"
               aws ssm get-command-invocation \
                 --command-id "${{ steps.deploy.outputs.command_id }}" \
-                --instance-id i-0d9e9912236e3851c \
+                --instance-id ${{ steps.target.outputs.instance_id }} \
                 --region eu-central-1 \
                 --query "StandardOutputContent" --output text
               echo "--- stderr ---"
               aws ssm get-command-invocation \
                 --command-id "${{ steps.deploy.outputs.command_id }}" \
-                --instance-id i-0d9e9912236e3851c \
+                --instance-id ${{ steps.target.outputs.instance_id }} \
                 --region eu-central-1 \
                 --query "StandardErrorContent" --output text
               exit 1

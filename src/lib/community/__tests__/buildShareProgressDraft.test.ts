@@ -7,18 +7,14 @@ import { buildShareProgressDraft } from '@/lib/community/buildShareProgressDraft
 const t = (key: string) => key
 
 const stats: CheckInStats = {
-    total: 10,
     totalCheckIns: 10,
-    avgMood: 4,
     averageMoodScore: 4.2,
-    avgPain: 2,
     averagePainLevel: 2.1,
     topActivities: [],
     currentStreak: 7,
     longestStreak: 14,
     moodTrend: [],
-    painTrend: [],
-    milestonesAchieved: 3
+    painTrend: []
 }
 
 describe('buildShareProgressDraft', () => {

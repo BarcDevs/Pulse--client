@@ -170,6 +170,17 @@ describe('scrubSpan', () => {
         })
     })
 
+    it('strips the query from the http.target attribute', () => {
+        const scrubbed = scrubSpan({
+            ...baseSpan,
+            name: 'GET /api/x',
+            attributes: { 'http.target': '/api/x?token=abc' }
+        })
+
+        expect(scrubbed.attributes['http.target'])
+            .toBe('/api/x')
+    })
+
     it('scrubs segment spans too', () => {
         const scrubbed = scrubSpan({
             ...baseSpan,

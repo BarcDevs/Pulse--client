@@ -52,7 +52,6 @@ const buildOptimisticStats = (
     return {
         ...existing,
         totalCheckIns: total,
-        total,
         currentStreak: newStreak,
         longestStreak: Math.max(newStreak, existing.longestStreak),
         averageMoodScore: Math.round(
