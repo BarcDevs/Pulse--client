@@ -72,7 +72,7 @@ write_last_good() {
 
 health_check() {
     local port="$1"
-    for i in $(seq 1 15); do
+    for i in $(seq 1 60); do
         if curl -sf --max-time 5 "http://localhost:$port/" > /dev/null; then
             return 0
         fi
@@ -96,7 +96,7 @@ edge_mode() {
 # are not guaranteed), so it needs no published port.
 container_health_check() {
     local name="$1"
-    for i in $(seq 1 15); do
+    for i in $(seq 1 60); do
         if docker exec "$name" node -e "fetch('http://127.0.0.1:3000/').then(r => process.exit(r.ok ? 0 : 1)).catch(() => process.exit(1))" > /dev/null 2>&1; then
             return 0
         fi
